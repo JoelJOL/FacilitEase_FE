@@ -1,0 +1,11 @@
+.attachment_docs{
+    display: flex;
+    justify-content: flex-start;
+}
+#attachment_heading{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#attachment_img{
+    width:30px;
+    margin-right: 10px;
+}
