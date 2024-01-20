@@ -1,0 +1,7 @@
+.sidebar_footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align items to the bottom */
+  padding: 10px; /* Add padding for better spacing */
+  margin-top: auto; /* Push the footer to the bottom */
+}

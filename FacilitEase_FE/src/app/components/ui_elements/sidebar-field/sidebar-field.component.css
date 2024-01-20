@@ -1,0 +1,34 @@
+.sidebar_field {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-left: 0%;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+.sidebar_field:hover {
+  background-color: #c3c3c3; /* Change the background color on hover */
+}
+
+.sidebar_field.active {
+  background-color: #c3c3c3; /* Change the background color when active */
+  border-right: solid 5px;
+  font-weight: bolder;
+  color: rgb(124, 0, 192);
+  border-color: rgb(124, 0, 192);
+}
+
+.sidebar_field.active img {
+  max-width: 30px; /* Increase the image size when active */
+  max-height: 30px;
+}
+
+.sidebar_field.active span {
+  font-size: 16px; /* Increase the font size when active */
+}
+img {
+  max-width: 24px;
+  max-height: 24px;
+  margin-right: 10px;
+}
