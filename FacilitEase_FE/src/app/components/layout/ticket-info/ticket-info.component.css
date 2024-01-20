@@ -1,0 +1,43 @@
+.ticket_info {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+  
+  .ticket_details {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+  
+  .ticket_priority {
+    display: flex;
+    align-items: center;
+    color: black;
+  }
+  
+  .ticket_status_box { 
+    background-color: #ffe9c4; 
+    padding: 5px 10px;
+    border-radius: 5px; 
+    color: #f59e0b;
+    font-weight: bold; 
+    margin-bottom: 0; 
+    display: inline-block; 
+  }
+  
+  .ticket_id {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  
+  select {
+    background-color: #f4be61;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+  }
+  
