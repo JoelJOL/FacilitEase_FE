@@ -1,0 +1,32 @@
+.pro_div {
+  background-color: white;
+  width: 200px;
+  /* margin-left: 1030px; */
+  text-align: center;
+  padding-right: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border-color: white;
+  color: black;
+}
+
+.pro_pic {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  /* margin-left: 1070px; */
+}
+.dropdown-toggle-split {
+  background-color: rgba(51, 51, 190, 0.589);
+  border-radius: 20px;
+  width: 40px;
+  border-color: white;
+}
+::after {
+  margin-top: 20px;
+  margin-right: 7px;
+}
