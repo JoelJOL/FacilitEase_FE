@@ -1,0 +1,12 @@
+.sidebar_field {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+img {
+  max-width: 24px;
+  max-height: 24px;
+  margin-right: 10px;
+}

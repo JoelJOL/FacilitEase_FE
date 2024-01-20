@@ -1,0 +1,21 @@
+<div class="sidebar">
+  <div class="row">
+    <div class="col">
+      <app-sidebar-logo></app-sidebar-logo>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-sidebar-field
+        *ngFor="let field of fields"
+        [field]="field"
+      ></app-sidebar-field>
+    </div>
+  </div>
+  <div class="row mt-auto">
+    <!-- mt-auto pushes the footer to the bottom -->
+    <div class="col">
+      <app-sidebar-footer></app-sidebar-footer>
+    </div>
+  </div>
+</div>
