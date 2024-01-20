@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./sidebar-logo.component.css'],
 })
 export class SidebarLogoComponent {
-  @Input()
-  logoSrc!: string;
+  logoSrc: string = 'assets/logo.png';
 }

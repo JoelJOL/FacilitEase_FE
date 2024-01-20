@@ -1,4 +1,10 @@
-<div class="sidebar_field" (click)="onClick()">
+<div
+  class="sidebar_field"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  (click)="onClick()"
+  [class.active]="active"
+>
   <img [src]="field.logo" alt="{{ field.title }} logo" />
   <span>{{ field.title }}</span>
 </div>

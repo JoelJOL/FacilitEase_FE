@@ -1,21 +1,13 @@
-<div class="sidebar">
+<div class="container-fluid">
   <div class="row">
-    <div class="col">
-      <app-sidebar-logo></app-sidebar-logo>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <app-sidebar-field
-        *ngFor="let field of fields"
-        [field]="field"
-      ></app-sidebar-field>
-    </div>
-  </div>
-  <div class="row mt-auto">
-    <!-- mt-auto pushes the footer to the bottom -->
-    <div class="col">
-      <app-sidebar-footer></app-sidebar-footer>
+    <!-- Sidebar Column -->
+    <div class="col-md-3 d-flex flex-column sidebar">
+      <div>
+        <ng-content></ng-content>
+      </div>
+      <div class="mt-auto">
+        <app-sidebar-footer></app-sidebar-footer>
+      </div>
     </div>
   </div>
 </div>
