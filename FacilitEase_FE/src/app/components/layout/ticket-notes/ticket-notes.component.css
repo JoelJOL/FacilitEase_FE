@@ -1,0 +1,12 @@
+
+.notes_heading_lastupdate{
+    display: flex;
+    justify-content:space-between;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notes_description{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: small;
+}
+
