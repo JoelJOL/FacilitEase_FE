@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TicketNotesComponent } from './components/layout/ticket-notes/ticket-notes.component';
 import { TicketAttachmentsComponent } from './components/layout/ticket-attachments/ticket-attachments.component';
@@ -12,11 +12,6 @@ import { CardUpperComponent } from './components/layout/card-upper/card-upper.co
 import { TicketDescriptionComponent } from './components/ui_elements/ticket-description/ticket-description.component';
 import { TicketHeaderComponent } from './components/ui_elements/ticket-header/ticket-header.component';
 import { TicketInfoComponent } from './components/layout/ticket-info/ticket-info.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
-import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
-import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
-import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
 import { ButtonComponent } from './components/ui_elements/button/button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -25,6 +20,7 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +28,7 @@ import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/
     TicketDescriptionComponent,
     TicketHeaderComponent,
     TicketInfoComponent,
-     SidebarFieldComponent,
+    SidebarFieldComponent,
     SidebarComponent,
     SidebarLogoComponent,
     SidebarFooterComponent,
@@ -44,7 +40,12 @@ import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/
     PersonCardComponent,
     TicketRaisedAssignedComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,BrowserAnimationsModule,BsDropdownModule.forRoot()],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
