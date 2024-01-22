@@ -16,5 +16,6 @@ export class AppComponent {
     { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
 
     // Add more fields as needed
+    
   ];
 }

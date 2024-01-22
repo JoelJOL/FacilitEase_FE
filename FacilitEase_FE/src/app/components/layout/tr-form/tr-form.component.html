@@ -1,0 +1,22 @@
+<app-raise-ticket-title></app-raise-ticket-title>
+<app-tr-subject></app-tr-subject>
+<app-tr-description></app-tr-description>
+<div class="d-flex" [ngClass]="'form_dropdown'">
+  <app-tr-dropdown
+    [label]="'Priority'"
+    [options]="priorities"
+    [displayKey]="'priorityName'"
+  ></app-tr-dropdown>
+
+  <app-tr-dropdown
+    [label]="'Department'"
+    [options]="departments"
+    [displayKey]="'deptName'"
+  ></app-tr-dropdown>
+</div>
+<app-tr-dropdown
+  [label]="'Category'"
+  [options]="categories"
+  [displayKey]="'categoryName'"
+></app-tr-dropdown>
+<app-tr-attachments></app-tr-attachments>
