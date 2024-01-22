@@ -20,6 +20,10 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormServiceService } from './features/service/httpService/form-service.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormComponent } from './components/layout/reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -39,14 +43,17 @@ import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/
     TicketNotesAttachmentsComponent,
     PersonCardComponent,
     TicketRaisedAssignedComponent,
+    ReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [FormServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

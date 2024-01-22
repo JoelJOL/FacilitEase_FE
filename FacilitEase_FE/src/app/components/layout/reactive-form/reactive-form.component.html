@@ -1,0 +1,50 @@
+<form (ngSubmit)="submitForm()">
+  <!-- Your form fields -->
+
+  <label>
+    EmployeeCode:
+    <input type="number" [formControl]="employeecode" />
+  </label>
+  <label>
+    FirstName:
+    <input type="text" [formControl]="firstname" />
+  </label>
+  <label>
+    LastName:
+    <input type="text" [formControl]="lastname" />
+  </label>
+  <label>
+    DOB:
+    <input type="text" [formControl]="dob" />
+  </label>
+  <label>
+    Email:
+    <input type="email" [formControl]="email" />
+  </label>
+  <label>
+    Gender:
+    <input type="text" [formControl]="gender" />
+  </label>
+  <label>
+    ManagerId:
+    <input type="number" [formControl]="managerId" />
+  </label>
+  <!-- Add other form fields -->
+
+  <button type="button" (click)="confirmSubmit()">Submit</button>
+</form>
+
+<div *ngIf="showReview">
+  <h2>Review your data</h2>
+  <!-- Display the form data for review -->
+  <p>EmployeeCode: {{ employeecode.value }}</p>
+  <p>FirstName: {{ firstname.value }}</p>
+  <p>LastName: {{ lastname.value }}</p>
+  <p>Dob: {{ dob.value }}</p>
+  <p>Email: {{ email.value }}</p>
+  <p>Gender: {{ gender.value }}</p>
+  <p>ManagerId: {{ managerId.value }}</p>
+  <!-- Display other fields for review -->
+
+  <button (click)="confirmSubmit()">Confirm and Submit</button>
+</div>
