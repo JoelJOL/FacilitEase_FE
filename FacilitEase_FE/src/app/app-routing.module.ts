@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
+import { AdminPerformanceComponent } from './components/ui_elements/admin-performance/admin-performance.component';
+import { BarChartComponent } from './components/ui_elements/bar-chart/bar-chart.component';
+import { ButtonComponent } from './components/ui_elements/button/button.component';
+import { ReportPorfileComponent } from './components/ui_elements/report-porfile/report-porfile.component';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/agent-ticket-view.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
@@ -19,7 +24,11 @@ const routes: Routes = [
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
    {path:'xxx',component:AgentTicketsViewComponent},
-   {path:'agentticket',component:AgentTicketViewComponent}  
+   {path:'agentticket',component:AgentTicketViewComponent},
+  { component: ReportPorfileComponent, path: 'profile' },
+  { component: AdminPerformanceComponent, path: 'report/:id' },
+  { component: BarChartComponent, path: 'report/chart/:id' },
+  { path: '**', component: ButtonComponent },
 ];
 
 @NgModule({

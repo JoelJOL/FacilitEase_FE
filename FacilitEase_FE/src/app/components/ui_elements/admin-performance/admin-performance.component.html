@@ -1,0 +1,14 @@
+<div class="container-fluid row g-4">
+  <ng-container *ngFor="let item of items; let indexOfDiv = index">
+    <div
+      [ngClass]="{
+        show_performance: selectedDivIndex !== indexOfDiv,
+        show_performance_toggle: selectedDivIndex === indexOfDiv
+      }"
+      (click)="ChangeClass(indexOfDiv)"
+    >
+      <p class="show_performance_text">{{ item }}</p>
+      <p class="show_performance_number">{{ data[indexOfDiv] }}</p>
+    </div> </ng-container
+  >>
+</div>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TicketNotesComponent } from './components/layout/ticket-notes/ticket-notes.component';
 import { TicketAttachmentsComponent } from './components/layout/ticket-attachments/ticket-attachments.component';
@@ -28,6 +27,12 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+import { AdminPerformanceComponent } from './components/ui_elements/admin-performance/admin-performance.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
+import { BarChartComponent } from './components/ui_elements/bar-chart/bar-chart.component';
+import { ReportPorfileComponent } from './components/ui_elements/report-porfile/report-porfile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormServiceService } from './features/service/httpService/form-service.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -73,6 +78,11 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     TicketNotesAttachmentsComponent,
     PersonCardComponent,
     TicketRaisedAssignedComponent,
+    AdminPerformanceComponent,
+    BarChartComponent,
+    ReportPorfileComponent,
+  ],
+  imports: [
     ReactiveFormComponent,
     HeaderUserRoleDropdownComponent,
     RaiseTicketTitleComponent,
@@ -100,6 +110,8 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    NgChartsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
@@ -114,3 +126,4 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+// BsDropdownModule.forRoot(),
