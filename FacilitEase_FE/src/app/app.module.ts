@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TicketNotesComponent } from './components/layout/ticket-notes/ticket-notes.component';
 import { TicketAttachmentsComponent } from './components/layout/ticket-attachments/ticket-attachments.component';
@@ -20,6 +19,12 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+import { AdminPerformanceComponent } from './components/ui_elements/admin-performance/admin-performance.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
+import { BarChartComponent } from './components/ui_elements/bar-chart/bar-chart.component';
+import { ReportPorfileComponent } from './components/ui_elements/report-porfile/report-porfile.component';
 
 @NgModule({
   declarations: [
@@ -39,14 +44,19 @@ import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/
     TicketNotesAttachmentsComponent,
     PersonCardComponent,
     TicketRaisedAssignedComponent,
+    AdminPerformanceComponent,
+    BarChartComponent,
+    ReportPorfileComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
+    HttpClientModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+// BsDropdownModule.forRoot(),
