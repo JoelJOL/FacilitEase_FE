@@ -1,14 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DropDownService } from './dropdown.service';
+import { PostAPIService } from './post-api.service';
 
-
-describe('DropdownService', () => {
-  let service: DropDownService;
+describe('PostAPIService', () => {
+  let service: PostAPIService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DropDownService);
+    service = TestBed.inject(PostAPIService);
   });
 
   it('should be created', () => {

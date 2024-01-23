@@ -28,6 +28,15 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+import { HeaderUserRoleDropdownComponent } from './components/ui_elements/header-user-role-dropdown/header-user-role-dropdown.component';
+import { RaiseTicketTitleComponent } from './components/ui_elements/raise-ticket-title/raise-ticket-title.component';
+import { TrDropdownComponent } from './components/ui_elements/tr-dropdown/tr-dropdown.component';
+import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TrSubjectComponent } from './components/ui_elements/tr-subject/tr-subject.component';
+import { TrDescriptionComponent } from './components/ui_elements/tr-description/tr-description.component';
+import { TrAttachmentsComponent } from './components/ui_elements/tr-attachments/tr-attachments.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-view-employee-tickets/manager-view-employee-tickets.component';
 import { DataTableComponent } from './components/layout/data-table/data-table.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -58,6 +67,13 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     TicketNotesAttachmentsComponent,
     PersonCardComponent,
     TicketRaisedAssignedComponent,
+    HeaderUserRoleDropdownComponent,
+    RaiseTicketTitleComponent,
+    TrDropdownComponent,
+    TrFormComponent,
+    TrSubjectComponent,
+    TrDescriptionComponent,
+    TrAttachmentsComponent,
     ManagerViewEmployeeTicketsComponent,
     DataTableComponent
     AgentTicketViewComponent,
@@ -73,10 +89,12 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     AssignedTicketsComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    ReactiveFormsModule
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
