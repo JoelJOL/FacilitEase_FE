@@ -1,0 +1,32 @@
+<!-- your-component.component.html -->
+
+<table class="employee_table">
+  <thead>
+    <tr>
+      <th>Employee Code</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date of Birth</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Department</th>
+      <th>Position</th>
+      <th>Location</th>
+      <!-- Add other column headers here -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employeeDetails">
+      <td>{{ employee.employeeCode }}</td>
+      <td>{{ employee.firstName }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.dob }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.gender }}</td>
+      <td>{{ employee.department }}</td>
+      <td>{{ employee.position }}</td>
+      <td>{{ employee.location }}</td>
+      <!-- Add other columns here -->
+    </tr>
+  </tbody>
+</table>

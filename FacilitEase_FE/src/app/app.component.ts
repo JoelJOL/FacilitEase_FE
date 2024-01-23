@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
 import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 interface Field {
   logo: string;
   title: string;
+  subfields?: string[];
 }
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +16,7 @@ export class AppComponent {
   fields: Field[] = [
     { logo: 'assets/tickets-icon.png', title: 'Employee Tickets' },
     { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
+    { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },  
   ];
 
   constructor(private approveDenyService: ApproveDenyService) {}

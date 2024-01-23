@@ -1,8 +1,10 @@
-<div class="ticket_sub">
-  <p>
-    {{ subject }}
-  </p>
-</div>
-<div class="ticket_desc">
-  <p>{{ description }}</p>
+<div *ngIf="ticket">
+  <div class="ticket_sub">
+    <p>
+      {{ ticket.ticketName }}
+    </p>
+  </div>
+  <div class="ticket_desc">
+    <p>{{ ticket.ticketDescription }}</p>
+  </div>
 </div>
