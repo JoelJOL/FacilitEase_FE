@@ -1,6 +1,6 @@
 // unassigned-tickets.component.ts
 import { Component, OnInit } from '@angular/core';
-import { DropDownService } from 'src/app/features/service/httpService/dropdown.service';
+import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 interface Field {

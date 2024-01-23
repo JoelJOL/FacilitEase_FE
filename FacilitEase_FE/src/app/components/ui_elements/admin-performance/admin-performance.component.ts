@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReportService } from 'src/app/features/service/reportService/report.service';
-
+import { ReportService } from '@app/features/service/reportService/report.service';
 @Component({
   selector: 'app-admin-performance',
   templateUrl: './admin-performance.component.html',
