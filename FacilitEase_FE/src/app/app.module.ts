@@ -28,6 +28,12 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormServiceService } from './features/service/httpService/form-service.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormComponent } from './components/layout/reactive-form/reactive-form.component';
+import { ManagerService } from './features/service/httpService/manager.service';
+import { ApproveDenyService } from './features/service/httpService/approve-deny.service';
 import { HeaderUserRoleDropdownComponent } from './components/ui_elements/header-user-role-dropdown/header-user-role-dropdown.component';
 import { RaiseTicketTitleComponent } from './components/ui_elements/raise-ticket-title/raise-ticket-title.component';
 import { TrDropdownComponent } from './components/ui_elements/tr-dropdown/tr-dropdown.component';
@@ -67,6 +73,7 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     TicketNotesAttachmentsComponent,
     PersonCardComponent,
     TicketRaisedAssignedComponent,
+    ReactiveFormComponent,
     HeaderUserRoleDropdownComponent,
     RaiseTicketTitleComponent,
     TrDropdownComponent,
@@ -93,9 +100,9 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    ReactiveFormsModule
-    HttpClientModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -103,7 +110,7 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     CommonModule
     FormsModule,
   ],
-  providers: [],
+  providers: [FormServiceService, ManagerService, ApproveDenyService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
