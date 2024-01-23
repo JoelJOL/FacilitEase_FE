@@ -1,0 +1,9 @@
+<div class="form-group">
+  <!-- <label class="mr-3">{{ label }}</label> -->
+  <select class="form-control" (change)="onSelectionChange($event)">
+    <option value="" disabled selected>{{ label }}</option>
+    <option *ngFor="let option of options" [value]="option[valueProperty]">
+      {{ option[displayKey] }}
+    </option>
+  </select>
+</div>
