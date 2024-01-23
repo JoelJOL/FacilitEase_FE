@@ -1,18 +1,19 @@
 <div class="ticket_info">
   <div class="ticket_details">
     <p>
-      <span class="ticket_status_box">On Hold</span>
+      <span class="ticket_status_box">{{ status }}</span>
       <span class="ticket_id"> Ticket ID: #{{ ticketId }}</span>
     </p>
   </div>
   <div class="ticket_priority">
     <p>
-      Ticket Priority:
+      <span class="ticket_priority_box">{{ ticketPriority }}</span>
+      <!-- Ticket Priority:
       <select (ngModel)="(ticketPriority)">
         <option value="high">High</option>
         <option value="medium" selected>Medium</option>
         <option value="low">Low</option>
-      </select>
+      </select> -->
     </p>
   </div>
 </div>

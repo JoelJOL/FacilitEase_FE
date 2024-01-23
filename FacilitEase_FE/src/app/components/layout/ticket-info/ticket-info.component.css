@@ -25,6 +25,15 @@
     margin-bottom: 0; 
     display: inline-block; 
   }
+
+  .ticket_priority_box  {
+    background-color: #f4be61;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+  }
   
   .ticket_id {
     font-size: 1.2em;

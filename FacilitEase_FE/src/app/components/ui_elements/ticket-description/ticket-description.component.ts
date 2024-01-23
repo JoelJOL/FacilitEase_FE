@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AgentService } from 'src/app/features/service/httpService/agent.service';
 
 @Component({
   selector: 'app-ticket-description',
@@ -6,7 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./ticket-description.component.css']
 })
 export class TicketDescriptionComponent {
-  subject:string=" I am not able to change payment settings.";
-  description:string="This is description. This is description. This is description. This is description.This is description. "
+  ticket: any=[];
+  constructor(private agentService: AgentService) {}
+  ngOnInit() {
+    this.agentService.getData().subscribe(data => {
+      this.ticket =data[0];
+       console.log(data);
+    });
+}
  
 }
