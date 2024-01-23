@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-tr-dropdown',
-  templateUrl: './tr-dropdown.component.html',
-  styleUrls: ['./tr-dropdown.component.css'],
+  selector: 'app-assign-dropdown',
+  templateUrl: './assign-dropdown.component.html',
+  styleUrls: ['./assign-dropdown.component.css'],
 })
 export class TrDropdownComponent {
   @Input() label: string = '';

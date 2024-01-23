@@ -2,7 +2,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DropDownService } from 'src/app/features/service/httpService/dropdown.service';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
+interface Field {
+  logo: string;
+  title: string;
+  subfields?: string[];
+}
 // Update the path
 
 @Component({
@@ -10,77 +15,50 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './l2admin.component.html',
   styleUrls: ['./l2admin.component.css'],
 })
-export class L2AdminComponent implements OnInit {
-  unassignedTickets: any[] = [];
-  assignedTickets: any[] = [];
+export class L2AdminComponent {
+  constructor(private router: Router) {}
+  yourFieldsArray: Field[] = [
+    {
+      logo: 'assets/tickets-icon.png',
+      title: 'Tickets',
+      subfields: [
+        'Unassigned Tickets',
+        'Assigned Tickets',
+        'Escalated Tickets',
+      ],
+    },
+    {
+      logo: 'assets/data-entry.png',
+      title: 'Reports',
+      subfields: ['Daily Reports', 'Monthly Report', 'Annual Reports'],
+    },
+    { logo: 'assets/reports-icon.png', title: 'Data Entry', subfields: [] },
+  ];
+  showL2AdminTickets: boolean = false;
 
-  agents: any[] = [];
-  selectedAgent: any;
-
-  constructor(
-    private dropDownService: DropDownService,
-    private http: HttpClient
-  ) {}
-
-  ngOnInit() {
-    this.loadUnassignedTickets();
-    this, this.loadAssignedTickets();
-    this.loadAgents();
+  onFieldClicked(clickedField: any) {
+    console.log(`Handling in App Component for ${clickedField.title}`);
+    if (clickedField.title === 'My Team') {
+      this.showL2AdminTickets = true;
+      this.router.navigate(['manager-subordinates']);
+    } else if (clickedField.title === 'Waiting For Approval') {
+      this.showL2AdminTickets = true;
+      console.log('Waiting For Approval #100');
+    } else {
+      this.showL2AdminTickets = false;
+    }
   }
-
-  private loadUnassignedTickets() {
-    this.http
-      .get<any[]>('https://localhost:7049/api/l2/unassigned-tickets')
-      .subscribe(
-        (tickets) => {
-          this.unassignedTickets = tickets;
-        },
-        (error) => {
-          console.error('Error loading unassigned tickets', error);
-        }
-      );
-  }
-  private loadAssignedTickets() {
-    this.http
-      .get<any[]>('https://localhost:7049/api/l2/assigned-tickets')
-      .subscribe(
-        (tickets) => {
-          this.assignedTickets = tickets;
-        },
-        (error) => {
-          console.error('Error loading unassigned tickets', error);
-        }
-      );
-  }
-
-  private loadAgents() {
-    this.dropDownService.getAgents().subscribe(
-      (agents: any[]) => {
-        this.agents = agents;
-        console.log(agents);
-      },
-      (error) => {
-        console.error('Error loading agents', error);
+  onSubfieldClicked(event: { field: Field; subfield: string }) {
+    if (event.field.title === 'Tickets') {
+      if (event.subfield === 'Unassigned Tickets') {
+        this.showL2AdminTickets = true;
+        this.router.navigate(['unassigned-tickets']);
+      } else if (event.subfield === 'Assigned Tickets') {
+        this.showL2AdminTickets = true;
+        this.router.navigate(['assigned-tickets']);
       }
-    );
-  }
-  onAgentSelected(selectedAgent: number, ticketId: number) {
-    const data = {
-      ticketId: ticketId,
-      agentId: selectedAgent,
-    };
-    console.log(selectedAgent);
-    this.http
-      .put('https://localhost:7049/api/l2/assign-ticket', data, {
-        responseType: 'text',
-      })
-      .subscribe(
-        (response) => {
-          console.log('Ticket assigned successfully', response);
-        },
-        (error) => {
-          console.error('Error assigning ticket', error);
-        }
-      );
+    } else if (event.subfield === 'Escalated Tickets') {
+      console.log(`I have got the ${event.subfield} from ${event.field.title}`);
+    }
   }
 }

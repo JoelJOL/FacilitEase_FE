@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrDropdownComponent } from './tr-dropdown.component';
+import { TrDropdownComponent } from './assign-dropdown.component';
 
 describe('TrDropdownComponent', () => {
   let component: TrDropdownComponent;
@@ -8,7 +8,7 @@ describe('TrDropdownComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TrDropdownComponent]
+      declarations: [TrDropdownComponent],
     });
     fixture = TestBed.createComponent(TrDropdownComponent);
     component = fixture.componentInstance;

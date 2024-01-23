@@ -1,93 +1,12 @@
 <!-- unassigned-tickets.component.html -->
-<div class="container mt-4">
-  <h2 class="mb-4">Unassigned Tickets</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Ticket Id</th>
-        <th>Ticket Name</th>
-        <th>Raised By</th>
-        <th>Assigned To</th>
-        <th>Open Date and Time</th>
-        <th>Priority</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ticket of unassignedTickets">
-        <td>{{ ticket.ticketId }}</td>
-        <td>{{ ticket.ticketName }}</td>
-        <td>{{ ticket.raisedBy }}</td>
-        <td>
-          <div class="d-flex align-items-center">
-            <!-- Display the agent's name if already assigned, otherwise show the dropdown -->
-            <ng-container *ngIf="!ticket.assignedTo">
-              <app-tr-dropdown
-                label="Assign To"
-                [options]="agents"
-                displayKey="agentName"
-                valueProperty="agentId"
-                (onItemSelected)="onAgentSelected($event, ticket.ticketId)"
-              ></app-tr-dropdown>
-            </ng-container>
-            <ng-container *ngIf="ticket.assignedTo">
-              {{ ticket.assignedTo }}
-            </ng-container>
-          </div>
-        </td>
-        <td>{{ ticket.raisedDateTime | date : "medium" }}</td>
-        <td>
-          <span
-            [ngClass]="{
-              'text-danger': ticket.priority === 'High',
-              'text-warning': ticket.priority === 'Medium',
-              'text-info': ticket.priority === 'Low'
-            }"
-          >
-            {{ ticket.priority }}
-          </span>
-        </td>
-        <td>{{ ticket.status }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="container mt-4">
-  <h2 class="mb-4">Assigned Tickets</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Ticket Id</th>
-        <th>Ticket Name</th>
-        <th>Raised By</th>
-        <th>Assigned To</th>
-        <th>Open Date and Time</th>
-        <th>Priority</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ticket of assignedTickets">
-        <td>{{ ticket.ticketId }}</td>
-        <td>{{ ticket.ticketName }}</td>
-        <td>{{ ticket.raisedBy }}</td>
-        <td>
-          {{ ticket.assignedTo }}
-        </td>
-        <td>{{ ticket.raisedDateTime | date : "medium" }}</td>
-        <td>
-          <span
-            [ngClass]="{
-              'text-danger': ticket.priority === 'High',
-              'text-warning': ticket.priority === 'Medium',
-              'text-info': ticket.priority === 'Low'
-            }"
-          >
-            {{ ticket.priority }}
-          </span>
-        </td>
-        <td>{{ ticket.status }}</td>
-      </tr>
-    </tbody>
-  </table>
+<app-sidebar
+  [fields]="yourFieldsArray"
+  (clicked)="onFieldClicked($event)"
+  (subfieldClicked)="onSubfieldClicked($event)"
+></app-sidebar>
+
+<!-- <app-assigned-tickets></app-assigned-tickets>
+<app-unassigned-tickets></app-unassigned-tickets> -->
+<div *ngIf="showL2AdminTickets">
+  <router-outlet></router-outlet>
 </div>

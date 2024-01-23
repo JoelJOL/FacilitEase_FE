@@ -5,6 +5,8 @@ import { ManagerSubordinatesComponent } from './features/manager/manager-subordi
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
+import { UnassignedTicketsComponent } from './unassigned-tickets/unassigned-tickets.component';
+import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
 
 const routes: Routes = [
   { path: '', component: SidebarComponent }, // Default route to Home component
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
   { path: 'manager', component: ManagerComponent },
+  { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
+  { path: 'assigned-tickets', component: AssignedTicketsComponent },
 ];
 
 @NgModule({

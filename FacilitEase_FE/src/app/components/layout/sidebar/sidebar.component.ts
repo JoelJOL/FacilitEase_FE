@@ -17,17 +17,15 @@ export class SidebarComponent {
   @Input() subfields: string[] = [];
   selectedField: Field | null = null;
   @Output() clicked = new EventEmitter<any>();
+  @Output() subfieldClicked = new EventEmitter<any>();
 
   @Input() onClickHandler: (() => void) | undefined;
 
   onFieldClicked(field: any) {
     this.selectedField = field;
     this.clicked.emit(this.selectedField);
-    // Handle the click event for the individual field here
-    // console.log(`Field clicked: ${field.title}`);
-    // You can perform navigation or any other logic here
   }
-  // onFieldClicked(field: Field) {
-  //   this.selectedField = field;
-  // }
+  onSubfieldClicked(event: { field: Field; subfield: string }) {
+    this.subfieldClicked.emit(event);
+  }
 }

@@ -15,6 +15,7 @@ import {
 export class SidebarSubfieldComponent implements OnChanges {
   @Input() showSubfield = false;
   @Input() subfields: string[] = [];
+  @Output() subfieldClick = new EventEmitter<string>();
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['showSubfield'] && changes['showSubfield'].currentValue) {
@@ -30,6 +31,7 @@ export class SidebarSubfieldComponent implements OnChanges {
     } else {
       this.activeSubfield = subfield; // Activate the new subfield
     }
+    this.subfieldClick.emit(subfield);
   }
 
   isActive(subfield: string): boolean {

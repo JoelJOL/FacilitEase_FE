@@ -21,9 +21,9 @@ interface Field {
 export class SidebarFieldComponent {
   @Input() field!: Field;
   @Input() onClickHandler: (() => void | undefined) | undefined; // Dynamic onClick handler
-
+  @Input() subfield!: string;
   @Output() clicked = new EventEmitter<any>();
-
+  @Output() subfieldClicked = new EventEmitter<any>();
   @ViewChild(SidebarSubfieldComponent)
   subfieldComponent!: SidebarSubfieldComponent;
 
@@ -31,14 +31,6 @@ export class SidebarFieldComponent {
 
   private static activeField: SidebarFieldComponent | null = null;
   active = false;
-
-  onMouseEnter() {
-    // Additional styles or actions on mouse enter (if needed)
-  }
-
-  onMouseLeave() {
-    // Additional styles or actions on mouse leave (if needed)
-  }
 
   onFieldClicked() {
     if (SidebarFieldComponent.activeField) {
@@ -48,10 +40,13 @@ export class SidebarFieldComponent {
     this.active = true;
     SidebarFieldComponent.activeField = this;
 
-    this.clicked.emit(this.field); // Emit an event on click with the field data
+    this.clicked.emit(this.field); // Eit an event on click with the field data
     // Additional actions on click (if needed)
 
     console.log('Field clicked:', this.field.title);
     this.subfieldComponent.deactivateSubfield();
+  }
+  onSubfieldClicked(subfield: any) {
+    this.subfieldClicked.emit({ field: this.field, subfield });
   }
 }

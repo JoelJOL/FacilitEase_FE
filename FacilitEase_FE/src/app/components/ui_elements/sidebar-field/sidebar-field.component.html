@@ -1,10 +1,4 @@
-<div
-  class="sidebar_field"
-  (mouseenter)="onMouseEnter()"
-  (mouseleave)="onMouseLeave()"
-  (click)="onFieldClicked()"
-  [class.active]="active"
->
+<div class="sidebar_field" (click)="onFieldClicked()" [class.active]="active">
   <img [src]="field.logo" alt="{{ field.title }} logo" />
   <span>{{ field.title }}</span>
 </div>
@@ -12,5 +6,6 @@
   <app-sidebar-subfield
     [showSubfield]="active"
     [subfields]="field.subfields || []"
+    (subfieldClick)="onSubfieldClicked($event)"
   ></app-sidebar-subfield>
 </div>

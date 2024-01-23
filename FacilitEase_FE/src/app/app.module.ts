@@ -24,9 +24,11 @@ import { ProfilepicDropdownComponent } from './components/layout/profilepic-drop
 import { SidebarSubfieldComponent } from './components/ui_elements/sidebar-subfield/sidebar-subfield.component';
 import { ManagerSubordinatesComponent } from './features/manager/manager-subordinates/manager-subordinates.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
-import { TrDropdownComponent } from './components/ui_elements/tr-dropdown/tr-dropdown.component';
+import { TrDropdownComponent } from './components/ui_elements/assign-dropdown/assign-dropdown.component';
 import { L2AdminComponent } from './l2admin/l2admin.component';
 import { FormsModule } from '@angular/forms';
+import { UnassignedTicketsComponent } from './unassigned-tickets/unassigned-tickets.component';
+import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,8 @@ import { FormsModule } from '@angular/forms';
     ManagerComponent,
     TrDropdownComponent,
     L2AdminComponent,
+    UnassignedTicketsComponent,
+    AssignedTicketsComponent,
   ],
   imports: [
     BrowserModule,

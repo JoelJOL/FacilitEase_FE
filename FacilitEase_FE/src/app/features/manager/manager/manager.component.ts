@@ -21,21 +21,30 @@ export class ManagerComponent {
   ];
   showManagerSubordinates: boolean = false;
   constructor(private router: Router) {}
-  // handleButtonClick(): void {
-  //   console.log('Button clicked!');
-  //   // Add your logic for button click here
-  // }
-  // constructor(private sidebarService: SidebarService) {}
 
   onFieldClicked(clickedField: any) {
-    // You can implement specific logic in the app.component as well
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'My Team') {
       this.showManagerSubordinates = true;
       this.router.navigate(['manager-subordinates']);
+    } else if (clickedField.title === 'Waiting For Approval') {
+      this.showManagerSubordinates = true;
+      console.log('Waiting For Approval #100');
     } else {
-      // Reset the flag and navigate to the corresponding route for other fields
       this.showManagerSubordinates = false;
+    }
+  }
+  onSubfieldClicked(event: { field: Field; subfield: string }) {
+    if (event.field.title === 'Employee Tickets') {
+      if (event.subfield === 'Tickets') {
+        console.log(
+          `I have got the ${event.subfield} from ${event.field.title}`
+        );
+      } else if (event.subfield === 'Resolved') {
+        console.log(
+          `I have got the ${event.subfield} from ${event.field.title}`
+        );
+      }
     }
   }
 }

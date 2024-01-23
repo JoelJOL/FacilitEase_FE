@@ -8,6 +8,7 @@
           *ngFor="let field of fields"
           [field]="field"
           (clicked)="onFieldClicked(field)"
+          (subfieldClicked)="onSubfieldClicked($event)"
           [onClickHandler]="onClickHandler"
           [class.active]="selectedField === field"
         ></app-sidebar-field>
