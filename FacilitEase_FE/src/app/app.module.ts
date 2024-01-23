@@ -19,9 +19,9 @@ import { SidebarSubfieldComponent } from './components/ui_elements/sidebar-subfi
 import { ManagerSubordinatesComponent } from './features/manager/manager-subordinates/manager-subordinates.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
 import { TrDropdownComponent } from './components/ui_elements/assign-dropdown/assign-dropdown.component';
-import { L2AdminComponent } from './l2admin/l2admin.component';
+import { L2AdminComponent } from './components/layout/l2admin/l2admin.component';
 import { FormsModule } from '@angular/forms';
-import { UnassignedTicketsComponent } from './unassigned-tickets/unassigned-tickets.component';
+import { UnassignedTicketsComponent } from './components/ui_elements/unassigned-tickets/unassigned-tickets.component';
 import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
@@ -29,28 +29,23 @@ import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/side
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
 import { AdminPerformanceComponent } from './components/ui_elements/admin-performance/admin-performance.component';
 import { RouterModule, Routes } from '@angular/router';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './components/ui_elements/bar-chart/bar-chart.component';
 import { ReportPorfileComponent } from './components/ui_elements/report-porfile/report-porfile.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormServiceService } from './features/service/httpService/form-service.service';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormComponent } from './components/layout/reactive-form/reactive-form.component';
 import { ManagerService } from './features/service/httpService/manager.service';
 import { ApproveDenyService } from './features/service/httpService/approve-deny.service';
 import { HeaderUserRoleDropdownComponent } from './components/ui_elements/header-user-role-dropdown/header-user-role-dropdown.component';
 import { RaiseTicketTitleComponent } from './components/ui_elements/raise-ticket-title/raise-ticket-title.component';
-import { TrDropdownComponent } from './components/ui_elements/tr-dropdown/tr-dropdown.component';
 import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
-import { HttpClientModule } from '@angular/common/http';
 import { TrSubjectComponent } from './components/ui_elements/tr-subject/tr-subject.component';
 import { TrDescriptionComponent } from './components/ui_elements/tr-description/tr-description.component';
 import { TrAttachmentsComponent } from './components/ui_elements/tr-attachments/tr-attachments.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-view-employee-tickets/manager-view-employee-tickets.component';
 import { DataTableComponent } from './components/layout/data-table/data-table.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -60,6 +55,7 @@ import { ModalComponent } from './components/layout/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,8 +77,6 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     AdminPerformanceComponent,
     BarChartComponent,
     ReportPorfileComponent,
-  ],
-  imports: [
     ReactiveFormComponent,
     HeaderUserRoleDropdownComponent,
     RaiseTicketTitleComponent,
@@ -92,11 +86,11 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     TrDescriptionComponent,
     TrAttachmentsComponent,
     ManagerViewEmployeeTicketsComponent,
-    DataTableComponent
+    DataTableComponent,
     AgentTicketViewComponent,
     TitleSubComponent,
     ModalComponent,
-    AgentTicketsViewComponent
+    AgentTicketsViewComponent,
     SidebarSubfieldComponent,
     ManagerSubordinatesComponent,
     ManagerComponent,
@@ -119,7 +113,7 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    CommonModule
+    CommonModule,
     FormsModule,
   ],
   providers: [FormServiceService, ManagerService, ApproveDenyService],

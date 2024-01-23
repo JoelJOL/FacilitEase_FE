@@ -10,9 +10,8 @@ import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/a
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
 import { ManagerSubordinatesComponent } from './features/manager/manager-subordinates/manager-subordinates.component';
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
-import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
-import { UnassignedTicketsComponent } from './unassigned-tickets/unassigned-tickets.component';
+import { UnassignedTicketsComponent } from './components/ui_elements/unassigned-tickets/unassigned-tickets.component';
 import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
 
 const routes: Routes = [
@@ -23,8 +22,8 @@ const routes: Routes = [
   { path: 'manager', component: ManagerComponent },
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
-   {path:'xxx',component:AgentTicketsViewComponent},
-   {path:'agentticket',component:AgentTicketViewComponent},
+  { path: 'xxx', component: AgentTicketsViewComponent },
+  { path: 'agentticket', component: AgentTicketViewComponent },
   { component: ReportPorfileComponent, path: 'profile' },
   { component: AdminPerformanceComponent, path: 'report/:id' },
   { component: BarChartComponent, path: 'report/chart/:id' },

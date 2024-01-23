@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { AgentService } from 'src/app/features/service/httpService/agent.service';
+import { AgentService } from '@app/features/service/httpService/agent.service';
 
 @Component({
   selector: 'app-ticket-description',
   templateUrl: './ticket-description.component.html',
-  styleUrls: ['./ticket-description.component.css']
+  styleUrls: ['./ticket-description.component.css'],
 })
 export class TicketDescriptionComponent {
-  ticket: any=[];
+  ticket: any = [];
   constructor(private agentService: AgentService) {}
   ngOnInit() {
-    this.agentService.getData().subscribe(data => {
-      this.ticket =data[0];
-       console.log(data);
+    this.agentService.getData().subscribe((data) => {
+      this.ticket = data[0];
+      console.log(data);
     });
-}
- 
+  }
 }

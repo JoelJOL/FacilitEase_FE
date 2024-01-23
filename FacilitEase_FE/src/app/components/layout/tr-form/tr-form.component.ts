@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropDownService } from 'src/app/features/service/httpService/dropdown.service';
-import { PostAPIService } from 'src/app/features/service/httpService/post-api.service';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { DropDownService } from '@app/features/service/httpService/dropdown.service';
+import { PostAPIService } from '@app/features/service/httpService/post-api.service';
 
 @Component({
   selector: 'app-tr-form',
   templateUrl: './tr-form.component.html',
-  styleUrls: ['./tr-form.component.css']
+  styleUrls: ['./tr-form.component.css'],
 })
 export class TrFormComponent implements OnInit {
   priorities: any[] = [];
@@ -28,7 +33,7 @@ export class TrFormComponent implements OnInit {
     category: '',
     department: '',
     priority: '',
-    attachments: []
+    attachments: [],
   };
 
   ngOnInit(): void {
@@ -50,7 +55,7 @@ export class TrFormComponent implements OnInit {
       priority: ['', Validators.required],
       category: ['', Validators.required],
       department: ['', Validators.required],
-      attachments: [[]]
+      attachments: [[]],
     });
   }
 
@@ -70,11 +75,11 @@ export class TrFormComponent implements OnInit {
 
       // Call the service method to post the ticket data
       this.ticketService.postUser(this.apiUrl).subscribe(
-        response => {
+        (response) => {
           console.log('Ticket submitted successfully:', response);
           alert('Ticket submitted successfully:');
         },
-        error => {
+        (error) => {
           console.error('Error submitting ticket:', error);
           // Handle error actions here
         }
@@ -99,7 +104,7 @@ export class TrFormComponent implements OnInit {
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
+    Object.values(formGroup.controls).forEach((control) => {
       control.markAsTouched();
 
       if (control instanceof FormGroup) {

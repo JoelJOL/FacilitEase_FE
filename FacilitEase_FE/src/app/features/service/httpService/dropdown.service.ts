@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class DropDownService {6
+export class DropDownService {
   constructor(private http: HttpClient) {}
 
   getDepartments(): Observable<any> {
