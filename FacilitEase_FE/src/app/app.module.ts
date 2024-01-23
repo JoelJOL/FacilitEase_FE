@@ -27,6 +27,8 @@ import { ReactiveFormComponent } from './components/layout/reactive-form/reactiv
 
 import { ManagerService } from './features/service/httpService/manager.service';
 
+import { ApproveDenyService } from './features/service/httpService/approve-deny.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,7 @@ import { ManagerService } from './features/service/httpService/manager.service';
     BsDropdownModule.forRoot(),
     HttpClientModule,
   ],
-  providers: [FormServiceService, ManagerService],
+  providers: [FormServiceService, ManagerService, ApproveDenyService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

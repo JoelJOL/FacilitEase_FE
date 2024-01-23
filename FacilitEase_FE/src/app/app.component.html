@@ -1,8 +1,7 @@
 <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments>
 <app-ticket-raised-assigned></app-ticket-raised-assigned>
 <app-card-upper></app-card-upper>
-<app-button color="accepted">Accepted</app-button>
-<app-button color="rejected">Rejected</app-button>
+
 <app-profilepic-dropdown></app-profilepic-dropdown> -->
 <!-- <app-sidebar>
   <app-sidebar-logo></app-sidebar-logo>
@@ -11,4 +10,8 @@
     [field]="field"
   ></app-sidebar-field>
 </app-sidebar> -->
-<app-reactive-form></app-reactive-form>
+<!-- <app-reactive-form></app-reactive-form> -->
+<app-button color="accepted" (action)="updateTicket(true)">Accepted</app-button>
+<app-button color="rejected" (action)="updateTicket(false)"
+  >Rejected</app-button
+>

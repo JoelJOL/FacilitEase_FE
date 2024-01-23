@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
 interface Field {
   logo: string;
   title: string;
@@ -14,7 +15,21 @@ export class AppComponent {
   fields: Field[] = [
     { logo: 'assets/tickets-icon.png', title: 'Employee Tickets' },
     { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
-
-    // Add more fields as needed
   ];
+
+  constructor(private approveDenyService: ApproveDenyService) {}
+
+  updateTicket(isApproved: boolean): void {
+    const ticketId = prompt('Enter Ticket ID:');
+    if (ticketId) {
+      this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
+        () => {
+          console.log('Ticket updated successfully');
+        },
+        (error) => {
+          console.error('Error updating ticket', error);
+        }
+      );
+    }
+  }
 }
