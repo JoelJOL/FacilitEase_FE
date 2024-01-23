@@ -28,6 +28,12 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-view-employee-tickets/manager-view-employee-tickets.component';
+import { DataTableComponent } from './components/layout/data-table/data-table.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/agent-ticket-view.component';
 import { TitleSubComponent } from './components/ui_elements/title-sub/title-sub.component';
 import { ModalComponent } from './components/layout/modal/modal.component';
@@ -52,6 +58,8 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     TicketNotesAttachmentsComponent,
     PersonCardComponent,
     TicketRaisedAssignedComponent,
+    ManagerViewEmployeeTicketsComponent,
+    DataTableComponent
     AgentTicketViewComponent,
     TitleSubComponent,
     ModalComponent,
@@ -70,6 +78,9 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatDialogModule,
     CommonModule
     FormsModule,
