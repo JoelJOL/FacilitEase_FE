@@ -28,6 +28,12 @@ import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/si
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
 import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/sidebar-footer.component';
+import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/agent-ticket-view.component';
+import { TitleSubComponent } from './components/ui_elements/title-sub/title-sub.component';
+import { ModalComponent } from './components/layout/modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +52,10 @@ import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/
     TicketNotesAttachmentsComponent,
     PersonCardComponent,
     TicketRaisedAssignedComponent,
+    AgentTicketViewComponent,
+    TitleSubComponent,
+    ModalComponent,
+    AgentTicketsViewComponent
     SidebarSubfieldComponent,
     ManagerSubordinatesComponent,
     ManagerComponent,
@@ -59,7 +69,9 @@ import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    HttpClientModule, // Add HttpClientModule here
+    HttpClientModule,
+    MatDialogModule,
+    CommonModule
     FormsModule,
   ],
   providers: [],
