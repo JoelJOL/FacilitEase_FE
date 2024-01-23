@@ -25,6 +25,8 @@ import { FormServiceService } from './features/service/httpService/form-service.
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormComponent } from './components/layout/reactive-form/reactive-form.component';
 
+import { ManagerService } from './features/service/httpService/manager.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,7 @@ import { ReactiveFormComponent } from './components/layout/reactive-form/reactiv
     BsDropdownModule.forRoot(),
     HttpClientModule,
   ],
-  providers: [FormServiceService],
+  providers: [FormServiceService, ManagerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
