@@ -1,4 +1,10 @@
 <div class="d-flex">
   <label for="description">Description:</label>
-  <textarea id="description" [ngClass]="'tr_description'"></textarea>
+  <textarea
+    id="description"
+    [ngClass]="'tr_description'"
+    (blur)="onBlur()"
+    (input)="onInput()"
+    [formControl]="control"
+  ></textarea>
 </div>

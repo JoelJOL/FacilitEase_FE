@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrSubjectComponent } from './components/ui_elements/tr-subject/tr-subject.component';
 import { TrDescriptionComponent } from './components/ui_elements/tr-description/tr-description.component';
 import { TrAttachmentsComponent } from './components/ui_elements/tr-attachments/tr-attachments.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { TrAttachmentsComponent } from './components/ui_elements/tr-attachments/
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

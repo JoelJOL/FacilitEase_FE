@@ -1,22 +1,124 @@
-<app-raise-ticket-title></app-raise-ticket-title>
-<app-tr-subject></app-tr-subject>
-<app-tr-description></app-tr-description>
-<div class="d-flex" [ngClass]="'form_dropdown'">
-  <app-tr-dropdown
-    [label]="'Priority'"
-    [options]="priorities"
-    [displayKey]="'priorityName'"
-  ></app-tr-dropdown>
+<!-- <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="container mt-3">
+  <app-raise-ticket-title></app-raise-ticket-title>
+  <br />
+  <div class="form-group">
+    <app-tr-subject
+      formControlName="subject"
+      class="form-control"
+    ></app-tr-subject>
+  </div>
+  <br />
+  <div class="form-group">
+    <app-tr-description
+      formControlName="description"
+      class="form-control"
+    ></app-tr-description>
+  </div>
+  <br />
+  <div class="d-flex form-group" [ngClass]="'form_dropdown'">
+    <app-tr-dropdown
+      [label]="'Choose Priority'"
+      [options]="priorities"
+      [displayKey]="'priorityName'"
+      formControlName="priority"
+      class="form-control"
+    ></app-tr-dropdown>
 
-  <app-tr-dropdown
-    [label]="'Department'"
-    [options]="departments"
-    [displayKey]="'deptName'"
-  ></app-tr-dropdown>
-</div>
-<app-tr-dropdown
-  [label]="'Category'"
-  [options]="categories"
-  [displayKey]="'categoryName'"
-></app-tr-dropdown>
-<app-tr-attachments></app-tr-attachments>
+    <app-tr-dropdown
+      [label]="'Choose Department'"
+      [options]="departments"
+      [displayKey]="'deptName'"
+      formControlName="department"
+      class="form-control"
+    ></app-tr-dropdown>
+  </div>
+  <br />
+  <div class="form-group">
+    <app-tr-dropdown
+      [label]="'Choose Category'"
+      [options]="categories"
+      [displayKey]="'categoryName'"
+      formControlName="category"
+      class="form-control"
+    ></app-tr-dropdown>
+  </div>
+  <br /> -->
+<!-- <div class="form-group">
+    <app-tr-attachments
+      formControlName="attachments"
+      class="form-control"
+    ></app-tr-attachments>
+  </div> -->
+<!-- <br />
+  <div class="form-group">
+    <button type="button" color="accepted" (click)="onSubmit()">Submit</button>
+    <app-button type="button" color="rejected" (click)="onReset()"
+      >Reset</app-button
+    >
+  </div>
+</form> -->
+
+<form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="container mt-3">
+  <app-raise-ticket-title></app-raise-ticket-title>
+  <br />
+  <div class="form-group">
+    <app-tr-subject
+      formControlName="subject"
+      class="form-control"
+    ></app-tr-subject>
+  </div>
+  <br />
+  <div class="form-group">
+    <app-tr-description
+      formControlName="description"
+      class="form-control"
+    ></app-tr-description>
+  </div>
+  <br />
+  <div class="d-flex form-group" [ngClass]="'form_dropdown'">
+    <select formControlName="priority" class="form-control">
+      <option value="" disabled selected>Choose Priority</option>
+      <option *ngFor="let priority of priorities" [value]="priority.id">
+        {{ priority.priorityName }}
+      </option>
+    </select>
+
+    <select formControlName="department" class="form-control">
+      <option value="" disabled selected>Choose Department</option>
+      <option *ngFor="let dept of departments" [value]="dept.id">
+        {{ dept.deptName }}
+      </option>
+    </select>
+  </div>
+  <br />
+  <div class="form-group">
+    <select formControlName="category" class="form-control">
+      <option value="" disabled selected>Choose Category</option>
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.categoryName }}
+      </option>
+    </select>
+  </div>
+  <br />
+  <div class="form-group">
+    <!-- Multiple File Upload Section -->
+    <label for="attachments">Attachments:</label>
+    <input
+      type="file"
+      id="attachments"
+      name="attachments"
+      multiple
+      (change)="onFileChange($event)"
+      formControlName="attachments"
+    />
+  </div>
+  <br />
+  <br />
+  <div class="form-group">
+    <app-button type="button" color="accepted" (click)="onSubmit()"
+      >Submit</app-button
+    ><app-button type="button" color="rejected" (click)="onReset()"
+      >Reset</app-button
+    >
+  </div>
+</form>

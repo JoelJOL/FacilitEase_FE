@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DropDrownService } from './drop-drown.service';
+import { DropDownService } from './dropdown.service';
 
 describe('DropDrownService', () => {
-  let service: DropDrownService;
+  let service: DropDownService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DropDrownService);
+    service = TestBed.inject(DropDownService);
   });
 
   it('should be created', () => {

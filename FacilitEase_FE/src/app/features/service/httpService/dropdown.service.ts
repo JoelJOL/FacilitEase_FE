@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DropDrownService {
+export class DropDownService {
 
   constructor(private http: HttpClient) {}
 
@@ -19,5 +19,9 @@ export class DropDrownService {
 
   getCategories(): Observable<any> {
     return this.http.get('https://localhost:7049/api/Employee/categories');
+  }
+
+  getAgents(): Observable<any> {
+    return this.http.get('https://localhost:7049/api/l2/agents');
   }
 }
