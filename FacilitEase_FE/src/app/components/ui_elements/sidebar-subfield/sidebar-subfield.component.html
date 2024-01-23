@@ -1,0 +1,10 @@
+<div *ngIf="showSubfield">
+  <div
+    *ngFor="let subfield of subfields"
+    class="subfield"
+    (click)="onClick(subfield)"
+    [class.active]="isActive(subfield)"
+  >
+    <span>{{ subfield }}</span>
+  </div>
+</div>
