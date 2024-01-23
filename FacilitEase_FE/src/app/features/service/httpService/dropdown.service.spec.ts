@@ -2,7 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { DropDownService } from './dropdown.service';
 
-describe('DropDrownService', () => {
+
+describe('DropdownService', () => {
   let service: DropDownService;
 
   beforeEach(() => {

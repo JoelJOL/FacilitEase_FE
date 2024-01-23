@@ -1,0 +1,8 @@
+<div class="title-sub-container" *ngIf="ticket">
+  <div class="row justify-content-around">
+    <div class="col-md-2" *ngFor="let item of items">
+      <h5>{{ item.heading }}</h5>
+      <p>{{ item.text }}</p>
+    </div>
+  </div>
+</div>

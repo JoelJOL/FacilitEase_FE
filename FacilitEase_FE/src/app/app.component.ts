@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 interface Field {
   logo: string;
   title: string;
+  subfields?: string[];
 }
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
