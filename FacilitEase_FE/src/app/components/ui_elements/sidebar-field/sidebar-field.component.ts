@@ -22,6 +22,7 @@ export class SidebarFieldComponent {
   @Input() field!: Field;
   @Input() onClickHandler: (() => void | undefined) | undefined; // Dynamic onClick handler
   @Input() subfield!: string;
+  @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
   @Output() clicked = new EventEmitter<any>();
   @Output() subfieldClicked = new EventEmitter<any>();
   @ViewChild(SidebarSubfieldComponent)
@@ -31,12 +32,15 @@ export class SidebarFieldComponent {
 
   private static activeField: SidebarFieldComponent | null = null;
   active = false;
+  isSidebarCollapsed = false;
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 
   onFieldClicked() {
     if (SidebarFieldComponent.activeField) {
       SidebarFieldComponent.activeField.active = false;
     }
-
     this.active = true;
     SidebarFieldComponent.activeField = this;
 

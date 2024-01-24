@@ -10,6 +10,8 @@ interface Field {
   styleUrls: ['./sidebar-footer.component.css'],
 })
 export class SidebarFooterComponent {
+  @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
+
   constructor(private router: Router) {}
   myTeam: Field = { logo: 'assets/sidebar-myTeam.png', title: 'My Team' };
   support: Field = { logo: 'assets/sidebar-support.png', title: 'Support' };

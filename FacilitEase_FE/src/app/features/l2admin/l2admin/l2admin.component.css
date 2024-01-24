@@ -1,0 +1,37 @@
+.side-container {
+  display: flex;
+  height: 100vh;
+}
+
+.app_sidebar {
+  flex: 1;
+  overflow-x: hidden; /* Hide horizontal overflow */
+  transition: width 0.3s ease;
+}
+
+.side_display {
+  flex: 4;
+  overflow: auto;
+  transition: margin-left 0.3s ease; /* Add transition for a smooth effect */
+}
+
+/* .collapse-sidebar .app_sidebar {
+  width: 60px; 
+}
+
+.collapse-sidebar .side_display {
+  margin-left: 60px;
+}
+
+.expand-sidebar .app_sidebar {
+  width: 250px; 
+}
+
+.expand-sidebar .side_display {
+  margin-left: 250px; 
+} */
+
+/* Make the content within side_display responsive */
+
+/* Additional styles for responsiveness */
+/* s */

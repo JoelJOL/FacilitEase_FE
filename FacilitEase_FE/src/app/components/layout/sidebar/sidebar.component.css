@@ -1,29 +1,15 @@
-/* Assuming your styles are in styles.css or styles.scss */
-
-/* .sidebar {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; 
-  background-color: rgb(232, 232, 232);
-}
-
-app-sidebar-logo {
-  align-self: flex-start; 
-}
-
-.middle-section {
-  flex-grow: 1; 
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  
-}
-
-app-sidebar-footer {
-  align-self: flex-end; 
-} */
 .sidebar {
   background-color: rgb(237, 237, 237);
   height: 100vh;
   padding: 0%;
+  position: fixed;
+  overflow-x: hidden;
+}
+
+.collapsed {
+  width: 60px;
+}
+
+.expanded {
+  width: 250px;
 }
