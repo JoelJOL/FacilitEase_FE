@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReportService } from '@app/features/service/reportService/report.service';
 @Component({
@@ -13,15 +13,21 @@ export class AdminPerformanceComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+  @Output()
+  ticketStatus: EventEmitter<number> = new EventEmitter<number>();
   ChangeClass(indexOfDiv: number): void {
     // Toggle the selectedDivIndex when a div is clicked
     this.selectedDivIndex =
       this.selectedDivIndex === indexOfDiv ? null : indexOfDiv;
+    this.ticketStatus.emit(indexOfDiv);
   }
   items = ['Assigned', 'Resolved', 'Unresolved', 'Escalated'];
   data: number[] = [];
   id: number = 0;
   condition = true;
+  PassTicketStatus(ticketStatus: number) {
+    this.ticketStatus.emit(ticketStatus);
+  }
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
     console.log('ID:', this.id);
