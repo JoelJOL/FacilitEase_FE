@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SidebarLogoComponent {
   logoSrc: string = 'assets/logo.png';
+  @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
 }

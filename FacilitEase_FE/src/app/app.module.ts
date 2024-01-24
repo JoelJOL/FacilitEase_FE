@@ -57,6 +57,8 @@ import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +119,7 @@ import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/
     MatDialogModule,
     CommonModule,
     FormsModule,
+    CollapseModule.forRoot(),
   ],
   providers: [FormServiceService, ManagerService, ApproveDenyService],
   bootstrap: [AppComponent],
