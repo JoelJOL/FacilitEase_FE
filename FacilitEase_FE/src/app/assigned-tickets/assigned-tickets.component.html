@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Assigned Tickets</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ticket Id</th>
+        <th>Ticket Name</th>
+        <th>Raised By</th>
+        <th>Assigned To</th>
+        <th>Open Date and Time</th>
+        <th>Priority</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of assignedTickets">
+        <td>{{ ticket.ticketId }}</td>
+        <td>{{ ticket.ticketName }}</td>
+        <td>{{ ticket.raisedBy }}</td>
+        <td>
+          {{ ticket.assignedTo }}
+        </td>
+        <td>{{ ticket.raisedDateTime | date : "medium" }}</td>
+        <td>
+          <span
+            [ngClass]="{
+              'text-danger': ticket.priority === 'High',
+              'text-warning': ticket.priority === 'Medium',
+              'text-info': ticket.priority === 'Low'
+            }"
+          >
+            {{ ticket.priority }}
+          </span>
+        </td>
+        <td>{{ ticket.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,13 @@
+<!-- employee-upload.component.html -->
+<div
+  ng2FileDrop
+  [ngClass]="{ 'nv-file-over': hasBaseDropZoneOver }"
+  (fileOver)="fileOverBase($event)"
+  [uploader]="uploader"
+>
+  <div class="text-center">
+    <p>Drag and drop a CSV or XLSX file here</p>
+    <input type="file" ng2FileSelect [uploader]="uploader" multiple />
+  </div>
+</div>
+<button (click)="uploadFiles()">Upload Files</button>

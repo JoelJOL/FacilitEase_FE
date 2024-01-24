@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,4 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() color: string = 'primary';
+  @Output() action = new EventEmitter<string>();
+
+  onClick(): void {
+    const ticketId = prompt('Enter Ticket ID:');
+    if (ticketId) {
+      this.action.emit();
+    }
+  }
 }

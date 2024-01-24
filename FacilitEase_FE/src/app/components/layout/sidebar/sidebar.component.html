@@ -3,10 +3,20 @@
     <!-- Sidebar Column -->
     <div class="col-md-3 d-flex flex-column sidebar">
       <div>
-        <ng-content></ng-content>
+        <app-sidebar-logo></app-sidebar-logo>
+        <app-sidebar-field
+          *ngFor="let field of fields"
+          [field]="field"
+          (clicked)="onFieldClicked(field)"
+          (subfieldClicked)="onSubfieldClicked($event)"
+          [onClickHandler]="onClickHandler"
+          [class.active]="selectedField === field"
+        ></app-sidebar-field>
       </div>
       <div class="mt-auto">
-        <app-sidebar-footer></app-sidebar-footer>
+        <app-sidebar-footer
+          (fieldClicked)="onFieldClicked($event)"
+        ></app-sidebar-footer>
       </div>
     </div>
   </div>

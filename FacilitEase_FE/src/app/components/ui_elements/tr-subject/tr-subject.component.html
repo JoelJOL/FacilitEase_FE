@@ -1,0 +1,11 @@
+<div class="">
+  <label for="subject">Ticket Subject:</label>
+  <input
+    type="text"
+    id="subject"
+    (blur)="onBlur()"
+    (input)="onInput()"
+    [formControl]="control"
+    class="tr_subject"
+  />
+</div>

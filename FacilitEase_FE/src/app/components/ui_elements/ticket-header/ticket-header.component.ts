@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { AgentService } from '@app/features/service/httpService/agent.service';
 
 @Component({
   selector: 'app-ticket-header',
   templateUrl: './ticket-header.component.html',
-  styleUrls: ['./ticket-header.component.css']
+  styleUrls: ['./ticket-header.component.css'],
 })
 export class TicketHeaderComponent {
-  header : string ="Waiting for Approval"
+  header: string = 'Assigned Tickets';
 }
