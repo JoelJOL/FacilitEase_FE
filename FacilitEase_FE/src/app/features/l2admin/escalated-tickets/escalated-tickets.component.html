@@ -1,5 +1,5 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Assigned Tickets</h2>
+<!-- <div class="container mt-4">
+  <h2 class="mb-4">Escalated Tickets</h2>
   <table class="table">
     <thead>
       <tr>
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ticket of assignedTickets">
+      <tr *ngFor="let ticket of escalatedTickets">
         <td>{{ ticket.ticketId }}</td>
         <td>{{ ticket.ticketName }}</td>
         <td>{{ ticket.raisedBy }}</td>
@@ -36,4 +36,6 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
+<h2 class="mb-4">Escalated Tickets</h2>
+<app-data-table [headers]="headers" [apiLink]="apiLink"></app-data-table>

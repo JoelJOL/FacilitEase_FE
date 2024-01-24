@@ -61,6 +61,7 @@ export class UnassignedTicketsComponent {
       .subscribe(
         (response) => {
           console.log('Ticket assigned successfully', response);
+          this.loadUnassignedTickets();
         },
         (error) => {
           console.error('Error assigning ticket', error);
