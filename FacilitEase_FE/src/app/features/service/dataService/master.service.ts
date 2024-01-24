@@ -7,7 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class MasterService {
   private apiLink: string = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
+  private apiLink2: string = 'https://localhost:7049/api/Manager/GetApprovalTicket/2';
   getApiLink(): string {
     return this.apiLink;
+  }
+  getApiLink2(): string {
+    return this.apiLink2;
   }
 }

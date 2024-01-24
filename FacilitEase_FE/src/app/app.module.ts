@@ -56,6 +56,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
+import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +100,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     L2AdminComponent,
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
+    ManagerViewWaitingTicketsComponent,
+    ManagerViewTicketDetailComponent,
   ],
   imports: [
     HttpClientModule,
