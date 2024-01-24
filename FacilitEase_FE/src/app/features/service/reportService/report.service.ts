@@ -16,4 +16,9 @@ export class ReportService {
       `https://localhost:7049/api/L3AdminReprt/chartdata/${id}`
     );
   }
+  GetProfileData(id: number): Observable<any> {
+    return this.http.get<any>(
+      `https://localhost:7049/api/L3AdminReprt/profiledata/${id}`
+    );
+  }
 }

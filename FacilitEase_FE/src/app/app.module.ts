@@ -56,6 +56,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +99,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     L2AdminComponent,
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
+    L2ReportComponent,
   ],
   imports: [
     HttpClientModule,
