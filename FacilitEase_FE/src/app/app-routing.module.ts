@@ -14,7 +14,9 @@ import { ManagerComponent } from './features/manager/manager/manager.component';
 import { UnassignedTicketsComponent } from './features/l2admin/unassigned-tickets/unassigned-tickets.component';
 import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-tickets.component';
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
-
+import { UnassignedTicketsComponent } from './components/ui_elements/unassigned-tickets/unassigned-tickets.component';
+import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
+import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 const routes: Routes = [
   { path: 'xxx', component: SidebarComponent }, // Default route to Home component
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
@@ -26,7 +28,8 @@ const routes: Routes = [
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
-  { component: ReportPorfileComponent, path: 'profile' },
+  { component: L2ReportComponent, path: 'l2report/:id' },
+  { component: ReportPorfileComponent, path: 'profile/:id' },
   { component: AdminPerformanceComponent, path: 'report/:id' },
   { component: BarChartComponent, path: 'report/chart/:id' },
   { path: '**', component: ButtonComponent },

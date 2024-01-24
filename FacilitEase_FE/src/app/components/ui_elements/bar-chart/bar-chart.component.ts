@@ -1,6 +1,7 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReportService } from '@app/features/service/reportService/report.service';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-bar-chart',
@@ -13,6 +14,11 @@ export class BarChartComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+  @ViewChild('barch')
+  barch!: BaseChartDirective;
+
+  @Input()
+  ticketStatus: number = 0;
   id: number = 0;
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -52,6 +58,23 @@ export class BarChartComponent {
     'november',
     'december',
   ];
+  resolved1: { data: number[]; label: string } = {
+    data: [],
+    label: '',
+  };
+  unresolved1: { data: number[]; label: string } = {
+    data: [],
+    label: '',
+  };
+  escalated1: { data: number[]; label: string } = {
+    data: [],
+    label: '',
+  };
+  chartlegends = {
+    resolved: this.resolved1,
+    unresolved: this.unresolved1,
+    escalated: this.escalated1,
+  };
   barChartData: any[] = [
     {
       data: [],
@@ -60,6 +83,7 @@ export class BarChartComponent {
     { data: [], label: 'Unresolved' },
     { data: [], label: 'Escalated' },
   ];
+
   // events
   public chartClicked(e: any): void {
     console.log(e);
@@ -77,7 +101,8 @@ export class BarChartComponent {
   }
 
   ngOnInit() {
-    this.id = +this.route.queryParamMap.subscribe;
+    // console.log(this.barChartData);
+    this.id = +this.route.snapshot.params['id'];
     console.log('ID:', this.id);
     this.reportService.GetChartData(this.id).subscribe(
       (data) => {
@@ -88,7 +113,7 @@ export class BarChartComponent {
           this.escalated.push(data[month][2]);
         }
         let clone = JSON.parse(JSON.stringify(this.barChartData));
-        clone[0].data = this.resolved;
+        clone[0].data = this.resolved.length;
         clone[0].backgroundColor = '#6418C3';
         clone[1].data = this.unresolved;
         clone[1].backgroundColor = '#BCA0DE';
@@ -107,5 +132,11 @@ export class BarChartComponent {
   }
   handleChartUpdate(updatedData: any[]) {
     console.log('Chart data updated:', updatedData);
+  }
+  ngOnChanges() {
+    console.log(this.ticketStatus);
+  }
+  ngAfterViewInit() {
+    console.log(this.barch);
   }
 }

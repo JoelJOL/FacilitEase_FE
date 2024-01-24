@@ -58,6 +58,7 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
     EscalatedticketsComponent,
+    L2ReportComponent,
   ],
   imports: [
     HttpClientModule,
