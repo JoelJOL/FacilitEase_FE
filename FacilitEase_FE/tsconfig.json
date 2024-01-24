@@ -22,10 +22,7 @@
     "lib": [
       "ES2022",
       "dom"
-    ],"baseUrl": "./src",
-    "paths": {
-      "@app/*": ["app/*"]
-    }
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -33,6 +30,4 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   }
-
-  
 }
