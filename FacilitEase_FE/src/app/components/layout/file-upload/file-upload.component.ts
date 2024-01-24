@@ -13,17 +13,17 @@ export class FileUploadComponent {
     event.preventDefault();
     const files = event.dataTransfer.files;
     const reader = new FileReader();
-    reader.onload = (e: any) => {
-      const data = new Uint8Array(e.target.result);
-      this.employeeBulkuploadService.postData(data).subscribe(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    };
+    // reader.onload = (e: any) => {
+    //   const data = new Uint8Array(e.target.result);
+    //   this.employeeBulkuploadService.postData(data).subscribe(
+    //     (response) => {
+    //       console.log(response);
+    //     },
+    //     (error) => {
+    //       console.log(error);
+    //     }
+    //   );
+    // };
     reader.readAsArrayBuffer(files[0]);
   }
 

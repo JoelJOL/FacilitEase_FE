@@ -56,7 +56,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadComponent } from './components/layout/file-upload/file-upload.component';
 import { EmployeeBulkuploadService } from './features/service/httpService/employee-bulkupload.service';
 import { L3adminComponent } from './features/l3admin/l3admin/l3admin.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -140,8 +140,8 @@ import { L2ReportComponent } from './components/layout/l2-report/l2-report.compo
     ManagerService,
     ApproveDenyService,
     EmployeeBulkuploadService,
+    ModalService,
   ],
-  providers: [FormServiceService, ManagerService, ApproveDenyService, ModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
