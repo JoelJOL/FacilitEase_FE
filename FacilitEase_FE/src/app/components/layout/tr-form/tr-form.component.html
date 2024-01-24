@@ -1,64 +1,5 @@
-<!-- <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="container mt-3">
-  <app-raise-ticket-title></app-raise-ticket-title>
-  <br />
-  <div class="form-group">
-    <app-tr-subject
-      formControlName="subject"
-      class="form-control"
-    ></app-tr-subject>
-  </div>
-  <br />
-  <div class="form-group">
-    <app-tr-description
-      formControlName="description"
-      class="form-control"
-    ></app-tr-description>
-  </div>
-  <br />
-  <div class="d-flex form-group" [ngClass]="'form_dropdown'">
-    <app-tr-dropdown
-      [label]="'Choose Priority'"
-      [options]="priorities"
-      [displayKey]="'priorityName'"
-      formControlName="priority"
-      class="form-control"
-    ></app-tr-dropdown>
-
-    <app-tr-dropdown
-      [label]="'Choose Department'"
-      [options]="departments"
-      [displayKey]="'deptName'"
-      formControlName="department"
-      class="form-control"
-    ></app-tr-dropdown>
-  </div>
-  <br />
-  <div class="form-group">
-    <app-tr-dropdown
-      [label]="'Choose Category'"
-      [options]="categories"
-      [displayKey]="'categoryName'"
-      formControlName="category"
-      class="form-control"
-    ></app-tr-dropdown>
-  </div>
-  <br /> -->
-<!-- <div class="form-group">
-    <app-tr-attachments
-      formControlName="attachments"
-      class="form-control"
-    ></app-tr-attachments>
-  </div> -->
-<!-- <br />
-  <div class="form-group">
-    <button type="button" color="accepted" (click)="onSubmit()">Submit</button>
-    <app-button type="button" color="rejected" (click)="onReset()"
-      >Reset</app-button
-    >
-  </div>
-</form> -->
-
-<form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="container mt-3">
+<app-sidebar></app-sidebar>
+<form [formGroup]="ticketForm" class="container mt-3">
   <app-raise-ticket-title></app-raise-ticket-title>
   <br />
   <div class="form-group">
@@ -107,8 +48,6 @@
       type="file"
       id="attachments"
       name="attachments"
-      multiple
-      (change)="onFileChange($event)"
       formControlName="attachments"
     />
   </div>
@@ -117,7 +56,7 @@
   <div class="form-group">
     <app-button type="button" color="accepted" (click)="onSubmit()"
       >Submit</app-button
-    ><app-button type="button" color="rejected" (click)="onReset()"
+    ><app-button type="reset" color="rejected" (click)="onReset()"
       >Reset</app-button
     >
   </div>
