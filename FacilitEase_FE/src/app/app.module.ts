@@ -56,6 +56,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { L3adminComponent } from './features/l3admin/l3admin/l3admin.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalService } from './features/service/dataService/modal.service';
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
 import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
@@ -104,6 +107,7 @@ import { L2ReportComponent } from './components/layout/l2-report/l2-report.compo
     L2AdminComponent,
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
+    L3adminComponent,
     ManagerViewWaitingTicketsComponent,
     ManagerViewTicketDetailComponent,
     EscalatedticketsComponent,
@@ -125,9 +129,10 @@ import { L2ReportComponent } from './components/layout/l2-report/l2-report.compo
     MatDialogModule,
     CommonModule,
     FormsModule,
+    ModalModule.forRoot(),
     CollapseModule.forRoot(),
   ],
-  providers: [FormServiceService, ManagerService, ApproveDenyService],
+  providers: [FormServiceService, ManagerService, ApproveDenyService, ModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

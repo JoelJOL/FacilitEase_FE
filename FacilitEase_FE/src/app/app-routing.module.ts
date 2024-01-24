@@ -28,6 +28,8 @@ const routes: Routes = [
   { path: 'manager', component: ManagerComponent },
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
+  { path: 'view-ticket', component: AgentTicketsViewComponent },
+  { path: 'view-ticket/:id', component: AgentTicketViewComponent },
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
