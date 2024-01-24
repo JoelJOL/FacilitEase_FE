@@ -1,0 +1,11 @@
+<div class="sidebar_field" (click)="onFieldClicked()" [class.active]="active">
+  <img [src]="field.logo" alt="{{ field.title }} logo" />
+  <span *ngIf="!collapsed">{{ field.title }}</span>
+</div>
+<div *ngIf="!collapsed" class="sidebar_subfield">
+  <app-sidebar-subfield
+    [showSubfield]="active"
+    [subfields]="field.subfields || []"
+    (subfieldClick)="onSubfieldClicked($event)"
+  ></app-sidebar-subfield>
+</div>

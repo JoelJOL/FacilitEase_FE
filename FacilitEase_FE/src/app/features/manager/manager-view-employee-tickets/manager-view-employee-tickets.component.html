@@ -1,0 +1,14 @@
+
+<div class="ng-container">
+    <div class="manager-dashboard">
+        <div>
+      <app-sidebar
+        [fields]="yourFieldsArray"
+        (clicked)="onFieldClicked($event)"
+      ></app-sidebar>
+    </div>
+    <div>
+      <app-data-table [headers]="headers" [apiLink]="apiLink" (RowClicked)="onRowClicked($event)" id="datatable"></app-data-table>
+    </div>
+    </div>
+  </div>

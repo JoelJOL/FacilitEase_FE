@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar Column -->
+    <div
+      class="col-md-3 d-flex flex-column sidebar"
+      [@sidebarState]="sidebarState"
+    >
+      <!-- Collapsible Logo and Button -->
+      <div class="d-flex align-items-center">
+        <app-sidebar-logo [collapsed]="isSidebarCollapsed"></app-sidebar-logo>
+        <button type="button" class="btn btn-link" (click)="toggleSidebar()">
+          <!-- Add your icon here, for example, using FontAwesome -->
+          <i><img src="assets/icons8-hamburger-menu-24.png" alt="" /></i>
+        </button>
+      </div>
+
+      <!-- Collapsible Sidebar Content -->
+      <div>
+        <app-sidebar-field
+          *ngFor="let field of fields"
+          [field]="field"
+          (clicked)="onFieldClicked(field)"
+          [collapsed]="isSidebarCollapsed"
+          (subfieldClicked)="onSubfieldClicked($event)"
+          [onClickHandler]="onClickHandler"
+          [class.active]="selectedField === field"
+        ></app-sidebar-field>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-auto">
+        <app-sidebar-footer
+          (fieldClicked)="onFieldClicked($event)"
+          [collapsed]="isSidebarCollapsed"
+        ></app-sidebar-footer>
+      </div>
+    </div>
+  </div>
+</div>

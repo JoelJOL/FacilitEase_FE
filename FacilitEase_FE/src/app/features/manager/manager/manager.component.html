@@ -1,0 +1,11 @@
+<!-- app.component.html -->
+<app-sidebar
+  [fields]="yourFieldsArray"
+  (clicked)="onFieldClicked($event)"
+  (subfieldClicked)="onSubfieldClicked($event)"
+></app-sidebar>
+
+<!-- Only display ManagerSubordinatesComponent when showManagerSubordinates is true -->
+<div *ngIf="showManagerSubordinates">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,8 @@
+.na_box {
+    border: 2px solid #acacac; 
+    border-radius: 10px;   
+    padding-left: 20px;  
+    padding-right: 20px;
+    padding-bottom: 20px;
+    width:100%;
+  }

@@ -1,0 +1,63 @@
+<app-sidebar></app-sidebar>
+<form [formGroup]="ticketForm" class="container mt-3">
+  <app-raise-ticket-title></app-raise-ticket-title>
+  <br />
+  <div class="form-group">
+    <app-tr-subject
+      formControlName="subject"
+      class="form-control"
+    ></app-tr-subject>
+  </div>
+  <br />
+  <div class="form-group">
+    <app-tr-description
+      formControlName="description"
+      class="form-control"
+    ></app-tr-description>
+  </div>
+  <br />
+  <div class="d-flex form-group" [ngClass]="'form_dropdown'">
+    <select formControlName="priority" class="form-control">
+      <option value="" disabled selected>Choose Priority</option>
+      <option *ngFor="let priority of priorities" [value]="priority.id">
+        {{ priority.priorityName }}
+      </option>
+    </select>
+
+    <select formControlName="department" class="form-control">
+      <option value="" disabled selected>Choose Department</option>
+      <option *ngFor="let dept of departments" [value]="dept.id">
+        {{ dept.deptName }}
+      </option>
+    </select>
+  </div>
+  <br />
+  <div class="form-group">
+    <select formControlName="category" class="form-control">
+      <option value="" disabled selected>Choose Category</option>
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.categoryName }}
+      </option>
+    </select>
+  </div>
+  <br />
+  <div class="form-group">
+    <!-- Multiple File Upload Section -->
+    <label for="attachments">Attachments:</label>
+    <input
+      type="file"
+      id="attachments"
+      name="attachments"
+      formControlName="attachments"
+    />
+  </div>
+  <br />
+  <br />
+  <div class="form-group">
+    <app-button type="button" color="accepted" (click)="onSubmit()"
+      >Submit</app-button
+    ><app-button type="reset" color="rejected" (click)="onReset()"
+      >Reset</app-button
+    >
+  </div>
+</form>
