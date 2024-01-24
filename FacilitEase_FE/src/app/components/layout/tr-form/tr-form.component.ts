@@ -1,11 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 import { PostAPIService } from '@app/features/service/httpService/post-api.service';
 
@@ -19,7 +14,6 @@ export class TrFormComponent implements OnInit {
   categories: any[] = [];
   departments: any[] = [];
   ticketForm!: FormGroup;
-  private apiUrl = 'https://localhost:7049/api/Employee/raise ticket';
 
   constructor(
     private apiService: DropDownService,
@@ -49,67 +43,46 @@ export class TrFormComponent implements OnInit {
       this.departments = data;
     });
 
-    this.ticketForm = this.formBuilder.group({
-      subject: ['', Validators.required],
-      description: ['', Validators.required],
-      priority: ['', Validators.required],
-      category: ['', Validators.required],
-      department: ['', Validators.required],
-      attachments: [[]],
+    this.ticketForm = new FormGroup({
+      subject: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      priority: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required),
+      department: new FormControl('', Validators.required),
+      attachments: new FormControl([]),
     });
   }
 
-  onSubmit() {
-    console.log('API URL:', this.apiUrl);
-    console.log('Form Value:', this.ticketForm.value);
+  
+    onSubmit() {
+      console.log('Form Value:', this.ticketForm.value);
+    
+      if (this.ticketForm.valid) {
+        // Assign form values to the ticket object with correct field names
+        this.ticket.TicketName = this.ticketForm.get('subject')?.value;
+        this.ticket.TicketDescription = this.ticketForm.get('description')?.value;
+        this.ticket.PriorityId = this.ticketForm.get('priority')?.value;
+        this.ticket.CategoryId = this.ticketForm.get('category')?.value;
+        this.ticket.DepartmentId = this.ticketForm.get('department')?.value;
+    
+        // Assuming you have an attachments field in the ticket object
+        this.ticket.DocumentLink = [this.ticketForm.get('attachments')?.value];
+    
+        // Call the service method to post the ticket data
+        this.ticketService.postUser(this.ticket).subscribe(
+          (response) => {
+            console.log('Ticket submitted successfully:', response);
+            alert('Ticket submitted successfully:');
+          },
+          (error) => {
+            console.error('Error submitting ticket:', error);
+            // Handle error actions here
+          }
+        );
+      } 
+    }
 
-    if (this.ticketForm.valid) {
-      // Assign form values to the ticket object
-      this.ticket.subject = this.ticketForm.get('subject')?.value;
-      this.ticket.description = this.ticketForm.get('description')?.value;
-      this.ticket.priority = this.ticketForm.get('priority')?.value;
-      this.ticket.category = this.ticketForm.get('category')?.value;
-      this.ticket.department = this.ticketForm.get('department')?.value;
-      // Assuming you have an attachments field in the ticket object
-      this.ticket.attachments = this.ticketForm.get('attachments')?.value;
-
-      // Call the service method to post the ticket data
-      this.ticketService.postUser(this.apiUrl).subscribe(
-        (response) => {
-          console.log('Ticket submitted successfully:', response);
-          alert('Ticket submitted successfully:');
-        },
-        (error) => {
-          console.error('Error submitting ticket:', error);
-          // Handle error actions here
-        }
-      );
-    } else {
-      this.markFormGroupTouched(this.ticketForm);
+    onReset(){
+      this.ticketForm.reset;
     }
   }
-
-  onReset() {
-    this.ticketForm.reset();
-  }
-
-  onFileChange(event: any): void {
-    const files = event.target.files;
-
-    // Check if 'attachments' control exists in the form
-    const attachmentsControl = this.ticketForm.get('attachments');
-    if (attachmentsControl) {
-      attachmentsControl.setValue(files);
-    }
-  }
-
-  private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach((control) => {
-      control.markAsTouched();
-
-      if (control instanceof FormGroup) {
-        this.markFormGroupTouched(control);
-      }
-    });
-  }
-}
