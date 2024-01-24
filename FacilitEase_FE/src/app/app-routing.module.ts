@@ -16,6 +16,9 @@ import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-t
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 import { UnassignedTicketsComponent } from './components/ui_elements/unassigned-tickets/unassigned-tickets.component';
 import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
+import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-view-employee-tickets/manager-view-employee-tickets.component';
+import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
+import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 const routes: Routes = [
   { path: 'xxx', component: SidebarComponent }, // Default route to Home component
@@ -28,6 +31,10 @@ const routes: Routes = [
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
+  { path: 'manager-view-employee-tickets', component:ManagerViewEmployeeTicketsComponent},
+  { path: 'manager-view-waiting-tickets', component:ManagerViewWaitingTicketsComponent},
+  { path: 'manager-view-ticket-detail', component:ManagerViewTicketDetailComponent},
+  { component: ReportPorfileComponent, path: 'profile' },
   { component: L2ReportComponent, path: 'l2report/:id' },
   { component: ReportPorfileComponent, path: 'profile/:id' },
   { component: AdminPerformanceComponent, path: 'report/:id' },

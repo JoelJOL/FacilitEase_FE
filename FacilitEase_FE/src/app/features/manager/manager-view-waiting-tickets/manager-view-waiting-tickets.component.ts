@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MasterService } from '../../../../app/features/service/dataService/master.service';
-import { DataTableComponent } from '../../../../app/components/layout/data-table/data-table.component';
 import { Router } from '@angular/router';
 interface Field {
   logo: string;
   title: string;
 }
 @Component({
-  selector: 'app-manager-view-employee-tickets',
-  templateUrl: './manager-view-employee-tickets.component.html',
-  styleUrls: ['./manager-view-employee-tickets.component.css'],
+  selector: 'app-manager-view-waiting-tickets',
+  templateUrl: './manager-view-waiting-tickets.component.html',
+  styleUrls: ['./manager-view-waiting-tickets.component.css']
 })
-
-export class ManagerViewEmployeeTicketsComponent implements OnInit {
+export class ManagerViewWaitingTicketsComponent implements OnInit{
   headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Assigned To', 'Submitted Date', 'Priority', 'Status'];
   apiLink: string = '';
   title = 'FaciltEase_FE';
@@ -26,7 +24,7 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
       title: 'Waiting for Approval',
     },
   ];
-  showManagerTickets: boolean = false;
+
   constructor(private masterService: MasterService, private router : Router) {}
 
   onFieldClicked(clickedField: any) {
@@ -34,15 +32,15 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
     if (clickedField.title === 'Employee Tickets') {
       this.router.navigate(['manager-view-employee-tickets']);
     } 
-    else if (clickedField.title === 'Waiting for Approval') {
+    else if (clickedField.title === 'Waiting For Approval') {
       this.router.navigate(['manager-view-waiting-tickets']);
     }
   }
   ngOnInit(): void {
-    this.apiLink = this.masterService.getApiLink();
+    this.apiLink = this.masterService.getApiLink2();
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    
+    // Add your desired logic here
   }
 }
