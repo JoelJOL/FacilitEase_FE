@@ -19,10 +19,10 @@ import { SidebarSubfieldComponent } from './components/ui_elements/sidebar-subfi
 import { ManagerSubordinatesComponent } from './features/manager/manager-subordinates/manager-subordinates.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
 import { TrDropdownComponent } from './components/ui_elements/assign-dropdown/assign-dropdown.component';
-import { L2AdminComponent } from './components/layout/l2admin/l2admin.component';
+import { L2AdminComponent } from './features/l2admin/l2admin/l2admin.component';
 import { FormsModule } from '@angular/forms';
-import { UnassignedTicketsComponent } from './components/ui_elements/unassigned-tickets/unassigned-tickets.component';
-import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
+import { UnassignedTicketsComponent } from './features/l2admin/unassigned-tickets/unassigned-tickets.component';
+import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-tickets.component';
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
@@ -56,6 +56,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +99,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     L2AdminComponent,
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
+    EscalatedticketsComponent,
   ],
   imports: [
     HttpClientModule,

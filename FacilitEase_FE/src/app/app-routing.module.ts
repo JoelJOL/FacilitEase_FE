@@ -11,8 +11,9 @@ import { SidebarFooterComponent } from './components/ui_elements/sidebar-footer/
 import { ManagerSubordinatesComponent } from './features/manager/manager-subordinates/manager-subordinates.component';
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
-import { UnassignedTicketsComponent } from './components/ui_elements/unassigned-tickets/unassigned-tickets.component';
-import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
+import { UnassignedTicketsComponent } from './features/l2admin/unassigned-tickets/unassigned-tickets.component';
+import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-tickets.component';
+import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 
 const routes: Routes = [
   { path: 'xxx', component: SidebarComponent }, // Default route to Home component
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'manager', component: ManagerComponent },
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
+  { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   { component: ReportPorfileComponent, path: 'profile' },
