@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 
 @Component({
@@ -8,11 +8,8 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class TicketDescriptionComponent {
   ticket: any = [];
+  @Input()  ticketDetails: any;
+ 
   constructor(private agentService: AgentService) {}
-  ngOnInit() {
-    this.agentService.getData().subscribe((data) => {
-      this.ticket = data[0];
-      console.log(data);
-    });
-  }
+
 }

@@ -1,12 +1,9 @@
-<!-- unassigned-tickets.component.html -->
 <app-sidebar
   [fields]="yourFieldsArray"
   (clicked)="onFieldClicked($event)"
   (subfieldClicked)="onSubfieldClicked($event)"
 ></app-sidebar>
 
-<!-- <app-assigned-tickets></app-assigned-tickets>
-<app-unassigned-tickets></app-unassigned-tickets> -->
-<div *ngIf="showL2AdminTickets">
+<div *ngIf="showL3AdminTickets">
   <router-outlet></router-outlet>
 </div>

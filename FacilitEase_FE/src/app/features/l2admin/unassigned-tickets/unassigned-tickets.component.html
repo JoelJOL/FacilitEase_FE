@@ -19,7 +19,6 @@
         <td>{{ ticket.raisedBy }}</td>
         <td>
           <div class="d-flex align-items-center">
-            <!-- Display the agent's name if already assigned, otherwise show the dropdown -->
             <ng-container *ngIf="!ticket.assignedTo">
               <app-assign-dropdown
                 [label]="'Assign To'"

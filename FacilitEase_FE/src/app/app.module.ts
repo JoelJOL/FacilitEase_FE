@@ -19,10 +19,10 @@ import { SidebarSubfieldComponent } from './components/ui_elements/sidebar-subfi
 import { ManagerSubordinatesComponent } from './features/manager/manager-subordinates/manager-subordinates.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
 import { TrDropdownComponent } from './components/ui_elements/assign-dropdown/assign-dropdown.component';
-import { L2AdminComponent } from './components/layout/l2admin/l2admin.component';
+import { L2AdminComponent } from './features/l2admin/l2admin/l2admin.component';
 import { FormsModule } from '@angular/forms';
-import { UnassignedTicketsComponent } from './components/ui_elements/unassigned-tickets/unassigned-tickets.component';
-import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
+import { UnassignedTicketsComponent } from './features/l2admin/unassigned-tickets/unassigned-tickets.component';
+import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-tickets.component';
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
@@ -58,6 +58,14 @@ import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { EmployeeBulkuploadService } from './features/service/httpService/employee-bulkupload.service';
+import { L3adminComponent } from './features/l3admin/l3admin/l3admin.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalService } from './features/service/dataService/modal.service';
+import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
+import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
+import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +110,11 @@ import { EmployeeBulkuploadService } from './features/service/httpService/employ
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
     FileUploadComponent,
+    L3adminComponent,
+    ManagerViewWaitingTicketsComponent,
+    ManagerViewTicketDetailComponent,
+    EscalatedticketsComponent,
+    L2ReportComponent,
   ],
   imports: [
     HttpClientModule,
@@ -119,6 +132,8 @@ import { EmployeeBulkuploadService } from './features/service/httpService/employ
     MatDialogModule,
     CommonModule,
     FormsModule,
+    ModalModule.forRoot(),
+    CollapseModule.forRoot(),
   ],
   providers: [
     FormServiceService,
@@ -126,6 +141,7 @@ import { EmployeeBulkuploadService } from './features/service/httpService/employ
     ApproveDenyService,
     EmployeeBulkuploadService,
   ],
+  providers: [FormServiceService, ManagerService, ApproveDenyService, ModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

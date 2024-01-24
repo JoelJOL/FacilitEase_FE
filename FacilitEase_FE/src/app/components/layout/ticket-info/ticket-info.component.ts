@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 
 @Component({
@@ -11,15 +11,24 @@ export class TicketInfoComponent {
   ticketPriority: string = '';
   status: string = '';
   ticket: any = [];
+  @Input() ticketDetails:any;
   constructor(private agentService: AgentService) {}
-  ngOnInit() {
-    this.agentService.getData().subscribe((data) => {
-      this.ticket = data[0];
-      // Assuming you want to display the first ticket
-      console.log(data);
-      this.ticketId = this.ticket.id;
-      this.ticketPriority = this.ticket.priorityName;
-      this.status = this.ticket.statusName;
-    });
+
+  getPriorityColor(): string {
+    if (this.ticketDetails && this.ticketDetails.priorityName) {
+      switch (this.ticketDetails.priorityName.toLowerCase()) {
+        case 'high':
+          return 'red';
+        case 'medium':
+          return 'orange';
+        case 'low':
+          return 'green';
+        default:
+          return 'black'; 
+      }
+    } else {
+      return 'black'; 
+    }
   }
+
 }
