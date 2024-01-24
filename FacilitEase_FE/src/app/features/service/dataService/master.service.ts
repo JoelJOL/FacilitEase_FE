@@ -10,4 +10,5 @@ export class MasterService {
   getApiLink(): string {
     return this.apiLink;
   }
+  
 }

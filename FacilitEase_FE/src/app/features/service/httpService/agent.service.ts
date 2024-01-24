@@ -7,8 +7,7 @@ import {HttpClient } from '@angular/common/http'
 export class AgentService {
 
   constructor(private http: HttpClient){}
-  getData(): Observable<any> {
-    const ticketId=1;
+  getData(ticketId:number): Observable<any> {
     const apiUrl = `https://localhost:7049/api/L3Admin/ticketdetail-by-agent/${ticketId}`;
     return this.http.get(apiUrl);
   }

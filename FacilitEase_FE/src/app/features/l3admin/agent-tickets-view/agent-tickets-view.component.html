@@ -21,7 +21,12 @@
         <td>{{ ticket.statusName }}</td>
         <td>{{ ticket.employeeName }}</td>
         <td>
-          <button class="view-button" (click)="viewTicket()">View</button>
+          <button
+            class="view-button"
+            [routerLink]="['/view-ticket', ticket.id]"
+          >
+            View
+          </button>
         </td>
       </tr>
     </tbody>

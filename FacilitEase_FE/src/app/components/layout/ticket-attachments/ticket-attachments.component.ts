@@ -8,14 +8,9 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class TicketAttachmentsComponent {
   @Input() headerText = 'Attachments';
+  @Input() ticketDetails:any;
   ticket: any = [];
   constructor(private agentService: AgentService) {}
   document: string = '';
-  ngOnInit() {
-    this.agentService.getData().subscribe((data) => {
-      this.ticket = data[0];
-      console.log(data);
-      this.document = this.ticket.documentLink;
-    });
-  }
+
 }
