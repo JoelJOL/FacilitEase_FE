@@ -1,33 +1,37 @@
 import { Component } from '@angular/core';
 import { EmployeeBulkuploadService } from '@app/features/service/httpService/employee-bulkupload.service';
+
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css'],
 })
 export class FileUploadComponent {
-  fileOverBase($event: Event) {
-    throw new Error('Method not implemented.');
-  }
-  public uploader: FileUploader;
-  hasBaseDropZoneOver: any;
+  constructor(private employeeBulkuploadService: EmployeeBulkuploadService) {}
 
-  constructor(private employeeBulkuploadService: EmployeeBulkuploadService) {
-    this.uploader = this.employeeBulkuploadService.createUploader();
-    this.uploader.onAfterAddingFile = (fileItem) =>
-      this.employeeBulkuploadService.onAfterAddingFile(fileItem);
+  onDrop(event: any) {
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const data = new Uint8Array(e.target.result);
+      this.employeeBulkuploadService.postData(data).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    };
+    reader.readAsArrayBuffer(files[0]);
   }
 
-  uploadFiles() {
-    this.employeeBulkuploadService.uploadFiles(this.uploader).subscribe(
-      (response) => {
-        console.log('Upload successful:', response);
-        // Perform additional actions after successful upload
-      },
-      (error) => {
-        console.error('Error uploading files:', error);
-        // Handle errors appropriately
-      }
-    );
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+  onDragLeave(event: any) {
+    event.preventDefault();
   }
 }
