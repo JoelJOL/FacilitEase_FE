@@ -21,6 +21,8 @@ export class DropDownService {
   }
 
   getAgents(): Observable<any> {
-    return this.http.get('https://localhost:7049/api/l2/agents');
+    return this.http.get(
+      'https://localhost:7049/api/l2/agents?DepartmentId=12'
+    );
   }
 }

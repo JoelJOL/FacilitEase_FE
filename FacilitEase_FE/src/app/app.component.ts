@@ -16,7 +16,7 @@ export class AppComponent {
   fields: Field[] = [
     { logo: 'assets/tickets-icon.png', title: 'Employee Tickets' },
     { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
-    { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },  
+    { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
   ];
 
   constructor(private approveDenyService: ApproveDenyService) {}

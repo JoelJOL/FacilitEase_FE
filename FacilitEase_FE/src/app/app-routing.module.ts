@@ -18,6 +18,7 @@ import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
 import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
+import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 const routes: Routes = [
   { path: 'xxx', component: SidebarComponent }, // Default route to Home component
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'view-ticket', component: AgentTicketsViewComponent },
   { path: 'view-ticket/:id', component: AgentTicketViewComponent },
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
+  { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   {

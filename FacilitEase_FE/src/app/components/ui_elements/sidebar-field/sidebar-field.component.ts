@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { SidebarSubfieldComponent } from '../sidebar-subfield/sidebar-subfield.component';
+import { SidebarService } from '@app/features/service/dataService/sidebar.service';
 
 interface Field {
   logo: string;
@@ -27,7 +28,7 @@ export class SidebarFieldComponent {
   @Output() subfieldClicked = new EventEmitter<any>();
   @ViewChild(SidebarSubfieldComponent)
   subfieldComponent!: SidebarSubfieldComponent;
-
+  constructor(private sidebarService: SidebarService) {}
   // Adjusted constructor to handle strict null checks
 
   private static activeField: SidebarFieldComponent | null = null;
@@ -35,6 +36,7 @@ export class SidebarFieldComponent {
   isSidebarCollapsed = false;
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
+    this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
   }
 
   onFieldClicked() {
