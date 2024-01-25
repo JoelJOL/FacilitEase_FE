@@ -66,6 +66,7 @@ import { ManagerViewTicketDetailComponent } from './features/manager/manager-vie
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -134,6 +135,7 @@ import { L2ReportComponent } from './components/layout/l2-report/l2-report.compo
     FormsModule,
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
+    MatIconModule,
   ],
   providers: [
     FormServiceService,
