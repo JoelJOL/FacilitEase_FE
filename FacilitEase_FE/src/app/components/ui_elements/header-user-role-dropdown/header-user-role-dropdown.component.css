@@ -1,9 +1,19 @@
-.user_role_container {
-  width: 180px;
-  border-radius: 50px;
-  border-color: black;
-}
-.img_user {
+.custom-dropdown {
   height: 40px;
-  width: 40px;
+  width: 180px;
+  border: 1px solid rgb(88, 87, 87);
+  border-radius: 20px;
+  align-items: center;
+}
+
+.img_user {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+}
+.custom-select {
+  outline: none;
+  border: none;
+  font-weight: bold;
+  align-items: center;
 }

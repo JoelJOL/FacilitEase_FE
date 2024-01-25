@@ -66,7 +66,8 @@ import { ManagerViewTicketDetailComponent } from './features/manager/manager-vie
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
-
+import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { EmployeeComponent } from './features/employee/employee/employee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,6 +116,8 @@ import { L2ReportComponent } from './components/layout/l2-report/l2-report.compo
     ManagerViewTicketDetailComponent,
     EscalatedticketsComponent,
     L2ReportComponent,
+    HeaderLayoutComponent,
+    EmployeeComponent,
   ],
   imports: [
     HttpClientModule,
