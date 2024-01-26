@@ -9,8 +9,9 @@
   </div>
 
   <!-- Routed content on the right -->
-  <div *ngIf="showL2AdminTickets" class="col-md-12 side_display">
-    <div class="responsive-content">
+  <div class="col-md-12 side_display" [class.collapsed]="isSidebarCollapsed">
+    <app-header-layout></app-header-layout>
+    <div *ngIf="showL2AdminTickets">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -26,4 +26,9 @@ export class MasterService {
   getApiLinkAssigned(): string {
     return this.apiLinkAssigned;
   }
+  private apiLinkL2Subordinates: string =
+    'https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=11';
+  getApiLinkL2Subordinates(): string {
+    return this.apiLinkL2Subordinates;
+  }
 }
