@@ -1,11 +1,6 @@
 <div>
   <label class="">{{ label }}</label>
-  <select
-    (blur)="onBlur()"
-    (input)="onInput()"
-    [formControl]="control"
-    class="tr_dropdown"
-  >
+  <select class="tr_dropdown">
     <option
       class="tr_dropdown"
       *ngFor="let option of options"

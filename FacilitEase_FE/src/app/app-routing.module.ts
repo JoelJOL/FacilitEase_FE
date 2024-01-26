@@ -18,8 +18,10 @@ import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
 import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
+import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 const routes: Routes = [
+  { path:'form', component:TrFormComponent},
   { path: 'xxx', component: SidebarComponent }, // Default route to Home component
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   { path: 'sidebar', component: SidebarComponent },
@@ -51,6 +53,7 @@ const routes: Routes = [
   { component: AdminPerformanceComponent, path: 'report/:id' },
   { component: BarChartComponent, path: 'report/chart/:id' },
   { path: '**', component: ButtonComponent },
+  
 ];
 
 @NgModule({
