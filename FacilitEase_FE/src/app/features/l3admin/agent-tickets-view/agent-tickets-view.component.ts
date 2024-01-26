@@ -12,7 +12,7 @@ export class AgentTicketsViewComponent {
   constructor(private agentService: AgentService, private router: Router) {}
   ngOnInit() {
     this.agentService.getAllTickets().subscribe(data => {
-      this.tickets =data;
+      this.tickets=data;
        console.log(data);     
     });
   }

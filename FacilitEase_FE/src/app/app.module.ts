@@ -67,6 +67,12 @@ import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { EmployeeComponent } from './features/employee/employee/employee.component';
+import { MatIconModule } from '@angular/material/icon';
+import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
+import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
+import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +122,9 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     EscalatedticketsComponent,
     L2ReportComponent,
     HeaderLayoutComponent,
+    EmployeeComponent,
+    L2adminSubordinatesComponent,
+    L2adminTicketViewComponent,
   ],
   imports: [
     HttpClientModule,
@@ -135,6 +144,7 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     FormsModule,
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
+    MatIconModule,
   ],
   providers: [
     FormServiceService,

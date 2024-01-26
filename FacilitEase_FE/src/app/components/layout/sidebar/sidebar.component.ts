@@ -33,7 +33,7 @@ interface Field {
           width: '250px', // Adjust the width as needed
         })
       ),
-      transition('collapsed <=> expanded', animate('0.3s ease-in-out')),
+      transition('collapsed <=> expanded', animate('0.4s ease-in-out')),
     ]),
   ],
 })
@@ -50,8 +50,20 @@ export class SidebarComponent {
   get sidebarState() {
     return this.isSidebarCollapsed ? 'collapsed' : 'expanded';
   }
+  onSidebarMouseEnter() {
+    // On mouse enter, always expand the sidebar
+    this.isSidebarCollapsed = false;
+    this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
+  }
+
+  onSidebarMouseLeave() {
+    // On mouse leave, always collapse the sidebar
+    this.isSidebarCollapsed = true;
+    this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
+  }
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
+    this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
   }
 
   onFieldClicked(field: any) {
@@ -59,6 +71,7 @@ export class SidebarComponent {
     this.clicked.emit(this.selectedField);
     // this.sidebarService.toggleCollapse();
     this.isSidebarCollapsed = false;
+    this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
   }
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     this.subfieldClicked.emit(event);

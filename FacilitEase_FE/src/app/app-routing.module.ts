@@ -30,19 +30,25 @@ import { TicketInfoComponent } from './components/layout/ticket-info/ticket-info
 import { TicketNotesAttachmentsComponent } from './components/layout/ticket-notes-attachments/ticket-notes-attachments.component';
 import { TicketRaisedAssignedComponent } from './components/layout/ticket-raised-assigned/ticket-raised-assigned.component';
 import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
+import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';const routes: Routes = [
+
+
 const routes: Routes = [
-  { path: 'cardupper', component: CardUpperComponent },
-  { path: 'datatable', component: DataTableComponent },
-  { path: 'fileupload', component: FileUploadComponent },
-  { path: 'headerlayout', component: HeaderLayoutComponent },
-  { path: 'l2report/:id', component: L2ReportComponent },
-  { path: 'modal', component: ModalComponent },
-  { path: 'profilepicdropdown', component: ProfilepicDropdownComponent },
-  { path: 'reactiveform', component: ReactiveFormComponent },
+  { path:'form', component:TrFormComponent},
+  { path: 'xxx', component: SidebarComponent }, // Default route to Home component
+  { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   { path: 'sidebar', component: SidebarComponent },
-  { path: 'ticketattachments', component: TicketAttachmentsComponent },
-  { path: 'ticketinfo', component: TicketInfoComponent },
-  { path: 'ticketnotes', component: TicketNotesAttachmentsComponent },
+  { path: 'sidebar-field', component: SidebarFieldComponent },
+  { path: 'manager', component: ManagerComponent },
+  { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
+  { path: 'assigned-tickets', component: AssignedTicketsComponent },
+  { path: 'view-ticket', component: AgentTicketsViewComponent },
+  { path: 'view-ticket/:id', component: AgentTicketViewComponent },
+  { path: 'escalated-tickets', component: EscalatedticketsComponent },
+  { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
+  { path: 'xxx', component: AgentTicketsViewComponent },
+  { path: 'l2report/:id', component: L2ReportComponent },
+  { path: 'agentticket', component: AgentTicketViewComponent },
   {
     path: 'ticketnotesattachments',
     component: TicketNotesAttachmentsComponent,
@@ -50,6 +56,8 @@ const routes: Routes = [
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
   { path: '**', component: ButtonComponent },
+    
+  
 ];
 
 @NgModule({
