@@ -1,7 +1,6 @@
 import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReportService } from '@app/features/service/reportService/report.service';
-import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-bar-chart',
@@ -14,8 +13,6 @@ export class BarChartComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  @ViewChild('barch')
-  barch!: BaseChartDirective;
 
   @Input()
   ticketStatus: number = 0;
@@ -39,7 +36,7 @@ export class BarChartComponent {
     'Dec',
   ];
   public barChartType: string = 'bar';
-  public barChartLegend: boolean = true;
+  public barChartLegend: boolean = false;
   data: number[] = [];
   resolved: number[] = [];
   unresolved: number[] = [];
@@ -58,31 +55,9 @@ export class BarChartComponent {
     'november',
     'december',
   ];
-  resolved1: { data: number[]; label: string } = {
-    data: [],
-    label: '',
-  };
-  unresolved1: { data: number[]; label: string } = {
-    data: [],
-    label: '',
-  };
-  escalated1: { data: number[]; label: string } = {
-    data: [],
-    label: '',
-  };
-  chartlegends = {
-    resolved: this.resolved1,
-    unresolved: this.unresolved1,
-    escalated: this.escalated1,
-  };
-  barChartData: any[] = [
-    {
-      data: [],
-      label: 'Resolved',
-    },
-    { data: [], label: 'Unresolved' },
-    { data: [], label: 'Escalated' },
-  ];
+
+  legends: any = [];
+  chartLegends: any = [];
 
   // events
   public chartClicked(e: any): void {
@@ -90,14 +65,7 @@ export class BarChartComponent {
   }
 
   public chartHovered(e: any): void {
-    this.barChartData[0].hoverBackgroundColor = '#450770';
-    this.barChartData[1].hoverBackgroundColor = '#7D659A';
-    this.barChartData[2].hoverBackgroundColor = '#FC7B7B';
     console.log(e);
-  }
-  ngOnChange(changes: SimpleChanges): void {
-    // Detect changes to other input properties if needed
-    console.log('Component has changed:', changes);
   }
 
   ngOnInit() {
@@ -112,15 +80,26 @@ export class BarChartComponent {
           this.unresolved.push(data[month][1]);
           this.escalated.push(data[month][2]);
         }
-        let clone = JSON.parse(JSON.stringify(this.barChartData));
-        clone[0].data = this.resolved.length;
-        clone[0].backgroundColor = '#6418C3';
-        clone[1].data = this.unresolved;
-        clone[1].backgroundColor = '#BCA0DE';
-        clone[2].data = this.escalated;
-        clone[2].backgroundColor = '#FFA7A7';
-        this.barChartData = clone;
-        console.log(this.barChartData[0].data);
+
+        this.chartLegends.push({
+          data: this.resolved,
+          label: 'resolved',
+          backgroundColor: '#6418C3',
+          hoverBackgroundColor: '#450770',
+        });
+        this.chartLegends.push({
+          data: this.unresolved,
+          label: 'unresolved',
+          backgroundColor: '#BCA0DE',
+          hoverBackgroundColor: '#7D659A',
+        });
+        this.chartLegends.push({
+          data: this.escalated,
+          label: 'escalated',
+          backgroundColor: '#FFA7A7',
+          hoverBackgroundColor: '#FC7B7B',
+        });
+        this.legends = [...this.chartLegends];
       },
       (error: Error) => {
         alert('Error has occured :' + error.message);
@@ -135,8 +114,17 @@ export class BarChartComponent {
   }
   ngOnChanges() {
     console.log(this.ticketStatus);
-  }
-  ngAfterViewInit() {
-    console.log(this.barch);
+    if (this.ticketStatus == 0) {
+      this.legends = [...this.chartLegends];
+    } else if (this.ticketStatus === 1) {
+      this.legends = [];
+      this.legends.push(this.chartLegends[0]);
+    } else if (this.ticketStatus === 2) {
+      this.legends = [];
+      this.legends.push(this.chartLegends[1]);
+    } else if (this.ticketStatus === 3) {
+      this.legends = [];
+      this.legends.push(this.chartLegends[2]);
+    }
   }
 }

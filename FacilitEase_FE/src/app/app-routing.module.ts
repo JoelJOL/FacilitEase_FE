@@ -18,36 +18,37 @@ import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
 import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
+import { CardUpperComponent } from './components/layout/card-upper/card-upper.component';
+import { DataTableComponent } from './components/layout/data-table/data-table.component';
+import { FileUploadComponent } from './components/layout/file-upload/file-upload.component';
+import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { ModalComponent } from './components/layout/modal/modal.component';
+import { ProfilepicDropdownComponent } from './components/layout/profilepic-dropdown/profilepic-dropdown.component';
+import { ReactiveFormComponent } from './components/layout/reactive-form/reactive-form.component';
+import { TicketAttachmentsComponent } from './components/layout/ticket-attachments/ticket-attachments.component';
+import { TicketInfoComponent } from './components/layout/ticket-info/ticket-info.component';
+import { TicketNotesAttachmentsComponent } from './components/layout/ticket-notes-attachments/ticket-notes-attachments.component';
+import { TicketRaisedAssignedComponent } from './components/layout/ticket-raised-assigned/ticket-raised-assigned.component';
+import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
 const routes: Routes = [
-  { path: 'xxx', component: SidebarComponent }, // Default route to Home component
-  { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
+  { path: 'cardupper', component: CardUpperComponent },
+  { path: 'datatable', component: DataTableComponent },
+  { path: 'fileupload', component: FileUploadComponent },
+  { path: 'headerlayout', component: HeaderLayoutComponent },
+  { path: 'l2report/:id', component: L2ReportComponent },
+  { path: 'modal', component: ModalComponent },
+  { path: 'profilepicdropdown', component: ProfilepicDropdownComponent },
+  { path: 'reactiveform', component: ReactiveFormComponent },
   { path: 'sidebar', component: SidebarComponent },
-  { path: 'sidebar-field', component: SidebarFieldComponent },
-  { path: 'manager', component: ManagerComponent },
-  { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
-  { path: 'assigned-tickets', component: AssignedTicketsComponent },
-  { path: 'view-ticket', component: AgentTicketsViewComponent },
-  { path: 'view-ticket/:id', component: AgentTicketViewComponent },
-  { path: 'escalated-tickets', component: EscalatedticketsComponent },
-  { path: 'xxx', component: AgentTicketsViewComponent },
-  { path: 'agentticket', component: AgentTicketViewComponent },
+  { path: 'ticketattachments', component: TicketAttachmentsComponent },
+  { path: 'ticketinfo', component: TicketInfoComponent },
+  { path: 'ticketnotes', component: TicketNotesAttachmentsComponent },
   {
-    path: 'manager-view-employee-tickets',
-    component: ManagerViewEmployeeTicketsComponent,
+    path: 'ticketnotesattachments',
+    component: TicketNotesAttachmentsComponent,
   },
-  {
-    path: 'manager-view-waiting-tickets',
-    component: ManagerViewWaitingTicketsComponent,
-  },
-  {
-    path: 'manager-view-ticket-detail',
-    component: ManagerViewTicketDetailComponent,
-  },
-  { component: ReportPorfileComponent, path: 'profile' },
-  { component: L2ReportComponent, path: 'l2report/:id' },
-  { component: ReportPorfileComponent, path: 'profile/:id' },
-  { component: AdminPerformanceComponent, path: 'report/:id' },
-  { component: BarChartComponent, path: 'report/chart/:id' },
+  { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
+  { path: 'trform', component: TrFormComponent },
   { path: '**', component: ButtonComponent },
 ];
 

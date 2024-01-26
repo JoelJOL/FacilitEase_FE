@@ -4,6 +4,6 @@
   <app-bar-chart class="col-9" [ticketStatus]="ticketStatus"></app-bar-chart>
   <app-admin-performance
     class="col-2"
-    (ticketStatus)="(ticketStatus)"
+    (ticketStatus)="onValueChange($event)"
   ></app-admin-performance>
 </div>
