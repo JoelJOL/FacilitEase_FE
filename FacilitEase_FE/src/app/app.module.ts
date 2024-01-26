@@ -67,6 +67,9 @@ import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 import { MatIconModule } from '@angular/material/icon';
+import { DataTableNewComponent } from './components/layout/data-table-new/data-table-new.component';
+import { SortUpDownComponent } from './components/ui_elements/sort-up-down/sort-up-down.component';
+import { PaginationComponent } from './components/ui_elements/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +119,9 @@ import { MatIconModule } from '@angular/material/icon';
     ManagerViewTicketDetailComponent,
     EscalatedticketsComponent,
     L2ReportComponent,
+    DataTableNewComponent,
+    SortUpDownComponent,
+    PaginationComponent,
   ],
   imports: [
     HttpClientModule,

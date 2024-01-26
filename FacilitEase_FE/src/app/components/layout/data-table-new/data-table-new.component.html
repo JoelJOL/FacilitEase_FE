@@ -1,0 +1,20 @@
+<div class="container mt-4">
+    <table class="data_table">
+      <!-- Table Header -->
+      <thead class="table_head">
+        <tr>
+          <th *ngFor="let header of headers" class="text-center text-nowrap">{{ header }}</th>
+        </tr>
+      </thead>
+  
+      <tbody class="table_body">
+        <tr *ngFor="let row of rows" class="clickable_row">
+            <td *ngFor="let key of keys" class="text-center text-nowrap">
+                <div [ngClass]="getCellClasses(key, row[key])">{{ row[key] }}</div>
+              </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-pagination></app-pagination>
+  </div>
+  

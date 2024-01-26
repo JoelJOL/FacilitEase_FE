@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MasterService } from '../../../../app/features/service/dataService/master.service';
-import { DataTableComponent } from '../../../../app/components/layout/data-table/data-table.component';
 import { Router } from '@angular/router';
 interface Field {
   logo: string;
@@ -39,7 +38,7 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.apiLink = this.masterService.getApiLink();
+    this.apiLink = this.masterService.getApiLink2();
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
