@@ -1,8 +1,40 @@
-<div
-  class="drop-zone"
-  (drop)="onDrop($event)"
-  (dragover)="onDragOver($event)"
-  (dragleave)="onDragLeave($event)"
->
-  <p>Drag and drop files here</p>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+
+<div class="container mt-5 fixed-bottom">
+  <div
+    (click)="fileInput.click()"
+    class="drop-zone border border-primary rounded p-3 text-center"
+    (drop)="onDrop($event)"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+  >
+    <img
+      src="https://theonlineconverter.com/assets/img/excel-to-csv.png"
+      class="img-fluid mb-2"
+      alt="File Upload Icon"
+    />
+    <p class="mb-2">Drag and drop files here or click to select a file</p>
+    <div class="input-group mb-2">
+      <input
+        type="text"
+        [value]="selectedFileName"
+        readonly
+        class="form-control"
+      />
+      <div class="input-group-append">
+        <button (click)="upload()" class="btn btn-primary">Upload</button>
+      </div>
+    </div>
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      accept=".csv, .xlsx"
+      class="d-none"
+      #fileInput
+      id="fileInput"
+    />
+  </div>
 </div>
