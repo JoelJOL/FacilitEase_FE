@@ -9,15 +9,14 @@ interface Field {
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent {
   yourFieldsArray: Field[] = [
     {
       logo: 'assets/tickets-icon.png',
       title: 'Raise A Ticket',
-      subfields: [
-      ],
+      subfields: [],
     },
     {
       logo: 'assets/reports-icon.png',
@@ -37,12 +36,11 @@ export class EmployeeComponent {
       this.router.navigate(['manager-subordinates']);
       this.sidebarService.toggleCollapse(); // Automatically collapse the sidebar
     } // Automatically collapse the sidebar
-    else if(clickedField.title==="Raise A Ticket"){
+    else if (clickedField.title === 'Raise A Ticket') {
       this.showEmployeeTickets = true;
       this.router.navigate(['form']);
-      this.sidebarService.toggleCollapse(); 
-    }
-    else {
+      this.sidebarService.toggleCollapse();
+    } else {
       this.showEmployeeTickets = false;
     }
   }
