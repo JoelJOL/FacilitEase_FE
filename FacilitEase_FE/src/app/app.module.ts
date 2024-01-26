@@ -72,6 +72,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+
 @NgModule({
   declarations: [
     AppComponent,
