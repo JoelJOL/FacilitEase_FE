@@ -4,14 +4,15 @@
     <div
       class="col-md-3 d-flex flex-column sidebar"
       [@sidebarState]="sidebarState"
+      (mouseenter)="onSidebarMouseEnter()"
+      (mouseleave)="onSidebarMouseLeave()"
     >
       <!-- Collapsible Logo and Button -->
       <div class="d-flex align-items-center">
         <app-sidebar-logo [collapsed]="isSidebarCollapsed"></app-sidebar-logo>
-        <button type="button" class="btn btn-link" (click)="toggleSidebar()">
-          <!-- Add your icon here, for example, using FontAwesome -->
+        <!-- <button type="button" class="btn btn-link" (click)="toggleSidebar()">
           <i><img src="assets/icons8-hamburger-menu-24.png" alt="" /></i>
-        </button>
+        </button> -->
       </div>
 
       <!-- Collapsible Sidebar Content -->
