@@ -1,26 +1,31 @@
-<div class="dropdown d-flex" [ngClass]="'user_role_container'">
+<div class="custom-dropdown d-flex">
   <img
     src="./assets/user.svg"
     alt=""
     [ngClass]="'img_user'"
-    class="img-fluid rounded-circle d-block mt-3"
+    class="img-fluid rounded-circle user-image"
   />
-  <button
-    class="btn dropdown-toggle"
-    type="button"
-    id="dropdownMenu2"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-  >
-    Manager
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button">Hello</button>
-    <button class="dropdown-item" type="button">Hello</button>
-    <button class="dropdown-item" type="button">Hello</button>
-    <button class="dropdown-item" type="button">Hello</button>
-    <button class="dropdown-item" type="button">Hello</button>
-    <button class="dropdown-item" type="button">Hello</button>
-  </div>
+  <select class="custom-select">
+    <option role="menuitem" class="dropdown-item" value="">
+      Select an option
+    </option>
+    <option role="menuitem" class="dropdown-item" value="option1">
+      L1 Admin
+    </option>
+    <option role="menuitem" class="dropdown-item" value="option2">
+      L2 Admin
+    </option>
+    <option role="menuitem" class="dropdown-item" value="option3">
+      L3 Admin
+    </option>
+    <option role="menuitem" class="dropdown-item" value="option4">
+      Manager
+    </option>
+    <option role="menuitem" class="dropdown-item" value="option5">
+      Department Head
+    </option>
+    <option role="menuitem" class="dropdown-item" value="option6">
+      Employee
+    </option>
+  </select>
 </div>
