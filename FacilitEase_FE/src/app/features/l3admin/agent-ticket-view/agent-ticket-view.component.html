@@ -13,10 +13,14 @@
     <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub>
     <div class="button-row">
       <div class="common-btn">
-        <app-button color="submit">Resolve Ticket</app-button>
+        <app-button color="submit" (click)="resolveTicket()"
+          >Resolve Ticket</app-button
+        >
       </div>
       <div class="common-btn">
-        <app-button color="rejected" (action)="openModal()"
+        <app-button
+          color="rejected"
+          (action)="this.openModal(this.ticketDetails)"
           >Forward for Approval</app-button
         >
       </div>

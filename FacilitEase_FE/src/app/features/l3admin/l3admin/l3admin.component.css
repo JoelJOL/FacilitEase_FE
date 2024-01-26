@@ -1,2 +1,17 @@
 
-   
+.side-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .app_sidebar {
+    flex: 1;
+    overflow-x: hidden; /* Hide horizontal overflow */
+    transition: width 0.3s ease;
+  }
+  
+  .side_display {
+    flex: 4;
+    overflow: auto;
+    transition: margin-left 0.3s ease; /* Add transition for a smooth effect */
+  }
