@@ -30,11 +30,9 @@ import { TicketInfoComponent } from './components/layout/ticket-info/ticket-info
 import { TicketNotesAttachmentsComponent } from './components/layout/ticket-notes-attachments/ticket-notes-attachments.component';
 import { TicketRaisedAssignedComponent } from './components/layout/ticket-raised-assigned/ticket-raised-assigned.component';
 import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
-import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';const routes: Routes = [
-
-
+import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 const routes: Routes = [
-  { path:'form', component:TrFormComponent},
+  { path: 'form', component: TrFormComponent },
   { path: 'xxx', component: SidebarComponent }, // Default route to Home component
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   { path: 'sidebar', component: SidebarComponent },
@@ -56,8 +54,6 @@ const routes: Routes = [
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
   { path: '**', component: ButtonComponent },
-    
-  
 ];
 
 @NgModule({

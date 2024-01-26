@@ -7,6 +7,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class SidebarService {
+  toggleCollapse() {
+    throw new Error('Method not implemented.');
+  }
   private sidebarStateSubject = new Subject<boolean>();
 
   sidebarState$ = this.sidebarStateSubject.asObservable();
