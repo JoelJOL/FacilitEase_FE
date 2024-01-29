@@ -1,16 +1,19 @@
 
 .person-card{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .image-name{
-    margin-top: -20px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     }
+#name{
+    margin-top: 10px;
+}
 #person-img{
     width:40px;
     height: 40px;
-    margin-right: 20px;
+    margin-right: 10px;
 }

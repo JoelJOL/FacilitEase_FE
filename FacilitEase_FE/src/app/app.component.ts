@@ -1,6 +1,8 @@
 import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { Card } from './components/layout/employee-cards/card.model';
 interface Field {
   logo: string;
   title: string;
@@ -17,6 +19,20 @@ export class AppComponent {
     { logo: 'assets/tickets-icon.png', title: 'Employee Tickets' },
     { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
     { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
+  ];
+
+  cards: Card[] = [
+    {
+      title: 'Raise a Ticket',
+      content: 'Click here to raise a ticket.',
+      logo: 'ticket',
+    },
+    {
+      title: 'Knowledge Base',
+      content: 'Click here to access the knowledge base.',
+      logo: 'knowledge-base',
+    },
+    // Add more cards as needed
   ];
 
   constructor(private approveDenyService: ApproveDenyService) {}

@@ -6,22 +6,30 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PostAPIService {
-  apiUrl: string = '';
+  ticketApiUrl: string = 'https://localhost:7049/api/Employee/raiseticket';
+  departmentApiUrl: string = 'https://localhost:7049/api/L1Admin/departments';
+ 
   constructor(private http: HttpClient) {}
 
   
     
   
     postUser(ticketData: any): Observable<any> {
-      return this.http.post<any>(`${this.apiUrl}`, {
-        subject: ticketData.subject,
-        description: ticketData.description,
-        category: ticketData.category,
-        department: ticketData.department,
-        priority: ticketData.priority,
-        attachments: ticketData.attachments,  
+      return this.http.post<any>(this.ticketApiUrl, {
+        TicketName: ticketData.subject,
+    TicketDescription: ticketData.description,
+    CategoryId: ticketData.category,
+    DepartmentId: ticketData.department,
+    PriorityId: ticketData.priority,  
       });
     }
+  
+
+    postDepartment(departmentData: any): Observable<any> {
+      return this.http.post<any>(this.departmentApiUrl, {
+        deptName: departmentData.DeptName,
+      });    
   }
+}
   
 

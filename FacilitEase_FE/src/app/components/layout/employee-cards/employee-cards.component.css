@@ -1,0 +1,107 @@
+/* employee-cards.component.css */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 20px; /* Add space between cards */
+}
+
+mat-card-header,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  height: 100%; /* Add this line */
+  flex-direction: column; /* Add this line */
+}
+
+mat-card {
+  cursor: pointer;
+  width: 600px;
+  height: 220px;
+  margin: 0 15px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add shadow around the card */
+}
+
+mat-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(128, 0, 128, 0.5);
+  background: linear-gradient(45deg, #550755a6, #3c084eaf);
+}
+
+mat-card.selected {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(128, 0, 128, 0.5);
+  background: linear-gradient(45deg, #800080, #5e0080);
+}
+
+mat-card-header,
+mat-card-content {
+  text-align: center;
+  color: #fff;
+}
+
+mat-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.logo-container {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  height: 50%;
+  width: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Ensure the center of the image is the point of reference for positioning */
+  display: flex; /* Add this line */
+  flex-direction: column; /* Add this line */
+  justify-content: center; /* Add this line */
+  align-items: center; /* Add this line */
+}
+.logo-container img {
+  max-width: 100%; /* Ensure the image doesn't overflow its container */
+  max-height: 100%;
+  justify-content: center;
+}
+
+/* ...other styles... */
+
+.logo-container img.not-hovered {
+  display: block; /* Show when not hovered */
+}
+
+.logo-container img.hovered {
+  display: none; /* Hide when not hovered */
+}
+
+mat-card:hover .logo-container img.not-hovered {
+  display: none; /* Hide when hovered */
+}
+
+mat-card:hover .logo-container img.hovered {
+  display: block; /* Show when hovered */
+}
+mat-card:hover .logo-container h2.not-hovered {
+  display: none; /* Hide when hovered */
+}
+
+mat-card:hover .logo-container h2.hovered {
+  display: block; /* Show when hovered */
+}

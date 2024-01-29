@@ -12,14 +12,13 @@
     <app-ticket-notes-attachments></app-ticket-notes-attachments>
     <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub>
     <div class="button-row">
-      <div class="common-btn">
-        <app-button color="submit">Resolve Ticket</app-button>
-      </div>
-      <div class="common-btn">
-        <app-button color="rejected" (action)="openModal()"
-          >Forward for Approval</app-button
-        >
-      </div>
+      <app-assign-dropdown
+        [label]="'Assign To'"
+        [options]="agents"
+        displayKey="agentName"
+        valueProperty="agentId"
+        (onItemSelected)="onAgentSelected($event, ticketId)"
+      ></app-assign-dropdown>
     </div>
   </div>
 </div>

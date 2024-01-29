@@ -22,14 +22,14 @@ export class TrFormComponent implements OnInit {
   ) {}
 
   ticket: any = {
-    subject: '',
-    description: '',
-    category: '',
-    department: '',
-    priority: '',
-    attachments: [],
+    TicketName: '',
+    TicketDescription: '',
+    PriorityId: '',
+    CategoryId: '',
+    DepartmentId: '',
+    Attachments: [],
   };
-
+  
   ngOnInit(): void {
     this.apiService.getPriorities().subscribe((data) => {
       this.priorities = data;
