@@ -1,36 +1,56 @@
 <!-- modal.component.html -->
-
-<div class="modal-content">
-  <div class="modal-header">
-    <h4 class="modal-title">Forward Ticket</h4>
-    <button type="button" class="close" aria-label="Close" (click)="close()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div
-    class="modal-body"
-    #modalBody
-    [ngClass]="{ 'show-dropdown': showDropdown }"
-  >
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="forwardToManager(ticketDetails.id, ticketDetails.managerId)"
+<form [formGroup]="deptForm">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Forward Ticket</h4>
+      <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div
+      class="modal-body"
+      #modalBody
+      [ngClass]="{ 'show-dropdown': showDropdown }"
     >
-      Forward to Manager
-    </button>
-    <button type="button" class="btn btn-primary" (click)="toggleDropdown()">
-      Forward to Department
-    </button>
-    <div *ngIf="showDropdown" class="dropdown">
-      <h4>Choose Department:</h4>
-      <select formControlName="department" class="form-control">
-        <option value="" disabled selected>Choose Department</option>
-        <option *ngFor="let dept of departments" [value]="dept.id">
-          {{ dept.deptName }}
-        </option>
-      </select>
-      <button type="submit" class="submit-btn">Submit</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="forwardToManager(ticketDetails.id, ticketDetails.managerId)"
+      >
+        Forward to Manager
+      </button>
+      <button type="button" class="btn btn-primary" (click)="toggleDropdown()">
+        Forward to Department
+      </button>
+      <div *ngIf="showDropdown" class="dropdown">
+        <h4>Choose Department:</h4>
+        <select
+          formControlName="department"
+          class="form-control"
+          (change)="onDepartmentChange()"
+        >
+          <option value="" disabled selected>Choose Department</option>
+          <option *ngFor="let dept of departments" [value]="dept.id">
+            {{ dept.deptName }}
+          </option>
+        </select>
+        <br />
+        <h4>Choose Category:</h4>
+        <select formControlName="category" class="form-control">
+          <option value="" disabled selected>Choose Category</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.categoryName }}
+          </option>
+        </select>
+
+        <button
+          type="submit"
+          (click)="forwardToDept(ticketDetails.id)"
+          class="submit-btn"
+        >
+          Submit
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</form>

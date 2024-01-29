@@ -15,16 +15,17 @@ export class AgentService {
     return this.http.get('https://localhost:7049/api/Department');
   }
 
+  getCategorybyDept(deptId:number): Observable<any> {
+    return this.http.get(`https://localhost:7049/api/Department/categories-by-department/${deptId}`);
+  }
+
   forwardTicketManager(ticketId: number, managerId: number): Observable<any> {
     const apiUrl = `https://localhost:7049/api/L3Admin/forward-ticket/${ticketId}/${managerId}`;
     return this.http.get(apiUrl);
   }
 
-  forwardTicketDepartment(
-    ticketId: number,
-    managerId: number
-  ): Observable<any> {
-    const apiUrl = `https://localhost:7049/api/L3Admin/forward-ticket/${ticketId}/${managerId}`;
+  forwardTicketDepartment(ticketId:number, managerId:number): Observable<any> {
+    const apiUrl = `https://localhost:7049/api/L3Admin/forward-ticket-to-department/${ticketId}/${managerId}`;
     return this.http.get(apiUrl);
   }
 
@@ -32,6 +33,17 @@ export class AgentService {
     const apiUrl = `https://localhost:7049/api/L3Admin/resolve-ticket/${ticketId}`;
     return this.http.patch(apiUrl, null);
   }
+  
+  getAllResolvedTickets():Observable<any>{
+    const agentId = 3;
+  const apiUrl = `https://localhost:7049/api/L3Admin/resolved-tickets-by-agent/${agentId}`;
+  return this.http.get(apiUrl);
+}
+
+getCommentText(ticketId: any): Observable<string> {
+  const url = `https://localhost:7049/api/L3Admin/ticket-commenttext/${ticketId}`;
+  return this.http.get(url, { responseType: 'text' });
+}
 
   getAllTickets(): Observable<any> {
     const agentId = 3;
