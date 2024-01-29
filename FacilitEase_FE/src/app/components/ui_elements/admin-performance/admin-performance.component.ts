@@ -15,8 +15,7 @@ export class AdminPerformanceComponent {
   ) {}
   @Output()
   ticketStatus: EventEmitter<number> = new EventEmitter<number>();
-  ChangeClass(indexOfDiv: number): void {
-    // Toggle the selectedDivIndex when a div is clicked
+  ChangeClass(indexOfDiv: number) {
     this.selectedDivIndex =
       this.selectedDivIndex === indexOfDiv ? null : indexOfDiv;
     this.ticketStatus.emit(indexOfDiv);
@@ -25,12 +24,10 @@ export class AdminPerformanceComponent {
   data: number[] = [];
   id: number = 0;
   condition = true;
-  PassTicketStatus(ticketStatus: number) {
-    this.ticketStatus.emit(ticketStatus);
-  }
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
     console.log('ID:', this.id);
+    this.selectedDivIndex = 0;
     this.reportService.GetReportData(this.id).subscribe(
       (data) => {
         console.log(data);

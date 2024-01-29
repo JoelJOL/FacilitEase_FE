@@ -18,7 +18,21 @@ import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
 import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
+import { CardUpperComponent } from './components/layout/card-upper/card-upper.component';
+import { DataTableComponent } from './components/layout/data-table/data-table.component';
+import { FileUploadComponent } from './components/layout/file-upload/file-upload.component';
+import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { ModalComponent } from './components/layout/modal/modal.component';
+import { ProfilepicDropdownComponent } from './components/layout/profilepic-dropdown/profilepic-dropdown.component';
+import { ReactiveFormComponent } from './components/layout/reactive-form/reactive-form.component';
+import { TicketAttachmentsComponent } from './components/layout/ticket-attachments/ticket-attachments.component';
+import { TicketInfoComponent } from './components/layout/ticket-info/ticket-info.component';
+import { TicketNotesAttachmentsComponent } from './components/layout/ticket-notes-attachments/ticket-notes-attachments.component';
+import { TicketRaisedAssignedComponent } from './components/layout/ticket-raised-assigned/ticket-raised-assigned.component';
+import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
+import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 const routes: Routes = [
+  { path: 'form', component: TrFormComponent },
   { path: 'xxx', component: SidebarComponent }, // Default route to Home component
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   { path: 'sidebar', component: SidebarComponent },
@@ -29,25 +43,16 @@ const routes: Routes = [
   { path: 'view-ticket', component: AgentTicketsViewComponent },
   { path: 'view-ticket/:id', component: AgentTicketViewComponent },
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
+  { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
+  { path: 'l2report/:id', component: L2ReportComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   {
-    path: 'manager-view-employee-tickets',
-    component: ManagerViewEmployeeTicketsComponent,
+    path: 'ticketnotesattachments',
+    component: TicketNotesAttachmentsComponent,
   },
-  {
-    path: 'manager-view-waiting-tickets',
-    component: ManagerViewWaitingTicketsComponent,
-  },
-  {
-    path: 'manager-view-ticket-detail',
-    component: ManagerViewTicketDetailComponent,
-  },
-  { component: ReportPorfileComponent, path: 'profile' },
-  { component: L2ReportComponent, path: 'l2report/:id' },
-  { component: ReportPorfileComponent, path: 'profile/:id' },
-  { component: AdminPerformanceComponent, path: 'report/:id' },
-  { component: BarChartComponent, path: 'report/chart/:id' },
+  { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
+  { path: 'trform', component: TrFormComponent },
   { path: '**', component: ButtonComponent },
 ];
 

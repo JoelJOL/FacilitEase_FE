@@ -66,6 +66,7 @@ import { ManagerViewTicketDetailComponent } from './features/manager/manager-vie
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
+import { EmployeeComponent } from './features/employee/employee/employee.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
 import { DataTableNewComponent } from './components/layout/data-table-new/data-table-new.component';
@@ -73,6 +74,8 @@ import { SortUpDownComponent } from './components/ui_elements/sort-up-down/sort-
 import { PaginationComponent } from './components/ui_elements/pagination/pagination.component';
 import { SearchBarComponent } from './components/ui_elements/search-bar/search-bar.component';
 import { FilterComponent } from './components/layout/filter/filter.component';
+import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
+import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 
 @NgModule({
   declarations: [
@@ -128,6 +131,9 @@ import { FilterComponent } from './components/layout/filter/filter.component';
     PaginationComponent,
     SearchBarComponent,
     FilterComponent,
+    EmployeeComponent,
+    L2adminSubordinatesComponent,
+    L2adminTicketViewComponent,
   ],
   imports: [
     HttpClientModule,

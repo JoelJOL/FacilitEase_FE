@@ -6,6 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./l2-report.component.css'],
 })
 export class L2ReportComponent {
-  @Input()
-  ticketStatus: number = 0;
+  ticketStatus: number = 10;
+  onValueChange(ticketStatus: number) {
+    this.ticketStatus = ticketStatus;
+    console.log(this.ticketStatus);
+  }
 }

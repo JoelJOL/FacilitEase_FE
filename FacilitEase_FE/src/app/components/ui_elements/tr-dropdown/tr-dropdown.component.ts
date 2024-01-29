@@ -15,9 +15,9 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 })
 
 export class TrDropdownComponent  implements ControlValueAccessor  {
-  @Input() label: string = '';
-  @Input() options: any[] = [];
-  @Input() displayKey: string = ''; 
+  label: string = '';
+  options: any[] = [];
+  displayKey: string = ''; 
   control = new FormControl('');
   onChange = (value: any) => {};
   onTouched = () => {};
