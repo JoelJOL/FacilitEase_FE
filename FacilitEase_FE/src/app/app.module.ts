@@ -68,7 +68,6 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
 import { MatIconModule } from '@angular/material/icon';
-import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
 import { DataTableNewComponent } from './components/layout/data-table-new/data-table-new.component';
 import { SortUpDownComponent } from './components/ui_elements/sort-up-down/sort-up-down.component';
 import { PaginationComponent } from './components/ui_elements/pagination/pagination.component';
@@ -175,7 +174,7 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     MatIconModule,
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot(),
     MatCardModule,
   ],
   providers: [
