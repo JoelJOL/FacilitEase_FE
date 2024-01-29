@@ -1,0 +1,7 @@
+<form [formGroup]="departmentForm">
+  <app-tr-subject
+    formControlName="deptName"
+    class="form-control"
+  ></app-tr-subject>
+  <app-button (click)="onSubmit()">Add</app-button>
+</form>

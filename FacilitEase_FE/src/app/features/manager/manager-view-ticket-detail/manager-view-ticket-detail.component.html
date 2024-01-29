@@ -1,21 +1,45 @@
+<router-outlet></router-outlet>
+<div class="manager-dashboard row">
+<div class="col-3">
+  <app-sidebar
+    [fields]="yourFieldsArray"
+    (clicked)="onFieldClicked($event)"
+  ></app-sidebar>
+</div>
+<div class="col-9">
 <div class="container mt-1">
     <div class="ticket-container">
-      <app-ticket-header></app-ticket-header>
-      <app-ticket-info></app-ticket-info>
-      <app-ticket-description></app-ticket-description>
-      <app-ticket-attachments
-        [headerText]="customHeaderText"
-      ></app-ticket-attachments>
+      <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
+      <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
       <app-ticket-notes-attachments></app-ticket-notes-attachments>
-      <app-title-sub></app-title-sub>
-      <div class="button-row">
-        <div class="common-btn">
-          <app-button color="submit">Resolve Ticket</app-button>
-        </div>
-  
-        <div class="common-btn">
-          <app-button color="rejected">Forward for Approval</app-button>
-        </div>
+
+    <div class="person-cards-row">
+      <!-- Raised By -->
+      <app-person-card
+        [personName]="ticketDetails.employeeName"
+        [isRaisedBy]="true"
+      ></app-person-card>
+
+      <!-- Assigned To -->
+      <app-person-card
+        [personName]="ticketDetails.assignedTo"
+        [isRaisedBy]="false"
+      ></app-person-card>
+    </div>
+
+    <!-- Buttons in the Next Row -->
+    <div class="button-row">
+      <div class="common-btn" id="button">
+        <app-button color="submit">Accept</app-button>
+      </div>
+      <div class="common-btn" id="button">
+        <app-button color="rejected">Reject</app-button>
+      </div>
+      <div class="common-btn" id="button">
+        <app-button color="rejected">Forward for Approval</app-button>
       </div>
     </div>
+    </div>
   </div>
+</div>
+</div>
