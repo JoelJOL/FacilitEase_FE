@@ -22,7 +22,7 @@ import { TrDropdownComponent } from './components/ui_elements/assign-dropdown/as
 import { L2AdminComponent } from './features/l2admin/l2admin/l2admin.component';
 import { FormsModule } from '@angular/forms';
 import { UnassignedTicketsComponent } from './features/l2admin/unassigned-tickets/unassigned-tickets.component';
-import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-tickets.component';
+import { AssignedTicketsComponent } from './features/l2admin/assigned-tickets/assigned-tickets.component';
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
@@ -71,6 +71,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { SupportComponent } from './components/ui_elements/support/support.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
+    SupportComponent,
   ],
   imports: [
     HttpClientModule,
