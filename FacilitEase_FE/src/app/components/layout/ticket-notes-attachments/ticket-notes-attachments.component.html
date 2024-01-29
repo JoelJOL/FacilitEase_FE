@@ -1,8 +1,18 @@
 <!-- <div class="container mt-1"> -->
 <div class="card na_box">
   <div class="card_body">
-    <app-ticket-notes></app-ticket-notes>
+    <app-ticket-notes
+      [editMode]="editMode"
+      (toggleEditModeEvent)="onToggleEditMode()"
+      [ticketId]="ticketId"
+    ></app-ticket-notes>
+    <br />
+
     <app-ticket-attachments></app-ticket-attachments>
+
+    <button class="button" (click)="onToggleEditMode()">
+      <span class="button-content">{{ editMode ? "Save" : "Edit" }}</span>
+    </button>
   </div>
 </div>
 <!-- </div> -->

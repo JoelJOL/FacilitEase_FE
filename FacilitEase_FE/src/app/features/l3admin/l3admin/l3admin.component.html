@@ -1,3 +1,4 @@
+<!-- unassigned-tickets.component.html -->
 <div class="side-container">
   <div class="app_sidebar">
     <app-sidebar
@@ -7,8 +8,10 @@
     ></app-sidebar>
   </div>
 
-  <!-- Routed content on the right -->
-  <div *ngIf="showL3AdminTickets" class="col-md-12 side_display">
-    <router-outlet></router-outlet>
+  <div class="col-md-12 side_display" [class.collapsed]="isSidebarCollapsed">
+    <app-header-layout></app-header-layout>
+    <div *ngIf="showL3AdminTickets">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

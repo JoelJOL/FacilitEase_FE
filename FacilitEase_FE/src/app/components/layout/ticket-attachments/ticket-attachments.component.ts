@@ -9,6 +9,7 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 export class TicketAttachmentsComponent {
   @Input() headerText = 'Attachments';
   @Input() ticketDetails:any;
+
   ticket: any = [];
   constructor(private agentService: AgentService) {}
   document: string = '';

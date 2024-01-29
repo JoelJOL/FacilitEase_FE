@@ -71,6 +71,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { ResolvedTicketsViewComponent } from './features/l3admin/resolved-tickets-view/resolved-tickets-view.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -124,6 +126,7 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
+    ResolvedTicketsViewComponent,
   ],
   imports: [
     HttpClientModule,
@@ -144,6 +147,8 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     MatIconModule,
+    ToastrModule.forRoot() 
+    
   ],
   providers: [
     FormServiceService,

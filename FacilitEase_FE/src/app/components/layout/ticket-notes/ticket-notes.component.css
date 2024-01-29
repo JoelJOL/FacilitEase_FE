@@ -10,3 +10,24 @@
     font-size: small;
 }
 
+.form-control {
+    width: 100%; /* Take up the full width of the container */
+ /* Set a maximum width to avoid excessive stretching on larger screens */
+    /* max-height: 70px; */
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    outline: none;
+  }
+   
+  .form-control[readonly] {
+    background-color: #f8f9fa;
+  }
+   
+  /* Add focus styles for editable inputs */
+  .form-control:not([readonly]):focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+

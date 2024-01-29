@@ -9,7 +9,9 @@
       [headerText]="customHeaderText"
       [ticketDetails]="ticketDetails"
     ></app-ticket-attachments>
-    <app-ticket-notes-attachments></app-ticket-notes-attachments>
+    <app-ticket-notes-attachments
+      [ticketId]="ticketId"
+    ></app-ticket-notes-attachments>
     <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub>
     <div class="button-row">
       <div class="common-btn">
