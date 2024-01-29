@@ -71,7 +71,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
-
+import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
+import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,17 +126,17 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
+    AddDepartmentFormComponent,
+    EmployeeMyTicketsComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     NgChartsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -155,4 +157,3 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-// BsDropdownModule.forRoot(),

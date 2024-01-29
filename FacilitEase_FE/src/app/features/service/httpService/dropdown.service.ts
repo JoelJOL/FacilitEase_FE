@@ -25,4 +25,8 @@ export class DropDownService {
       'https://localhost:7049/api/l2/agents?DepartmentId=12'
     );
   }
+
+  getMyTicketsBaseUrl(): string {
+    return 'https://localhost:7049/api/Employee/myTickets';
+  }
 }
