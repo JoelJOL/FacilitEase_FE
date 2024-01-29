@@ -1,10 +1,16 @@
-
-.data_table {
-    width: 900px;
-    margin-right: 20px;
+.filter_search{
+  margin-left: 2%;
+  margin-right: 2%;
+  display: flex;
+  align-items:flex-end;
+  justify-content: space-between;
 }
-.head_name{
-    display: flex;
+#filter_img{
+  margin-right: 5%;
+}
+.data_table {
+    width: 100%;
+    margin-right: 20px;
 }
 .sort{
     display: flex;
@@ -18,6 +24,14 @@
 tr{
     justify-content: center;
 }
+.header-container {
+    display: flex;
+  }
+  
+  .header-container span {
+    margin-right: 5px;
+  }
+  
  .table_head th {
     justify-content: space-between;
     align-items: center;
@@ -60,17 +74,70 @@ td{
   background: #ededed;
   font-weight:550;
 } 
-
-.high-priority {
+.low-priority {
     border-radius: 10%;
-    padding: 5px;
-    background-color: #fc9d74;
-    color: #a11300;
+    color: rgb(78, 213, 73);
+    font-weight: 600;
+  }
+.medium-priority {
+    border-radius: 10%;
+    color: rgb(202, 160, 9);
+    font-weight: 600;
+  }
+  .high-priority {
+    border-radius: 10%;
+    color: #ff7f29;
+    font-weight: 600;
+  }
+  .critical-priority {
+    border-radius: 10%;
+    color: #d54949;
+    font-weight: 600;
   }
   
   .open-status {
     border-radius: 10%;
     padding: 5px;
-    background-color: green;
-    color: white;
+    background-color: rgba(116, 223, 125, 0.4);
+    color: rgb(78, 213, 73);
+    font-weight: 600;
+  }
+  .inprogress-status {
+    border-radius: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 25px;
+    padding-left: 8px;
+    background-color: #bf74df33;
+    color: rgb(171, 73, 213);
+    font-weight: 600;
+  }
+  .onhold-status {
+    border-radius: 10%;
+    padding: 5px;
+    background-color: rgb(223,168,116,0.4);
+    color: rgb(202, 102, 9);
+    font-weight: 600;
+  }
+  .resolved-status {
+    border-radius: 10%;
+    padding: 5px;
+    background-color: rgb(112,110,222,0.4);
+    color: #4B49D5;
+    font-weight: 600;
+  }
+  .cancelled-status {
+    border-radius: 10%;
+    padding: 5px;
+    background-color: rgba(218, 222, 110, 0.4);
+    color: #fcca01c4;
+    font-weight: 600;
+    
+  }
+  .escalated-status {
+    border-radius: 10%;
+    padding: 5px;
+    background-color: rgba(222, 117, 110, 0.4);
+    color: #d54949;
+    font-weight: 600;
   }

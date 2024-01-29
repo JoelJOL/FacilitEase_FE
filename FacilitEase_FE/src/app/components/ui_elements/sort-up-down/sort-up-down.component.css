@@ -1,10 +1,10 @@
 .sort{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 #sort_up_icon,
 #sort_down_icon {
-  width: 15px;
-  cursor: pointer;
+width: 10px;
+cursor: pointer;
 }

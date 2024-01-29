@@ -1,50 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
-export class PaginationComponent implements OnInit {
-  numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  highlightedNumber: number = 1; // Initial highlighted number
+export class PaginationComponent implements OnInit, OnChanges {
+  @Input() totalItems !: number; // Total number of items
+  @Input() itemsPerPage: number = 10; // Number of items per page
+  @Input() currentPage: number = 1; // Current page
+  @Output() pageChange = new EventEmitter<number>(); // Event emitter for page change
+
   visibleNumbers: number[] = [];
 
-  constructor() { }
-
   ngOnInit(): void {
+    this.currentPage = 1;
     this.updateVisibleNumbers();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('totalItems' in changes) {
+      this.updateVisibleNumbers();
+    }
   }
 
   previous(): void {
-    if (this.highlightedNumber > 1) {
-      this.highlightedNumber--;
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.pageChange.emit(this.currentPage-1);
       this.updateVisibleNumbers();
     }
   }
 
   next(): void {
-    if (this.highlightedNumber < this.numbers.length) {
-      this.highlightedNumber++;
+    const totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    if (this.currentPage < totalPages) {
+      this.currentPage++;
+      this.pageChange.emit(this.currentPage-1);
       this.updateVisibleNumbers();
     }
   }
 
   selectNumber(number: number): void {
-    this.highlightedNumber = number;
+    this.currentPage = number - 1;
+    this.pageChange.emit(this.currentPage);
+    this.currentPage++;
     this.updateVisibleNumbers();
   }
+  
 
   updateVisibleNumbers(): void {
-    const index = this.numbers.indexOf(this.highlightedNumber);
-    let start = Math.max(0, index - 2);
-    let end = Math.min(this.numbers.length, start + 5);
-
-    // Ensure that there are always 5 visible numbers
-    if (end - start < 5) {
-      start = Math.max(0, end - 5);
-    }
-
-    this.visibleNumbers = this.numbers.slice(start, end);
+    const totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    this.visibleNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
   }
+  
 }

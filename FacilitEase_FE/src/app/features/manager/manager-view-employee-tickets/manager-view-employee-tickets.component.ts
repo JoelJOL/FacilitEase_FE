@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter} from '@angular/core';
 import { MasterService } from '../../../../app/features/service/dataService/master.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 interface Field {
   logo: string;
   title: string;
@@ -12,8 +13,10 @@ interface Field {
 })
 
 export class ManagerViewEmployeeTicketsComponent implements OnInit {
+  @Output() rowClicked = new EventEmitter<number>();
   headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Assigned To', 'Submitted Date', 'Priority', 'Status'];
-  apiLink: string = '';
+  apiLink: string='';
+
   title = 'FaciltEase_FE';
   yourFieldsArray: Field[] = [
     {
@@ -38,10 +41,12 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.apiLink = this.masterService.getApiLink2();
+    this.apiLink = this.masterService.getApiLink();
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
+    this.rowClicked.emit(rowId);
+    this.router.navigate(['manager-view-ticket-detail', rowId]);
     
   }
 }
