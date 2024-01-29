@@ -71,6 +71,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { L1adminComponent } from './features/L1admin/l1admin/l1admin.component';
+import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
+import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/dynamic-search.component';
+import { HighlightPipe } from './features/service/highlightPipe/highlight.pipe';
+import { AssignRoleComponent } from './features/L1admin/assign-role/assign-role.component';
+import { DisplayEmployeeDetailsComponent } from './components/layout/display-employee-details/display-employee-details.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +116,6 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     SidebarSubfieldComponent,
     ManagerSubordinatesComponent,
     ManagerComponent,
-    TrDropdownComponent,
     L2AdminComponent,
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
@@ -124,6 +129,12 @@ import { HeaderLayoutComponent } from './components/layout/header-layout/header-
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
+    L1adminComponent,
+    L1DataEntryComponent,
+    DynamicSearchComponent,
+    HighlightPipe,
+    AssignRoleComponent,
+    DisplayEmployeeDetailsComponent,
   ],
   imports: [
     HttpClientModule,

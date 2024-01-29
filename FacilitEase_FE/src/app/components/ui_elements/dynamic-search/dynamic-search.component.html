@@ -1,0 +1,30 @@
+<div class="search_container mt-4 ms-5">
+  <input
+    class="input_box col-5"
+    type="text"
+    [(ngModel)]="query"
+    placeholder="Search Employee..."
+    (input)="getSuggestions()"
+  />
+  <div *ngIf="suggestions.length > 0" class="suggestions_container col-5">
+    <div
+      *ngFor="let suggestion of suggestions"
+      class="suggestion_item p-2"
+      (click)="selectSuggestion(suggestion)"
+    >
+      <div>
+        <span
+          [innerHTML]="suggestion.employeeFirstName | highlight : query"
+        ></span
+        >&nbsp;
+        <span [innerHTML]="suggestion.employeeLastName | highlight : query">
+        </span>
+        <p>
+          <span>{{ suggestion.jobTitle }}</span
+          >&nbsp; &nbsp;
+          <span>{{ suggestion.username }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

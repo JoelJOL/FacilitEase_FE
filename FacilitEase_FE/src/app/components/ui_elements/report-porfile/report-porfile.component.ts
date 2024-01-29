@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ReportService } from '@app/features/service/reportService/report.service';
+import { ReportService } from '@app/features/service/httpService/reportService/report.service';
 
 @Component({
   selector: 'app-report-porfile',
@@ -12,6 +12,7 @@ export class ReportPorfileComponent {
     private route: ActivatedRoute,
     private reportService: ReportService
   ) {}
+  empid: number = 0;
   name: string = '';
   jobTItle: string = '';
   userName: string = '';
@@ -22,6 +23,7 @@ export class ReportPorfileComponent {
     this.reportService.GetProfileData(this.id).subscribe(
       (data) => {
         console.log(data);
+        this.empid = data.empId;
         this.name = data.employeeFirstName + data.employeeLastName;
         this.jobTItle = data.jobTitle;
         this.userName = data.username;
