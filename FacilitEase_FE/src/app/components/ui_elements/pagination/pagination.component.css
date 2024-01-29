@@ -1,0 +1,36 @@
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px; /* Adjust the width as needed */
+    margin: auto;
+  }
+  
+  .number-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adjust the gap between numbers */
+    padding: 5%;
+  }
+  
+  .number-container div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .number-container div:hover{
+    background-color: rgb(226, 226, 226);
+    border: 2px solid #6f00ff;
+  }
+  .number-container div.highlighted {
+    background-color: white;
+    color: #6f00ff;
+    font-weight: 1000;
+    border: 2px solid #6f00ff;
+  }
+  
