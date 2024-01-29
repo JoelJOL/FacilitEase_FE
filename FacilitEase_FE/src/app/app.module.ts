@@ -89,6 +89,7 @@ import { MatCardModule } from '@angular/material/card';
 import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 import { SupportComponent } from './components/ui_elements/support/support.component';
+import { DepartmentheadComponent } from './features/departmenthead/departmenthead/departmenthead.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -156,6 +157,7 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     AddDepartmentFormComponent,
     EmployeeMyTicketsComponent,
     SupportComponent,
+    DepartmentheadComponent,
   ],
   imports: [
     HttpClientModule,
