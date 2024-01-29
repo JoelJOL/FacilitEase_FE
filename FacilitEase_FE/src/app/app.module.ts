@@ -77,10 +77,11 @@ import { FilterComponent } from './components/layout/filter/filter.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
+import { MatCardModule } from '@angular/material/card';
 import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 import { SupportComponent } from './components/ui_elements/support/support.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -138,6 +139,7 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
+    EmployeeCardsComponent,
     AddDepartmentFormComponent,
     EmployeeMyTicketsComponent,
     SupportComponent,
@@ -159,6 +161,7 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     MatIconModule,
+    MatCardModule,
   ],
   providers: [
     FormServiceService,
