@@ -1,0 +1,11 @@
+<div class="pagination-container">
+  <app-button color="paginate" (click)="previous()">Previous</app-button>
+  <div class="number-container">
+    <div *ngFor="let number of visibleNumbers" 
+         [class.highlighted]="number === currentPage" 
+         (click)="selectNumber(number)">
+      {{ number }}
+    </div>
+  </div>
+  <app-button color="paginate" (click)="next()">Next</app-button>
+</div>
