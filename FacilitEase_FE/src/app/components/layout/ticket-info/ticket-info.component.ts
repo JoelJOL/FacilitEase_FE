@@ -11,7 +11,7 @@ export class TicketInfoComponent {
   ticketPriority: string = '';
   status: string = '';
   ticket: any = [];
-  @Input() ticketDetails:any;
+  @Input() ticketDetails: any;
   constructor(private agentService: AgentService) {}
 
   getPriorityColor(): string {
@@ -24,11 +24,10 @@ export class TicketInfoComponent {
         case 'low':
           return 'green';
         default:
-          return 'black'; 
+          return 'black';
       }
     } else {
-      return 'black'; 
+      return 'black';
     }
   }
-
 }

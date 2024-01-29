@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MasterService } from '../../../../app/features/service/dataService/master.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 interface Field {
   logo: string;
   title: string;
@@ -12,7 +13,7 @@ interface Field {
 })
 export class ManagerViewWaitingTicketsComponent implements OnInit{
   headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Assigned To', 'Submitted Date', 'Priority', 'Status'];
-  apiLink: string = '';
+  apiLink: string ='';
   title = 'FaciltEase_FE';
   yourFieldsArray: Field[] = [
     {
@@ -41,6 +42,5 @@ export class ManagerViewWaitingTicketsComponent implements OnInit{
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    // Add your desired logic here
   }
 }

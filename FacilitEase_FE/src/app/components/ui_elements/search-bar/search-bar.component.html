@@ -1,0 +1,8 @@
+<!-- Add the search input in your template -->
+<div class="input-group rounded">
+    <input [(ngModel)]="searchQuery" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+    <span class="input-group-text border-0" id="search-addon" (click)="search()">
+        <i class="fas fa-search"></i>
+        <img src="../../../../assets/search.svg" id="search_icon">
+    </span>
+</div>
