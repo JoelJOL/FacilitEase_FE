@@ -22,7 +22,7 @@ import { TrDropdownComponent } from './components/ui_elements/assign-dropdown/as
 import { L2AdminComponent } from './features/l2admin/l2admin/l2admin.component';
 import { FormsModule } from '@angular/forms';
 import { UnassignedTicketsComponent } from './features/l2admin/unassigned-tickets/unassigned-tickets.component';
-import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-tickets.component';
+import { AssignedTicketsComponent } from './features/l2admin/assigned-tickets/assigned-tickets.component';
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SidebarLogoComponent } from './components/ui_elements/sidebar-logo/sidebar-logo.component';
@@ -68,12 +68,19 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { L2ReportComponent } from './components/layout/l2-report/l2-report.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { DataTableNewComponent } from './components/layout/data-table-new/data-table-new.component';
+import { SortUpDownComponent } from './components/ui_elements/sort-up-down/sort-up-down.component';
+import { PaginationComponent } from './components/ui_elements/pagination/pagination.component';
+import { SearchBarComponent } from './components/ui_elements/search-bar/search-bar.component';
+import { FilterComponent } from './components/layout/filter/filter.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
 import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
- 
+import { SupportComponent } from './components/ui_elements/support/support.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,11 +130,17 @@ import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tick
     EscalatedticketsComponent,
     L2ReportComponent,
     HeaderLayoutComponent,
+    DataTableNewComponent,
+    SortUpDownComponent,
+    PaginationComponent,
+    SearchBarComponent,
+    FilterComponent,
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
     AddDepartmentFormComponent,
     EmployeeMyTicketsComponent,
+    SupportComponent,
   ],
   imports: [
     HttpClientModule,

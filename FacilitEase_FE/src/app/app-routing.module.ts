@@ -12,7 +12,7 @@ import { ManagerSubordinatesComponent } from './features/manager/manager-subordi
 import { SidebarFieldComponent } from './components/ui_elements/sidebar-field/sidebar-field.component';
 import { ManagerComponent } from './features/manager/manager/manager.component';
 import { UnassignedTicketsComponent } from './features/l2admin/unassigned-tickets/unassigned-tickets.component';
-import { AssignedTicketsComponent } from './features/assigned-tickets/assigned-tickets.component';
+import { AssignedTicketsComponent } from './features/l2admin/assigned-tickets/assigned-tickets.component';
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
 import { ManagerViewEmployeeTicketsComponent } from './features/manager/manager-view-employee-tickets/manager-view-employee-tickets.component';
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
-  { path: 'l2report/:id', component: L2ReportComponent },
+  { path: 'l2report/2', component: L2ReportComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   {
     path: 'ticketnotesattachments',

@@ -8,8 +8,7 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class TicketDescriptionComponent {
   ticket: any = [];
-  @Input()  ticketDetails: any;
- 
-  constructor(private agentService: AgentService) {}
+  @Input() ticketDetails: any;
 
+  constructor(private agentService: AgentService) {}
 }
