@@ -1,0 +1,18 @@
+<div
+  class="d-block justify-content-center mt-4 ms-5"
+  *ngFor="let displaybar of displaybars; let index = index"
+>
+  <div
+    class="element_bar col-8 p-1 d-flex justify-content-between"
+    (click)="OpenOptions(index)"
+  >
+    {{ displaybar.title }}
+    <img [src]="displaybar.titleicon" />
+  </div>
+
+  <ng-container *ngIf="showArray[index]">
+    <ng-container *ngFor="let subtitle of displaybar.inner">
+      <div class="options_content col-8 p-2">{{ subtitle }}</div>
+    </ng-container>
+  </ng-container>
+</div>

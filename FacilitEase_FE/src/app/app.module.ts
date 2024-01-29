@@ -77,6 +77,12 @@ import { FilterComponent } from './components/layout/filter/filter.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { L1adminComponent } from './features/L1admin/l1admin/l1admin.component';
+import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
+import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/dynamic-search.component';
+import { HighlightPipe } from './features/service/highlightPipe/highlight.pipe';
+import { AssignRoleComponent } from './features/L1admin/assign-role/assign-role.component';
+import { DisplayEmployeeDetailsComponent } from './components/layout/display-employee-details/display-employee-details.component';
 import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
 import { MatCardModule } from '@angular/material/card';
 import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
@@ -120,7 +126,6 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     SidebarSubfieldComponent,
     ManagerSubordinatesComponent,
     ManagerComponent,
-    TrDropdownComponent,
     L2AdminComponent,
     UnassignedTicketsComponent,
     AssignedTicketsComponent,
@@ -139,6 +144,12 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
+    L1adminComponent,
+    L1DataEntryComponent,
+    DynamicSearchComponent,
+    HighlightPipe,
+    AssignRoleComponent,
+    DisplayEmployeeDetailsComponent,
     EmployeeCardsComponent,
     AddDepartmentFormComponent,
     EmployeeMyTicketsComponent,

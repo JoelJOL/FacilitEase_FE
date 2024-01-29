@@ -31,11 +31,19 @@ import { TicketNotesAttachmentsComponent } from './components/layout/ticket-note
 import { TicketRaisedAssignedComponent } from './components/layout/ticket-raised-assigned/ticket-raised-assigned.component';
 import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
+import { L3adminComponent } from './features/l3admin/l3admin/l3admin.component';
+import { L2AdminComponent } from './features/l2admin/l2admin/l2admin.component';
+import { L1adminComponent } from './features/L1admin/l1admin/l1admin.component';
+import { AssignRoleComponent } from './features/L1admin/assign-role/assign-role.component';
+import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/dynamic-search.component';
+import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
+
 const routes: Routes = [
   { path: 'form', component: TrFormComponent },
   { path: 'xxx', component: SidebarComponent }, 
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
+  { path: 'l2', component: L2AdminComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
   { path: 'manager', component: ManagerComponent },
@@ -51,6 +59,18 @@ const routes: Routes = [
   {
     path: 'ticketnotesattachments',
     component: TicketNotesAttachmentsComponent,
+  },
+  {
+    path: 'l1',
+    component: L1adminComponent,
+  },
+  {
+    path: 'search',
+    component: L1DataEntryComponent,
+  },
+  {
+    path: 'entries',
+    component: AssignRoleComponent,
   },
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
