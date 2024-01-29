@@ -76,6 +76,9 @@ import { SearchBarComponent } from './components/ui_elements/search-bar/search-b
 import { FilterComponent } from './components/layout/filter/filter.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
+import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
+import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
+import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 import { SupportComponent } from './components/ui_elements/support/support.component';
 
 @NgModule({
@@ -135,6 +138,8 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     EmployeeComponent,
     L2adminSubordinatesComponent,
     L2adminTicketViewComponent,
+    AddDepartmentFormComponent,
+    EmployeeMyTicketsComponent,
     SupportComponent,
   ],
   imports: [
@@ -142,11 +147,9 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     NgChartsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -167,4 +170,3 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-// BsDropdownModule.forRoot(),

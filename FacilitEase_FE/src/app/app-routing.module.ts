@@ -31,9 +31,10 @@ import { TicketNotesAttachmentsComponent } from './components/layout/ticket-note
 import { TicketRaisedAssignedComponent } from './components/layout/ticket-raised-assigned/ticket-raised-assigned.component';
 import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
+import { EmployeeComponent } from './features/employee/employee/employee.component';
 const routes: Routes = [
   { path: 'form', component: TrFormComponent },
-  { path: 'xxx', component: SidebarComponent }, // Default route to Home component
+  { path: 'xxx', component: SidebarComponent }, 
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
