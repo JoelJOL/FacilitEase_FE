@@ -1,15 +1,7 @@
-<router-outlet></router-outlet>
-<div class="manager-dashboard row">
-<div class="col-3">
-  <app-sidebar
-    [fields]="yourFieldsArray"
-    (clicked)="onFieldClicked($event)"
-  ></app-sidebar>
-</div>
-<div class="col-9">
+
 <div class="container mt-1">
     <div class="ticket-container">
-      <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
+      <app-manager-ticket-info [ticketDetails]="ticketDetails"></app-manager-ticket-info>
       <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
       <app-ticket-notes-attachments></app-ticket-notes-attachments>
 
@@ -29,17 +21,16 @@
 
     <!-- Buttons in the Next Row -->
     <div class="button-row">
-      <div class="common-btn" id="button">
+      <div class="common-btn" id="button" (click)="openConfirmationModal('accept')">
         <app-button color="submit">Accept</app-button>
       </div>
-      <div class="common-btn" id="button">
+      <div class="common-btn" id="button" (click)="openConfirmationModal('reject')">
         <app-button color="rejected">Reject</app-button>
       </div>
-      <div class="common-btn" id="button">
+      <div class="common-btn" id="button" (click)="openConfirmationModal('forward')">
         <app-button color="rejected">Forward for Approval</app-button>
       </div>
     </div>
+      
     </div>
   </div>
-</div>
-</div>

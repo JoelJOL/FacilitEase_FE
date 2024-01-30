@@ -39,6 +39,7 @@ import { AssignRoleComponent } from './features/L1admin/assign-role/assign-role.
 import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/dynamic-search.component';
 import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
+import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 
 const routes: Routes = [
   { path: 'form', component: TrFormComponent },
@@ -53,6 +54,8 @@ const routes: Routes = [
   { path: 'view-ticket', component: AgentTicketsViewComponent },
   { path: 'view-ticket/:id', component: AgentTicketViewComponent },
   { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
+  { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
+  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent},
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
@@ -76,6 +79,10 @@ const routes: Routes = [
   },
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
+  {path: 'manager-view-employee-tickets',component:ManagerViewEmployeeTicketsComponent},
+  {path: 'manager-view-waiting-tickets',component:ManagerViewWaitingTicketsComponent},
+  {path: 'manager-view-ticket-detail/:Id',component:ManagerViewTicketDetailComponent},
+  { path: 'l2admin-ticket-view/:Id', component: L2adminTicketViewComponent },
   { path: '**', component: ButtonComponent },
 ];
 

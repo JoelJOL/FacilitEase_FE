@@ -1,34 +1,6 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Raised Tickets</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Ticket Id</th>
-        <th>Ticket Name</th>
-        <th>Open Date and Time</th>
-        <th>Priority</th>
-        <th>Status</th>
-        <th>Raised By</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ticket of tickets">
-        <td>{{ ticket.id }}</td>
-        <td>{{ ticket.ticketName }}</td>
-        <td>{{ ticket.submittedDate }}</td>
-        <td>{{ ticket.priorityName }}</td>
-        <td>{{ ticket.statusName }}</td>
-        <td>{{ ticket.employeeName }}</td>
-        <td>
-          <button
-            class="view-button"
-            [routerLink]="['/view-ticket', ticket.id]"
-          >
-            View
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<app-data-table-new
+  [headers]="headers"
+  [apiLink]="apiLink"
+  (rowClicked)="onRowClicked($event)"
+  id="datatable"
+></app-data-table-new>

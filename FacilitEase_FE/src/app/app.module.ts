@@ -90,6 +90,11 @@ import { AddDepartmentFormComponent } from './components/layout/add-department-f
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 import { SupportComponent } from './components/ui_elements/support/support.component';
 import { RoleDisplayDropdownComponent } from './components/ui_elements/role-display-dropdown/role-display-dropdown.component';
+import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
+import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
+import { MasterService } from './features/service/dataService/master.service';
+import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
+import { SupportComponent } from './components/layout/support/support.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -158,6 +163,9 @@ import { RoleDisplayDropdownComponent } from './components/ui_elements/role-disp
     EmployeeMyTicketsComponent,
     SupportComponent,
     RoleDisplayDropdownComponent,
+    TruncatePipe,
+    ManagerTicketInfoComponent,
+    ConfirmationModalComponent,
   ],
   imports: [
     HttpClientModule,
@@ -185,6 +193,7 @@ import { RoleDisplayDropdownComponent } from './components/ui_elements/role-disp
     ApproveDenyService,
     EmployeeBulkuploadService,
     ModalService,
+    MasterService,
   ],
   bootstrap: [AppComponent],
 })
