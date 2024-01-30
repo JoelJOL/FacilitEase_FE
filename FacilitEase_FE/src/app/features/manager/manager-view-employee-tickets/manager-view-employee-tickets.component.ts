@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MasterService } from '../../../../app/features/service/dataService/master.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,11 +11,18 @@ interface Field {
   templateUrl: './manager-view-employee-tickets.component.html',
   styleUrls: ['./manager-view-employee-tickets.component.css'],
 })
-
 export class ManagerViewEmployeeTicketsComponent implements OnInit {
   @Output() rowClicked = new EventEmitter<number>();
-  headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Assigned To', 'Submitted Date', 'Priority', 'Status'];
-  apiLink: string='';
+  headers: string[] = [
+    'ID',
+    'Ticket Name',
+    'Employee Name',
+    'Assigned To',
+    'Submitted Date',
+    'Priority',
+    'Status',
+  ];
+  apiLink: string = '';
 
   title = 'FaciltEase_FE';
   yourFieldsArray: Field[] = [
@@ -29,14 +36,13 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
     },
   ];
   showManagerTickets: boolean = false;
-  constructor(private masterService: MasterService, private router : Router) {}
+  constructor(private masterService: MasterService, private router: Router) {}
 
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Employee Tickets') {
       this.router.navigate(['manager-view-employee-tickets']);
-    } 
-    else if (clickedField.title === 'Waiting for Approval') {
+    } else if (clickedField.title === 'Waiting for Approval') {
       this.router.navigate(['manager-view-waiting-tickets']);
     }
   }
@@ -47,6 +53,5 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
     console.log('Row clicked in parent component with ID:', rowId);
     this.rowClicked.emit(rowId);
     this.router.navigate(['manager-view-ticket-detail', rowId]);
-    
   }
 }

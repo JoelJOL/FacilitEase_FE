@@ -88,7 +88,7 @@ import { EmployeeCardsComponent } from './components/layout/employee-cards/emplo
 import { MatCardModule } from '@angular/material/card';
 import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
-import { SupportComponent } from './components/ui_elements/support/support.component';
+import { SupportComponent } from './components/layout/support/support.component';
 @NgModule({
   declarations: [
     AppComponent,

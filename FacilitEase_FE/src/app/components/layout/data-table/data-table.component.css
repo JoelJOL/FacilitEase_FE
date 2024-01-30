@@ -1,9 +1,6 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
-
- th {
+th {
   background: #dad7ff !important;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
   font-size: large;
   font-weight: 1000;
 }
@@ -30,5 +27,5 @@ th:last-child {
   transform: scale(1.01);
   border-radius: 8px;
   background: #ededed;
-  font-weight:550;
-} 
+  font-weight: 550;
+}

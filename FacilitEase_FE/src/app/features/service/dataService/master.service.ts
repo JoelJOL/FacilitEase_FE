@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MasterService {
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
   private apiLink: string =
     'https://localhost:7049/api/Manager/GetTicketByManager/2';
@@ -14,6 +14,8 @@ export class MasterService {
     'https://localhost:7049/api/l2/escalated-tickets';
   private apiLinkAssigned: string =
     'https://localhost:7049/api/l2/assigned-tickets';
+  private apiLinkUnassigned: string =
+    'https://localhost:7049/api/l2/unassigned-tickets';
 
   getApiLink(): string {
     const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
@@ -32,6 +34,9 @@ export class MasterService {
   }
   getApiLinkAssigned(): string {
     return this.apiLinkAssigned;
+  }
+  getApiLinkUnassigned(): string {
+    return this.apiLinkUnassigned;
   }
   private apiLinkL2Subordinates: string =
     'https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=11';
