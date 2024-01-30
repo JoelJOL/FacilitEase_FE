@@ -1,0 +1,18 @@
+<div class="dropdown">
+  <button
+    class="dropdown_button col-2 d-flex justify-content-between"
+    (click)="toggleDropdown()"
+  >
+    {{ selectedOption || "Assign a role" }}
+    <img src="./assets/down.png" />
+  </button>
+  <div class="dropdown_content col-2" *ngIf="showDropdown">
+    <div
+      class="option"
+      *ngFor="let option of options"
+      (click)="selectOption(option)"
+    >
+      {{ option }}
+    </div>
+  </div>
+</div>
