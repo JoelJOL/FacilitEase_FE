@@ -42,7 +42,7 @@ import { EmployeeComponent } from './features/employee/employee/employee.compone
 
 const routes: Routes = [
   { path: 'form', component: TrFormComponent },
-  { path: 'xxx', component: SidebarComponent }, 
+  { path: 'xxx', component: SidebarComponent },
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   { path: 'l2', component: L2AdminComponent },
   { path: 'sidebar', component: SidebarComponent },
@@ -52,11 +52,11 @@ const routes: Routes = [
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
   { path: 'view-ticket', component: AgentTicketsViewComponent },
   { path: 'view-ticket/:id', component: AgentTicketViewComponent },
-  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent},
+  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
-  { path: 'l2report/2', component: L2ReportComponent },
+  { path: 'l2report/:id', component: L2ReportComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   {
     path: 'ticketnotesattachments',

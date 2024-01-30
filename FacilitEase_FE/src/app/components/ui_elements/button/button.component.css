@@ -6,17 +6,17 @@ button {
   font-size: 16px;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   transition: background-color 0.3s ease;
 }
 
 .btn-accepted {
-  background-color: #0fca18;
+  background-color: #eb28da;
   color: #fff;
 }
 
 .btn-accepted:hover {
-  background-color: #0da72f;
+  background-color: #a51f9a;
 }
 
 .btn-rejected {
