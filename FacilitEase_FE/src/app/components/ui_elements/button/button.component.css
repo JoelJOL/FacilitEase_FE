@@ -36,5 +36,11 @@ button {
 .btn-submit:hover {
   background-color: #4315ad;
 }
-
+.btn-paginate {
+  background-color: #6f00ff;
+  color: #fff;
+}
+.btn-paginate:hover {
+  background-color: #4905a2;
+}
 /* Add styles for more colors as needed */

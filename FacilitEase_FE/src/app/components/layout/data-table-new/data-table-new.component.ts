@@ -1,4 +1,11 @@
-import { Component, Input, Output, OnInit, EventEmitter, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnInit,
+  EventEmitter,
+  ViewChild,
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FilterComponent } from '../filter/filter.component';
 import { Observable } from 'rxjs';
@@ -22,18 +29,18 @@ export interface ApiResponse {
 @Component({
   selector: 'app-data-table-new',
   templateUrl: './data-table-new.component.html',
-  styleUrls: ['./data-table-new.component.css']
+  styleUrls: ['./data-table-new.component.css'],
 })
 export class DataTableNewComponent implements OnInit {
   @ViewChild(FilterComponent) filterModal!: FilterComponent;
   @Input() headers: string[] = [];
-  @Input() apiLink !: string;
-  @Input() filters: string[] =[];
+  @Input() apiLink!: string;
+  @Input() filters: string[] = [];
   rows: any[] = [];
   keys: string[] = [];
   currentPage: number = 0;
   pageSize: number = 10;
-  sortColumn: string = 'id';
+  sortColumn: string = 'Id';
   sortDirection: string = 'asc';
   totalDataCount: number = 0;
   searchQuery: string = '';
@@ -41,7 +48,8 @@ export class DataTableNewComponent implements OnInit {
   @Output() totalDataCountChange = new EventEmitter<number>();
   @Output() rowClicked : EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -49,7 +57,7 @@ export class DataTableNewComponent implements OnInit {
 
   private loadData() {
     const url = `${this.apiLink}?sortField=${this.sortColumn}&sortOrder=${this.sortDirection}&pageIndex=${this.currentPage}&pageSize=${this.pageSize}&searchQuery=${this.searchQuery}`;
-    this.httpClient.get<ApiResponse>(url).subscribe(response => {
+    this.httpClient.get<ApiResponse>(url).subscribe((response) => {
       this.totalDataCount = response.totalDataCount;
       this.totalDataCountChange.emit(this.totalDataCount);
       this.rows = response.data;
@@ -63,11 +71,9 @@ export class DataTableNewComponent implements OnInit {
         'low-priority': cellValue === 'Low',
         'medium-priority': cellValue === 'Medium',
         'high-priority': cellValue === 'High',
-        'critical-priority': cellValue === 'Critical'
-        
+        'critical-priority': cellValue === 'Critical',
       };
-      
-    } 
+    }
     if (columnKey === 'status') {
       return {
         'open-status': cellValue === 'Open',
@@ -75,16 +81,15 @@ export class DataTableNewComponent implements OnInit {
         'onhold-status': cellValue === 'On Hold',
         'resolved-status': cellValue === 'Resolved',
         'cancelled-status': cellValue === 'Cancelled',
-        'escalated-status': cellValue === 'Escalated'
-      }
-    }
-      else{
+        'escalated-status': cellValue === 'Escalated',
+      };
+    } else {
       return {};
-      }
     }
-    changePage(page: number) {
-      this.currentPage = page;
-      this.loadData();
+  }
+  changePage(page: number) {
+    this.currentPage = page;
+    this.loadData();
   }
   onSort(column: string, direction: string): void {
     this.sortColumn = column;
@@ -101,10 +106,10 @@ export class DataTableNewComponent implements OnInit {
 
     this.loadData();
   }
-
   onRowClick(Id: number): void {
     console.log('Clicked on row with Ticket ID:', Id);
     this.rowClicked.emit(Id)
   }
   
-  }
+
+}
