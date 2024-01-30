@@ -44,8 +44,8 @@ export class DataTableNewComponent implements OnInit {
   searchQuery: string = '';
 
   @Output() totalDataCountChange = new EventEmitter<number>();
-  // @Output() RowClicked : EventEmitter<any> = new EventEmitter<any>();
-  @Output() rowClicked = new EventEmitter<number>();
+  @Output() rowClicked : EventEmitter<any> = new EventEmitter<any>();
+
 
   constructor(private httpClient: HttpClient) {}
 
@@ -102,4 +102,5 @@ export class DataTableNewComponent implements OnInit {
     console.log('Clicked on row with Ticket ID:', Id);
     this.rowClicked.emit(Id);
   }
+
 }

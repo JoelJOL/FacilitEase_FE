@@ -29,6 +29,18 @@ export class MasterService {
     const url = `https://localhost:7049/api/Manager/ViewTicketDetails/${ticketId}`;
     return this.http.get<any>(url);
   }
+  changePriority(ticketId: number, newPriorityId: number): Observable<any> {
+    const apiUrl = 'https://localhost:7049/api/Manager';
+    return this.http.post(`${apiUrl}/ChangePriority`, { ticketId, newPriorityId });
+  }
+  ticketDecision(ticketId: number, newStatusId: number): Observable<any> {
+    const apiUrl = 'https://localhost:7049/api/Manager';
+    return this.http.post(`${apiUrl}/TicketDecision`, { ticketId, newStatusId });
+  }
+  sendForApproval(ticketId: number, currentControllerId: number): Observable<any> {
+    const apiUrl = 'https://localhost:7049/api/Manager';
+    return this.http.post(`${apiUrl}/SendForApproval`, { ticketId, currentControllerId });
+  }
   getApiLinkEscalated(): string {
     return this.apiLinkEscalated;
   }

@@ -1,0 +1,30 @@
+<div class="ticket_info">
+    <div class="ticket_details">
+      <p>
+        <span class="ticket_status_box">{{ ticketDetails.statusName }}</span>
+        <span class="ticket_id"> Ticket ID: #{{ ticketDetails.id }}</span>
+      </p>
+    </div>
+    <div *ngIf="!editingPriority" class="ticket_priority">
+      <p>
+        <span
+          [ngClass]="{ ticket_priority_box: true }"
+          [style.background-color]="getPriorityColor()"
+          (click)="startEditingPriority()"
+        >
+        {{ ticketDetails.priorityName }} ▼
+        </span>
+      </p>
+    </div>
+    <div *ngIf="editingPriority" class="ticket_priority">
+        <p>
+          <select  (change)="onPriorityChange()">
+            <option value="-1" disabled>Select Priority</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+            <option value="4">Critical</option>
+          </select>
+        </p>
+      </div>
+  </div>
