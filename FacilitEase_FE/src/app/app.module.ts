@@ -90,6 +90,8 @@ import { AddDepartmentFormComponent } from './components/layout/add-department-f
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 import { SupportComponent } from './components/ui_elements/support/support.component';
 import { DepartmentheadComponent } from './features/departmenthead/departmenthead/departmenthead.component';
+import { DepartmentHeadDataTableComponent } from './features/departmenthead/department-head-data-table/department-head-data-table.component';
+import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -158,6 +160,8 @@ import { DepartmentheadComponent } from './features/departmenthead/departmenthea
     EmployeeMyTicketsComponent,
     SupportComponent,
     DepartmentheadComponent,
+    DepartmentHeadDataTableComponent,
+    DetailedDhTicketComponent,
   ],
   imports: [
     HttpClientModule,

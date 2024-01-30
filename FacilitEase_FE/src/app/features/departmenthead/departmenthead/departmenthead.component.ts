@@ -59,7 +59,7 @@ export class DepartmentheadComponent {
         this.router.navigate(['unassigned-tickets']);
       } else if (event.subfield === 'Assigned Tickets') {
         this.showDepartmentHeadTickets = true;
-        this.router.navigate(['assigned-tickets']);
+        this.router.navigate(['departmentHead-tickets']);
       } else if (event.subfield === 'Escalated Tickets') {
         this.showDepartmentHeadTickets = true;
         this.router.navigate(['employee-card']);

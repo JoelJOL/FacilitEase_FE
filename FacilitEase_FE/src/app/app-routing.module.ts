@@ -40,6 +40,8 @@ import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/
 import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
 import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
+import { DepartmentHeadDataTableComponent } from './features/departmenthead/department-head-data-table/department-head-data-table.component';
+import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 const routes: Routes = [
   { path: 'form', component: TrFormComponent },
   { path: 'xxx', component: SidebarComponent },
@@ -76,8 +78,17 @@ const routes: Routes = [
   },
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
-  { path: '**', component: ButtonComponent },
+
   { path: 'employee-card', component: EmployeeCardsComponent },
+  {
+    path: 'departmentHead-tickets',
+    component: DepartmentHeadDataTableComponent,
+  },
+  {
+    path: 'department-head-tc-detail/:Id',
+    component: DetailedDhTicketComponent,
+  },
+  { path: '**', component: ButtonComponent },
 ];
 
 @NgModule({

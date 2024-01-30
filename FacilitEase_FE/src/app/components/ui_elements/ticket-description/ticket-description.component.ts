@@ -9,6 +9,8 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 export class TicketDescriptionComponent {
   ticket: any = [];
   @Input() ticketDetails: any;
-
+  ngOnChanges() {
+    console.log(this.ticketDetails);
+  }
   constructor(private agentService: AgentService) {}
 }
