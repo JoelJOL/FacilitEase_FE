@@ -28,13 +28,14 @@ export class L2adminTicketViewComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.ticketId = Number(params['id']);
+      this.ticketId = Number(params['Id']);
       console.log(this.ticketId);
     });
 
     this.agentService.getData(this.ticketId).subscribe((data) => {
-      this.ticketDetails = data[0];
-      console.log(data);
+      console.log('API Response:', data);
+      this.ticketDetails = data;
+      console.log('Ticket Details:', this.ticketDetails);
     });
     this.loadAgents();
   }

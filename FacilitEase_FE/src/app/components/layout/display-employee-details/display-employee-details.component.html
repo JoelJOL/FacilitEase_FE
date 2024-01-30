@@ -1,7 +1,7 @@
 <div class="display_board p-5 col-7 m-5">
   <h1>{{ heading }}</h1>
   <div *ngFor="let title of titles; let index = index">
-    <p>{{ title }}: &nbsp;&nbsp;{{ data["gender"] }}</p>
+    <p>{{ title }}: &nbsp;&nbsp;{{ data[index] }}</p>
     <br />
   </div>
 </div>
