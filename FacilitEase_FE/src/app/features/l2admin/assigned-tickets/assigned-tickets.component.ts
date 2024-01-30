@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '../../service/dataService/master.service';
 
@@ -32,7 +32,6 @@ export class AssignedTicketsComponent {
   headers: string[] = [
     'ID',
     'Ticket Name',
-    'Ticket Description',
     'Raised By',
     'Assigned To',
     'Submitted Date',
@@ -41,9 +40,13 @@ export class AssignedTicketsComponent {
   ];
   apiLink: string = '';
 
-  constructor(private masterService: MasterService) {}
+  constructor(private masterService: MasterService, private router: Router) {}
 
   ngOnInit(): void {
     this.apiLink = this.masterService.getApiLinkAssigned();
+  }
+  onRowClicked(Id: any) {
+    console.log('Row clicked in parent component with ID:', Id);
+    // this.router.navigate(['l2admin-ticket-view', Id]);
   }
 }
