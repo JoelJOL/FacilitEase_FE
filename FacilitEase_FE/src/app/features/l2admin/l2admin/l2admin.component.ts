@@ -49,7 +49,7 @@ export class L2AdminComponent {
       this.router.navigate(['l2admin-subordinates']);
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2report/:id']);
+      this.router.navigate(['l2report/2']);
     } else {
       this.showL2AdminTickets = false;
     }
