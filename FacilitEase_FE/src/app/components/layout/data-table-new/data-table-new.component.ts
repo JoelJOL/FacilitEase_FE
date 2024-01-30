@@ -15,8 +15,10 @@ export interface TicketData {
   employeeName: string;
   assignedTo: string;
   submittedDate: string;
+  resolvedDate: string;
   priority: string;
   status: string;
+
 }
 
 export interface ApiResponse {
@@ -62,6 +64,7 @@ export class DataTableNewComponent implements OnInit {
       this.keys = Object.keys(this.rows[0]);
     });
   }
+  
   getCellClasses(columnKey: string, cellValue: any) {
     if (columnKey === 'priority') {
       return {
@@ -96,11 +99,17 @@ export class DataTableNewComponent implements OnInit {
   search(searchQuery: string): void {
     this.searchQuery = searchQuery;
     this.currentPage = 0;
+    this.loadDataDebounced();
+  }
+
+  loadDataDebounced(): void {
+
     this.loadData();
   }
   onRowClick(Id: number): void {
     console.log('Clicked on row with Ticket ID:', Id);
-    this.rowClicked.emit(Id);
+    this.rowClicked.emit(Id)
   }
+  
 
 }
