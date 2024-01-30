@@ -76,6 +76,9 @@ const routes: Routes = [
   },
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
+  {path: 'manager-view-employee-tickets',component:ManagerViewEmployeeTicketsComponent},
+  {path: 'manager-view-waiting-tickets',component:ManagerViewWaitingTicketsComponent},
+  {path: 'manager-view-ticket-detail/:Id',component:ManagerViewTicketDetailComponent},
   { path: '**', component: ButtonComponent },
 ];
 

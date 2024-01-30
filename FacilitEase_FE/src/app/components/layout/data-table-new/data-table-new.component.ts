@@ -31,13 +31,13 @@ export class DataTableNewComponent implements OnInit {
   keys: string[] = [];
   currentPage: number = 0;
   pageSize: number = 10;
-  sortColumn: string = 'id';
+  sortColumn: string = 'Id';
   sortDirection: string = 'asc';
   totalDataCount: number = 0;
   searchQuery: string = '';
 
   @Output() totalDataCountChange = new EventEmitter<number>();
-  // @Output() RowClicked : EventEmitter<any> = new EventEmitter<any>();
+  @Output() rowClicked : EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -93,8 +93,9 @@ export class DataTableNewComponent implements OnInit {
     this.currentPage = 0;
     this.loadData();
   }
-  onRowClick(employeeId: number): void {
-    console.log('Clicked on row with Ticket ID:', employeeId);
+  onRowClick(Id: number): void {
+    console.log('Clicked on row with Ticket ID:', Id);
+    this.rowClicked.emit(Id);
   }
   
   }
