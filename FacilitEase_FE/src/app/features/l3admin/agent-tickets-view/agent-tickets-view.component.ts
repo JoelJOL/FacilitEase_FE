@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AgentService } from '../../service/httpService/agent.service';
 import { Router } from '@angular/router';
 
@@ -8,15 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./agent-tickets-view.component.css']
 })
 export class AgentTicketsViewComponent {
-  tickets:any=[];
+
+  headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Submitted Date', 'Priority', 'Status'];
+  apiLink: string='';
   constructor(private agentService: AgentService, private router: Router) {}
   ngOnInit() {
-    this.agentService.getAllTickets().subscribe(data => {
-      this.tickets=data;
-       console.log(data);     
-    });
+    this.apiLink = this.agentService.getAllTickets();
+    console.log(this.apiLink);
   }
-  viewTicket() {
-    this.router.navigate(['/agentticket']);
+  onRowClicked(Id: any) {
+    console.log('Row clicked in parent component with ID:', Id);
+    this.router.navigate(['view-ticket-in-detail', Id]);
   }
+
 }

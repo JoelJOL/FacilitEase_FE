@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 
@@ -9,14 +9,22 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class ResolvedTicketsViewComponent {
   tickets:any=[];
+  @Output() rowClicked = new EventEmitter<number>();
+  headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Submitted Date','Resolved Date', 'Priority'];
+  apiLink: string='';
   constructor(private agentService: AgentService, private router: Router) {}
   ngOnInit() {
-    this.agentService.getAllResolvedTickets().subscribe(data => {
-      this.tickets=data;
-       console.log(data);     
-    });
+    this.apiLink = this.agentService.getAllResolvedTickets();
+    console.log(this.apiLink);
   }
   viewTicket() {
     this.router.navigate(['/agentticket']);
   }
+
+  onRowClicked(Id: any) {
+    console.log('Row clicked in parent component with ID:', Id);
+    this.router.navigate(['view-ticket-in-detail', Id]);
+    
+  }
+
 }

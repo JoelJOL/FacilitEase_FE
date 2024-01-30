@@ -34,20 +34,22 @@ export class AgentService {
     return this.http.patch(apiUrl, null);
   }
   
-  getAllResolvedTickets():Observable<any>{
-    const agentId = 3;
-  const apiUrl = `https://localhost:7049/api/L3Admin/resolved-tickets-by-agent/${agentId}`;
-  return this.http.get(apiUrl);
-}
+ 
 
 getCommentText(ticketId: any): Observable<string> {
   const url = `https://localhost:7049/api/L3Admin/ticket-commenttext/${ticketId}`;
   return this.http.get(url, { responseType: 'text' });
 }
 
-  getAllTickets(): Observable<any> {
+  getAllTickets(): string {
     const agentId = 3;
-    const apiUrl = `https://localhost:7049/api/L3Admin/ticketdetails-by-agent/${agentId}`;
-    return this.http.get(apiUrl);
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetTicketsByAgent/${agentId}`;
+    return apiUrl;
   }
+
+  getAllResolvedTickets():string{
+    const agentId = 3;
+  const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${agentId}`;
+  return (apiUrl);
+}
 }

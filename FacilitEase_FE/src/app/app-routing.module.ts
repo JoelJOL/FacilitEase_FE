@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
   { path: 'view-ticket', component: AgentTicketsViewComponent },
-  { path: 'view-ticket/:id', component: AgentTicketViewComponent },
+  { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
   { path: 'resolved-tickets', component: ResolvedTicketsViewComponent},
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
