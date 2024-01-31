@@ -74,7 +74,6 @@ import { PaginationComponent } from './components/ui_elements/pagination/paginat
 import { SearchBarComponent } from './components/ui_elements/search-bar/search-bar.component';
 import { FilterComponent } from './components/layout/filter/filter.component';
 import { L2adminSubordinatesComponent } from './features/l2admin/l2admin-subordinates/l2admin-subordinates.component';
-import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { HeaderLayoutComponent } from './components/layout/header-layout/header-layout.component';
 import { ResolvedTicketsViewComponent } from './features/l3admin/resolved-tickets-view/resolved-tickets-view.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -97,6 +96,9 @@ import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
 import { MasterService } from './features/service/dataService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
+import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
+import { DetailsAssignedComponent } from './features/l2admin/details-assigned/details-assigned.component';
+import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/details-escalated.component';
 import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
 import { TicketNaSimpleComponent } from './components/layout/ticket-na-simple/ticket-na-simple.component';
 import { OutsideClickDirective } from './features/service/directive/outside-click.directive';
@@ -174,6 +176,8 @@ import { OutsideClickDirective } from './features/service/directive/outside-clic
     TruncatePipe,
     ManagerTicketInfoComponent,
     ConfirmationModalComponent,
+    DetailsAssignedComponent,
+    DetailsEscalatedComponent,
     ManagerViewTicketSimpleComponent,
     TicketNaSimpleComponent,
     OutsideClickDirective,

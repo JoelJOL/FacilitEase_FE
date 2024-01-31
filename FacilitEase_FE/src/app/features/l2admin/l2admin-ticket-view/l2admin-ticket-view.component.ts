@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
@@ -14,9 +14,9 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class L2adminTicketViewComponent {
   customHeaderText = 'Supported Attachments';
-  ticketId: number = 0;
   ticketDetails: any = [];
   modalRef: BsModalRef | undefined;
+  ticketId: any;
 
   constructor(
     private route: ActivatedRoute,

@@ -3,6 +3,7 @@ import { DropDownService } from '@app/features/service/httpService/dropdown.serv
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/master.service';
+import { SidebarService } from '@app/features/service/dataService/sidebar.service';
 
 @Component({
   selector: 'app-unassigned-tickets',
@@ -80,13 +81,18 @@ export class UnassignedTicketsComponent {
   ];
   apiLink: string = '';
 
-  constructor(private masterService: MasterService, private router: Router) {}
+  constructor(
+    private masterService: MasterService,
+    private router: Router,
+    private sidebarService: SidebarService
+  ) {}
 
   ngOnInit(): void {
     this.apiLink = this.masterService.getApiLinkUnassigned();
   }
+
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l2admin-ticket-view', Id]);
+    this.router.navigate(['l2/l2admin-ticket-view', Id]);
   }
 }
