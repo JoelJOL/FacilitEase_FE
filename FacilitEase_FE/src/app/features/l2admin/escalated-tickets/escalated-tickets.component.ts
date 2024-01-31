@@ -29,7 +29,6 @@ export class EscalatedticketsComponent {
   //       }
   //     );
   // }
-  @Output() rowClicked = new EventEmitter<number>();
 
   headers: string[] = [
     'ID',
@@ -49,7 +48,6 @@ export class EscalatedticketsComponent {
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    this.rowClicked.emit(rowId);
-    this.router.navigate(['manager-view-ticket-detail', rowId]);
+    this.router.navigate(['l2/details-escalated', rowId]);
   }
 }

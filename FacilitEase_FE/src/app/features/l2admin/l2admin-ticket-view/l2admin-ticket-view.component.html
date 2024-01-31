@@ -4,20 +4,20 @@
     <app-ticket-description
       [ticketDetails]="ticketDetails"
     ></app-ticket-description>
-    <app-ticket-attachments
+    <!-- <app-ticket-attachments
       [headerText]="customHeaderText"
       [ticketDetails]="ticketDetails"
-    ></app-ticket-attachments>
+    ></app-ticket-attachments> -->
+    <app-assign-dropdown
+      class="assign_dropdown"
+      [label]="'Assign To'"
+      [options]="agents"
+      displayKey="agentName"
+      valueProperty="agentId"
+      (onItemSelected)="onAgentSelected($event, ticketId)"
+    ></app-assign-dropdown>
     <app-ticket-notes-attachments></app-ticket-notes-attachments>
     <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub>
-    <div class="button-row">
-      <app-assign-dropdown
-        [label]="'Assign To'"
-        [options]="agents"
-        displayKey="agentName"
-        valueProperty="agentId"
-        (onItemSelected)="onAgentSelected($event, ticketId)"
-      ></app-assign-dropdown>
-    </div>
+    <div class="button-row"></div>
   </div>
 </div>

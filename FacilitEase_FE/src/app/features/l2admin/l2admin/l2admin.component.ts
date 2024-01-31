@@ -53,10 +53,13 @@ export class L2AdminComponent {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'My Team') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin-subordinates']);
+      this.router.navigate(['l2/l2admin-subordinates']);
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2report/2']);
+      this.router.navigate(['l2/l2report/2']);
+    } else if (clickedField.title === 'Data Entry') {
+      this.showL2AdminTickets = true;
+      this.router.navigate(['l2/l2-data-entry']);
     } else {
       this.showL2AdminTickets = false;
     }
@@ -66,13 +69,13 @@ export class L2AdminComponent {
     if (event.field.title === 'Tickets') {
       if (event.subfield === 'Unassigned Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['unassigned-tickets']);
+        this.router.navigate(['l2/unassigned-tickets']);
       } else if (event.subfield === 'Assigned Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['assigned-tickets']);
+        this.router.navigate(['l2/assigned-tickets']);
       } else if (event.subfield === 'Escalated Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['escalated-tickets']);
+        this.router.navigate(['l2/escalated-tickets']);
       }
     }
   }

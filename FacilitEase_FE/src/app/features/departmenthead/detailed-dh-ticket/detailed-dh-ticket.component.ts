@@ -2,13 +2,24 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DepartmentHeadService } from '@app/features/service/httpService/department-head.service';
 
+export interface TicketDetails {
+  id: number;
+  ticketName: string;
+  employeeName: string;
+  assignedTo: string;
+  submittedDate: string;
+  priorityName: string;
+  statusName: string;
+  ticketDescription: string;
+  documentLink: string;
+}
 @Component({
   selector: 'app-detailed-dh-ticket',
   templateUrl: './detailed-dh-ticket.component.html',
   styleUrls: ['./detailed-dh-ticket.component.css'],
 })
 export class DetailedDhTicketComponent implements OnInit {
-  ticketDetails1: any;
+  ticketDetails!: TicketDetails;
   customHeaderText: string = '';
   ticketId: number | undefined;
 
@@ -25,9 +36,9 @@ export class DetailedDhTicketComponent implements OnInit {
       this.departmentHeadService
         .getdepartmentHeadTicketDetails(ticketId)
         .subscribe((data) => {
-          this.ticketDetails1 = data[0];
-          return this.ticketDetails1 !== undefined;
-          console.log(data);
+          this.ticketDetails = data;
+
+          console.log(this.ticketDetails);
           console.log(22);
         });
     });

@@ -50,6 +50,10 @@ export class AgentService {
     return this.http.get(url, { responseType: 'text' });
   }
 
+updateComment(ticketId: number, newText: string,options?: any): Observable<any> {
+  return this.http.patch(`https://localhost:7049/api/L3Admin/update-comment/${ticketId}`, {newText},options);
+}
+
   getAllTickets(): string {
     const agentId = 3;
     const apiUrl = `https://localhost:7049/api/L3Admin/GetTicketsByAgent/${agentId}`;

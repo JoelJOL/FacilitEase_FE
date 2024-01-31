@@ -12,6 +12,8 @@ export interface TicketDetails {
   submittedDate: string;
   priorityName: string;
   statusName: string;
+  notes: string;
+  lastUpdate:string;
   ticketDescription: string;
   documentLink: string;
 }
@@ -22,7 +24,7 @@ export interface TicketDetails {
   styleUrls: ['./manager-view-ticket-detail.component.css']
 })
 export class ManagerViewTicketDetailComponent implements OnInit {
-  ticketId: number = 5;
+  ticketId: number = 0;
   ticketDetails!: TicketDetails;
 
   constructor(

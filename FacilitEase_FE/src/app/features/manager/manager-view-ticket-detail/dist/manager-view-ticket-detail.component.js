@@ -15,7 +15,7 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
         this.dialog = dialog;
         this.route = route;
         this.router = router;
-        this.ticketId = 5;
+        this.ticketId = 0;
     }
     ManagerViewTicketDetailComponent.prototype.ngOnInit = function () {
         var _this = this;

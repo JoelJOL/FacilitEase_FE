@@ -42,7 +42,7 @@
   <div class="form-group row">
     <label for="dob" class="col-sm-2 col-form-label">DOB:</label>
     <div class="col-sm-10">
-      <input type="text" id="dob" class="form-control" formControlName="dob" />
+      <input type="date" id="dob" class="form-control" formControlName="dob" />
     </div>
   </div>
 
@@ -79,6 +79,7 @@
         formControlName="managerId"
         (change)="onManagerSelected($event)"
       >
+        <option value="" disabled selected>Select Manager></option>
         <option *ngFor="let manager of managers" [value]="manager.managerId">
           {{ manager.managerName }}
         </option>
@@ -86,7 +87,61 @@
     </div>
   </div>
 
-  <!-- Add other form fields -->
+  <div class="form-group row">
+    <label for="departmentId" class="col-sm-2 col-form-label"
+      >DepartmentId:</label
+    >
+    <div class="col-sm-10">
+      <select
+        id="departmentId"
+        class="form-control"
+        formControlName="departmentId"
+        (change)="onDepartmentSelected($event)"
+      >
+        <!-- Add a default option with an empty value -->
+        <option value="" disabled selected>Select Department></option>
+
+        <!-- Use 'id' instead of 'department.id' if 'id' is the correct property -->
+        <option *ngFor="let department of departments" [value]="department.id">
+          {{ department.deptName }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="positionId" class="col-sm-2 col-form-label">PositionId:</label>
+    <div class="col-sm-10">
+      <select
+        id="positionId"
+        class="form-control"
+        formControlName="positionId"
+        (change)="onPositionSelected($event)"
+      >
+        <option value="" disabled selected>Select Position></option>
+        <option *ngFor="let position of positions" [value]="position.id">
+          {{ position.positionName }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="locationId" class="col-sm-2 col-form-label">LocationId:</label>
+    <div class="col-sm-10">
+      <select
+        id="locationId"
+        class="form-control"
+        formControlName="locationId"
+        (change)="onLocationSelected($event)"
+      >
+        <option value="" disabled selected>Select Location></option>
+        <option *ngFor="let location of locations" [value]="location.id">
+          {{ location.locationName }}
+        </option>
+      </select>
+    </div>
+  </div>
 
   <div class="form-group row">
     <div class="col-sm-10 offset-sm-2">
@@ -107,7 +162,9 @@
   <p>Email: {{ myForm.get("email")?.value }}</p>
   <p>Gender: {{ myForm.get("gender")?.value }}</p>
   <p>ManagerId: {{ myForm.get("managerId")?.value }}</p>
-  <!-- Display other fields for review -->
+  <p>DepartmentId: {{ myForm.get("departmentId")?.value }}</p>
+  <p>PositionId: {{ myForm.get("positionId")?.value }}</p>
+  <p>LocationId: {{ myForm.get("locationId")?.value }}</p>
 
   <button (click)="confirmSubmit()" class="btn btn-success">
     Confirm and Submit

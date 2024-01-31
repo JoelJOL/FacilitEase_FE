@@ -17,9 +17,22 @@ export class BarChartComponent {
   @Input()
   ticketStatus: number = 0;
   id: number = 0;
+
   public barChartOptions: any = {
-    scaleShowVerticalLines: false,
-    responsive: true,
+    scales: {
+      xAxes: [
+        {
+          ticks: { fontColor: 'red' },
+          gridLines: { color: 'rgba(255,255,0,0)' },
+        },
+      ],
+      yAxes: [
+        {
+          ticks: { fontColor: 'white' },
+          gridLines: { color: 'rgba(255,255,255,0.1)' },
+        },
+      ],
+    },
   };
   public barChartLabels: string[] = [
     'Jan',
