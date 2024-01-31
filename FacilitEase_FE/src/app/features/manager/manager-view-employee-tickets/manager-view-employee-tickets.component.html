@@ -1,19 +1,8 @@
-<div class="ng-container">
-      <app-data-table-new [headers]="headers" [apiLink]="apiLink" (rowClicked)="onRowClicked($event)" id="datatable"></app-data-table-new>
-  <div class="manager-dashboard row">
-    <div class="col-3">
-      <app-sidebar
-        [fields]="yourFieldsArray"
-        (clicked)="onFieldClicked($event)"
-      ></app-sidebar>
-    </div>
-    <div class="col-9">
-      <app-data-table-new
-        [headers]="headers"
-        [apiLink]="apiLink"
-        (RowClicked)="onRowClicked($event)"
-        id="datatable"
-      ></app-data-table-new>
-    </div>
-  </div>
+<div class="col-9">
+  <app-data-table-new
+    [headers]="headers"
+    [apiLink]="apiLink"
+    (rowClicked)="onRowClicked($event)"
+    id="datatable"
+  ></app-data-table-new>
 </div>

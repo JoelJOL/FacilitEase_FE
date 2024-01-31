@@ -97,7 +97,6 @@ import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
 import { MasterService } from './features/service/dataService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
-import { SupportComponent } from './components/layout/support/support.component';
 @NgModule({
   declarations: [
     AppComponent,

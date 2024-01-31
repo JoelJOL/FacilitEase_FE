@@ -39,11 +39,11 @@ export class AgentService {
     const apiUrl = `https://localhost:7049/api/L3Admin/resolve-ticket/${ticketId}`;
     return this.http.patch(apiUrl, null);
   }
-  getAllResolvedTickets(): Observable<any> {
-    const agentId = 3;
-    const apiUrl = `https://localhost:7049/api/L3Admin/resolved-tickets-by-agent/${agentId}`;
-    return this.http.get(apiUrl);
-  }
+  // getAllResolvedTickets(): Observable<any> {
+  //   const agentId = 3;
+  //   const apiUrl = `https://localhost:7049/api/L3Admin/resolved-tickets-by-agent/${agentId}`;
+  //   return this.http.get(apiUrl);
+  // }
 
   getCommentText(ticketId: any): Observable<string> {
     const url = `https://localhost:7049/api/L3Admin/ticket-commenttext/${ticketId}`;
@@ -56,9 +56,9 @@ export class AgentService {
     return apiUrl;
   }
 
-  getAllResolvedTickets():string{
+  getAllResolvedTickets(): string {
     const agentId = 3;
-  const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${agentId}`;
-  return (apiUrl);
-}
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${agentId}`;
+    return apiUrl;
+  }
 }
