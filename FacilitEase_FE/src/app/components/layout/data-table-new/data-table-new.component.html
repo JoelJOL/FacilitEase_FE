@@ -30,7 +30,7 @@
           (click)="onRowClick(row.id)"
           class="text-center text-nowrap"
         >
-          <div [ngClass]="getCellClasses(key, row[key])">{{ row[key] }}</div>
+          <!-- <div [ngClass]="getCellClasses(key, row[key])">{{ row[key] }}</div> -->
           <!-- Update only the 'ticketName' column -->
           <div
             *ngIf="key !== 'ticketName'"
