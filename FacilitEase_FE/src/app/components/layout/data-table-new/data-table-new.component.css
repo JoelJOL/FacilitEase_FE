@@ -1,5 +1,5 @@
 .filter_search {
-  margin-left: 3%;
+  margin-left: 2%;
   margin-right: 2%;
   display: flex;
   align-items: center;
@@ -84,34 +84,40 @@ td {
 
 .low-priority {
   color: rgb(78, 213, 73);
+  font-weight: 600;
 }
 
 .medium-priority {
   color: rgb(202, 160, 9);
+  font-weight: 600;
 }
 
 .high-priority {
   color: #ff7f29;
+  font-weight: 600;
 }
 
 .critical-priority {
   color: #d54949;
+  font-weight: 700;
 }
 
 .open-status {
   padding: 5px;
   background-color: rgba(116, 223, 125, 0.4);
   color: rgb(78, 213, 73);
+  font-weight: 550;
 }
 
 .inprogress-status {
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 20px;
+  padding-left: 10px;
   background-color: #bf74df33;
   color: rgb(171, 73, 213);
   border-radius: 5px;
+  font-weight: 550;
 }
 
 .onhold-status {
@@ -119,6 +125,7 @@ td {
   background-color: rgba(223, 168, 116, 0.4);
   color: rgb(202, 102, 9);
   border-radius: 5px;
+  font-weight: 550;
 }
 
 .resolved-status {
@@ -126,6 +133,7 @@ td {
   background-color: rgba(112, 110, 222, 0.4);
   color: #4B49D5;
   border-radius: 5px;
+  font-weight: 550;
 }
 
 .cancelled-status {
@@ -133,13 +141,17 @@ td {
   background-color: rgba(218, 222, 110, 0.4);
   color: #fcca01c4;
   border-radius: 5px;
+  font-weight: 550;
 }
 
 .escalated-status {
   padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px; 
   background-color: rgba(222, 117, 110, 0.4);
   color: #d54949;
   border-radius: 5px;
+  font-weight: 550;
 }
 
 .ticket-name {
@@ -147,10 +159,12 @@ td {
   overflow: hidden;
   text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
   white-space: nowrap; /* Prevent text from wrapping to the next line */
+  font-weight: 550;
 }
 
 .ticket-name:hover {
   white-space: normal; /* Allow the full text to be visible on hover */
   z-index: 1;
   position: relative;
+  font-weight: 550;
 }

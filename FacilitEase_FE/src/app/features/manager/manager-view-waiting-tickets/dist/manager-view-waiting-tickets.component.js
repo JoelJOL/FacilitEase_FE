@@ -6,10 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.ManagerViewEmployeeTicketsComponent = void 0;
+exports.ManagerViewWaitingTicketsComponent = void 0;
 var core_1 = require("@angular/core");
-var ManagerViewEmployeeTicketsComponent = /** @class */ (function () {
-    function ManagerViewEmployeeTicketsComponent(masterService, router) {
+var ManagerViewWaitingTicketsComponent = /** @class */ (function () {
+    function ManagerViewWaitingTicketsComponent(masterService, router) {
         this.masterService = masterService;
         this.router = router;
         this.headers = [
@@ -23,20 +23,20 @@ var ManagerViewEmployeeTicketsComponent = /** @class */ (function () {
         ];
         this.apiLink = '';
     }
-    ManagerViewEmployeeTicketsComponent.prototype.ngOnInit = function () {
-        this.apiLink = this.masterService.getApiLink();
+    ManagerViewWaitingTicketsComponent.prototype.ngOnInit = function () {
+        this.apiLink = this.masterService.getApiLink2();
     };
-    ManagerViewEmployeeTicketsComponent.prototype.onRowClicked = function (Id) {
+    ManagerViewWaitingTicketsComponent.prototype.onRowClicked = function (Id) {
         console.log('Row clicked in parent component with ID:', Id);
-        this.router.navigate(['manager/manager-view-ticket-simple', Id]);
+        this.router.navigate(['manager/manager-view-ticket-detail', Id]);
     };
-    ManagerViewEmployeeTicketsComponent = __decorate([
+    ManagerViewWaitingTicketsComponent = __decorate([
         core_1.Component({
-            selector: 'app-manager-view-employee-tickets',
-            templateUrl: './manager-view-employee-tickets.component.html',
-            styleUrls: ['./manager-view-employee-tickets.component.css']
+            selector: 'app-manager-view-waiting-tickets',
+            templateUrl: './manager-view-waiting-tickets.component.html',
+            styleUrls: ['./manager-view-waiting-tickets.component.css']
         })
-    ], ManagerViewEmployeeTicketsComponent);
-    return ManagerViewEmployeeTicketsComponent;
+    ], ManagerViewWaitingTicketsComponent);
+    return ManagerViewWaitingTicketsComponent;
 }());
-exports.ManagerViewEmployeeTicketsComponent = ManagerViewEmployeeTicketsComponent;
+exports.ManagerViewWaitingTicketsComponent = ManagerViewWaitingTicketsComponent;

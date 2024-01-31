@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { MasterService } from '@app/features/service/dataService/master.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
-
 export interface TicketDetails {
   id: number;
   ticketName: string;
@@ -12,18 +11,17 @@ export interface TicketDetails {
   submittedDate: string;
   priorityName: string;
   statusName: string;
-  notes: string;
-  lastUpdate:string;
+  notes:string;
+  lastUpdate : string;
   ticketDescription: string;
   documentLink: string;
 }
-
 @Component({
-  selector: 'app-manager-view-ticket-detail',
-  templateUrl: './manager-view-ticket-detail.component.html',
-  styleUrls: ['./manager-view-ticket-detail.component.css']
+  selector: 'app-manager-view-ticket-simple',
+  templateUrl: './manager-view-ticket-simple.component.html',
+  styleUrls: ['./manager-view-ticket-simple.component.css']
 })
-export class ManagerViewTicketDetailComponent implements OnInit {
+export class ManagerViewTicketSimpleComponent {
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
 

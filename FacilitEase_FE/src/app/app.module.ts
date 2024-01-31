@@ -97,6 +97,8 @@ import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
 import { MasterService } from './features/service/dataService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
+import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
+import { TicketNaSimpleComponent } from './components/layout/ticket-na-simple/ticket-na-simple.component';
 import { OutsideClickDirective } from './features/service/directive/outside-click.directive';
 @NgModule({
   declarations: [
@@ -172,6 +174,8 @@ import { OutsideClickDirective } from './features/service/directive/outside-clic
     TruncatePipe,
     ManagerTicketInfoComponent,
     ConfirmationModalComponent,
+    ManagerViewTicketSimpleComponent,
+    TicketNaSimpleComponent,
     OutsideClickDirective,
   ],
   imports: [
