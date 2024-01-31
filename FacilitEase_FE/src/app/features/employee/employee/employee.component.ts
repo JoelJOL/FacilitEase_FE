@@ -55,9 +55,9 @@ export class EmployeeComponent {
       this.router.navigate(['employee/employee-card']);
       this.sidebarService.toggleCollapse(); // Automatically collapse the sidebar
     } // Automatically collapse the sidebar
-    else if (clickedField.title === 'employee/My Tickets') {
+    else if (clickedField.title === 'My Tickets') {
       this.showEmployeeTickets = true;
-      this.router.navigate(['my-tickets']);
+      this.router.navigate(['employee/my-tickets']);
       this.sidebarService.toggleCollapse();
     } else if (clickedField.title === 'Raise A Ticket') {
       this.showEmployeeTickets = true;
