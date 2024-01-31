@@ -26,7 +26,7 @@ export class DropDownService {
     );
   }
 
-  getMyTicketsBaseUrl(): string {
-    return 'https://localhost:7049/api/Employee/myTickets';
+  getMyTickets(): string {
+    return 'https://localhost:7049/api/Employee/myTickets/2';
   }
 }
