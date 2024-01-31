@@ -39,6 +39,9 @@ import { AssignRoleComponent } from './features/L1admin/assign-role/assign-role.
 import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/dynamic-search.component';
 import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
+import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
+import { DepartmentHeadDataTableComponent } from './features/departmenthead/department-head-data-table/department-head-data-table.component';
+import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
@@ -99,6 +102,18 @@ const routes: Routes = [
   },
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
+  { path: 'employee-card', component: EmployeeCardsComponent },
+  {
+    path: 'departmentHead-tickets',
+    component: DepartmentHeadDataTableComponent,
+  },
+  {
+    path: 'department-head-tc-detail/:Id',
+    component: DetailedDhTicketComponent,
+  },
+  {path: 'manager-view-employee-tickets',component:ManagerViewEmployeeTicketsComponent},
+  {path: 'manager-view-waiting-tickets',component:ManagerViewWaitingTicketsComponent},
+  {path: 'manager-view-ticket-detail/:Id',component:ManagerViewTicketDetailComponent},
   {
     path: 'manager-view-employee-tickets',
     component: ManagerViewEmployeeTicketsComponent,
