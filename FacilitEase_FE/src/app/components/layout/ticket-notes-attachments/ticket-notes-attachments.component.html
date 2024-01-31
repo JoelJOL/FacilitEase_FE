@@ -9,8 +9,11 @@
     <br />
 
     <app-ticket-attachments></app-ticket-attachments>
-
-    <button class="button" (click)="onToggleEditMode()">
+    <button
+      [type]="editMode ? 'submit' : 'button'"
+      class="button"
+      (click)="!editMode ? onToggleEditMode() : onSubmit()"
+    >
       <span class="button-content">{{ editMode ? "Save" : "Edit" }}</span>
     </button>
   </div>
