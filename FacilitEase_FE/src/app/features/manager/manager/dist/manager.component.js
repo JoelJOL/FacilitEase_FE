@@ -9,17 +9,19 @@ exports.__esModule = true;
 exports.ManagerComponent = void 0;
 var core_1 = require("@angular/core");
 var ManagerComponent = /** @class */ (function () {
-    function ManagerComponent(router, sidebarService) {
+    function ManagerComponent(router, sidebarService, userRoleService) {
         this.router = router;
         this.sidebarService = sidebarService;
+        this.userRoleService = userRoleService;
+        this.userRole = 'Manager';
         this.yourFieldsArray = [
-            {
-                logo: 'assets/tickets-icon.png',
-                title: 'Employee Tickets'
-            },
             {
                 logo: 'assets/reports-icon.png',
                 title: 'Waiting Tickets'
+            },
+            {
+                logo: 'assets/tickets-icon.png',
+                title: 'Employee Tickets'
             },
         ];
         this.showManagerTickets = false;
@@ -27,6 +29,7 @@ var ManagerComponent = /** @class */ (function () {
     }
     ManagerComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.userRoleService.setUserRole(this.userRole);
         this.sidebarService.sidebarState$.subscribe(function (isCollapsed) {
             _this.isSidebarCollapsed = isCollapsed;
             // Optionally, you can set showL2AdminTickets based on isCollapsed state
@@ -37,15 +40,15 @@ var ManagerComponent = /** @class */ (function () {
         console.log("Handling in App Component for " + clickedField.title);
         if (clickedField.title === 'My Team') {
             this.showManagerTickets = true;
-            this.router.navigate(['manager-subordinates']);
+            this.router.navigate(['manager/manager-subordinates']);
         }
         else if (clickedField.title === 'Employee Tickets') {
             this.showManagerTickets = true;
-            this.router.navigate(['manager-view-employee-tickets']);
+            this.router.navigate(['manager/manager-view-employee-tickets']);
         }
         else if (clickedField.title === 'Waiting Tickets') {
             this.showManagerTickets = true;
-            this.router.navigate(['manager-view-waiting-tickets']);
+            this.router.navigate(['manager/manager-view-waiting-tickets']);
         }
         else {
             this.showManagerTickets = false;
