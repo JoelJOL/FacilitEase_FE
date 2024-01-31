@@ -31,5 +31,4 @@ export class AssignRoleComponent {
   GetOption(option: string) {
     this.option = option;
   }
-  closeDropdown() {}
 }
