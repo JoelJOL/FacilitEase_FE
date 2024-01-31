@@ -2,6 +2,8 @@
   <button
     class="dropdown_button col-2 d-flex justify-content-between"
     (click)="toggleDropdown()"
+    appOutsideClick
+    (clickOutside)="closeDropdown()"
   >
     {{ selectedOption || "Assign a role" }}
     <img src="./assets/down.png" />

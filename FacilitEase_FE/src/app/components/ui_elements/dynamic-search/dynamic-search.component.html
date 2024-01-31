@@ -5,8 +5,14 @@
     [(ngModel)]="query"
     placeholder="Search Employee..."
     (input)="getSuggestions()"
+    (ngModelChange)="handleQueryChange($event)"
   />
-  <div *ngIf="suggestions.length > 0" class="suggestions_container col-5">
+  <div
+    *ngIf="suggestions.length > 0"
+    appOutsideClick
+    (clickOutside)="closeDropdown()"
+    class="suggestions_container col-5"
+  >
     <div
       *ngFor="let suggestion of suggestions"
       class="suggestion_item p-2"
