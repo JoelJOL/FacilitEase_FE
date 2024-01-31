@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 
 interface Field {
   logo: string;
@@ -14,6 +15,7 @@ interface Field {
   styleUrls: ['./l1admin.component.css'],
 })
 export class L1adminComponent {
+  userRole: string = 'L1 Admin';
   yourFieldsArray: Field[] = [
     {
       logo: 'assets/tickets-icon.png',
@@ -33,8 +35,13 @@ export class L1adminComponent {
   showL2AdminTickets: boolean = false;
   isSidebarCollapsed: boolean = false;
 
-  constructor(private router: Router, private sidebarService: SidebarService) {}
+  constructor(
+    private router: Router,
+    private sidebarService: SidebarService,
+    private userRoleService: UserRoleService
+  ) {}
   ngOnInit() {
+    this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
       this.isSidebarCollapsed = isCollapsed;
       // Optionally, you can set showL2AdminTickets based on isCollapsed state

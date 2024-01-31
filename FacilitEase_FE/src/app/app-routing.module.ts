@@ -39,10 +39,30 @@ import { AssignRoleComponent } from './features/L1admin/assign-role/assign-role.
 import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/dynamic-search.component';
 import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
+import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
+import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 
 const routes: Routes = [
+  {
+    path: 'employee',
+    component: EmployeeComponent,
+    children: [
+      {
+        path: 'employee-card',
+        component: EmployeeCardsComponent,
+      },
+      {
+        path: 'my-tickets',
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        component: TrFormComponent,
+      },
+    ],
+  },
   { path: 'form', component: TrFormComponent },
-  { path: 'xxx', component: SidebarComponent }, 
+  { path: 'xxx', component: SidebarComponent },
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   { path: 'l2', component: L2AdminComponent },
   { path: 'sidebar', component: SidebarComponent },
@@ -52,7 +72,7 @@ const routes: Routes = [
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
   { path: 'view-ticket', component: AgentTicketsViewComponent },
   { path: 'view-ticket/:id', component: AgentTicketViewComponent },
-  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent},
+  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },

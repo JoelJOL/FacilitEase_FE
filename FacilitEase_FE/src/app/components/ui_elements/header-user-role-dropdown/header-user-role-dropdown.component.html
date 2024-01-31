@@ -5,26 +5,32 @@
     [ngClass]="'img_user'"
     class="img-fluid rounded-circle user-image"
   />
-  <select class="custom-select">
-    <option role="menuitem" class="dropdown-item" value="">
-      Select an option
+  <select
+    class="custom-select"
+    [(ngModel)]="selectedValue"
+    (ngModelChange)="onOptionSelected()"
+  >
+    <!-- Default placeholder option with dynamic value -->
+    <option
+      role="menuitem"
+      class="dropdown-item"
+      [value]="userRole.toLowerCase()"
+      [disabled]="true"
+    >
+      {{ userRole }}
     </option>
-    <option role="menuitem" class="dropdown-item" value="option1">
-      L1 Admin
-    </option>
-    <option role="menuitem" class="dropdown-item" value="option2">
-      L2 Admin
-    </option>
-    <option role="menuitem" class="dropdown-item" value="option3">
-      L3 Admin
-    </option>
-    <option role="menuitem" class="dropdown-item" value="option4">
+
+    <!-- Actual options -->
+    <option role="menuitem" class="dropdown-item" value="l1">L1 Admin</option>
+    <option role="menuitem" class="dropdown-item" value="l2">L2 Admin</option>
+    <option role="menuitem" class="dropdown-item" value="l3">L3 Admin</option>
+    <option role="menuitem" class="dropdown-item" value="manager">
       Manager
     </option>
-    <option role="menuitem" class="dropdown-item" value="option5">
+    <option role="menuitem" class="dropdown-item" value="dept-head">
       Department Head
     </option>
-    <option role="menuitem" class="dropdown-item" value="option6">
+    <option role="menuitem" class="dropdown-item" value="employee">
       Employee
     </option>
   </select>
