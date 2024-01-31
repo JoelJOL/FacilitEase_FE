@@ -44,11 +44,16 @@ import { DepartmentHeadDataTableComponent } from './features/departmenthead/depa
 import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
+import { RequestToCancelComponent } from './features/employee/request-to-cancel/request-to-cancel.component';
 import { DetailsAssignedComponent } from './features/l2admin/details-assigned/details-assigned.component';
 import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/details-escalated.component';
 import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
 
 const routes: Routes = [
+  {
+    path: 'request',
+    component: RequestToCancelComponent,
+  },
   {
     path: 'employee',
     component: EmployeeComponent,

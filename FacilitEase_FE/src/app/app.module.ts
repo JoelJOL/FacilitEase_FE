@@ -96,6 +96,7 @@ import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
 import { MasterService } from './features/service/dataService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
+import { RequestToCancelComponent } from './features/employee/request-to-cancel/request-to-cancel.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { DetailsAssignedComponent } from './features/l2admin/details-assigned/details-assigned.component';
 import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/details-escalated.component';
@@ -176,6 +177,7 @@ import { OutsideClickDirective } from './features/service/directive/outside-clic
     TruncatePipe,
     ManagerTicketInfoComponent,
     ConfirmationModalComponent,
+    RequestToCancelComponent,
     DetailsAssignedComponent,
     DetailsEscalatedComponent,
     ManagerViewTicketSimpleComponent,
