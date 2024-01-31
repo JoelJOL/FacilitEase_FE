@@ -43,7 +43,6 @@ import { EmployeeCardsComponent } from './components/layout/employee-cards/emplo
 import { DepartmentHeadDataTableComponent } from './features/departmenthead/department-head-data-table/department-head-data-table.component';
 import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
-import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 
 const routes: Routes = [
@@ -111,9 +110,18 @@ const routes: Routes = [
     path: 'department-head-tc-detail/:Id',
     component: DetailedDhTicketComponent,
   },
-  {path: 'manager-view-employee-tickets',component:ManagerViewEmployeeTicketsComponent},
-  {path: 'manager-view-waiting-tickets',component:ManagerViewWaitingTicketsComponent},
-  {path: 'manager-view-ticket-detail/:Id',component:ManagerViewTicketDetailComponent},
+  {
+    path: 'manager-view-employee-tickets',
+    component: ManagerViewEmployeeTicketsComponent,
+  },
+  {
+    path: 'manager-view-waiting-tickets',
+    component: ManagerViewWaitingTicketsComponent,
+  },
+  {
+    path: 'manager-view-ticket-detail/:Id',
+    component: ManagerViewTicketDetailComponent,
+  },
   {
     path: 'manager-view-employee-tickets',
     component: ManagerViewEmployeeTicketsComponent,
