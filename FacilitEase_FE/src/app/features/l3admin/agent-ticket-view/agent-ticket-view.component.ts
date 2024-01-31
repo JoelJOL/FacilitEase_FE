@@ -20,7 +20,7 @@ export class AgentTicketViewComponent {
 
   ngOnInit(): void { 
     this.route.params.subscribe((params) => { 
-      this.ticketId = Number(params['id']); 
+      this.ticketId = Number(params['Id']); 
       console.log(this.ticketId); 
     }); 
 

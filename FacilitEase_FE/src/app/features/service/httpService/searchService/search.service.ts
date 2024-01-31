@@ -15,4 +15,10 @@ export class SearchService {
   GetEmployeeDetails(empId: number): Observable<any> {
     return this.http.get<any>(`https://localhost:7049/api/Employee/${empId}`);
   }
+  GetOptions(apiLink: string): Observable<string[]> {
+    return this.http.get<any>(apiLink);
+  }
+  AssignRole(s: string): Observable<any> {
+    return this.http.get<any>('fdsf');
+  }
 }

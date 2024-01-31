@@ -1,0 +1,14 @@
+.dropdown_button{
+    background-color: white;
+    text-align: left;
+    padding: 5px;
+}
+.dropdown_content{
+    cursor: pointer;
+}
+.option{
+    padding: 10px;
+}
+.option:hover{
+    background-color: rgb(231, 231, 231);
+}

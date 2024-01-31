@@ -88,7 +88,15 @@ import { EmployeeCardsComponent } from './components/layout/employee-cards/emplo
 import { MatCardModule } from '@angular/material/card';
 import { AddDepartmentFormComponent } from './components/layout/add-department-form/add-department-form.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
-import { SupportComponent } from './components/ui_elements/support/support.component';
+import { SupportComponent } from './components/layout/support/support.component';
+import { DepartmentheadComponent } from './features/departmenthead/departmenthead/departmenthead.component';
+import { DepartmentHeadDataTableComponent } from './features/departmenthead/department-head-data-table/department-head-data-table.component';
+import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
+import { RoleDisplayDropdownComponent } from './components/ui_elements/role-display-dropdown/role-display-dropdown.component';
+import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
+import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
+import { MasterService } from './features/service/dataService/master.service';
+import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -156,6 +164,13 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     AddDepartmentFormComponent,
     EmployeeMyTicketsComponent,
     SupportComponent,
+    DepartmentheadComponent,
+    DepartmentHeadDataTableComponent,
+    DetailedDhTicketComponent,
+    RoleDisplayDropdownComponent,
+    TruncatePipe,
+    ManagerTicketInfoComponent,
+    ConfirmationModalComponent,
   ],
   imports: [
     HttpClientModule,
@@ -183,6 +198,7 @@ import { SupportComponent } from './components/ui_elements/support/support.compo
     ApproveDenyService,
     EmployeeBulkuploadService,
     ModalService,
+    MasterService,
   ],
   bootstrap: [AppComponent],
 })

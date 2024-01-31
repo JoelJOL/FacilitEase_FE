@@ -17,28 +17,29 @@ export class DisplayEmployeeDetailsComponent {
   constructor(private searchService: SearchService) {}
   @Input()
   titles: string[] = [];
-  data: EmpDetails = {
-    gender: '',
-    employeeName: '',
-    dob: '',
-    username: '',
-  };
+  data: string[] = [];
+  // data: EmpDetails = {
+  //   gender: '',
+  //   employeeName: '',
+  //   dob: '',
+  //   username: '',
+  // };
   @Input()
   heading: string = '';
   @Input()
   getId: number = 0;
   ngOnChanges() {
-    // this.data = [];
-    // console.log(this.getId);
+    this.data = [];
+    console.log(this.getId);
     this.searchService
       .GetEmployeeDetails(this.getId)
-      .subscribe((data: EmpDetails) => {
-        // data.forEach((element) => {
-        //   this.data.push(Object.values(element)[0]);
-        //   this.data.push(Object.values(element)[1]);
-        //   this.data.push(Object.values(element)[2]);
-        //   this.data.push(Object.values(element)[3]);
-        // });
+      .subscribe((data: EmpDetails[]) => {
+        data.forEach((element) => {
+          this.data.push(Object.values(element)[0]);
+          this.data.push(Object.values(element)[1]);
+          this.data.push(Object.values(element)[2]);
+          this.data.push(Object.values(element)[3]);
+        });
         console.log(data);
       });
   }

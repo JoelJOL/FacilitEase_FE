@@ -18,11 +18,15 @@ export class ManagerComponent {
     {
       logo: 'assets/tickets-icon.png',
       title: 'Employee Tickets',
-      subfields: ['Tickets', 'Resolved'],
     },
-    { logo: 'assets/ticket-approval.png', title: 'Waiting For Approval' },
+    {
+      logo: 'assets/reports-icon.png',
+      title: 'Waiting Tickets',
+    },
   ];
   showManagerSubordinates: boolean = false;
+  showManagerTickets: boolean = false;
+
   isSidebarCollapsed: boolean = false;
 
   constructor(
@@ -42,26 +46,16 @@ export class ManagerComponent {
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'My Team') {
-      this.showManagerSubordinates = true;
+      this.showManagerTickets = true;
       this.router.navigate(['manager-subordinates']);
-    } else if (clickedField.title === 'Waiting For Approval') {
-      this.showManagerSubordinates = true;
-      console.log('Waiting For Approval #100');
-    } else {
-      this.showManagerSubordinates = false;
-    }
-  }
-  onSubfieldClicked(event: { field: Field; subfield: string }) {
-    if (event.field.title === 'Employee Tickets') {
-      if (event.subfield === 'Tickets') {
-        console.log(
-          `I have got the ${event.subfield} from ${event.field.title}`
-        );
-      } else if (event.subfield === 'Resolved') {
-        console.log(
-          `I have got the ${event.subfield} from ${event.field.title}`
-        );
-      }
+    } else if (clickedField.title === 'Employee Tickets') {
+      this.showManagerTickets = true;
+      this.router.navigate(['manager-view-employee-tickets']);
+    } else if (clickedField.title === 'Waiting Tickets') {
+      this.showManagerTickets = true;
+      this.router.navigate(['manager-view-waiting-tickets']);
+    }else {
+      this.showManagerTickets = false;
     }
   }
 }

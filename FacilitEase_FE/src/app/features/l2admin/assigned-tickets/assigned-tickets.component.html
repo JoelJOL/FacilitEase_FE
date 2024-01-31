@@ -38,4 +38,9 @@
   </table>
 </div> -->
 <h2 class="mb-4">Assigned Tickets</h2>
-<app-data-table [headers]="headers" [apiLink]="apiLink"></app-data-table>
+<app-data-table-new
+  [headers]="headers"
+  [apiLink]="apiLink"
+  (rowClicked)="onRowClicked($event)"
+  id="datatable"
+></app-data-table-new>

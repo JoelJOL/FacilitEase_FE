@@ -1,0 +1,17 @@
+<div class="container mt-1">
+  <div class="ticket-container">
+    <app-ticket-header></app-ticket-header>
+    <app-ticket-info [ticketDetails]="ticketDetails1"></app-ticket-info>
+    <app-ticket-description
+      [ticketDetails]="ticketDetails1"
+    ></app-ticket-description>
+    <app-ticket-attachments
+      [headerText]="customHeaderText"
+      [ticketDetails]="ticketDetails1"
+    ></app-ticket-attachments>
+    <app-ticket-notes-attachments
+      [ticketId]="ticketId"
+    ></app-ticket-notes-attachments>
+    <app-title-sub [ticketDetails]="ticketDetails1"></app-title-sub>
+  </div>
+</div>

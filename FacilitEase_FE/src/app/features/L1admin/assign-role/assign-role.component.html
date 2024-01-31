@@ -4,3 +4,8 @@
   [titles]="titles"
   [getId]="empId"
 ></app-display-employee-details>
+<app-role-display-dropdown
+  [apiLink]="apiRole"
+  (chooseOption)="GetOption($event)"
+></app-role-display-dropdown>
+<app-button color="accepted" (action)="AssignRole()"> Assign </app-button>
