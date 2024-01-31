@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 interface Field {
   logo: string;
   title: string;
@@ -9,34 +10,33 @@ interface Field {
 @Component({
   selector: 'app-l3admin',
   templateUrl: './l3admin.component.html',
-  styleUrls: ['./l3admin.component.css']
+  styleUrls: ['./l3admin.component.css'],
 })
 export class L3adminComponent {
+  userRole: string = 'L3 Admin';
   yourFieldsArray: Field[] = [
     {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
-      subfields: [
-        'Raised Tickets',
-        'Resolved Tickets',
-        'Escalated Tickets',
-      ],
+      subfields: ['Raised Tickets', 'Resolved Tickets', 'Escalated Tickets'],
     },
     {
       logo: 'assets/data-entry.png',
       title: 'Reports',
-      subfields: [
-        'Daily Reports',
-         'Monthly Report',
-          'Annual Reports'],
+      subfields: ['Daily Reports', 'Monthly Report', 'Annual Reports'],
     },
     { logo: 'assets/reports-icon.png', title: 'Data Entry', subfields: [] },
   ];
   showL3AdminTickets: boolean = false;
   isSidebarCollapsed: boolean = false;
 
-  constructor(private router: Router, private sidebarService: SidebarService) {}
+  constructor(
+    private router: Router,
+    private sidebarService: SidebarService,
+    private userRoleService: UserRoleService
+  ) {}
   ngOnInit() {
+    this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
       this.isSidebarCollapsed = isCollapsed;
       // Optionally, you can set showL2AdminTickets based on isCollapsed state

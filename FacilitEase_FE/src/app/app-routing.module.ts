@@ -46,6 +46,24 @@ import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-vi
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 
 const routes: Routes = [
+  {
+    path: 'employee',
+    component: EmployeeComponent,
+    children: [
+      {
+        path: 'employee-card',
+        component: EmployeeCardsComponent,
+      },
+      {
+        path: 'my-tickets',
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        component: TrFormComponent,
+      },
+    ],
+  },
   { path: 'form', component: TrFormComponent },
   { path: 'xxx', component: SidebarComponent },
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
