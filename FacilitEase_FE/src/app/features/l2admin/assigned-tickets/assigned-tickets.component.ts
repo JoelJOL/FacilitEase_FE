@@ -45,8 +45,9 @@ export class AssignedTicketsComponent {
   ngOnInit(): void {
     this.apiLink = this.masterService.getApiLinkAssigned();
   }
+
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    // this.router.navigate(['l2admin-ticket-view', Id]);
+    this.router.navigate(['l2/details-assigned', Id]);
   }
 }
