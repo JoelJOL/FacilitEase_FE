@@ -40,6 +40,8 @@ import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/
 import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
 import { EmployeeComponent } from './features/employee/employee/employee.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
+import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
+import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
 
 const routes: Routes = [
   { path: 'form', component: TrFormComponent },
@@ -55,12 +57,30 @@ const routes: Routes = [
   { path: 'view-ticket/:id', component: AgentTicketViewComponent },
   { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
   { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
-  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent},
+  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
   { path: 'escalated-tickets', component: EscalatedticketsComponent },
   { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'l2report/:id', component: L2ReportComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
+  {
+    path: 'employee',
+    component: EmployeeComponent,
+    children: [
+      {
+        path: 'employee-card',
+        component: EmployeeCardsComponent,
+      },
+      {
+        path: 'my-tickets',
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        component: TrFormComponent,
+      },
+    ],
+  },
   {
     path: 'ticketnotesattachments',
     component: TicketNotesAttachmentsComponent,
@@ -79,9 +99,18 @@ const routes: Routes = [
   },
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
-  {path: 'manager-view-employee-tickets',component:ManagerViewEmployeeTicketsComponent},
-  {path: 'manager-view-waiting-tickets',component:ManagerViewWaitingTicketsComponent},
-  {path: 'manager-view-ticket-detail/:Id',component:ManagerViewTicketDetailComponent},
+  {
+    path: 'manager-view-employee-tickets',
+    component: ManagerViewEmployeeTicketsComponent,
+  },
+  {
+    path: 'manager-view-waiting-tickets',
+    component: ManagerViewWaitingTicketsComponent,
+  },
+  {
+    path: 'manager-view-ticket-detail/:Id',
+    component: ManagerViewTicketDetailComponent,
+  },
   { path: 'l2admin-ticket-view/:Id', component: L2adminTicketViewComponent },
   { path: '**', component: ButtonComponent },
 ];
