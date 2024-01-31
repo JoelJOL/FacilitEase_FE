@@ -1,7 +1,12 @@
-<div class="display_board p-5 col-7 m-5">
-  <h1>{{ heading }}</h1>
-  <div *ngFor="let title of titles; let index = index">
-    <p>{{ title }}: &nbsp;&nbsp;{{ data[index] }}</p>
-    <br />
+<h1 class="mt-5 head">{{ heading }}</h1>
+<div class="display_board p-5 col-6 ms-5">
+  <div *ngFor="let title of titles; let index = index" class="col-6 d-flex">
+    <div class="col-6">
+      <!-- Assuming you want two columns, adjust the width as needed -->
+      <p>{{ title }}:</p>
+    </div>
+    <div class="col-6">
+      <p>{{ data[index] }}</p>
+    </div>
   </div>
 </div>

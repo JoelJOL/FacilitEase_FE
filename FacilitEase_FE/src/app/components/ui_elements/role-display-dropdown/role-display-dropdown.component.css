@@ -2,12 +2,20 @@
     background-color: white;
     text-align: left;
     padding: 5px;
+    margin-left: 5.7rem;
+    margin-bottom: 2rem;
+    position: relative;
 }
 .dropdown_content{
     cursor: pointer;
+    margin-left: 5.7rem;
+    z-index: 10;
+    position: absolute;
+
 }
 .option{
     padding: 10px;
+    background-color: white;
 }
 .option:hover{
     background-color: rgb(231, 231, 231);
