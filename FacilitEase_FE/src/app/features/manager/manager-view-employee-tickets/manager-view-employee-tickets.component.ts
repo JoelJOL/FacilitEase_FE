@@ -26,6 +26,6 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
   }
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['manager-view-ticket-detail', Id]);
+    this.router.navigate(['manager/manager-view-ticket-simple', Id]);
   }
 }

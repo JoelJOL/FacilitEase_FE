@@ -6,18 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.ManagerViewTicketDetailComponent = void 0;
+exports.ManagerViewTicketSimpleComponent = void 0;
 var core_1 = require("@angular/core");
 var confirmation_modal_component_1 = require("../components/confirmation-modal/confirmation-modal.component");
-var ManagerViewTicketDetailComponent = /** @class */ (function () {
-    function ManagerViewTicketDetailComponent(masterService, dialog, route, router) {
+var ManagerViewTicketSimpleComponent = /** @class */ (function () {
+    function ManagerViewTicketSimpleComponent(masterService, dialog, route, router) {
         this.masterService = masterService;
         this.dialog = dialog;
         this.route = route;
         this.router = router;
         this.ticketId = 0;
     }
-    ManagerViewTicketDetailComponent.prototype.ngOnInit = function () {
+    ManagerViewTicketSimpleComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.paramMap.subscribe(function (params) {
             var idFromRoute = params.get('Id');
@@ -27,7 +27,7 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
             }
         });
     };
-    ManagerViewTicketDetailComponent.prototype.fetchTicketDetails = function () {
+    ManagerViewTicketSimpleComponent.prototype.fetchTicketDetails = function () {
         var _this = this;
         this.masterService.getManagerTicketDetails(this.ticketId).subscribe(function (response) {
             _this.ticketDetails = response;
@@ -36,7 +36,7 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
             console.error('Error fetching ticket details:', error);
         });
     };
-    ManagerViewTicketDetailComponent.prototype.openConfirmationModal = function (action) {
+    ManagerViewTicketSimpleComponent.prototype.openConfirmationModal = function (action) {
         var _this = this;
         var confirmationMessage = '';
         switch (action) {
@@ -73,7 +73,7 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
             }
         });
     };
-    ManagerViewTicketDetailComponent.prototype.forwardTicket = function () {
+    ManagerViewTicketSimpleComponent.prototype.forwardTicket = function () {
         this.masterService.sendForApproval(this.ticketDetails.id, 2)
             .subscribe(function () {
             console.log('Forwarded for approval successfully');
@@ -81,27 +81,27 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
             console.error('Error forwarding for approval:', error);
         });
     };
-    ManagerViewTicketDetailComponent.prototype.acceptTicket = function () {
+    ManagerViewTicketSimpleComponent.prototype.acceptTicket = function () {
         this.masterService.ticketDecision(this.ticketDetails.id, 2).subscribe(function () {
             console.log('Forwarded for approval successfully');
         }, function (error) {
             console.error('Error forwarding for approval:', error);
         });
     };
-    ManagerViewTicketDetailComponent.prototype.rejectTicket = function () {
+    ManagerViewTicketSimpleComponent.prototype.rejectTicket = function () {
         this.masterService.ticketDecision(this.ticketDetails.id, 5).subscribe(function () {
             console.log('Forwarded for approval successfully');
         }, function (error) {
             console.error('Error forwarding for approval:', error);
         });
     };
-    ManagerViewTicketDetailComponent = __decorate([
+    ManagerViewTicketSimpleComponent = __decorate([
         core_1.Component({
-            selector: 'app-manager-view-ticket-detail',
-            templateUrl: './manager-view-ticket-detail.component.html',
-            styleUrls: ['./manager-view-ticket-detail.component.css']
+            selector: 'app-manager-view-ticket-simple',
+            templateUrl: './manager-view-ticket-simple.component.html',
+            styleUrls: ['./manager-view-ticket-simple.component.css']
         })
-    ], ManagerViewTicketDetailComponent);
-    return ManagerViewTicketDetailComponent;
+    ], ManagerViewTicketSimpleComponent);
+    return ManagerViewTicketSimpleComponent;
 }());
-exports.ManagerViewTicketDetailComponent = ManagerViewTicketDetailComponent;
+exports.ManagerViewTicketSimpleComponent = ManagerViewTicketSimpleComponent;

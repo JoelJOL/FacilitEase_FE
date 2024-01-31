@@ -99,6 +99,9 @@ import { ConfirmationModalComponent } from './features/manager/components/confir
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { DetailsAssignedComponent } from './features/l2admin/details-assigned/details-assigned.component';
 import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/details-escalated.component';
+import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
+import { TicketNaSimpleComponent } from './components/layout/ticket-na-simple/ticket-na-simple.component';
+import { OutsideClickDirective } from './features/service/directive/outside-click.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -175,6 +178,9 @@ import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/
     ConfirmationModalComponent,
     DetailsAssignedComponent,
     DetailsEscalatedComponent,
+    ManagerViewTicketSimpleComponent,
+    TicketNaSimpleComponent,
+    OutsideClickDirective,
   ],
   imports: [
     HttpClientModule,

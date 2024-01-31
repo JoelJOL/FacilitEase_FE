@@ -1,25 +1,27 @@
 
+
 input{
     height: 10px;
     border: none; /* Remove the default border */
     border-bottom: 2px solid rgb(206, 206, 206);
     padding: 15px;
     outline: none;
+    position: relative;
 }
 .input_box:focus{
     border-color: rgb(212, 137, 212) !important;
     box-shadow: 0 0 3px rgb(172, 0, 172);
 }
 .suggestions_container {
-    top: 100%;
-    left: 0;
-    position: relative;
+    left: 3rem;
+    position: absolute;
     z-index: 300;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-height: fit-content; /* Set a max height if needed */
     overflow-y: auto;
+
   }
   .suggestion_item{
     background-color: white;
