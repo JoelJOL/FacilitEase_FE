@@ -39,26 +39,37 @@ export class DynamicSearchComponent {
       suggestion.employeeFirstName + ' ' + suggestion.employeeLastName;
     this.EmployeeId.emit(suggestion.empId);
   }
+  handleQueryChange(input: string) {
+    if (input === '') {
+      console.log(input);
+      this.suggestions = [];
+    }
+  }
 
   getSuggestions() {
-    this.searchService.getSuggestions(this.query).subscribe(
-      (data: suggestion[]) => {
-        this.suggestions = [];
-        data.forEach((suggestionItem: suggestion) => {
-          this.suggestions.push({ ...suggestionItem });
-        });
-        console.log(data);
-        console.log(this.suggestions);
-        this.changes.detectChanges();
-      },
-      (error: any) => {
-        if (error.status === 404 && error.statusText === 'OK') {
+    if (this.query != '') {
+      this.searchService.getSuggestions(this.query).subscribe(
+        (data: suggestion[]) => {
           this.suggestions = [];
-          console.error('Suggestions not found (404 error).');
-        } else {
-          console.error('Error fetching suggestions:', error);
+          data.forEach((suggestionItem: suggestion) => {
+            this.suggestions.push({ ...suggestionItem });
+          });
+          console.log(data);
+          console.log(this.suggestions);
+          this.changes.detectChanges();
+        },
+        (error: any) => {
+          if (error.status === 404 && error.statusText === 'OK') {
+            this.suggestions = [];
+            console.error('Suggestions not found (404 error).');
+          } else {
+            console.error('Error fetching suggestions:', error);
+          }
         }
-      }
-    );
+      );
+    }
+  }
+  closeDropdown() {
+    this.suggestions = [];
   }
 }
