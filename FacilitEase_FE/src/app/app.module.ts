@@ -97,6 +97,7 @@ import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
 import { MasterService } from './features/service/dataService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
+import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -171,6 +172,7 @@ import { ConfirmationModalComponent } from './features/manager/components/confir
     TruncatePipe,
     ManagerTicketInfoComponent,
     ConfirmationModalComponent,
+    EmplycarddisplayComponent,
   ],
   imports: [
     HttpClientModule,

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
 import { DepartmentHeadService } from '@app/features/service/httpService/department-head.service';
 
 export interface TicketDetails {
@@ -25,7 +26,8 @@ export class DetailedDhTicketComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private departmentHeadService: DepartmentHeadService
+    private departmentHeadService: DepartmentHeadService,
+    private approveDenyService: ApproveDenyService
   ) {}
 
   ngOnInit(): void {
@@ -44,16 +46,17 @@ export class DetailedDhTicketComponent implements OnInit {
     });
   }
 
-  // destructureProperties(data: any): any {
-  //   return {
-  //     ticketName: data?.ticketName,
-  //     employeeName: data?.employeeName,
-  //     assignedTo: data?.assignedTo,
-  //     submittedDate: data?.submittedDate,
-  //     priorityName: data?.priorityName,
-  //     statusName: data?.statusName,
-  //     ticketDescription: data?.ticketDescription,
-  //     documentLink: data?.documentLink,
-  //   };
-  // }
+  updateTicket(isApproved: boolean): void {
+    const ticketId = this.ticketDetails.id.toString();
+    if (ticketId) {
+      this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
+        () => {
+          console.log('Ticket updated successfully');
+        },
+        (error) => {
+          console.error('Error updating ticket', error);
+        }
+      );
+    }
+  }
 }
