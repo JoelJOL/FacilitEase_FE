@@ -103,6 +103,11 @@ import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/
 import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
 import { TicketNaSimpleComponent } from './components/layout/ticket-na-simple/ticket-na-simple.component';
 import { OutsideClickDirective } from './features/service/directive/outside-click.directive';
+import { TicketDetailViewComponent } from './components/layout/ticket-detail-view/ticket-detail-view.component';
+import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
+import { TicketDetailViewNoeditComponent } from './components/layout/ticket-detail-view-noedit/ticket-detail-view-noedit.component';
+import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -183,6 +188,10 @@ import { OutsideClickDirective } from './features/service/directive/outside-clic
     ManagerViewTicketSimpleComponent,
     TicketNaSimpleComponent,
     OutsideClickDirective,
+    TicketDetailViewComponent,
+    ResolvedTicketViewComponent,
+    TicketDetailViewNoeditComponent,
+    OnHoldTicketsViewComponent
   ],
   imports: [
     HttpClientModule,

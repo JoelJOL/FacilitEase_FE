@@ -1,0 +1,15 @@
+<app-ticket-header></app-ticket-header>
+<app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
+<app-ticket-description
+  [ticketDetails]="ticketDetails"
+></app-ticket-description>
+<app-ticket-attachments
+  [headerText]="customHeaderText"
+  [ticketDetails]="ticketDetails"
+></app-ticket-attachments>
+<app-ticket-na-simple
+  [notes]="ticketDetails.notes"
+  [lastupdate]="ticketDetails.lastUpdate"
+  [ticketId]="ticketId"
+></app-ticket-na-simple>
+<app-title-sub [headings]="headings"></app-title-sub>

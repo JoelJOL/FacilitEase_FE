@@ -16,16 +16,9 @@ export class TitleSubComponent {
 
   ticket: any=[]; 
   items: any = []; 
+  @Input() headings: any[] = [];
   constructor(private agentService: AgentService) {} 
-  @Input() set ticketDetails(details: any) { 
-    if (details) { 
-      this.items = [ 
-        { heading: 'Raised By', text: details.raisedEmployeeName }, 
-        { heading: 'Department', text: details.deptName }, 
-        { heading: 'Manager', text: details.managerName }, 
-        { heading: 'Project Code', text: details.projectCode }, 
-        { heading: 'Location', text: details.locationName } 
-      ]; 
-    } 
-  } 
+  @Input()ticketDetails:any;
+  
+     
 } 
