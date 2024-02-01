@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 interface Field {
   logo: string;
@@ -27,7 +27,11 @@ export class ManagerComponent {
   showManagerTickets: boolean = false;
   isSidebarCollapsed: boolean = false;
 
-  constructor(private router: Router, private sidebarService: SidebarService , private userRoleService : UserRoleService) {}
+  constructor(
+    private router: Router,
+    private sidebarService: SidebarService,
+    private userRoleService: UserRoleService
+  ) {}
   ngOnInit() {
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {

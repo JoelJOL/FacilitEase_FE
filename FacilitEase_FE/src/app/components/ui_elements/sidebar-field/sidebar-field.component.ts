@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { SidebarSubfieldComponent } from '../sidebar-subfield/sidebar-subfield.component';
-import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 
 interface Field {
   logo: string;
