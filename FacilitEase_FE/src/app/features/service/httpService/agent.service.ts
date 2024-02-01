@@ -8,7 +8,7 @@ export class AgentService {
   constructor(private http: HttpClient) {}
   getData(ticketId: number): Observable<any> {
     console.log(`The ticket id : ${ticketId} is recieved in getData()`);
-    const apiUrl = `https://localhost:7049/api/l2/ticketById?desiredTicketId=${ticketId}`;
+    const apiUrl = `https://localhost:7049/api/L3Admin/ticketdetail-by-agent/${ticketId}`;
     return this.http.get(apiUrl);
   }
 
@@ -64,13 +64,19 @@ export class AgentService {
 
   getAllTickets(): string {
     const agentId = 3;
-    const apiUrl = `https://localhost:7049/api/L3Admin/GetTicketsByAgent/${agentId}`;
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${agentId}`;
     return apiUrl;
   }
 
   getAllResolvedTickets(): string {
     const agentId = 3;
     const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${agentId}`;
+    return apiUrl;
+  }
+
+  getAllOnHoldTickets(): string {
+    const agentId = 3;
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetOnHoldTicketsByAgent/${agentId}`;
     return apiUrl;
   }
   private baseUrl = 'https://localhost:7049';

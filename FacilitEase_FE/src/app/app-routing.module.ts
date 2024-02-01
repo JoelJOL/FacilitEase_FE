@@ -48,6 +48,8 @@ import { RequestToCancelComponent } from './features/employee/request-to-cancel/
 import { DetailsAssignedComponent } from './features/l2admin/details-assigned/details-assigned.component';
 import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/details-escalated.component';
 import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
+import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
+import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
 
 const routes: Routes = [
   {
@@ -94,10 +96,23 @@ const routes: Routes = [
       { path: 'details-escalated/:Id', component: DetailsEscalatedComponent },
     ],
   },
+  {
+    path: 'l3',
+    component: L3adminComponent,
+    children: [
+      { path: 'view-ticket', component: AgentTicketsViewComponent },
+      { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
+      { path: 'on-hold-tickets', component: OnHoldTicketsViewComponent },
+      { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
+      { path: 'view-ticket-detail-noedit/:Id', component: ResolvedTicketViewComponent},
+      { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
+      // { path: 'lreport/:id', component: L2ReportComponent },
+    ],
+  },
+
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
   { path: 'manager', component: ManagerComponent },
-  { path: 'l2', component: L2AdminComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
   {
@@ -125,11 +140,6 @@ const routes: Routes = [
   },
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
-  { path: 'view-ticket', component: AgentTicketsViewComponent },
-  { path: 'view-ticket/:id', component: AgentTicketViewComponent },
-  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
-  { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
-  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   {
