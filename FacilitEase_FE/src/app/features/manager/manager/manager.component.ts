@@ -16,11 +16,11 @@ export class ManagerComponent {
   userRole: string = 'Manager';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/reports-icon.png',
+      logo: 'assets/hourglass-start-solid.svg',
       title: 'Waiting Tickets',
     },
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/ticket-solid.svg',
       title: 'Employee Tickets',
     },
   ];

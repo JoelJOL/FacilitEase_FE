@@ -43,4 +43,11 @@ button {
 .btn-paginate:hover {
   background-color: #4905a2;
 }
-/* Add styles for more colors as needed */
+.btn-forward {
+  background-color: #4905a2;
+  color: #fff;
+}
+
+.btn-forward:hover {
+  background-color: #1f1153;
+}

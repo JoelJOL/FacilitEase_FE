@@ -22,6 +22,7 @@ export interface TicketDetails {
   styleUrls: ['./manager-view-ticket-simple.component.css']
 })
 export class ManagerViewTicketSimpleComponent {
+  customHeaderText: string = "Support Attachments";
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
 

@@ -16,11 +16,11 @@ var ManagerComponent = /** @class */ (function () {
         this.userRole = 'Manager';
         this.yourFieldsArray = [
             {
-                logo: 'assets/reports-icon.png',
+                logo: 'assets/hourglass-start-solid.svg',
                 title: 'Waiting Tickets'
             },
             {
-                logo: 'assets/tickets-icon.png',
+                logo: 'assets/ticket-solid.svg',
                 title: 'Employee Tickets'
             },
         ];
