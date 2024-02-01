@@ -4,10 +4,12 @@
   [titles]="titles"
   [getId]="empId"
 ></app-display-employee-details>
+<h1 class="role_heading">Assign Role</h1>
 <app-role-display-dropdown
   class="m-5"
   [apiLink]="apiRole"
   (chooseOption)="GetOption($event)"
+  [getId]="empId"
 ></app-role-display-dropdown>
 <app-button class="m-5" color="accepted" (action)="AssignRole()">
   Assign
