@@ -3,7 +3,7 @@ import { DropDownService } from '@app/features/service/httpService/dropdown.serv
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/master.service';
-import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 
 @Component({
   selector: 'app-unassigned-tickets',

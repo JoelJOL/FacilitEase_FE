@@ -6,7 +6,10 @@
       <p>{{ title }}:</p>
     </div>
     <div class="col-6">
-      <p>{{ data[index] }}</p>
+      <p *ngIf="index != 4">{{ data[index] }}</p>
+      <ng-container *ngIf="index === 4">
+        <p *ngFor="let role of data[index]">{{ role }}</p></ng-container
+      >
     </div>
   </div>
 </div>

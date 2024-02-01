@@ -63,10 +63,18 @@ export class FileUploadComponent {
                   employeeCode: Number(row[0]),
                   firstName: row[1],
                   lastName: row[2],
-                  dob: row[3],
+                  dob: {
+                    year: Number(row[3].split('/')[2]),
+                    month: Number(row[3].split('/')[1]),
+                    day: Number(row[3].split('/')[0]),
+                    dayOfWeek: new Date(row[3]).getDay(),
+                  },
                   email: row[4],
                   gender: row[5],
                   managerId: Number(row[6]),
+                  departmentId: Number(row[7]),
+                  positionId: Number(row[8]),
+                  locationId: Number(row[9]),
                 }));
 
                 console.log('Data after conversion:', jsonData);

@@ -44,10 +44,14 @@ import { DepartmentHeadDataTableComponent } from './features/departmenthead/depa
 import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
+import { DepartmentheadComponent } from './features/departmenthead/departmenthead/departmenthead.component';
+import { EmployeeAddComponent } from './components/layout/employee-add/employee-add.component';
 import { RequestToCancelComponent } from './features/employee/request-to-cancel/request-to-cancel.component';
 import { DetailsAssignedComponent } from './features/l2admin/details-assigned/details-assigned.component';
 import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/details-escalated.component';
 import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
+import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
+import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
 
 const routes: Routes = [
   {
@@ -79,6 +83,7 @@ const routes: Routes = [
     path: 'l2',
     component: L2AdminComponent,
     children: [
+      { path: '', redirectTo: 'unassigned-tickets', pathMatch: 'full' }, // Redirect to 'unassigned-tickets' when 'l2' is accessed directly
       { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
       { path: 'assigned-tickets', component: AssignedTicketsComponent },
       { path: 'escalated-tickets', component: EscalatedticketsComponent },
@@ -93,10 +98,23 @@ const routes: Routes = [
       { path: 'details-escalated/:Id', component: DetailsEscalatedComponent },
     ],
   },
+  {
+    path: 'l3',
+    component: L3adminComponent,
+    children: [
+      { path: 'view-ticket', component: AgentTicketsViewComponent },
+      { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
+      { path: 'on-hold-tickets', component: OnHoldTicketsViewComponent },
+      { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
+      { path: 'view-ticket-detail-noedit/:Id', component: ResolvedTicketViewComponent},
+      { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
+      // { path: 'lreport/:id', component: L2ReportComponent },
+    ],
+  },
+
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
   { path: 'manager', component: ManagerComponent },
-  { path: 'l2', component: L2AdminComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
   {
@@ -124,11 +142,6 @@ const routes: Routes = [
   },
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
   { path: 'assigned-tickets', component: AssignedTicketsComponent },
-  { path: 'view-ticket', component: AgentTicketsViewComponent },
-  { path: 'view-ticket/:id', component: AgentTicketViewComponent },
-  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
-  { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
-  { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   {
@@ -168,14 +181,7 @@ const routes: Routes = [
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
   { path: 'employee-card', component: EmployeeCardsComponent },
-  {
-    path: 'departmentHead-tickets',
-    component: DepartmentHeadDataTableComponent,
-  },
-  {
-    path: 'department-head-tc-detail/:Id',
-    component: DetailedDhTicketComponent,
-  },
+
   {
     path: 'manager-view-employee-tickets',
     component: ManagerViewEmployeeTicketsComponent,
@@ -202,6 +208,32 @@ const routes: Routes = [
   },
 
   { path: 'l2admin-ticket-view/:Id', component: L2adminTicketViewComponent },
+  {
+    path: 'departmenthead',
+    component: DepartmentheadComponent,
+    children: [
+      {
+        path: 'departmentHead-tickets',
+        component: DepartmentHeadDataTableComponent,
+      },
+      {
+        path: 'department-head-tc-detail/:Id',
+        component: DetailedDhTicketComponent,
+      },
+      {
+        path: 'add-employee',
+        component: EmployeeAddComponent,
+      },
+      {
+        path: 'reactive-form',
+        component: ReactiveFormComponent,
+      },
+      {
+        path: 'file-upload',
+        component: FileUploadComponent,
+      },
+    ],
+  },
   { path: '**', component: ButtonComponent },
 ];
 

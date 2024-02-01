@@ -1,43 +1,42 @@
-<div class="custom-dropdown d-flex">
-  <img
-    src="./assets/user.svg"
-    alt=""
-    [ngClass]="'img_user'"
-    class="img-fluid rounded-circle user-image"
-  />
-  <select
-    class="custom-select"
-    [(ngModel)]="selectedValue"
-    (ngModelChange)="onOptionSelected()"
+<div class="dropdown">
+  <button
+    class="dropdown_button dropdown-toggle col-9 d-flex justify-content-between"
+    id="dropdownMenuButton"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    (click)="toggleDropdown()"
+    appOutsideClick
+    (clickOutside)="closeDropdown()"
   >
-    <!-- Default placeholder option with dynamic value -->
-    <option
-      role="menuitem"
-      class="dropdown-item"
-      [value]="userRole.toLowerCase()"
-      [disabled]="true"
-    >
-      {{ userRole }}
-    </option>
-
-    <!-- Actual options -->
-    <option role="menuitem" class="dropdown-item dropdown" value="l1">
+    <img
+      src="./assets/user.svg"
+      alt=""
+      [ngClass]="'img_user'"
+      class="img-fluid rounded-circle user-image"
+    />
+    {{ selectedOption || "Employee" }}
+    <!-- <img src="./assets/down.png" /> -->
+  </button>
+  <div
+    class="dropdown_content col-9"
+    aria-labelledby="dropdownMenuButton"
+    *ngIf="showDropdown"
+  >
+    <div class="option dropdown-item" (click)="selectOption('l1')">
       L1 Admin
-    </option>
-    <option role="menuitem" class="dropdown-item dropdown" value="l2">
+    </div>
+    <div class="option dropdown-item" (click)="selectOption('l2')">
       L2 Admin
-    </option>
-    <option role="menuitem" class="dropdown-item dropdown" value="l3">
+    </div>
+    <div class="option dropdown-item" (click)="selectOption('l3')">
       L3 Admin
-    </option>
-    <option role="menuitem" class="dropdown-item dropdown" value="manager">
+    </div>
+    <div class="option dropdown-item" (click)="selectOption('manager')">
       Manager
-    </option>
-    <option role="menuitem" class="dropdown-item" value="dept-head">
+    </div>
+    <div class="option dropdown-item" (click)="selectOption('dept-head')">
       Department Head
-    </option>
-    <option role="menuitem" class="dropdown-item" value="employee">
-      Employee
-    </option>
-  </select>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 interface Field {
   logo: string;
@@ -60,13 +60,14 @@ export class L3adminComponent {
     if (event.field.title === 'Tickets') {
       if (event.subfield === 'Raised Tickets') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['view-ticket']);
+        this.router.navigate(['l3/view-ticket']);
       } else if (event.subfield === 'Resolved Tickets') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['resolved-tickets']);
-      }
-    } else if (event.subfield === 'Escalated Tickets') {
-      console.log(`I have got the ${event.subfield} from ${event.field.title}`);
+        this.router.navigate(['l3/resolved-tickets']);
+      } 
+    } else if (event.subfield === 'On Hold Tickets') {
+      this.showL3AdminTickets = true;
+      this.router.navigate(['l3/on-hold-tickets']);
     }
   }
 }
