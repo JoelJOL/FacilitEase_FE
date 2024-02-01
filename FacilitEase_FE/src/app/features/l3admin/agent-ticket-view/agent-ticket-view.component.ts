@@ -1,14 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { AgentService } from '../../service/httpService/agent.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalService } from '@app/features/service/dataService/sidebarService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-agent-ticket-view',
   templateUrl: './agent-ticket-view.component.html',
-  styleUrls: ['./agent-ticket-view.component.css']
+  styleUrls: ['./agent-ticket-view.component.css'],
 })
+
 export class AgentTicketViewComponent { 
   customHeaderText = 'Supported Attachments';  
   ticketDetails: any;
@@ -36,17 +38,13 @@ export class AgentTicketViewComponent {
         { heading: 'Location', text: this.ticketDetails.locationName }
       ];
     }); 
-
   }
-  
-
-  
 
   openModal(ticketDetails: any) {
     this.modalRef = this.modalService.show(ModalComponent, {
       initialState: {
-        ticketDetails: ticketDetails
-      }
+        ticketDetails: ticketDetails,
+      },
     });
   }
 
@@ -54,12 +52,11 @@ export class AgentTicketViewComponent {
     this.agentService.resolveTicket(this.ticketId).subscribe(
       (response) => {
         console.log('API call success:', response);
-        alert("Ticket resolved successfully!");
-        this.router.navigate(['/view-ticket']); 
+        alert('Ticket resolved successfully!');
+        this.router.navigate(['/view-ticket']);
       },
       (error) => {
         console.error('API call error:', error);
-
       }
     );
   }

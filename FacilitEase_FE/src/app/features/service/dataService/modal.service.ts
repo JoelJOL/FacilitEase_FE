@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { SupportComponent } from '@app/components/layout/support/support.component';
 import { AgentService } from '../httpService/agent.service';
 
 @Injectable({
@@ -22,13 +23,21 @@ export class ModalService {
       class: 'modal-dialog-centered',
     });
   }
-
+  openSupportModal(): void {
+    this.modalRef = this.modalService.show(SupportComponent, {
+      class: 'modal-dialog-centered',
+    });
+  }
   closeModal(): void {
     if (this.modalRef) {
       this.modalRef.hide();
     }
   }
-
+  closeSupportModal(): void {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+  }
   // forwardToManager() {
 
   //   this.agentService.forwardTicketManager(this.ticketId,this.managerId).subscribe(

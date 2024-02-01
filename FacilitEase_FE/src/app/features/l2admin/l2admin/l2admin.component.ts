@@ -1,7 +1,7 @@
 // l2admin.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 
 interface Field {
@@ -54,6 +54,9 @@ export class L2AdminComponent {
     if (clickedField.title === 'My Team') {
       this.showL2AdminTickets = true;
       this.router.navigate(['l2/l2admin-subordinates']);
+    } else if (clickedField.title === 'Tickets') {
+      this.showL2AdminTickets = true;
+      this.router.navigate(['l2/unassigned-tickets']);
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
       this.router.navigate(['l2/l2report/2']);

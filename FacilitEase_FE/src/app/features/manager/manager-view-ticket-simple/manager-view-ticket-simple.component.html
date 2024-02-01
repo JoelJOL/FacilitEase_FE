@@ -3,6 +3,10 @@
     <div class="ticket-container">
       <app-manager-ticket-info [ticketDetails]="ticketDetails"></app-manager-ticket-info>
       <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
+      <app-ticket-attachments
+      [headerText]="customHeaderText"
+      [ticketDetails]="ticketDetails"
+    ></app-ticket-attachments>
       <app-ticket-na-simple [notes]="ticketDetails.notes" [lastupdate]="ticketDetails.lastUpdate"></app-ticket-na-simple>
 
     <div class="person-cards-row">

@@ -24,6 +24,7 @@ export interface TicketDetails {
   styleUrls: ['./manager-view-ticket-detail.component.css']
 })
 export class ManagerViewTicketDetailComponent implements OnInit {
+  customHeaderText:string = "Support Attachments"
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
 

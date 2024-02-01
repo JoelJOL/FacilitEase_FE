@@ -81,6 +81,7 @@ const routes: Routes = [
     path: 'l2',
     component: L2AdminComponent,
     children: [
+      { path: '', redirectTo: 'unassigned-tickets', pathMatch: 'full' }, // Redirect to 'unassigned-tickets' when 'l2' is accessed directly
       { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
       { path: 'assigned-tickets', component: AssignedTicketsComponent },
       { path: 'escalated-tickets', component: EscalatedticketsComponent },
