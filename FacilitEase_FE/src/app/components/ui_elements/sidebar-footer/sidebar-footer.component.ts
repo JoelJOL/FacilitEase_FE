@@ -1,5 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { SupportComponent } from '@app/components/layout/support/support.component';
+import { ModalService } from '@app/features/service/dataService/sidebarService/modal.service';
 interface Field {
   logo: string;
   title: string;
@@ -11,13 +19,24 @@ interface Field {
 })
 export class SidebarFooterComponent {
   @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
+  @ViewChild(SupportComponent)
+  modal!: SupportComponent; // Assuming ModalComponent is correctly imported
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private modalService: ModalService) {}
   myTeam: Field = { logo: 'assets/sidebar-myTeam.png', title: 'My Team' };
   support: Field = { logo: 'assets/sidebar-support.png', title: 'Support' };
   @Output() fieldClicked = new EventEmitter<any>();
 
-  onFieldClicked(clickedField: any) {
+  onFieldClicked() {
+    this.modalService.openSupportModal();
+  }
+  onTeamClicked(clickedField: any) {
     this.fieldClicked.emit(clickedField);
+  }
+  showModal: boolean = false;
+
+  closeModal() {
+    this.showModal = false;
+    this.modalService.closeSupportModal();
   }
 }

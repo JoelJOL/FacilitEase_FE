@@ -50,9 +50,17 @@ export class AgentService {
     return this.http.get(url, { responseType: 'text' });
   }
 
-updateComment(ticketId: number, newText: string,options?: any): Observable<any> {
-  return this.http.patch(`https://localhost:7049/api/L3Admin/update-comment/${ticketId}`, {newText},options);
-}
+  updateComment(
+    ticketId: number,
+    newText: string,
+    options?: any
+  ): Observable<any> {
+    return this.http.patch(
+      `https://localhost:7049/api/L3Admin/update-comment/${ticketId}`,
+      { newText },
+      options
+    );
+  }
 
   getAllTickets(): string {
     const agentId = 3;
@@ -64,5 +72,26 @@ updateComment(ticketId: number, newText: string,options?: any): Observable<any> 
     const agentId = 3;
     const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${agentId}`;
     return apiUrl;
+  }
+  private baseUrl = 'https://localhost:7049';
+  getUserEmailAddress(): Observable<any> {
+    const apiUrl = `${this.baseUrl}/api/l2/agents?DepartmentId=1`;
+
+    // Replace 'any' with the actual type of the response
+    return this.http.get<any>(apiUrl);
+  }
+
+  sendEmailToSupport(
+    userEmail: string,
+    supportDetails: string
+  ): Observable<any> {
+    const apiUrl = `${this.baseUrl}/api/email/send`;
+
+    // Replace 'any' with the actual type of the response
+    return this.http.post<any>(apiUrl, {
+      toEmail: userEmail,
+      subject: 'Query For Support',
+      body: supportDetails,
+    });
   }
 }
