@@ -2,3 +2,9 @@
   justify-content: space-between;
   display: flex;
 }
+img {
+  height: 30px;
+  width: 30px;
+  padding-top: 5px;
+  margin-right: 20px;
+}

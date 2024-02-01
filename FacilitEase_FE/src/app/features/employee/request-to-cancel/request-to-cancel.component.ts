@@ -24,13 +24,13 @@ export class RequestToCancelComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.ticketId = Number(params['Id']);
-      console.log(this.ticketId);
+      this.ticketId = Number(params['id']);
+      console.log('This is the id', this.ticketId);
     });
 
     this.agentService.getData(this.ticketId).subscribe((data) => {
       console.log('API Response:', data);
-      this.ticketDetails = data;
+      this.ticketDetails = data[0];
       console.log('Ticket Details:', this.ticketDetails);
     });
   }

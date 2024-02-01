@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 
 @Component({
@@ -7,19 +8,20 @@ import { DropDownService } from '@app/features/service/httpService/dropdown.serv
   styleUrls: ['./employee-my-tickets.component.css'],
 })
 export class EmployeeMyTicketsComponent {
-  constructor(private masterService: DropDownService) {}
+  constructor(private masterService: DropDownService, private router: Router) {}
   headers: string[] = [
     'Ticket ID',
     'Ticket Name',
     'Ticket Description',
-    'Assigned To',
     'Priority',
+    'Assigned To',
     'Status',
   ];
 
   apiLink: string = '';
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
+    this.router.navigate(['employee/request', rowId]);
   }
   ngOnInit(): void {
     this.apiLink = `${this.masterService.getMyTickets()}`;

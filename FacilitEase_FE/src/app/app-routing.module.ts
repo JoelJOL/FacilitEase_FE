@@ -55,16 +55,16 @@ import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-v
 
 const routes: Routes = [
   {
-    path: 'request',
-    component: RequestToCancelComponent,
-  },
-  {
     path: 'employee',
     component: EmployeeComponent,
     children: [
       {
         path: 'employee-card',
         component: EmployeeCardsComponent,
+      },
+      {
+        path: 'request/:id',
+        component: RequestToCancelComponent,
       },
       {
         path: 'my-tickets',
@@ -76,7 +76,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'form', component: TrFormComponent },
+
   { path: 'xxx', component: SidebarComponent },
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   {

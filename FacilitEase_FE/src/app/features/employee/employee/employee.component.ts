@@ -16,7 +16,7 @@ export class EmployeeComponent {
   userRole: string = 'Employee';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/house-solid.svg',
       title: 'Home',
       subfields: [],
     },
@@ -30,7 +30,6 @@ export class EmployeeComponent {
       title: 'My Tickets',
       subfields: [],
     },
-    { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
   ];
   showEmployeeTickets: boolean = false;
   isSidebarCollapsed: boolean = false;
