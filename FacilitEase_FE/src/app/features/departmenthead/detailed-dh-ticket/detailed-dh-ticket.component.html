@@ -12,6 +12,14 @@
     <app-ticket-notes-attachments
       [ticketId]="ticketId"
     ></app-ticket-notes-attachments>
-    <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub>
+    <!-- <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub> -->
+  </div>
+  <div class="button-row">
+    <app-button color="accepted" (action)="updateTicket(true)"
+      >Accepted</app-button
+    >
+    <app-button color="rejected" (action)="updateTicket(false)"
+      >Rejected</app-button
+    >
   </div>
 </div>

@@ -10,6 +10,6 @@ export class ButtonComponent {
   @Output() action = new EventEmitter<string>();
 
   handleClick(): void {
-      this.action.emit();   
+    this.action.emit();
   }
 }
