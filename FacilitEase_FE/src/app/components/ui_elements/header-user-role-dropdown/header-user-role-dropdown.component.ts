@@ -15,10 +15,10 @@ export class HeaderUserRoleDropdownComponent implements OnInit {
     private router: Router,
     private userRoleService: UserRoleService
   ) {}
-  showDropdown: boolean = false;
-  selectedOption: string = '';
+
   onOptionSelected(): void {
     if (this.selectedValue) {
+      this.router.navigate([this.selectedValue]);
     }
   }
 
@@ -27,17 +27,5 @@ export class HeaderUserRoleDropdownComponent implements OnInit {
       this.userRole = userRole;
       this.selectedValue = userRole.toLowerCase();
     });
-  }
-  closeDropdown() {
-    this.showDropdown = false;
-  }
-  toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
-  }
-  selectOption(option: string) {
-    this.selectedOption = option;
-    this.selectedValue = option;
-    this.showDropdown = false;
-    this.router.navigate([this.selectedValue]);
   }
 }
