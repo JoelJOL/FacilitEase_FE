@@ -1,9 +1,14 @@
-<app-report-porfile></app-report-porfile>
-<!-- <app-admin-performance></app-admin-performance> -->
-<div class="d-flex col-12 justify-content-around">
-  <app-bar-chart class="col-9" [ticketStatus]="ticketStatus"></app-bar-chart>
-  <app-admin-performance
-    class="col-2"
-    (ticketStatus)="onValueChange($event)"
-  ></app-admin-performance>
+<div class="contain">
+  <app-report-porfile class="m-3 top shadow"></app-report-porfile>
+  <!-- <app-admin-performance></app-admin-performance> -->
+  <div class="d-flex col-12 justify-content-around">
+    <app-bar-chart
+      class="col-9 chart shadow"
+      [ticketStatus]="ticketStatus"
+    ></app-bar-chart>
+    <app-admin-performance
+      class="col-2 m-2"
+      (ticketStatus)="onValueChange($event)"
+    ></app-admin-performance>
+  </div>
 </div>
