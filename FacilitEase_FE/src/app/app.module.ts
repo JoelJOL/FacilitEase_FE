@@ -60,7 +60,7 @@ import { FileUploadComponent } from './components/layout/file-upload/file-upload
 import { EmployeeBulkuploadService } from './features/service/httpService/employee-bulkupload.service';
 import { L3adminComponent } from './features/l3admin/l3admin/l3admin.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ModalService } from './features/service/dataService/sidebarService/modal.service';
+import { ModalService } from './features/service/dataService/modal.service';
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
 import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
@@ -194,7 +194,7 @@ import { ReportStatsComponent } from './components/ui_elements/report-stats/repo
     TicketDetailViewComponent,
     ResolvedTicketViewComponent,
     TicketDetailViewNoeditComponent,
-    OnHoldTicketsViewComponent
+    OnHoldTicketsViewComponent,
     ReportStatsComponent,
   ],
   imports: [

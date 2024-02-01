@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalService } from '@app/features/service/dataService/sidebarService/modal.service';
+import { ModalService } from '@app/features/service/dataService/modal.service';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';

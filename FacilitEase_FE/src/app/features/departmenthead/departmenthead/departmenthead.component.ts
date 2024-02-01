@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarService } from '@app/features/service/dataService/sidebar.service';
-import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
+import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 interface Field {
   logo: string;
   title: string;
