@@ -44,6 +44,8 @@ import { DepartmentHeadDataTableComponent } from './features/departmenthead/depa
 import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { EmployeeMyTicketsComponent } from './features/employee/employee-my-tickets/employee-my-tickets.component';
+import { DepartmentheadComponent } from './features/departmenthead/departmenthead/departmenthead.component';
+import { EmployeeAddComponent } from './components/layout/employee-add/employee-add.component';
 
 const routes: Routes = [
   {
@@ -120,14 +122,7 @@ const routes: Routes = [
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
   { path: 'employee-card', component: EmployeeCardsComponent },
-  {
-    path: 'departmentHead-tickets',
-    component: DepartmentHeadDataTableComponent,
-  },
-  {
-    path: 'department-head-tc-detail/:Id',
-    component: DetailedDhTicketComponent,
-  },
+
   {
     path: 'manager-view-employee-tickets',
     component: ManagerViewEmployeeTicketsComponent,
@@ -153,6 +148,32 @@ const routes: Routes = [
     component: ManagerViewTicketDetailComponent,
   },
   { path: 'l2admin-ticket-view/:Id', component: L2adminTicketViewComponent },
+  {
+    path: 'departmenthead',
+    component: DepartmentheadComponent,
+    children: [
+      {
+        path: 'departmentHead-tickets',
+        component: DepartmentHeadDataTableComponent,
+      },
+      {
+        path: 'department-head-tc-detail/:Id',
+        component: DetailedDhTicketComponent,
+      },
+      {
+        path: 'add-employee',
+        component: EmployeeAddComponent,
+      },
+      {
+        path: 'reactive-form',
+        component: ReactiveFormComponent,
+      },
+      {
+        path: 'file-upload',
+        component: FileUploadComponent,
+      },
+    ],
+  },
   { path: '**', component: ButtonComponent },
 ];
 

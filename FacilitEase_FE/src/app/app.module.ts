@@ -98,6 +98,7 @@ import { ManagerTicketInfoComponent } from './features/manager/components/manage
 import { MasterService } from './features/service/dataService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
 import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
+import { EmployeeAddComponent } from './components/layout/employee-add/employee-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -173,6 +174,7 @@ import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/
     ManagerTicketInfoComponent,
     ConfirmationModalComponent,
     EmplycarddisplayComponent,
+    EmployeeAddComponent,
   ],
   imports: [
     HttpClientModule,

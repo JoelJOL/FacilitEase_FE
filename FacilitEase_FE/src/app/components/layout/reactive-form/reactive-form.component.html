@@ -1,6 +1,5 @@
 <!-- your.component.html -->
 <form [formGroup]="myForm" (ngSubmit)="submitForm()" class="mt-4">
-  <!-- Your form fields -->
   <div class="form-group row">
     <label for="employeecode" class="col-sm-2 col-form-label"
       >Employee Code:</label
@@ -13,9 +12,7 @@
         formControlName="employeeCode"
       />
     </div>
-  </div>
 
-  <div class="form-group row">
     <label for="firstname" class="col-sm-2 col-form-label">First Name:</label>
     <div class="col-sm-10">
       <input
@@ -37,9 +34,7 @@
         formControlName="lastName"
       />
     </div>
-  </div>
 
-  <div class="form-group row">
     <label for="dob" class="col-sm-2 col-form-label">DOB:</label>
     <div class="col-sm-10">
       <input type="date" id="dob" class="form-control" formControlName="dob" />
@@ -56,9 +51,7 @@
         formControlName="email"
       />
     </div>
-  </div>
 
-  <div class="form-group row">
     <label for="gender" class="col-sm-2 col-form-label">Gender:</label>
     <div class="col-sm-10">
       <input
@@ -85,9 +78,7 @@
         </option>
       </select>
     </div>
-  </div>
 
-  <div class="form-group row">
     <label for="departmentId" class="col-sm-2 col-form-label"
       >DepartmentId:</label
     >
@@ -98,10 +89,7 @@
         formControlName="departmentId"
         (change)="onDepartmentSelected($event)"
       >
-        <!-- Add a default option with an empty value -->
         <option value="" disabled selected>Select Department></option>
-
-        <!-- Use 'id' instead of 'department.id' if 'id' is the correct property -->
         <option *ngFor="let department of departments" [value]="department.id">
           {{ department.deptName }}
         </option>
@@ -124,9 +112,7 @@
         </option>
       </select>
     </div>
-  </div>
 
-  <div class="form-group row">
     <label for="locationId" class="col-sm-2 col-form-label">LocationId:</label>
     <div class="col-sm-10">
       <select
@@ -154,7 +140,6 @@
 
 <div *ngIf="showReview" class="mt-4">
   <h2>Review your data</h2>
-  <!-- Display the form data for review -->
   <p>EmployeeCode: {{ myForm.get("employeeCode")?.value }}</p>
   <p>FirstName: {{ myForm.get("firstName")?.value }}</p>
   <p>LastName: {{ myForm.get("lastName")?.value }}</p>
