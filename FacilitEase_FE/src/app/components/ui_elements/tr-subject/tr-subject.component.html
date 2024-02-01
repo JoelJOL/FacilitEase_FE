@@ -1,5 +1,5 @@
-<div class="">
-  <label for="subject">Ticket Subject:</label>
+<!-- <div class="d-flex">
+  <label for="description">{{ label }}:</label>
   <input
     type="text"
     id="subject"
@@ -8,4 +8,16 @@
     [formControl]="control"
     class="tr_subject"
   />
+</div> -->
+<div class="inputGroup">
+  <input
+    id="subject"
+    [ngClass]="'tr_subject'"
+    (blur)="onBlur()"
+    (input)="onInput()"
+    [formControl]="control"
+    required=""
+    autocomplete="off"
+  />
+  <label for="subject">{{ label }}</label>
 </div>

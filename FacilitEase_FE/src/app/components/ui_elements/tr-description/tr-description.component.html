@@ -1,5 +1,5 @@
-<div class="d-flex">
-  <label for="description">Description:</label>
+<!-- <div class="d-flex">
+  <label for="description">{{ label }}</label>
   <textarea
     id="description"
     [ngClass]="'tr_description'"
@@ -7,4 +7,29 @@
     (input)="onInput()"
     [formControl]="control"
   ></textarea>
+</div> -->
+<!-- <div class="inputGroup">
+  <input
+    type="text"
+    id="description"
+    [ngClass]="'tr_description'"
+    (blur)="onBlur()"
+    (input)="onInput()"
+    [formControl]="control"
+    required=""
+    autocomplete="off"
+  />
+  <label for="description">{{ label }}</label>
+</div> -->
+<div class="inputGroup">
+  <textarea
+    id="description"
+    [ngClass]="'tr_description'"
+    (blur)="onBlur()"
+    (input)="onInput()"
+    [formControl]="control"
+    required=""
+    autocomplete="off"
+  ></textarea>
+  <label for="description">{{ label }}</label>
 </div>

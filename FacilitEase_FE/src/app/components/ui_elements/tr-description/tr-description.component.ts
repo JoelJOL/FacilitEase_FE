@@ -1,5 +1,15 @@
-import { Component, EventEmitter, Output, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  forwardRef,
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 @Component({
   selector: 'app-tr-description',
   templateUrl: './tr-description.component.html',
@@ -14,18 +24,16 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 })
 export class TrDescriptionComponent implements ControlValueAccessor {
   @Output() descriptionChange = new EventEmitter<string>();
-
+  @Input() label: string = 'Description';
   onDescriptionChange(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.descriptionChange.emit(value);
   }
-    control = new FormControl('');
+  control = new FormControl('');
   onChange = (value: any) => {};
   onTouched = () => {};
 
-  writeValue(value: any): void {
-    
-  }
+  writeValue(value: any): void {}
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -35,16 +43,12 @@ export class TrDescriptionComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
-  }
-  
-  onInput(){
+  setDisabledState?(isDisabled: boolean): void {}
 
-    this.onChange(this.control.value)
+  onInput() {
+    this.onChange(this.control.value);
   }
-  onBlur(){
+  onBlur() {
     this.onTouched();
   }
-
-  }
-
+}

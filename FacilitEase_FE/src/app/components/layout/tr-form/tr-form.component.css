@@ -1,3 +1,46 @@
-.form_dropdown {
-  justify-content: space-between;
+.inputGroup {
+  font-family: "Segoe UI", sans-serif;
+  margin: 1em 0;
+  position: relative;
+}
+
+.inputGroup input,
+.inputGroup textarea,
+.inputGroup select {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 5px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 1em;
+  top: 0.8em;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #666;
+}
+.inputGroup input:focus + label,
+.inputGroup textarea:focus + label,
+.inputGroup select:focus + label,
+.inputGroup input:valid + label,
+.inputGroup textarea:valid + label,
+.inputGroup select:valid + label {
+  transform: translateY(-50%) scale(0.9);
+  color: #000;
+  background-color: #e8e8e8; /* Background color when focused or when there's content */
+  padding: 0.2em 0.5em; /* Adjust padding when focused or when there's content */
+  border-radius: 10px; /* Adjust border radius when focused or when there's content */
+  z-index: 3; /* Ensure the label is above the input */
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus,
+.inputGroup select:focus {
+  z-index: 2; /* Ensure the input is above the label when focused */
 }

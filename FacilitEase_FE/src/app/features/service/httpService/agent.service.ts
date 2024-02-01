@@ -8,7 +8,7 @@ export class AgentService {
   constructor(private http: HttpClient) {}
   getData(ticketId: number): Observable<any> {
     console.log(`The ticket id : ${ticketId} is recieved in getData()`);
-    const apiUrl = `https://localhost:7049/api/l2/ticketById?desiredTicketId=${ticketId}`;
+    const apiUrl = `https://localhost:7049/api/L3Admin/ticketdetail-by-agent/${ticketId}`;
     return this.http.get(apiUrl);
   }
 
@@ -50,9 +50,17 @@ export class AgentService {
     return this.http.get(url, { responseType: 'text' });
   }
 
-updateComment(ticketId: number, newText: string,options?: any): Observable<any> {
-  return this.http.patch(`https://localhost:7049/api/L3Admin/update-comment/${ticketId}`, {newText},options);
-}
+  updateComment(
+    ticketId: number,
+    newText: string,
+    options?: any
+  ): Observable<any> {
+    return this.http.patch(
+      `https://localhost:7049/api/L3Admin/update-comment/${ticketId}`,
+      { newText },
+      options
+    );
+  }
 
   getAllTickets(): string {
     const agentId = 3;

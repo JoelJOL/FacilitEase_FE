@@ -4,6 +4,7 @@
     class="form-control custom-dropdown"
     (change)="onSelectionChange($event)"
   >
+    <app-role-display-dropdown></app-role-display-dropdown>
     <option value="" disabled selected>{{ label }}</option>
     <option *ngFor="let option of options" [value]="option[valueProperty]">
       {{ option[displayKey] }}

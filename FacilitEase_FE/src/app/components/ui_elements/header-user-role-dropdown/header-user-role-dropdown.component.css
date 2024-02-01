@@ -17,3 +17,19 @@
   font-weight: bold;
   align-items: center;
 }
+
+.dropdown-item {
+  padding: 10px;
+  font-size: 15px;
+  color: #495057;
+}
+
+.custom-select .dropdown_item:checked {
+  background-color: #5683af;
+  color: #fff;
+  margin: 10px;
+}
+
+.dropdown {
+  padding: 10%;
+}

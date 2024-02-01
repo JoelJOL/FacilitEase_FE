@@ -1,13 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { DropDownService } from '@app/features/service/httpService/dropdown.service';
-import { PostAPIService } from '@app/features/service/httpService/post-api.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tr-form',
@@ -15,78 +8,98 @@ import { PostAPIService } from '@app/features/service/httpService/post-api.servi
   styleUrls: ['./tr-form.component.css'],
 })
 export class TrFormComponent implements OnInit {
-  priorities: any[] = [];
-  categories: any[] = [];
-  departments: any[] = [];
   ticketForm!: FormGroup;
+  departments: any[] = [];
+  categories: any[] = [];
+  priorities: any[] = [];
 
-  constructor(
-    private apiService: DropDownService,
-    private formBuilder: FormBuilder,
-    private ticketService: PostAPIService
-  ) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
-  ticket: any = {
-    subject: '',
-    description: '',
-    category: '',
-    department: '',
-    priority: '',
-    attachments: [],
-  };
+  ngOnInit() {
+    this.initForm();
+    this.loadDepartments();
+    this.loadPriorities();
+  }
 
-  ngOnInit(): void {
-    this.apiService.getPriorities().subscribe((data) => {
-      this.priorities = data;
-    });
-
-    this.apiService.getCategories().subscribe((data) => {
-      this.categories = data;
-    });
-
-    this.apiService.getDepartments().subscribe((data) => {
-      this.departments = data;
-    });
-
-    this.ticketForm = new FormGroup({
-      subject: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      priority: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required),
-      department: new FormControl('', Validators.required),
-      attachments: new FormControl([]),
+  initForm() {
+    this.ticketForm = this.fb.group({
+      subject: ['', Validators.required],
+      description: ['', Validators.required],
+      priority: ['', Validators.required],
+      department: ['', Validators.required],
+      category: ['', Validators.required],
+      attachments: [''],
     });
   }
 
+  loadDepartments() {
+    this.http
+      .get('https://localhost:7049/api/Employee/departments')
+      .subscribe((data: any) => {
+        this.departments = data;
+      });
+  }
+
+  onDepartmentChange() {
+    const departmentId = this.ticketForm.get('department')?.value;
+
+    if (departmentId) {
+      this.http
+        .get(
+          `https://localhost:7049/api/Employee/GetCategoryByDepartmentId/${departmentId}`
+        )
+        .subscribe((data: any) => {
+          this.categories = data;
+        });
+    } else {
+      this.categories = [];
+    }
+  }
+
+  loadPriorities() {
+    this.http
+      .get('https://localhost:7049/api/Employee/priorities')
+      .subscribe((data: any) => {
+        this.priorities = data;
+      });
+  }
+
   onSubmit() {
-    console.log('Form Value:', this.ticketForm.value);
-
     if (this.ticketForm.valid) {
-      // Assign form values to the ticket object with correct field names
-      this.ticket.TicketName = this.ticketForm.get('subject')?.value;
-      this.ticket.TicketDescription = this.ticketForm.get('description')?.value;
-      this.ticket.PriorityId = this.ticketForm.get('priority')?.value;
-      this.ticket.CategoryId = this.ticketForm.get('category')?.value;
-      this.ticket.DepartmentId = this.ticketForm.get('department')?.value;
+      // Convert documentLink to an array if it's not already
+      const documentLinkValue = this.ticketForm.get('attachments')?.value;
+      const documentLinkArray = Array.isArray(documentLinkValue)
+        ? documentLinkValue
+        : [documentLinkValue];
 
-      // Assuming you have an attachments field in the ticket object
-      this.ticket.DocumentLink = [this.ticketForm.get('attachments')?.value];
+      // Use the subject as TicketName
+      const payload = {
+        ticketName: this.ticketForm.get('subject')?.value,
+        ticketDescription: this.ticketForm.get('description')?.value,
+        priorityId: this.ticketForm.get('priority')?.value,
+        categoryId: this.ticketForm.get('category')?.value,
+        departmentId: this.ticketForm.get('department')?.value,
+        documentLink: documentLinkArray,
+      };
 
-      // Call the service method to post the ticket data
-      this.ticketService.postUser(this.ticket).subscribe(
-        (response) => {
-          console.log('Ticket submitted successfully:', response);
-          alert('Ticket submitted successfully:');
-        },
-        (error) => {
-          console.error('Error submitting ticket:', error);
-          // Handle error actions here
-        }
-      );
+      this.http
+        .post('https://localhost:7049/api/Employee/raiseticket', payload)
+        .subscribe(
+          (response) => {
+            console.log('Ticket submitted successfully', response);
+            // Handle success, e.g., display a success message to the user
+          },
+          (error) => {
+            console.error('Error submitting ticket', error);
+            // Handle error, e.g., display an error message to the user
+          }
+        );
+    } else {
+      // Handle invalid form, e.g., display validation errors to the user
     }
   }
 
   onReset() {
-    this.ticketForm.reset;
+    this.ticketForm.reset();
   }
 }
