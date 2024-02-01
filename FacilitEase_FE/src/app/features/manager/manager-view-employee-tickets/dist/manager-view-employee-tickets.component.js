@@ -12,7 +12,15 @@ var ManagerViewEmployeeTicketsComponent = /** @class */ (function () {
     function ManagerViewEmployeeTicketsComponent(masterService, router) {
         this.masterService = masterService;
         this.router = router;
-        this.headers = ['ID', 'Ticket Name', 'Employee Name', 'Assigned To', 'Submitted Date', 'Priority', 'Status'];
+        this.headers = [
+            'ID',
+            'Ticket Name',
+            'Employee Name',
+            'Assigned To',
+            'Submitted Date',
+            'Priority',
+            'Status',
+        ];
         this.apiLink = '';
     }
     ManagerViewEmployeeTicketsComponent.prototype.ngOnInit = function () {
@@ -20,7 +28,7 @@ var ManagerViewEmployeeTicketsComponent = /** @class */ (function () {
     };
     ManagerViewEmployeeTicketsComponent.prototype.onRowClicked = function (Id) {
         console.log('Row clicked in parent component with ID:', Id);
-        this.router.navigate(['manager-view-ticket-detail', Id]);
+        this.router.navigate(['manager/manager-view-ticket-simple', Id]);
     };
     ManagerViewEmployeeTicketsComponent = __decorate([
         core_1.Component({

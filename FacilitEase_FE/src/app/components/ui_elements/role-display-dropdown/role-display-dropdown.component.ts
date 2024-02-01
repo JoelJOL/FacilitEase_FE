@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SearchService } from '@app/features/service/httpService/searchService/search.service';
+import { OutsideClickDirective } from '@app/features/service/directive/outside-click/outside-click.directive';
 
 @Component({
   selector: 'app-role-display-dropdown',
@@ -13,20 +14,27 @@ export class RoleDisplayDropdownComponent {
   options: string[] = [];
   @Input()
   apiLink: string = '';
+  @Input()
+  getId: number = 0;
   @Output()
   chooseOption: EventEmitter<string> = new EventEmitter<string>();
   ngOnInit(): void {}
 
   toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
-    this.searchService.GetOptions(this.apiLink).subscribe((data) => {
-      this.options = data;
-    });
+    this.showDropdown = true;
+    this.searchService
+      .GetOptions(this.apiLink, this.getId)
+      .subscribe((data) => {
+        this.options = data;
+      });
   }
 
   selectOption(option: string) {
     this.selectedOption = option;
     this.chooseOption.emit(option);
+    this.showDropdown = false;
+  }
+  closeDropdown() {
     this.showDropdown = false;
   }
 }

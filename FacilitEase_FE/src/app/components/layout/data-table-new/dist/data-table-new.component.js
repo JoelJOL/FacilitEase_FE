@@ -73,6 +73,9 @@ var DataTableNewComponent = /** @class */ (function () {
     DataTableNewComponent.prototype.search = function (searchQuery) {
         this.searchQuery = searchQuery;
         this.currentPage = 0;
+        this.loadDataDebounced();
+    };
+    DataTableNewComponent.prototype.loadDataDebounced = function () {
         this.loadData();
     };
     DataTableNewComponent.prototype.onRowClick = function (Id) {

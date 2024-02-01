@@ -1,0 +1,20 @@
+option {
+  color: black;
+  background-color: #fff;
+  padding: 12px;
+  width: 100%;
+  padding-right: 10px;
+}
+.custom-dropdown {
+  width: 100px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: rgb(124, 0, 192);
+  color: #fff;
+  appearance: none;
+  cursor: pointer;
+  font-size: 16px;
+  height: 45px; /* Adjust the height as needed */
+  align-items: center;
+  margin-bottom: 20px;
+}

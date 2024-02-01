@@ -22,7 +22,7 @@ export interface TicketDetails {
 export class DetailedDhTicketComponent implements OnInit {
   ticketDetails!: TicketDetails;
   customHeaderText: string = '';
-  ticketId: number | undefined;
+  ticketId: number = 0;
 
   constructor(
     private route: ActivatedRoute,

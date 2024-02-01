@@ -1,10 +1,10 @@
-<div class="title-sub-container" *ngIf="ticket">
+<div class="title-sub-container">
   <div class="row justify-content-around">
-    <div class="col-md-2" *ngFor="let item of items">
+    <div class="col-md-2" *ngFor="let heading of headings">
       <h4>
-        <b>{{ item.heading }}</b>
+        <b>{{ heading.heading }}</b>
       </h4>
-      <p>{{ item.text }}</p>
+      <p>{{ heading.text }}</p>
     </div>
   </div>
 </div>

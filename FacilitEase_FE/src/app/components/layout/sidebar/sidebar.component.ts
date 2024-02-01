@@ -6,7 +6,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SidebarService } from '@app/features/service/dataService/sidebar.service';
+import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 // import { SidebarService } from 'src/app/features/service/dataService/sidebar.service';
 // import { SidebarService } from './features/service/dataService/sidebar.service';
 

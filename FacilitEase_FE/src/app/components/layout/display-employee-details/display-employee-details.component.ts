@@ -39,6 +39,7 @@ export class DisplayEmployeeDetailsComponent {
           this.data.push(Object.values(element)[1]);
           this.data.push(Object.values(element)[2]);
           this.data.push(Object.values(element)[3]);
+          this.data.push(Object.values(element)[4]);
         });
         console.log(data);
       });

@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 import { PostAPIService } from '@app/features/service/httpService/post-api.service';
 
@@ -22,14 +27,14 @@ export class TrFormComponent implements OnInit {
   ) {}
 
   ticket: any = {
-    TicketName: '',
-    TicketDescription: '',
-    PriorityId: '',
-    CategoryId: '',
-    DepartmentId: '',
-    Attachments: [],
+    subject: '',
+    description: '',
+    category: '',
+    department: '',
+    priority: '',
+    attachments: [],
   };
-  
+
   ngOnInit(): void {
     this.apiService.getPriorities().subscribe((data) => {
       this.priorities = data;
@@ -53,36 +58,35 @@ export class TrFormComponent implements OnInit {
     });
   }
 
-  
-    onSubmit() {
-      console.log('Form Value:', this.ticketForm.value);
-    
-      if (this.ticketForm.valid) {
-        // Assign form values to the ticket object with correct field names
-        this.ticket.TicketName = this.ticketForm.get('subject')?.value;
-        this.ticket.TicketDescription = this.ticketForm.get('description')?.value;
-        this.ticket.PriorityId = this.ticketForm.get('priority')?.value;
-        this.ticket.CategoryId = this.ticketForm.get('category')?.value;
-        this.ticket.DepartmentId = this.ticketForm.get('department')?.value;
-    
-        // Assuming you have an attachments field in the ticket object
-        this.ticket.DocumentLink = [this.ticketForm.get('attachments')?.value];
-    
-        // Call the service method to post the ticket data
-        this.ticketService.postUser(this.ticket).subscribe(
-          (response) => {
-            console.log('Ticket submitted successfully:', response);
-            alert('Ticket submitted successfully:');
-          },
-          (error) => {
-            console.error('Error submitting ticket:', error);
-            // Handle error actions here
-          }
-        );
-      } 
-    }
+  onSubmit() {
+    console.log('Form Value:', this.ticketForm.value);
 
-    onReset(){
-      this.ticketForm.reset;
+    if (this.ticketForm.valid) {
+      // Assign form values to the ticket object with correct field names
+      this.ticket.TicketName = this.ticketForm.get('subject')?.value;
+      this.ticket.TicketDescription = this.ticketForm.get('description')?.value;
+      this.ticket.PriorityId = this.ticketForm.get('priority')?.value;
+      this.ticket.CategoryId = this.ticketForm.get('category')?.value;
+      this.ticket.DepartmentId = this.ticketForm.get('department')?.value;
+
+      // Assuming you have an attachments field in the ticket object
+      this.ticket.DocumentLink = [this.ticketForm.get('attachments')?.value];
+
+      // Call the service method to post the ticket data
+      this.ticketService.postUser(this.ticket).subscribe(
+        (response) => {
+          console.log('Ticket submitted successfully:', response);
+          alert('Ticket submitted successfully:');
+        },
+        (error) => {
+          console.error('Error submitting ticket:', error);
+          // Handle error actions here
+        }
+      );
     }
   }
+
+  onReset() {
+    this.ticketForm.reset;
+  }
+}

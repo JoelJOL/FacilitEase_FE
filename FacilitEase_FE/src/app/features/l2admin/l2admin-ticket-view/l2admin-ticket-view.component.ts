@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalService } from '@app/features/service/dataService/modal.service';
+import { ModalService } from '@app/features/service/dataService/sidebarService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
@@ -14,9 +14,9 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class L2adminTicketViewComponent {
   customHeaderText = 'Supported Attachments';
-  ticketId: number = 0;
   ticketDetails: any = [];
   modalRef: BsModalRef | undefined;
+  ticketId: any;
 
   constructor(
     private route: ActivatedRoute,

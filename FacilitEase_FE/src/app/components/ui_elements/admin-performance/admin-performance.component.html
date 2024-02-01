@@ -1,7 +1,7 @@
-<div class="container-fluid row g-1">
+<div class="container-fluid row g-1 status">
   <ng-container *ngFor="let item of items; let indexOfDiv = index">
     <div
-      class="ticket_statuses"
+      class="ticket_statuses shadow"
       [ngClass]="{
         show_performance: selectedDivIndex !== indexOfDiv,
         show_performance_toggle: selectedDivIndex === indexOfDiv

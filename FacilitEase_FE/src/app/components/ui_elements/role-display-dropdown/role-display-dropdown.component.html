@@ -1,14 +1,24 @@
 <div class="dropdown">
   <button
-    class="dropdown_button col-2 d-flex justify-content-between"
+    class="dropdown_button dropdown-toggle col-2 d-flex justify-content-between"
+    id="dropdownMenuButton"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
     (click)="toggleDropdown()"
+    appOutsideClick
+    (clickOutside)="closeDropdown()"
   >
     {{ selectedOption || "Assign a role" }}
-    <img src="./assets/down.png" />
+    <!-- <img src="./assets/down.png" /> -->
   </button>
-  <div class="dropdown_content col-2" *ngIf="showDropdown">
+  <div
+    class="dropdown_content col-2"
+    aria-labelledby="dropdownMenuButton"
+    *ngIf="showDropdown"
+  >
     <div
-      class="option"
+      class="option dropdown-item"
       *ngFor="let option of options"
       (click)="selectOption(option)"
     >

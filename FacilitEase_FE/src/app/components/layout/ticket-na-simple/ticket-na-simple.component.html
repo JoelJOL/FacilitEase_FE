@@ -1,0 +1,21 @@
+<div class="card na_box">
+  <div class="card_body">
+    <div class="notes">
+      <div class="notes_heading_lastupdate">
+        <h4 id="notes_heading">Notes</h4>
+        <p id="notes_lastupdate">{{ lastupdate }} ago</p>
+      </div>
+
+      <div class="notes_description">
+        {{ notes }}
+      </div>
+      <div class="notes_description" *ngIf="commentText">
+        {{ commentText }}
+      </div>
+    </div>
+
+    <br />
+
+    <app-ticket-attachments></app-ticket-attachments>
+  </div>
+</div>

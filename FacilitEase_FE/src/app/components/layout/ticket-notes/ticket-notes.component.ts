@@ -9,6 +9,7 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class TicketNotesComponent {
   
+
   @Input() ticketId: number | undefined;
   constructor(private agentService:AgentService ){
 
@@ -38,19 +39,25 @@ export class TicketNotesComponent {
   // Output event to notify parent about toggle
   @Output() toggleEditModeEvent = new EventEmitter<void>(); 
 
+  // Event to emit when notes are submitted
+  @Output() submitNotesEvent = new EventEmitter<string>();
+
   //Initialising the form control notes
   form = new FormGroup({
     notes: new FormControl(''),
   
   });
 
+  getNotes(): string {
+    const notesControl = this.form ? this.form.get('notes') : null;
+  
+    return notesControl ? (notesControl.value as string) : '';
+  }
+  
   // Emit the event to notify the parent
   toggleEditMode() {
     this.toggleEditModeEvent.emit(); 
   }
 
-
-  onSubmit(){
-
-  }
+  
 }

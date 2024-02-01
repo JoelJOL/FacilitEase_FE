@@ -10,7 +10,6 @@ export class TicketInfoComponent {
   ticketId: string = ''; // Replace with actual data
   ticketPriority: string = '';
   status: string = '';
-  ticket: any = [];
   @Input() ticketDetails: any;
   constructor(private agentService: AgentService) {}
 

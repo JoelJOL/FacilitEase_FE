@@ -3,7 +3,11 @@
     <div class="ticket-container">
       <app-manager-ticket-info [ticketDetails]="ticketDetails"></app-manager-ticket-info>
       <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
-      <app-ticket-notes-attachments></app-ticket-notes-attachments>
+      <app-ticket-attachments
+      [headerText]="customHeaderText"
+      [ticketDetails]="ticketDetails"
+    ></app-ticket-attachments>
+      <app-ticket-na-simple [notes]="ticketDetails.notes" [lastupdate]="ticketDetails.lastUpdate"></app-ticket-na-simple>
 
     <div class="person-cards-row">
       <!-- Raised By -->
@@ -28,7 +32,7 @@
         <app-button color="rejected">Reject</app-button>
       </div>
       <div class="common-btn" id="button" (click)="openConfirmationModal('forward')">
-        <app-button color="rejected">Forward for Approval</app-button>
+        <app-button color="forward">Forward for Approval</app-button>
       </div>
     </div>
       
