@@ -42,11 +42,9 @@ export class RequestToCancelComponent {
         (response) => {
           console.log('Cancel request successful', response);
           alert('Cancel request successful');
-          // Handle success (if needed)
         },
         (error) => {
           console.error('Error cancelling request', error);
-          // Handle error (if needed)
         }
       );
   }
