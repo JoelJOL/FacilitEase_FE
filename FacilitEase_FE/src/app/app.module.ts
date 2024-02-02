@@ -96,13 +96,20 @@ import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
 import { MasterService } from './features/service/dataService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
+import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
+import { EmployeeAddComponent } from './components/layout/employee-add/employee-add.component';
 import { RequestToCancelComponent } from './features/employee/request-to-cancel/request-to-cancel.component';
 import { L2adminTicketViewComponent } from './features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component';
 import { DetailsAssignedComponent } from './features/l2admin/details-assigned/details-assigned.component';
 import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/details-escalated.component';
 import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
 import { TicketNaSimpleComponent } from './components/layout/ticket-na-simple/ticket-na-simple.component';
-import { OutsideClickDirective } from './features/service/directive/outside-click.directive';
+import { TicketDetailViewComponent } from './components/layout/ticket-detail-view/ticket-detail-view.component';
+import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
+import { TicketDetailViewNoeditComponent } from './components/layout/ticket-detail-view-noedit/ticket-detail-view-noedit.component';
+import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
+import { OutsideClickDirective } from './features/service/directive/outside-click/outside-click.directive';
+import { ReportStatsComponent } from './components/ui_elements/report-stats/report-stats.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -177,12 +184,18 @@ import { OutsideClickDirective } from './features/service/directive/outside-clic
     TruncatePipe,
     ManagerTicketInfoComponent,
     ConfirmationModalComponent,
+    EmplycarddisplayComponent,
+    EmployeeAddComponent,
     RequestToCancelComponent,
     DetailsAssignedComponent,
     DetailsEscalatedComponent,
     ManagerViewTicketSimpleComponent,
     TicketNaSimpleComponent,
-    OutsideClickDirective,
+    TicketDetailViewComponent,
+    ResolvedTicketViewComponent,
+    TicketDetailViewNoeditComponent,
+    OnHoldTicketsViewComponent,
+    ReportStatsComponent,
   ],
   imports: [
     HttpClientModule,

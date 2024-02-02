@@ -16,7 +16,11 @@
       valueProperty="agentId"
       (onItemSelected)="onAgentSelected($event, ticketId)"
     ></app-assign-dropdown>
-    <app-ticket-notes-attachments></app-ticket-notes-attachments>
+    <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments> -->
+    <app-ticket-na-simple
+      [notes]="ticketDetails.notes"
+      [lastupdate]="ticketDetails.lastUpdate"
+    ></app-ticket-na-simple>
     <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub>
     <div class="button-row"></div>
   </div>

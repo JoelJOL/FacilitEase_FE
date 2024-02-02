@@ -7,14 +7,16 @@ import { SearchService } from '@app/features/service/httpService/searchService/s
   styleUrls: ['./assign-role.component.css'],
 })
 export class AssignRoleComponent {
-  constructor(private searchService: SearchService) {}
-  titles = ['Name', 'Date Of Birth', 'Gender', 'Email'];
+  constructor(private searchService: SearchService) {
+    searchService: SearchService;
+  }
+  titles = ['Name', 'Date Of Birth', 'Gender', 'Email', 'Roles'];
   heading = 'Employee Details';
   empId: number = 0;
   primary = 'primary';
   option: string = '';
+  apiRole = this.searchService.assignRolesApi;
 
-  apiRole = 'https://localhost:7049/api/RoleAssignment';
   GetId($event: number) {
     this.empId = $event;
   }

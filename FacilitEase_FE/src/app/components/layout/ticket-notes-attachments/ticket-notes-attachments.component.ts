@@ -10,15 +10,14 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 })
 export class TicketNotesAttachmentsComponent {
 
-  @Input() ticketId: number = 0;
+  @Input() ticketId: number=0;
   @ViewChild(TicketNotesComponent) ticketNotesComponent!: TicketNotesComponent;
 
   constructor(private agentService:AgentService){
-
   }
 
    // Property to manage edit mode
-  editMode: boolean = false;
+  editMode: boolean = false
 
   // Method to toggle edit mode based on the child component's event
   onToggleEditMode() {
