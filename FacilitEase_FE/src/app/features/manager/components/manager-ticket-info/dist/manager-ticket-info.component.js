@@ -16,8 +16,8 @@ var ManagerTicketInfoComponent = /** @class */ (function () {
         this.ticketPriority = '';
         this.status = '';
         this.ticket = [];
-        this.selectedPriority = -1;
         this.editingPriority = false;
+        this.selectedPriority = -1;
     }
     ManagerTicketInfoComponent.prototype.getPriorityColor = function () {
         if (this.ticketDetails && this.ticketDetails.priorityName) {
@@ -38,20 +38,24 @@ var ManagerTicketInfoComponent = /** @class */ (function () {
     };
     ManagerTicketInfoComponent.prototype.startEditingPriority = function () {
         this.editingPriority = true;
+        this.selectedPriority = -1;
     };
-    ManagerTicketInfoComponent.prototype.onPriorityChange = function () {
+    ManagerTicketInfoComponent.prototype.onPriorityChange = function (selectedValue) {
         var _this = this;
-        if (this.selectedPriority !== -1 && this.ticketDetails.id) {
+        if (selectedValue !== -1 && this.ticketDetails.id) {
             // Call the API to change the priority
             this.masterService.changePriority(this.ticketDetails.id, this.selectedPriority)
                 .subscribe(function () {
                 console.log('Priority changed successfully');
                 _this.editingPriority = false;
-                _this.router.navigate(['manager-view-ticket-detail', _this.ticketDetails.id]);
+                _this.router.navigate(['manager/manager-view-waiting-tickets']);
                 // You can perform additional actions if needed
             }, function (error) {
                 console.error('Error changing priority:', error);
             });
+        }
+        else {
+            console.log("Cant enter the if loop");
         }
     };
     __decorate([
