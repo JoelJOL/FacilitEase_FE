@@ -104,12 +104,25 @@ export class ModalComponent {
         (response) => {
           console.log('API call success:', response);
           this.toastr.success('Forwarded to manager!', 'Success');
-          this.modalService.closeModal();
-          this.router.navigate(['/view-ticket']);
+          // this.router.navigate(['/view-ticket']);
+          const currentRoute = this.router.url;
+          let targetRoute: string;
+
+          if (currentRoute.includes('l2/details-escalated')) {
+            targetRoute = 'l2/escalated-tickets';
+          } else if (currentRoute.includes('l3/view-ticket-in-detail')) {
+            targetRoute = 'l3/view-ticket';
+          } else {
+            targetRoute = '**';
+          }
+
+          this.router.navigate([targetRoute]);
+          this.close();
         },
         (error) => {
           console.error('API call error:', error);
           this.toastr.error('Failed to forward to manager!', 'Error');
+          this.close();
         }
       );
     } else {

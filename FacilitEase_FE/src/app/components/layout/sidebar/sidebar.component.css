@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: rgb(237, 237, 237);
+  background-color: var(--grey);
   height: 100vh;
   padding: 0%;
   position: fixed;

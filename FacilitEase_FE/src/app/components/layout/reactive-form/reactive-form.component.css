@@ -22,7 +22,7 @@ input {
 
 /* Style the submit button */
 button {
-  background-color: #4caf50;
+  background-color: var(--green);
   color: white;
   padding: 10px 15px;
   border: none;

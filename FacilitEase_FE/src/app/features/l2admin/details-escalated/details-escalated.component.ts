@@ -14,6 +14,7 @@ export class DetailsEscalatedComponent {
   ticketId: number = 0;
   ticketDetails: any = [];
   modalRef: BsModalRef | undefined;
+  titleSubHeading: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,9 +29,17 @@ export class DetailsEscalatedComponent {
       console.log(this.ticketId);
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
-      this.ticketDetails = data[0];
+    this.agentService.getTicketData(this.ticketId).subscribe((data) => {
+      this.ticketDetails = data;
       console.log(data);
+      console.log(this.ticketDetails);
+      this.titleSubHeading = [
+        { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
+        { heading: 'Department', text: this.ticketDetails.deptName },
+        { heading: 'Manager', text: this.ticketDetails.managerName },
+        { heading: 'Project Code', text: this.ticketDetails.projectCode },
+        { heading: 'Location', text: this.ticketDetails.locationName },
+      ];
     });
   }
 
@@ -47,7 +56,7 @@ export class DetailsEscalatedComponent {
       (response) => {
         console.log('API call success:', response);
         alert('Ticket resolved successfully!');
-        this.router.navigate(['/view-ticket']);
+        this.router.navigate(['l2/escalated-tickets']);
       },
       (error) => {
         console.error('API call error:', error);

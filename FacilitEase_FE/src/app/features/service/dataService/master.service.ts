@@ -31,15 +31,27 @@ export class MasterService {
   }
   changePriority(ticketId: number, newPriorityId: number): Observable<any> {
     const apiUrl = 'https://localhost:7049/api/Manager';
-    return this.http.post(`${apiUrl}/ChangePriority`, { ticketId, newPriorityId });
+    return this.http.post(`${apiUrl}/ChangePriority`, {
+      ticketId,
+      newPriorityId,
+    });
   }
   ticketDecision(ticketId: number, newStatusId: number): Observable<any> {
     const apiUrl = 'https://localhost:7049/api/Manager';
-    return this.http.post(`${apiUrl}/TicketDecision`, { ticketId, newStatusId });
+    return this.http.post(`${apiUrl}/TicketDecision`, {
+      ticketId,
+      newStatusId,
+    });
   }
-  sendForApproval(ticketId: number, currentControllerId: number): Observable<any> {
+  sendForApproval(
+    ticketId: number,
+    currentControllerId: number
+  ): Observable<any> {
     const apiUrl = 'https://localhost:7049/api/Manager';
-    return this.http.post(`${apiUrl}/SendForApproval`, { ticketId, currentControllerId });
+    return this.http.post(`${apiUrl}/SendForApproval`, {
+      ticketId,
+      currentControllerId,
+    });
   }
   getApiLinkEscalated(): string {
     return this.apiLinkEscalated;
@@ -50,8 +62,8 @@ export class MasterService {
   getApiLinkUnassigned(): string {
     return this.apiLinkUnassigned;
   }
-  private apiLinkL2Subordinates: string =
-    'https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=11';
+  DepartmentId = 11;
+  private apiLinkL2Subordinates: string = `https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=${this.DepartmentId}`;
   getApiLinkL2Subordinates(): string {
     return this.apiLinkL2Subordinates;
   }

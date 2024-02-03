@@ -64,7 +64,7 @@ export class L3adminComponent {
       } else if (event.subfield === 'Resolved Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3/resolved-tickets']);
-      } 
+      }
     } else if (event.subfield === 'On Hold Tickets') {
       this.showL3AdminTickets = true;
       this.router.navigate(['l3/on-hold-tickets']);
