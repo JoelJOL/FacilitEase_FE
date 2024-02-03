@@ -14,16 +14,21 @@ export class TicketNotesComponent {
   constructor(private agentService:AgentService ){
 
   }
+  commentExists: boolean = false;
+
   ngOnInit(): void {
     this.getCommentText();
   }
+
   getCommentText() {
     this.agentService.getCommentText(this.ticketId).subscribe(
       (commentText: string) => {
         console.log('Comment Text:', commentText);
         this.form.patchValue({
           notes: commentText
-        })
+        });
+        // Update the commentExists property based on whether commentText is empty or not
+        this.commentExists = commentText.trim() !== '';
         // Handle the comment text as needed
       },
       (error) => {

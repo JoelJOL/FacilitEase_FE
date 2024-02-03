@@ -43,6 +43,7 @@ export class DataTableNewComponent implements OnInit {
   sortDirection: string = 'asc';
   totalDataCount: number = 0;
   searchQuery: string = '';
+  noRecordsFound:boolean=false;
 
   @Output() totalDataCountChange = new EventEmitter<number>();
   @Output() rowClicked: EventEmitter<any> = new EventEmitter<any>();
@@ -55,13 +56,25 @@ export class DataTableNewComponent implements OnInit {
 
   private loadData() {
     const url = `${this.apiLink}?sortField=${this.sortColumn}&sortOrder=${this.sortDirection}&pageIndex=${this.currentPage}&pageSize=${this.pageSize}&searchQuery=${this.searchQuery}`;
+    
     this.httpClient.get<ApiResponse>(url).subscribe((response) => {
-      this.totalDataCount = response.totalDataCount;
-      this.totalDataCountChange.emit(this.totalDataCount);
-      this.rows = response.data;
-      this.keys = Object.keys(this.rows[0]);
+      if (response.data && response.data.length > 0) {
+        // Data is available, update datatable
+        this.totalDataCount = response.totalDataCount;
+        this.totalDataCountChange.emit(this.totalDataCount);
+        this.rows = response.data;
+        this.keys = Object.keys(this.rows[0]);
+      } else {
+        // No records found, handle accordingly (e.g., display a message)
+        console.log('No records found');
+        this.noRecordsFound = true;
+      }
+    }, (error) => {
+      // Handle API call error
+      console.error('Error fetching data:', error);
     });
   }
+  
 
   getCellClasses(columnKey: string, cellValue: any) {
     if (columnKey === 'priority') {

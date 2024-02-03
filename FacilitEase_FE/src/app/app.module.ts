@@ -110,6 +110,10 @@ import { TicketDetailViewNoeditComponent } from './components/layout/ticket-deta
 import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
 import { OutsideClickDirective } from './features/service/directive/outside-click/outside-click.directive';
 import { ReportStatsComponent } from './components/ui_elements/report-stats/report-stats.component';
+import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
+import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
+import { HeadersInterceptor } from './headers.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -196,6 +200,8 @@ import { ReportStatsComponent } from './components/ui_elements/report-stats/repo
     TicketDetailViewNoeditComponent,
     OnHoldTicketsViewComponent,
     ReportStatsComponent,
+    CancelRequestViewComponent,
+    CancelRequestViewAllComponent
   ],
   imports: [
     HttpClientModule,
@@ -224,6 +230,7 @@ import { ReportStatsComponent } from './components/ui_elements/report-stats/repo
     EmployeeBulkuploadService,
     ModalService,
     MasterService,
+    // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 })
