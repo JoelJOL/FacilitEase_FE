@@ -18,7 +18,7 @@ export class L3adminComponent {
     {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
-      subfields: ['Raised Tickets', 'Resolved Tickets', 'Escalated Tickets'],
+      subfields: ['Raised Tickets', 'On Hold Tickets','Cancel Requests','Resolved Tickets'],
     },
     {
       logo: 'assets/data-entry.png',
@@ -64,10 +64,16 @@ export class L3adminComponent {
       } else if (event.subfield === 'Resolved Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3/resolved-tickets']);
-      } 
-    } else if (event.subfield === 'On Hold Tickets') {
+      } else if (event.subfield === 'On Hold Tickets'){
+        this.showL3AdminTickets = true;
+        this.router.navigate(['l3/on-hold-tickets']);
+      } else if(event.subfield==='Cancel Requests'){
+        this.showL3AdminTickets = true;
+        this.router.navigate(['l3/cancel-requests']);
+      }
+    } else if (event.subfield === 'Escalated Tickets') {
       this.showL3AdminTickets = true;
-      this.router.navigate(['l3/on-hold-tickets']);
+      this.router.navigate(['l3/escalated-tickets']);
     }
   }
 }

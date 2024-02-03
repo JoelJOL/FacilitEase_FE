@@ -60,7 +60,7 @@ export class FileUploadComponent {
 
               if (Array.isArray(jsonData) && jsonData.length > 1) {
                 const employeesData = jsonData.slice(1).map((row: any) => ({
-                  employeeCode: Number(row[0]),
+                  employeeCode: row[0],
                   firstName: row[1],
                   lastName: row[2],
                   dob: {
