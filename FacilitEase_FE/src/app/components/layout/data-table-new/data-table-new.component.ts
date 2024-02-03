@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FilterComponent } from '../filter/filter.component';
-import { Observable } from 'rxjs';
 export interface TicketData {
   id: number;
   ticketName: string;
@@ -110,12 +109,9 @@ export class DataTableNewComponent implements OnInit {
   search(searchQuery: string): void {
     this.searchQuery = searchQuery;
     this.currentPage = 0;
-    this.loadDataDebounced();
-  }
-
-  loadDataDebounced(): void {
     this.loadData();
   }
+
   onRowClick(Id: number): void {
     console.log('Clicked on row with Ticket ID:', Id);
     this.rowClicked.emit(Id);

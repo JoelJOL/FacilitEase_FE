@@ -13,12 +13,14 @@ export class ManagerTicketInfoComponent {
   status: string = '';
   ticket: any = [];
   @Input() ticketDetails: any;
-  selectedPriority: number = -1;
+  selectedPriority!: number;
   editingPriority: boolean = false;
   
 
   
-  constructor(private masterService: MasterService, private router:Router) {}
+  constructor(private masterService: MasterService, private router:Router) {
+    this.selectedPriority = -1;
+  }
 
   getPriorityColor(): string {
     if (this.ticketDetails && this.ticketDetails.priorityName) {
@@ -38,22 +40,26 @@ export class ManagerTicketInfoComponent {
   }
   startEditingPriority(): void {
     this.editingPriority = true;
+    this.selectedPriority = -1;
   }
-  onPriorityChange(): void {
-    if (this.selectedPriority !== -1 && this.ticketDetails.id) {
+  onPriorityChange(selectedValue: number): void {
+    if (selectedValue !== -1 && this.ticketDetails.id) {
       // Call the API to change the priority
       this.masterService.changePriority(this.ticketDetails.id, this.selectedPriority)
         .subscribe(
           () => {
             console.log('Priority changed successfully');
             this.editingPriority = false;
-            this.router.navigate(['manager-view-ticket-detail',this.ticketDetails.id]);
+            this.router.navigate(['manager/manager-view-waiting-tickets']);
             // You can perform additional actions if needed
           },
           (error: any) => {
             console.error('Error changing priority:', error);
           }
         );
+    }
+    else{
+      console.log("Cant enter the if loop");
     }
   }
 }
