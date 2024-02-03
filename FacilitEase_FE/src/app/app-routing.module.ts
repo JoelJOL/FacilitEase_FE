@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { AdminPerformanceComponent } from './components/ui_elements/admin-performance/admin-performance.component';
@@ -183,15 +183,13 @@ const routes: Routes = [
   {
     path: 'l1',
     component: L1adminComponent,
+    children: [{ path: 'entries', component: AssignRoleComponent }],
   },
   {
     path: 'search',
     component: L1DataEntryComponent,
   },
-  {
-    path: 'entries',
-    component: AssignRoleComponent,
-  },
+
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
   { path: 'employee-card', component: EmployeeCardsComponent },
