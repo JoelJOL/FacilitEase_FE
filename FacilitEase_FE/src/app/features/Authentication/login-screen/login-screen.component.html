@@ -1,0 +1,9 @@
+<div class="d-flex col-12 main justify-content-center align-items-center">
+  <form class="form_main" action="">
+    <p class="heading">Login</p>
+    <button id="button" *ngIf="!isUserLoggedIn" (click)="Login()">Login</button>
+    <button id="button" *ngIf="isUserLoggedIn" (click)="Logout()">
+      Logout
+    </button>
+  </form>
+</div>
