@@ -39,6 +39,8 @@ export class ManagerComponent {
       // Optionally, you can set showL2AdminTickets based on isCollapsed state
       // this.showL2AdminTickets = !isCollapsed; // Example, adjust as needed
     });
+    this.showManagerTickets = true;
+    this.router.navigate(['manager/manager-view-waiting-tickets']);
   }
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
