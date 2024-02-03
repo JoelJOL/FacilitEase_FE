@@ -53,6 +53,9 @@ import { ManagerViewTicketSimpleComponent } from './features/manager/manager-vie
 import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
 import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
 import { UploadComponent } from './upload/upload.component';
+import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
+import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
+
 const routes: Routes = [
   { path: 'upload', component: UploadComponent },
   {
@@ -103,6 +106,7 @@ const routes: Routes = [
     path: 'l3',
     component: L3adminComponent,
     children: [
+      { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
       { path: 'view-ticket', component: AgentTicketsViewComponent },
       { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
       { path: 'on-hold-tickets', component: OnHoldTicketsViewComponent },
@@ -114,6 +118,10 @@ const routes: Routes = [
         path: 'view-ticket-detail-noedit/:Id',
         component: ResolvedTicketViewComponent,
       },
+      { path: 'view-ticket-in-detail/:Id', component: AgentTicketViewComponent },
+      { path: 'view-ticket-detail-noedit/:Id', component: ResolvedTicketViewComponent},
+      { path:'cancel-requests', component:CancelRequestViewAllComponent},
+      { path:'request-to-cancel-detail/:Id', component:CancelRequestViewComponent},
       { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
       // { path: 'lreport/:id', component: L2ReportComponent },
     ],

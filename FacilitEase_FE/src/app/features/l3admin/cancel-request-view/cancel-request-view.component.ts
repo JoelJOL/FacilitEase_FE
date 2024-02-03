@@ -1,16 +1,15 @@
-import { Component, Input } from '@angular/core';
-import { AgentService } from '../../service/httpService/agent.service';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalService } from '@app/features/service/dataService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
+import { AgentService } from '@app/features/service/httpService/agent.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-agent-ticket-view',
-  templateUrl: './agent-ticket-view.component.html',
-  styleUrls: ['./agent-ticket-view.component.css'],
+  selector: 'app-cancel-request-view',
+  templateUrl: './cancel-request-view.component.html',
+  styleUrls: ['./cancel-request-view.component.css']
 })
-export class AgentTicketViewComponent {
+export class CancelRequestViewComponent {
   customHeaderText = 'Supported Attachments';
   ticketDetails: any;
   ticketId: number = 0;
@@ -52,8 +51,8 @@ export class AgentTicketViewComponent {
     });
   }
 
-  resolveTicket(): void {
-    const isConfirmed = window.confirm('Are you sure you want to resolve the ticket?');
+  acceptCancelRequest(): void {
+    const isConfirmed = window.confirm('Are you sure you want to accept the cancellation request?');
   
     if (isConfirmed) {
       this.agentService.resolveTicket(this.ticketId).subscribe(
