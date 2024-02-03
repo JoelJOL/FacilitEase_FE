@@ -2,8 +2,12 @@
   <!-- <app-button color="filter" #filterButton></app-button> -->
   <app-search-bar (searchQueryChange)="search($event)"></app-search-bar>
 </div>
+<div *ngIf="noRecordsFound" class="no-records-message">
+  <img src="sample.gif" alt="Loading GIF" />
+  No records found.
+</div>
 
-<div class="container mt-4">
+<div class="container mt-4" *ngIf="!noRecordsFound">
   <table class="data_table">
     <!-- Table Header -->
     <thead class="table_head">
@@ -24,14 +28,17 @@
     </thead>
 
     <tbody class="table_body">
+      <tr *ngIf="totalDataCount === 0" class="no-records-found-row">
+        <td [attr.colspan]="headers.length" class="text-center">
+          No records found.
+        </td>
+      </tr>
       <tr *ngFor="let row of rows" class="clickable_row">
         <td
           *ngFor="let key of keys"
           (click)="onRowClick(row.id)"
           class="text-center text-nowrap"
         >
-          <!-- <div [ngClass]="getCellClasses(key, row[key])">{{ row[key] }}</div> -->
-          <!-- Update only the 'ticketName' column -->
           <div
             *ngIf="key !== 'ticketName'"
             [ngClass]="getCellClasses(key, row[key])"

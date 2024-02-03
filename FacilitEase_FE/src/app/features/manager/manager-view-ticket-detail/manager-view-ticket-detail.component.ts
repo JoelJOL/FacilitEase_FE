@@ -84,12 +84,13 @@ export class ManagerViewTicketDetailComponent implements OnInit {
       if (result) {
         if (action === 'accept') {
           this.acceptTicket();
-          this.router.navigate(['manager-view-waiting-tickets']);
+          this.router.navigate(['manager/manager-view-waiting-tickets']);
         } else if (action === 'reject') {
           this.rejectTicket();
-          this.router.navigate(['manager-view-waiting-tickets']);
+          this.router.navigate(['manager/manager-view-waiting-tickets']);
         } else if (action === 'forward') {
           this.forwardTicket();
+          this.router.navigate(['manager/manager-view-waiting-tickets']);
         }
       }
     });

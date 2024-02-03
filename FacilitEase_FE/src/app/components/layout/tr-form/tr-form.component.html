@@ -23,6 +23,7 @@
     </select>
 
     <select
+      class="inputGroup"
       formControlName="department"
       class="inputGroup"
       (change)="onDepartmentChange()"
@@ -62,39 +63,34 @@
     </app-button>
   </div>
 </form> -->
-
 <form [formGroup]="ticketForm" class="container mt-3">
   <app-raise-ticket-title></app-raise-ticket-title>
   <br />
-
+  <label for="subject">Ticket Subject</label>
   <div class="inputGroup">
-    <label for="subject">Ticket Subject</label>
     <input id="subject" type="text" formControlName="subject" />
   </div>
-
+  <label for="description">Description</label>
   <div class="inputGroup">
-    <label for="description">Description</label>
     <textarea id="description" formControlName="description"></textarea>
   </div>
-
+  <label for="priority">Choose Priority</label>
   <div class="inputGroup">
-    <label for="priority">Choose Priority</label>
     <select id="priority" formControlName="priority">
-      <!-- <option value="" disabled selected>Choose Priority</option> -->
+      <option value="" disabled selected>Choose Priority</option>
       <option *ngFor="let priority of priorities" [value]="priority.id">
         {{ priority.priorityName }}
       </option>
     </select>
   </div>
-
+  <label for="department">Choose Department</label>
   <div class="inputGroup">
-    <label for="department">Choose Department</label>
     <select
       id="department"
       formControlName="department"
       (change)="onDepartmentChange()"
     >
-      <!-- <option value="" disabled selected>Choose Department</option> -->
+      <option value="" disabled selected>Choose Department</option>
       <option *ngFor="let dept of departments" [value]="dept.id">
         {{ dept.deptName }}
       </option>
@@ -102,19 +98,18 @@
   </div>
 
   <div class="">
+    <label for="category">Choose Category</label>
     <div class="inputGroup">
-      <label for="category">Choose Category</label>
       <select id="category" formControlName="category">
-        <!-- <option value="" disabled selected>Choose Category</option> -->
+        <option value="" disabled selected>Choose Category</option>
         <option *ngFor="let category of categories" [value]="category.id">
           {{ category.categoryName }}
         </option>
       </select>
     </div>
   </div>
-
+  <label for="attachments">Attachments</label>
   <div class="inputGroup">
-    <!-- <label for="attachments">Attachments</label> -->
     <input
       type="file"
       id="attachments"
@@ -123,7 +118,7 @@
     />
   </div>
 
-  <div class="">
+  <div class="btn-group">
     <app-button type="button" color="accepted" (click)="onSubmit()">
       Submit
     </app-button>
@@ -131,4 +126,5 @@
       Reset
     </app-button>
   </div>
+  <br /><br /><br />
 </form>
