@@ -25,17 +25,24 @@ export class L2adminTicketViewComponent {
     private dropDownService: DropDownService,
     private http: HttpClient
   ) {}
-
+  titleSubHeadings: any = [];
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.ticketId = Number(params['Id']);
       console.log(this.ticketId);
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
+    this.agentService.getTicketData(this.ticketId).subscribe((data) => {
       console.log('API Response:', data);
       this.ticketDetails = data;
       console.log('Ticket Details:', this.ticketDetails);
+      this.titleSubHeadings = [
+        { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
+        { heading: 'Department', text: this.ticketDetails.deptName },
+        { heading: 'Manager', text: this.ticketDetails.managerName },
+        { heading: 'Project Code', text: this.ticketDetails.projectCode },
+        { heading: 'Location', text: this.ticketDetails.locationName },
+      ];
     });
     this.loadAgents();
   }
@@ -43,6 +50,7 @@ export class L2adminTicketViewComponent {
 
   agents: any[] = [];
   selectedAgent: any;
+
   private loadAgents() {
     this.dropDownService.getAgents().subscribe(
       (agents: any[]) => {

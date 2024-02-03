@@ -1,0 +1,27 @@
+.text_label {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: var(--blue_violet);
+}
+.heading_modal {
+  margin: 10px;
+}
+.button {
+  margin-left: 60%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.close {
+  margin-right: 5%;
+}
+.send {
+  margin-right: 1%;
+}
+#supportDetails {
+  margin-left: 10px;
+  width: 480px;
+}
+.modal_container {
+  width: 300px;
+}

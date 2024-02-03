@@ -1,19 +1,17 @@
-
-.person-card{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 20px;
-    margin-right: 20px;
+.person-card {
+  margin-left: 20px;
+  margin-right: 20px;
 }
-.image-name{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-#name{
-    margin-top: 10px;
+.image-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#person-img{
-    width:40px;
-    height: 40px;
-    margin-right: 10px;
+#name {
+  margin-top: 10px;
+}
+#person-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }

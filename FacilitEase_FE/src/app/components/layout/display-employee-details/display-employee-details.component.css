@@ -1,7 +1,11 @@
+.display_board {
+  background-color: var(--light_grey);
+  border-radius: 30px;
+}
+.head {
+  margin-left: 5.5rem;
+}
 .display_board{
     background-color: #eee7e7;
     border-radius: 0px;
-}
-.head{
-    margin-left: 5.5rem;
 }

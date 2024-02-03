@@ -38,8 +38,7 @@
 
 .table_head th {
   text-align: center;
-  background: #dad7ff !important;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
+  background: var(--light_violet) !important;
   font-size: larger;
   font-weight: 1000;
   padding: 2%;
@@ -56,7 +55,7 @@ th:last-child {
 .clickable_row {
   height: 60px;
   transition: height 0.3s, transform 0.3s;
-  border: 2px solid #ececec;
+  border: 2px solid var(--light_grey);
 }
 
 td {
@@ -67,11 +66,11 @@ td {
 .clickable_row:hover {
   cursor: pointer;
   height: 70px;
-  border: 3px solid #6f00ff;
+  border: 3px solid var(--blue_violet);
   transform: translateZ(50px);
   transform: scale(1.01);
   border-radius: 8px;
-  background: #ededed;
+  background: var(--grey);
   font-weight: 550;
 }
 
@@ -79,38 +78,42 @@ td {
 .priority,
 .status {
   border-radius: 10%;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .low-priority {
-  color: rgb(78, 213, 73);
+  color: var(--low_priority);
   font-weight: 600;
 }
 
 .medium-priority {
-  color: rgb(202, 160, 9);
+  color: var(--medium_priority);
   font-weight: 600;
 }
 
 .high-priority {
-  color: #ff7f29;
+  color: var(--high_priority);
   font-weight: 600;
 }
 
 .critical-priority {
-  color: #d54949;
+  color: var(--critical_priority);
   font-weight: 700;
 }
 
 .open-status {
-  padding: 5px;
-  background-color: rgba(116, 223, 125, 0.4);
-  color: rgb(78, 213, 73);
+  background-color: var(--open_status_bg);
+  color: var(--low_priority);
   border-radius: 5px;
   font-weight: 550;
+  width: 100px;
+  padding: 5px;
+  margin-right: 8px;
 }
 
 .inprogress-status {
+  background-color: var(--inprogress_status_bg);
+  color: var(--violet);
   padding-top: 5px;
   padding-bottom: 5px;
   min-width: 80px;
@@ -120,17 +123,24 @@ td {
   color: rgb(171, 73, 213);
   border-radius: 5px;
   font-weight: 550;
+  width: 100px;
+  padding: 5px;
+  margin-right: 8px;
 }
 
 .onhold-status {
-  padding: 5px;
-  background-color: rgba(223, 168, 116, 0.4);
-  color: rgb(202, 102, 9);
+  background-color: var(--onhold_status_bg);
+  color: var(--onhold);
   border-radius: 5px;
   font-weight: 550;
+  width: 100px;
+  padding: 5px;
+  margin-right: 8px;
 }
 
 .resolved-status {
+  background-color: var(--resolved_status_bg);
+  color: var(--resolved);
   padding: 5px;
   min-width: 80px;
   padding-right: 10px;
@@ -139,9 +149,14 @@ td {
   color: #4b49d5;
   border-radius: 5px;
   font-weight: 550;
+  width: 100px;
+  padding: 5px;
+  margin-right: 8px;
 }
 
 .cancelled-status {
+  background-color: var(--cancelled_status_bg);
+  color: var(--cancelled);
   padding: 5px;
   min-width: 80px;
   padding-right: 10px;
@@ -150,10 +165,15 @@ td {
   color: #fcca01c4;
   border-radius: 5px;
   font-weight: 550;
+  width: 100px;
+  padding: 5px;
+  margin-right: 8px;
 }
 
 .escalated-status {
   padding: 5px;
+  background-color: var(--escalated_status_bg);
+  color: var(--critical_priority);
   min-width: 80px;
   padding-right: 10px;
   padding-left: 5px;
@@ -163,10 +183,12 @@ td {
   color: #d54949;
   border-radius: 5px;
   font-weight: 550;
+  width: 100px;
+  margin-right: 8px;
 }
 
 .ticket-name {
-  max-width: 150px; /* Set the maximum width for ticket name */
+  max-width: 130px; /* Set the maximum width for ticket name */
   overflow: hidden;
   text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
   white-space: nowrap; /* Prevent text from wrapping to the next line */

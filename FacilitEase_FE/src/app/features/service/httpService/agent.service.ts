@@ -12,6 +12,12 @@ export class AgentService {
     return this.http.get(apiUrl);
   }
 
+  getTicketData(ticketId: number): Observable<any> {
+    console.log(`The ticket id : ${ticketId} is recieved in getData()`);
+    const apiUrl = `https://localhost:7049/api/l2/ticketById?desiredTicketId=${ticketId}`;
+    return this.http.get(apiUrl);
+  }
+
   getDepartments(): Observable<any> {
     return this.http.get('https://localhost:7049/api/Department');
   }
@@ -109,7 +115,8 @@ export class AgentService {
 
   private baseUrl = 'https://localhost:7049';
   getUserEmailAddress(): Observable<any> {
-    const apiUrl = `${this.baseUrl}/api/l2/agents?DepartmentId=1`;
+    const userId = 1;
+    const apiUrl = `https://localhost:7049/api/email/${userId}`;
 
     // Replace 'any' with the actual type of the response
     return this.http.get<any>(apiUrl);
@@ -117,6 +124,7 @@ export class AgentService {
 
   sendEmailToSupport(
     userEmail: string,
+    userName: string,
     supportDetails: string
   ): Observable<any> {
     const apiUrl = `${this.baseUrl}/api/email/send`;
@@ -124,8 +132,8 @@ export class AgentService {
     // Replace 'any' with the actual type of the response
     return this.http.post<any>(apiUrl, {
       toEmail: userEmail,
-      subject: 'Query For Support',
-      body: supportDetails,
+      subject: `Query For Support from ${userName}`,
+      body: `${supportDetails} \n\nUser Email: ${userEmail}`, // Add user's email as CC
     });
   }
 }

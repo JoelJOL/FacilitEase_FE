@@ -1,7 +1,7 @@
 .custom-dropdown {
   height: 40px;
-  width: 180px;
-  border: 1px solid rgb(88, 87, 87);
+  width: 200px;
+  border: 1px solid var(--dark_grey);
   border-radius: 20px;
   align-items: center;
 }

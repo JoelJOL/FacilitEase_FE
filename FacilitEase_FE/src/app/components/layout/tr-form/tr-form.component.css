@@ -26,7 +26,6 @@
   color: #666;
 } */
 .inputGroup {
-  font-family: "Segoe UI", sans-serif;
   margin: 1em 0;
   position: relative;
   width: 70%;
@@ -38,7 +37,7 @@
   font-size: 100%;
   padding: 0.8em;
   outline: none;
-  border: 2px solid rgb(200, 200, 200);
+  border: 2px solid var(--grey);
   background-color: transparent;
   border-radius: 5px;
   width: 100%;
@@ -51,7 +50,7 @@
   left: 1em;
   top: 0.8em;
   transition: transform 0.3s ease, color 0.3s ease;
-  color: #666;
+  color: var(--dark_grey);
 }
 .inputGroup input:focus + label,
 .inputGroup textarea:focus + label,
@@ -61,7 +60,9 @@
 .inputGroup select:valid + label {
   transform: translateY(-50%) scale(0.9);
   color: #000;
-  background-color: #e8e8e8; /* Background color when focused or when there's content */
+  background-color: var(
+    --light_grey
+  ); /* Background color when focused or when there's content */
   padding: 0.2em 0.5em; /* Adjust padding when focused or when there's content */
   border-radius: 10px; /* Adjust border radius when focused or when there's content */
   z-index: 3; /* Ensure the label is above the input */
