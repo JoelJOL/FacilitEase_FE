@@ -10,7 +10,7 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 export class OnHoldTicketsViewComponent {
   tickets:any=[];
   @Output() rowClicked = new EventEmitter<number>();
-  headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Submitted Date','Resolved Date', 'Priority'];
+  headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Submitted Date','Updated Date', 'Priority'];
   apiLink: string='';
   constructor(private agentService: AgentService, private router: Router) {}
   ngOnInit() {
@@ -22,6 +22,5 @@ export class OnHoldTicketsViewComponent {
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
     this.router.navigate(['l3/view-ticket-detail-noedit', Id]);
-    
   }
 }

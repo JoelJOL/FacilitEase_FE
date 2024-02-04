@@ -111,7 +111,7 @@ export class ReactiveFormComponent implements OnInit {
 
       // Map the form values to match the backend payload format
       const backendPayload = {
-        employeeCode: Number(formData.employeeCode),
+        employeeCode: formData.employeeCode,
         firstName: formData.firstName,
         lastName: formData.lastName,
         dob: {

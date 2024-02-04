@@ -18,8 +18,8 @@
     </div>
     <div *ngIf="editingPriority" class="ticket_priority">
         <p>
-          <select  (change)="onPriorityChange()">
-            <option value="-1" disabled>Select Priority</option>
+          <select [(ngModel)]="selectedPriority" (change)="onPriorityChange(selectedPriority)">
+            <option value="-1">Select Priority</option>
             <option value="1">Low</option>
             <option value="2">Medium</option>
             <option value="3">High</option>

@@ -24,7 +24,7 @@ export class DepartmentheadComponent {
     {
       logo: 'assets/tickets-icon.png',
       title: 'Data Entry',
-      subfields: ['Add Employee', 'Reactive Form', 'Bulk Upload'],
+      subfields: ['Add Employee', 'Reactive Form', 'Employee Card'],
     },
   ];
   showDepartmentHeadTickets: boolean = false;
@@ -69,9 +69,9 @@ export class DepartmentheadComponent {
       } else if (event.subfield === 'Reactive Form') {
         this.showDepartmentHeadTickets = true;
         this.router.navigate(['departmenthead/reactive-form']);
-      } else if (event.subfield === 'Bulk Upload') {
+      } else if (event.subfield === 'Employee Card') {
         this.showDepartmentHeadTickets = true;
-        this.router.navigate(['departmenthead/file-upload']);
+        this.router.navigate(['departmenthead/emplycarddisplay']);
       }
     }
   }

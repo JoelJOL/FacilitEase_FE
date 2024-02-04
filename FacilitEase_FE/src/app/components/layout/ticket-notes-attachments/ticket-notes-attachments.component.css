@@ -1,16 +1,16 @@
 .na_box {
-    border: 2px solid #acacac; 
-    border-radius: 10px;   
-    padding-left: 20px;  
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    width:100%;
-  }
+  border: 2px solid var(--grey);
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 100%;
+}
 
-  /* Assuming a base style for the button */
+/* Assuming a base style for the button */
 .button {
-  background-color: #19d949;
+  background-color: var(--green);
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -20,7 +20,7 @@
 }
 
 .button:hover {
-  background-color: #50f77a;
+  background-color: var(--low_priority);
 }
 
 /* Styles for the button content (text) */

@@ -7,9 +7,9 @@ option {
 }
 .custom-dropdown {
   width: 100px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--light_grey);
   border-radius: 5px;
-  background-color: rgb(124, 0, 192);
+  background-color: var(--violet);
   color: #fff;
   appearance: none;
   cursor: pointer;

@@ -13,9 +13,9 @@ export class EmployeeMyTicketsComponent {
     'Ticket ID',
     'Ticket Name',
     'Ticket Description',
-    'Priority',
-    'Assigned To',
     'Status',
+    'Assigned To',
+    'Priority',
   ];
 
   apiLink: string = '';
