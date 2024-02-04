@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 
+
 @Component({
   selector: 'app-request-to-cancel',
   templateUrl: './request-to-cancel.component.html',
@@ -27,6 +28,7 @@ export class RequestToCancelComponent {
       this.ticketId = Number(params['id']);
       console.log('This is the id', this.ticketId);
     });
+
 
     this.agentService.getData(this.ticketId).subscribe((data) => {
       console.log('API Response:', data);
