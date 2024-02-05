@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { AgentService } from '@app/features/service/httpService/agent.service';
+import { TicketDetails } from '@app/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -30,15 +31,18 @@ export class CancelRequestViewComponent {
       console.log('This is the main thing i created!');
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
-      this.ticketDetails = data[0];
-      console.log(data);
+
+    
+        this.agentService.getData(this.ticketId).subscribe(
+          (ticketDetails: TicketDetails) => {
+      this.ticketDetails = ticketDetails;
+      console.log(this.ticketDetails);
       this.titleSubAgent = [
-        { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
-        { heading: 'Department', text: this.ticketDetails.deptName },
-        { heading: 'Manager', text: this.ticketDetails.managerName },
-        { heading: 'Project Code', text: this.ticketDetails.projectCode },
-        { heading: 'Location', text: this.ticketDetails.locationName },
+        { heading: 'Raised By', text: this.ticketDetails[0].raisedEmployeeName },
+        { heading: 'Department', text: this.ticketDetails[0].deptName },
+        { heading: 'Manager', text: this.ticketDetails[0].managerName },
+        { heading: 'Project Code', text: this.ticketDetails[0].projectCode },
+        { heading: 'Location', text: this.ticketDetails[0].locationName },
       ];
     });
   }

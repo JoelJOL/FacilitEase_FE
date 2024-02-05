@@ -17,7 +17,7 @@ export class TitleSubComponent {
   ticket: any=[]; 
   items: any = []; 
   @Input() headings: any[] = [];
-  constructor(private agentService: AgentService) {} 
+  constructor() {} 
   @Input()ticketDetails:any;
   
      

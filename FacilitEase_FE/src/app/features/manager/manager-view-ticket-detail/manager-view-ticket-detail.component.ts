@@ -3,20 +3,9 @@ import { MasterService } from '@app/features/service/dataService/master.service'
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TicketDetails } from '@app/ticket-details';
 
-export interface TicketDetails {
-  id: number;
-  ticketName: string;
-  employeeName: string;
-  assignedTo: string;
-  submittedDate: string;
-  priorityName: string;
-  statusName: string;
-  notes: string;
-  lastUpdate:string;
-  ticketDescription: string;
-  documentLink: string;
-}
+
 
 @Component({
   selector: 'app-manager-view-ticket-detail',
@@ -24,7 +13,7 @@ export interface TicketDetails {
   styleUrls: ['./manager-view-ticket-detail.component.css']
 })
 export class ManagerViewTicketDetailComponent implements OnInit {
-  customHeaderText:string = "Support Attachments"
+  customHeaderText:string = "Supported Attachments"
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
 

@@ -3,19 +3,8 @@ import { ConfirmationModalComponent } from '../components/confirmation-modal/con
 import { MasterService } from '@app/features/service/dataService/master.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-export interface TicketDetails {
-  id: number;
-  ticketName: string;
-  employeeName: string;
-  assignedTo: string;
-  submittedDate: string;
-  priorityName: string;
-  statusName: string;
-  notes:string;
-  lastUpdate : string;
-  ticketDescription: string;
-  documentLink: string;
-}
+import { TicketDetails } from '@app/ticket-details';
+
 @Component({
   selector: 'app-manager-view-ticket-simple',
   templateUrl: './manager-view-ticket-simple.component.html',

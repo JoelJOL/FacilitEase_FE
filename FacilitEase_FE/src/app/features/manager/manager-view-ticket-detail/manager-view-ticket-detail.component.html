@@ -1,18 +1,24 @@
-
 <div class="container mt-1">
-    <div class="ticket-container">
-      <app-manager-ticket-info [ticketDetails]="ticketDetails"></app-manager-ticket-info>
-      <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
-      <app-ticket-attachments
+  <div class="ticket-container">
+    <app-manager-ticket-info
+      [ticketDetails]="ticketDetails"
+    ></app-manager-ticket-info>
+    <app-ticket-description
+      [ticketDetails]="ticketDetails"
+    ></app-ticket-description>
+    <app-ticket-attachments
       [headerText]="customHeaderText"
       [ticketDetails]="ticketDetails"
     ></app-ticket-attachments>
-      <app-ticket-na-simple [notes]="ticketDetails.notes" [lastupdate]="ticketDetails.lastUpdate"></app-ticket-na-simple>
+    <app-ticket-na-simple
+      [notes]="ticketDetails.notes"
+      [lastupdate]="ticketDetails.lastUpdate"
+    ></app-ticket-na-simple>
 
     <div class="person-cards-row">
       <!-- Raised By -->
       <app-person-card
-        [personName]="ticketDetails.employeeName"
+        [personName]="ticketDetails.raisedEmployeeName"
         [isRaisedBy]="true"
       ></app-person-card>
 
@@ -25,16 +31,27 @@
 
     <!-- Buttons in the Next Row -->
     <div class="button-row">
-      <div class="common-btn" id="button" (click)="openConfirmationModal('accept')">
+      <div
+        class="common-btn"
+        id="button"
+        (click)="openConfirmationModal('accept')"
+      >
         <app-button color="submit">Accept</app-button>
       </div>
-      <div class="common-btn" id="button" (click)="openConfirmationModal('reject')">
+      <div
+        class="common-btn"
+        id="button"
+        (click)="openConfirmationModal('reject')"
+      >
         <app-button color="rejected">Reject</app-button>
       </div>
-      <div class="common-btn" id="button" (click)="openConfirmationModal('forward')">
+      <div
+        class="common-btn"
+        id="button"
+        (click)="openConfirmationModal('forward')"
+      >
         <app-button color="forward">Forward for Approval</app-button>
       </div>
     </div>
-      
-    </div>
   </div>
+</div>

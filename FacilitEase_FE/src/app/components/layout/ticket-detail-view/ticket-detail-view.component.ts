@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TicketDetails } from '@app/ticket-details'; 
 
 @Component({
   selector: 'app-ticket-detail-view',
@@ -12,7 +13,7 @@ export class TicketDetailViewComponent {
   ngOnInit(){
     console.log(this.ticketId);
   }
-  @Input() ticketDetails: any;
+  @Input() ticketDetails!: any;
   @Input() headings: any[] = [];
   
 }

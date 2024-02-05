@@ -7,6 +7,9 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TicketResponse } from '@app/features/Interface/interface';
+import { TicketDetails } from '@app/ticket-details';
+
+
 @Component({
   selector: 'app-request-to-cancel',
   templateUrl: './request-to-cancel.component.html',
@@ -33,9 +36,10 @@ export class RequestToCancelComponent {
       console.log('This is the id', this.ticketId);
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
-      console.log('API Response:', data);
-      this.ticketDetails = data[0];
+
+    this.agentService.getData(this.ticketId).subscribe((ticketDetails: TicketDetails) => {
+      console.log('API Response:', ticketDetails);
+      this.ticketDetails = ticketDetails;
       console.log('Ticket Details:', this.ticketDetails);
     });
   }

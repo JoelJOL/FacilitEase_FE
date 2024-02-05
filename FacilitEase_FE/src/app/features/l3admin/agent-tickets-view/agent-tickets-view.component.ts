@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AgentService } from '../../service/httpService/agent.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-agent-tickets-view',
   templateUrl: './agent-tickets-view.component.html',

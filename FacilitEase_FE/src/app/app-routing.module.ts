@@ -56,10 +56,20 @@ import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/
 import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
 import { UploadComponent } from './features/employee/upload/upload.component';
+import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component';
+import { MsalGuard } from '@azure/msal-angular';
+import {
+  IsL1Admin,
+  IsManager,
+  LoginEnter,
+} from './features/Authentication/resolve.guard';
+
 const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeComponent,
+    // canActivate: [MsalGuard],
+    // resolve: [LoginEnter],
     children: [
       {
         path: 'employee-card',
@@ -117,7 +127,12 @@ const routes: Routes = [
         path: 'view-ticket-detail-noedit/:Id',
         component: ResolvedTicketViewComponent,
       },
-      { path: 'cancel-requests', component: CancelRequestViewAllComponent },
+      { path:'cancel-requests', component:CancelRequestViewAllComponent},
+      { path:'request-to-cancel-detail/:Id', component:CancelRequestViewComponent},
+      {
+        path: 'ticket-tracking',
+        component: TicketTrackingComponent
+      },
       {
         path: 'request-to-cancel-detail/:Id',
         component: CancelRequestViewComponent,
@@ -129,12 +144,13 @@ const routes: Routes = [
 
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
-  { path: 'manager', component: ManagerComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
   {
     path: 'manager',
     component: ManagerComponent,
+    // canActivate: [IsManager],
+    // canActivateChild: [IsManager],
     children: [
       {
         path: 'manager-view-employee-tickets',
@@ -160,30 +176,14 @@ const routes: Routes = [
   { path: 'xxx', component: AgentTicketsViewComponent },
   { path: 'agentticket', component: AgentTicketViewComponent },
   {
-    path: 'employee',
-    component: EmployeeComponent,
-    children: [
-      {
-        path: 'employee-card',
-        component: EmployeeCardsComponent,
-      },
-      {
-        path: 'my-tickets',
-        component: EmployeeMyTicketsComponent,
-      },
-      {
-        path: 'form',
-        component: TrFormComponent,
-      },
-    ],
-  },
-  {
     path: 'ticketnotesattachments',
     component: TicketNotesAttachmentsComponent,
   },
   {
     path: 'l1admin',
     component: L1adminComponent,
+    // canActivate: [MsalGuard, IsL1Admin],
+    // resolve: [LoginEnter],
     children: [{ path: 'entries', component: AssignRoleComponent }],
   },
   {
@@ -194,32 +194,6 @@ const routes: Routes = [
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
   { path: 'employee-card', component: EmployeeCardsComponent },
-
-  {
-    path: 'manager-view-employee-tickets',
-    component: ManagerViewEmployeeTicketsComponent,
-  },
-  {
-    path: 'manager-view-waiting-tickets',
-    component: ManagerViewWaitingTicketsComponent,
-  },
-  {
-    path: 'manager-view-ticket-detail/:Id',
-    component: ManagerViewTicketDetailComponent,
-  },
-  {
-    path: 'manager-view-employee-tickets',
-    component: ManagerViewEmployeeTicketsComponent,
-  },
-  {
-    path: 'manager-view-waiting-tickets',
-    component: ManagerViewWaitingTicketsComponent,
-  },
-  {
-    path: 'manager-view-ticket-detail/:Id',
-    component: ManagerViewTicketDetailComponent,
-  },
-
   { path: 'l2admin-ticket-view/:Id', component: L2adminTicketViewComponent },
   {
     path: 'departmenthead',
