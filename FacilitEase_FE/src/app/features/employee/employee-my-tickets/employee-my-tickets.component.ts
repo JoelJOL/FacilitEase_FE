@@ -24,6 +24,7 @@ export class EmployeeMyTicketsComponent {
     this.router.navigate(['employee/request', rowId]);
   }
   ngOnInit(): void {
-    this.apiLink = `${this.masterService.getMyTickets()}`;
+    const userId = 10;
+    this.apiLink = this.masterService.getMyTickets(userId);
   }
 }

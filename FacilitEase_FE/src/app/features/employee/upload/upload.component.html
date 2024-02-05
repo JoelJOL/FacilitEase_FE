@@ -1,0 +1,66 @@
+<div class="container">
+  <h2>Raise a Ticket</h2>
+  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input
+        type="text"
+        id="ticketName"
+        formControlName="ticketName"
+        required
+      />
+      <label for="ticketName">Ticket Name</label>
+    </div>
+
+    <div class="form-group">
+      <textarea
+        id="ticketDescription"
+        formControlName="ticketDescription"
+        required
+      ></textarea>
+      <label for="ticketDescription">Ticket Description</label>
+    </div>
+
+    <div class="form-group">
+      <select id="priorityId" formControlName="priorityId" required>
+        <option *ngFor="let priority of priorities" [value]="priority.id">
+          {{ priority.priorityName }}
+        </option>
+      </select>
+      <label for="priorityId">Choose Priority</label>
+    </div>
+
+    <div class="form-group">
+      <select
+        id="departmentId"
+        formControlName="departmentId"
+        (change)="onDepartmentChange()"
+        required
+      >
+        <option *ngFor="let department of departments" [value]="department.id">
+          {{ department.deptName }}
+        </option>
+      </select>
+      <label for="departmentId">Choose Department</label>
+    </div>
+
+    <div class="form-group">
+      <select id="categoryId" formControlName="categoryId" required>
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.categoryName }}
+        </option>
+      </select>
+      <label for="categoryId">Choose Category</label>
+    </div>
+
+    <div class="form-group">
+      <input type="file" id="file" (change)="onFileChange($event)" required />
+    </div>
+
+    <div class="button-container">
+      <app-button type="submit" color="accepted">Submit</app-button>
+      <app-button type="Reset" color="rejected" (click)="onCancelRequest()"
+        >Reset</app-button
+      >
+    </div>
+  </form>
+</div>

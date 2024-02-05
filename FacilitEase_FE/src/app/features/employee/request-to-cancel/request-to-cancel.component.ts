@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GetAPIService } from '@app/features/service/httpService/GetAPI/get-api.service';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 
@@ -19,7 +20,8 @@ export class RequestToCancelComponent {
     private agentService: AgentService,
     private router: Router,
     private dropDownService: DropDownService,
-    private http: HttpClient
+    private http: HttpClient,
+    private ticketCancelService: GetAPIService
   ) {}
 
   ngOnInit(): void {
@@ -35,17 +37,15 @@ export class RequestToCancelComponent {
     });
   }
 
-  onCancelRequest() {
-    this.http
-      .patch('https://localhost:7049/api/Employee/cancel-request/2', {})
-      .subscribe(
-        (response) => {
-          console.log('Cancel request successful', response);
-          alert('Cancel request successful');
-        },
-        (error) => {
-          console.error('Error cancelling request', error);
-        }
-      );
+  onCancelRequest(): void {
+    const ticketId = 5;
+    this.ticketCancelService.cancelRequest(ticketId).subscribe(
+      (response) => {
+        console.log('Cancellation successful:', response);
+      },
+      (error) => {
+        console.error('Cancellation error:', error);
+      }
+    );
   }
 }
