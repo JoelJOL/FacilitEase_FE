@@ -1,12 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { Router } from '@angular/router';
-import { ModalService } from '@app/features/service/dataService/modal.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
