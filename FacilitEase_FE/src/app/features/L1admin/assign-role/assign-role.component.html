@@ -1,12 +1,16 @@
-<app-dynamic-search (EmployeeId)="GetId($event)"></app-dynamic-search>
+<app-dynamic-search
+  (EmployeeId)="GetId($event)"
+  class="search"
+></app-dynamic-search>
 <app-display-employee-details
+  class="display"
   [heading]="heading"
   [titles]="titles"
   [getId]="empId"
 ></app-display-employee-details>
 <h1 class="role_heading">Assign Role</h1>
 <app-role-display-dropdown
-  class="m-5"
+  class="m-5 col-4"
   [apiLink]="apiRole"
   (chooseOption)="GetOption($event)"
   [getId]="empId"

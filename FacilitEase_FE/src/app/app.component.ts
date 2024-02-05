@@ -1,8 +1,10 @@
 import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 import { Card } from './components/layout/employee-cards/card.model';
+import { AzureService } from './features/Authentication/azureService/azure.service';
+import { Subject } from 'rxjs';
 interface Field {
   logo: string;
   title: string;
@@ -35,8 +37,17 @@ export class AppComponent {
     // Add more cards as needed
   ];
 
-  constructor(private approveDenyService: ApproveDenyService) {}
-
+  constructor(
+    private approveDenyService: ApproveDenyService,
+    private azureService: AzureService,
+    private router: Router
+  ) {}
+  isLogged: boolean = false;
+  ngOnInit() {
+    this.azureService.isUserLoggedIn.subscribe((data) => {
+      this.isLogged = data;
+    });
+  }
   updateTicket(isApproved: boolean): void {
     const ticketId = prompt('Enter Ticket ID:');
     if (ticketId) {

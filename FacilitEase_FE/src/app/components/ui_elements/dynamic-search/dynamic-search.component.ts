@@ -73,4 +73,7 @@ export class DynamicSearchComponent {
   closeDropdown() {
     this.suggestions = [];
   }
+  OnScroll(event: Event): void {
+    this.suggestions = [];
+  }
 }

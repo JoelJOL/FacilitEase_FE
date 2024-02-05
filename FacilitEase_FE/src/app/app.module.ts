@@ -126,7 +126,8 @@ import { AzureService } from './features/Authentication/azureService/azure.servi
 import { SkeletonLoaderComponent } from './components/layout/skeleton-loader/skeleton-loader.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TrackingTimelineComponent } from './components/layout/tracking-timeline/tracking-timeline.component';
-import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component';
+import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component'
+import { OnscrollDirective } from './features/service/directive/onscroll/onscroll.directive';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -226,6 +227,7 @@ const isIE =
     SkeletonLoaderComponent,
     TrackingTimelineComponent,
     TicketTrackingComponent
+    OnscrollDirective,
   ],
   imports: [
     HttpClientModule,
@@ -282,11 +284,11 @@ const isIE =
     EmployeeBulkuploadService,
     ModalService,
     MasterService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: MsalInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true,
+    },
     MsalGuard,
     AzureService,
     // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }
