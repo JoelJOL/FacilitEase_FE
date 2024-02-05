@@ -97,6 +97,7 @@ export class DataTableNewComponent implements OnInit {
         'resolved-status': cellValue === 'Resolved',
         'cancelled-status': cellValue === 'Cancelled',
         'escalated-status': cellValue === 'Escalated',
+        'cancelrequested-status': cellValue === 'Cancel Requested',
       };
     } else {
       return {};

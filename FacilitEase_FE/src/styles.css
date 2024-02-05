@@ -29,6 +29,8 @@ body {
   --cancelled_status_bg: rgba(218, 222, 110, 0.4);
   --cancelled: #ccaa21c4;
   --escalated_status_bg: rgba(222, 117, 110, 0.4);
+  --cancelrequested_status_bg: rgba(218, 222, 110, 0.4);
+  --cancelrequested: #cc6321c4;
   --green: #2d7f30;
   --ticket_status: #ffe9c4;
   --ticket_status_color: #f59e0b;
