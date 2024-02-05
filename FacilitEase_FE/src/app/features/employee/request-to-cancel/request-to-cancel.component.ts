@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
+import { TicketDetails } from '@app/ticket-details';
+
 
 @Component({
   selector: 'app-request-to-cancel',
@@ -12,7 +14,7 @@ import { DropDownService } from '@app/features/service/httpService/dropdown.serv
 export class RequestToCancelComponent {
   customHeaderText = 'Supported Attachments';
   ticketId: number = 0;
-  ticketDetails: any = [];
+  ticketDetails!: TicketDetails;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,9 +30,10 @@ export class RequestToCancelComponent {
       console.log('This is the id', this.ticketId);
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
-      console.log('API Response:', data);
-      this.ticketDetails = data[0];
+
+    this.agentService.getData(this.ticketId).subscribe((ticketDetails: TicketDetails) => {
+      console.log('API Response:', ticketDetails);
+      this.ticketDetails = ticketDetails;
       console.log('Ticket Details:', this.ticketDetails);
     });
   }

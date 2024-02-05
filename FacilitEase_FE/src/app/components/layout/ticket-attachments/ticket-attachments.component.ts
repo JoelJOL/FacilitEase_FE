@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AgentService } from '@app/features/service/httpService/agent.service';
+import { TicketDetails } from '@app/ticket-details'; 
 
 @Component({
   selector: 'app-ticket-attachments',

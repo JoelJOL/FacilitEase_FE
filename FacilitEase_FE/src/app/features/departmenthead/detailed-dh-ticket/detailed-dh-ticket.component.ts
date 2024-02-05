@@ -2,18 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
 import { DepartmentHeadService } from '@app/features/service/httpService/department-head.service';
+import { TicketDetails } from '@app/ticket-details'; 
 
-export interface TicketDetails {
-  id: number;
-  ticketName: string;
-  employeeName: string;
-  assignedTo: string;
-  submittedDate: string;
-  priorityName: string;
-  statusName: string;
-  ticketDescription: string;
-  documentLink: string;
-}
 @Component({
   selector: 'app-detailed-dh-ticket',
   templateUrl: './detailed-dh-ticket.component.html',

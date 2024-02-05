@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { TicketDetails } from '@app/ticket-details';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AgentService {
   constructor(private http: HttpClient) {}
-  getData(ticketId: number): Observable<any> {
+  getData(ticketId: number): Observable<TicketDetails> {
     console.log(`The ticket id : ${ticketId} is recieved in getData()`);
     const apiUrl = `https://localhost:7049/api/L3Admin/ticketdetail-by-agent/${ticketId}`;
-    return this.http.get(apiUrl);
+    return this.http.get<TicketDetails>(apiUrl);
   }
 
   getTicketData(ticketId: number): Observable<any> {
