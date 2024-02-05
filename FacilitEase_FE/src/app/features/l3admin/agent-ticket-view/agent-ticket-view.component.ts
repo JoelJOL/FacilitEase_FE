@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AgentService } from '../../service/httpService/agent.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalService } from '@app/features/service/dataService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { TicketDetails } from '@app/ticket-details'; 
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -12,7 +12,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class AgentTicketViewComponent {
   customHeaderText = 'Supported Attachments';
-  ticketDetails: any;
+  ticketDetails!: TicketDetails;
   ticketId: number = 0;
   modalRef: BsModalRef | undefined;
   titleSubAgent: any = [];
@@ -28,20 +28,26 @@ export class AgentTicketViewComponent {
     this.route.params.subscribe((params) => {
       this.ticketId = Number(params['Id']);
       console.log(this.ticketId);
-      console.log('This is the main thing i created!');
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
-      this.ticketDetails = data[0];
-      console.log(data);
-      this.titleSubAgent = [
-        { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
-        { heading: 'Department', text: this.ticketDetails.deptName },
-        { heading: 'Manager', text: this.ticketDetails.managerName },
-        { heading: 'Project Code', text: this.ticketDetails.projectCode },
-        { heading: 'Location', text: this.ticketDetails.locationName },
-      ];
-    });
+    this.agentService.getData(this.ticketId).subscribe(
+      (ticketDetails: TicketDetails) => {   
+        this.ticketDetails = ticketDetails;
+        console.log('Ticket Details:', this.ticketDetails);
+    
+        this.titleSubAgent = [
+          { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
+          { heading: 'Department', text: this.ticketDetails.deptName },
+          { heading: 'Manager', text: this.ticketDetails.managerName },
+          { heading: 'Project Code', text: this.ticketDetails.projectCode.toString() },
+          { heading: 'Location', text: this.ticketDetails.locationName },
+        ];
+      },
+      (error) => {
+        console.error('API call error:', error);
+      }
+    );
+    
   }
 
   openModal(ticketDetails: any) {

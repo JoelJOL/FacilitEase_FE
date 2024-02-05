@@ -201,3 +201,16 @@ td {
   position: relative;
   font-weight: 550;
 }
+
+.no-records-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.no-records-message {
+  font-size: 18px;
+  color: #555;
+}

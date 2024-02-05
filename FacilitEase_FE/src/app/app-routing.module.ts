@@ -56,6 +56,7 @@ import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/
 import { UploadComponent } from './upload/upload.component';
 import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
+import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component';
 
 const routes: Routes = [
   { path: 'upload', component: UploadComponent },
@@ -121,7 +122,10 @@ const routes: Routes = [
       },
       { path:'cancel-requests', component:CancelRequestViewAllComponent},
       { path:'request-to-cancel-detail/:Id', component:CancelRequestViewComponent},
-      { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
+      {
+        path: 'ticket-tracking',
+        component: TicketTrackingComponent
+      },
       // { path: 'lreport/:id', component: L2ReportComponent },
     ],
   },
@@ -166,6 +170,7 @@ const routes: Routes = [
         path: 'employee-card',
         component: EmployeeCardsComponent,
       },
+      
       {
         path: 'my-tickets',
         component: EmployeeMyTicketsComponent,

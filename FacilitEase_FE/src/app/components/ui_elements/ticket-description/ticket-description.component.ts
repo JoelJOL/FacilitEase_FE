@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AgentService } from '@app/features/service/httpService/agent.service';
+import { TicketDetails } from '@app/ticket-details'; 
 
 @Component({
   selector: 'app-ticket-description',
@@ -12,5 +13,5 @@ export class TicketDescriptionComponent {
   ngOnChanges() {
     console.log(this.ticketDetails);
   }
-  constructor(private agentService: AgentService) {}
+  constructor() {}
 }
