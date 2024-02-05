@@ -81,7 +81,7 @@ export class L1adminComponent {
       }
       if (event.subfield === 'Assign Role') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['l1/entries']);
+        this.router.navigate(['l1admin/entries']);
       }
     }
   }
