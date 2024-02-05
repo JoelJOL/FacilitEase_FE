@@ -6,10 +6,13 @@
     placeholder="Search Employee..."
     (input)="getSuggestions()"
     (ngModelChange)="handleQueryChange($event)"
+    appOnscroll
+    (scrolled)="OnScroll($event)"
   />
   <div
     *ngIf="suggestions.length > 0"
     appOutsideClick
+    appOnscroll
     (clickOutside)="closeDropdown()"
     class="suggestions_container col-5"
   >
