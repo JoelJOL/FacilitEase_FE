@@ -1,6 +1,7 @@
 #heading{
   margin: 2%;
   font-size: xx-large;
+  font-weight: 800;
 }
 .manager-dashboard {
   display: flex;

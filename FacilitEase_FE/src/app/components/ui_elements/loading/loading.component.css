@@ -1,0 +1,30 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .rotating-icon {
+    animation: rotate 1s ease-in-out infinite;
+    width:4%;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    1% {
+      transform: rotate(0deg); /* Stay straight for the first second (25% of the total animation time) */
+    }
+    50% {
+      transform: rotate(360deg); /* Quickly revolve */
+    }
+    51% {
+      transform: rotate(360deg); /* Stay straight for the next second */
+    }
+    100% {
+      transform: rotate(360deg); /* Revolve again */
+    }
+  }
+  
