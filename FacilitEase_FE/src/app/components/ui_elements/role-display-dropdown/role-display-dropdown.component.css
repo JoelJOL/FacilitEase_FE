@@ -5,6 +5,9 @@
   margin-left: 5.7rem;
   margin-bottom: 2rem;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dropdown_content {
   cursor: pointer;
