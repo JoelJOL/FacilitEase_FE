@@ -126,7 +126,7 @@ import { AzureService } from './features/Authentication/azureService/azure.servi
 import { SkeletonLoaderComponent } from './components/layout/skeleton-loader/skeleton-loader.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TrackingTimelineComponent } from './components/layout/tracking-timeline/tracking-timeline.component';
-import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component'
+import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component';
 import { OnscrollDirective } from './features/service/directive/onscroll/onscroll.directive';
 
 const isIE =
@@ -226,7 +226,7 @@ const isIE =
     CancelRequestViewAllComponent,
     SkeletonLoaderComponent,
     TrackingTimelineComponent,
-    TicketTrackingComponent
+    TicketTrackingComponent,
     OnscrollDirective,
   ],
   imports: [
@@ -275,7 +275,6 @@ const isIE =
         ]),
       }
     ),
-  
   ],
   providers: [
     FormServiceService,
