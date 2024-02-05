@@ -1,10 +1,10 @@
 <div *ngIf="ticketDetails">
   <div class="ticket_sub">
     <p>
-      {{ ticketDetails.ticketName }}
+      {{ ticketDetails[0].ticketName }}
     </p>
   </div>
   <div class="ticket_desc">
-    <p>{{ ticketDetails.ticketDescription }}</p>
+    <p>{{ ticketDetails[0].ticketDescription }}</p>
   </div>
 </div>

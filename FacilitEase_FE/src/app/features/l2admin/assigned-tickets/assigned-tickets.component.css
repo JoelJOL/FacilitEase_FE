@@ -1,0 +1,8 @@
+.display {
+  background-color: var(--grey);
+}
+.heading {
+  font-size: 1.75em;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif !important;
+}

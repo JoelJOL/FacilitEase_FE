@@ -11,27 +11,18 @@
     (ngModelChange)="onOptionSelected()"
   >
     <!-- Default placeholder option with dynamic value -->
-    <option
-      role="menuitem"
-      class="dropdown-item"
-      [value]="userRole.toLowerCase()"
-      [disabled]="true"
-    >
-      {{ userRole }}
+    <option role="menuitem" class="dropdown-item" [value]="''">
+      {{ userRoleService.getUserRole() }}
     </option>
 
     <!-- Actual options -->
-    <option role="menuitem" class="dropdown-item" value="l1">L1 Admin</option>
-    <option role="menuitem" class="dropdown-item" value="l2">L2 Admin</option>
-    <option role="menuitem" class="dropdown-item" value="l3">L3 Admin</option>
-    <option role="menuitem" class="dropdown-item" value="manager">
-      Manager
-    </option>
-    <option role="menuitem" class="dropdown-item" value="departmenthead">
-      Department Head
-    </option>
-    <option role="menuitem" class="dropdown-item" value="employee">
-      Employee
+    <option
+      *ngFor="let role of userRoles"
+      role="menuitem"
+      class="dropdown-item"
+      [value]="sanitizeRoleValue(role)"
+    >
+      {{ role }}
     </option>
   </select>
 </div>

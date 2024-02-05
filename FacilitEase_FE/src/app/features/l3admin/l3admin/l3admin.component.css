@@ -13,6 +13,7 @@
   flex: 4;
   overflow: auto;
   transition: flex 0.4s ease-in-out;
+  padding-right: 0.5em;
 }
 .side_display.collapsed {
   flex: 15;

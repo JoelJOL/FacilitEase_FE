@@ -16,6 +16,8 @@ import {
 import { AzureService } from '../azureService/azure.service';
 import { environment } from 'environments/environment';
 import { azureObj } from '../authModels/model';
+import { AzureReturn } from '../authModels/model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-screen',
@@ -30,8 +32,10 @@ export class LoginScreenComponent {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private msalBroadCastService: MsalBroadcastService,
     private authService: MsalService,
-    private azureService: AzureService
+    private azureService: AzureService,
+    private router: Router
   ) {}
+
   azureObj: azureObj = {
     idToken: '',
     accessToken: '',
@@ -39,6 +43,9 @@ export class LoginScreenComponent {
     expiration: 0,
     name: '',
     username: '',
+  };
+  azureReturn: AzureReturn = {
+    token: '',
   };
 
   ngOnInit(): void {
@@ -53,9 +60,11 @@ export class LoginScreenComponent {
       .subscribe((x) => {
         this.isUserLoggedIn =
           this.authService.instance.getAllAccounts().length > 0;
+        this.azureService.isLogged = this.isUserLoggedIn;
 
         // console.log('isUserLoggedIn : ', this.isUserLoggedIn);
         console.log(this.authService.instance.getAllAccounts());
+
         const account = this.authService.instance.getAllAccounts();
 
         this.azureObj.idToken = account[0].idToken ?? '';
@@ -65,22 +74,27 @@ export class LoginScreenComponent {
         this.azureObj.username = account[0].username;
 
         console.log(this.azureObj);
-        this.azureService.AzureData(this.azureObj).subscribe((data) => {
-          console.log(data);
-        });
+        this.azureService.azureObj = this.azureObj;
+        if (!sessionStorage.getItem('FacilitEaseJwt')) {
+          this.azureService.AzureData(this.azureObj).subscribe((response) => {
+            this.azureService.ResolveToken(response);
+            // console.log(token);
+            // sessionStorage.setItem('FacilitEaseJwt', token.token);
+          });
+        }
+
         this.azureService.isUserLoggedIn.next(this.isUserLoggedIn);
       });
-    if (this.isUserLoggedIn === true) {
-    }
   }
   Login() {
+    sessionStorage.removeItem('FacilitEaseJwt');
     if (this.msalGuardConfig.authRequest) {
       this.authService
         .loginPopup({
           ...this.msalGuardConfig.authRequest,
         } as RedirectRequest)
-        .subscribe((data) => {
-          const accessToken = data.accessToken;
+        .subscribe((authenticationResult) => {
+          const accessToken = authenticationResult.accessToken;
           this.azureObj.accessToken = accessToken;
         });
     } else {
@@ -94,7 +108,7 @@ export class LoginScreenComponent {
   }
 
   Logout() {
-    this.authService.logoutPopup({
+    this.authService.logoutRedirect({
       postLogoutRedirectUri: environment.postLogoutUrl,
     });
   }

@@ -11,9 +11,8 @@ input {
   box-shadow: 0 0 3px rgb(172, 0, 172);
 }
 .suggestions_container {
-  left: 3rem;
-  position: absolute;
-  z-index: 300;
+  position: relative;
+  z-index: 10;
   background-color: #fff;
   border: 1px solid var(--grey);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

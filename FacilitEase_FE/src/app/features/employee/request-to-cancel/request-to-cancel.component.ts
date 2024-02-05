@@ -1,8 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
+import { GetAPIService } from '@app/features/service/httpService/GetAPI/get-api.service';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
+import { MatDialog } from '@angular/material/dialog';
+import { TicketResponse } from '@app/features/Interface/interface';
+import { TicketDetails } from '@app/ticket-details';
+
 
 @Component({
   selector: 'app-request-to-cancel',
@@ -12,14 +18,16 @@ import { DropDownService } from '@app/features/service/httpService/dropdown.serv
 export class RequestToCancelComponent {
   customHeaderText = 'Supported Attachments';
   ticketId: number = 0;
-  ticketDetails: any = [];
+  ticketDetails!: TicketResponse;
 
   constructor(
+    private dialog: MatDialog,
     private route: ActivatedRoute,
     private agentService: AgentService,
     private router: Router,
     private dropDownService: DropDownService,
-    private http: HttpClient
+    private http: HttpClient,
+    private ticketCancelService: GetAPIService
   ) {}
 
   ngOnInit(): void {
@@ -28,24 +36,35 @@ export class RequestToCancelComponent {
       console.log('This is the id', this.ticketId);
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
-      console.log('API Response:', data);
-      this.ticketDetails = data[0];
+
+    this.agentService.getData(this.ticketId).subscribe((ticketDetails: TicketDetails) => {
+      console.log('API Response:', ticketDetails);
+      this.ticketDetails = ticketDetails;
       console.log('Ticket Details:', this.ticketDetails);
     });
   }
 
-  onCancelRequest() {
-    this.http
-      .patch('https://localhost:7049/api/Employee/cancel-request/2', {})
-      .subscribe(
-        (response) => {
-          console.log('Cancel request successful', response);
-          alert('Cancel request successful');
-        },
-        (error) => {
-          console.error('Error cancelling request', error);
-        }
-      );
+  onCancelRequest(): void {
+    const ticketId = this.ticketDetails.id;
+    this.ticketCancelService.cancelRequest(ticketId).subscribe(
+      (response) => {
+        console.log('Cancellation successful:', response);
+      },
+      (error) => {
+        console.error('Cancellation error:', error);
+      }
+    );
+  }
+
+  openConfirmationModal() {
+    let confirmationMessage =
+      'Are you sure you want to sent a cancellation request?';
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '400px',
+      data: confirmationMessage,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) this.onCancelRequest();
+    });
   }
 }

@@ -1,0 +1,55 @@
+.form-group {
+  max-width: 50%;
+  margin: 1em 0 1em 0;
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 100%;
+  position: absolute;
+  left: 0.8em;
+  top: 0.8em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(100, 100, 100);
+}
+
+.form-group
+  :is(
+    input:focus,
+    input:valid,
+    textarea:focus,
+    textarea:valid,
+    select:focus,
+    select:valid
+  )
+  ~ label {
+  transform: translateY(-50%) scale(0.9);
+  top: 0.2em;
+  background-color: #ffffff;
+  padding: 0.4em;
+}
+
+.form-group
+  :is(
+    input:focus,
+    input:valid,
+    textarea:focus,
+    textarea:valid,
+    select:focus,
+    select:valid
+  ) {
+  border-color: rgb(150, 150, 200);
+}

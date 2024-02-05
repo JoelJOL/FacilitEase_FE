@@ -16,3 +16,6 @@ export interface Profile {
   surname: string;
   userPrincipalName: string;
 }
+export interface AzureReturn {
+  token: string;
+}
