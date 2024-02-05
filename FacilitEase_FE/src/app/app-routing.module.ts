@@ -83,7 +83,7 @@ const routes: Routes = [
   { path: 'xxx', component: SidebarComponent },
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   {
-    path: 'l2',
+    path: 'l2admin',
     component: L2AdminComponent,
     children: [
       { path: '', redirectTo: 'unassigned-tickets', pathMatch: 'full' }, // Redirect to 'unassigned-tickets' when 'l2' is accessed directly
@@ -102,7 +102,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'l3',
+    path: 'l3admin',
     component: L3adminComponent,
     children: [
       { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
@@ -182,7 +182,7 @@ const routes: Routes = [
     component: TicketNotesAttachmentsComponent,
   },
   {
-    path: 'l1',
+    path: 'l1admin',
     component: L1adminComponent,
     children: [{ path: 'entries', component: AssignRoleComponent }],
   },

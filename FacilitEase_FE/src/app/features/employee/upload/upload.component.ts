@@ -1,6 +1,7 @@
-import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+
 import {
   Category,
   Department,
@@ -22,7 +23,8 @@ export class UploadComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private employeeUploadService: GetAPIService
+    private employeeUploadService: GetAPIService,
+    private http: HttpClient
   ) {
     this.uploadForm = this.fb.group({
       ticketName: [''],
@@ -51,77 +53,34 @@ export class UploadComponent implements OnInit {
     this.uploadForm.reset();
   }
 
-  // onSubmit() {
-  //   if (this.uploadForm.valid) {
-  //     const formData = new FormData();
-
-  //     Object.keys(this.uploadForm.value).forEach((key) => {
-  //       formData.append(key, this.uploadForm.value[key]);
-  //     });
-
-  //     this.employeeUploadService.uploadDocument(formData).subscribe(
-  //       (event: HttpEvent<TicketResponse>) => {
-  //         if (event.type === HttpEventType.UploadProgress) {
-  //           const progress = Math.round(
-  //             (100 * event.loaded) / (event.total || 1)
-  //           );
-  //           console.log(`Upload Progress: ${progress}%`);
-  //         } else if (event.type === HttpEventType.Response) {
-  //           console.log('Upload successful', event.body);
-  //         }
-  //       },
-  //       (error) => {
-  //         console.error('Error uploading', error);
-  //       }
-  //     );
-  //   } else {
-  //     console.log('Error');
-  //   }
-  // }
   onSubmit() {
     if (this.uploadForm.valid) {
       const formData = new FormData();
 
-      // Append form fields
       Object.keys(this.uploadForm.value).forEach((key) => {
         formData.append(key, this.uploadForm.value[key]);
       });
 
-      // Append file
-      formData.append(
-        'file',
-        this.uploadForm.get('file').value,
-        this.uploadForm.get('file').name
-      );
-
-      // Make the HTTP request
-      this.http
-        .post(
-          'https://localhost:7049/api/Employee/create-with-documents',
-          formData
-        )
-        .subscribe(
-          (event: HttpEvent<any>) => {
-            if (event.type === HttpEventType.UploadProgress) {
-              const progress = Math.round(
-                (100 * event.loaded) / (event.total || 1)
-              );
-              console.log(`Upload Progress: ${progress}%`);
-            } else if (event.type === HttpEventType.Response) {
-              console.log('Upload successful', event.body);
-              // You can handle the response here and update any UI accordingly.
-              // For example, if your response contains image URLs, you can update the 'images' array.
-              this.loadImages();
-            }
-          },
-          (error) => {
-            console.error('Error uploading', error);
+      this.employeeUploadService.uploadDocument(formData).subscribe(
+        (event: HttpEvent<TicketResponse>) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            const progress = Math.round(
+              (100 * event.loaded) / (event.total || 1)
+            );
+            console.log(`Upload Progress: ${progress}%`);
+          } else if (event.type === HttpEventType.Response) {
+            console.log('Upload successful', event.body);
           }
-        );
+        },
+        (error) => {
+          console.error('Error uploading', error);
+        }
+      );
     } else {
-      console.log('Error: Form is not valid');
+      console.log('Error');
     }
   }
+
   loadPriorities(): void {
     this.employeeUploadService.getPriorities().subscribe(
       (data: Priority[]) => {
