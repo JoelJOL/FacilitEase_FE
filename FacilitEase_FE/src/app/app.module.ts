@@ -218,7 +218,7 @@ const isIE =
     LoginScreenComponent,
     UploadComponent,
     CancelRequestViewComponent,
-    CancelRequestViewAllComponent
+    CancelRequestViewAllComponent,
   ],
   imports: [
     HttpClientModule,
