@@ -14,10 +14,12 @@ export interface Category {
 }
 
 export interface TicketResponse {
+  id: number;
   ticketName: string;
   ticketDescription: string;
   priorityId: number;
   categoryId: number;
   departmentId: number;
   documentLink: string;
+  submittedDate: Date;
 }

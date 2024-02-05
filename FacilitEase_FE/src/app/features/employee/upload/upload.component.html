@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Raise a Ticket</h2>
-  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="uploadForm">
     <div class="form-group">
       <input
         type="text"
@@ -57,7 +57,13 @@
     </div>
 
     <div class="button-container">
-      <app-button type="submit" color="accepted">Submit</app-button>
+      <app-button
+        type="submit"
+        (click)="onSubmit()"
+        class="pr-10"
+        color="accepted"
+        >Submit</app-button
+      >
       <app-button type="Reset" color="rejected" (click)="onCancelRequest()"
         >Reset</app-button
       >
