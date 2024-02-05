@@ -123,6 +123,7 @@ import {
 } from '@azure/msal-angular';
 import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
 import { AzureService } from './features/Authentication/azureService/azure.service';
+import { OnscrollDirective } from './features/service/directive/onscroll/onscroll.directive';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -219,6 +220,7 @@ const isIE =
     UploadComponent,
     CancelRequestViewComponent,
     CancelRequestViewAllComponent,
+    OnscrollDirective,
   ],
   imports: [
     HttpClientModule,
@@ -273,11 +275,11 @@ const isIE =
     EmployeeBulkuploadService,
     ModalService,
     MasterService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: MsalInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true,
+    },
     MsalGuard,
     AzureService,
     // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }
