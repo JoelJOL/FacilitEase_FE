@@ -53,9 +53,9 @@ import { ManagerViewTicketSimpleComponent } from './features/manager/manager-vie
 import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
 import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
 import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
-import { UploadComponent } from './upload/upload.component';
 import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
+import { UploadComponent } from './features/employee/upload/upload.component';
 import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component';
 import { MsalGuard } from '@azure/msal-angular';
 import {
@@ -65,7 +65,6 @@ import {
 } from './features/Authentication/resolve.guard';
 
 const routes: Routes = [
-  { path: 'upload', component: UploadComponent },
   {
     path: 'employee',
     component: EmployeeComponent,
@@ -86,7 +85,7 @@ const routes: Routes = [
       },
       {
         path: 'form',
-        component: TrFormComponent,
+        component: UploadComponent,
       },
     ],
   },
@@ -94,7 +93,7 @@ const routes: Routes = [
   { path: 'xxx', component: SidebarComponent },
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   {
-    path: 'l2',
+    path: 'l2admin',
     component: L2AdminComponent,
     children: [
       { path: '', redirectTo: 'unassigned-tickets', pathMatch: 'full' }, // Redirect to 'unassigned-tickets' when 'l2' is accessed directly
@@ -113,7 +112,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'l3',
+    path: 'l3admin',
     component: L3adminComponent,
     children: [
       { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
@@ -181,7 +180,7 @@ const routes: Routes = [
     component: TicketNotesAttachmentsComponent,
   },
   {
-    path: 'l1',
+    path: 'l1admin',
     component: L1adminComponent,
     // canActivate: [MsalGuard, IsL1Admin],
     // resolve: [LoginEnter],

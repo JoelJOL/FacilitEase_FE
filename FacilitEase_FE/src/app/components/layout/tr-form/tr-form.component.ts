@@ -66,7 +66,6 @@ export class TrFormComponent implements OnInit {
 
   onSubmit() {
     if (this.ticketForm.valid) {
-      // Convert documentLink to an array if it's not already
       const documentLinkValue = this.ticketForm.get('attachments')?.value;
       const documentLinkArray = Array.isArray(documentLinkValue)
         ? documentLinkValue

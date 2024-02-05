@@ -16,6 +16,7 @@ export class EmployeeMyTicketsComponent {
     'Status',
     'Assigned To',
     'Priority',
+    'Submitted Date',
   ];
 
   apiLink: string = '';
@@ -24,6 +25,7 @@ export class EmployeeMyTicketsComponent {
     this.router.navigate(['employee/request', rowId]);
   }
   ngOnInit(): void {
-    this.apiLink = `${this.masterService.getMyTickets()}`;
+    const userId = 6;
+    this.apiLink = this.masterService.getMyTickets(userId);
   }
 }

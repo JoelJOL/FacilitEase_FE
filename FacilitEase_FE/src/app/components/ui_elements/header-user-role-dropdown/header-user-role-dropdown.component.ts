@@ -8,24 +8,28 @@ import { UserRoleService } from '@app/features/service/dataService/user-role.ser
   styleUrls: ['./header-user-role-dropdown.component.css'],
 })
 export class HeaderUserRoleDropdownComponent implements OnInit {
-  @Input() userRole: string = '';
-  selectedValue: string = 'employee';
+  userRoles: string[] = [];
+  selectedValue: string = '';
 
   constructor(
-    private router: Router,
-    private userRoleService: UserRoleService
+    public userRoleService: UserRoleService,
+    private router: Router
   ) {}
 
-  onOptionSelected(): void {
-    if (this.selectedValue) {
-      this.router.navigate([this.selectedValue]);
-    }
+  ngOnInit(): void {
+    this.userRoles = this.userRoleService.getUserRoles();
   }
 
-  ngOnInit() {
-    this.userRoleService.userRole$.subscribe((userRole) => {
-      this.userRole = userRole;
-      this.selectedValue = userRole.toLowerCase();
-    });
+  sanitizeRoleValue(role: string): string {
+    return role.toLowerCase().replace(/\s/g, '');
+  }
+
+  onOptionSelected(): void {
+    this.userRoleService.setUserRole(this.selectedValue);
+    if (this.selectedValue) {
+      const sanitizedValue = this.sanitizeRoleValue(this.selectedValue);
+      console.log('Selected Value:', sanitizedValue);
+      this.router.navigate([sanitizedValue]);
+    }
   }
 }
