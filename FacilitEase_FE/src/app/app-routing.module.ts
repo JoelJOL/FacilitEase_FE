@@ -53,10 +53,9 @@ import { ManagerViewTicketSimpleComponent } from './features/manager/manager-vie
 import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
 import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
 import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
-import { UploadComponent } from './upload/upload.component';
 import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
-
+import { UploadComponent } from './features/employee/upload/upload.component';
 const routes: Routes = [
   {
     path: 'employee',
