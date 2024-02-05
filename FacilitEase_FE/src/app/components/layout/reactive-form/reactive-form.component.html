@@ -1,12 +1,13 @@
 <!-- your.component.html -->
 <form [formGroup]="myForm" (ngSubmit)="submitForm()" class="mt-4">
+  <h1>EMPLOYEE ADDITION FORM</h1>
   <div class="form-group row">
     <label for="employeecode" class="col-sm-2 col-form-label"
       >Employee Code:</label
     >
     <div class="col-sm-10">
       <input
-        type="number"
+        type="text"
         id="employeecode"
         class="form-control"
         formControlName="employeeCode"

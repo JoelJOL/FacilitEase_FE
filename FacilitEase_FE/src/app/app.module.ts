@@ -111,6 +111,23 @@ import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-v
 import { OutsideClickDirective } from './features/service/directive/outside-click/outside-click.directive';
 import { ReportStatsComponent } from './components/ui_elements/report-stats/report-stats.component';
 import { UploadComponent } from './features/employee/upload/upload.component';
+import { LoginScreenComponent } from './features/Authentication/login-screen/login-screen.component';
+import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
+import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
+import { HeadersInterceptor } from './headers.interceptor';
+import {
+  MsalGuard,
+  MsalInterceptor,
+  MsalModule,
+  MsalRedirectComponent,
+} from '@azure/msal-angular';
+import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
+import { AzureService } from './features/Authentication/azureService/azure.service';
+
+const isIE =
+  window.navigator.userAgent.indexOf('MSIE') > -1 ||
+  window.navigator.userAgent.indexOf('Trident/') > -1;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -197,7 +214,11 @@ import { UploadComponent } from './features/employee/upload/upload.component';
     TicketDetailViewNoeditComponent,
     OnHoldTicketsViewComponent,
     ReportStatsComponent,
+    OutsideClickDirective,
+    LoginScreenComponent,
     UploadComponent,
+    CancelRequestViewComponent,
+    CancelRequestViewAllComponent,
   ],
   imports: [
     HttpClientModule,
@@ -218,6 +239,32 @@ import { UploadComponent } from './features/employee/upload/upload.component';
     MatIconModule,
     ToastrModule.forRoot(),
     MatCardModule,
+    MsalModule.forRoot(
+      new PublicClientApplication({
+        auth: {
+          clientId: 'd7104f84-ab29-436f-8f06-82fcf8d81381',
+          redirectUri: 'http://localhost:4200',
+          authority:
+            'https://login.microsoftonline.com/5b751804-232f-410d-bb2f-714e3bb466eb',
+        },
+        cache: {
+          cacheLocation: 'localStorage',
+          storeAuthStateInCookie: isIE,
+        },
+      }),
+      {
+        interactionType: InteractionType.Redirect,
+        authRequest: {
+          scopes: ['user.read'],
+        },
+      },
+      {
+        interactionType: InteractionType.Redirect,
+        protectedResourceMap: new Map([
+          ['https://graph.microsoft.com/v1.0/me', ['user.Read']],
+        ]),
+      }
+    ),
   ],
   providers: [
     FormServiceService,
@@ -226,7 +273,15 @@ import { UploadComponent } from './features/employee/upload/upload.component';
     EmployeeBulkuploadService,
     ModalService,
     MasterService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: MsalInterceptor,
+    //   multi: true,
+    // },
+    MsalGuard,
+    AzureService,
+    // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, MsalRedirectComponent],
 })
 export class AppModule {}

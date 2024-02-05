@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { AdminPerformanceComponent } from './components/ui_elements/admin-performance/admin-performance.component';
@@ -52,7 +52,11 @@ import { DetailsEscalatedComponent } from './features/l2admin/details-escalated/
 import { ManagerViewTicketSimpleComponent } from './features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component';
 import { ResolvedTicketViewComponent } from './features/l3admin/resolved-ticket-view/resolved-ticket-view.component';
 import { OnHoldTicketsViewComponent } from './features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component';
-import { UploadComponent } from './features/employee/upload/upload.component';
+import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
+import { UploadComponent } from './upload/upload.component';
+import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
+import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
+
 const routes: Routes = [
   {
     path: 'employee',
@@ -102,6 +106,7 @@ const routes: Routes = [
     path: 'l3',
     component: L3adminComponent,
     children: [
+      { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
       { path: 'view-ticket', component: AgentTicketsViewComponent },
       { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
       { path: 'on-hold-tickets', component: OnHoldTicketsViewComponent },
@@ -112,6 +117,11 @@ const routes: Routes = [
       {
         path: 'view-ticket-detail-noedit/:Id',
         component: ResolvedTicketViewComponent,
+      },
+      { path: 'cancel-requests', component: CancelRequestViewAllComponent },
+      {
+        path: 'request-to-cancel-detail/:Id',
+        component: CancelRequestViewComponent,
       },
       { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
       // { path: 'lreport/:id', component: L2ReportComponent },
@@ -175,15 +185,13 @@ const routes: Routes = [
   {
     path: 'l1',
     component: L1adminComponent,
+    children: [{ path: 'entries', component: AssignRoleComponent }],
   },
   {
     path: 'search',
     component: L1DataEntryComponent,
   },
-  {
-    path: 'entries',
-    component: AssignRoleComponent,
-  },
+
   { path: 'ticketraisedassigned', component: TicketRaisedAssignedComponent },
   { path: 'trform', component: TrFormComponent },
   { path: 'employee-card', component: EmployeeCardsComponent },
@@ -235,8 +243,8 @@ const routes: Routes = [
         component: ReactiveFormComponent,
       },
       {
-        path: 'file-upload',
-        component: FileUploadComponent,
+        path: 'emplycarddisplay',
+        component: EmplycarddisplayComponent,
       },
     ],
   },

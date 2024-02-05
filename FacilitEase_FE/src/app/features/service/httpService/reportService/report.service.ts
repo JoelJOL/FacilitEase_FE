@@ -9,11 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 export class ReportService {
   constructor(private http: HttpClient) {}
   GetReportData(id: number): Observable<any> {
-    return this.http.get<any>(`https://localhost:7049/api/L3AdminReprt/${id}`);
+    return this.http.get<any>(`https://localhost:7049/api/L3AdminReport/5`);
   }
   GetChartData(id: number): Observable<any> {
     return this.http.get<any>(
-      `https://localhost:7049/api/L3AdminReprt/chartdata/${id}`,
+      `https://localhost:7049/api/L3AdminReport/chartdata/5`,
       {
         headers: new HttpHeaders({
           token:
@@ -24,7 +24,7 @@ export class ReportService {
   }
   GetProfileData(id: number): Observable<any> {
     return this.http.get<any>(
-      `https://localhost:7049/api/L3AdminReprt/profiledata/${id}`
+      `https://localhost:7049/api/L3AdminReport/profiledata/5`
     );
   }
 }

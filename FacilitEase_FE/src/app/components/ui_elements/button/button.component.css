@@ -11,43 +11,43 @@ button {
 }
 
 .btn-accepted {
-  background-color: #1ebb25;
+  background-color: var(--green);
   color: #fff;
 }
 
 .btn-accepted:hover {
-  background-color: #1fa541;
+  background-color: var(--low_priority);
 }
 
 .btn-rejected {
-  background-color: #df1d4e;
+  background-color: var(--red);
   color: #fff;
 }
 
 .btn-rejected:hover {
-  background-color: #b60b3e;
+  background-color: var(--dark_red);
 }
 
 .btn-submit {
-  background-color: #5920dd;
+  background-color: var(--blue_violet);
   color: #fff;
 }
 
 .btn-submit:hover {
-  background-color: #4315ad;
+  background-color: var(--violet);
 }
 .btn-paginate {
-  background-color: #6f00ff;
+  background-color: var(--blue_violet);
   color: #fff;
 }
 .btn-paginate:hover {
-  background-color: #4905a2;
+  background-color: var(--violet);
 }
 .btn-forward {
-  background-color: #4905a2;
+  background-color: var(--blue_violet);
   color: #fff;
 }
 
 .btn-forward:hover {
-  background-color: #1f1153;
+  background-color: var(--violet);
 }

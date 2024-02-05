@@ -24,22 +24,44 @@ export class TicketNotesAttachmentsComponent {
     this.editMode = !this.editMode;
   }
 
+  
+
 
   onSubmit() {
-    const notes = this.ticketNotesComponent.getNotes();
+    const notes = this.ticketNotesComponent.getNotes().trim();
     console.log(notes);
-    if (this.editMode && notes) {
+  
+    if (!this.ticketNotesComponent.commentExists) {
+      // If comment doesn't exist, it's a new comment, proceed with the add logic
+      this.agentService.addComment(notes,this.ticketId).subscribe(
+        (response) => {
+          // Handle the response appropriately (similar to your existing code)
+          console.log('Comment added successfully');
+          console.log('Response:', response);
+  
+          if (response === 'Comment added successfully') {
+            this.editMode = !this.editMode; // Toggle the editMode property
+          } else {
+            console.error('Unexpected response:', response);
+          }
+        },
+        (error) => {
+          console.error('Error adding comment:', error);
+          console.log('Response:', error.error);
+          // Handle the error appropriately
+        }
+      );
+    } else if (this.editMode) {
+      // If comment exists and editMode is true, proceed with the update logic
       this.agentService.updateComment(this.ticketId, notes, { responseType: 'text' }).subscribe(
         (response) => {
-          // Success response
+          // Handle the response appropriately (similar to your existing code)
           console.log('Comment updated successfully');
           console.log('Response:', response);
   
-          // Check if the response content matches the success message
           if (response === 'Comment updated successfully') {
             this.editMode = !this.editMode; // Toggle the editMode property
           } else {
-            // Handle unexpected response
             console.error('Unexpected response:', response);
           }
         },
@@ -52,6 +74,8 @@ export class TicketNotesAttachmentsComponent {
     }
   }
   
-  
 
 }
+
+  
+ 

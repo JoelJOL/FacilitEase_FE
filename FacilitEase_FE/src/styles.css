@@ -1,6 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  /* font-family: "Montserrat", sans-serif !important; */
+  /* font-family: "Protest Revolution", sans-serif !important; */
+  font-family: "Poppins", sans-serif !important;
   margin: 0%;
   padding: 0%;
 }
-@import "~bootstrap/dist/css/bootstrap.min.css";
+:root {
+  /* --violet: #6342a9; */
+  --violet: rgb(124, 0, 192);
+  --grey: rgb(237, 237, 237);
+  --light_violet: #dad7ff;
+  --light_grey: #ececec;
+  --blue_violet: #6f00ff;
+  --low_priority: rgb(78, 213, 73);
+  --medium_priority: rgb(202, 160, 9);
+  --high_priority: #ff7f29;
+  --critical_priority: #d54949;
+  --open_status_bg: rgba(116, 223, 125, 0.4);
+  --inprogress_status_bg: #bf74df33;
+  --onhold_status_bg: rgba(223, 168, 116, 0.4);
+  --onhold: rgb(202, 102, 9);
+  --resolved_status_bg: rgba(112, 110, 222, 0.4);
+  --resolved: #4b49d5;
+  --cancelled_status_bg: rgba(218, 222, 110, 0.4);
+  --cancelled: #ccaa21c4;
+  --escalated_status_bg: rgba(222, 117, 110, 0.4);
+  --green: #2d7f30;
+  --ticket_status: #ffe9c4;
+  --ticket_status_color: #f59e0b;
+  --priority_box: #f4be61;
+  --dark_grey: rgb(63, 62, 94, 0.8);
+  --light_blue: #80bdff;
+  --red: #cb0033;
+  --dark_red: #9d0231;
+  --hover_grey: #c3c3c3;
+}

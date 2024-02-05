@@ -53,15 +53,22 @@ export class AgentTicketViewComponent {
   }
 
   resolveTicket(): void {
-    this.agentService.resolveTicket(this.ticketId).subscribe(
-      (response) => {
-        console.log('API call success:', response);
-        alert('Ticket resolved successfully!');
-        this.router.navigate(['/view-ticket']);
-      },
-      (error) => {
-        console.error('API call error:', error);
-      }
-    );
+    const isConfirmed = window.confirm('Are you sure you want to resolve the ticket?');
+  
+    if (isConfirmed) {
+      this.agentService.resolveTicket(this.ticketId).subscribe(
+        (response) => {
+          console.log('API call success:', response);
+          alert('Ticket resolved successfully!');
+          this.router.navigate(['/view-ticket']);
+        },
+        (error) => {
+          console.error('API call error:', error);
+        }
+      );
+    } else {
+      console.log('Ticket resolution canceled.');
+    }
   }
+  
 }

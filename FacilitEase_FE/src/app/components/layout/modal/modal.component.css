@@ -1,130 +1,127 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Modal styling */
-  .modal-dialog {
-    position: fixed;
-    
-  }
-  
-  /* Modal header */
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .modal-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .close {
-    font-size: 16px;
-    text-align: right;
-    cursor: pointer;
-  }
-  
-  /* Modal body */
-  .modal-body {
-    padding: 15px;
-  }
-  
-  /* Button styles */
-  .modal-body .btn {
-    display: block;
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 16px;
-    border-bottom: 1px solid #ddd; /* Set bottom border */
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    margin-bottom: 10px;
-    background-color: #d1d0d0;
-    color: rgb(0, 0, 0);
-    /* background-color: rgb(107, 0, 164); */
-    border-color:#d1d0d0; 
-  }
-  
-  /* Style the last button to remove the bottom border */
-  .modal-body .btn:last-child {
-    border-bottom: none;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .modal-header .close {
-    background-color: rgb(107, 0, 164); 
-    border: none; 
-    border-radius: 50%; 
-    padding: 6px 12px; 
-    color: rgb(255, 254, 254); 
-  }  
+/* Modal styling */
+.modal-dialog {
+  position: fixed;
+}
 
-  .modal-header .close span {
-    font-size: 22px; 
-    color: white;
-  }
+/* Modal header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--light_grey);
+}
 
-  .modal-header .close:hover {
-    background-color: rgb(107, 0, 164); 
-    transform: scale(1.1); 
-  }
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+}
 
-  .modal-body .btn:hover {
-    background-color: #9d9d9d; 
-    border-color: #9d9d9d;
-    color: rgb(107, 0, 164);
-    font-size: medium;
-    font-weight: bold; 
+.close {
+  font-size: 16px;
+  text-align: right;
+  cursor: pointer;
+}
+
+/* Modal body */
+.modal-body {
+  padding: 15px;
+}
+
+/* Button styles */
+.modal-body .btn {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border-bottom: 1px solid var(--light_grey); /* Set bottom border */
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 10px;
+  background-color: var(--grey);
+  color: rgb(0, 0, 0);
+  /* background-color: rgb(107, 0, 164); */
+  border-color: var(--grey);
+}
+
+/* Style the last button to remove the bottom border */
+.modal-body .btn:last-child {
+  border-bottom: none;
+}
+
+.modal-header .close {
+  background-color: var(--violet);
+  border: none;
+  border-radius: 50%;
+  padding: 6px 12px;
+  color: var(--light_grey);
+}
+
+.modal-header .close span {
+  font-size: 22px;
+  color: white;
+}
+
+.modal-header .close:hover {
+  background-color: var(--violet);
+  transform: scale(1.1);
+}
+
+.modal-body .btn:hover {
+  background-color: var(--grey);
+  border-color: var(--grey);
+  color: var(--violet);
+  font-size: medium;
+  font-weight: bold;
   filter: saturate(1.2);
-  }
-  
- 
-  /* Dropdown styling */
-  .modal-body .dropdown {
-    margin-top: 10px;
-  }
+}
 
-  .submit-btn{
-    margin-top: 10px;
-    display: inline-block;
-    padding: 8px 12px;
-    font-size: 16px;
-    line-height: 1;
-    color: #fff;
-    background-color: rgb(107, 0, 164); /* Adjust based on your original button color */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+/* Dropdown styling */
+.modal-body .dropdown {
+  margin-top: 10px;
+}
+
+.submit-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  background-color: var(
+    --violet
+  ); /* Adjust based on your original button color */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal-body .form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--light_grey);
+  border-radius: 3px;
+}
+
+/* Additional optional styles */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid var(--light_grey);
+}
+
+/* Responsive tweaks (optional) */
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 90%;
   }
-  
-  .modal-body .form-control {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-  }
-  
-  /* Additional optional styles */
-  .modal-footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-  }
- 
-  
-  /* Responsive tweaks (optional) */
-  @media (max-width: 768px) {
-    .modal-dialog {
-      max-width: 90%;
-    }
-  }
-  
+}

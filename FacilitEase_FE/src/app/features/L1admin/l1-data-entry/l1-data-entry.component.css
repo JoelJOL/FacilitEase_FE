@@ -1,10 +1,10 @@
-.element_bar{
-    border: 1px solid black;
-    cursor: pointer;
+.element_bar {
+  border: 1px solid black;
+  cursor: pointer;
 }
-.options_content{
-    background-color: rgb(231, 231, 231);
+.options_content {
+  background-color: var(--grey);
 }
-img{
-    height: 24px;
+img {
+  height: 24px;
 }

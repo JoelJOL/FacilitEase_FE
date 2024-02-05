@@ -62,14 +62,15 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
             if (result) {
                 if (action === 'accept') {
                     _this.acceptTicket();
-                    _this.router.navigate(['manager-view-waiting-tickets']);
+                    _this.router.navigate(['manager/manager-view-waiting-tickets']);
                 }
                 else if (action === 'reject') {
                     _this.rejectTicket();
-                    _this.router.navigate(['manager-view-waiting-tickets']);
+                    _this.router.navigate(['manager/manager-view-waiting-tickets']);
                 }
                 else if (action === 'forward') {
                     _this.forwardTicket();
+                    _this.router.navigate(['manager/manager-view-waiting-tickets']);
                 }
             }
         });

@@ -9,7 +9,7 @@
   font-size: 100%;
   padding: 0.8em;
   outline: none;
-  border: 2px solid rgb(200, 200, 200);
+  border: 2px solid var(--grey);
   background-color: transparent;
   border-radius: 10px;
   width: 100%;

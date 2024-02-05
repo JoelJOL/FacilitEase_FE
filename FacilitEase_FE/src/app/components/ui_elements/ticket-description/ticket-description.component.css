@@ -1,13 +1,11 @@
 .ticket_desc {
-    color: rgb(169, 167, 167);
+  color: var(--dark_grey);
+}
 
-  }
+.ticket_desc p {
+  font-size: medium;
+}
 
-  .ticket_desc p{
-    font-size: medium;
-
-  }
-
-  .ticket_sub {
-    font-size: 24px;
-  }
+.ticket_sub {
+  font-size: 24px;
+}

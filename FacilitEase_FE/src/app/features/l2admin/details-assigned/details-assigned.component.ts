@@ -13,6 +13,7 @@ export class DetailsAssignedComponent {
   customHeaderText = 'Supported Attachments';
   ticketDetails: any = [];
   ticketId: any;
+  titleSubHeading: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,10 +29,17 @@ export class DetailsAssignedComponent {
       console.log(this.ticketId);
     });
 
-    this.agentService.getData(this.ticketId).subscribe((data) => {
+    this.agentService.getTicketData(this.ticketId).subscribe((data) => {
       console.log('API Response:', data);
       this.ticketDetails = data;
       console.log('Ticket Details:', this.ticketDetails);
+      this.titleSubHeading = [
+        { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
+        { heading: 'Department', text: this.ticketDetails.deptName },
+        { heading: 'Manager', text: this.ticketDetails.managerName },
+        { heading: 'Project Code', text: this.ticketDetails.projectCode },
+        { heading: 'Location', text: this.ticketDetails.locationName },
+      ];
     });
   }
 }

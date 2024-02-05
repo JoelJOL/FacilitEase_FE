@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Confirmation</h2>
 <mat-dialog-content>{{ data }}</mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No</button>
-  <button mat-button color="primary" (click)="onYesClick()">Yes</button>
+  <app-button color="rejected" (click)="onNoClick()" id="button1">No</app-button>
+  <app-button color="submit" (click)="onYesClick()" id="button2">Yes</app-button>
 </mat-dialog-actions>

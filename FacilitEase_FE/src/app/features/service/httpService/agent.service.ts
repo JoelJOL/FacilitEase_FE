@@ -12,6 +12,12 @@ export class AgentService {
     return this.http.get(apiUrl);
   }
 
+  getTicketData(ticketId: number): Observable<any> {
+    console.log(`The ticket id : ${ticketId} is recieved in getData()`);
+    const apiUrl = `https://localhost:7049/api/l2/ticketById?desiredTicketId=${ticketId}`;
+    return this.http.get(apiUrl);
+  }
+
   getDepartments(): Observable<any> {
     return this.http.get('https://localhost:7049/api/Department');
   }
@@ -39,6 +45,16 @@ export class AgentService {
     const apiUrl = `https://localhost:7049/api/L3Admin/resolve-ticket/${ticketId}`;
     return this.http.patch(apiUrl, null);
   }
+
+  AcceptCancelTicket(ticketId: number): Observable<any> {
+    const apiUrl = `https://localhost:7049/api/L3Admin/AcceptTicketCancellation/${ticketId}`;
+    return this.http.patch(apiUrl, null);
+  }
+
+  DenyCancelTicket(ticketId: number): Observable<any> {
+    const apiUrl = `https://localhost:7049/api/L3Admin/DenyTicketCancellation/${ticketId}`;
+    return this.http.patch(apiUrl, null);
+  }
   // getAllResolvedTickets(): Observable<any> {
   //   const agentId = 3;
   //   const apiUrl = `https://localhost:7049/api/L3Admin/resolved-tickets-by-agent/${agentId}`;
@@ -62,6 +78,17 @@ export class AgentService {
     );
   }
 
+  addComment(text: string, ticketId: number): Observable<any> {
+    const commentData = { text, ticketId };
+    const url =`https://localhost:7049/api/L3Admin`;
+    return this.http.post(`${url}`, commentData);
+  }
+
+  deleteComment(ticketId: number): Observable<any> {
+    const url = `https://localhost:7049/api/L3Admin/delete-comment/${ticketId}`;
+    return this.http.delete(url);
+  }
+
   getAllTickets(): string {
     const agentId = 3;
     const apiUrl = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${agentId}`;
@@ -79,9 +106,17 @@ export class AgentService {
     const apiUrl = `https://localhost:7049/api/L3Admin/GetOnHoldTicketsByAgent/${agentId}`;
     return apiUrl;
   }
+
+  getAllCancelRequestTickets(): string {
+    const agentId = 3;
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetCancelRequestTicketsByAgent/${agentId}`;
+    return apiUrl;
+  }
+
   private baseUrl = 'https://localhost:7049';
   getUserEmailAddress(): Observable<any> {
-    const apiUrl = `${this.baseUrl}/api/l2/agents?DepartmentId=1`;
+    const userId = 1;
+    const apiUrl = `https://localhost:7049/api/email/${userId}`;
 
     // Replace 'any' with the actual type of the response
     return this.http.get<any>(apiUrl);
@@ -89,6 +124,7 @@ export class AgentService {
 
   sendEmailToSupport(
     userEmail: string,
+    userName: string,
     supportDetails: string
   ): Observable<any> {
     const apiUrl = `${this.baseUrl}/api/email/send`;
@@ -96,8 +132,8 @@ export class AgentService {
     // Replace 'any' with the actual type of the response
     return this.http.post<any>(apiUrl, {
       toEmail: userEmail,
-      subject: 'Query For Support',
-      body: supportDetails,
+      subject: `Query For Support from ${userName}`,
+      body: `${supportDetails} \n\nUser Email: ${userEmail}`, // Add user's email as CC
     });
   }
 }

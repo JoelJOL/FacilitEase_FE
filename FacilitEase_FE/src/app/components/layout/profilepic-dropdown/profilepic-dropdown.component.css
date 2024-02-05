@@ -18,7 +18,7 @@
 }
 
 .dropdown-toggle-split {
-  background-color: rgba(51, 51, 190, 0.589);
+  background-color: var(--blue_violet);
   border-radius: 20px;
   width: 40px;
   border-color: white;

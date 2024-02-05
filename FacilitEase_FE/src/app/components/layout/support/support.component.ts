@@ -47,10 +47,12 @@ export class SupportComponent {
       this.agentService.getUserEmailAddress().subscribe(
         (response) => {
           const userEmail = response.email;
+          const userName = response.userName;
+          console.log(userEmail);
 
           // Call the API to send the email with the retrieved email address
           this.agentService
-            .sendEmailToSupport(userEmail, supportDetails)
+            .sendEmailToSupport(userEmail, userName, supportDetails)
             .subscribe(
               (result) => {
                 this.toastr.success('Email sent successfully!', 'Success');
