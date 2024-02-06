@@ -1,8 +1,8 @@
 <div class="ticket_info" *ngIf="ticketDetails">
   <div class="ticket_details">
     <p>
-      <span class="ticket_status_box">{{ ticketDetails[0].statusName }}</span>
-      <span class="ticket_id"> Ticket ID: #{{ ticketDetails[0].id }}</span>
+      <span class="ticket_status_box">{{ ticketDetails.statusName }}</span>
+      <span class="ticket_id"> Ticket ID: #{{ ticketDetails.id }}</span>
     </p>
   </div>
   <div class="ticket_priority">
@@ -12,7 +12,7 @@
         [ngClass]="{ ticket_priority_box: true }"
         [style.background-color]="getPriorityColor()"
       >
-        {{ ticketDetails[0].priorityName }}
+        {{ ticketDetails.priorityName }}
       </span>
     </p>
   </div>

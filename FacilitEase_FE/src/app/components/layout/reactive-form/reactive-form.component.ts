@@ -22,7 +22,7 @@ export class ReactiveFormComponent implements OnInit {
   dob = new FormControl('', Validators.required);
   email = new FormControl('', [Validators.required, Validators.email]);
   gender = new FormControl('', Validators.required);
-  managerId = new FormControl('', Validators.required);
+  managerId = new FormControl('');
   departmentId = new FormControl('', Validators.required);
   positionId = new FormControl('', Validators.required);
   locationId = new FormControl('', Validators.required);

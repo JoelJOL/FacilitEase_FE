@@ -14,8 +14,8 @@ export class TicketInfoComponent {
   constructor(private agentService: AgentService) {}
 
   getPriorityColor(): string {
-    if (this.ticketDetails && this.ticketDetails[0].priorityName) {
-      switch (this.ticketDetails[0].priorityName.toLowerCase()) {
+    if (this.ticketDetails && this.ticketDetails.priorityName) {
+      switch (this.ticketDetails.priorityName.toLowerCase()) {
         case 'high':
           return 'red';
         case 'medium':

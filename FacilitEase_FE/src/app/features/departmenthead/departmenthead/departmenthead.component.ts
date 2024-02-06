@@ -18,13 +18,7 @@ export class DepartmentheadComponent {
   yourFieldsArray: Field[] = [
     {
       logo: 'assets/tickets-icon.png',
-      title: 'Tickets',
-      subfields: ['Waiting For Approval'],
-    },
-    {
-      logo: 'assets/tickets-icon.png',
-      title: 'Data Entry',
-      subfields: ['Add Employee', 'Reactive Form', 'Employee Card'],
+      title: 'Waiting For Approval',
     },
   ];
   showDepartmentHeadTickets: boolean = false;
@@ -48,31 +42,15 @@ export class DepartmentheadComponent {
     if (clickedField.title === 'My Team') {
       this.showDepartmentHeadTickets = true;
       this.router.navigate(['l2admin-subordinates']);
+    } else if (clickedField.title === 'Waiting For Approval') {
+      this.showDepartmentHeadTickets = true;
+      this.router.navigate(['departmenthead/departmentHead-tickets']);
     } else {
       this.showDepartmentHeadTickets = false;
     }
   }
 
   onSubfieldClicked(event: { field: Field; subfield: string }) {
-    if (event.field.title === 'Tickets') {
-      if (event.subfield === 'Waiting For Approval') {
-        this.showDepartmentHeadTickets = true;
-        this.router.navigate(['departmenthead/departmentHead-tickets']);
-      } else if (event.subfield === 'Waiting For Approval') {
-        this.showDepartmentHeadTickets = true;
-        this.router.navigate(['departmenthead/departmentHead-tickets']);
-      }
-    } else if (event.field.title === 'Data Entry') {
-      if (event.subfield === 'Add Employee') {
-        this.showDepartmentHeadTickets = true;
-        this.router.navigate(['departmenthead/add-employee']);
-      } else if (event.subfield === 'Reactive Form') {
-        this.showDepartmentHeadTickets = true;
-        this.router.navigate(['departmenthead/reactive-form']);
-      } else if (event.subfield === 'Employee Card') {
-        this.showDepartmentHeadTickets = true;
-        this.router.navigate(['departmenthead/emplycarddisplay']);
-      }
-    }
+    return null;
   }
 }

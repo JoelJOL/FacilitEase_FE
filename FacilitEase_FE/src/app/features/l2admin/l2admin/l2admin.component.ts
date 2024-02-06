@@ -62,7 +62,7 @@ export class L2AdminComponent {
       this.router.navigate(['l2admin/l2report/2']);
     } else if (clickedField.title === 'Data Entry') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin/l2-data-entry']);
+      this.router.navigate(['l2admin/add-employee']);
     } else {
       this.showL2AdminTickets = false;
     }
