@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ManagerSubordinatesService {
-  private apiUrl = 'https://localhost:7049/api/managers/2/subordinates'; // Replace with your actual API URL
+  managerId = 2;
+  private apiUrl = `https://localhost:7049/api/Manager/${this.managerId}/subordinates`; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
-  getEmployeeDetails(): Observable<any> {
+  getEmployeeDetails() {
     const url = `${this.apiUrl}`; // Adjust the URL based on your API endpoint
-    return this.http.get<any>(url);
+    return url;
   }
 }

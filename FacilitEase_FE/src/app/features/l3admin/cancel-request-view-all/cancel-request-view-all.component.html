@@ -1,6 +1,10 @@
-<app-data-table-new
-  [headers]="headers"
-  [apiLink]="apiLink"
-  (rowClicked)="onRowClicked($event)"
-  id="datatable"
-></app-data-table-new>
+<div class="display">
+  <h2 class="heading">Cancel Requests</h2>
+
+  <app-data-table-new
+    [headers]="headers"
+    [apiLink]="apiLink"
+    (rowClicked)="onRowClicked($event)"
+    id="datatable"
+  ></app-data-table-new>
+</div>

@@ -1,5 +1,4 @@
-<!-- your-component.component.html -->
-
+<!-- 
 <table class="employee_table">
   <thead>
     <tr>
@@ -12,7 +11,6 @@
       <th>Department</th>
       <th>Position</th>
       <th>Location</th>
-      <!-- Add other column headers here -->
     </tr>
   </thead>
   <tbody>
@@ -26,7 +24,14 @@
       <td>{{ employee.department }}</td>
       <td>{{ employee.position }}</td>
       <td>{{ employee.location }}</td>
-      <!-- Add other columns here -->
     </tr>
   </tbody>
-</table>
+</table> -->
+<div class="display">
+  <h2 class="heading">Subordinate Employees</h2>
+  <app-data-table
+    [headers]="headers"
+    [apiLink]="apiLink"
+    id="datatable"
+  ></app-data-table>
+</div>

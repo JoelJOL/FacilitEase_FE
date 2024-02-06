@@ -93,6 +93,6 @@ export class UnassignedTicketsComponent {
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l2/l2admin-ticket-view', Id]);
+    this.router.navigate(['l2admin/l2admin-ticket-view', Id]);
   }
 }

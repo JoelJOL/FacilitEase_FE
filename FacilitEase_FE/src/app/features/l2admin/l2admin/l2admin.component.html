@@ -10,7 +10,7 @@
 
   <div class="col-md-12 side_display" [class.collapsed]="isSidebarCollapsed">
     <app-header-layout class="header"></app-header-layout>
-    <div *ngIf="showL2AdminTickets">
+    <div *ngIf="showL2AdminTickets" class="side_component">
       <router-outlet></router-outlet>
     </div>
   </div>

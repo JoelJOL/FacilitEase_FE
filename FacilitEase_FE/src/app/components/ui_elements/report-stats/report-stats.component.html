@@ -1,0 +1,48 @@
+<div class="d-flex">
+  <div class="today_ticket shadow m-4">
+    <h1>Today's Tickets</h1>
+    <p></p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+      <p>View Details -></p>
+    </div>
+  </div>
+
+  <div class="col-4 m-4 p-0">
+    <div class="week_head shadow ms-3 me-3 ps-5 pt-1"><h2>This Week</h2></div>
+
+    <div class="doughnut_box shadow m-3 p-3 justify-content-between d-flex">
+      <div class="col-6">
+        <canvas
+          baseChart
+          class="chart"
+          [data]="doughnutChartDatasets"
+          [type]="doughnutChartType"
+          [legend]="false"
+          [options]="doughnutChartOptions"
+        >
+        </canvas>
+      </div>
+      <div class="ms-3 legendss">
+        <div class="legend_div">
+          <div class="legend1"></div>
+          &nbsp;
+          <span>Resolved</span>
+        </div>
+        <div class="legend_div">
+          <div class="legend2"></div>
+          &nbsp;
+          <span>Unresolved</span>
+        </div>
+        <div class="legend_div">
+          <div class="legend3"></div>
+          &nbsp;
+          <span>Escalated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

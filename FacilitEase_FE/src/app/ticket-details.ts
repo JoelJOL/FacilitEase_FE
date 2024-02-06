@@ -17,4 +17,5 @@ export interface TicketDetails {
     assignedTo:string;
   }
 
-  export interface TicketDetailsArray extends Array<TicketDetails> {}
+
+export interface TicketDetailsArray extends Array<TicketDetails> {}

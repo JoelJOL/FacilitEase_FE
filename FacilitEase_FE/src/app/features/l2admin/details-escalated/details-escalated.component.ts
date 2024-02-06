@@ -34,7 +34,7 @@ export class DetailsEscalatedComponent {
       console.log(data);
       console.log(this.ticketDetails);
       this.titleSubHeading = [
-        { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
+        { heading: 'Raised By', text: this.ticketDetails.employeeName },
         { heading: 'Department', text: this.ticketDetails.deptName },
         { heading: 'Manager', text: this.ticketDetails.managerName },
         { heading: 'Project Code', text: this.ticketDetails.projectCode },
