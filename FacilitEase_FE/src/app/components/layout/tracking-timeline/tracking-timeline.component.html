@@ -1,20 +1,36 @@
-<div class="timeline">
-  <div *ngFor="let item of value" class="timeline-event">
-    <div class="timeline-point-track-container">
+<!-- timeline.component.html -->
+<section class="timeline-section">
+  <div class="timeline-items">
+    <div class="timeline-item" *ngFor="let item of value; let i = index">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">
+        {{ item.date | date : "dd MMM, yyyy 'at' HH:mm:ss" }}
+      </div>
       <div
-        class="timeline-point"
-        [ngClass]="item?.status === 'R' ? 'highlight' : ''"
+        class="timeline-content"
+        [@staggeredAnimation]="{ value: '', params: { delay: i * 100 } }"
       >
-        <div class="timeline-track"></div>
+        <h3>{{ item.title }}</h3>
+        <p>
+          Ticket Status:
+          <span
+            [ngClass]="{
+              'open-status': item.content === 'Open',
+              'in-progress-status': item.content === 'In Progress',
+              'escalated-status': item.content === 'Escalated',
+              'resolved-status': item.content === 'Resolved'
+            }"
+          >
+            {{ item.content }}
+          </span>
+        </p>
+        <p *ngIf="item.assigned !== 'Not Assigned'">
+          Assigned To: {{ item.assigned }}
+        </p>
+        <p *ngIf="item.controller !== 'Not Assigned'">
+          Approved By: {{ item.controller }}
+        </p>
       </div>
     </div>
-    <div class="timeline-content">
-      <span>
-        {{ item.content }}
-      </span>
-      <span class="timeline-date">
-        {{ item.date }}
-      </span>
-    </div>
   </div>
-</div>
+</section>
