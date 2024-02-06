@@ -63,13 +63,8 @@ import {
   IsManager,
   LoginEnter,
 } from './features/Authentication/resolve.guard';
-import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
 
 const routes: Routes = [
-  {
-    path: 'doc',
-    component: TicketDocumentsComponent,
-  },
   {
     path: 'employee',
     component: EmployeeComponent,
@@ -78,7 +73,7 @@ const routes: Routes = [
     children: [
       {
         path: 'emplycarddisplay',
-        component: EmplycarddisplayComponent,
+        component: EmployeeCardsComponent,
       },
       {
         path: 'request/:id',
@@ -91,10 +86,6 @@ const routes: Routes = [
       {
         path: 'form',
         component: UploadComponent,
-      },
-      {
-        path: 'emplycarddisplay',
-        component: EmplycarddisplayComponent,
       },
     ],
   },
@@ -111,10 +102,7 @@ const routes: Routes = [
       { path: 'escalated-tickets', component: EscalatedticketsComponent },
       { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
       { path: 'l2report/:id', component: L2ReportComponent },
-      {
-        path: 'add-employee',
-        component: EmployeeAddComponent,
-      },
+      { path: 'l2-data-entry', component: L1DataEntryComponent },
       {
         path: 'l2admin-ticket-view/:Id',
         component: L2adminTicketViewComponent,
@@ -124,7 +112,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'l3',
+    path: 'l3admin',
     component: L3adminComponent,
     children: [
       { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
@@ -221,6 +209,18 @@ const routes: Routes = [
       {
         path: 'department-head-tc-detail/:Id',
         component: DetailedDhTicketComponent,
+      },
+      {
+        path: 'add-employee',
+        component: EmployeeAddComponent,
+      },
+      {
+        path: 'reactive-form',
+        component: ReactiveFormComponent,
+      },
+      {
+        path: 'emplycarddisplay',
+        component: EmplycarddisplayComponent,
       },
     ],
   },
