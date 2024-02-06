@@ -63,8 +63,13 @@ import {
   IsManager,
   LoginEnter,
 } from './features/Authentication/resolve.guard';
+import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
 
 const routes: Routes = [
+  {
+    path: 'doc',
+    component: TicketDocumentsComponent,
+  },
   {
     path: 'employee',
     component: EmployeeComponent,
@@ -127,11 +132,14 @@ const routes: Routes = [
         path: 'view-ticket-detail-noedit/:Id',
         component: ResolvedTicketViewComponent,
       },
-      { path:'cancel-requests', component:CancelRequestViewAllComponent},
-      { path:'request-to-cancel-detail/:Id', component:CancelRequestViewComponent},
+      { path: 'cancel-requests', component: CancelRequestViewAllComponent },
+      {
+        path: 'request-to-cancel-detail/:Id',
+        component: CancelRequestViewComponent,
+      },
       {
         path: 'ticket-tracking',
-        component: TicketTrackingComponent
+        component: TicketTrackingComponent,
       },
       {
         path: 'request-to-cancel-detail/:Id',

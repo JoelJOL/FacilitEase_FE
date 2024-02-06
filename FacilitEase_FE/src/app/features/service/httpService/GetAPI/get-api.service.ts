@@ -45,4 +45,9 @@ export class GetAPIService {
     const url = `${this.baseUrl}/cancel-request/${ticketId}`;
     return this.http.patch<TicketResponse>(url, null);
   }
+
+  getDocumentPath(ticketId: number): Observable<any[]> {
+    const url = `${this.baseUrl}/get-documents-by-ticket/${ticketId}`;
+    return this.http.get<any[]>(url);
+  }
 }

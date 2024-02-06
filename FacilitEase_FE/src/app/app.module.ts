@@ -128,6 +128,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TrackingTimelineComponent } from './components/layout/tracking-timeline/tracking-timeline.component';
 import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component';
 import { OnscrollDirective } from './features/service/directive/onscroll/onscroll.directive';
+import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -228,6 +229,7 @@ const isIE =
     TrackingTimelineComponent,
     TicketTrackingComponent,
     OnscrollDirective,
+    TicketDocumentsComponent,
   ],
   imports: [
     HttpClientModule,
