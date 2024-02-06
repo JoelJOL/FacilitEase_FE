@@ -1,4 +1,16 @@
+.person-cards-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  margin-top: 2%;
+}
+
 .button-row {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 2%;
+}
+
+#accepted {
+  margin-right: 2%;
 }
