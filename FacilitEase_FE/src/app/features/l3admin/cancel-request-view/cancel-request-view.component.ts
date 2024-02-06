@@ -38,11 +38,11 @@ export class CancelRequestViewComponent {
       this.ticketDetails = ticketDetails;
       console.log(this.ticketDetails);
       this.titleSubAgent = [
-        { heading: 'Raised By', text: this.ticketDetails[0].raisedEmployeeName },
-        { heading: 'Department', text: this.ticketDetails[0].deptName },
-        { heading: 'Manager', text: this.ticketDetails[0].managerName },
-        { heading: 'Project Code', text: this.ticketDetails[0].projectCode },
-        { heading: 'Location', text: this.ticketDetails[0].locationName },
+        { heading: 'Raised By', text: this.ticketDetails.employeeName },
+        { heading: 'Department', text: this.ticketDetails.deptName },
+        { heading: 'Manager', text: this.ticketDetails.managerName },
+        { heading: 'Project Code', text: this.ticketDetails.projectCode },
+        { heading: 'Location', text: this.ticketDetails.locationName },
       ];
     });
   }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TicketDetails } from '@app/ticket-details'; 
+import { TrackingModalComponent } from '@app/components/layout/tracking-modal/tracking-modal.component';
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -16,7 +17,11 @@ export class AgentTicketViewComponent {
   ticketId: number = 0;
   modalRef: BsModalRef | undefined;
   titleSubAgent: any = [];
+ 
 
+  timelineData: any[] = []; // Assign your timeline data here
+
+ 
   constructor(
     private route: ActivatedRoute,
     private agentService: AgentService,
@@ -36,7 +41,7 @@ export class AgentTicketViewComponent {
         console.log('Ticket Details:', this.ticketDetails);
     
         this.titleSubAgent = [
-          { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
+          { heading: 'Raised By', text: this.ticketDetails.employeeName },
           { heading: 'Department', text: this.ticketDetails.deptName },
           { heading: 'Manager', text: this.ticketDetails.managerName },
           { heading: 'Project Code', text: this.ticketDetails.projectCode.toString() },
@@ -57,6 +62,12 @@ export class AgentTicketViewComponent {
       },
     });
   }
+
+  openTrackingModal() {
+    this.modalRef = this.modalService.show(TrackingModalComponent);
+    console.log("This is modal")
+  }
+
 
   resolveTicket(): void {
     const isConfirmed = window.confirm('Are you sure you want to resolve the ticket?');

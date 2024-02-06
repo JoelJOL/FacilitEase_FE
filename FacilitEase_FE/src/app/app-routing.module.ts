@@ -56,7 +56,7 @@ import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/
 import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
 import { UploadComponent } from './features/employee/upload/upload.component';
-import { TicketTrackingComponent } from './features/employee/ticket-tracking/ticket-tracking.component';
+import { TicketTrackingComponent } from './ticket-tracking/ticket-tracking.component';
 import { MsalGuard } from '@azure/msal-angular';
 import {
   IsL1Admin,
@@ -112,7 +112,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'l3admin',
+    path: 'l3',
     component: L3adminComponent,
     children: [
       { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
