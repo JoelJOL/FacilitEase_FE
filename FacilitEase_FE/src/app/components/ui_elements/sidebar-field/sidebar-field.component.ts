@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { SidebarSubfieldComponent } from '../sidebar-subfield/sidebar-subfield.component';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subject, filter, takeUntil } from 'rxjs';
 
 interface Field {
   logo: string;
@@ -26,11 +28,52 @@ export class SidebarFieldComponent {
   @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
   @Output() clicked = new EventEmitter<any>();
   @Output() subfieldClicked = new EventEmitter<any>();
+  @Input() set initialField(field: Field | null) {
+    if (field) {
+      this.active = this.field === field;
+      if (this.active) {
+        this.clicked.emit(this.field);
+      }
+    }
+  }
   @ViewChild(SidebarSubfieldComponent)
   subfieldComponent!: SidebarSubfieldComponent;
-  constructor(private sidebarService: SidebarService) {}
-  // Adjusted constructor to handle strict null checks
+  private destroy$ = new Subject<void>();
 
+  selectedField: Field | null = null;
+
+  constructor(
+    private sidebarService: SidebarService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        this.checkInitialization();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  ngOnInit(): void {
+    this.checkInitialization();
+  }
+
+  private checkInitialization() {
+    if (!this.active && this.field === this.selectedField && !this.subfield) {
+      this.active = true;
+      this.clicked.emit(this.field);
+      console.log('Field clicked (initialized):', this.field.title);
+      this.subfieldComponent.deactivateSubfield();
+    }
+  }
   private static activeField: SidebarFieldComponent | null = null;
   active = false;
   isSidebarCollapsed = false;

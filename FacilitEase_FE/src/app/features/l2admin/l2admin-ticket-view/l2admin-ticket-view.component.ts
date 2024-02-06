@@ -37,7 +37,7 @@ export class L2adminTicketViewComponent {
       this.ticketDetails = data;
       console.log('Ticket Details:', this.ticketDetails);
       this.titleSubHeadings = [
-        { heading: 'Raised By', text: this.ticketDetails.raisedEmployeeName },
+        { heading: 'Raised By', text: this.ticketDetails.employeeName },
         { heading: 'Department', text: this.ticketDetails.deptName },
         { heading: 'Manager', text: this.ticketDetails.managerName },
         { heading: 'Project Code', text: this.ticketDetails.projectCode },

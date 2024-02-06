@@ -1,7 +1,9 @@
-<div class="">
+<h2 class="heading">My Tickets</h2>
+<div class="display">
   <app-data-table-new
     [headers]="headers"
     [apiLink]="apiLink"
     (rowClicked)="onRowClicked($event)"
+    id="datatable"
   ></app-data-table-new>
 </div>
