@@ -8,7 +8,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-cancel-request-view',
   templateUrl: './cancel-request-view.component.html',
-  styleUrls: ['./cancel-request-view.component.css']
+  styleUrls: ['./cancel-request-view.component.css'],
 })
 export class CancelRequestViewComponent {
   customHeaderText = 'Supported Attachments';
@@ -31,20 +31,19 @@ export class CancelRequestViewComponent {
       console.log('This is the main thing i created!');
     });
 
-
-    
-        this.agentService.getData(this.ticketId).subscribe(
-          (ticketDetails: TicketDetails) => {
-      this.ticketDetails = ticketDetails;
-      console.log(this.ticketDetails);
-      this.titleSubAgent = [
-        { heading: 'Raised By', text: this.ticketDetails.employeeName },
-        { heading: 'Department', text: this.ticketDetails.deptName },
-        { heading: 'Manager', text: this.ticketDetails.managerName },
-        { heading: 'Project Code', text: this.ticketDetails.projectCode },
-        { heading: 'Location', text: this.ticketDetails.locationName },
-      ];
-    });
+    this.agentService
+      .getData(this.ticketId)
+      .subscribe((ticketDetails: TicketDetails) => {
+        this.ticketDetails = ticketDetails;
+        console.log(this.ticketDetails);
+        this.titleSubAgent = [
+          { heading: 'Raised By', text: this.ticketDetails.employeeName },
+          { heading: 'Department', text: this.ticketDetails.deptName },
+          { heading: 'Manager', text: this.ticketDetails.managerName },
+          { heading: 'Project Code', text: this.ticketDetails.projectCode },
+          { heading: 'Location', text: this.ticketDetails.locationName },
+        ];
+      });
   }
 
   openModal(ticketDetails: any) {
@@ -56,8 +55,10 @@ export class CancelRequestViewComponent {
   }
 
   acceptCancelRequest(): void {
-    const isConfirmed = window.confirm('Are you sure you want to accept the cancellation request?');
-  
+    const isConfirmed = window.confirm(
+      'Are you sure you want to accept the cancellation request?'
+    );
+
     if (isConfirmed) {
       this.agentService.resolveTicket(this.ticketId).subscribe(
         (response) => {
@@ -73,5 +74,4 @@ export class CancelRequestViewComponent {
       console.log('Ticket resolution canceled.');
     }
   }
-  
 }

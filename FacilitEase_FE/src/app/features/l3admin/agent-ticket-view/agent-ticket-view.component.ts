@@ -36,15 +36,18 @@ export class AgentTicketViewComponent {
     });
 
     this.agentService.getData(this.ticketId).subscribe(
-      (ticketDetails: TicketDetails) => {   
+      (ticketDetails: TicketDetails) => {
         this.ticketDetails = ticketDetails;
         console.log('Ticket Details:', this.ticketDetails);
-    
+
         this.titleSubAgent = [
           { heading: 'Raised By', text: this.ticketDetails.employeeName },
           { heading: 'Department', text: this.ticketDetails.deptName },
           { heading: 'Manager', text: this.ticketDetails.managerName },
-          { heading: 'Project Code', text: this.ticketDetails.projectCode.toString() },
+          {
+            heading: 'Project Code',
+            text: this.ticketDetails.projectCode.toString(),
+          },
           { heading: 'Location', text: this.ticketDetails.locationName },
         ];
       },
@@ -52,7 +55,6 @@ export class AgentTicketViewComponent {
         console.error('API call error:', error);
       }
     );
-    
   }
 
   openModal(ticketDetails: any) {
@@ -70,8 +72,10 @@ export class AgentTicketViewComponent {
 
 
   resolveTicket(): void {
-    const isConfirmed = window.confirm('Are you sure you want to resolve the ticket?');
-  
+    const isConfirmed = window.confirm(
+      'Are you sure you want to resolve the ticket?'
+    );
+
     if (isConfirmed) {
       this.agentService.resolveTicket(this.ticketId).subscribe(
         (response) => {
@@ -87,5 +91,4 @@ export class AgentTicketViewComponent {
       console.log('Ticket resolution canceled.');
     }
   }
-  
 }

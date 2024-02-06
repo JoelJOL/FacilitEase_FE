@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Card } from './card.model';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-cards',
@@ -8,14 +8,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   styleUrls: ['./employee-cards.component.css'],
 })
 export class EmployeeCardsComponent {
+  constructor(private router: Router) {}
   @Input() cards: Card[] = [];
   selectedIndex: number | null = null;
 
   onCardClick(index: number) {
-    if (this.selectedIndex === index) {
-      this.selectedIndex = null;
-    } else {
-      this.selectedIndex = index;
+    const selectedCard = this.cards[index];
+
+    switch (selectedCard.logo) {
+      case 'ticket':
+        this.router.navigate(['employee/form']);
+        break;
+      case 'knowledge-base':
+        this.router.navigate(['employee/knowledgebase']);
+        break;
+      default:
+        break;
     }
   }
 
