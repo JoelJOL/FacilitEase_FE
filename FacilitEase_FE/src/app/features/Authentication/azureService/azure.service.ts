@@ -68,11 +68,11 @@ export class AzureService {
       this.isEmployee = this.userRoles.includes('Employee');
 
       if (this.userRoles.includes('L1Admin')) {
-        this.router.navigate(['/l1']);
+        this.router.navigate(['/l1admin']);
       } else if (this.userRoles.includes('L2Admin')) {
-        this.router.navigate(['/l2/unassigned-tickets']);
+        this.router.navigate(['/l2admin/unassigned-tickets']);
       } else if (this.userRoles.includes('L3Admin')) {
-        this.router.navigate(['l3/view-ticket']);
+        this.router.navigate(['l3admin/view-ticket']);
       } else if (this.userRoles.includes('DepartmentHead')) {
         this.router.navigate(['/departmenthead']);
       } else if (this.userRoles.includes('Manager')) {
