@@ -46,6 +46,13 @@ export class SidebarComponent {
 
   @Input() onClickHandler: (() => void) | undefined;
   isSidebarCollapsed = false;
+  ngOnInit(): void {
+    if (this.fields.length > 0) {
+      this.selectedField = this.fields[0];
+      console.log(this.selectedField);
+      this.clicked.emit(this.selectedField); // Emit event for the selected field
+    }
+  }
   constructor(private sidebarService: SidebarService) {}
   get sidebarState() {
     return this.isSidebarCollapsed ? 'collapsed' : 'expanded';

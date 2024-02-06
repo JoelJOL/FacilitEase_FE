@@ -18,7 +18,13 @@ export class L3adminComponent {
     {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
-      subfields: ['Raised Tickets', 'On Hold Tickets','Cancel Requests','Resolved Tickets','Track Tickets'],
+      subfields: [
+        'Raised Tickets',
+        'Tickets On Hold',
+        'Cancel Requests',
+        'Resolved Tickets',
+        'Track Tickets',
+      ],
     },
     {
       logo: 'assets/data-entry.png',
@@ -52,6 +58,9 @@ export class L3adminComponent {
     } else if (clickedField.title === 'Waiting For Approval') {
       this.showL3AdminTickets = true;
       console.log('Waiting For Approval #100');
+    } else if (clickedField.title === 'Tickets') {
+      this.showL3AdminTickets = true;
+      this.router.navigate(['l3admin/view-ticket']);
     } else {
       this.showL3AdminTickets = false;
     }
@@ -60,23 +69,23 @@ export class L3adminComponent {
     if (event.field.title === 'Tickets') {
       if (event.subfield === 'Raised Tickets') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3/view-ticket']);
+        this.router.navigate(['l3admin/view-ticket']);
       } else if (event.subfield === 'Resolved Tickets') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3/resolved-tickets']);
-      } else if (event.subfield === 'On Hold Tickets'){
+        this.router.navigate(['l3admin/resolved-tickets']);
+      } else if (event.subfield === 'Tickets On Hold') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3/on-hold-tickets']);
-      } else if(event.subfield==='Cancel Requests'){
+        this.router.navigate(['l3admin/on-hold-tickets']);
+      } else if (event.subfield === 'Cancel Requests') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3/cancel-requests']);
-      } else if(event.subfield ==='Track Tickets'){
+        this.router.navigate(['l3admin/cancel-requests']);
+      } else if (event.subfield === 'Track Tickets') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3/ticket-tracking'])
+        this.router.navigate(['l3admin/ticket-tracking']);
       }
     } else if (event.subfield === 'Escalated Tickets') {
       this.showL3AdminTickets = true;
-      this.router.navigate(['l3/escalated-tickets']);
+      this.router.navigate(['l3admin/escalated-tickets']);
     }
   }
 }

@@ -16,5 +16,4 @@ export interface TicketDetails {
   lastUpdate: string;
   assignedTo: string;
 }
-
 export interface TicketDetailsArray extends Array<TicketDetails> {}

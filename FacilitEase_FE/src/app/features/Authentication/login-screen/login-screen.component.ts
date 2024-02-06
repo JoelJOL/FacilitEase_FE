@@ -78,8 +78,8 @@ export class LoginScreenComponent {
         if (!sessionStorage.getItem('FacilitEaseJwt')) {
           this.azureService.AzureData(this.azureObj).subscribe((response) => {
             this.azureService.ResolveToken(response);
-            // console.log(token);
-            // sessionStorage.setItem('FacilitEaseJwt', token.token);
+            console.log(response);
+            sessionStorage.setItem('FacilitEaseJwt', response.token);
           });
         }
 

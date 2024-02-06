@@ -20,7 +20,7 @@ export class AdminPerformanceComponent {
       this.selectedDivIndex === indexOfDiv ? null : indexOfDiv;
     this.ticketStatus.emit(indexOfDiv);
   }
-  items = ['Assigned', 'Resolved', 'Unresolved', 'Escalated'];
+  items = ['Assigned', 'Resolved', 'Escalated'];
   data: number[] = [];
   id: number = 0;
   condition = true;
@@ -33,7 +33,6 @@ export class AdminPerformanceComponent {
         console.log(data);
         this.data.push(data.total);
         this.data.push(data.resolved);
-        this.data.push(data.unresolved);
         this.data.push(data.escalated);
       },
       (error: Error) => {

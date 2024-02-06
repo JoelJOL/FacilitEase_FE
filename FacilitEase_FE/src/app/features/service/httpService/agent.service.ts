@@ -138,4 +138,10 @@ export class AgentService {
       body: `${supportDetails} \n\nUser Email: ${userEmail}`, // Add user's email as CC
     });
   }
+
+  getTrackingDetails():Observable<any[]> {
+    const ticketId = 1;
+    const apirUrl = `https://localhost:7049/api/L3Admin/tracking-details/${ticketId}`;
+    return this.http.get<any[]>(apirUrl);
+  }
 }

@@ -5,13 +5,20 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 @Component({
   selector: 'app-resolved-tickets-view',
   templateUrl: './resolved-tickets-view.component.html',
-  styleUrls: ['./resolved-tickets-view.component.css']
+  styleUrls: ['./resolved-tickets-view.component.css'],
 })
 export class ResolvedTicketsViewComponent {
-  tickets:any=[];
+  tickets: any = [];
   @Output() rowClicked = new EventEmitter<number>();
-  headers: string[] = ['ID', 'Ticket Name', 'Employee Name', 'Submitted Date','Resolved Date', 'Priority'];
-  apiLink: string='';
+  headers: string[] = [
+    'ID',
+    'Ticket Name',
+    'Employee Name',
+    'Submitted Date',
+    'Resolved Date',
+    'Priority',
+  ];
+  apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}
   ngOnInit() {
     this.apiLink = this.agentService.getAllResolvedTickets();
@@ -23,8 +30,6 @@ export class ResolvedTicketsViewComponent {
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l3/view-ticket-detail-noedit', Id]);
-    
+    this.router.navigate(['l3admin/view-ticket-detail-noedit', Id]);
   }
-
 }

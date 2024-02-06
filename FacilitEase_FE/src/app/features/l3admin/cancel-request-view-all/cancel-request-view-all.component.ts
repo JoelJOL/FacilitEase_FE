@@ -5,13 +5,20 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 @Component({
   selector: 'app-cancel-request-view-all',
   templateUrl: './cancel-request-view-all.component.html',
-  styleUrls: ['./cancel-request-view-all.component.css']
+  styleUrls: ['./cancel-request-view-all.component.css'],
 })
 export class CancelRequestViewAllComponent {
-  tickets:any=[];
+  tickets: any = [];
   @Output() rowClicked = new EventEmitter<number>();
-  headers: string[] = ['ID', 'Ticket Name', 'Raised By', 'Raised Date','Requested Date', 'Priority'];
-  apiLink: string='';
+  headers: string[] = [
+    'ID',
+    'Ticket Name',
+    'Raised By',
+    'Raised Date',
+    'Requested Date',
+    'Priority',
+  ];
+  apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}
   ngOnInit() {
     this.apiLink = this.agentService.getAllCancelRequestTickets();
@@ -20,7 +27,6 @@ export class CancelRequestViewAllComponent {
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l3/request-to-cancel-detail', Id]);
-    
+    this.router.navigate(['l3admin/request-to-cancel-detail', Id]);
   }
 }

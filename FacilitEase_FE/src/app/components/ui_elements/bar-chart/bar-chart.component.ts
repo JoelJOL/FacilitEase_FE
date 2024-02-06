@@ -52,7 +52,6 @@ export class BarChartComponent {
   public barChartLegend: boolean = false;
   data: number[] = [];
   resolved: number[] = [];
-  unresolved: number[] = [];
   escalated: number[] = [];
   months: string[] = [
     'january',
@@ -90,8 +89,7 @@ export class BarChartComponent {
         console.log(data);
         for (const month of this.months) {
           this.resolved.push(data[month][0]);
-          this.unresolved.push(data[month][1]);
-          this.escalated.push(data[month][2]);
+          this.escalated.push(data[month][1]);
         }
 
         this.chartLegends.push({
@@ -99,12 +97,6 @@ export class BarChartComponent {
           label: 'resolved',
           backgroundColor: '#6418C3',
           hoverBackgroundColor: '#450770',
-        });
-        this.chartLegends.push({
-          data: this.unresolved,
-          label: 'unresolved',
-          backgroundColor: '#BCA0DE',
-          hoverBackgroundColor: '#7D659A',
         });
         this.chartLegends.push({
           data: this.escalated,
@@ -135,9 +127,6 @@ export class BarChartComponent {
     } else if (this.ticketStatus === 2) {
       this.legends = [];
       this.legends.push(this.chartLegends[1]);
-    } else if (this.ticketStatus === 3) {
-      this.legends = [];
-      this.legends.push(this.chartLegends[2]);
     }
   }
 }
