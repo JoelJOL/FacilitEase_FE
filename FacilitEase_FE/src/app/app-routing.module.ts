@@ -63,8 +63,13 @@ import {
   IsManager,
   LoginEnter,
 } from './features/Authentication/resolve.guard';
+import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
 
 const routes: Routes = [
+  {
+    path: 'doc',
+    component: TicketDocumentsComponent,
+  },
   {
     path: 'employee',
     component: EmployeeComponent,
