@@ -25,6 +25,7 @@ export class ResolvedTicketViewComponent {
       console.log(this.ticketId);
       console.log('This is the main thing I created!');
     });
+
     this.agentService.getData(this.ticketId).subscribe(
       (ticketDetails: TicketDetails) => {
         if (ticketDetails) {

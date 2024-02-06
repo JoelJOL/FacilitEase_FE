@@ -14,8 +14,21 @@
     ></app-ticket-notes-attachments>
     <!-- <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub> -->
   </div>
+  <div class="person-cards-row">
+    <!-- Raised By -->
+    <app-person-card
+      [personName]="ticketDetails.employeeName"
+      [isRaisedBy]="true"
+    ></app-person-card>
+
+    <!-- Assigned To -->
+    <app-person-card
+      [personName]="ticketDetails.assignedTo"
+      [isRaisedBy]="false"
+    ></app-person-card>
+  </div>
   <div class="button-row">
-    <app-button color="accepted" (action)="updateTicket(true)"
+    <app-button color="accepted" (action)="updateTicket(true)" id="accepted"
       >Accepted</app-button
     >
     <app-button color="rejected" (action)="updateTicket(false)"
