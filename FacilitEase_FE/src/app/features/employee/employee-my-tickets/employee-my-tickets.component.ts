@@ -12,7 +12,6 @@ export class EmployeeMyTicketsComponent {
   headers: string[] = [
     'Ticket ID',
     'Ticket Name',
-    'Ticket Description',
     'Status',
     'Assigned To',
     'Priority',
