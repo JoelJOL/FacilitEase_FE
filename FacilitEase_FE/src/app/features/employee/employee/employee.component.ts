@@ -51,7 +51,7 @@ export class EmployeeComponent {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Home') {
       this.showEmployeeTickets = true;
-      this.router.navigate(['employee/emplycarddisplay']);
+      this.router.navigate(['employee/employeecard']);
       this.sidebarService.toggleCollapse(); // Automatically collapse the sidebar
     } // Automatically collapse the sidebar
     else if (clickedField.title === 'My Tickets') {
@@ -61,6 +61,10 @@ export class EmployeeComponent {
     } else if (clickedField.title === 'Raise A Ticket') {
       this.showEmployeeTickets = true;
       this.router.navigate(['employee/form']);
+      this.sidebarService.toggleCollapse();
+    } else if (clickedField.title === 'My Team') {
+      this.showEmployeeTickets = true;
+      this.router.navigate(['employee/employee-myteam']);
       this.sidebarService.toggleCollapse();
     } else {
       this.showEmployeeTickets = false;

@@ -16,7 +16,8 @@ export class MasterService {
     'https://localhost:7049/api/l2/assigned-tickets';
   private apiLinkUnassigned: string =
     'https://localhost:7049/api/l2/unassigned-tickets';
-
+  userId = 1;
+  private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/Employee/employeesByProject/${this.userId}`;
   getApiLink(): string {
     const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
     return apiUrl;
@@ -66,5 +67,8 @@ export class MasterService {
   private apiLinkL2Subordinates: string = `https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=${this.DepartmentId}`;
   getApiLinkL2Subordinates(): string {
     return this.apiLinkL2Subordinates;
+  }
+  getApiLinkProjectEmployeeDetails(): string {
+    return this.apiLinkProjectEmployeeDeatils;
   }
 }

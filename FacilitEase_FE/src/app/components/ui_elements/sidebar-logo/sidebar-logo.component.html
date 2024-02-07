@@ -1,3 +1,6 @@
-<div *ngIf="!collapsed" class="sidebar_subfield">
-  <img [src]="logoSrc" alt="Website Logo" width="200px" />
+<div *ngIf="!collapsed; else Logo" class="sidebar_subfield">
+  <img class="facilitease" [src]="logoSrc" alt="Website Logo" width="200px" />
 </div>
+<ng-template #Logo>
+  <img class="logo" [src]="logoIcon" alt="Logo Icon" width="30px" />
+</ng-template>

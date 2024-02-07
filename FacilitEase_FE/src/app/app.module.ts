@@ -130,6 +130,7 @@ import { TicketTrackingComponent } from './ticket-tracking/ticket-tracking.compo
 import { OnscrollDirective } from './features/service/directive/onscroll/onscroll.directive';
 import { TrackingModalComponent } from './components/layout/tracking-modal/tracking-modal.component';
 import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
+import { MyteamEmployeeComponent } from './features/employee/myteam-employee/myteam-employee.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -232,6 +233,7 @@ const isIE =
     OnscrollDirective,
     TrackingModalComponent,
     TicketDocumentsComponent,
+    MyteamEmployeeComponent,
   ],
   imports: [
     HttpClientModule,

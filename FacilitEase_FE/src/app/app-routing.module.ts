@@ -63,6 +63,7 @@ import {
   IsManager,
   LoginEnter,
 } from './features/Authentication/resolve.guard';
+import { MyteamEmployeeComponent } from './features/employee/myteam-employee/myteam-employee.component';
 
 const routes: Routes = [
   {
@@ -72,8 +73,8 @@ const routes: Routes = [
     // resolve: [LoginEnter],
     children: [
       {
-        path: 'emplycarddisplay',
-        component: EmployeeCardsComponent,
+        path: 'employeecard',
+        component: EmplycarddisplayComponent,
       },
       {
         path: 'request/:id',
@@ -86,6 +87,10 @@ const routes: Routes = [
       {
         path: 'form',
         component: UploadComponent,
+      },
+      {
+        path: 'employee-myteam',
+        component: MyteamEmployeeComponent,
       },
     ],
   },
@@ -102,7 +107,10 @@ const routes: Routes = [
       { path: 'escalated-tickets', component: EscalatedticketsComponent },
       { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
       { path: 'l2report/:id', component: L2ReportComponent },
-      { path: 'l2-data-entry', component: L1DataEntryComponent },
+      {
+        path: 'add-employee',
+        component: EmployeeAddComponent,
+      },
       {
         path: 'l2admin-ticket-view/:Id',
         component: L2adminTicketViewComponent,
@@ -209,10 +217,6 @@ const routes: Routes = [
       {
         path: 'department-head-tc-detail/:Id',
         component: DetailedDhTicketComponent,
-      },
-      {
-        path: 'add-employee',
-        component: EmployeeAddComponent,
       },
       {
         path: 'reactive-form',

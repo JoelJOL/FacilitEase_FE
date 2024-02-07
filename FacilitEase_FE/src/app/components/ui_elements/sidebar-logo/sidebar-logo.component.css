@@ -2,3 +2,14 @@ img {
   max-width: 100%;
   height: auto;
 }
+.logo {
+  margin: 20px;
+  margin-left: 12px;
+  margin-top: 10px;
+}
+
+.facilitease {
+  margin: 20px;
+  margin-top: 10px;
+  margin-left: 40px;
+}
