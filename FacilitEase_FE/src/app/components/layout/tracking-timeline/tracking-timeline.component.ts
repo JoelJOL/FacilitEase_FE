@@ -12,7 +12,7 @@ import { trigger, transition, style, animate ,state} from '@angular/animations';
           opacity: 0,
           transform: 'translateY(-50px)'
         }),
-        animate('500ms ease-out', style({
+        animate('1100ms ease-out', style({
           opacity: 1,
           transform: 'translateY(0)'
         }))
@@ -22,11 +22,7 @@ import { trigger, transition, style, animate ,state} from '@angular/animations';
 })
 export class TrackingTimelineComponent implements OnInit {
   @Input() value: any[] = [];
-  isEven(index: number): boolean {
-    const result = index % 2 === 0;
-    console.log(`Index ${index} is even: ${result}`);
-    return result;
-  }
+
   ngOnInit() {
     console.log("Hi");
     console.log('Received value:', this.value);

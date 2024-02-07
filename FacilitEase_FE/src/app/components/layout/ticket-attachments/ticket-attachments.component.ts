@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AgentService } from '@app/features/service/httpService/agent.service';
+import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { TicketDetails } from '@app/ticket-details'; 
 
 @Component({

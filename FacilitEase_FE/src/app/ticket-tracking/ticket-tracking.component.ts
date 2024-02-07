@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AgentService } from '@app/features/service/httpService/agent.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 
 @Component({
   selector: 'app-ticket-tracking',
@@ -8,11 +8,12 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class TicketTrackingComponent implements OnInit {
   events: any[] = [];
+  @Input() ticketDetails: any;
 
   constructor(private agentService: AgentService) {}
 
   ngOnInit() {
-    this.agentService.getTrackingDetails().subscribe(
+    this.agentService.getTrackingDetails(this.ticketDetails.id).subscribe(
       data => {
         console.log('Data received:', data);
         this.events = data.map(tracking => ({
@@ -21,7 +22,6 @@ export class TicketTrackingComponent implements OnInit {
           assigned: tracking.assignedToEmployeeName,
           controller: tracking.approverEmployeeName,
           date: tracking.trackingCreatedDate, 
-          status: 'R'
         }));
         console.log('Transformed events:', this.events);
       },

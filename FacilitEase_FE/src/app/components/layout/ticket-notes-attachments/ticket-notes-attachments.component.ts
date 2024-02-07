@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { TicketNotesComponent } from '../ticket-notes/ticket-notes.component';
-import { AgentService } from '@app/features/service/httpService/agent.service';
+import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({

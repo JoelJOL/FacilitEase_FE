@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { AgentService } from '@app/features/service/httpService/agent.service';
+import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { TrackingModalComponent } from '../tracking-modal/tracking-modal.component';
 
 @Component({
   selector: 'app-ticket-info',
@@ -10,8 +12,9 @@ export class TicketInfoComponent {
   ticketId: string = ''; // Replace with actual data
   ticketPriority: string = '';
   status: string = '';
+  modalRef: BsModalRef | undefined;
   @Input() ticketDetails: any;
-  constructor(private agentService: AgentService) {}
+  constructor( private modalService: BsModalService) {}
 
   getPriorityColor(): string {
     if (this.ticketDetails && this.ticketDetails.priorityName) {
@@ -29,4 +32,14 @@ export class TicketInfoComponent {
       return 'black';
     }
   }
+
+  openTrackingModal() {
+    this.modalRef = this.modalService.show(TrackingModalComponent,{
+      initialState: {
+        ticketDetails: this.ticketDetails,
+      },
+    });
+    console.log("This is modal")
+  }
+
 }

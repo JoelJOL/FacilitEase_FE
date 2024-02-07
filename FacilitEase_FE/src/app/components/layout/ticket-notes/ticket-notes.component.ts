@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AgentService } from '@app/features/service/httpService/agent.service';
+import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 
 @Component({
   selector: 'app-ticket-notes',

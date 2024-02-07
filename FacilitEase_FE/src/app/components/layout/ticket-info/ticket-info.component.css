@@ -49,3 +49,19 @@ select {
   border: none;
   font-weight: bold;
 }
+
+.button-with-image {
+  display: inline-block;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.button-with-image img {
+  width: 20px; /* Adjust the width of the image as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 5px; /* Optional: Add some space between the image and text */
+}
+
