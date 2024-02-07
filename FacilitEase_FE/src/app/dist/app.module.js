@@ -37,6 +37,7 @@ var sidebar_component_1 = require("./components/layout/sidebar/sidebar.component
 var sidebar_logo_component_1 = require("./components/ui_elements/sidebar-logo/sidebar-logo.component");
 var sidebar_footer_component_1 = require("./components/ui_elements/sidebar-footer/sidebar-footer.component");
 var admin_performance_component_1 = require("./components/ui_elements/admin-performance/admin-performance.component");
+var http_2 = require("@angular/common/http");
 var ng2_charts_1 = require("ng2-charts");
 var bar_chart_component_1 = require("./components/ui_elements/bar-chart/bar-chart.component");
 var report_porfile_component_1 = require("./components/ui_elements/report-porfile/report-porfile.component");
@@ -81,7 +82,6 @@ var pagination_component_1 = require("./components/ui_elements/pagination/pagina
 var search_bar_component_1 = require("./components/ui_elements/search-bar/search-bar.component");
 var filter_component_1 = require("./components/layout/filter/filter.component");
 var l2admin_subordinates_component_1 = require("./features/l2admin/l2admin-subordinates/l2admin-subordinates.component");
-var l2admin_ticket_view_component_1 = require("./features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component");
 var header_layout_component_1 = require("./components/layout/header-layout/header-layout.component");
 var resolved_tickets_view_component_1 = require("./features/l3admin/resolved-tickets-view/resolved-tickets-view.component");
 var ngx_toastr_1 = require("ngx-toastr");
@@ -102,9 +102,35 @@ var detailed_dh_ticket_component_1 = require("./features/departmenthead/detailed
 var role_display_dropdown_component_1 = require("./components/ui_elements/role-display-dropdown/role-display-dropdown.component");
 var truncate_pipe_1 = require("./features/service/truncatePipe/truncate.pipe");
 var manager_ticket_info_component_1 = require("./features/manager/components/manager-ticket-info/manager-ticket-info.component");
-var master_service_1 = require("./features/service/dataService/master.service");
+var master_service_1 = require("./features/service/dataService/masterService/master.service");
 var confirmation_modal_component_1 = require("./features/manager/components/confirmation-modal/confirmation-modal.component");
+var emplycarddisplay_component_1 = require("./components/layout/emplycarddisplay/emplycarddisplay.component");
+var employee_add_component_1 = require("./components/layout/employee-add/employee-add.component");
+var request_to_cancel_component_1 = require("./features/employee/request-to-cancel/request-to-cancel.component");
+var l2admin_ticket_view_component_1 = require("./features/l2admin/l2admin-ticket-view/l2admin-ticket-view.component");
+var details_assigned_component_1 = require("./features/l2admin/details-assigned/details-assigned.component");
+var details_escalated_component_1 = require("./features/l2admin/details-escalated/details-escalated.component");
 var manager_view_ticket_simple_component_1 = require("./features/manager/manager-view-ticket-simple/manager-view-ticket-simple.component");
+var ticket_na_simple_component_1 = require("./components/layout/ticket-na-simple/ticket-na-simple.component");
+var ticket_detail_view_component_1 = require("./components/layout/ticket-detail-view/ticket-detail-view.component");
+var resolved_ticket_view_component_1 = require("./features/l3admin/resolved-ticket-view/resolved-ticket-view.component");
+var ticket_detail_view_noedit_component_1 = require("./components/layout/ticket-detail-view-noedit/ticket-detail-view-noedit.component");
+var on_hold_tickets_view_component_1 = require("./features/l3admin/on-hold-tickets-view/on-hold-tickets-view.component");
+var outside_click_directive_1 = require("./features/service/directive/outside-click/outside-click.directive");
+var report_stats_component_1 = require("./components/ui_elements/report-stats/report-stats.component");
+var upload_component_1 = require("./features/employee/upload/upload.component");
+var login_screen_component_1 = require("./features/Authentication/login-screen/login-screen.component");
+var cancel_request_view_component_1 = require("./features/l3admin/cancel-request-view/cancel-request-view.component");
+var cancel_request_view_all_component_1 = require("./features/l3admin/cancel-request-view-all/cancel-request-view-all.component");
+var msal_angular_1 = require("@azure/msal-angular");
+var msal_browser_1 = require("@azure/msal-browser");
+var azure_service_1 = require("./features/Authentication/azureService/azure.service");
+var skeleton_loader_component_1 = require("./components/layout/skeleton-loader/skeleton-loader.component");
+var tracking_timeline_component_1 = require("./components/layout/tracking-timeline/tracking-timeline.component");
+var ticket_tracking_component_1 = require("./features/employee/ticket-tracking/ticket-tracking.component");
+var onscroll_directive_1 = require("./features/service/directive/onscroll/onscroll.directive");
+var isIE = window.navigator.userAgent.indexOf('MSIE') > -1 ||
+    window.navigator.userAgent.indexOf('Trident/') > -1;
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -183,7 +209,27 @@ var AppModule = /** @class */ (function () {
                 truncate_pipe_1.TruncatePipe,
                 manager_ticket_info_component_1.ManagerTicketInfoComponent,
                 confirmation_modal_component_1.ConfirmationModalComponent,
+                emplycarddisplay_component_1.EmplycarddisplayComponent,
+                employee_add_component_1.EmployeeAddComponent,
+                request_to_cancel_component_1.RequestToCancelComponent,
+                details_assigned_component_1.DetailsAssignedComponent,
+                details_escalated_component_1.DetailsEscalatedComponent,
                 manager_view_ticket_simple_component_1.ManagerViewTicketSimpleComponent,
+                ticket_na_simple_component_1.TicketNaSimpleComponent,
+                ticket_detail_view_component_1.TicketDetailViewComponent,
+                resolved_ticket_view_component_1.ResolvedTicketViewComponent,
+                ticket_detail_view_noedit_component_1.TicketDetailViewNoeditComponent,
+                on_hold_tickets_view_component_1.OnHoldTicketsViewComponent,
+                report_stats_component_1.ReportStatsComponent,
+                outside_click_directive_1.OutsideClickDirective,
+                login_screen_component_1.LoginScreenComponent,
+                upload_component_1.UploadComponent,
+                cancel_request_view_component_1.CancelRequestViewComponent,
+                cancel_request_view_all_component_1.CancelRequestViewAllComponent,
+                skeleton_loader_component_1.SkeletonLoaderComponent,
+                tracking_timeline_component_1.TrackingTimelineComponent,
+                ticket_tracking_component_1.TicketTrackingComponent,
+                onscroll_directive_1.OnscrollDirective,
             ],
             imports: [
                 http_1.HttpClientModule,
@@ -204,6 +250,27 @@ var AppModule = /** @class */ (function () {
                 icon_1.MatIconModule,
                 ngx_toastr_1.ToastrModule.forRoot(),
                 card_1.MatCardModule,
+                msal_angular_1.MsalModule.forRoot(new msal_browser_1.PublicClientApplication({
+                    auth: {
+                        clientId: 'd7104f84-ab29-436f-8f06-82fcf8d81381',
+                        redirectUri: 'http://localhost:4200',
+                        authority: 'https://login.microsoftonline.com/5b751804-232f-410d-bb2f-714e3bb466eb'
+                    },
+                    cache: {
+                        cacheLocation: 'localStorage',
+                        storeAuthStateInCookie: isIE
+                    }
+                }), {
+                    interactionType: msal_browser_1.InteractionType.Redirect,
+                    authRequest: {
+                        scopes: ['user.read']
+                    }
+                }, {
+                    interactionType: msal_browser_1.InteractionType.Redirect,
+                    protectedResourceMap: new Map([
+                        ['https://graph.microsoft.com/v1.0/me', ['user.Read']],
+                    ])
+                }),
             ],
             providers: [
                 form_service_service_1.FormServiceService,
@@ -212,8 +279,15 @@ var AppModule = /** @class */ (function () {
                 employee_bulkupload_service_1.EmployeeBulkuploadService,
                 modal_service_1.ModalService,
                 master_service_1.MasterService,
+                {
+                    provide: http_2.HTTP_INTERCEPTORS,
+                    useClass: msal_angular_1.MsalInterceptor,
+                    multi: true
+                },
+                msal_angular_1.MsalGuard,
+                azure_service_1.AzureService,
             ],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent, msal_angular_1.MsalRedirectComponent]
         })
     ], AppModule);
     return AppModule;

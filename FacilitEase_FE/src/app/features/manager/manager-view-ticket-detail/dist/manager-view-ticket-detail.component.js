@@ -15,7 +15,7 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
         this.dialog = dialog;
         this.route = route;
         this.router = router;
-        this.customHeaderText = "Support Attachments";
+        this.customHeaderText = "Supported Attachments";
         this.ticketId = 0;
     }
     ManagerViewTicketDetailComponent.prototype.ngOnInit = function () {

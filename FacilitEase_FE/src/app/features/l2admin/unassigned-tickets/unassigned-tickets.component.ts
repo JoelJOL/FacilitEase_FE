@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { DropDownService } from '@app/features/service/httpService/dropdown.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { MasterService } from '@app/features/service/dataService/master.service';
+import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 
 @Component({

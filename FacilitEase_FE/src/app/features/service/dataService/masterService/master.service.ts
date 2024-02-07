@@ -8,8 +8,6 @@ import { Observable } from 'rxjs';
 export class MasterService {
   constructor(private http: HttpClient) {}
 
-  private apiLink: string =
-    'https://localhost:7049/api/Manager/GetTicketByManager/2';
   private apiLinkEscalated: string =
     'https://localhost:7049/api/l2/escalated-tickets';
   private apiLinkAssigned: string =
@@ -18,11 +16,11 @@ export class MasterService {
     'https://localhost:7049/api/l2/unassigned-tickets';
 
   getApiLink(): string {
-    const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
+    const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/10';
     return apiUrl;
   }
   getApiLink2(): string {
-    const apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/2';
+    const apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/10';
     return apiUrl;
   }
   getManagerTicketDetails(ticketId: number): Observable<any> {

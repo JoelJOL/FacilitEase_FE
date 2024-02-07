@@ -5,7 +5,7 @@ export interface TicketDetails {
     priorityName: string;
     statusName: string;
     submittedDate: Date;
-    raisedEmployeeName: string;
+    employeeName: string;
     locationName: string;
     managerName: string;
     deptName: string;

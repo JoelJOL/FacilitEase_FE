@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MasterService } from '../../../../app/features/service/dataService/master.service';
+import { MasterService } from '../../service/dataService/masterService/master.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 @Component({

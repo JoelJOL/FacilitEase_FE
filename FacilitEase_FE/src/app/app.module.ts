@@ -94,7 +94,7 @@ import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh
 import { RoleDisplayDropdownComponent } from './components/ui_elements/role-display-dropdown/role-display-dropdown.component';
 import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
-import { MasterService } from './features/service/dataService/master.service';
+import { MasterService } from './features/service/dataService/masterService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
 import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
 import { EmployeeAddComponent } from './components/layout/employee-add/employee-add.component';
