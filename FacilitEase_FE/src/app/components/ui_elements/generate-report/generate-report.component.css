@@ -1,0 +1,11 @@
+.report_generation{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.generate_button{
+    background-color: white;
+    border-radius: 5px;
+    height: 40px;
+}
