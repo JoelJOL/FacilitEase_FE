@@ -8,6 +8,7 @@ import { TicketDetails } from '@app/ticket-details';
 })
 export class TicketDetailViewComponent {
   customHeaderText = 'Supported Attachments';  
+  
   constructor() {} 
   @Input() ticketId: number=0; 
   ngOnInit(){

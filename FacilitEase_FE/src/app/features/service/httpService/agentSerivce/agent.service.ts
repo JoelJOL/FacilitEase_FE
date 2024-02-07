@@ -91,6 +91,12 @@ export class AgentService {
     return this.http.delete(url);
   }
 
+ 
+  getTimeSinceLastUpdate(ticketId: any): Observable<string> {
+    return this.http.get(`https://localhost:7049/api/L3Admin/TimeSinceLastUpdate/${ticketId}`, { responseType: 'text' });
+  }
+  
+
   getAllTickets(): string {
     const agentId = 3;
     const apiUrl = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${agentId}`;
