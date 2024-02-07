@@ -121,7 +121,7 @@ import {
   MsalModule,
   MsalRedirectComponent,
 } from '@azure/msal-angular';
-import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
+
 import { AzureService } from './features/Authentication/azureService/azure.service';
 import { SkeletonLoaderComponent } from './components/layout/skeleton-loader/skeleton-loader.component';
 
@@ -136,6 +136,8 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
 import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
+import { InteractionType } from '@azure/msal-browser/dist/utils/BrowserConstants';
+import { PublicClientApplication } from '@azure/msal-browser/dist/app/PublicClientApplication';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -242,6 +244,7 @@ const isIE =
     UnassignedAssetsComponent,
     EmployeeAssetsComponent,
     GenerateReportComponent,
+    TicketTrackingComponent,
   ],
   imports: [
     HttpClientModule,
