@@ -1,7 +1,10 @@
 <div class="d-flex">
   <div class="today_ticket shadow m-4">
     <h1>Today's Tickets</h1>
-    <p></p>
+    <p>{{ weekReport.dailyTickets }}</p>
+    <p>{{ weekReport.dailyResolved }}</p>
+    <p>{{ weekReport.dailyUnresolved }}</p>
+    <p>{{ weekReport.dailyEscalated }}</p>
     <br />
     <br />
     <br />
@@ -17,12 +20,12 @@
     <div class="doughnut_box shadow m-3 p-3 justify-content-between d-flex">
       <div class="col-6">
         <canvas
+          #doughchart
           baseChart
           class="chart"
           [data]="doughnutChartDatasets"
           [type]="doughnutChartType"
           [legend]="false"
-          [options]="doughnutChartOptions"
         >
         </canvas>
       </div>

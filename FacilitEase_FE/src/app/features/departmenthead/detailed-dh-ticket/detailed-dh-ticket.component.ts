@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
-import { DepartmentHeadService } from '@app/features/service/httpService/department-head.service';
-import { TicketDetails } from '@app/ticket-details'; 
+import { ApproveDenyService } from '@app/features/service/httpService/DH-aproveDeny/approve-deny.service';
+import { DepartmentHeadService } from '@app/features/service/httpService/Department-head/department-head.service';
+import { TicketDetails } from '@app/ticket-details';
 
 @Component({
   selector: 'app-detailed-dh-ticket',

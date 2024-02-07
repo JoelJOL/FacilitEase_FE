@@ -1,3 +1,4 @@
+<div class="timeline-head"><h2>TICKET TRACKING DETAILS</h2></div>
 <!-- timeline.component.html -->
 <section class="timeline-section">
   <div class="timeline-items">
@@ -24,6 +25,7 @@
             {{ item.content }}
           </span>
         </p>
+        <p *ngIf="i === 0">Submitted By: {{ item.submitted }}</p>
         <p *ngIf="item.assigned !== 'Not Assigned'">
           Assigned To: {{ item.assigned }}
         </p>

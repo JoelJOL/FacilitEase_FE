@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AgentService } from '@app/features/service/httpService/agent.service';
+import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 
 @Component({
   selector: 'app-ticket-notes',
@@ -9,8 +9,9 @@ import { AgentService } from '@app/features/service/httpService/agent.service';
 })
 export class TicketNotesComponent {
   
-
+  lastUpdate:string = '';
   @Input() ticketId: number | undefined;
+  @Input() reload: boolean=false;
   constructor(private agentService:AgentService ){
 
   }
@@ -18,7 +19,29 @@ export class TicketNotesComponent {
 
   ngOnInit(): void {
     this.getCommentText();
+    this.fetchTimeSinceLastUpdate();
   }
+
+  // Implement ngOnChanges lifecycle hook
+ 
+
+  
+
+ 
+  fetchTimeSinceLastUpdate(): void {
+    // Subscribe to the getTimeSinceLastUpdate method
+    this.agentService.getTimeSinceLastUpdate(this.ticketId).subscribe(
+      (response: string) => {
+        console.log('Time since last update:', response);
+        this.lastUpdate = response;
+      },
+      error => {
+        console.error('Error fetching time since last update:', error);
+        // Handle error here
+      }
+    );
+  }
+  
 
   getCommentText() {
     this.agentService.getCommentText(this.ticketId).subscribe(

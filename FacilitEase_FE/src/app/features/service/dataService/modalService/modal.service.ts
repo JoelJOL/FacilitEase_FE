@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SupportComponent } from '@app/components/layout/support/support.component';
-import { AgentService } from '../httpService/agent.service';
+import { AgentService } from '../../httpService/agentSerivce/agent.service';
 
 @Injectable({
   providedIn: 'root',

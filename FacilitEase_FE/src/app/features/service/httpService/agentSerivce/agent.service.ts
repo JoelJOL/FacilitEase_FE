@@ -91,6 +91,12 @@ export class AgentService {
     return this.http.delete(url);
   }
 
+ 
+  getTimeSinceLastUpdate(ticketId: any): Observable<string> {
+    return this.http.get(`https://localhost:7049/api/L3Admin/TimeSinceLastUpdate/${ticketId}`, { responseType: 'text' });
+  }
+  
+
   getAllTickets(): string {
     const agentId = 3;
     const apiUrl = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${agentId}`;
@@ -139,8 +145,7 @@ export class AgentService {
     });
   }
 
-  getTrackingDetails():Observable<any[]> {
-    const ticketId = 1;
+  getTrackingDetails(ticketId: number):Observable<any[]> {
     const apirUrl = `https://localhost:7049/api/L3Admin/tracking-details/${ticketId}`;
     return this.http.get<any[]>(apirUrl);
   }

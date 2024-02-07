@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AgentService } from '../../service/httpService/agent.service';
+import { AgentService } from '../../service/httpService/agentSerivce/agent.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -63,11 +63,6 @@ export class AgentTicketViewComponent {
         ticketDetails: ticketDetails,
       },
     });
-  }
-
-  openTrackingModal() {
-    this.modalRef = this.modalService.show(TrackingModalComponent);
-    console.log("This is modal")
   }
 
 

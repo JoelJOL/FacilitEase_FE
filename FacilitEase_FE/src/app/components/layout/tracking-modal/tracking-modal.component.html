@@ -1,5 +1,8 @@
 <div class="modal">
   <div class="modal-content">
-    <app-ticket-tracking></app-ticket-tracking>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <app-ticket-tracking [ticketDetails]="ticketDetails"></app-ticket-tracking>
   </div>
 </div>

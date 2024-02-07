@@ -6,7 +6,7 @@
 
 .timeline-section{
 	min-height: 100vh;
-	padding: 50px 15px;
+	padding: 0px 15px;
 }
 .timeline-items{
 	max-width: 1000px;
@@ -38,6 +38,12 @@
 .timeline-item:nth-child(even){
     padding-left: calc(50% + 30px);
 }
+
+.timeline-item:only-child {
+    padding-right: calc(-3% + 320px);
+}
+
+
 .timeline-dot{
 	height: 16px;
 	width: 16px;
@@ -48,7 +54,7 @@
 	top:10px;
 }
 .timeline-date{
-	font-size: 16x;
+	font-size: 16px;
 	color:  #9024dc;
 	margin:6px 0 15px;
     font-style: italic;
@@ -67,6 +73,12 @@
 	font-weight: 500;
     font-style: italic;
 }
+
+.timeline-head{
+    margin: 10px 0px 0px;
+}
+
+
 .timeline-content p{
  
 	font-size: 16px;

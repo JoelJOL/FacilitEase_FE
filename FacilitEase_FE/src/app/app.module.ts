@@ -33,10 +33,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './components/ui_elements/bar-chart/bar-chart.component';
 import { ReportPorfileComponent } from './components/ui_elements/report-porfile/report-porfile.component';
-import { FormServiceService } from './features/service/httpService/form-service.service';
+import { FormServiceService } from './features/service/httpService/Reactive-form/form-service.service';
 import { ReactiveFormComponent } from './components/layout/reactive-form/reactive-form.component';
-import { ManagerService } from './features/service/httpService/manager.service';
-import { ApproveDenyService } from './features/service/httpService/approve-deny.service';
+import { ManagerService } from './features/service/httpService/React-form-fetch/manager.service';
+import { ApproveDenyService } from './features/service/httpService/DH-aproveDeny/approve-deny.service';
 import { HeaderUserRoleDropdownComponent } from './components/ui_elements/header-user-role-dropdown/header-user-role-dropdown.component';
 import { RaiseTicketTitleComponent } from './components/ui_elements/raise-ticket-title/raise-ticket-title.component';
 import { TrFormComponent } from './components/layout/tr-form/tr-form.component';
@@ -57,10 +57,10 @@ import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadComponent } from './components/layout/file-upload/file-upload.component';
-import { EmployeeBulkuploadService } from './features/service/httpService/employee-bulkupload.service';
+import { EmployeeBulkuploadService } from './features/service/httpService/Employee-bulkUpload/employee-bulkupload.service';
 import { L3adminComponent } from './features/l3admin/l3admin/l3admin.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ModalService } from './features/service/dataService/modal.service';
+import { ModalService } from './features/service/dataService/modalService/modal.service';
 import { ManagerViewWaitingTicketsComponent } from './features/manager/manager-view-waiting-tickets/manager-view-waiting-tickets.component';
 import { ManagerViewTicketDetailComponent } from './features/manager/manager-view-ticket-detail/manager-view-ticket-detail.component';
 import { EscalatedticketsComponent } from './features/l2admin/escalated-tickets/escalated-tickets.component';
@@ -124,7 +124,7 @@ import {
 import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
 import { AzureService } from './features/Authentication/azureService/azure.service';
 import { SkeletonLoaderComponent } from './components/layout/skeleton-loader/skeleton-loader.component';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 import { TrackingTimelineComponent } from './components/layout/tracking-timeline/tracking-timeline.component';
 import { TicketTrackingComponent } from './ticket-tracking/ticket-tracking.component';
 import { OnscrollDirective } from './features/service/directive/onscroll/onscroll.directive';
@@ -132,6 +132,9 @@ import { TrackingModalComponent } from './components/layout/tracking-modal/track
 import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
 import { UnassignedAssetsComponent } from './features/Assets/unassigned-assets/unassigned-assets.component';
 import { EmployeeAssetsComponent } from './features/Assets/employee-assets/employee-assets.component';
+import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
+import { SharedService } from './features/service/httpService/SharedService/shared.service';
+import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -236,6 +239,7 @@ const isIE =
     TicketDocumentsComponent,
     UnassignedAssetsComponent,
     EmployeeAssetsComponent,
+    GenerateReportComponent,
   ],
   imports: [
     HttpClientModule,
@@ -291,6 +295,8 @@ const isIE =
     EmployeeBulkuploadService,
     ModalService,
     MasterService,
+    NotificationService,
+    SharedService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,
