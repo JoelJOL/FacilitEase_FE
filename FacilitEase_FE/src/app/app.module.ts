@@ -132,6 +132,7 @@ import { TrackingModalComponent } from './components/layout/tracking-modal/track
 import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
+import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -234,6 +235,7 @@ const isIE =
     OnscrollDirective,
     TrackingModalComponent,
     TicketDocumentsComponent,
+    GenerateReportComponent,
   ],
   imports: [
     HttpClientModule,

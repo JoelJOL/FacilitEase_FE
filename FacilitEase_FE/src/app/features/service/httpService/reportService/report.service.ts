@@ -2,12 +2,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import {
+  WeekReport,
+  profileData,
+} from '@app/features/l2admin/L2AdminModel/model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReportService {
   constructor(private http: HttpClient) {}
+
+  barChartCanvas!: HTMLElement;
+  doughnutChartCanvas!: HTMLElement;
+
   GetReportData(id: number): Observable<any> {
     return this.http.get<any>(`https://localhost:7049/api/L3AdminReport/5`);
   }
@@ -22,9 +30,14 @@ export class ReportService {
       }
     );
   }
-  GetProfileData(id: number): Observable<any> {
+  GetProfileData(id: number): Observable<profileData> {
     return this.http.get<any>(
       `https://localhost:7049/api/L3AdminReport/profiledata/5`
+    );
+  }
+  GetWeekData(id: number): Observable<WeekReport> {
+    return this.http.get<any>(
+      `https://localhost:7049/api/L3AdminReport/reportdata/${id}`
     );
   }
 }

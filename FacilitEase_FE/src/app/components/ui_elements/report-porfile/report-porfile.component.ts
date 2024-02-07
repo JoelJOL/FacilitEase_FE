@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReportService } from '@app/features/service/httpService/reportService/report.service';
-
+import { profileData } from '@app/features/l2admin/L2AdminModel/model';
 @Component({
   selector: 'app-report-porfile',
   templateUrl: './report-porfile.component.html',
