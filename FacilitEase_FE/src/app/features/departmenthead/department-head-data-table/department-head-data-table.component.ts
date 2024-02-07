@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { DepartmentHeadService } from '@app/features/service/httpService/department-head.service';
+import { DepartmentHeadService } from '@app/features/service/httpService/Department-head/department-head.service';
 
 @Component({
   selector: 'app-department-head-data-table',

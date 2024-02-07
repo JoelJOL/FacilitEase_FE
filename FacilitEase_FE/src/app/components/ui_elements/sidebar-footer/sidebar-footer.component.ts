@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { SupportComponent } from '@app/components/layout/support/support.component';
-import { ModalService } from '@app/features/service/dataService/modal.service';
+import { ModalService } from '@app/features/service/dataService/modalService/modal.service';
 interface Field {
   logo: string;
   title: string;

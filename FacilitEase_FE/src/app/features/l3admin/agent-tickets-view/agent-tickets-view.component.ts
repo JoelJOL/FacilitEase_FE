@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AgentService } from '../../service/httpService/agent.service';
+import { AgentService } from '../../service/httpService/agentSerivce/agent.service';
 import { Router } from '@angular/router';
 
 @Component({

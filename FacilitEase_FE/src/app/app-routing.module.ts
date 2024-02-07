@@ -64,8 +64,19 @@ import {
   LoginEnter,
 } from './features/Authentication/resolve.guard';
 import { MyteamEmployeeComponent } from './features/employee/myteam-employee/myteam-employee.component';
+import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
+import { UnassignedAssetsComponent } from './features/Assets/unassigned-assets/unassigned-assets.component';
+import { EmployeeAssetsComponent } from './features/Assets/employee-assets/employee-assets.component';
 
 const routes: Routes = [
+  {
+    path: 'un',
+    component: EmployeeAssetsComponent,
+  },
+  {
+    path: 'doc',
+    component: TicketDocumentsComponent,
+  },
   {
     path: 'employee',
     component: EmployeeComponent,

@@ -1,18 +1,7 @@
-import { Component } from '@angular/core';
-import {
-  Chart,
-  ChartArea,
-  ChartData,
-  ChartDataset,
-  ChartEvent,
-  ChartType,
-  Color,
-  FontSpec,
-  LegendElement,
-  LegendItem,
-  LegendOptions,
-  ScriptableChartContext,
-} from 'chart.js';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ReportService } from '@app/features/service/httpService/reportService/report.service';
+import { ChartData, ChartEvent, ChartType } from 'chart.js';
+import { WeekReport } from '@app/features/l2admin/L2AdminModel/model';
 
 @Component({
   selector: 'app-report-stats',
@@ -20,27 +9,57 @@ import {
   styleUrls: ['./report-stats.component.css'],
 })
 export class ReportStatsComponent {
-  public doughnutChartLabels: string[] = [
-    'Resolved',
-    'Unresolved',
-    'Escalated',
-  ];
-  public doughnutChartDatasets: ChartData<'doughnut'> = {
-    labels: this.doughnutChartLabels,
-    datasets: [
-      {
-        data: [20, 40, 10],
-        backgroundColor: ['#6418C3', '#BCA0DE', '#FFA7A7'],
-      },
-    ],
-  };
-  // public doughnutChartData: ChartData<'doughnut'> = {
-  //   labels: this.doughnutChartLabels,
-  //   datasets: [{ data: [350, 450, 100] }],
-  // };
-  public doughnutChartType: ChartType = 'doughnut';
+  constructor(private reportService: ReportService) {}
 
-  public doughnutChartOptions: any = {
+  @ViewChild('doughchart')
+  doughnutChartCanvas!: ElementRef;
+
+  weekReport = {
+    dailyTickets: 0,
+    dailyResolved: 0,
+    dailyUnresolved: 0,
+    dailyEscalated: 0,
+    weeklyTickets: 0,
+    weeklyResolved: 0,
+    weeklyUnresolved: 0,
+    weeklyEscalated: 0,
+  };
+
+  doughnutChartData: any = { datasets: [] };
+  doughnutChartDatasets: any = {};
+
+  ngOnInit() {
+    this.reportService.GetWeekData(2).subscribe((data: WeekReport) => {
+      console.log(data);
+      this.weekReport = data;
+      this.doughnutChartData.datasets.push({
+        data: [20, 10, 20],
+        // data: [
+        //   data.weeklyResolved,
+        //   data.weeklyUnresolved,
+        //   data.weeklyEscalated,
+        // ],
+      });
+      this.doughnutChartData.datasets[0].backgroundColor = ['#6418C3'];
+      this.doughnutChartDatasets = this.doughnutChartData;
+
+      console.log(this.doughnutChartData.datasets[0].data);
+    });
+  }
+
+  ngOnChanges() {
+    // ngOnChanges is not used here as it's typically used in child components when input properties change
+  }
+
+  ngAfterViewInit() {
+    this.reportService.doughnutChartCanvas = this.doughnutChartCanvas
+      .nativeElement as HTMLCanvasElement;
+  }
+
+  doughnutChartLabels: string[] = ['Resolved', 'Unresolved', 'Escalated'];
+  doughnutChartType: ChartType = 'doughnut';
+
+  doughnutChartOptions: any = {
     legend: {
       position: 'right',
     },

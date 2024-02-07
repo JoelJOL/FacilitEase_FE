@@ -1,4 +1,4 @@
-import { ApproveDenyService } from '@app/features/service/httpService/approve-deny.service';
+import { ApproveDenyService } from '@app/features/service/httpService/DH-aproveDeny/approve-deny.service';
 import { Component, Input } from '@angular/core';
 import { Route, Router } from '@angular/router';
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import { UserRoleService } from '@app/features/service/dataService/user-role.service';
+import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
+import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 interface Field {
   logo: string;
   title: string;
@@ -27,7 +29,9 @@ export class DepartmentheadComponent {
   constructor(
     private router: Router,
     private sidebarService: SidebarService,
-    private userRoleService: UserRoleService
+    private userRoleService: UserRoleService,
+    private sharedService: SharedService,
+    private notificationService: NotificationService
   ) {}
   ngOnInit() {
     this.userRoleService.setUserRole(this.userRole);
@@ -35,6 +39,12 @@ export class DepartmentheadComponent {
       this.isSidebarCollapsed = isCollapsed;
       // Optionally, you can set showL2AdminTickets based on isCollapsed state
       // this.showL2AdminTickets = !isCollapsed; // Example, adjust as needed
+    });
+    this.notificationService.startConnection();
+
+    this.sharedService.notification$.subscribe((message) => {
+      console.log('Notification received: ' + message);
+      // Handle the notification...
     });
   }
   onFieldClicked(clickedField: any) {

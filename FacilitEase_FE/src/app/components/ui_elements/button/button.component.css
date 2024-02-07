@@ -15,6 +15,11 @@ button {
   color: #fff;
 }
 
+.btn-icon-display {
+  background-color: var(--white);
+  color: black;
+}
+
 .btn-accepted:hover {
   background-color: var(--low_priority);
 }

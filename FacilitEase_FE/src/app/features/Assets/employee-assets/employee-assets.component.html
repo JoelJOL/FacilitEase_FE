@@ -1,0 +1,15 @@
+<h1 id="heading">Unassigned Tickets</h1>
+
+<app-dynamic-search
+  (EmployeeId)="GetId($event)"
+  class="search"
+></app-dynamic-search>
+
+<div>
+  <app-data-table-new
+    [headers]="headers"
+    [apiLink]="apiLink"
+    (rowClicked)="onRowClicked($event)"
+    id="datatable"
+  ></app-data-table-new>
+</div>

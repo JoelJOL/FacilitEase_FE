@@ -1,6 +1,6 @@
-// ticket-documents.component.ts
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { GetAPIService } from '@app/features/service/httpService/GetAPI/get-api.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ticket-documents',
@@ -8,33 +8,37 @@ import { GetAPIService } from '@app/features/service/httpService/GetAPI/get-api.
   styleUrls: ['./ticket-documents.component.css'],
 })
 export class TicketDocumentsComponent implements OnInit {
-  ticketId = 31;
-  documentLink: string | undefined;
+  private apiUrl = 'https://localhost:7049';
+  imageId = '950590bf-c9a3-439c-8bac-5a5d0c22bec8';
+  imageUrl!: string;
+  imageBlob!: Blob;
 
-  constructor(private documentService: GetAPIService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.documentService.getDocumentPath(this.ticketId).subscribe(
-      (response: any) => {
-        this.documentLink = response.documentLink;
+    this.imageUrl = `${this.apiUrl}/Resources/Images/${this.imageId}.svg`;
+
+    this.getImage().subscribe(
+      (blob: Blob) => {
+        this.imageBlob = blob;
+        this.displayImage();
       },
       (error) => {
-        console.error('Error fetching document path:', error);
+        console.error('Error fetching image:', error);
       }
     );
   }
 
-  getDocumentUrl(): string {
-    if (this.documentLink) {
-      // If the documentLink already contains 'Resources\Images\', use it directly
-      if (this.documentLink.includes('Resources\\Images\\')) {
-        return `https://localhost:7049/${this.documentLink}`;
-      } else {
-        // If not, append 'Resources\Images\' to the documentLink
-        return `https://localhost:7049/Resources\\Images\\${this.documentLink}`;
-      }
-    } else {
-      return '';
-    }
+  getImage(): Observable<Blob> {
+    return this.http.get(this.imageUrl, { responseType: 'blob' });
+  }
+
+  displayImage(): void {
+    // Convert blob to a data URL and set it as the image source
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.imageUrl = reader.result as string;
+    };
+    reader.readAsDataURL(this.imageBlob);
   }
 }

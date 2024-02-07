@@ -98,7 +98,7 @@ export class AzureService {
       'https://localhost:7049/api/User',
       {
         idToken: azureObj.idToken,
-        accessToken: azureObj.accessToken,
+        AccessToken: azureObj.accessToken,
         localAccountId: azureObj.localAccountId,
         expiration: azureObj.expiration,
         name: azureObj.name,
