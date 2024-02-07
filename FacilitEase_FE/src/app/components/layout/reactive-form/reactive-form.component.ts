@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ManagerService } from '@app/features/service/httpService/manager.service';
+import { ManagerService } from '@app/features/service/httpService/React-form-fetch/manager.service';
 
 @Component({
   selector: 'app-reactive-form',

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { EmployeeBulkuploadService } from '@app/features/service/httpService/employee-bulkupload.service';
+import { EmployeeBulkuploadService } from '@app/features/service/httpService/Employee-bulkUpload/employee-bulkupload.service';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
