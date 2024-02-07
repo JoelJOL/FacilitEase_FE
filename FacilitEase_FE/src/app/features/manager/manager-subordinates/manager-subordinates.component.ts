@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ManagerSubordinatesService } from '../../service/httpService/manager-subordinates.service';
+import { ManagerSubordinatesService } from '@app/features/service/httpService/managerSubordinateService/manager-subordinates.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/master.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
