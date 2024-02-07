@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agent.service';
-import { DropDownService } from '@app/features/service/httpService/dropdown.service';
+import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
 
 @Component({
   selector: 'app-details-assigned',

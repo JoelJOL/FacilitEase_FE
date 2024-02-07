@@ -63,8 +63,19 @@ import {
   IsManager,
   LoginEnter,
 } from './features/Authentication/resolve.guard';
+import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
+import { UnassignedAssetsComponent } from './features/Assets/unassigned-assets/unassigned-assets.component';
+import { EmployeeAssetsComponent } from './features/Assets/employee-assets/employee-assets.component';
 
 const routes: Routes = [
+  {
+    path: 'un',
+    component: EmployeeAssetsComponent,
+  },
+  {
+    path: 'doc',
+    component: TicketDocumentsComponent,
+  },
   {
     path: 'employee',
     component: EmployeeComponent,

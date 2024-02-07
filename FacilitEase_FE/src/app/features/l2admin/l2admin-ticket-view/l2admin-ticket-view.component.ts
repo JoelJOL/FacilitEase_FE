@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { DropDownService } from '@app/features/service/httpService/dropdown.service';
+import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
 import { HttpClient } from '@angular/common/http';
 import { AgentService } from '@app/features/service/httpService/agent.service';
 
