@@ -39,7 +39,7 @@
     background-color: white;
     border-radius: 20px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     height: fit-content;
 }
 .shadow{

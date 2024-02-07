@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/master.service';
-import { ManagerSubordinatesService } from '@app/features/service/httpService/manager-subordinates.service';
+import { ManagerSubordinatesService } from '@app/features/service/httpService/managerSubordinateService/manager-subordinates.service';
 
 @Component({
   selector: 'app-myteam-employee',
