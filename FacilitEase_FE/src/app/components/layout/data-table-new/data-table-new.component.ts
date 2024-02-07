@@ -43,7 +43,7 @@ export class DataTableNewComponent implements OnInit {
   sortDirection: string = 'asc';
   totalDataCount: number = 0;
   searchQuery: string = '';
-  noRecordsFound:boolean=false;
+  noRecordsFound: boolean = false;
   loading: boolean = true;
 
   @Output() totalDataCountChange = new EventEmitter<number>();
@@ -58,27 +58,29 @@ export class DataTableNewComponent implements OnInit {
   private loadData() {
     this.loading = true;
     const url = `${this.apiLink}?sortField=${this.sortColumn}&sortOrder=${this.sortDirection}&pageIndex=${this.currentPage}&pageSize=${this.pageSize}&searchQuery=${this.searchQuery}`;
-    
-    this.httpClient.get<ApiResponse>(url).subscribe((response) => {
-      if (response.data && response.data.length > 0) {
-        // Data is available, update datatable
-        this.totalDataCount = response.totalDataCount;
-        this.totalDataCountChange.emit(this.totalDataCount);
-        this.rows = response.data;
-        this.keys = Object.keys(this.rows[0]);
+
+    this.httpClient.get<ApiResponse>(url).subscribe(
+      (response) => {
+        if (response.data && response.data.length > 0) {
+          // Data is available, update datatable
+          this.totalDataCount = response.totalDataCount;
+          this.totalDataCountChange.emit(this.totalDataCount);
+          this.rows = response.data;
+          this.keys = Object.keys(this.rows[0]);
+          this.loading = false;
+        } else {
+          // No records found, handle accordingly (e.g., display a message)
+          console.log('No records found');
+          this.noRecordsFound = true;
+        }
+      },
+      (error) => {
+        // Handle API call error
         this.loading = false;
-      } else {
-        // No records found, handle accordingly (e.g., display a message)
-        console.log('No records found');
-        this.noRecordsFound = true;
+        console.error('Error fetching data:', error);
       }
-    }, (error) => {
-      // Handle API call error
-      this.loading = false;
-      console.error('Error fetching data:', error);
-    });
+    );
   }
-  
 
   getCellClasses(columnKey: string, cellValue: any) {
     if (columnKey === 'priority') {
@@ -117,10 +119,10 @@ export class DataTableNewComponent implements OnInit {
 
     // Set the new search query
     this.searchQuery = searchQuery;
-  
+
     // Reset current page to 0 when performing a new search
     this.currentPage = 0;
-  
+
     // Load data
     this.loadData();
   }

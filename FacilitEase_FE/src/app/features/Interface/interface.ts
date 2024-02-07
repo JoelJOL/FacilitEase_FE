@@ -23,3 +23,12 @@ export interface TicketResponse {
   documentLink: string;
   submittedDate: Date;
 }
+// Asset.interface.ts
+export interface Asset {
+  assetId: number;
+  assetName: string;
+  warrantyInfo: string;
+  lastMaintenanceDate: Date;
+  nextMaintenanceDate: Date;
+  assetType: string; // Update this based on the actual type in your API response
+}

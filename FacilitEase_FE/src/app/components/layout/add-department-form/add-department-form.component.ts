@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostAPIService } from '@app/features/service/httpService/post-api.service';
+import { PostAPIService } from '@app/features/service/httpService/departmentService/post-api.service';
 
 @Component({
   selector: 'app-add-department-form',
   templateUrl: './add-department-form.component.html',
-  styleUrls: ['./add-department-form.component.css']
+  styleUrls: ['./add-department-form.component.css'],
 })
 export class AddDepartmentFormComponent implements OnInit {
   departmentForm!: FormGroup;

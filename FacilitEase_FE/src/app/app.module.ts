@@ -130,6 +130,8 @@ import { TicketTrackingComponent } from './ticket-tracking/ticket-tracking.compo
 import { OnscrollDirective } from './features/service/directive/onscroll/onscroll.directive';
 import { TrackingModalComponent } from './components/layout/tracking-modal/tracking-modal.component';
 import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
+import { UnassignedAssetsComponent } from './features/Assets/unassigned-assets/unassigned-assets.component';
+import { EmployeeAssetsComponent } from './features/Assets/employee-assets/employee-assets.component';
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
 import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
@@ -235,6 +237,8 @@ const isIE =
     OnscrollDirective,
     TrackingModalComponent,
     TicketDocumentsComponent,
+    UnassignedAssetsComponent,
+    EmployeeAssetsComponent,
     GenerateReportComponent,
   ],
   imports: [
