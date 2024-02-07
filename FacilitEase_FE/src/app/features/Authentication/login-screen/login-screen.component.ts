@@ -75,13 +75,6 @@ export class LoginScreenComponent {
 
         console.log(this.azureObj);
         this.azureService.azureObj = this.azureObj;
-        if (!sessionStorage.getItem('FacilitEaseJwt')) {
-          this.azureService.AzureData(this.azureObj).subscribe((response) => {
-            this.azureService.ResolveToken(response);
-            console.log(response);
-            sessionStorage.setItem('FacilitEaseJwt', response.token);
-          });
-        }
 
         this.azureService.isUserLoggedIn.next(this.isUserLoggedIn);
       });
@@ -96,6 +89,13 @@ export class LoginScreenComponent {
         .subscribe((authenticationResult) => {
           const accessToken = authenticationResult.accessToken;
           this.azureObj.accessToken = accessToken;
+          if (!sessionStorage.getItem('FacilitEaseJwt')) {
+            this.azureService.AzureData(this.azureObj).subscribe((response) => {
+              this.azureService.ResolveToken(response);
+              console.log(response);
+              sessionStorage.setItem('FacilitEaseJwt', response.token);
+            });
+          }
         });
     } else {
       this.authService.loginPopup().subscribe((response) => {

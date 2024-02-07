@@ -1,4 +1,10 @@
-import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReportService } from '@app/features/service/httpService/reportService/report.service';
 
@@ -17,6 +23,9 @@ export class BarChartComponent {
   @Input()
   ticketStatus: number = 0;
   id: number = 0;
+
+  @ViewChild('chart')
+  barChartCanvas!: ElementRef;
 
   public barChartOptions: any = {
     scales: {
@@ -80,6 +89,11 @@ export class BarChartComponent {
     console.log(e);
   }
 
+  ngAfterViewInit() {
+    this.reportService.barChartCanvas = this.barChartCanvas
+      .nativeElement as HTMLCanvasElement;
+  }
+
   ngOnInit() {
     // console.log(this.barChartData);
     this.id = +this.route.snapshot.params['id'];
@@ -88,8 +102,9 @@ export class BarChartComponent {
       (data) => {
         console.log(data);
         for (const month of this.months) {
-          this.resolved.push(data[month][0]);
-          this.escalated.push(data[month][1]);
+          this.resolved.push(20, 20, 20);
+          this.escalated.push(10, 10, 10);
+          // this.escalated.push(data[month][1]);
         }
 
         this.chartLegends.push({

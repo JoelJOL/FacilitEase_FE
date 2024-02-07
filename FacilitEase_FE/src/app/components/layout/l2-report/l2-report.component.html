@@ -1,6 +1,11 @@
 <div class="contain">
-  <app-report-porfile class="m-3 top shadow"></app-report-porfile>
-  <!-- <app-admin-performance></app-admin-performance> -->
+  <div class="col-12 d-flex">
+    <app-report-porfile class="m-3 col-9 top shadow chart"></app-report-porfile>
+    <app-generate-report
+      class="m-3 col-2 shadow generate_report"
+    ></app-generate-report>
+  </div>
+
   <app-report-stats></app-report-stats>
   <div class="d-flex col-12 justify-content-around">
     <app-bar-chart
