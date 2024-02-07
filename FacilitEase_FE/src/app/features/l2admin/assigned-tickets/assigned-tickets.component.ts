@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { MasterService } from '../../service/dataService/master.service';
+import { MasterService } from '../../service/dataService/masterService/master.service';
 
 @Component({
   selector: 'app-assigned-tickets',

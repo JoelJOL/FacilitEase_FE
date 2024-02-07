@@ -22,6 +22,8 @@ var DataTableNewComponent = /** @class */ (function () {
         this.sortDirection = 'asc';
         this.totalDataCount = 0;
         this.searchQuery = '';
+        this.noRecordsFound = false;
+        this.loading = true;
         this.totalDataCountChange = new core_1.EventEmitter();
         this.rowClicked = new core_1.EventEmitter();
     }
@@ -30,12 +32,26 @@ var DataTableNewComponent = /** @class */ (function () {
     };
     DataTableNewComponent.prototype.loadData = function () {
         var _this = this;
+        this.loading = true;
         var url = this.apiLink + "?sortField=" + this.sortColumn + "&sortOrder=" + this.sortDirection + "&pageIndex=" + this.currentPage + "&pageSize=" + this.pageSize + "&searchQuery=" + this.searchQuery;
         this.httpClient.get(url).subscribe(function (response) {
-            _this.totalDataCount = response.totalDataCount;
-            _this.totalDataCountChange.emit(_this.totalDataCount);
-            _this.rows = response.data;
-            _this.keys = Object.keys(_this.rows[0]);
+            if (response.data && response.data.length > 0) {
+                // Data is available, update datatable
+                _this.totalDataCount = response.totalDataCount;
+                _this.totalDataCountChange.emit(_this.totalDataCount);
+                _this.rows = response.data;
+                _this.keys = Object.keys(_this.rows[0]);
+                _this.loading = false;
+            }
+            else {
+                // No records found, handle accordingly (e.g., display a message)
+                console.log('No records found');
+                _this.noRecordsFound = true;
+            }
+        }, function (error) {
+            // Handle API call error
+            _this.loading = false;
+            console.error('Error fetching data:', error);
         });
     };
     DataTableNewComponent.prototype.getCellClasses = function (columnKey, cellValue) {
@@ -54,7 +70,8 @@ var DataTableNewComponent = /** @class */ (function () {
                 'onhold-status': cellValue === 'On Hold',
                 'resolved-status': cellValue === 'Resolved',
                 'cancelled-status': cellValue === 'Cancelled',
-                'escalated-status': cellValue === 'Escalated'
+                'escalated-status': cellValue === 'Escalated',
+                'cancelrequested-status': cellValue === 'Cancel Requested'
             };
         }
         else {
@@ -71,8 +88,12 @@ var DataTableNewComponent = /** @class */ (function () {
         this.loadData();
     };
     DataTableNewComponent.prototype.search = function (searchQuery) {
+        this.noRecordsFound = false;
+        // Set the new search query
         this.searchQuery = searchQuery;
+        // Reset current page to 0 when performing a new search
         this.currentPage = 0;
+        // Load data
         this.loadData();
     };
     DataTableNewComponent.prototype.onRowClick = function (Id) {

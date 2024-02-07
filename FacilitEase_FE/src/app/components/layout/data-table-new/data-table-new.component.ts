@@ -9,16 +9,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { FilterComponent } from '../filter/filter.component';
 import { Observable } from 'rxjs';
-// export interface TicketData {
-//   id: number;
-//   ticketName: string;
-//   employeeName: string;
-//   assignedTo: string;
-//   submittedDate: string;
-//   resolvedDate: string;
-//   priority: string;
-//   status: string;
-// }
+
 
 export interface ApiResponse {
   data: any[];
