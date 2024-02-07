@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MasterService } from '@app/features/service/dataService/master.service';
-import { AgentService } from '@app/features/service/httpService/agent.service';
+import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 
 @Component({
   selector: 'app-ticket-na-simple',

@@ -8,6 +8,7 @@ import { ModalComponent } from '@app/components/layout/modal/modal.component';
 export class ButtonComponent {
   @Input() color: string = 'primary';
   @Output() action = new EventEmitter<string>();
+  @Input() icon: string='';
 
   handleClick(): void {
     this.action.emit();

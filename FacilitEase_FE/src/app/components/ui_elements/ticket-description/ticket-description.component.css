@@ -4,8 +4,11 @@
 
 .ticket_desc p {
   font-size: medium;
+  line-height: 2;
+  
 }
 
 .ticket_sub {
   font-size: 24px;
+  line-height: 1.2;
 }
