@@ -80,8 +80,8 @@ const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeComponent,
-    // canActivate: [MsalGuard],
-    // resolve: [LoginEnter],
+    canActivate: [MsalGuard],
+    resolve: [LoginEnter],
     children: [
       {
         path: 'employeecard',

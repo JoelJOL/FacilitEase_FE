@@ -242,6 +242,7 @@ const isIE =
     UnassignedAssetsComponent,
     EmployeeAssetsComponent,
     GenerateReportComponent,
+    TicketTrackingComponent,
   ],
   imports: [
     HttpClientModule,
