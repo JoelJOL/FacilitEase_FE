@@ -8,10 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.ManagerTicketInfoComponent = void 0;
 var core_1 = require("@angular/core");
+var tracking_modal_component_1 = require("@app/components/layout/tracking-modal/tracking-modal.component");
 var ManagerTicketInfoComponent = /** @class */ (function () {
-    function ManagerTicketInfoComponent(masterService, router) {
+    function ManagerTicketInfoComponent(masterService, router, modalService) {
         this.masterService = masterService;
         this.router = router;
+        this.modalService = modalService;
         this.ticketId = '';
         this.ticketPriority = '';
         this.status = '';
@@ -57,6 +59,14 @@ var ManagerTicketInfoComponent = /** @class */ (function () {
         else {
             console.log("Cant enter the if loop");
         }
+    };
+    ManagerTicketInfoComponent.prototype.openTrackingModal = function () {
+        this.modalRef = this.modalService.show(tracking_modal_component_1.TrackingModalComponent, {
+            initialState: {
+                ticketDetails: this.ticketDetails
+            }
+        });
+        console.log("This is modal");
     };
     __decorate([
         core_1.Input()

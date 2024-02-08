@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MasterService } from '@app/features/service/dataService/master.service';
+import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -85,7 +85,7 @@ export class ManagerViewTicketDetailComponent implements OnInit {
     });
   }
   forwardTicket() {
-        this.masterService.sendForApproval(this.ticketDetails.id, 2)
+        this.masterService.sendForApproval(this.ticketDetails.id, 17)
           .subscribe(
             () => {
               console.log('Forwarded for approval successfully');

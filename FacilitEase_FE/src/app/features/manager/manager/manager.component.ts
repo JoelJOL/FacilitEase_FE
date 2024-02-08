@@ -22,6 +22,10 @@ export class ManagerComponent {
     {
       logo: 'assets/ticket-solid.svg',
       title: 'Employee Tickets',
+      subfields: [
+        'Live Tickets',
+        'All Tickets',
+      ]
     },
   ];
   showManagerTickets: boolean = false;
@@ -47,7 +51,6 @@ export class ManagerComponent {
       this.router.navigate(['manager/manager-subordinates']);
     } else if (clickedField.title === 'Employee Tickets') {
       this.showManagerTickets = true;
-      this.router.navigate(['manager/manager-view-employee-tickets']);
     } else if (clickedField.title === 'Waiting Tickets') {
       this.showManagerTickets = true;
       this.router.navigate(['manager/manager-view-waiting-tickets']);
@@ -55,4 +58,15 @@ export class ManagerComponent {
       this.showManagerTickets = false;
     }
   }
+  onSubfieldClicked(event: { field: Field; subfield: string }) {
+    if (event.field.title === 'Employee Tickets') {
+      if (event.subfield === 'Live Tickets') {
+        this.showManagerTickets = true;
+        this.router.navigate(['manager/manager-view-live-employee-tickets']);
+      } else if (event.subfield === 'All Tickets') {
+        this.showManagerTickets = true;
+        this.router.navigate(['manager/manager-view-employee-tickets']);
+      }
+      }
+    }
 }
