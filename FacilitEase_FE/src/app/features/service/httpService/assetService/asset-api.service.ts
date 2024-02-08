@@ -13,7 +13,7 @@ export class AssetAPIService {
   }
 
   getEmployeeAssets(userId: number): string {
-    const apiUrl = `https://localhost:7049/employee/${userId}`;
+    const apiUrl = `https://localhost:7049/assets/${userId}`;
     return apiUrl;
   }
 }

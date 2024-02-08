@@ -136,6 +136,7 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
 import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
+import { FormValidationDirective } from './features/service/directive/validation/form-validation.directive';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -242,6 +243,7 @@ const isIE =
     UnassignedAssetsComponent,
     EmployeeAssetsComponent,
     GenerateReportComponent,
+    FormValidationDirective,
   ],
   imports: [
     HttpClientModule,

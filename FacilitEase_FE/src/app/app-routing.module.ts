@@ -57,7 +57,6 @@ import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
 import { UploadComponent } from './features/employee/upload/upload.component';
 import { TicketTrackingComponent } from './components/layout/ticket-tracking/ticket-tracking.component';
-import { MsalGuard } from '@azure/msal-angular';
 import {
   IsL1Admin,
   IsManager,
@@ -67,7 +66,6 @@ import { MyteamEmployeeComponent } from './features/employee/myteam-employee/myt
 import { TicketDocumentsComponent } from './features/employee/ticket-documents/ticket-documents.component';
 import { UnassignedAssetsComponent } from './features/Assets/unassigned-assets/unassigned-assets.component';
 import { EmployeeAssetsComponent } from './features/Assets/employee-assets/employee-assets.component';
-
 const routes: Routes = [
   {
     path: 'un',
