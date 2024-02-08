@@ -127,6 +127,7 @@ var msal_browser_1 = require("@azure/msal-browser");
 var azure_service_1 = require("./features/Authentication/azureService/azure.service");
 var skeleton_loader_component_1 = require("./components/layout/skeleton-loader/skeleton-loader.component");
 var tracking_timeline_component_1 = require("./components/layout/tracking-timeline/tracking-timeline.component");
+<<<<<<< HEAD
 var ticket_tracking_component_1 = require("./components/layout/ticket-tracking/ticket-tracking.component");
 var onscroll_directive_1 = require("./features/service/directive/onscroll/onscroll.directive");
 var tracking_modal_component_1 = require("./components/layout/tracking-modal/tracking-modal.component");
@@ -138,6 +139,10 @@ var notification_service_1 = require("./features/service/httpService/Notificatio
 var shared_service_1 = require("./features/service/httpService/SharedService/shared.service");
 var generate_report_component_1 = require("./components/ui_elements/generate-report/generate-report.component");
 var manager_view_live_employee_tickets_component_1 = require("./features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component");
+=======
+var ticket_tracking_component_1 = require("./features/employee/ticket-tracking/ticket-tracking.component");
+var onscroll_directive_1 = require("./features/service/directive/onscroll/onscroll.directive");
+>>>>>>> bd1a71d8e67facaa55828e75fa8870bd54f6f865
 var isIE = window.navigator.userAgent.indexOf('MSIE') > -1 ||
     window.navigator.userAgent.indexOf('Trident/') > -1;
 var AppModule = /** @class */ (function () {
@@ -240,6 +245,7 @@ var AppModule = /** @class */ (function () {
                 tracking_timeline_component_1.TrackingTimelineComponent,
                 ticket_tracking_component_1.TicketTrackingComponent,
                 onscroll_directive_1.OnscrollDirective,
+<<<<<<< HEAD
                 tracking_modal_component_1.TrackingModalComponent,
                 ticket_documents_component_1.TicketDocumentsComponent,
                 myteam_employee_component_1.MyteamEmployeeComponent,
@@ -247,6 +253,8 @@ var AppModule = /** @class */ (function () {
                 employee_assets_component_1.EmployeeAssetsComponent,
                 generate_report_component_1.GenerateReportComponent,
                 manager_view_live_employee_tickets_component_1.ManagerViewLiveEmployeeTicketsComponent,
+=======
+>>>>>>> bd1a71d8e67facaa55828e75fa8870bd54f6f865
             ],
             imports: [
                 http_1.HttpClientModule,
@@ -296,8 +304,11 @@ var AppModule = /** @class */ (function () {
                 employee_bulkupload_service_1.EmployeeBulkuploadService,
                 modal_service_1.ModalService,
                 master_service_1.MasterService,
+<<<<<<< HEAD
                 notification_service_1.NotificationService,
                 shared_service_1.SharedService,
+=======
+>>>>>>> bd1a71d8e67facaa55828e75fa8870bd54f6f865
                 {
                     provide: http_2.HTTP_INTERCEPTORS,
                     useClass: msal_angular_1.MsalInterceptor,
