@@ -1,6 +1,11 @@
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import {
   Category,
@@ -20,25 +25,33 @@ export class UploadComponent implements OnInit {
   priorities: Priority[] = [];
   departments: Department[] = [];
   categories: Category[] = [];
-
+  successMessage: string = '';
   constructor(
     private fb: FormBuilder,
     private employeeUploadService: GetAPIService,
     private http: HttpClient
   ) {
-    this.uploadForm = this.fb.group({
-      ticketName: [''],
-      ticketDescription: [''],
-      priorityId: [],
-      departmentId: [],
-      categoryId: [],
-      file: [],
+    this.uploadForm = new FormGroup({
+      ticketName: new FormControl('', Validators.required),
+      ticketDescription: new FormControl('', Validators.required),
+      priorityId: new FormControl('', Validators.required),
+      departmentId: new FormControl('', Validators.required),
+      categoryId: new FormControl('', Validators.required),
+      file: new FormControl(null),
+      UserId: new FormControl(19),
+      CreatedBy: new FormControl(19),
+      UpdatedBy: new FormControl(19),
     });
   }
 
   ngOnInit(): void {
     this.loadPriorities();
     this.loadDepartments();
+    this.uploadForm.patchValue({
+      UserId: 19,
+      CreatedBy: 19,
+      UpdatedBy: 19,
+    });
   }
 
   onFileChange(event: any) {
@@ -58,7 +71,13 @@ export class UploadComponent implements OnInit {
       const formData = new FormData();
 
       Object.keys(this.uploadForm.value).forEach((key) => {
-        formData.append(key, this.uploadForm.value[key]);
+        const value = this.uploadForm.value[key];
+
+        if (key === 'file' && value !== null) {
+          formData.append(key, value);
+        } else {
+          formData.append(key, value);
+        }
       });
 
       this.employeeUploadService.uploadDocument(formData).subscribe(
@@ -70,6 +89,10 @@ export class UploadComponent implements OnInit {
             console.log(`Upload Progress: ${progress}%`);
           } else if (event.type === HttpEventType.Response) {
             console.log('Upload successful', event.body);
+            this.successMessage = 'Ticket created successfully';
+            setTimeout(() => {
+              this.uploadForm.reset();
+            }, 3000);
           }
         },
         (error) => {
@@ -77,7 +100,7 @@ export class UploadComponent implements OnInit {
         }
       );
     } else {
-      console.log('Error');
+      alert('All fields are required. Please fill in all the required fields.');
     }
   }
 

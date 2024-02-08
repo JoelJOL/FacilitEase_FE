@@ -1,5 +1,8 @@
 <div class="container">
-  <h2>Raise a Ticket</h2>
+  <h1>Raise a Ticket</h1>
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
   <form [formGroup]="uploadForm">
     <div class="form-group">
       <input
@@ -8,7 +11,16 @@
         formControlName="ticketName"
         required
       />
-      <label for="ticketName">Ticket Name</label>
+      <label for="ticketName">Ticket Name</label><br />
+      <span
+        class="form-error"
+        *ngIf="
+          uploadForm.get('ticketName')?.invalid &&
+          uploadForm.get('ticketName')?.touched
+        "
+        ngClass="text-danger"
+        >This field is required*</span
+      >
     </div>
 
     <div class="form-group">
@@ -19,6 +31,15 @@
       ></textarea>
       <label for="ticketDescription">Ticket Description</label>
     </div>
+    <span
+      class="form-error"
+      *ngIf="
+        uploadForm.get('ticketDescription')?.invalid &&
+        uploadForm.get('ticketDescription')?.touched
+      "
+      ngClass="text-danger"
+      >This field is required*</span
+    >
 
     <div class="form-group">
       <select id="priorityId" formControlName="priorityId" required>
@@ -28,7 +49,15 @@
       </select>
       <label for="priorityId">Choose Priority</label>
     </div>
-
+    <span
+      class="form-error"
+      *ngIf="
+        uploadForm.get('priorityId')?.invalid &&
+        uploadForm.get('priorityId')?.touched
+      "
+      ngClass="text-danger"
+      >This field is required*</span
+    >
     <div class="form-group">
       <select
         id="departmentId"
@@ -42,7 +71,15 @@
       </select>
       <label for="departmentId">Choose Department</label>
     </div>
-
+    <span
+      class="form-error"
+      *ngIf="
+        uploadForm.get('departmentId')?.invalid &&
+        uploadForm.get('departmentId')?.touched
+      "
+      ngClass="text-danger"
+      >This field is required*</span
+    >
     <div class="form-group">
       <select id="categoryId" formControlName="categoryId" required>
         <option *ngFor="let category of categories" [value]="category.id">
@@ -51,13 +88,22 @@
       </select>
       <label for="categoryId">Choose Category</label>
     </div>
-
+    <span
+      class="form-error"
+      *ngIf="
+        uploadForm.get('categoryId')?.invalid &&
+        uploadForm.get('categoryId')?.touched
+      "
+      ngClass="text-danger"
+      >This field is required*</span
+    >
     <div class="form-group">
       <input type="file" id="file" (change)="onFileChange($event)" required />
     </div>
 
     <div class="button-container">
       <app-button
+        id="submit-btn"
         type="submit"
         (click)="onSubmit()"
         class="pr-10"
@@ -70,4 +116,4 @@
     </div>
   </form>
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br />

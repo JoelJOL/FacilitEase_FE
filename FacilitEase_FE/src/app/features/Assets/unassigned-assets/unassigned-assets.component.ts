@@ -25,6 +25,6 @@ export class UnassignedAssetsComponent {
   }
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['manager/manager-view-ticket-simple', Id]);
+    //this.router.navigate(['manager/manager-view-ticket-simple', Id]);
   }
 }
