@@ -1,0 +1,58 @@
+/* button.component.css */
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-accepted {
+  background-color: var(--green);
+  color: #fff;
+}
+
+.btn-icon-display {
+  background-color: var(--white);
+  color: black;
+}
+
+.btn-accepted:hover {
+  background-color: var(--low_priority);
+}
+
+.btn-rejected {
+  background-color: var(--red);
+  color: #fff;
+}
+
+.btn-rejected:hover {
+  background-color: var(--dark_red);
+}
+
+.btn-submit {
+  background-color: var(--blue_violet);
+  color: #fff;
+}
+
+.btn-submit:hover {
+  background-color: var(--violet);
+}
+.btn-paginate {
+  background-color: var(--blue_violet);
+  color: #fff;
+}
+.btn-paginate:hover {
+  background-color: var(--violet);
+}
+.btn-forward {
+  background-color: var(--blue_violet);
+  color: #fff;
+}
+
+.btn-forward:hover {
+  background-color: var(--violet);
+}

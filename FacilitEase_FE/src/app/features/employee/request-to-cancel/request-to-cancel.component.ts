@@ -18,7 +18,7 @@ export class RequestToCancelComponent {
   customHeaderText = 'Supported Attachments';
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
-
+  isCancelRequested: boolean = false;
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -49,6 +49,8 @@ export class RequestToCancelComponent {
     this.ticketCancelService.cancelRequest(ticketId).subscribe(
       (response) => {
         console.log('Cancellation successful:', response);
+        this.isCancelRequested = true;
+        this.router.navigate(['employee/my-tickets']);
       },
       (error) => {
         console.error('Cancellation error:', error);
@@ -65,6 +67,8 @@ export class RequestToCancelComponent {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) this.onCancelRequest();
+      this.isCancelRequested = true;
+      this.router.navigate(['employee/my-tickets']);
     });
   }
 }

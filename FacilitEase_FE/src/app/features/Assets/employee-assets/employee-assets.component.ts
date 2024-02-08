@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AssetAPIService } from '@app/features/service/httpService/assetService/asset-api.service';
 import { Router } from '@angular/router';
 import { SearchService } from '@app/features/service/httpService/searchService/search.service';
@@ -11,7 +11,7 @@ import { SearchService } from '@app/features/service/httpService/searchService/s
 export class EmployeeAssetsComponent {
   apiLink: string = '';
   empId: number = 0;
-  @Input() getId: number = 0;
+
   constructor(
     private assetService: AssetAPIService,
     private router: Router,
@@ -29,14 +29,18 @@ export class EmployeeAssetsComponent {
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['manager/manager-view-ticket-simple', Id]);
+    //this.router.navigate(['manager/manager-view-ticket-simple', Id]);
   }
 
   GetId($event: number) {
     this.empId = $event;
     console.log(this.empId);
-    this.apiLink = this.assetService.getEmployeeAssets(this.empId);
+    this.setApiLink(this.empId);
   }
 
-  private loadEmployeeAssets(): void {}
+  public setApiLink(empId: number): void {
+    const userId = empId;
+    this.apiLink = this.assetService.getEmployeeAssets(userId);
+    console.log('User id passed is ' + userId);
+  }
 }

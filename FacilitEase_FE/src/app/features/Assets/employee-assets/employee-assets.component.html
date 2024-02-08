@@ -4,8 +4,9 @@
   (EmployeeId)="GetId($event)"
   class="search"
 ></app-dynamic-search>
-
-<div>
+<br /><br />
+<div *ngIf="empId">
+  <h1>{{ empId }}</h1>
   <app-data-table-new
     [headers]="headers"
     [apiLink]="apiLink"

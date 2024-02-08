@@ -57,7 +57,6 @@ import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
 import { UploadComponent } from './features/employee/upload/upload.component';
 import { TicketTrackingComponent } from './components/layout/ticket-tracking/ticket-tracking.component';
-import { MsalGuard } from '@azure/msal-angular';
 import {
   IsDepartmentHead,
   IsL1Admin,
