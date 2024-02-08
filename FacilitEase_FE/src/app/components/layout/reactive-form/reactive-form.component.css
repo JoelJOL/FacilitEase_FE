@@ -34,6 +34,21 @@ div[ngIf="showReview"] {
   margin-top: 20px;
 }
 
+.has-error .form-control {
+  border-color: #dc3545; /* Red color for border */
+}
+
+.error-message {
+  color: #dc3545; /* Red color for text */
+  font-size: 0.875rem; /* Adjust font size as needed */
+  margin-top: 0.25rem; /* Add some margin to separate from the input */
+}
+
+.required {
+  color: #dc3545; /* Red color for '*' */
+  margin-left: 0.125rem; /* Adjust spacing between text and '*' */
+}
+
 /* Add a breakpoint for small screens */
 @media screen and (max-width: 600px) {
   form {

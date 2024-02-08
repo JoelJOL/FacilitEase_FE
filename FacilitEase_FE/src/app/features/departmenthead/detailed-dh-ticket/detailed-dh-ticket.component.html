@@ -9,10 +9,10 @@
       [headerText]="customHeaderText"
       [ticketDetails]="ticketDetails"
     ></app-ticket-attachments>
-    <app-ticket-notes-attachments
-      [ticketId]="ticketId"
-    ></app-ticket-notes-attachments>
-    <!-- <app-title-sub [ticketDetails]="ticketDetails"></app-title-sub> -->
+    <app-ticket-na-simple
+      [notes]="ticketDetails.notes"
+      [lastupdate]="ticketDetails.lastUpdate"
+    ></app-ticket-na-simple>
   </div>
   <div class="person-cards-row">
     <!-- Raised By -->

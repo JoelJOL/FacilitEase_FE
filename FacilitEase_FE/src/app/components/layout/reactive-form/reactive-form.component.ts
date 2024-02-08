@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ManagerService } from '@app/features/service/httpService/React-form-fetch/manager.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -14,14 +15,27 @@ import { ManagerService } from '@app/features/service/httpService/React-form-fet
   styleUrls: ['./reactive-form.component.css'],
 })
 export class ReactiveFormComponent implements OnInit {
+  [x: string]: any;
   showReview: boolean = false;
   myForm!: FormGroup;
   employeecode = new FormControl('', Validators.required);
-  firstname = new FormControl('', Validators.required);
-  lastname = new FormControl('', Validators.required);
-  dob = new FormControl('', Validators.required);
+  firstname = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^[a-zA-Z]+$/),
+  ]);
+  lastname = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/),
+  ]);
+  dob = new FormControl('', [
+    Validators.required,
+    this.dateOfBirthValidator.bind(this),
+  ]);
   email = new FormControl('', [Validators.required, Validators.email]);
-  gender = new FormControl('', Validators.required);
+  gender = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^[a-zA-Z]+$/),
+  ]);
   managerId = new FormControl('');
   departmentId = new FormControl('', Validators.required);
   positionId = new FormControl('', Validators.required);
@@ -92,6 +106,32 @@ export class ReactiveFormComponent implements OnInit {
       locationId: this.locationId,
     });
   }
+  isInvalidControl(controlName: string): boolean {
+    const control = this.myForm.get(controlName);
+    const isValid = /^[a-zA-Z]+$/.test(control?.value); // Regex to allow only letters
+
+    // Check for the 'futureDate' error related to the date picker
+    const hasFutureDateError = control?.hasError('futureDate');
+
+    return (
+      (control?.invalid && (control.touched || control.dirty) && !isValid) ||
+      hasFutureDateError ||
+      false
+    );
+  }
+
+  dateOfBirthValidator(
+    control: FormControl
+  ): { [key: string]: boolean } | null {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+
+    if (selectedDate > currentDate) {
+      return { futureDate: true };
+    }
+
+    return null;
+  }
 
   submitForm() {
     console.log('Form Submitted:', this.myForm.value);
@@ -133,8 +173,9 @@ export class ReactiveFormComponent implements OnInit {
 
       this.managerService.submitForm(backendPayloadArray).subscribe(
         (response) => {
-          console.log('Form Successfully Submitted:', response);
-          // Additional logic if needed
+          prompt('Form Successfully Submitted:', response);
+          this.myForm.reset();
+          this.showReview = false;
         },
         (error) => {
           console.error('Error Submitting Form:', error);
