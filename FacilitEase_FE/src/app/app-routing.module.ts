@@ -71,6 +71,7 @@ import { UnassignedAssetsComponent } from './features/Assets/unassigned-assets/u
 import { EmployeeAssetsComponent } from './features/Assets/employee-assets/employee-assets.component';
 import { LoginScreenComponent } from './features/Authentication/login-screen/login-screen.component';
 import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
+import { MsalGuard } from '@azure/msal-angular';
 
 const routes: Routes = [
   {
