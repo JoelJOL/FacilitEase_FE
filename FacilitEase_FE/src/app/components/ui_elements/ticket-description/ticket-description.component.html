@@ -1,7 +1,9 @@
 <div *ngIf="ticketDetails">
   <div class="ticket_sub">
-    <p>
-      {{ ticketDetails.ticketName }}
+    <p class="ticket-name">{{ ticketDetails.ticketName }}</p>
+    <p class="created-date">
+      Created On:
+      {{ ticketDetails.submittedDate | date : "yyyy-MM-dd HH:mm:ss" }}
     </p>
   </div>
   <div class="ticket_desc">

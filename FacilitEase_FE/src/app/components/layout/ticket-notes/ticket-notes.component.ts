@@ -22,9 +22,6 @@ export class TicketNotesComponent {
     this.fetchTimeSinceLastUpdate();
   }
 
-  // Implement ngOnChanges lifecycle hook
- 
-
   
 
  

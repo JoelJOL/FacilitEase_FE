@@ -76,7 +76,7 @@ export class AgentTicketViewComponent {
         (response) => {
           console.log('API call success:', response);
           alert('Ticket resolved successfully!');
-          this.router.navigate(['/view-ticket']);
+          this.router.navigate(['l3admin/view-ticket']);
         },
         (error) => {
           console.error('API call error:', error);

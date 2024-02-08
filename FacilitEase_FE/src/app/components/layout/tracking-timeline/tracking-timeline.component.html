@@ -1,5 +1,3 @@
-<div class="timeline-head"><h2>TICKET TRACKING DETAILS</h2></div>
-<!-- timeline.component.html -->
 <section class="timeline-section">
   <div class="timeline-items">
     <div class="timeline-item" *ngFor="let item of value; let i = index">
@@ -19,18 +17,45 @@
               'open-status': item.content === 'Open',
               'in-progress-status': item.content === 'In Progress',
               'escalated-status': item.content === 'Escalated',
-              'resolved-status': item.content === 'Resolved'
+              'resolved-status': item.content === 'Resolved',
+              'on-hold-status': item.content === 'On Hold',
+              'cancel-request-status': item.content === 'Cancel Requested',
+              'cancel-status': item.content === 'Cancel'
             }"
           >
             {{ item.content }}
           </span>
         </p>
         <p *ngIf="i === 0">Submitted By: {{ item.submitted }}</p>
-        <p *ngIf="item.assigned !== 'Not Assigned'">
+        <p
+          *ngIf="
+            item.content === 'In Progress' && item.assigned !== 'Not Assigned'
+          "
+        >
           Assigned To: {{ item.assigned }}
         </p>
-        <p *ngIf="item.controller !== 'Not Assigned'">
-          Approved By: {{ item.controller }}
+        <p
+          *ngIf="
+            item.content === 'Resolved' && item.assigned !== 'Not Assigned'
+          "
+        >
+          Resolved By : {{ item.assigned }}
+        </p>
+        <!-- Show Approver By section for On Hold status -->
+        <p
+          *ngIf="
+            item.content === 'On Hold' && item.controller !== 'Not Assigned'
+          "
+        >
+          Forwarded To: {{ item.controller }}
+        </p>
+        <p
+          *ngIf="
+            item.content === 'Cancel Requested' &&
+            item.assigned !== 'Not Assigned'
+          "
+        >
+          Requested To: {{ item.assigned }}
         </p>
       </div>
     </div>

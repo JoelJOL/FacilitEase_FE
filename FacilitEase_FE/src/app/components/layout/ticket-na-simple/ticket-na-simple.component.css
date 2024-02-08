@@ -4,12 +4,12 @@
 .notes_heading_lastupdate {
   display: flex;
   justify-content: space-between;
-  font-weight: 700;
+  font-weight: 400;
 }
 #notes_heading {
   font-weight: 700;
 }
 .notes_description {
-  font-size: small;
+  font-size: medium;
   color: var(--dark_grey);
 }
