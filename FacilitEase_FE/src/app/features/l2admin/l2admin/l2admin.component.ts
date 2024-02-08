@@ -59,7 +59,7 @@ export class L2AdminComponent {
       this.router.navigate(['l2admin/unassigned-tickets']);
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin/l2report/2']);
+      this.router.navigate(['l2admin/l2report']);
     } else if (clickedField.title === 'Data Entry') {
       this.showL2AdminTickets = true;
       this.router.navigate(['l2admin/add-employee']);

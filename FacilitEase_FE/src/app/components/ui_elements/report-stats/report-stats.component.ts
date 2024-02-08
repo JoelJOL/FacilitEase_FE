@@ -10,7 +10,10 @@ import { WeekReport } from '@app/features/l2admin/L2AdminModel/model';
 })
 export class ReportStatsComponent {
   constructor(private reportService: ReportService) {}
-
+  dT: number = 0;
+  dR: number = 0;
+  dU: number = 0;
+  dE: number = 0;
   @ViewChild('doughchart')
   doughnutChartCanvas!: ElementRef;
 
@@ -33,15 +36,19 @@ export class ReportStatsComponent {
       console.log(data);
       this.weekReport = data;
       this.doughnutChartData.datasets.push({
-        data: [20, 10, 20],
-        // data: [
-        //   data.weeklyResolved,
-        //   data.weeklyUnresolved,
-        //   data.weeklyEscalated,
-        // ],
+        // data: [20, 10, 20],
+        data: [
+          data.weeklyResolved,
+          data.weeklyUnresolved,
+          data.weeklyEscalated,
+        ],
       });
       this.doughnutChartData.datasets[0].backgroundColor = ['#6418C3'];
       this.doughnutChartDatasets = this.doughnutChartData;
+      this.dT = this.weekReport.dailyTickets;
+      this.dR = this.weekReport.dailyTickets;
+      this.dU = this.weekReport.dailyTickets;
+      this.dE = this.weekReport.dailyTickets;
 
       console.log(this.doughnutChartData.datasets[0].data);
     });

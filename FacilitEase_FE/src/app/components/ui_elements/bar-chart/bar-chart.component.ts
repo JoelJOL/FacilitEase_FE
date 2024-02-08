@@ -102,8 +102,8 @@ export class BarChartComponent {
       (data) => {
         console.log(data);
         for (const month of this.months) {
-          this.resolved.push(20, 20, 20);
-          this.escalated.push(10, 10, 10);
+          this.escalated.push(data[month][0]);
+          this.escalated.push(data[month][1]);
           // this.escalated.push(data[month][1]);
         }
 

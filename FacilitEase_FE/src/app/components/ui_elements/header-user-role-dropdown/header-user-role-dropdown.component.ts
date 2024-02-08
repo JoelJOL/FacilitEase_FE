@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 
 @Component({
@@ -13,11 +14,12 @@ export class HeaderUserRoleDropdownComponent implements OnInit {
 
   constructor(
     public userRoleService: UserRoleService,
-    private router: Router
+    private router: Router,
+    private azureService: AzureService
   ) {}
 
   ngOnInit(): void {
-    this.userRoles = this.userRoleService.getUserRoles();
+    this.userRoles = this.azureService.azureRoles;
   }
 
   sanitizeRoleValue(role: string): string {
@@ -30,6 +32,7 @@ export class HeaderUserRoleDropdownComponent implements OnInit {
       const sanitizedValue = this.sanitizeRoleValue(this.selectedValue);
       console.log('Selected Value:', sanitizedValue);
       this.router.navigate([sanitizedValue]);
+      this.userRoleService.getUserRole();
     }
   }
 }
