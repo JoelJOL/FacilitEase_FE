@@ -21,7 +21,11 @@ var ManagerComponent = /** @class */ (function () {
             },
             {
                 logo: 'assets/ticket-solid.svg',
-                title: 'Employee Tickets'
+                title: 'Employee Tickets',
+                subfields: [
+                    'Live Tickets',
+                    'All Tickets',
+                ]
             },
         ];
         this.showManagerTickets = false;
@@ -35,8 +39,6 @@ var ManagerComponent = /** @class */ (function () {
             // Optionally, you can set showL2AdminTickets based on isCollapsed state
             // this.showL2AdminTickets = !isCollapsed; // Example, adjust as needed
         });
-        this.showManagerTickets = true;
-        this.router.navigate(['manager/manager-view-waiting-tickets']);
     };
     ManagerComponent.prototype.onFieldClicked = function (clickedField) {
         console.log("Handling in App Component for " + clickedField.title);
@@ -46,7 +48,6 @@ var ManagerComponent = /** @class */ (function () {
         }
         else if (clickedField.title === 'Employee Tickets') {
             this.showManagerTickets = true;
-            this.router.navigate(['manager/manager-view-employee-tickets']);
         }
         else if (clickedField.title === 'Waiting Tickets') {
             this.showManagerTickets = true;
@@ -54,6 +55,18 @@ var ManagerComponent = /** @class */ (function () {
         }
         else {
             this.showManagerTickets = false;
+        }
+    };
+    ManagerComponent.prototype.onSubfieldClicked = function (event) {
+        if (event.field.title === 'Employee Tickets') {
+            if (event.subfield === 'Live Tickets') {
+                this.showManagerTickets = true;
+                this.router.navigate(['manager/manager-view-live-employee-tickets']);
+            }
+            else if (event.subfield === 'All Tickets') {
+                this.showManagerTickets = true;
+                this.router.navigate(['manager/manager-view-employee-tickets']);
+            }
         }
     };
     ManagerComponent = __decorate([

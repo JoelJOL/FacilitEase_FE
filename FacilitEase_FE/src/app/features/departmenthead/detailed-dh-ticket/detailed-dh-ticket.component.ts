@@ -39,14 +39,26 @@ export class DetailedDhTicketComponent implements OnInit {
   updateTicket(isApproved: boolean): void {
     const ticketId = this.ticketDetails.id.toString();
     if (ticketId) {
-      this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
-        () => {
-          console.log('Ticket updated successfully');
-        },
-        (error) => {
-          console.error('Error updating ticket', error);
-        }
+      const confirmation = window.confirm(
+        'Are you sure you want to update the ticket?'
       );
+
+      if (confirmation) {
+        this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
+          () => {
+            console.log('Ticket updated successfully');
+            alert('Ticket updated successfully');
+            this.redirectToPreviousPage();
+          },
+          (error) => {
+            console.error('Error updating ticket', error);
+          }
+        );
+      }
     }
+  }
+
+  redirectToPreviousPage(): void {
+    window.history.back();
   }
 }

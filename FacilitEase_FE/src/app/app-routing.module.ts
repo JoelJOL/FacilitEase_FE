@@ -71,6 +71,7 @@ import { TicketDocumentsComponent } from './features/employee/ticket-documents/t
 import { UnassignedAssetsComponent } from './features/Assets/unassigned-assets/unassigned-assets.component';
 import { EmployeeAssetsComponent } from './features/Assets/employee-assets/employee-assets.component';
 import { LoginScreenComponent } from './features/Authentication/login-screen/login-screen.component';
+import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
 
 const routes: Routes = [
   {
@@ -197,6 +198,10 @@ const routes: Routes = [
       {
         path: 'manager-view-ticket-simple/:Id',
         component: ManagerViewTicketSimpleComponent,
+      },
+      {
+        path: 'manager-view-live-employee-tickets',
+        component: ManagerViewLiveEmployeeTicketsComponent,
       },
       { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
     ],

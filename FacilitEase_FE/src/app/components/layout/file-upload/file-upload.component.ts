@@ -29,11 +29,15 @@ export class FileUploadComponent {
 
   onDragOver(event: any) {
     event.preventDefault();
+    const files = event?.dataTransfer?.files;
+    this.selectedFileName = files?.[0]?.name || '';
     event.stopPropagation();
   }
 
   onDragLeave(event: any) {
     event.preventDefault();
+    const files = event?.dataTransfer?.files;
+    this.selectedFileName = files?.[0]?.name || '';
     event.stopPropagation();
   }
 
@@ -105,6 +109,7 @@ export class FileUploadComponent {
     return this.employeeBulkuploadService.postData(data).subscribe(
       (response) => {
         console.log('Success:', response);
+        alert('Data posted successfully!');
         this.selectedFileName = '';
       },
       (error) => {

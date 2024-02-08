@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MasterService } from '@app/features/service/dataService/master.service';
+import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 
 @Component({

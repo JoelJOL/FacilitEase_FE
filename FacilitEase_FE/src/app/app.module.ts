@@ -52,7 +52,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/agent-ticket-view.component';
 import { TitleSubComponent } from './components/ui_elements/title-sub/title-sub.component';
 import { ModalComponent } from './components/layout/modal/modal.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -94,7 +97,7 @@ import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh
 import { RoleDisplayDropdownComponent } from './components/ui_elements/role-display-dropdown/role-display-dropdown.component';
 import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
-import { MasterService } from './features/service/dataService/master.service';
+import { MasterService } from './features/service/dataService/masterService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
 import { EmplycarddisplayComponent } from './components/layout/emplycarddisplay/emplycarddisplay.component';
 import { EmployeeAddComponent } from './components/layout/employee-add/employee-add.component';
@@ -121,7 +124,7 @@ import {
   MsalModule,
   MsalRedirectComponent,
 } from '@azure/msal-angular';
-import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
+
 import { AzureService } from './features/Authentication/azureService/azure.service';
 import { SkeletonLoaderComponent } from './components/layout/skeleton-loader/skeleton-loader.component';
 
@@ -136,6 +139,9 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
 import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
+import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
+
+import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -177,7 +183,7 @@ const isIE =
     ModalComponent,
     AgentTicketsViewComponent,
     SidebarSubfieldComponent,
-    ManagerSubordinatesComponent,
+    TicketTrackingComponent,
     ManagerComponent,
     L2AdminComponent,
     UnassignedTicketsComponent,
@@ -214,6 +220,7 @@ const isIE =
     RoleDisplayDropdownComponent,
     TruncatePipe,
     ManagerTicketInfoComponent,
+    ManagerSubordinatesComponent,
     ConfirmationModalComponent,
     EmplycarddisplayComponent,
     EmployeeAddComponent,
@@ -243,6 +250,7 @@ const isIE =
     EmployeeAssetsComponent,
     GenerateReportComponent,
     TicketTrackingComponent,
+    ManagerViewLiveEmployeeTicketsComponent,
   ],
   imports: [
     HttpClientModule,
@@ -299,6 +307,7 @@ const isIE =
     ModalService,
     MasterService,
     NotificationService,
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     SharedService,
     {
       provide: HTTP_INTERCEPTORS,
