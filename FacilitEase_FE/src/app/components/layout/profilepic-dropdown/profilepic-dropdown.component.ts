@@ -14,9 +14,6 @@ export class ProfilepicDropdownComponent {
     private azureService: AzureService
   ) {}
   Logout() {
-    this.azureService.isLogged = false;
-    this.authService.logoutRedirect({
-      postLogoutRedirectUri: environment.postLogoutUrl,
-    });
+    this.azureService.Logout();
   }
 }

@@ -60,9 +60,6 @@ export class LoginScreenComponent {
       .subscribe((x) => {
         this.isUserLoggedIn =
           this.authService.instance.getAllAccounts().length > 0;
-
-        this.isUserLoggedIn = this.azureService.isLogged;
-
         // console.log('isUserLoggedIn : ', this.isUserLoggedIn);
         console.log(this.authService.instance.getAllAccounts());
 
@@ -91,6 +88,7 @@ export class LoginScreenComponent {
           this.azureObj.accessToken = accessToken;
           this.azureObj.idToken = authenticationResult.idToken;
           this.azureService.isLogged = true;
+          sessionStorage.setItem('AzureJwt', authenticationResult.idToken);
           if (!sessionStorage.getItem('FacilitEaseJwt')) {
             this.azureService.AzureData(this.azureObj).subscribe((response) => {
               this.azureService.ResolveToken(response);
@@ -113,6 +111,7 @@ export class LoginScreenComponent {
     this.authService.logoutRedirect({
       postLogoutRedirectUri: environment.postLogoutUrl,
     });
+    this.isUserLoggedIn = false;
   }
 
   ngOnDestroy(): void {

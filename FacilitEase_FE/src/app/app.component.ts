@@ -5,6 +5,7 @@ import { Route, Router } from '@angular/router';
 import { Card } from './components/layout/employee-cards/card.model';
 import { AzureService } from './features/Authentication/azureService/azure.service';
 import { Subject } from 'rxjs';
+import { AzureReturn } from './features/Authentication/authModels/model';
 interface Field {
   logo: string;
   title: string;
@@ -42,11 +43,23 @@ export class AppComponent {
     private azureService: AzureService,
     private router: Router
   ) {}
+  azureReturn: AzureReturn = {
+    token: '',
+  };
   isLogged: boolean = false;
   ngOnInit() {
     this.azureService.isUserLoggedIn.subscribe((data) => {
       this.isLogged = data;
     });
+    // const token = sessionStorage.getItem('FacilitEaseJwt');
+    // if (token != null) {
+    //   this.azureReturn.token = token;
+    //   this.azureService.ResolveToken(this.azureReturn);
+    // } else {
+    //   if (this.isLogged == false) {
+    //     this.azureService.Logout();
+    //   }
+    // }
   }
   updateTicket(isApproved: boolean): void {
     const ticketId = prompt('Enter Ticket ID:');
