@@ -1,0 +1,10 @@
+<h1 id="heading">Employee Tickets</h1>
+<div>
+  <app-data-table-new
+    [headers]="headers"
+    [apiLink]="apiLink"
+    (rowClicked)="onRowClicked($event)"
+    id="datatable"
+  ></app-data-table-new>
+</div>
+

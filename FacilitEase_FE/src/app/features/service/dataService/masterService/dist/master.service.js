@@ -14,15 +14,21 @@ var MasterService = /** @class */ (function () {
         this.apiLinkEscalated = 'https://localhost:7049/api/l2/escalated-tickets';
         this.apiLinkAssigned = 'https://localhost:7049/api/l2/assigned-tickets';
         this.apiLinkUnassigned = 'https://localhost:7049/api/l2/unassigned-tickets';
+        this.userId = 1;
+        this.apiLinkProjectEmployeeDeatils = "https://localhost:7049/api/Employee/employeesByProject/" + this.userId;
         this.DepartmentId = 11;
         this.apiLinkL2Subordinates = "https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=" + this.DepartmentId;
     }
     MasterService.prototype.getApiLink = function () {
-        var apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/10';
+        var apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/17';
         return apiUrl;
     };
     MasterService.prototype.getApiLink2 = function () {
-        var apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/10';
+        var apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/17';
+        return apiUrl;
+    };
+    MasterService.prototype.getApiLink3 = function () {
+        var apiUrl = 'https://localhost:7049/api/Manager/GetLiveTicketByManager/17';
         return apiUrl;
     };
     MasterService.prototype.getManagerTicketDetails = function (ticketId) {
@@ -61,6 +67,9 @@ var MasterService = /** @class */ (function () {
     };
     MasterService.prototype.getApiLinkL2Subordinates = function () {
         return this.apiLinkL2Subordinates;
+    };
+    MasterService.prototype.getApiLinkProjectEmployeeDetails = function () {
+        return this.apiLinkProjectEmployeeDeatils;
     };
     MasterService = __decorate([
         core_1.Injectable({

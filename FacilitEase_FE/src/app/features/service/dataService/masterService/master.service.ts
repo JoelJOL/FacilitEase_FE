@@ -17,11 +17,15 @@ export class MasterService {
   userId = 1;
   private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/Employee/employeesByProject/${this.userId}`;
   getApiLink(): string {
-    const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/10';
+    const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/17';
     return apiUrl;
   }
   getApiLink2(): string {
-    const apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/10';
+    const apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/17';
+    return apiUrl;
+  }
+  getApiLink3(): string {
+    const apiUrl = 'https://localhost:7049/api/Manager/GetLiveTicketByManager/17';
     return apiUrl;
   }
   getManagerTicketDetails(ticketId: number): Observable<any> {

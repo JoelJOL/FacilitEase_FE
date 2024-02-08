@@ -85,7 +85,7 @@ export class ManagerViewTicketDetailComponent implements OnInit {
     });
   }
   forwardTicket() {
-        this.masterService.sendForApproval(this.ticketDetails.id, 2)
+        this.masterService.sendForApproval(this.ticketDetails.id, 17)
           .subscribe(
             () => {
               console.log('Forwarded for approval successfully');

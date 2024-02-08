@@ -25,6 +25,7 @@ var button_component_1 = require("./components/ui_elements/button/button.compone
 var dropdown_1 = require("ngx-bootstrap/dropdown");
 var profilepic_dropdown_component_1 = require("./components/layout/profilepic-dropdown/profilepic-dropdown.component");
 var sidebar_subfield_component_1 = require("./components/ui_elements/sidebar-subfield/sidebar-subfield.component");
+var manager_subordinates_component_1 = require("./features/manager/manager-subordinates/manager-subordinates.component");
 var manager_component_1 = require("./features/manager/manager/manager.component");
 var assign_dropdown_component_1 = require("./components/ui_elements/assign-dropdown/assign-dropdown.component");
 var l2admin_component_1 = require("./features/l2admin/l2admin/l2admin.component");
@@ -130,11 +131,13 @@ var ticket_tracking_component_1 = require("./components/layout/ticket-tracking/t
 var onscroll_directive_1 = require("./features/service/directive/onscroll/onscroll.directive");
 var tracking_modal_component_1 = require("./components/layout/tracking-modal/tracking-modal.component");
 var ticket_documents_component_1 = require("./features/employee/ticket-documents/ticket-documents.component");
+var myteam_employee_component_1 = require("./features/employee/myteam-employee/myteam-employee.component");
 var unassigned_assets_component_1 = require("./features/Assets/unassigned-assets/unassigned-assets.component");
 var employee_assets_component_1 = require("./features/Assets/employee-assets/employee-assets.component");
 var notification_service_1 = require("./features/service/httpService/NotificationService/notification.service");
 var shared_service_1 = require("./features/service/httpService/SharedService/shared.service");
 var generate_report_component_1 = require("./components/ui_elements/generate-report/generate-report.component");
+var manager_view_live_employee_tickets_component_1 = require("./features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component");
 var isIE = window.navigator.userAgent.indexOf('MSIE') > -1 ||
     window.navigator.userAgent.indexOf('Trident/') > -1;
 var AppModule = /** @class */ (function () {
@@ -214,6 +217,7 @@ var AppModule = /** @class */ (function () {
                 role_display_dropdown_component_1.RoleDisplayDropdownComponent,
                 truncate_pipe_1.TruncatePipe,
                 manager_ticket_info_component_1.ManagerTicketInfoComponent,
+                manager_subordinates_component_1.ManagerSubordinatesComponent,
                 confirmation_modal_component_1.ConfirmationModalComponent,
                 emplycarddisplay_component_1.EmplycarddisplayComponent,
                 employee_add_component_1.EmployeeAddComponent,
@@ -238,9 +242,11 @@ var AppModule = /** @class */ (function () {
                 onscroll_directive_1.OnscrollDirective,
                 tracking_modal_component_1.TrackingModalComponent,
                 ticket_documents_component_1.TicketDocumentsComponent,
+                myteam_employee_component_1.MyteamEmployeeComponent,
                 unassigned_assets_component_1.UnassignedAssetsComponent,
                 employee_assets_component_1.EmployeeAssetsComponent,
                 generate_report_component_1.GenerateReportComponent,
+                manager_view_live_employee_tickets_component_1.ManagerViewLiveEmployeeTicketsComponent,
             ],
             imports: [
                 http_1.HttpClientModule,

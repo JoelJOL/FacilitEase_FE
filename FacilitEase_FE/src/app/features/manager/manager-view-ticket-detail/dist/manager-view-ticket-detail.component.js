@@ -76,7 +76,7 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
         });
     };
     ManagerViewTicketDetailComponent.prototype.forwardTicket = function () {
-        this.masterService.sendForApproval(this.ticketDetails.id, 2)
+        this.masterService.sendForApproval(this.ticketDetails.id, 17)
             .subscribe(function () {
             console.log('Forwarded for approval successfully');
         }, function (error) {

@@ -136,6 +136,7 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
 import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
+import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -214,6 +215,7 @@ const isIE =
     RoleDisplayDropdownComponent,
     TruncatePipe,
     ManagerTicketInfoComponent,
+    ManagerSubordinatesComponent,
     ConfirmationModalComponent,
     EmplycarddisplayComponent,
     EmployeeAddComponent,
@@ -238,9 +240,11 @@ const isIE =
     OnscrollDirective,
     TrackingModalComponent,
     TicketDocumentsComponent,
+    MyteamEmployeeComponent,
     UnassignedAssetsComponent,
     EmployeeAssetsComponent,
     GenerateReportComponent,
+    ManagerViewLiveEmployeeTicketsComponent,
   ],
   imports: [
     HttpClientModule,

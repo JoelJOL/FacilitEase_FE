@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { TrackingModalComponent } from '@app/components/layout/tracking-modal/tracking-modal.component';
 
 @Component({
   selector: 'app-manager-ticket-info',
@@ -15,10 +17,11 @@ export class ManagerTicketInfoComponent {
   @Input() ticketDetails: any;
   selectedPriority!: number;
   editingPriority: boolean = false;
+  modalRef: BsModalRef | undefined;
   
 
   
-  constructor(private masterService: MasterService, private router:Router) {
+  constructor(private masterService: MasterService, private router:Router,private modalService: BsModalService) {
     this.selectedPriority = -1;
   }
 
@@ -61,5 +64,13 @@ export class ManagerTicketInfoComponent {
     else{
       console.log("Cant enter the if loop");
     }
+  }
+  openTrackingModal() {
+    this.modalRef = this.modalService.show(TrackingModalComponent,{
+      initialState: {
+        ticketDetails: this.ticketDetails,
+      },
+    });
+    console.log("This is modal")
   }
 }
