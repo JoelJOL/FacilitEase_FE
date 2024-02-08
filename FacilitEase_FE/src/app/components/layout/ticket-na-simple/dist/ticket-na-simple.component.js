@@ -9,11 +9,19 @@ exports.__esModule = true;
 exports.TicketNaSimpleComponent = void 0;
 var core_1 = require("@angular/core");
 var TicketNaSimpleComponent = /** @class */ (function () {
-    function TicketNaSimpleComponent() {
+    function TicketNaSimpleComponent(agentService) {
+        this.agentService = agentService;
         this.notes = 'Default Notes';
         this.lastupdate = 'Default time';
+        this.ticketId = 0;
+        this.commentText = '';
     }
     TicketNaSimpleComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.agentService.getCommentText(this.ticketId).subscribe(function (commentText) {
+            console.log('Comment Text:', commentText);
+            _this.commentText = commentText;
+        });
     };
     __decorate([
         core_1.Input()
@@ -21,6 +29,9 @@ var TicketNaSimpleComponent = /** @class */ (function () {
     __decorate([
         core_1.Input()
     ], TicketNaSimpleComponent.prototype, "lastupdate");
+    __decorate([
+        core_1.Input()
+    ], TicketNaSimpleComponent.prototype, "ticketId");
     TicketNaSimpleComponent = __decorate([
         core_1.Component({
             selector: 'app-ticket-na-simple',

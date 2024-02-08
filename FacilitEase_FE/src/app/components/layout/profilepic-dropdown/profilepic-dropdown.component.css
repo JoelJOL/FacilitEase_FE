@@ -23,6 +23,10 @@
   width: 40px;
   border-color: white;
 }
+
+.dropdown-menu {
+  margin-left: 65px;
+}
 ::after {
   margin-top: 20px;
   margin-right: 7px;

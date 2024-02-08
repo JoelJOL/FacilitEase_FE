@@ -8,6 +8,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class TrackingModalComponent {
   @Input() ticketDetails: any;
+  header: any = 'Ticket Tracking Details';
   @ViewChild('modalBody') modalBody!: ElementRef;
   constructor(public modalRef: BsModalRef){}
   close() {

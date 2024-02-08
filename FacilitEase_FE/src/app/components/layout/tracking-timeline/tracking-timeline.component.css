@@ -114,6 +114,11 @@
     font-weight: bold;;
   }
   
+  .on-hold-status {
+    color: #4d0c0a; /* Orange */
+    font-weight: bold;;
+  }
+
   .escalated-status {
     color: #FFA500; /* Orange */
     font-weight: bold;;
@@ -121,6 +126,16 @@
   
   .resolved-status {
     color: #32CD32; /* LimeGreen */
+    font-weight: bold;
+  }
+
+  .cancel-request-status {
+    color: #0066ff; /* Orange */
+    font-weight: bold;
+  }
+
+  .cancel-status{
+	color: #7300ff; /* Orange */
     font-weight: bold;
   }
   

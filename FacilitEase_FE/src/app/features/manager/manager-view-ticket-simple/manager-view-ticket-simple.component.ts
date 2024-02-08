@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
-import { MasterService } from '@app/features/service/dataService/master.service';
+import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketDetails } from '@app/ticket-details';

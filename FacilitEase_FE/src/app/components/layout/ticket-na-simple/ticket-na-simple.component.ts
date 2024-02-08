@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MasterService } from '@app/features/service/dataService/master.service';
+import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 
 @Component({
@@ -13,13 +13,11 @@ export class TicketNaSimpleComponent {
   @Input() ticketId: number=0; 
 constructor(private agentService:AgentService){}
 commentText: string='';
+lastUpdated:string = '';
 
   ngOnInit() {
-    this.agentService.getCommentText(this.ticketId).subscribe(
-      (commentText: string) => {
-        console.log('Comment Text:', commentText);
-        this.commentText = commentText;
-      });
+    
   }
 
 }
+

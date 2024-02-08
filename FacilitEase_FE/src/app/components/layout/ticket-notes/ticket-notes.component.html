@@ -6,15 +6,14 @@
 
   <form [formGroup]="form">
     <div class="notes_description">
-      <input
-        type="text"
+      <textarea
         class="form-control"
         formControlName="notes"
         [style.color]="'#808080'"
         [style.border-color]="'#80bdff'"
         [readonly]="!editMode"
         [placeholder]="!form.get('notes')?.value ? 'Enter notes here' : ''"
-      />
+      ></textarea>
     </div>
   </form>
 </div>

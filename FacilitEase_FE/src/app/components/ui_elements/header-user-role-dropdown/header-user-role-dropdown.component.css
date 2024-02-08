@@ -1,11 +1,15 @@
 .custom-dropdown {
   height: 40px;
-  width: 200px;
+  width: max-content;
+  padding: 10px;
   border: 1px solid var(--dark_grey);
   border-radius: 20px;
   align-items: center;
+  z-index:-100;
 }
-
+.option{
+  width: 200px;
+}
 .img_user {
   height: 30px;
   width: 30px;

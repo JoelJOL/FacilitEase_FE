@@ -12,6 +12,9 @@
         class="form-control"
         formControlName="employeeCode"
       />
+      <div *ngIf="isInvalidControl('employeeCode')" class="error-message">
+        Employee Code is required<span class="required">*</span>.
+      </div>
     </div>
 
     <label for="firstname" class="col-md-3 col-form-label">First Name:</label>
@@ -22,6 +25,14 @@
         class="form-control"
         formControlName="firstName"
       />
+      <div *ngIf="isInvalidControl('firstName')" class="error-message">
+        <span *ngIf="myForm.get('firstName')?.errors?.['pattern']">
+          First Name should only contain letters.
+        </span>
+        <span *ngIf="myForm.get('firstName')?.errors?.['required']">
+          First Name is required<span class="required">*</span>.
+        </span>
+      </div>
     </div>
   </div>
 
@@ -34,11 +45,28 @@
         class="form-control"
         formControlName="lastName"
       />
+      <div *ngIf="isInvalidControl('lastName')" class="error-message">
+        <span *ngIf="myForm.get('lastName')?.hasError('pattern')">
+          Last Name should only contain letters.
+        </span>
+        <span *ngIf="myForm.get('lastName')?.hasError('required')">
+          Last Name is required<span class="required">*</span>.
+        </span>
+      </div>
     </div>
 
     <label for="dob" class="col-md-3 col-form-label">DOB:</label>
     <div class="col-md-9">
       <input type="date" id="dob" class="form-control" formControlName="dob" />
+      <div *ngIf="isInvalidControl('dob')" class="error-message">
+        <span *ngIf="myForm.get('dob')?.hasError('required')"
+          >Date of Birth is required<span class="required">*</span>.</span
+        >
+        <span *ngIf="myForm.get('dob')?.hasError('futureDate')"
+          >Date of Birth cannot be in the future<span class="required">*</span
+          >.</span
+        >
+      </div>
     </div>
   </div>
 
@@ -51,6 +79,9 @@
         class="form-control"
         formControlName="email"
       />
+      <div *ngIf="isInvalidControl('email')" class="error-message">
+        Email is required<span class="required">*</span>.
+      </div>
     </div>
 
     <label for="gender" class="col-md-3 col-form-label">Gender:</label>
@@ -61,6 +92,14 @@
         class="form-control"
         formControlName="gender"
       />
+      <div *ngIf="isInvalidControl('gender')" class="error-message">
+        <span *ngIf="myForm.get('gender')?.hasError('pattern')">
+          Gender should only contain letters.
+        </span>
+        <span *ngIf="myForm.get('gender')?.hasError('required')">
+          Gender is required<span class="required">*</span>.
+        </span>
+      </div>
     </div>
   </div>
 
@@ -78,6 +117,9 @@
           {{ manager.managerName }}
         </option>
       </select>
+      <div *ngIf="isInvalidControl('managerId')" class="error-message">
+        Manager is required<span class="required">*</span>.
+      </div>
     </div>
 
     <label for="departmentId" class="col-md-3 col-form-label"
@@ -95,6 +137,9 @@
           {{ department.deptName }}
         </option>
       </select>
+      <div *ngIf="isInvalidControl('departmentId')" class="error-message">
+        Department is required<span class="required">*</span>.
+      </div>
     </div>
   </div>
 
@@ -112,6 +157,9 @@
           {{ position.positionName }}
         </option>
       </select>
+      <div *ngIf="isInvalidControl('positionId')" class="error-message">
+        Position is required<span class="required">*</span>.
+      </div>
     </div>
 
     <label for="locationId" class="col-md-3 col-form-label">LocationId:</label>
@@ -127,6 +175,9 @@
           {{ location.locationName }}
         </option>
       </select>
+      <div *ngIf="isInvalidControl('locationId')" class="error-message">
+        Location is required<span class="required">*</span>.
+      </div>
     </div>
   </div>
 
