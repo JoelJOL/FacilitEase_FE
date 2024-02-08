@@ -52,7 +52,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/agent-ticket-view.component';
 import { TitleSubComponent } from './components/ui_elements/title-sub/title-sub.component';
 import { ModalComponent } from './components/layout/modal/modal.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -136,8 +139,8 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
 import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
-import { InteractionType } from '@azure/msal-browser/dist/utils/BrowserConstants';
-import { PublicClientApplication } from '@azure/msal-browser/dist/app/PublicClientApplication';
+
+import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -301,6 +304,7 @@ const isIE =
     ModalService,
     MasterService,
     NotificationService,
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     SharedService,
     {
       provide: HTTP_INTERCEPTORS,

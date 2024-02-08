@@ -27,7 +27,13 @@
         class="form-control"
       />
       <div class="input-group-append">
-        <button (click)="upload()" class="btn btn-primary">Upload</button>
+        <button
+          (click)="upload()"
+          class="btn btn-primary"
+          [disabled]="!selectedFileName"
+        >
+          Upload
+        </button>
       </div>
     </div>
     <input
