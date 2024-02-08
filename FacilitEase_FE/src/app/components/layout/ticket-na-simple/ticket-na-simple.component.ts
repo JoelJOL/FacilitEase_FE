@@ -13,13 +13,11 @@ export class TicketNaSimpleComponent {
   @Input() ticketId: number=0; 
 constructor(private agentService:AgentService){}
 commentText: string='';
+lastUpdated:string = '';
 
   ngOnInit() {
-    this.agentService.getCommentText(this.ticketId).subscribe(
-      (commentText: string) => {
-        console.log('Comment Text:', commentText);
-        this.commentText = commentText;
-      });
+    
   }
 
 }
+

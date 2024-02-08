@@ -1,10 +1,11 @@
 .ticket_desc {
   color: var(--dark_grey);
+  padding-bottom: 8px;
 }
 
 .ticket_desc p {
   font-size: medium;
-  line-height: 2;
+  line-height: 1.2;
   
 }
 
@@ -12,3 +13,19 @@
   font-size: 24px;
   line-height: 1.2;
 }
+
+.ticket_sub {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Align items vertically in the center */
+}
+
+.ticket-name {
+  flex: 2; /* Make ticket-name take up 2/3 of the available space */
+}
+
+.created-date {
+  font-size: 14px;
+  flex: 0.6; /* Make created-date take up 1/3 of the available space */
+  text-align: right; /* Align text to the right */
+}
+

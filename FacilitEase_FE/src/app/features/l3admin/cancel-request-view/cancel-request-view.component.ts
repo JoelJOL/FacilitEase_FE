@@ -60,11 +60,32 @@ export class CancelRequestViewComponent {
     );
 
     if (isConfirmed) {
-      this.agentService.resolveTicket(this.ticketId).subscribe(
+      this.agentService.AcceptCancelTicket(this.ticketId).subscribe(
         (response) => {
           console.log('API call success:', response);
-          alert('Ticket resolved successfully!');
-          this.router.navigate(['/view-ticket']);
+          alert('Ticket cancelled successfully!');
+          this.router.navigate(['l3admin/cancel-requests']);
+        },
+        (error) => {
+          console.error('API call error:', error);
+        }
+      );
+    } else {
+      console.log('Cancellation acceptation success.');
+    }
+  }
+
+  denyCancelRequest(): void {
+    const isConfirmed = window.confirm(
+      'Are you sure you want to accept the cancellation request?'
+    );
+
+    if (isConfirmed) {
+      this.agentService.DenyCancelTicket(this.ticketId).subscribe(
+        (response) => {
+          console.log('API call success:', response);
+          alert('Cancellation denied successfully!');
+          this.router.navigate(['l3admin/cancel-requests']);
         },
         (error) => {
           console.error('API call error:', error);

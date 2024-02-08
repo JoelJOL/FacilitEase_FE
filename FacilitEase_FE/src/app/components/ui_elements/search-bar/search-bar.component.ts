@@ -11,4 +11,6 @@ export class SearchBarComponent {
   search(): void {
     this.searchQueryChange.emit(this.searchQuery);
   }
+
+
 }

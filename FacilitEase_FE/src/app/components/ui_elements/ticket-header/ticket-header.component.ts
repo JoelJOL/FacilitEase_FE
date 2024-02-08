@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 
 @Component({
@@ -7,5 +7,5 @@ import { AgentService } from '@app/features/service/httpService/agentSerivce/age
   styleUrls: ['./ticket-header.component.css'],
 })
 export class TicketHeaderComponent {
-  header: string = 'Assigned Tickets';
+  @Input() header: string = '';
 }

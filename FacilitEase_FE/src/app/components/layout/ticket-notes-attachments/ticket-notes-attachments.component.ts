@@ -48,10 +48,10 @@ export class TicketNotesAttachmentsComponent {
       this.agentService.addComment(notes,this.ticketId).subscribe(
         (response) => {
           // Handle the response appropriately (similar to your existing code)
-          console.log('Comment added successfully');
+          console.log('Comment posted successfully');
           console.log('Response:', response);
   
-          if (response === 'Comment added successfully') {
+          if(response && response.message === 'Comment posted successfully')  {
             this.editMode = !this.editMode; // Toggle the editMode property
           } else {
             console.error('Unexpected response:', response);

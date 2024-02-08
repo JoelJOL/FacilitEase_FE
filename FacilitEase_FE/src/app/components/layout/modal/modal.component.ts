@@ -110,8 +110,8 @@ export class ModalComponent {
 
           if (currentRoute.includes('l2/details-escalated')) {
             targetRoute = 'l2/escalated-tickets';
-          } else if (currentRoute.includes('l3/view-ticket-in-detail')) {
-            targetRoute = 'l3/view-ticket';
+          } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
+            targetRoute = 'l3admin/view-ticket';
           } else {
             targetRoute = '**';
           }
@@ -146,7 +146,7 @@ export class ModalComponent {
           console.log('API call success:', response);
           this.toastr.success('Forwarded to department!', 'Success');
           this.modalService.closeModal();
-          this.router.navigate(['/view-ticket']);
+          this.router.navigate(['l3admin/view-ticket']);
         },
         (error) => {
           console.error('API call error:', error);
