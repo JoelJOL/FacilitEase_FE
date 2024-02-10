@@ -317,7 +317,7 @@ const isIE =
     },
     MsalGuard,
     AzureService,
-    // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })
