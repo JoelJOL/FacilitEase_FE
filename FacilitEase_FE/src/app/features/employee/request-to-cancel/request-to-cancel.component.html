@@ -18,11 +18,9 @@
       [ticketId]="ticketId"
     ></app-ticket-detail-view-noedit>
   </div>
-  <div class="common-btn">
-    <div [class.disabled]="ticketDetails.statusName === 'Cancel Requested'">
-      <app-button color="submit" (click)="openConfirmationModal()">
-        Request to Cancel
-      </app-button>
-    </div>
+  <div class="common-btn" *ngIf="!isCancelRequested">
+    <app-button color="submit" (click)="openConfirmationModal()">
+      Request to Cancel
+    </app-button>
   </div>
 </div>

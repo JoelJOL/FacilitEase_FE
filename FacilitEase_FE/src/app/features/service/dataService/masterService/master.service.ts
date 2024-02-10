@@ -7,15 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class MasterService {
   constructor(private http: HttpClient) {}
-
-  private apiLinkEscalated: string =
-    'https://localhost:7049/api/l2/escalated-tickets';
-  private apiLinkAssigned: string =
-    'https://localhost:7049/api/l2/assigned-tickets';
-  private apiLinkUnassigned: string =
-    'https://localhost:7049/api/l2/unassigned-tickets';
-  userId = 1;
-  private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/Employee/employeesByProject/${this.userId}`;
+  userIdL2Admin = 2;
+  private apiLink: string =
+    'https://localhost:7049/api/Manager/GetTicketByManager/2';
+  private apiLinkEscalated: string = `https://localhost:7049/api/l2/escalated-tickets/${this.userIdL2Admin}`;
+  private apiLinkAssigned: string = `https://localhost:7049/api/l2/assigned-tickets/${this.userIdL2Admin}`;
+  private apiLinkUnassigned: string = `https://localhost:7049/api/l2/unassigned-tickets/${this.userIdL2Admin}`;
+  userIdProjectEmployeeDetails = 19;
+  private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/Employee/employeesByProject/${this.userIdProjectEmployeeDetails}`;
   getApiLink(): string {
     const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/17';
     return apiUrl;
@@ -25,7 +24,8 @@ export class MasterService {
     return apiUrl;
   }
   getApiLink3(): string {
-    const apiUrl = 'https://localhost:7049/api/Manager/GetLiveTicketByManager/17';
+    const apiUrl =
+      'https://localhost:7049/api/Manager/GetLiveTicketByManager/17';
     return apiUrl;
   }
   getManagerTicketDetails(ticketId: number): Observable<any> {
@@ -65,8 +65,8 @@ export class MasterService {
   getApiLinkUnassigned(): string {
     return this.apiLinkUnassigned;
   }
-  DepartmentId = 11;
-  private apiLinkL2Subordinates: string = `https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=${this.DepartmentId}`;
+  userIdL2Subordinates = 2;
+  private apiLinkL2Subordinates: string = `https://localhost:7049/api/l2/agentsByDepartmentId/${this.userIdL2Subordinates}`;
   getApiLinkL2Subordinates(): string {
     return this.apiLinkL2Subordinates;
   }

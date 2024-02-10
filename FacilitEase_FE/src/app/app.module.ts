@@ -139,8 +139,8 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { NotificationService } from './features/service/httpService/NotificationService/notification.service';
 import { SharedService } from './features/service/httpService/SharedService/shared.service';
 import { GenerateReportComponent } from './components/ui_elements/generate-report/generate-report.component';
+import { FormValidationDirective } from './features/service/directive/validation/form-validation.directive';
 import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
-
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 
 const isIE =
@@ -249,6 +249,7 @@ const isIE =
     UnassignedAssetsComponent,
     EmployeeAssetsComponent,
     GenerateReportComponent,
+    FormValidationDirective,
     TicketTrackingComponent,
     ManagerViewLiveEmployeeTicketsComponent,
   ],

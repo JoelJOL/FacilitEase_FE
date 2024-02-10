@@ -9,8 +9,9 @@ export class DropDownService {
   constructor(private http: HttpClient) {}
 
   getAgents(): Observable<any> {
+    const userIdGetAgents = 2;
     return this.http.get(
-      'https://localhost:7049/api/l2/agents?DepartmentId=12'
+      `https://localhost:7049/api/l2/agents/${userIdGetAgents}`
     );
   }
 
