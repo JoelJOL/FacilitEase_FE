@@ -35,7 +35,7 @@ export class ReportService {
       `https://localhost:7049/api/L3AdminReport/profiledata/${this.userId}`
     );
   }
-  GetWeekData(id: number): Observable<WeekReport> {
+  GetWeekData(): Observable<WeekReport> {
     this.userId = this.azureService.userId;
     return this.http.get<any>(
       `https://localhost:7049/api/L3AdminReport/reportdata/${this.userId}`

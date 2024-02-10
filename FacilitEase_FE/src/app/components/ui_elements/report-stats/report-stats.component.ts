@@ -32,7 +32,7 @@ export class ReportStatsComponent {
   doughnutChartDatasets: any = {};
 
   ngOnInit() {
-    this.reportService.GetWeekData(2).subscribe((data: WeekReport) => {
+    this.reportService.GetWeekData().subscribe((data: WeekReport) => {
       console.log(data);
       this.weekReport = data;
       this.doughnutChartData.datasets.push({
@@ -43,7 +43,10 @@ export class ReportStatsComponent {
           data.weeklyEscalated,
         ],
       });
-      this.doughnutChartData.datasets[0].backgroundColor = ['#6418C3'];
+      this.doughnutChartData.datasets[0].backgroundColor = [
+        '#6418C3',
+        '#BCA0DE',
+      ];
       this.doughnutChartDatasets = this.doughnutChartData;
       this.dT = this.weekReport.dailyTickets;
       this.dR = this.weekReport.dailyTickets;

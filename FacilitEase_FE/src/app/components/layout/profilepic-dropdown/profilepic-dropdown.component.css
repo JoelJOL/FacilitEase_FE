@@ -26,6 +26,7 @@
 
 .dropdown-menu {
   margin-left: 65px;
+  cursor: pointer;
 }
 ::after {
   margin-top: 20px;

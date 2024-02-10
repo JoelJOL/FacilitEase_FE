@@ -30,8 +30,8 @@ export class DataTableNewComponent implements OnInit {
   keys: string[] = [];
   currentPage: number = 0;
   pageSize: number = 10;
-  sortColumn: string = 'Id';
-  sortDirection: string = 'asc';
+  sortColumn: string = 'SubmittedDate';
+  sortDirection: string = 'desc';
   totalDataCount: number = 0;
   searchQuery: string = '';
   noRecordsFound: boolean = false;

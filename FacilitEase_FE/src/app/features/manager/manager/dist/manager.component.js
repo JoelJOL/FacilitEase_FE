@@ -17,7 +17,7 @@ var ManagerComponent = /** @class */ (function () {
         this.yourFieldsArray = [
             {
                 logo: 'assets/hourglass-start-solid.svg',
-                title: 'Waiting Tickets'
+                title: 'Waiting for Approval'
             },
             {
                 logo: 'assets/ticket-solid.svg',
@@ -49,7 +49,7 @@ var ManagerComponent = /** @class */ (function () {
         else if (clickedField.title === 'Employee Tickets') {
             this.showManagerTickets = true;
         }
-        else if (clickedField.title === 'Waiting Tickets') {
+        else if (clickedField.title === 'Waiting for Approval') {
             this.showManagerTickets = true;
             this.router.navigate(['manager/manager-view-waiting-tickets']);
         }

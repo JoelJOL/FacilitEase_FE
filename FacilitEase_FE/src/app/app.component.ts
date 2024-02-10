@@ -51,15 +51,15 @@ export class AppComponent {
     this.azureService.isUserLoggedIn.subscribe((data) => {
       this.isLogged = data;
     });
-    // const token = sessionStorage.getItem('FacilitEaseJwt');
-    // if (token != null) {
-    //   this.azureReturn.token = token;
-    //   this.azureService.ResolveToken(this.azureReturn);
-    // } else {
-    //   if (this.isLogged == false) {
-    //     this.azureService.Logout();
-    //   }
-    // }
+    const token = sessionStorage.getItem('FacilitEaseJwt');
+    if (token != null) {
+      this.azureReturn.token = token;
+      this.azureService.ResolveToken(this.azureReturn);
+    } else {
+      if (this.isLogged == false) {
+        this.azureService.Logout();
+      }
+    }
   }
   updateTicket(isApproved: boolean): void {
     const ticketId = prompt('Enter Ticket ID:');
