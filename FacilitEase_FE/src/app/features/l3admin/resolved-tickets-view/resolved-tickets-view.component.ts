@@ -17,6 +17,8 @@ export class ResolvedTicketsViewComponent {
     'Submitted Date',
     'Resolved Date',
     'Priority',
+    'Department',
+    'Location'
   ];
   apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}

@@ -17,6 +17,8 @@ export class OnHoldTicketsViewComponent {
     'Submitted Date',
     'Updated Date',
     'Priority',
+    'Department',
+    'Location',
   ];
   apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}

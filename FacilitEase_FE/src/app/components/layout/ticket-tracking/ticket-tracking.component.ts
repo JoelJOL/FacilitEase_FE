@@ -18,6 +18,7 @@ export class TicketTrackingComponent implements OnInit {
         console.log('Data received:', data);
         this.events = data.map(tracking => ({
           content: tracking.statusName, 
+          priority: tracking.priorityName,
           submitted: tracking.submittedByEmployeeName,
           assigned: tracking.assignedToEmployeeName,
           controller: tracking.approverEmployeeName,

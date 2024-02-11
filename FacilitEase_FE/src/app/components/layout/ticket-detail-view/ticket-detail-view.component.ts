@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { TicketDetails } from '@app/ticket-details'; 
+import { Component, Input, ViewChild } from '@angular/core';
+import { TicketNotesAttachmentsComponent } from '../ticket-notes-attachments/ticket-notes-attachments.component';
 
 @Component({
   selector: 'app-ticket-detail-view',
@@ -8,13 +8,18 @@ import { TicketDetails } from '@app/ticket-details';
 })
 export class TicketDetailViewComponent {
   customHeaderText = 'Supported Attachments';  
+  @ViewChild(TicketNotesAttachmentsComponent) ticketNotesAttachmentsComponent!: TicketNotesAttachmentsComponent;
+
+ 
+  
+  @Input() ticketDetails!: any;
+  @Input() headings: any[] = [];
   
   constructor() {} 
   @Input() ticketId: number=0; 
   ngOnInit(){
     console.log(this.ticketId);
   }
-  @Input() ticketDetails!: any;
-  @Input() headings: any[] = [];
+  
   
 }
