@@ -144,6 +144,7 @@ import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/mana
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { AssignAssetToEmployeeComponent } from './features/Assets/assign-asset-to-employee/assign-asset-to-employee.component';
 import { LoadingComponent } from './components/ui_elements/loading/loading.component';
+import { NotificationComponent } from './components/layout/notification/notification.component';
 import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve/tickets-to-resolve.component';
 import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
 
@@ -258,6 +259,7 @@ const isIE =
     ManagerViewLiveEmployeeTicketsComponent,
     AssignAssetToEmployeeComponent,
     LoadingComponent,
+    NotificationComponent,
     TicketsToResolveComponent,
     DetailsTicketToResolveComponent,
   ],

@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import * as signalR from '@aspnet/signalr';
 import { SharedService } from '../SharedService/shared.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Notification } from '@app/notification.model';
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
   private hubConnection!: signalR.HubConnection;
-
+  private apiUrl = 'https://localhost:7049/api';
   constructor(
     private toastr: ToastrService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private http: HttpClient
   ) {}
 
   public startConnection = () => {
@@ -33,4 +37,15 @@ export class NotificationService {
       this.sharedService.sendNotification(data);
     });
   };
+
+  getNotifications(userId: number): Observable<Notification[]> {
+    return this.http
+      .get<Notification[]>(`${this.apiUrl}/Notifications/${userId}`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('Error fetching notifications:', error);
+          return throwError(error);
+        })
+      );
+  }
 }
