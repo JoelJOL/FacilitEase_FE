@@ -25,6 +25,7 @@ export class L2AdminComponent {
         'Unassigned Tickets',
         'Assigned Tickets',
         'Escalated Tickets',
+        'Tickets To Resolve',
       ],
     },
     {
@@ -79,6 +80,9 @@ export class L2AdminComponent {
       } else if (event.subfield === 'Escalated Tickets') {
         this.showL2AdminTickets = true;
         this.router.navigate(['l2admin/escalated-tickets']);
+      } else if (event.subfield === 'Tickets To Resolve') {
+        this.showL2AdminTickets = true;
+        this.router.navigate(['l2admin/tickets-to-resolve']);
       }
     }
   }

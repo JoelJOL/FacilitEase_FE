@@ -73,6 +73,8 @@ import { LoginScreenComponent } from './features/Authentication/login-screen/log
 import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
 import { MsalGuard } from '@azure/msal-angular';
 import { LoadingComponent } from './components/ui_elements/loading/loading.component';
+import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve/tickets-to-resolve.component';
+import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
 
 const routes: Routes = [
   {
@@ -125,6 +127,7 @@ const routes: Routes = [
       { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
       { path: 'assigned-tickets', component: AssignedTicketsComponent },
       { path: 'escalated-tickets', component: EscalatedticketsComponent },
+      { path: 'tickets-to-resolve', component: TicketsToResolveComponent },
       { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
       { path: 'l2report', component: L2ReportComponent },
       {
@@ -137,6 +140,10 @@ const routes: Routes = [
       },
       { path: 'details-assigned/:Id', component: DetailsAssignedComponent },
       { path: 'details-escalated/:Id', component: DetailsEscalatedComponent },
+      {
+        path: 'details-tickets-to-resolve/:Id',
+        component: DetailsTicketToResolveComponent,
+      },
     ],
   },
   {
