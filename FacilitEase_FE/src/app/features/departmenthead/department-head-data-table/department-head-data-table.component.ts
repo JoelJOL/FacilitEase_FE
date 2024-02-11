@@ -14,6 +14,8 @@ export class DepartmentHeadDataTableComponent implements OnInit {
     'ID',
     'Ticket Name',
     'Employee Name',
+    'Dept.',
+    'Location',
     'Assigned To',
     'Submitted Date',
     'Priority',

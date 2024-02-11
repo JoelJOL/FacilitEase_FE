@@ -19,13 +19,13 @@
       <!-- Raised By -->
       <app-person-card
         [personName]="ticketDetails.employeeName"
-        [isRaisedBy]="true"
+        [role]="0"
       ></app-person-card>
 
       <!-- Assigned To -->
       <app-person-card
         [personName]="ticketDetails.assignedTo"
-        [isRaisedBy]="false"
+        [role]="1"
       ></app-person-card>
     </div>
 
