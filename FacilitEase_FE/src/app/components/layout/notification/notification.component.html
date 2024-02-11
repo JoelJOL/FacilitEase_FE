@@ -1,0 +1,13 @@
+<div class="notification-icon" (click)="toggleNotifications()">
+  <i class="fa fa-bell"></i>
+  <span *ngIf="notifications.length > 0" class="notification-count">{{
+    notifications.length
+  }}</span>
+
+  <div *ngIf="showNotifications">
+    <div *ngFor="let notification of notifications">
+      {{ notification.content }} -
+      {{ notification.notificationTimestamp | date : "short" }}
+    </div>
+  </div>
+</div>

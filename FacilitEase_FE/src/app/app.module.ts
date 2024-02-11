@@ -144,6 +144,7 @@ import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/mana
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { AssignAssetToEmployeeComponent } from './features/Assets/assign-asset-to-employee/assign-asset-to-employee.component';
 import { LoadingComponent } from './components/ui_elements/loading/loading.component';
+import { NotificationComponent } from './components/layout/notification/notification.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -256,6 +257,7 @@ const isIE =
     ManagerViewLiveEmployeeTicketsComponent,
     AssignAssetToEmployeeComponent,
     LoadingComponent,
+    NotificationComponent,
   ],
   imports: [
     HttpClientModule,
