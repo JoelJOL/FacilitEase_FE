@@ -9,6 +9,7 @@ export class ButtonComponent {
   @Input() color: string = 'primary';
   @Output() action = new EventEmitter<string>();
   @Input() icon: string='';
+  @Input() disabled: boolean = false;
 
   handleClick(): void {
     this.action.emit();

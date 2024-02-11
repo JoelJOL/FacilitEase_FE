@@ -64,7 +64,7 @@ export class TicketNotesComponent {
   @Input() editMode: boolean = false;
 
   // Output event to notify parent about toggle
-  @Output() toggleEditModeEvent = new EventEmitter<void>(); 
+  @Output() toggleEditModeEvent = new EventEmitter<boolean>(); 
 
   // Event to emit when notes are submitted
   @Output() submitNotesEvent = new EventEmitter<string>();
@@ -81,7 +81,7 @@ export class TicketNotesComponent {
   
   // Emit the event to notify the parent
   toggleEditMode() {
-    this.toggleEditModeEvent.emit(); 
+    this.toggleEditModeEvent.emit(this.editMode); 
   }
 
   

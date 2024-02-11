@@ -1,7 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { TicketNotesComponent } from '../ticket-notes/ticket-notes.component';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ticket-notes-attachments',
@@ -12,7 +11,6 @@ export class TicketNotesAttachmentsComponent {
 
   @Input() ticketId: number=0;
   @ViewChild(TicketNotesComponent) ticketNotesComponent!: TicketNotesComponent;
-  @Output() reloadChildComponent: EventEmitter<void> = new EventEmitter<void>();
   @Output() editModeChanged: EventEmitter<boolean> = new EventEmitter<boolean>(); // EventEmitter to emit editMode changes
   lastUpdate:any;
   editMode: boolean = false; // Property to manage edit mode
@@ -32,6 +30,8 @@ export class TicketNotesAttachmentsComponent {
   
   //Action to be performed on submit
   onSubmit() {
+    this.editMode = !this.editMode;
+    this.editModeChanged.emit(this.editMode);
     const notes = this.ticketNotesComponent.getNotes().trim();
     console.log(notes);
   
@@ -101,8 +101,7 @@ export class TicketNotesAttachmentsComponent {
         this.editMode = !this.editMode; // Toggle the editMode property anyway
       }
     }
-    
-    this.reloadChildComponent.emit();
+
   }
 
  
