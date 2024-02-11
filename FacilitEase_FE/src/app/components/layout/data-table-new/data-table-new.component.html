@@ -12,7 +12,7 @@
           *ngFor="let header of headers; let i = index"
           class="text-center text-nowrap"
         >
-          <div class="header-container">
+          <div class="header_container">
             <span>{{ header }}</span>
             <app-sort-up-down
               (sortAscending)="onSort(keys[i], 'asc')"
@@ -22,9 +22,19 @@
         </th>
       </tr>
     </thead>
-    <div *ngIf="noRecordsFound" class="no-records-message">
+    <div *ngIf="noRecordsFound" class="no_records_message">
       No records found.
     </div>
+    <tbody *ngIf="loading">
+      <tr
+        *ngFor="let _ of [].constructor(6)"
+        class="skeleton_row clickable_row"
+      >
+        <td *ngFor="let header of headers">
+          <div class="skeleton skeleton_data"></div>
+        </td>
+      </tr>
+    </tbody>
     <tbody *ngIf="!noRecordsFound" class="table_body">
       <tr *ngFor="let row of rows" class="clickable_row">
         <td
@@ -42,7 +52,7 @@
           </div>
           <div
             *ngIf="key === 'ticketName'"
-            class="ticket-name-cell"
+            class="ticket_name-cell"
             [title]="row[key]"
           >
             {{ row[key] | truncate : 25 }}
