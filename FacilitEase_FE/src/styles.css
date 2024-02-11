@@ -13,6 +13,7 @@ body {
   /* --violet: #6342a9; */
   --violet: rgb(124, 0, 192);
   --grey: rgb(237, 237, 237);
+  /* --grey: rgb(198, 198, 198); */
   --light_violet: #dad7ff;
   --light_grey: #ececec;
   --blue_violet: #6f00ff;
@@ -41,5 +42,5 @@ body {
   --dark_red: #9d0231;
   --hover_grey: #c3c3c3;
   --white: #ffffff;
-  --black:#000000;
+  --black: #000000;
 }

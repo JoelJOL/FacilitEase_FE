@@ -38,6 +38,8 @@ export class EscalatedticketsComponent {
     'Submitted Date',
     'Priority',
     'Status',
+    'Department',
+    'Location',
   ];
   apiLink: string = '';
 

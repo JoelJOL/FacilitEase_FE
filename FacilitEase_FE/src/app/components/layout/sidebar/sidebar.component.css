@@ -13,3 +13,11 @@
 .expanded {
   width: 250px !important;
 }
+.hamburger {
+  margin-bottom: 9px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+  transform: scale(1.2);
+}
