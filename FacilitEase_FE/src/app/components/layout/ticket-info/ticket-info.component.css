@@ -52,7 +52,7 @@ select {
   font-weight: bold;
 }
 
-.button-with-image {
+.button_with_image {
   display: inline-block;
   border: none;
   padding: 7px 20px;
@@ -64,13 +64,13 @@ select {
   margin-right:5px;
 }
 
-.button-with-image img {
+.button_with_image img {
   width: 20px; /* Adjust the width of the image as needed */
   height: auto; /* Maintain aspect ratio */
   margin-right: 5px; /* Optional: Add some space between the image and text */
 }
 
-.button-with-image:hover{
+.button_with_image:hover{
   opacity: 1; /* Show on hover */
 }
 
