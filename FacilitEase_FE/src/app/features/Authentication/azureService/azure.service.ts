@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { Observable, Subject } from 'rxjs';
 import { azureObj } from '../authModels/model';
@@ -135,5 +135,9 @@ export class AzureService {
       postLogoutRedirectUri: environment.postLogoutUrl,
     });
     sessionStorage.clear();
+  }
+  @HostListener('window:unload', ['$event'])
+  onBeforeUnload(event: any) {
+    this.router.navigate(['/employee']);
   }
 }
