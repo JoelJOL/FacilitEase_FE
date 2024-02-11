@@ -9,26 +9,30 @@ exports.__esModule = true;
 exports.MasterService = void 0;
 var core_1 = require("@angular/core");
 var MasterService = /** @class */ (function () {
-    function MasterService(http) {
+    function MasterService(http, azureService) {
         this.http = http;
-        this.apiLinkEscalated = 'https://localhost:7049/api/l2/escalated-tickets';
-        this.apiLinkAssigned = 'https://localhost:7049/api/l2/assigned-tickets';
-        this.apiLinkUnassigned = 'https://localhost:7049/api/l2/unassigned-tickets';
-        this.userId = 1;
-        this.apiLinkProjectEmployeeDeatils = "https://localhost:7049/api/Employee/employeesByProject/" + this.userId;
-        this.DepartmentId = 11;
-        this.apiLinkL2Subordinates = "https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=" + this.DepartmentId;
+        this.azureService = azureService;
+        this.userId = this.azureService.userId;
+        this.userIdL2Admin = 2;
+        this.apiLink = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
+        this.apiLinkEscalated = "https://localhost:7049/api/l2/escalated-tickets/" + this.userIdL2Admin;
+        this.apiLinkAssigned = "https://localhost:7049/api/l2/assigned-tickets/" + this.userIdL2Admin;
+        this.apiLinkUnassigned = "https://localhost:7049/api/l2/unassigned-tickets/" + this.userIdL2Admin;
+        this.userIdProjectEmployeeDetails = 19;
+        this.apiLinkProjectEmployeeDeatils = "https://localhost:7049/api/Employee/employeesByProject/" + this.userIdProjectEmployeeDetails;
+        this.userIdL2Subordinates = 2;
+        this.apiLinkL2Subordinates = "https://localhost:7049/api/l2/agentsByDepartmentId/" + this.userIdL2Subordinates;
     }
     MasterService.prototype.getApiLink = function () {
-        var apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/17';
+        var apiUrl = "https://localhost:7049/api/Manager/GetTicketByManager/" + this.userId;
         return apiUrl;
     };
     MasterService.prototype.getApiLink2 = function () {
-        var apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/17';
+        var apiUrl = "https://localhost:7049/api/Manager/GetApprovalTicket/" + this.userId;
         return apiUrl;
     };
     MasterService.prototype.getApiLink3 = function () {
-        var apiUrl = 'https://localhost:7049/api/Manager/GetLiveTicketByManager/17';
+        var apiUrl = "https://localhost:7049/api/Manager/GetLiveTicketByManager/" + this.userId;
         return apiUrl;
     };
     MasterService.prototype.getManagerTicketDetails = function (ticketId) {

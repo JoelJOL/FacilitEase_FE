@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MasterService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private azureService : AzureService) {}
+  userId : number = this.azureService.userId;
   userIdL2Admin = 2;
   private apiLink: string =
     'https://localhost:7049/api/Manager/GetTicketByManager/2';
@@ -16,16 +18,16 @@ export class MasterService {
   userIdProjectEmployeeDetails = 19;
   private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/Employee/employeesByProject/${this.userIdProjectEmployeeDetails}`;
   getApiLink(): string {
-    const apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/17';
+    const apiUrl = `https://localhost:7049/api/Manager/GetTicketByManager/${this.userId}`;
     return apiUrl;
   }
   getApiLink2(): string {
-    const apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/17';
+    const apiUrl = `https://localhost:7049/api/Manager/GetApprovalTicket/${this.userId}`;
     return apiUrl;
   }
   getApiLink3(): string {
     const apiUrl =
-      'https://localhost:7049/api/Manager/GetLiveTicketByManager/17';
+      `https://localhost:7049/api/Manager/GetLiveTicketByManager/${this.userId}`;
     return apiUrl;
   }
   getManagerTicketDetails(ticketId: number): Observable<any> {

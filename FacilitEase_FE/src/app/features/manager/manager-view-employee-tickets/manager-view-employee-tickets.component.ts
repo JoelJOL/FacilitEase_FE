@@ -12,6 +12,7 @@ export class ManagerViewEmployeeTicketsComponent implements OnInit {
     'ID',
     'Ticket Name',
     'Employee Name',
+    'Location',
     'Assigned To',
     'Submitted Date',
     'Priority',
