@@ -11,10 +11,11 @@ export class AgentTicketsViewComponent {
   headers: string[] = [
     'ID',
     'Ticket Name',
-    'Employee Name',
+    'Raised By',
     'Submitted Date',
     'Priority',
-    'Status',
+    'Department',
+    'Location'
   ];
   apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}
