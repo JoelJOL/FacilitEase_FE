@@ -12,6 +12,7 @@ export class ManagerViewLiveEmployeeTicketsComponent {
       'ID',
       'Ticket Name',
       'Employee Name',
+      'Location',
       'Assigned To',
       'Submitted Date',
       'Priority',
