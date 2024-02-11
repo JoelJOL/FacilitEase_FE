@@ -3,7 +3,7 @@ img {
   width: 15%;
   justify-content: center;
 }
-.square-container {
+.square_container {
   width: 400px; /* Adjust the width as needed */
   height: 400px; /* Equal to the width to make it a square */
   display: flex;
@@ -15,6 +15,6 @@ img {
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.square-container .input-group {
+.square_container .input_group {
   width: 100%;
 }
