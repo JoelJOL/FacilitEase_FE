@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { Observable, Subject } from 'rxjs';
 import { azureObj } from '../authModels/model';
@@ -51,7 +51,11 @@ export class AzureService {
     if (azureToken != null) {
       const decodedToken: any = jwtDecode(azureToken);
       this.azureRoles = decodedToken['roles'];
-      this.azureRoles.push('Employee');
+      console.log(this.azureRoles);
+      if (!this.azureRoles.includes('Employee')) {
+        this.azureRoles.push('Employee');
+      }
+
       console.log(this.azureRoles);
     }
     try {
@@ -61,6 +65,7 @@ export class AzureService {
         decodedToken[
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
         ];
+      console.log(this.userId);
       this.userName =
         decodedToken[
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
@@ -75,6 +80,7 @@ export class AzureService {
       this.isL3Admin = this.azureRoles.includes('L3Admin');
       this.isDepartmentHead = this.azureRoles.includes('DepartmentHead');
       this.isManager = this.azureRoles.includes('Manager');
+      this.isEmployee = this.azureRoles.includes('Employee');
       this.isEmployee = true;
 
       if (this.navigateFirst) {
@@ -89,7 +95,7 @@ export class AzureService {
         } else if (this.isManager) {
           this.router.navigate(['/manager/manager-view-waiting-tickets']);
         } else if (this.isEmployee) {
-          this.router.navigate(['/employee']);
+          this.router.navigate(['/employee/employeecard']);
         } else {
           console.error('No valid role found for navigation.');
         }
@@ -129,5 +135,9 @@ export class AzureService {
       postLogoutRedirectUri: environment.postLogoutUrl,
     });
     sessionStorage.clear();
+  }
+  @HostListener('window:unload', ['$event'])
+  onBeforeUnload(event: any) {
+    this.router.navigate(['/employee']);
   }
 }

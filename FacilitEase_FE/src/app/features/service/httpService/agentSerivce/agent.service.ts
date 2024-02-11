@@ -21,7 +21,8 @@ export class AgentService {
   }
 
   getDepartments(): Observable<any> {
-    return this.http.get('https://localhost:7049/api/Department');
+    const userId = 3;
+    return this.http.get(`https://localhost:7049/api/Department/getAllExceptUserDepartment/${userId}`);
   }
 
   getCategorybyDept(deptId: number): Observable<any> {

@@ -17,6 +17,8 @@ export class CancelRequestViewAllComponent {
     'Raised Date',
     'Requested Date',
     'Priority',
+    'Department',
+    'Location'
   ];
   apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}

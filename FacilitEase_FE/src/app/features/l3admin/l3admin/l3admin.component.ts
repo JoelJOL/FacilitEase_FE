@@ -22,14 +22,13 @@ export class L3adminComponent {
         'Raised Tickets',
         'Tickets On Hold',
         'Cancel Requests',
-        'Resolved Tickets'
+        'Resolved Tickets',
       ],
     },
     {
       logo: 'assets/data-entry.png',
       title: 'Reports',
-      subfields: ['Daily Reports', 'Monthly Report', 'Annual Reports'],
-    }
+    },
   ];
   showL3AdminTickets: boolean = false;
   isSidebarCollapsed: boolean = false;
@@ -59,6 +58,9 @@ export class L3adminComponent {
     } else if (clickedField.title === 'Tickets') {
       this.showL3AdminTickets = true;
       this.router.navigate(['l3admin/view-ticket']);
+    } else if (clickedField.title === 'Reports') {
+      this.showL3AdminTickets = true;
+      this.router.navigate(['l3admin/l3report']);
     } else {
       this.showL3AdminTickets = false;
     }
@@ -77,7 +79,7 @@ export class L3adminComponent {
       } else if (event.subfield === 'Cancel Requests') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/cancel-requests']);
-      } 
+      }
     } else if (event.subfield === 'Escalated Tickets') {
       this.showL3AdminTickets = true;
       this.router.navigate(['l3admin/escalated-tickets']);

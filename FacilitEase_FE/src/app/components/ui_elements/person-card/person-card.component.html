@@ -1,7 +1,11 @@
 <div class="person-card">
-    <h4><strong>{{ isRaisedBy ? 'Raised By' : 'Assigned To' }}</strong></h4>
-    <div class="image-name">
-        <img src="../../../../assets/person.png" alt="person" id="person-img">
-        <h4 id="name">{{ personName }}</h4>
-    </div>
-    </div>
+  <h4>
+    <strong>{{
+      role === 0 ? "Assigned To" : role === 1 ? "Raised By" : "Forwarded By"
+    }}</strong>
+  </h4>
+  <div class="image-name">
+    <img src="../../../../assets/person.png" alt="person" id="person-img" />
+    <h4 id="name">{{ personName }}</h4>
+  </div>
+</div>

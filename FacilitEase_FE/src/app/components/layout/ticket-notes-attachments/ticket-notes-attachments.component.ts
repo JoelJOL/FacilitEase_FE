@@ -13,32 +13,29 @@ export class TicketNotesAttachmentsComponent {
   @Input() ticketId: number=0;
   @ViewChild(TicketNotesComponent) ticketNotesComponent!: TicketNotesComponent;
   @Output() reloadChildComponent: EventEmitter<void> = new EventEmitter<void>();
+  @Output() editModeChange: EventEmitter<boolean> = new EventEmitter<boolean>();// Emit the editMode value when it changes
   refreshChild: boolean = false;
   lastUpdate:any;
-
-  toggleRefresh() {
-    this.refreshChild = !this.refreshChild;
-  }
-
-  
+  editMode: boolean = false; // Property to manage edit mode
 
   constructor(private agentService:AgentService){
   }
 
-   // Property to manage edit mode
-  editMode: boolean = false
+  // Emit the editMode value when it changes
+  onEditModeChange() {
+    this.editModeChange.emit(this.editMode);
+  }
+
+  toggleRefresh() {
+    this.refreshChild = !this.refreshChild;
+  }
 
   // Method to toggle edit mode based on the child component's event
   onToggleEditMode() {
     this.editMode = !this.editMode;
   }
 
- 
-
- 
-
-
-
+  //Action to be performed on submit
   onSubmit() {
     const notes = this.ticketNotesComponent.getNotes().trim();
     console.log(notes);
@@ -63,7 +60,7 @@ export class TicketNotesAttachmentsComponent {
           // Handle the error appropriately
         }
       );
-    } else if (this.editMode) {
+    } else if (this.editMode && notes !== '') {
       // If comment exists and editMode is true, proceed with the update logic
       this.agentService.updateComment(this.ticketId, notes, { responseType: 'text' }).subscribe(
         (response) => {
@@ -83,7 +80,33 @@ export class TicketNotesAttachmentsComponent {
           // Handle the error appropriately
         }
       );
+    } else if (this.editMode && notes === '') {
+      // If editMode is true and notes are empty, check if the comment exists before proceeding with delete logic
+      if (this.ticketNotesComponent.commentExists) {
+        this.agentService.deleteComment(this.ticketId).subscribe(
+          (response) => {
+            // Handle the response appropriately 
+            console.log('Comment deleted successfully');
+            console.log('Response:', response);
+    
+            if (response === 'Comment deleted successfully') {
+              this.editMode = !this.editMode; // Toggle the editMode property
+            } else {
+              console.error('Unexpected response:', response);
+            }
+          },
+          (error) => {
+            console.error('Error deleting comment:', error);
+            console.log('Response:', error.error);
+            // Handle the error appropriately
+          }
+        );
+      } else {
+        console.log('No comment exists. Nothing to delete.');
+        this.editMode = !this.editMode; // Toggle the editMode property anyway
+      }
     }
+    
     this.reloadChildComponent.emit();
   }
   

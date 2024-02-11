@@ -21,7 +21,7 @@ export class NotificationService {
     this.hubConnection
       .start()
       .then(() => console.log('Connection started'))
-      .then(() => this.addTransferChartDataListener)
+      .then(() => this.addTransferChartDataListener())
       .catch((err) => console.log('Error while starting connection: ' + err));
   };
 

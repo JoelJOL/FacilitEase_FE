@@ -102,11 +102,10 @@ export class BarChartComponent {
       (data) => {
         console.log(data);
         for (const month of this.months) {
-          this.escalated.push(data[month][0]);
+          this.resolved.push(data[month][0]);
           this.escalated.push(data[month][1]);
           // this.escalated.push(data[month][1]);
         }
-
         this.chartLegends.push({
           data: this.resolved,
           label: 'resolved',
@@ -116,8 +115,8 @@ export class BarChartComponent {
         this.chartLegends.push({
           data: this.escalated,
           label: 'escalated',
-          backgroundColor: '#FFA7A7',
-          hoverBackgroundColor: '#FC7B7B',
+          backgroundColor: '#BCA0DE',
+          hoverBackgroundColor: '#7D659A',
         });
         this.legends = [...this.chartLegends];
       },

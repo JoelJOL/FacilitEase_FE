@@ -72,6 +72,7 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { LoginScreenComponent } from './features/Authentication/login-screen/login-screen.component';
 import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
 import { MsalGuard } from '@azure/msal-angular';
+import { LoadingComponent } from './components/ui_elements/loading/loading.component';
 
 const routes: Routes = [
   {
@@ -86,8 +87,8 @@ const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeComponent,
-    // canActivate: [MsalGuard],
-    // resolve: [LoginEnter],
+    canActivate: [MsalGuard],
+    resolve: [LoginEnter],
     children: [
       {
         path: 'employeecard',
@@ -116,8 +117,8 @@ const routes: Routes = [
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
   {
     path: 'l2admin',
-    // canActivate: [MsalGuard, IsL2Admin],
-    // resolve: [LoginEnter],
+    canActivate: [MsalGuard, IsL2Admin],
+    resolve: [LoginEnter],
     component: L2AdminComponent,
     children: [
       { path: '', redirectTo: 'unassigned-tickets', pathMatch: 'full' }, // Redirect to 'unassigned-tickets' when 'l2' is accessed directly
@@ -140,14 +141,15 @@ const routes: Routes = [
   },
   {
     path: 'l3admin',
-    // canActivate: [MsalGuard, IsL3Admin],
-    // resolve: [LoginEnter],
+    canActivate: [MsalGuard, IsL3Admin],
+    resolve: [LoginEnter],
     component: L3adminComponent,
     children: [
       { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
       { path: 'view-ticket', component: AgentTicketsViewComponent },
       { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
       { path: 'on-hold-tickets', component: OnHoldTicketsViewComponent },
+      { path: 'l3report', component: L2ReportComponent },
       {
         path: 'view-ticket-in-detail/:Id',
         component: AgentTicketViewComponent,
@@ -181,8 +183,8 @@ const routes: Routes = [
   {
     path: 'manager',
     component: ManagerComponent,
-    // canActivate: [MsalGuard, IsManager],
-    // canActivateChild: [IsManager],
+    canActivate: [MsalGuard, IsManager],
+    canActivateChild: [IsManager],
     children: [
       {
         path: 'manager-view-employee-tickets',
@@ -218,8 +220,8 @@ const routes: Routes = [
   {
     path: 'l1admin',
     component: L1adminComponent,
-    // canActivate: [MsalGuard, IsL1Admin],
-    // resolve: [LoginEnter],
+    canActivate: [MsalGuard, IsL1Admin],
+    resolve: [LoginEnter],
     children: [{ path: 'entries', component: AssignRoleComponent }],
   },
   {
@@ -234,8 +236,8 @@ const routes: Routes = [
   {
     path: 'departmenthead',
     component: DepartmentheadComponent,
-    // canActivate: [MsalGuard, IsDepartmentHead],
-    // resolve: [LoginEnter],
+    canActivate: [MsalGuard, IsDepartmentHead],
+    resolve: [LoginEnter],
     children: [
       {
         path: 'departmentHead-tickets',
@@ -255,13 +257,9 @@ const routes: Routes = [
       },
     ],
   },
-  // {
-  //   path: '**',
-  //   component: LoginScreenComponent,
-  // },
   {
     path: '**',
-    component: ButtonComponent,
+    component: LoadingComponent,
   },
 ];
 
