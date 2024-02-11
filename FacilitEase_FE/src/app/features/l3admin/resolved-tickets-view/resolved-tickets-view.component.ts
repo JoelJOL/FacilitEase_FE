@@ -17,6 +17,7 @@ export class ResolvedTicketsViewComponent {
     'Submitted Date',
     'Resolved Date',
     'Priority',
+    'Status',
     'Department',
     'Location'
   ];

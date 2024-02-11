@@ -14,6 +14,7 @@ export class AgentTicketsViewComponent {
     'Raised By',
     'Submitted Date',
     'Priority',
+    'Status',
     'Department',
     'Location'
   ];
