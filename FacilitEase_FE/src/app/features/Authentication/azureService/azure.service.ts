@@ -136,8 +136,4 @@ export class AzureService {
     });
     sessionStorage.clear();
   }
-  @HostListener('window:unload', ['$event'])
-  onBeforeUnload(event: any) {
-    this.router.navigate(['/employee']);
-  }
 }

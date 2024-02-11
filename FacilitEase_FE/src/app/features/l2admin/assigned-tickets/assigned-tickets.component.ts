@@ -37,6 +37,8 @@ export class AssignedTicketsComponent {
     'Submitted Date',
     'Priority',
     'Status',
+    'Department',
+    'Location',
   ];
   apiLink: string = '';
 

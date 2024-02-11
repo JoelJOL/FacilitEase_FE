@@ -142,6 +142,7 @@ import { GenerateReportComponent } from './components/ui_elements/generate-repor
 import { FormValidationDirective } from './features/service/directive/validation/form-validation.directive';
 import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
+import { AssignAssetToEmployeeComponent } from './features/Assets/assign-asset-to-employee/assign-asset-to-employee.component';
 import { LoadingComponent } from './components/ui_elements/loading/loading.component';
 
 const isIE =
@@ -253,6 +254,7 @@ const isIE =
     FormValidationDirective,
     TicketTrackingComponent,
     ManagerViewLiveEmployeeTicketsComponent,
+    AssignAssetToEmployeeComponent,
     LoadingComponent,
   ],
   imports: [

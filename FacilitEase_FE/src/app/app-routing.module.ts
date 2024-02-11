@@ -79,6 +79,7 @@ const routes: Routes = [
     path: 'un',
     component: EmployeeAssetsComponent,
   },
+
   {
     path: 'doc',
     component: TicketDocumentsComponent,

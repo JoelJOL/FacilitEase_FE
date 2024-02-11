@@ -1,6 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+// Define an interface for your API response
+interface ApiResponse {
+  documentLink: string;
+}
 
 @Component({
   selector: 'app-ticket-documents',
@@ -9,36 +13,58 @@ import { Observable } from 'rxjs';
 })
 export class TicketDocumentsComponent implements OnInit {
   private apiUrl = 'https://localhost:7049';
-  imageId = '950590bf-c9a3-439c-8bac-5a5d0c22bec8';
-  imageUrl!: string;
-  imageBlob!: Blob;
+  fileUrl!: string;
+  isImage = false;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.imageUrl = `${this.apiUrl}/Resources/Images/${this.imageId}.svg`;
+    const firstApiEndpoint =
+      'https://localhost:7049/api/Employee/get-documents-by-ticket/54';
 
-    this.getImage().subscribe(
-      (blob: Blob) => {
-        this.imageBlob = blob;
-        this.displayImage();
+    // Fetch the entire response from the first API endpoint
+    this.getFileData(firstApiEndpoint).subscribe(
+      (response: ApiResponse[]) => {
+        if (response && response.length > 0 && response[0].documentLink) {
+          const documentLink = response[0].documentLink;
+          this.fileUrl = `${this.apiUrl}/${documentLink}`;
+          console.log(this.fileUrl);
+          // Check if the file is an image based on the file extension
+          this.isImage = this.isImageFile(documentLink);
+        } else {
+          console.error(
+            'File link not present or undefined in the API response.'
+          );
+        }
       },
       (error) => {
-        console.error('Error fetching image:', error);
+        console.error('Error fetching file:', error);
       }
     );
   }
 
-  getImage(): Observable<Blob> {
-    return this.http.get(this.imageUrl, { responseType: 'blob' });
+  getFileData(apiEndpoint: string) {
+    return this.http.get<ApiResponse[]>(apiEndpoint);
   }
 
-  displayImage(): void {
-    // Convert blob to a data URL and set it as the image source
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      this.imageUrl = reader.result as string;
-    };
-    reader.readAsDataURL(this.imageBlob);
+  isImageFile(filename: string): boolean {
+    // You can add more file extensions if needed
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
+    const extension = filename.slice(
+      ((filename.lastIndexOf('.') - 1) >>> 0) + 2
+    );
+
+    return imageExtensions.includes(extension.toLowerCase());
+  }
+
+  openFile(): void {
+    if (!this.isImage) {
+      console.log('Opening non-image file...');
+      // Open the file URL directly in a new tab for non-image files
+      window.open(this.fileUrl, '_blank');
+    } else {
+      console.log('Opening image...');
+      // You can implement your logic for opening the image (e.g., display in a lightbox)
+    }
   }
 }
