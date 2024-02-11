@@ -72,6 +72,7 @@ import { EmployeeAssetsComponent } from './features/Assets/employee-assets/emplo
 import { LoginScreenComponent } from './features/Authentication/login-screen/login-screen.component';
 import { ManagerViewLiveEmployeeTicketsComponent } from './features/manager/manager-view-live-employee-tickets/manager-view-live-employee-tickets.component';
 import { MsalGuard } from '@azure/msal-angular';
+import { LoadingComponent } from './components/ui_elements/loading/loading.component';
 
 const routes: Routes = [
   {
@@ -257,11 +258,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: LoginScreenComponent,
-  },
-  {
-    path: '**',
-    component: ButtonComponent,
+    component: LoadingComponent,
   },
 ];
 
