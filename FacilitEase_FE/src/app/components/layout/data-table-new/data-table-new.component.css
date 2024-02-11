@@ -237,3 +237,13 @@ td {
   font-size: 18px;
   color: #555;
 }
+
+.skeleton_row{
+  height: 70px;
+}
+
+.skeleton_data{
+  width: 50px;
+  height: 15px;
+  border-radius: 10px;
+}
