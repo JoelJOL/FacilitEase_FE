@@ -1,12 +1,12 @@
-<section class="timeline-section">
-  <div class="timeline-items">
-    <div class="timeline-item" *ngFor="let item of value; let i = index">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">
+<section class="timeline_section">
+  <div class="timeline_items">
+    <div class="timeline_item" *ngFor="let item of value; let i = index">
+      <div class="timeline_dot"></div>
+      <div class="timeline_date">
         {{ item.date | date : "dd MMM, yyyy 'at' HH:mm:ss" }}
       </div>
       <div
-        class="timeline-content"
+        class="timeline_content"
         [@staggeredAnimation]="{ value: '', params: { delay: i * 100 } }"
       >
         <h3>{{ item.title }}</h3>
@@ -14,13 +14,13 @@
           Ticket Status:
           <span
             [ngClass]="{
-              'open-status': item.content === 'Open',
-              'in-progress-status': item.content === 'In Progress',
-              'escalated-status': item.content === 'Escalated',
-              'resolved-status': item.content === 'Resolved',
-              'on-hold-status': item.content === 'On Hold',
-              'cancel-request-status': item.content === 'Cancel Requested',
-              'cancel-status': item.content === 'Cancelled'
+              open_status: item.content === 'Open',
+              'in-progress_status': item.content === 'In Progress',
+              escalated_status: item.content === 'Escalated',
+              resolved_status: item.content === 'Resolved',
+              'on-hold_status': item.content === 'On Hold',
+              'cancel_request-status': item.content === 'Cancel Requested',
+              cancel_status: item.content === 'Cancelled'
             }"
           >
             {{ item.content }}

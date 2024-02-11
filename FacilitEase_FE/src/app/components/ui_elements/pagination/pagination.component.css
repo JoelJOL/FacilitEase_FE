@@ -1,4 +1,4 @@
-.pagination-container {
+.pagination_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,14 +6,14 @@
   margin: auto;
 }
 
-.number-container {
+.number_container {
   display: flex;
   align-items: center;
   gap: 15px; /* Adjust the gap between numbers */
   padding: 5%;
 }
 
-.number-container div {
+.number_container div {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -23,11 +23,11 @@
   justify-content: center;
   cursor: pointer;
 }
-.number-container div:hover {
+.number_container div:hover {
   background-color: rgb(226, 226, 226);
   border: 2px solid var(--violet);
 }
-.number-container div.highlighted {
+.number_container div.highlighted {
   background-color: white;
   color: var(--violet);
   font-weight: 1000;

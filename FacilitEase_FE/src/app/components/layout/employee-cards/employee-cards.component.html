@@ -1,5 +1,5 @@
 <!-- employee-cards.component.html -->
-<div class="card-container">
+<div class="card_container">
   <div
     *ngFor="let card of cards; let i = index"
     (click)="onCardClick(i)"
@@ -17,24 +17,24 @@
         <p>{{ card.content }}</p>
       </mat-card-content>
 
-      <div class="logo-container">
+      <div class="logo_container">
         <!-- SVG logo for not hovered state -->
         <img
           *ngIf="card.logo === 'ticket'"
           src="./assets/ticket-svgrepo-com.svg"
           alt="Ticket Logo"
-          class="not-hovered"
+          class="not_hovered"
         />
-        <h2 *ngIf="card.logo === 'ticket'" class="not-hovered">
+        <h2 *ngIf="card.logo === 'ticket'" class="not_hovered">
           Raise a ticket
         </h2>
         <img
           *ngIf="card.logo === 'knowledge-base'"
           src="./assets/knowledge-base-svgrepo-com.svg"
           alt="Knowledge Base Logo"
-          class="not-hovered"
+          class="not_hovered"
         />
-        <h2 *ngIf="card.logo === 'knowledge-base'" class="not-hovered">
+        <h2 *ngIf="card.logo === 'knowledge-base'" class="not_hovered">
           Knowledge base
         </h2>
 

@@ -1,4 +1,4 @@
-.custom-dropdown {
+.custom_dropdown {
   height: 40px;
   width: max-content;
   padding: 10px;
@@ -15,7 +15,7 @@
   width: 30px;
   margin-left: 5px;
 }
-.custom-select {
+.custom_select {
   outline: none;
   border: none;
   font-weight: bold;
