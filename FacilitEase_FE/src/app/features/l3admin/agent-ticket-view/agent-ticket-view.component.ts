@@ -66,6 +66,7 @@ export class AgentTicketViewComponent {
 
   handleAction(ticketDetails: any): void {
     if (this.editMode) {
+    console.log("Newww",this.editMode)
       alert(
         'Your changes have not been saved!'
       );
