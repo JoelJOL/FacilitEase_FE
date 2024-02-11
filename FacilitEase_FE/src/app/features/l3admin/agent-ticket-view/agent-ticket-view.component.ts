@@ -18,7 +18,7 @@ export class AgentTicketViewComponent {
   ticketId: number = 0;// Initialize ticket ID
   modalRef: BsModalRef | undefined; // Modal reference
   titleSubAgent: any = [];
-  editMode: boolean = false;
+  editMode: boolean = true;
 
   onEditModeChange(editMode: boolean) {
     // Update the editMode value
@@ -76,12 +76,16 @@ export class AgentTicketViewComponent {
     });
   }
 
+ 
   resolveTicket(): void {
-    if (this.editMode) {
+    if (!this.editMode) {
+      console.log("Hi");
+      
       const isSaveConfirmed = window.confirm(
         'Save your changes before proceeding?'
       );
     } else {
+      console.log(this.editMode);
       const isConfirmed = window.confirm(
         'Are you sure you want to resolve the ticket?'
       );

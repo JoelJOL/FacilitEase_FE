@@ -9,7 +9,7 @@ import { TicketNotesAttachmentsComponent } from '../ticket-notes-attachments/tic
 export class TicketDetailViewComponent {
   customHeaderText = 'Supported Attachments';  
   @ViewChild(TicketNotesAttachmentsComponent) ticketNotesAttachmentsComponent!: TicketNotesAttachmentsComponent;
-
+  editMode: boolean = false; // Property to hold edit mode value
  
   
   @Input() ticketDetails!: any;
@@ -19,6 +19,13 @@ export class TicketDetailViewComponent {
   @Input() ticketId: number=0; 
   ngOnInit(){
     console.log(this.ticketId);
+    console.log(this.editMode);
+  }
+
+
+  // Method to capture edit mode change
+  onEditModeChange(editMode: boolean) {
+    this.editMode = editMode; // Update the edit mode value
   }
   
   

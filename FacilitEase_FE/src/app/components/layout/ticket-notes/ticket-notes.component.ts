@@ -20,7 +20,9 @@ export class TicketNotesComponent {
   ngOnInit(): void {
     this.getCommentText();
     this.fetchTimeSinceLastUpdate();
+    
   }
+
 
   
 
@@ -69,13 +71,11 @@ export class TicketNotesComponent {
 
   //Initialising the form control notes
   form = new FormGroup({
-    notes: new FormControl(''),
-  
+    notes: new FormControl('')  
   });
 
   getNotes(): string {
     const notesControl = this.form ? this.form.get('notes') : null;
-  
     return notesControl ? (notesControl.value as string) : '';
   }
   
