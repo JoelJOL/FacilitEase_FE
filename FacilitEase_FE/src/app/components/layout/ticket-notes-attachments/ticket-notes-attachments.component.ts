@@ -21,7 +21,7 @@ export class TicketNotesAttachmentsComponent {
 
   // Method to toggle edit mode based on the child component's event
   onToggleEditMode() {
-    this.editMode = !this.editMode;
+
     this.editModeChanged.emit(this.editMode);
     console.log("This is being emitted!");
   }
@@ -30,7 +30,7 @@ export class TicketNotesAttachmentsComponent {
   
   //Action to be performed on submit
   onSubmit() {
-    this.editMode = !this.editMode;
+
     this.editModeChanged.emit(this.editMode);
     const notes = this.ticketNotesComponent.getNotes().trim();
     console.log(notes);
