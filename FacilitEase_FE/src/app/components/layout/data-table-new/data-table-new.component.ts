@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 import { FilterComponent } from '../filter/filter.component';
 import { Observable } from 'rxjs';
 
-
 export interface ApiResponse {
   data: any[];
   totalDataCount: number;
@@ -63,6 +62,7 @@ export class DataTableNewComponent implements OnInit {
           // No records found, handle accordingly (e.g., display a message)
           console.log('No records found');
           this.noRecordsFound = true;
+          this.loading = false;
         }
       },
       (error) => {
