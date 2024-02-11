@@ -27,5 +27,5 @@ import { Component, Input } from '@angular/core';
 export class SidebarLogoComponent {
   logoSrc: string = 'assets/Facilit Ease.svg';
   logoIcon: string = 'assets/FacilitEase-logo-removebg-preview.png';
-  @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
+  @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input propertyS
 }

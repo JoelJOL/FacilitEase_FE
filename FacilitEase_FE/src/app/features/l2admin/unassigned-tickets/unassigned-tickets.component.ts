@@ -78,6 +78,8 @@ export class UnassignedTicketsComponent {
     'Submitted Date',
     'Priority',
     'Status',
+    'Department',
+    'Location',
   ];
   apiLink: string = '';
 
