@@ -1,1 +1,17 @@
-<img [src]="imageUrl" alt="Image" class="img" />
+<!-- ticket-documents.component.html -->
+
+<div class="thumbnail-container" (click)="openFile()">
+  <ng-container *ngIf="isImage; else fileIcon">
+    <img [src]="fileUrl" alt="Image Thumbnail" class="thumbnail" />
+  </ng-container>
+  <ng-template #fileIcon>
+    <img class="thumbnail" src="./assets/file-solid.svg" alt="File Icon" />
+  </ng-template>
+</div>
+
+<iframe
+  *ngIf="!isImage && fileUrl"
+  [src]="fileUrl"
+  width="100%"
+  height="600px"
+></iframe>

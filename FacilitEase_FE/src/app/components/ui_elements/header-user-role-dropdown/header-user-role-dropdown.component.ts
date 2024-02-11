@@ -19,7 +19,7 @@ export class HeaderUserRoleDropdownComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userRoles = this.azureService.azureRoles;
+    this.userRoles = this.userRoleService.getUserRoles();
   }
 
   sanitizeRoleValue(role: string): string {
