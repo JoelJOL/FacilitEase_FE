@@ -38,12 +38,11 @@ export class TicketInfoComponent {
 
   // Method to open tracking modal
   openTrackingModal() {
-    this.modalRef = this.modalService.show(TrackingModalComponent,{
+    this.modalRef = this.modalService.show(TrackingModalComponent, {
       initialState: {
         ticketDetails: this.ticketDetails,
       },
     });
-    console.log("This is modal")
+    console.log('This is modal');
   }
-
 }
