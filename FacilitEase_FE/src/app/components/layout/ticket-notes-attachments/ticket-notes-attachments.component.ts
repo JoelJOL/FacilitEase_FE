@@ -30,8 +30,8 @@ export class TicketNotesAttachmentsComponent {
   
   //Action to be performed on submit
   onSubmit() {
-    this.editMode = !this.editMode;
-    this.editModeChanged.emit(this.editMode);
+    console.log("From the submit",this.editMode);
+
     const notes = this.ticketNotesComponent.getNotes().trim();
     console.log(notes);
   
@@ -45,6 +45,7 @@ export class TicketNotesAttachmentsComponent {
   
           if(response && response.message === 'Comment posted successfully')  {
             this.editMode = !this.editMode; // Toggle the editMode property
+            this.editModeChanged.emit(this.editMode);
           } else {
             console.error('Unexpected response:', response);
           }
@@ -65,6 +66,7 @@ export class TicketNotesAttachmentsComponent {
   
           if (response === 'Comment updated successfully') {
             this.editMode = !this.editMode; // Toggle the editMode property
+            this.editModeChanged.emit(this.editMode);
           } else {
             console.error('Unexpected response:', response);
           }
@@ -99,9 +101,11 @@ export class TicketNotesAttachmentsComponent {
       } else {
         console.log('No comment exists. Nothing to delete.');
         this.editMode = !this.editMode; // Toggle the editMode property anyway
+        this.editModeChanged.emit(this.editMode);
       }
     }
-
+    
+    
   }
 
  
