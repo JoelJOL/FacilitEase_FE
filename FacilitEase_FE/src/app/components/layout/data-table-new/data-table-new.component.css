@@ -42,12 +42,13 @@
 .table_head th {
   text-align: center;
   background: var(--light_violet) !important;
-  font-size: larger;
+  font-size: 13px;
   font-weight: 1000;
   padding: 2%;
 }
 .table_body tr {
   background-color: white;
+  font-size: 12px;
 }
 th:first-child {
   border-top-left-radius: 8px;
@@ -238,11 +239,11 @@ td {
   color: #555;
 }
 
-.skeleton_row{
+.skeleton_row {
   height: 70px;
 }
 
-.skeleton_data{
+.skeleton_data {
   width: 50px;
   height: 15px;
   border-radius: 10px;

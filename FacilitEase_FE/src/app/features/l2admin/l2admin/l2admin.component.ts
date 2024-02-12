@@ -26,6 +26,7 @@ export class L2AdminComponent {
         'Assigned Tickets',
         'Escalated Tickets',
         'Tickets To Resolve',
+        'Cancellation Requests',
       ],
     },
     {
@@ -83,6 +84,9 @@ export class L2AdminComponent {
       } else if (event.subfield === 'Tickets To Resolve') {
         this.showL2AdminTickets = true;
         this.router.navigate(['l2admin/tickets-to-resolve']);
+      } else if (event.subfield === 'Cancellation Requests') {
+        this.showL2AdminTickets = true;
+        this.router.navigate(['l2admin/l2-cancellation']);
       }
     }
   }

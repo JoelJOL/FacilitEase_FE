@@ -35,9 +35,9 @@ export class DetailsAssignedComponent {
       console.log('Ticket Details:', this.ticketDetails);
       this.titleSubHeading = [
         { heading: 'Raised By', text: this.ticketDetails.employeeName },
+        { heading: 'Assigned To', text: this.ticketDetails.assignedTo },
         { heading: 'Department', text: this.ticketDetails.deptName },
         { heading: 'Manager', text: this.ticketDetails.managerName },
-        { heading: 'Project Code', text: this.ticketDetails.projectCode },
         { heading: 'Location', text: this.ticketDetails.locationName },
       ];
     });

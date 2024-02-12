@@ -148,6 +148,8 @@ import { NotificationComponent } from './components/layout/notification/notifica
 import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve/tickets-to-resolve.component';
 import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
 import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component';
+import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-cancellation.component';
+import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -264,6 +266,8 @@ const isIE =
     TicketsToResolveComponent,
     DetailsTicketToResolveComponent,
     EditSlaComponent,
+    L2CancellationComponent,
+    DetailsL2CancelComponent,
   ],
   imports: [
     HttpClientModule,

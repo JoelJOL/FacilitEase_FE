@@ -1,0 +1,21 @@
+<div class="container mt-1">
+  <div class="ticket-container">
+    <app-ticket-detail-view
+      [ticketDetails]="ticketDetails"
+      [ticketId]="ticketId"
+      [headings]="titleSubAgent"
+    ></app-ticket-detail-view>
+    <div class="button-row">
+      <div class="common-btn">
+        <app-button color="submit" (click)="acceptCancelRequest()"
+          >Accept Cancellation</app-button
+        >
+      </div>
+      <div class="common-btn">
+        <app-button color="rejected" (click)="denyCancelRequest()"
+          >Deny Cancellation</app-button
+        >
+      </div>
+    </div>
+  </div>
+</div>

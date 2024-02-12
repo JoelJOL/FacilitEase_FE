@@ -3,7 +3,7 @@ import { AgentService } from '../../service/httpService/agentSerivce/agent.servi
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { TicketDetails } from '@app/ticket-details'; 
+import { TicketDetails } from '@app/ticket-details';
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -13,7 +13,7 @@ import { TicketDetails } from '@app/ticket-details';
 export class AgentTicketViewComponent {
   customHeaderText = 'Supported Attachments';
   ticketDetails!: TicketDetails; // Hold ticket details
-  ticketId: number = 0;// Initialize ticket ID
+  ticketId: number = 0; // Initialize ticket ID
   modalRef: BsModalRef | undefined; // Modal reference
   titleSubAgent: any = [];
   editMode: boolean = false;
@@ -30,17 +30,16 @@ export class AgentTicketViewComponent {
   onEditModeChange(editMode: boolean) {
     // Update the editMode value
     this.editMode = editMode;
-    console.log("Grand parent",this.editMode);
+    console.log('Grand parent', this.editMode);
   }
 
    // Lifecycle hook - called after the component's view has been initialized
   ngOnInit(): void {
-     // Extract ticket ID from route parameters
+    // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
       this.ticketId = Number(params['Id']);
       console.log(this.ticketId);
     });
-
 
     // Fetch ticket details from service
     this.agentService.getData(this.ticketId).subscribe(
@@ -65,17 +64,14 @@ export class AgentTicketViewComponent {
   // Method to handle action based on edit mode
   handleAction(ticketDetails: any): void {
     if (this.editMode) {
-    console.log("Newww",this.editMode)
-      alert(
-        'Your changes have not been saved!'
-      );
+      console.log('Newww', this.editMode);
+      alert('Your changes have not been saved!');
     } else {
-        this.openModal(ticketDetails);
+      this.openModal(ticketDetails);
     }
-}
+  }
   // Open modal with ticket details
   openModal(ticketDetails: any) {
-    
     this.modalRef = this.modalService.show(ModalComponent, {
       initialState: {
         ticketDetails: ticketDetails,
@@ -83,24 +79,21 @@ export class AgentTicketViewComponent {
     });
   }
 
- 
   resolveTicket(): void {
     if (this.editMode) {
-      console.log("Hi"); 
-      alert(
-        'Your changes have not been saved!'
-      );
+      console.log('Hi');
+      alert('Your changes have not been saved!');
     } else {
       console.log(this.editMode);
       const isConfirmed = window.confirm(
         'Are you sure you want to resolve the ticket?'
       );
-  
+
       if (isConfirmed) {
         // Call service to resolve ticket
         this.agentService.resolveTicket(this.ticketId).subscribe(
           (response) => {
-            console.log('API call success:', response); 
+            console.log('API call success:', response);
             alert('Ticket resolved successfully!'); // Show success alert
             this.router.navigate(['l3admin/view-ticket']); // Navigate to view-ticket page
           },
@@ -113,6 +106,4 @@ export class AgentTicketViewComponent {
       }
     }
   }
-  
- 
 }
