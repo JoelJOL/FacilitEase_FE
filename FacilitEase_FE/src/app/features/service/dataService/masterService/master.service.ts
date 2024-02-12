@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MasterService {
-  constructor(private http: HttpClient,private azureService : AzureService) {}
-  userId : number = this.azureService.userId;
+  constructor(private http: HttpClient, private azureService: AzureService) {}
+  userId: number = this.azureService.userId;
   userIdL2Admin = 2;
   private apiLink: string =
     'https://localhost:7049/api/Manager/GetTicketByManager/2';
@@ -26,8 +26,7 @@ export class MasterService {
     return apiUrl;
   }
   getApiLink3(): string {
-    const apiUrl =
-      `https://localhost:7049/api/Manager/GetLiveTicketByManager/${this.userId}`;
+    const apiUrl = `https://localhost:7049/api/Manager/GetLiveTicketByManager/${this.userId}`;
     return apiUrl;
   }
   getManagerTicketDetails(ticketId: number): Observable<any> {
@@ -74,5 +73,9 @@ export class MasterService {
   }
   getApiLinkProjectEmployeeDetails(): string {
     return this.apiLinkProjectEmployeeDeatils;
+  }
+  private apiLinkTicketsToResolve: string = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${this.userIdL2Admin}`;
+  getApiLinkTicketsToResolve(): string {
+    return this.apiLinkTicketsToResolve;
   }
 }

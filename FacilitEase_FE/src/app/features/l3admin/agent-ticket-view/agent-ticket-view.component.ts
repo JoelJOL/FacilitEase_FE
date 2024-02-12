@@ -4,8 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TicketDetails } from '@app/ticket-details'; 
-import { TicketAttachmentsComponent } from '@app/components/layout/ticket-attachments/ticket-attachments.component';
-import { TicketNotesAttachmentsComponent } from '@app/components/layout/ticket-notes-attachments/ticket-notes-attachments.component';
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -20,15 +18,8 @@ export class AgentTicketViewComponent {
   titleSubAgent: any = [];
   editMode: boolean = false;
 
-  onEditModeChange(editMode: boolean) {
-    // Update the editMode value
-    this.editMode = editMode;
-  }
- 
-
   timelineData: any[] = []; // Placeholder for timeline data
 
- 
   constructor(
     private route: ActivatedRoute,
     private agentService: AgentService,
@@ -36,12 +27,18 @@ export class AgentTicketViewComponent {
     private modalService: BsModalService
   ) {}
 
+  onEditModeChange(editMode: boolean) {
+    // Update the editMode value
+    this.editMode = editMode;
+    console.log("Grand parent",this.editMode);
+  }
   ngOnInit(): void {
      // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
       this.ticketId = Number(params['Id']);
       console.log(this.ticketId);
     });
+
 
     // Fetch ticket details from service
     this.agentService.getData(this.ticketId).subscribe(
@@ -67,8 +64,19 @@ export class AgentTicketViewComponent {
     );
   }
 
+  handleAction(ticketDetails: any): void {
+    if (this.editMode) {
+    console.log("Newww",this.editMode)
+      alert(
+        'Your changes have not been saved!'
+      );
+    } else {
+        this.openModal(ticketDetails);
+    }
+}
   // Open modal with ticket details
   openModal(ticketDetails: any) {
+    
     this.modalRef = this.modalService.show(ModalComponent, {
       initialState: {
         ticketDetails: ticketDetails,
@@ -76,12 +84,15 @@ export class AgentTicketViewComponent {
     });
   }
 
+ 
   resolveTicket(): void {
     if (this.editMode) {
-      const isSaveConfirmed = window.confirm(
-        'Save your changes before proceeding?'
+      console.log("Hi"); 
+      alert(
+        'Your changes have not been saved!'
       );
     } else {
+      console.log(this.editMode);
       const isConfirmed = window.confirm(
         'Are you sure you want to resolve the ticket?'
       );
