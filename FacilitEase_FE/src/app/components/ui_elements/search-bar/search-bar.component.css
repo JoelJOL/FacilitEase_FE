@@ -1,7 +1,7 @@
 #search_icon {
   width: 20px;
 }
-#search-addon:hover {
+#searchAddon:hover {
   cursor: pointer;
   background-color: var(--light_violet);
 }
