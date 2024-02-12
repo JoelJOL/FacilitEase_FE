@@ -13,7 +13,7 @@ import {
   Priority,
   TicketResponse,
 } from '@app/features/Interface/interface';
-import { GetAPIService } from '@app/features/service/httpService/GetAPI/get-api.service';
+import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get-api.service';
 
 @Component({
   selector: 'app-upload',

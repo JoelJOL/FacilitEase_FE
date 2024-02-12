@@ -42,6 +42,12 @@ export class DataTableNewComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
+    // Check if "SubmittedDate" exists in headers array
+    if (!this.headers.includes('SubmittedDate')) {
+      // If "SubmittedDate" doesn't exist, use "Id" as the default column
+      this.sortColumn = 'Id';
+    }
+
     this.loadData();
   }
 
