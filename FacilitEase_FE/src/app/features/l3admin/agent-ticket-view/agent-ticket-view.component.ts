@@ -32,6 +32,7 @@ export class AgentTicketViewComponent {
     this.editMode = editMode;
     console.log("Grand parent",this.editMode);
   }
+  
   ngOnInit(): void {
      // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
@@ -51,10 +52,6 @@ export class AgentTicketViewComponent {
           { heading: 'Raised By', text: this.ticketDetails.employeeName },
           { heading: 'Department', text: this.ticketDetails.deptName },
           { heading: 'Manager', text: this.ticketDetails.managerName },
-          {
-            heading: 'Project Code',
-            text: this.ticketDetails.projectCode.toString(),
-          },
           { heading: 'Location', text: this.ticketDetails.locationName },
         ];
       },

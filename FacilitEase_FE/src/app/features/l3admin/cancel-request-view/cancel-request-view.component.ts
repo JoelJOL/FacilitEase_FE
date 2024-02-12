@@ -16,6 +16,7 @@ export class CancelRequestViewComponent {
   ticketId: number = 0;
   modalRef: BsModalRef | undefined;
   titleSubAgent: any = [];
+  editMode: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,10 +41,15 @@ export class CancelRequestViewComponent {
           { heading: 'Raised By', text: this.ticketDetails.employeeName },
           { heading: 'Department', text: this.ticketDetails.deptName },
           { heading: 'Manager', text: this.ticketDetails.managerName },
-          { heading: 'Project Code', text: this.ticketDetails.projectCode },
           { heading: 'Location', text: this.ticketDetails.locationName },
         ];
       });
+  }
+
+  onEditModeChange(editMode: boolean) {
+    // Update the editMode value
+    this.editMode = editMode;
+    console.log("Grand parent",this.editMode);
   }
 
   openModal(ticketDetails: any) {
@@ -55,44 +61,60 @@ export class CancelRequestViewComponent {
   }
 
   acceptCancelRequest(): void {
-    const isConfirmed = window.confirm(
-      'Are you sure you want to accept the cancellation request?'
-    );
-
-    if (isConfirmed) {
-      this.agentService.AcceptCancelTicket(this.ticketId).subscribe(
-        (response) => {
-          console.log('API call success:', response);
-          alert('Ticket cancelled successfully!');
-          this.router.navigate(['l3admin/cancel-requests']);
-        },
-        (error) => {
-          console.error('API call error:', error);
-        }
+    if (this.editMode) {
+      console.log("Hi"); 
+      alert(
+        'Your changes have not been saved!'
       );
-    } else {
-      console.log('Cancellation acceptation success.');
+    }else{
+      const isConfirmed = window.confirm(
+        'Are you sure you want to accept the cancellation request?'
+      );
+  
+      if (isConfirmed) {
+        this.agentService.AcceptCancelTicket(this.ticketId).subscribe(
+          (response) => {
+            console.log('API call success:', response);
+            alert('Ticket cancelled successfully!');
+            this.router.navigate(['l3admin/cancel-requests']);
+          },
+          (error) => {
+            console.error('API call error:', error);
+          }
+        );
+      } else {
+        console.log('Cancellation acceptation success.');
+      }
     }
+    
   }
 
   denyCancelRequest(): void {
-    const isConfirmed = window.confirm(
-      'Are you sure you want to accept the cancellation request?'
-    );
-
-    if (isConfirmed) {
-      this.agentService.DenyCancelTicket(this.ticketId).subscribe(
-        (response) => {
-          console.log('API call success:', response);
-          alert('Cancellation denied successfully!');
-          this.router.navigate(['l3admin/cancel-requests']);
-        },
-        (error) => {
-          console.error('API call error:', error);
-        }
+    if (this.editMode) {
+      console.log("Hi"); 
+      alert(
+        'Your changes have not been saved!'
       );
-    } else {
-      console.log('Ticket resolution canceled.');
+    }else{
+      const isConfirmed = window.confirm(
+        'Are you sure you want to deny the cancellation request?'
+      );
+  
+      if (isConfirmed) {
+        this.agentService.DenyCancelTicket(this.ticketId).subscribe(
+          (response) => {
+            console.log('API call success:', response);
+            alert('Cancellation denied successfully!');
+            this.router.navigate(['l3admin/cancel-requests']);
+          },
+          (error) => {
+            console.error('API call error:', error);
+          }
+        );
+      } else {
+        console.log('Ticket resolution canceled.');
+      }
     }
-  }
+    }
+    
 }

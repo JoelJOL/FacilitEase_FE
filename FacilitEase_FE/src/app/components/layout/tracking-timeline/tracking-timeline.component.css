@@ -105,37 +105,37 @@
 }
 
 .open_status {
-    color: #FF6347; /* Tomato */
+    color: var(--green);/* Tomato */
     font-weight: bold;
   }
   
   .in-progress_status {
-    color: #bca109; /* Gold */
+    color: var(--yellow);
     font-weight: bold;;
   }
   
   .on-hold_status {
-    color: #4d0c0a; /* Orange */
+    color: var(--onhold);
     font-weight: bold;;
   }
 
   .escalated_status {
-    color: #FFA500; /* Orange */
+    color: var(--escalated_status_bg); /* Orange */
     font-weight: bold;;
   }
   
   .resolved_status {
-    color: #32CD32; /* LimeGreen */
+    color: var(--resolved); 
     font-weight: bold;
   }
 
   .cancel_request_status {
-    color: #0066ff; /* Orange */
+    color: var(--cancelrequested);
     font-weight: bold;
   }
 
   .cancel_status{
-	color: #7300ff; /* Orange */
+	color: var(--cancelled); 
     font-weight: bold;
   }
   

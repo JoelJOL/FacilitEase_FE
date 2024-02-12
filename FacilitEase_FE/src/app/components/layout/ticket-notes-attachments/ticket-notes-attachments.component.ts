@@ -100,7 +100,7 @@ export class TicketNotesAttachmentsComponent {
         );
       } else {
         console.log('No comment exists. Nothing to delete.');
-        this.editMode = !this.editMode; // Toggle the editMode property anyway
+        this.editMode = !this.editMode; // Toggle the editMode property
         this.editModeChanged.emit(this.editMode);
       }
     }

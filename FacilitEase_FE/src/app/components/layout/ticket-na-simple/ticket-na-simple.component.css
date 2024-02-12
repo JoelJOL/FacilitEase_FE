@@ -1,3 +1,13 @@
+.na_box {
+  border: 2px solid var(--grey);
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+}
+
 .card_body {
   padding: 2%;
 }
@@ -7,7 +17,7 @@
   font-weight: 400;
 }
 #notes_heading {
-  font-weight: 700;
+  font-weight: 400;
 }
 .notes_description {
   font-size: medium;

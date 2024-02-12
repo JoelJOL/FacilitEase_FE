@@ -3,10 +3,10 @@
 <app-ticket-description
   [ticketDetails]="ticketDetails"
 ></app-ticket-description>
-<app-ticket-attachments
+<app-ticket-documents
   [headerText]="customHeaderText"
-  [ticketDetails]="ticketDetails"
-></app-ticket-attachments>
+  [ticketId]="ticketId"
+></app-ticket-documents>
 <app-ticket-na-simple
   [notes]="ticketDetails.notes"
   [lastupdate]="ticketDetails.lastUpdate"
