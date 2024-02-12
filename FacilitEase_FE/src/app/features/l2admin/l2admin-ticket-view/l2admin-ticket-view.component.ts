@@ -91,6 +91,7 @@ export class L2adminTicketViewComponent {
               console.error('Error assigning ticket', error);
             }
           );
+        this.router.navigate(['l2admin/unassigned-tickets']);
       }
     });
   }

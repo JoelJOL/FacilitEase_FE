@@ -17,6 +17,7 @@ export class CancelRequestViewAllComponent {
     'Raised Date',
     'Requested Date',
     'Priority',
+    'Status',
     'Department',
     'Location'
   ];

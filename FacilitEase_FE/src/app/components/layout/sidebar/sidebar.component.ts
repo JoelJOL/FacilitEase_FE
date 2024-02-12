@@ -57,17 +57,17 @@ export class SidebarComponent {
   get sidebarState() {
     return this.isSidebarCollapsed ? 'collapsed' : 'expanded';
   }
-  onSidebarMouseEnter() {
-    // On mouse enter, always expand the sidebar
-    this.isSidebarCollapsed = false;
-    this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
-  }
+  // onSidebarMouseEnter() {
+  //   // On mouse enter, always expand the sidebar
+  //   this.isSidebarCollapsed = false;
+  //   this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
+  // }
 
-  onSidebarMouseLeave() {
-    // On mouse leave, always collapse the sidebar
-    this.isSidebarCollapsed = true;
-    this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
-  }
+  // onSidebarMouseLeave() {
+  //   // On mouse leave, always collapse the sidebar
+  //   this.isSidebarCollapsed = true;
+  //   this.sidebarService.toggleSidebar(this.isSidebarCollapsed);
+  // }
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
     this.sidebarService.toggleSidebar(this.isSidebarCollapsed);

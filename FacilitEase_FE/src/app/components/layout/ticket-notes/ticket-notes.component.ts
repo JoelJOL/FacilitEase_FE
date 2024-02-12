@@ -20,7 +20,9 @@ export class TicketNotesComponent {
   ngOnInit(): void {
     this.getCommentText();
     this.fetchTimeSinceLastUpdate();
+    
   }
+
 
   
 
@@ -62,26 +64,24 @@ export class TicketNotesComponent {
   @Input() editMode: boolean = false;
 
   // Output event to notify parent about toggle
-  @Output() toggleEditModeEvent = new EventEmitter<void>(); 
+  @Output() toggleEditModeEvent = new EventEmitter<boolean>(); 
 
   // Event to emit when notes are submitted
   @Output() submitNotesEvent = new EventEmitter<string>();
 
   //Initialising the form control notes
   form = new FormGroup({
-    notes: new FormControl(''),
-  
+    notes: new FormControl('')  
   });
 
   getNotes(): string {
     const notesControl = this.form ? this.form.get('notes') : null;
-  
     return notesControl ? (notesControl.value as string) : '';
   }
   
   // Emit the event to notify the parent
   toggleEditMode() {
-    this.toggleEditModeEvent.emit(); 
+    this.toggleEditModeEvent.emit(this.editMode); 
   }
 
   

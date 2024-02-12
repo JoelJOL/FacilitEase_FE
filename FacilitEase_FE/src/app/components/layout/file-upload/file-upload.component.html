@@ -8,7 +8,7 @@
 <div class="container mt-5">
   <div
     (click)="fileInput.click()"
-    class="drop-zone border border-primary rounded p-3 text-center square-container"
+    class="drop-zone border border-primary rounded p-3 text-center square_container"
     (drop)="onDrop($event)"
     (dragover)="onDragOver($event)"
     (dragleave)="onDragLeave($event)"
@@ -19,7 +19,7 @@
       alt="File Upload Icon"
     />
     <p class="mb-2">Drag and drop files here or click to select a file</p>
-    <div class="input-group mb-2">
+    <div class="input_group mb-2">
       <input
         type="text"
         [value]="selectedFileName"

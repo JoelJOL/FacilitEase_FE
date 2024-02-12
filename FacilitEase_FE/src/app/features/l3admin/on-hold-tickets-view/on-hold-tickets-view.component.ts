@@ -17,6 +17,7 @@ export class OnHoldTicketsViewComponent {
     'Submitted Date',
     'Updated Date',
     'Priority',
+    'Status',
     'Department',
     'Location',
   ];
