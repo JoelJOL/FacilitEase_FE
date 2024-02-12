@@ -11,8 +11,7 @@ export class TicketNaSimpleComponent {
   @Input() notes:string = 'Default Notes';
   @Input() lastupdate:string = 'Default time';
   @Input() ticketId: number=0; 
-constructor(private agentService:AgentService){}
-commentText: string='';
+constructor(){}
 lastUpdated:string = '';
 
   ngOnInit() {

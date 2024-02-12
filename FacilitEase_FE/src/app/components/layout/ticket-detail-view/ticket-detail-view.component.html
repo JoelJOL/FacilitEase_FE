@@ -2,10 +2,8 @@
 <app-ticket-description
   [ticketDetails]="ticketDetails"
 ></app-ticket-description>
-<app-ticket-attachments
-  [headerText]="customHeaderText"
-  [ticketDetails]="ticketDetails"
-></app-ticket-attachments>
+<app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId">
+</app-ticket-documents>
 <app-ticket-notes-attachments
   [ticketId]="ticketId"
   (editModeChanged)="onEditModeChange($event)"

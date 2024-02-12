@@ -24,7 +24,6 @@ export class TrackingTimelineComponent implements OnInit {
   @Input() value: any[] = [];
 
   ngOnInit() {
-    console.log("Hi");
     console.log('Received value:', this.value);
   } 
 }

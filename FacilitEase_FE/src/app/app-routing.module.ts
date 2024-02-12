@@ -75,6 +75,8 @@ import { MsalGuard } from '@azure/msal-angular';
 import { LoadingComponent } from './components/ui_elements/loading/loading.component';
 import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve/tickets-to-resolve.component';
 import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
+import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-cancellation.component';
+import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
 
 const routes: Routes = [
   {
@@ -144,6 +146,8 @@ const routes: Routes = [
         path: 'details-tickets-to-resolve/:Id',
         component: DetailsTicketToResolveComponent,
       },
+      { path: 'l2-cancellation', component: L2CancellationComponent },
+      { path: 'details-l2-cancel/:Id', component: DetailsL2CancelComponent },
     ],
   },
   {

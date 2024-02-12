@@ -5,7 +5,9 @@
   position: fixed;
   overflow-x: hidden;
 }
-
+.sidebar::-webkit-scrollbar {
+  width: 0px;
+}
 .collapsed {
   width: 60px !important;
 }

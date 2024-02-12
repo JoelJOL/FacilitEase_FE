@@ -78,4 +78,8 @@ export class MasterService {
   getApiLinkTicketsToResolve(): string {
     return this.apiLinkTicketsToResolve;
   }
+  private apiLinkCancellationRequests: string = `https://localhost:7049/api/L3Admin/GetCancelRequestTicketsByAgent/${this.userIdL2Admin}`;
+  getApiLinkCancellationRequests(): string {
+    return this.apiLinkCancellationRequests;
+  }
 }

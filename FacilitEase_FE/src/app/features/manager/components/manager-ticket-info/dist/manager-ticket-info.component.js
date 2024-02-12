@@ -46,7 +46,8 @@ var ManagerTicketInfoComponent = /** @class */ (function () {
         var _this = this;
         if (selectedValue !== -1 && this.ticketDetails.id) {
             // Call the API to change the priority
-            this.masterService.changePriority(this.ticketDetails.id, this.selectedPriority)
+            this.masterService
+                .changePriority(this.ticketDetails.id, this.selectedPriority)
                 .subscribe(function () {
                 console.log('Priority changed successfully');
                 _this.editingPriority = false;
@@ -57,7 +58,7 @@ var ManagerTicketInfoComponent = /** @class */ (function () {
             });
         }
         else {
-            console.log("Cant enter the if loop");
+            console.log('Cant enter the if loop');
         }
     };
     ManagerTicketInfoComponent.prototype.openTrackingModal = function () {
@@ -66,7 +67,7 @@ var ManagerTicketInfoComponent = /** @class */ (function () {
                 ticketDetails: this.ticketDetails
             }
         });
-        console.log("This is modal");
+        console.log('This is modal');
     };
     __decorate([
         core_1.Input()
