@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { AgentService } from '../../service/httpService/agentSerivce/agent.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
@@ -17,7 +17,6 @@ export class AgentTicketViewComponent {
   modalRef: BsModalRef | undefined; // Modal reference
   titleSubAgent: any = [];
   editMode: boolean = false;
-
   timelineData: any[] = []; // Placeholder for timeline data
 
   constructor(
@@ -27,12 +26,14 @@ export class AgentTicketViewComponent {
     private modalService: BsModalService
   ) {}
 
+  // Method to handle edit mode change
   onEditModeChange(editMode: boolean) {
     // Update the editMode value
     this.editMode = editMode;
     console.log("Grand parent",this.editMode);
   }
-  
+
+   // Lifecycle hook - called after the component's view has been initialized
   ngOnInit(): void {
      // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
@@ -61,6 +62,7 @@ export class AgentTicketViewComponent {
     );
   }
 
+  // Method to handle action based on edit mode
   handleAction(ticketDetails: any): void {
     if (this.editMode) {
     console.log("Newww",this.editMode)
