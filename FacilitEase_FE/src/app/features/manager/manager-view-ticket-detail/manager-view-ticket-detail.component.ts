@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '@app/components/layout/modal/modal.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketDetails } from '@app/ticket-details';
@@ -16,12 +18,15 @@ export class ManagerViewTicketDetailComponent implements OnInit {
   customHeaderText:string = "Supported Attachments"
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
+  editMode: boolean = false;
+  modalRef: BsModalRef | undefined;
 
   constructor(
     private masterService: MasterService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
@@ -117,5 +122,26 @@ export class ManagerViewTicketDetailComponent implements OnInit {
         console.error('Error forwarding for approval:', error);
       }
     );
+  }
+  onEditModeChange(editMode: boolean) {
+    // Update the editMode value
+    this.editMode = editMode;
+    console.log('Grand parent', this.editMode);
+  }
+  handleAction(ticketDetails: any): void {
+    if (this.editMode) {
+      console.log('Newww', this.editMode);
+      alert('Your changes have not been saved!');
+    } else {
+      this.openModal(ticketDetails);
+    }
+  }
+  // Open modal with ticket details
+  openModal(ticketDetails: any) {
+    this.modalRef = this.modalService.show(ModalComponent, {
+      initialState: {
+        ticketDetails: ticketDetails,
+      },
+    });
   }
 }

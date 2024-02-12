@@ -8,15 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.ManagerViewTicketDetailComponent = void 0;
 var core_1 = require("@angular/core");
+var modal_component_1 = require("@app/components/layout/modal/modal.component");
 var confirmation_modal_component_1 = require("../components/confirmation-modal/confirmation-modal.component");
 var ManagerViewTicketDetailComponent = /** @class */ (function () {
-    function ManagerViewTicketDetailComponent(masterService, dialog, route, router) {
+    function ManagerViewTicketDetailComponent(masterService, dialog, route, router, modalService) {
         this.masterService = masterService;
         this.dialog = dialog;
         this.route = route;
         this.router = router;
+        this.modalService = modalService;
         this.customHeaderText = "Supported Attachments";
         this.ticketId = 0;
+        this.editMode = false;
     }
     ManagerViewTicketDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -95,6 +98,28 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
             console.log('Forwarded for approval successfully');
         }, function (error) {
             console.error('Error forwarding for approval:', error);
+        });
+    };
+    ManagerViewTicketDetailComponent.prototype.onEditModeChange = function (editMode) {
+        // Update the editMode value
+        this.editMode = editMode;
+        console.log('Grand parent', this.editMode);
+    };
+    ManagerViewTicketDetailComponent.prototype.handleAction = function (ticketDetails) {
+        if (this.editMode) {
+            console.log('Newww', this.editMode);
+            alert('Your changes have not been saved!');
+        }
+        else {
+            this.openModal(ticketDetails);
+        }
+    };
+    // Open modal with ticket details
+    ManagerViewTicketDetailComponent.prototype.openModal = function (ticketDetails) {
+        this.modalRef = this.modalService.show(modal_component_1.ModalComponent, {
+            initialState: {
+                ticketDetails: ticketDetails
+            }
         });
     };
     ManagerViewTicketDetailComponent = __decorate([
