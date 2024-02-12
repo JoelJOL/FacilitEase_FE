@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // Define an interface for your API response
@@ -15,12 +15,14 @@ export class TicketDocumentsComponent implements OnInit {
   private apiUrl = 'https://localhost:7049';
   fileUrl!: string;
   isImage = false;
+  @Input() headerText = '';
+  @Input() ticketId: number=0;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     const firstApiEndpoint =
-      'https://localhost:7049/api/Employee/get-documents-by-ticket/54';
+      `https://localhost:7049/api/Employee/get-documents-by-ticket/${this.ticketId}`;
 
     // Fetch the entire response from the first API endpoint
     this.getFileData(firstApiEndpoint).subscribe(
@@ -49,7 +51,7 @@ export class TicketDocumentsComponent implements OnInit {
 
   isImageFile(filename: string): boolean {
     // You can add more file extensions if needed
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg'];
     const extension = filename.slice(
       ((filename.lastIndexOf('.') - 1) >>> 0) + 2
     );

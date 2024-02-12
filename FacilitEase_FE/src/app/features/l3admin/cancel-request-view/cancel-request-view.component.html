@@ -4,6 +4,7 @@
       [ticketDetails]="ticketDetails"
       [ticketId]="ticketId"
       [headings]="titleSubAgent"
+      (editModeChanged)="onEditModeChange($event)"
     ></app-ticket-detail-view>
     <div class="button-row">
       <div class="common-btn">

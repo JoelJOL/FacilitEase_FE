@@ -35,6 +35,7 @@ body {
   --green: #2d7f30;
   --ticket_status: #ffe9c4;
   --ticket_status_color: #f59e0b;
+  --yellow:#f5c412;
   --priority_box: #f4be61;
   --dark_grey: rgb(63, 62, 94, 0.8);
   --light_blue: #80bdff;
@@ -43,6 +44,8 @@ body {
   --hover_grey: #c3c3c3;
   --white: #ffffff;
   --black: #000000;
+  --tomato: #FF6347;
+
 }
 .skeleton {
   background-color: #e2e5e7;

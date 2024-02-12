@@ -7,19 +7,22 @@ import { TicketNotesAttachmentsComponent } from '../ticket-notes-attachments/tic
   styleUrls: ['./ticket-detail-view.component.css']
 })
 export class TicketDetailViewComponent {
-  customHeaderText = 'Supported Attachments';  
-  @ViewChild(TicketNotesAttachmentsComponent) ticketNotesAttachmentsComponent!: TicketNotesAttachmentsComponent;
+  customHeaderText = 'Supported Attachments'; // Custom header text for the component  
   editMode: boolean = false; // Property to hold edit mode value
   @Output() editModeChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() ticketDetails!: any;
-  @Input() headings: any[] = [];
-  
+
+  // Input properties
+  @Input() ticketDetails!: any; // Holds ticket details
+  @Input() headings: any[] = []; // Array of headings
+  @Input() ticketId: number=0; // Holds ticket ID
+
+  @ViewChild(TicketNotesAttachmentsComponent) ticketNotesAttachmentsComponent!: TicketNotesAttachmentsComponent;
+
   constructor() {} 
-  @Input() ticketId: number=0; 
+
   ngOnInit(){
-    console.log(this.ticketId);
+
     console.log("Initial editMode value:", this.editMode);
-    console.log(this.editMode);
   }
 
 
