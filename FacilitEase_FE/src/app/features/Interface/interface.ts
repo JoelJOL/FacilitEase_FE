@@ -13,6 +13,10 @@ export interface Category {
   categoryName: string;
 }
 
+export interface TicketAttachment {
+  documentLink: string;
+}
+
 export interface TicketResponse {
   id: number;
   ticketName: string;
