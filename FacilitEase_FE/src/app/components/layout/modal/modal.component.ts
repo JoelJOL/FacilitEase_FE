@@ -112,6 +112,10 @@ export class ModalComponent {
             targetRoute = 'l2/escalated-tickets';
           } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
             targetRoute = 'l3admin/view-ticket';
+          } else if (
+            currentRoute.includes('l2admin/details-tickets-to-resolve')
+          ) {
+            targetRoute = 'l2admin/tickets-to-resolve';
           } else {
             targetRoute = '**';
           }

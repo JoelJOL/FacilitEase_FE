@@ -37,6 +37,7 @@ export class AzureService {
   employeeIn: boolean = false;
   userId: number = 0;
   userName: string = '';
+  userEmail: string = '';
   userRoles: string[] = [];
   azureRoles: string[] = [];
   navigateFirst: boolean = true;
@@ -66,7 +67,7 @@ export class AzureService {
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
         ];
       console.log(this.userId);
-      this.userName =
+      this.userEmail =
         decodedToken[
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
         ];
@@ -74,6 +75,7 @@ export class AzureService {
         decodedToken[
           'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
         ];
+      this.userName = decodedToken['EmployeeName'];
 
       this.isL1Admin = this.azureRoles.includes('L1Admin');
       this.isL2Admin = this.azureRoles.includes('L2Admin');
