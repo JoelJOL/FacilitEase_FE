@@ -7,7 +7,7 @@ import { TrackingModalComponent } from '@app/components/layout/tracking-modal/tr
 @Component({
   selector: 'app-manager-ticket-info',
   templateUrl: './manager-ticket-info.component.html',
-  styleUrls: ['./manager-ticket-info.component.css']
+  styleUrls: ['./manager-ticket-info.component.css'],
 })
 export class ManagerTicketInfoComponent {
   ticketId: string = '';
@@ -18,10 +18,12 @@ export class ManagerTicketInfoComponent {
   selectedPriority!: number;
   editingPriority: boolean = false;
   modalRef: BsModalRef | undefined;
-  
 
-  
-  constructor(private masterService: MasterService, private router:Router,private modalService: BsModalService) {
+  constructor(
+    private masterService: MasterService,
+    private router: Router,
+    private modalService: BsModalService
+  ) {
     this.selectedPriority = -1;
   }
 
@@ -48,7 +50,8 @@ export class ManagerTicketInfoComponent {
   onPriorityChange(selectedValue: number): void {
     if (selectedValue !== -1 && this.ticketDetails.id) {
       // Call the API to change the priority
-      this.masterService.changePriority(this.ticketDetails.id, this.selectedPriority)
+      this.masterService
+        .changePriority(this.ticketDetails.id, this.selectedPriority)
         .subscribe(
           () => {
             console.log('Priority changed successfully');
@@ -60,17 +63,16 @@ export class ManagerTicketInfoComponent {
             console.error('Error changing priority:', error);
           }
         );
-    }
-    else{
-      console.log("Cant enter the if loop");
+    } else {
+      console.log('Cant enter the if loop');
     }
   }
   openTrackingModal() {
-    this.modalRef = this.modalService.show(TrackingModalComponent,{
+    this.modalRef = this.modalService.show(TrackingModalComponent, {
       initialState: {
         ticketDetails: this.ticketDetails,
       },
     });
-    console.log("This is modal")
+    console.log('This is modal');
   }
 }

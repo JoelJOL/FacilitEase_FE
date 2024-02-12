@@ -1,0 +1,25 @@
+.escalation-times {
+    font-family: Arial, sans-serif;
+  }
+  
+  .escalation-time {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .escalation-time-info {
+    flex-grow: 1;
+  }
+  
+  .escalation-time-edit {
+    flex-grow: 1;
+  }
+  
+  input[type="number"] {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
