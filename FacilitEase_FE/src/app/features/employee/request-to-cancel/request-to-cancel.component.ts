@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
-import { GetAPIService } from '@app/features/service/httpService/GetAPI/get-api.service';
+import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get-api.service';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
 import { MatDialog } from '@angular/material/dialog';
