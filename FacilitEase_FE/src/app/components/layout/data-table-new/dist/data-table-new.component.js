@@ -47,6 +47,7 @@ var DataTableNewComponent = /** @class */ (function () {
                 // No records found, handle accordingly (e.g., display a message)
                 console.log('No records found');
                 _this.noRecordsFound = true;
+                _this.loading = false;
             }
         }, function (error) {
             // Handle API call error
@@ -57,21 +58,21 @@ var DataTableNewComponent = /** @class */ (function () {
     DataTableNewComponent.prototype.getCellClasses = function (columnKey, cellValue) {
         if (columnKey === 'priority') {
             return {
-                'low-priority': cellValue === 'Low',
-                'medium-priority': cellValue === 'Medium',
-                'high-priority': cellValue === 'High',
-                'critical-priority': cellValue === 'Critical'
+                low_priority: cellValue === 'Low',
+                medium_priority: cellValue === 'Medium',
+                high_priority: cellValue === 'High',
+                critical_priority: cellValue === 'Critical'
             };
         }
         if (columnKey === 'status') {
             return {
-                'open-status': cellValue === 'Open',
-                'inprogress-status': cellValue === 'In Progress',
-                'onhold-status': cellValue === 'On Hold',
-                'resolved-status': cellValue === 'Resolved',
-                'cancelled-status': cellValue === 'Cancelled',
-                'escalated-status': cellValue === 'Escalated',
-                'cancelrequested-status': cellValue === 'Cancel Requested'
+                open_status: cellValue === 'Open',
+                inprogress_status: cellValue === 'In Progress',
+                onhold_status: cellValue === 'On Hold',
+                resolved_status: cellValue === 'Resolved',
+                cancelled_status: cellValue === 'Cancelled',
+                escalated_status: cellValue === 'Escalated',
+                cancelrequested_status: cellValue === 'Cancel Requested'
             };
         }
         else {

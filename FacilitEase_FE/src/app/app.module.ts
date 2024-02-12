@@ -147,6 +147,7 @@ import { LoadingComponent } from './components/ui_elements/loading/loading.compo
 import { NotificationComponent } from './components/layout/notification/notification.component';
 import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve/tickets-to-resolve.component';
 import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
+import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -262,6 +263,7 @@ const isIE =
     NotificationComponent,
     TicketsToResolveComponent,
     DetailsTicketToResolveComponent,
+    EditSlaComponent,
   ],
   imports: [
     HttpClientModule,

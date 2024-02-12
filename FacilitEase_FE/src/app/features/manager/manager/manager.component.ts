@@ -22,10 +22,7 @@ export class ManagerComponent {
     {
       logo: 'assets/ticket-solid.svg',
       title: 'Employee Tickets',
-      subfields: [
-        'Live Tickets',
-        'All Tickets',
-      ]
+      subfields: ['Live Tickets', 'All Tickets'],
     },
   ];
   showManagerTickets: boolean = false;
@@ -67,6 +64,6 @@ export class ManagerComponent {
         this.showManagerTickets = true;
         this.router.navigate(['manager/manager-view-employee-tickets']);
       }
-      }
     }
+  }
 }
