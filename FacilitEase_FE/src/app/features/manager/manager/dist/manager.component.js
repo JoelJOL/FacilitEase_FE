@@ -22,10 +22,7 @@ var ManagerComponent = /** @class */ (function () {
             {
                 logo: 'assets/ticket-solid.svg',
                 title: 'Employee Tickets',
-                subfields: [
-                    'Live Tickets',
-                    'All Tickets',
-                ]
+                subfields: ['Live Tickets', 'All Tickets']
             },
         ];
         this.showManagerTickets = false;

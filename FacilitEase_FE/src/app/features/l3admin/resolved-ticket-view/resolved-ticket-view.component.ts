@@ -35,7 +35,6 @@ export class ResolvedTicketViewComponent {
           { heading: 'Raised By', text: this.ticketDetails.employeeName },
           { heading: 'Department', text: this.ticketDetails.deptName },
           { heading: 'Manager', text: this.ticketDetails.managerName },
-          { heading: 'Project Code', text: this.ticketDetails.projectCode.toString() },
           { heading: 'Location', text: this.ticketDetails.locationName }
         ];
       } else {

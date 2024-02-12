@@ -42,11 +42,18 @@ export class DataTableNewComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
+    // Check if "SubmittedDate" exists in headers array
+    if (!this.headers.includes('SubmittedDate')) {
+      // If "SubmittedDate" doesn't exist, use "Id" as the default column
+      this.sortColumn = 'Id';
+    }
+
     this.loadData();
   }
 
   private loadData() {
     this.loading = true;
+
     const url = `${this.apiLink}?sortField=${this.sortColumn}&sortOrder=${this.sortDirection}&pageIndex=${this.currentPage}&pageSize=${this.pageSize}&searchQuery=${this.searchQuery}`;
 
     this.httpClient.get<ApiResponse>(url).subscribe(
@@ -90,7 +97,7 @@ export class DataTableNewComponent implements OnInit {
         resolved_status: cellValue === 'Resolved',
         cancelled_status: cellValue === 'Cancelled',
         escalated_status: cellValue === 'Escalated',
-        'cancelrequested-_status': cellValue === 'Cancel Requested',
+        cancelrequested_status: cellValue === 'Cancel Requested',
       };
     } else {
       return {};

@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-// Define an interface for your API response
-interface ApiResponse {
-  documentLink: string;
-}
+import { TicketAttachment } from '@app/features/Interface/interface';
 
 @Component({
   selector: 'app-ticket-documents',
@@ -15,16 +11,18 @@ export class TicketDocumentsComponent implements OnInit {
   private apiUrl = 'https://localhost:7049';
   fileUrl!: string;
   isImage = false;
+  @Input() headerText = '';
+  @Input() ticketId: number=0;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     const firstApiEndpoint =
-      'https://localhost:7049/api/Employee/get-documents-by-ticket/54';
+      `https://localhost:7049/api/Employee/get-documents-by-ticket/${this.ticketId}`;
 
     // Fetch the entire response from the first API endpoint
     this.getFileData(firstApiEndpoint).subscribe(
-      (response: ApiResponse[]) => {
+      (response: TicketAttachment[]) => {
         if (response && response.length > 0 && response[0].documentLink) {
           const documentLink = response[0].documentLink;
           this.fileUrl = `${this.apiUrl}/${documentLink}`;
@@ -44,12 +42,12 @@ export class TicketDocumentsComponent implements OnInit {
   }
 
   getFileData(apiEndpoint: string) {
-    return this.http.get<ApiResponse[]>(apiEndpoint);
+    return this.http.get<TicketAttachment[]>(apiEndpoint);
   }
 
   isImageFile(filename: string): boolean {
     // You can add more file extensions if needed
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', 'svg'];
     const extension = filename.slice(
       ((filename.lastIndexOf('.') - 1) >>> 0) + 2
     );

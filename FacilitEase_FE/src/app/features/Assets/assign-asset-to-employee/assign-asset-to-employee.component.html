@@ -1,1 +1,47 @@
-<p>assign-asset-to-employee works!</p>
+<div class="d-flex">
+  <label for="assetId">Asset Id</label>
+  <span id="assetId">{{ assetDetails.id }}</span>
+</div>
+<div class="d-flex">
+  <label for="assetType">Asset Type</label>
+  <span id="assetType">{{ assetDetails.assetType }}</span>
+</div>
+<div class="d-flex">
+  <label for="warrantyInfo">Warranty Info</label>
+  <span id="warrantyInfo">{{ assetDetails.warrantyInfo }}</span>
+</div>
+<div class="d-flex">
+  <label for="lastMaintenanceDate">Last Maintenance Date</label>
+  <span id="lastMaintenanceDate">{{
+    assetDetails.lastMaintenanceDate | date
+  }}</span>
+</div>
+<div class="d-flex">
+  <label for="purchaseDate">Purchase Date</label>
+  <span id="purchaseDate">{{ assetDetails.purchaseDate | date }}</span>
+</div>
+<div class="d-flex">
+  <label for="nextMaintenanceDate">Next Maintenance Date</label>
+  <span id="nextMaintenanceDate">{{
+    assetDetails.nextMaintenanceDate | date
+  }}</span>
+</div>
+<div>
+  <h2>Asset History</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Assigned To Employee</th>
+        <th>From Date</th>
+        <th>To Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let historyItem of assetHistory">
+        <td>{{ historyItem.assignedToEmployeeName }}</td>
+        <td>{{ historyItem.fromDate | date : "short" }}</td>
+        <td>{{ historyItem.toDate | date : "short" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

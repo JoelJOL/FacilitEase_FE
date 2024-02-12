@@ -35,6 +35,7 @@ body {
   --green: #2d7f30;
   --ticket_status: #ffe9c4;
   --ticket_status_color: #f59e0b;
+  --yellow:#f5c412;
   --priority_box: #f4be61;
   --dark_grey: rgb(63, 62, 94, 0.8);
   --light_blue: #80bdff;
@@ -43,10 +44,17 @@ body {
   --hover_grey: #c3c3c3;
   --white: #ffffff;
   --black: #000000;
+  --tomato: #FF6347;
+
 }
 .skeleton {
   background-color: #e2e5e7;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
   background-size: 40px 100%;
   background-repeat: no-repeat;
   background-position: left -40px top 0;
@@ -56,6 +64,6 @@ body {
 
 @keyframes shine {
   to {
-      background-position: right -40px top 0;
+    background-position: right -40px top 0;
   }
 }

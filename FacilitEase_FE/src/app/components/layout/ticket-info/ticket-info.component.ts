@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TrackingModalComponent } from '../tracking-modal/tracking-modal.component';
 
@@ -9,16 +8,20 @@ import { TrackingModalComponent } from '../tracking-modal/tracking-modal.compone
   styleUrls: ['./ticket-info.component.css'],
 })
 export class TicketInfoComponent {
-  ticketId: string = ''; // Replace with actual data
-  ticketPriority: string = '';
-  status: string = '';
-  modalRef: BsModalRef | undefined;
-  @Input() ticketDetails: any;
-  constructor(private modalService: BsModalService) {}
+  ticketId: string = ''; // Placeholder for ticket ID 
+  ticketPriority: string = ''; // Placeholder for ticket priority
+  status: string = ''; // Placeholder for ticket status
+  modalRef: BsModalRef | undefined; // Reference to the modal, initialized as undefined
+  @Input() ticketDetails: any; // Input property to receive ticket details from parent component
 
+  constructor( private modalService: BsModalService) {}
+
+  // Method to determine the color based on ticket priority
   getPriorityColor(): string {
     if (this.ticketDetails && this.ticketDetails.priorityName) {
       switch (this.ticketDetails.priorityName.toLowerCase()) {
+        case 'critical':
+          return 'darkred'; 
         case 'high':
           return 'red';
         case 'medium':
@@ -33,6 +36,7 @@ export class TicketInfoComponent {
     }
   }
 
+  // Method to open tracking modal
   openTrackingModal() {
     this.modalRef = this.modalService.show(TrackingModalComponent, {
       initialState: {

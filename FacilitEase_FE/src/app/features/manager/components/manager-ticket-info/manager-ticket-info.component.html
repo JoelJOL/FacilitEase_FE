@@ -1,11 +1,11 @@
 <div class="ticket_info">
-    <div class="ticket_details">
-      <p>
-        <span class="ticket_status_box">{{ ticketDetails.statusName }}</span>
-        <span class="ticket_id"> Ticket ID: #{{ ticketDetails.id }}</span>
-      </p>
-    </div>
-<div class="ticket_priority">
+  <div class="ticket_details">
+    <p>
+      <span class="ticket_status_box">{{ ticketDetails.statusName }}</span>
+      <span class="ticket_id"> Ticket ID: #{{ ticketDetails.id }}</span>
+    </p>
+  </div>
+  <div class="ticket_priority">
     <button class="button-with-image" (click)="openTrackingModal()">
       <img
         class="header_img img-fluid"
@@ -13,7 +13,7 @@
         alt=""
       />
     </button>
- 
+
     <div *ngIf="!editingPriority" class="ticket_priority">
       <p>
         <span
@@ -21,20 +21,23 @@
           [style.background-color]="getPriorityColor()"
           (click)="startEditingPriority()"
         >
-        {{ ticketDetails.priorityName }} ▼
+          {{ ticketDetails.priorityName }} ▼
         </span>
       </p>
     </div>
     <div *ngIf="editingPriority" class="ticket_priority">
-        <p>
-          <select [(ngModel)]="selectedPriority" (change)="onPriorityChange(selectedPriority)">
-            <option value="-1">Select Priority</option>
-            <option value="1">Low</option>
-            <option value="2">Medium</option>
-            <option value="3">High</option>
-            <option value="4">Critical</option>
-          </select>
-        </p>
-      </div>
+      <p>
+        <select
+          [(ngModel)]="selectedPriority"
+          (change)="onPriorityChange(selectedPriority)"
+        >
+          <option value="-1">Select Priority</option>
+          <option value="1">Low</option>
+          <option value="2">Medium</option>
+          <option value="3">High</option>
+          <option value="4">Critical</option>
+        </select>
+      </p>
     </div>
   </div>
+</div>
