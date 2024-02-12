@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ReportService } from '@app/features/service/httpService/reportService/report.service';
 import { ChartData, ChartEvent, ChartType } from 'chart.js';
 import { WeekReport } from '@app/features/l2admin/L2AdminModel/model';
+import { ReportDataService } from '@app/features/service/dataService/ReportDataService/report-data.service';
 
 @Component({
   selector: 'app-report-stats',
@@ -9,13 +10,20 @@ import { WeekReport } from '@app/features/l2admin/L2AdminModel/model';
   styleUrls: ['./report-stats.component.css'],
 })
 export class ReportStatsComponent {
-  constructor(private reportService: ReportService) {}
+  constructor(
+    private reportService: ReportService,
+    private reportDataService: ReportDataService
+  ) {}
   dT: number = 0;
   dR: number = 0;
   dU: number = 0;
   dE: number = 0;
   @ViewChild('doughchart')
   doughnutChartCanvas!: ElementRef;
+  @ViewChild('resolvedLegend')
+  resolvedLegend!: ElementRef;
+  @ViewChild('escalatedLegend')
+  escalatedLegend!: ElementRef;
 
   weekReport = {
     dailyTickets: 0,
@@ -53,6 +61,7 @@ export class ReportStatsComponent {
       this.dU = this.weekReport.dailyUnresolved;
       this.dE = this.weekReport.dailyEscalated;
 
+      this.reportDataService.weekReport = this.weekReport;
       console.log(this.doughnutChartData.datasets[0].data);
     });
   }
@@ -63,6 +72,10 @@ export class ReportStatsComponent {
 
   ngAfterViewInit() {
     this.reportService.doughnutChartCanvas = this.doughnutChartCanvas
+      .nativeElement as HTMLCanvasElement;
+    this.reportDataService.resolvedLegend = this.resolvedLegend
+      .nativeElement as HTMLCanvasElement;
+    this.reportDataService.escalatedLegend = this.escalatedLegend
       .nativeElement as HTMLCanvasElement;
   }
 

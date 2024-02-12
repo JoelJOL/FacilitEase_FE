@@ -14,7 +14,7 @@ export class TicketInfoComponent {
   status: string = '';
   modalRef: BsModalRef | undefined;
   @Input() ticketDetails: any;
-  constructor( private modalService: BsModalService) {}
+  constructor(private modalService: BsModalService) {}
 
   getPriorityColor(): string {
     if (this.ticketDetails && this.ticketDetails.priorityName) {
@@ -34,12 +34,11 @@ export class TicketInfoComponent {
   }
 
   openTrackingModal() {
-    this.modalRef = this.modalService.show(TrackingModalComponent,{
+    this.modalRef = this.modalService.show(TrackingModalComponent, {
       initialState: {
         ticketDetails: this.ticketDetails,
       },
     });
-    console.log("This is modal")
+    console.log('This is modal');
   }
-
 }

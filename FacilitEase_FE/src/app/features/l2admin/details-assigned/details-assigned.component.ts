@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SkeletonService } from '@app/features/service/dataService/skeletonService/skeleton.service';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
 
@@ -18,9 +19,7 @@ export class DetailsAssignedComponent {
   constructor(
     private route: ActivatedRoute,
     private agentService: AgentService,
-    private router: Router,
-    private dropDownService: DropDownService,
-    private http: HttpClient
+    private skeletonService: SkeletonService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +39,7 @@ export class DetailsAssignedComponent {
         { heading: 'Project Code', text: this.ticketDetails.projectCode },
         { heading: 'Location', text: this.ticketDetails.locationName },
       ];
+      this.skeletonService.showSkeletonDetailsassigned = false;
     });
   }
 }
