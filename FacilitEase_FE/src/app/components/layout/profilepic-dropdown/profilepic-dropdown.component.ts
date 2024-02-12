@@ -9,10 +9,11 @@ import { environment } from 'environments/environment';
   styleUrls: ['./profilepic-dropdown.component.css'],
 })
 export class ProfilepicDropdownComponent {
-  constructor(
-    private authService: MsalService,
-    private azureService: AzureService
-  ) {}
+  constructor(private azureService: AzureService) {}
+  userName: string = '';
+  ngOnInit() {
+    this.userName = this.azureService.userName;
+  }
   Logout() {
     this.azureService.Logout();
   }

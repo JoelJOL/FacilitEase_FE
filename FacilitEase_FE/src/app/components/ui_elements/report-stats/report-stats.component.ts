@@ -36,22 +36,22 @@ export class ReportStatsComponent {
       console.log(data);
       this.weekReport = data;
       this.doughnutChartData.datasets.push({
-        // data: [20, 10, 20],
         data: [
           data.weeklyResolved,
           data.weeklyUnresolved,
           data.weeklyEscalated,
         ],
       });
+      this.doughnutChartData.labels = this.doughnutChartLabels;
       this.doughnutChartData.datasets[0].backgroundColor = [
         '#6418C3',
         '#BCA0DE',
       ];
       this.doughnutChartDatasets = this.doughnutChartData;
       this.dT = this.weekReport.dailyTickets;
-      this.dR = this.weekReport.dailyTickets;
-      this.dU = this.weekReport.dailyTickets;
-      this.dE = this.weekReport.dailyTickets;
+      this.dR = this.weekReport.dailyResolved;
+      this.dU = this.weekReport.dailyUnresolved;
+      this.dE = this.weekReport.dailyEscalated;
 
       console.log(this.doughnutChartData.datasets[0].data);
     });
@@ -74,8 +74,6 @@ export class ReportStatsComponent {
       position: 'right',
     },
   };
-
-  // events
   public chartClicked({
     event,
     active,

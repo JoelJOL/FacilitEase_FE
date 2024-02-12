@@ -1,11 +1,11 @@
-.loading_container {
+.loading-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
   }
   
-  .rotating_icon {
+  .rotating-icon {
     animation: rotate 1s ease-in-out infinite;
     width:4%;
   }
