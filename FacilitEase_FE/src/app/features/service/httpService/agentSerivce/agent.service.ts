@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TicketDetails } from '@app/ticket-details';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AgentService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private azureService: AzureService) {}
+  userId: number = this.azureService.userId;
   getData(ticketId: number): Observable<TicketDetails> {
     console.log(`The ticket id : ${ticketId} is recieved in getData()`);
     const apiUrl = `https://localhost:7049/api/L3Admin/ticketdetail-by-agent/${ticketId}`;
@@ -21,8 +23,9 @@ export class AgentService {
   }
 
   getDepartments(): Observable<any> {
-    const userId = 3;
-    return this.http.get(`https://localhost:7049/api/Department/getAllExceptUserDepartment/${userId}`);
+    return this.http.get(
+      `https://localhost:7049/api/Department/getAllExceptUserDepartment/${this.userId}`
+    );
   }
 
   getCategorybyDept(deptId: number): Observable<any> {
@@ -83,7 +86,7 @@ export class AgentService {
 
   addComment(text: string, ticketId: number): Observable<any> {
     const commentData = { text, ticketId };
-    const url =`https://localhost:7049/api/L3Admin`;
+    const url = `https://localhost:7049/api/L3Admin`;
     return this.http.post(`${url}`, commentData);
   }
 
@@ -92,40 +95,36 @@ export class AgentService {
     return this.http.delete(url);
   }
 
- 
   getTimeSinceLastUpdate(ticketId: any): Observable<string> {
-    return this.http.get(`https://localhost:7049/api/L3Admin/TimeSinceLastUpdate/${ticketId}`, { responseType: 'text' });
+    return this.http.get(
+      `https://localhost:7049/api/L3Admin/TimeSinceLastUpdate/${ticketId}`,
+      { responseType: 'text' }
+    );
   }
-  
 
   getAllTickets(): string {
-    const agentId = 3;
-    const apiUrl = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${agentId}`;
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${this.userId}`;
     return apiUrl;
   }
 
   getAllResolvedTickets(): string {
-    const agentId = 3;
-    const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${agentId}`;
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${this.userId}`;
     return apiUrl;
   }
 
   getAllOnHoldTickets(): string {
-    const agentId = 3;
-    const apiUrl = `https://localhost:7049/api/L3Admin/GetOnHoldTicketsByAgent/${agentId}`;
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetOnHoldTicketsByAgent/${this.userId}`;
     return apiUrl;
   }
 
   getAllCancelRequestTickets(): string {
-    const agentId = 3;
-    const apiUrl = `https://localhost:7049/api/L3Admin/GetCancelRequestTicketsByAgent/${agentId}`;
+    const apiUrl = `https://localhost:7049/api/L3Admin/GetCancelRequestTicketsByAgent/${this.userId}`;
     return apiUrl;
   }
 
   private baseUrl = 'https://localhost:7049';
   getUserEmailAddress(): Observable<any> {
-    const userId = 1;
-    const apiUrl = `https://localhost:7049/api/email/${userId}`;
+    const apiUrl = `https://localhost:7049/api/email/${this.userId}`;
 
     // Replace 'any' with the actual type of the response
     return this.http.get<any>(apiUrl);
@@ -146,8 +145,8 @@ export class AgentService {
     });
   }
 
-  getTrackingDetails(ticketId: number):Observable<any[]> {
-    const apirUrl = `https://localhost:7049/api/L3Admin/tracking-details/${ticketId}`;
-    return this.http.get<any[]>(apirUrl);
+  getTrackingDetails(ticketId: number): Observable<any[]> {
+    const apiUrl = `https://localhost:7049/api/L3Admin/tracking-details/${ticketId}`;
+    return this.http.get<any[]>(apiUrl);
   }
 }

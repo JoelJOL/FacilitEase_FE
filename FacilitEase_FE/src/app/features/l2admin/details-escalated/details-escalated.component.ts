@@ -56,7 +56,7 @@ export class DetailsEscalatedComponent {
       (response) => {
         console.log('API call success:', response);
         alert('Ticket resolved successfully!');
-        this.router.navigate(['l2/escalated-tickets']);
+        this.router.navigate(['l2admin/escalated-tickets']);
       },
       (error) => {
         console.error('API call error:', error);
