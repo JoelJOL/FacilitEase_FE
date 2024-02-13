@@ -71,7 +71,7 @@ export class L1adminComponent {
         this.router.navigate(['assigned-tickets']);
       } else if (event.subfield === 'Escalated Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['escalated-tickets']);
+        this.router.navigate(['l1admin/escalated-tickets']);
       }
     }
     if (event.field.title === 'Data Entry') {
