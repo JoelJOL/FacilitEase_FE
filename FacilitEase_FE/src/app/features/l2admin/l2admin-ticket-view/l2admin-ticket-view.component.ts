@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modalService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
@@ -73,7 +73,7 @@ export class L2adminTicketViewComponent {
     };
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '400px',
-      data: 'Are you sure you want to assign the agent?',
+      data: 'Are you sure you want to assign to the L3 Admin?',
     });
     console.log(selectedAgent);
     dialogRef.afterClosed().subscribe((result) => {
@@ -93,5 +93,14 @@ export class L2adminTicketViewComponent {
         this.router.navigate(['l2admin/unassigned-tickets']);
       }
     });
+  }
+  editMode: boolean = false; // Property to hold edit mode value
+  @Output() editModeChanged: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  onEditModeChange(editMode: boolean) {
+    this.editMode = editMode; // Update the edit mode value
+    this.editModeChanged.emit(this.editMode);
+    console.log('Captured!');
+    console.log(this.editMode);
   }
 }
