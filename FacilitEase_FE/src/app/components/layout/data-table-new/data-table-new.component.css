@@ -81,6 +81,12 @@ td {
   background: var(--grey);
   font-weight: 550;
 }
+.id_column {
+  /* Add your styles for cells in the "Id" column here */
+  /* For example: */
+  padding: 10px; /* Add padding to cells in the "Id" column */
+  font-weight: bold; /* Make the text bold */
+}
 
 /* Priority and Status Styles */
 .priority,

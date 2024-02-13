@@ -28,6 +28,11 @@ var DataTableNewComponent = /** @class */ (function () {
         this.rowClicked = new core_1.EventEmitter();
     }
     DataTableNewComponent.prototype.ngOnInit = function () {
+        // Check if "SubmittedDate" exists in headers array
+        if (!this.headers.includes('SubmittedDate')) {
+            // If "SubmittedDate" doesn't exist, use "Id" as the default column
+            this.sortColumn = 'Id';
+        }
         this.loadData();
     };
     DataTableNewComponent.prototype.loadData = function () {
@@ -62,6 +67,11 @@ var DataTableNewComponent = /** @class */ (function () {
                 medium_priority: cellValue === 'Medium',
                 high_priority: cellValue === 'High',
                 critical_priority: cellValue === 'Critical'
+            };
+        }
+        if (columnKey === 'id') {
+            return {
+                id_column: true // Add the class 'id_column' for cells in the "Id" column
             };
         }
         if (columnKey === 'status') {
