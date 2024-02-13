@@ -63,17 +63,15 @@ export class L1adminComponent {
 
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
-      if (event.subfield === 'Unassigned Tickets') {
+      if (event.subfield === 'All Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['unassigned-tickets']);
-      } else if (event.subfield === 'Assigned Tickets') {
-        this.showL2AdminTickets = true;
-        this.router.navigate(['assigned-tickets']);
-      } else if (event.subfield === 'Escalated Tickets') {
-        this.showL2AdminTickets = true;
-        this.router.navigate(['l1admin/escalated-tickets']);
+        this.router.navigate(['l1admin/view-all-tickets']);
       }
+    } else if (event.subfield === 'Escalated Tickets') {
+      this.showL2AdminTickets = true;
+      this.router.navigate(['l1admin/escalated-tickets']);
     }
+
     if (event.field.title === 'Data Entry') {
       if (event.subfield === 'Form Entry') {
         this.showL2AdminTickets = true;

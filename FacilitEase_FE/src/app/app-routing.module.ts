@@ -79,6 +79,7 @@ import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-c
 import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
 import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ticket-escalated.component';
 import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
+import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 
 const routes: Routes = [
   {
@@ -232,6 +233,10 @@ const routes: Routes = [
       {
         path: 'details-escalated/:Id',
         component: TicketDetailsEscalatedComponent,
+      },
+      {
+        path: 'view-all-tickets',
+        component: ViewAllTicketsComponent,
       },
     ],
   },
