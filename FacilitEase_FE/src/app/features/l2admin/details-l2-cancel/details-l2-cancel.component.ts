@@ -64,7 +64,7 @@ export class DetailsL2CancelComponent {
         (response) => {
           console.log('API call success:', response);
           alert('Ticket cancelled successfully!');
-          this.router.navigate(['l3admin/cancel-requests']);
+          this.router.navigate(['l2admin/l2-cancellation']);
         },
         (error) => {
           console.error('API call error:', error);
@@ -85,7 +85,7 @@ export class DetailsL2CancelComponent {
         (response) => {
           console.log('API call success:', response);
           alert('Cancellation denied successfully!');
-          this.router.navigate(['l3admin/cancel-requests']);
+          this.router.navigate(['l2admin/l2-cancellation']);
         },
         (error) => {
           console.error('API call error:', error);
