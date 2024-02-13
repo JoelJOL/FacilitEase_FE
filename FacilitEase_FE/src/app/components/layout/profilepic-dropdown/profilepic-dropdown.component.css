@@ -5,10 +5,11 @@
   text-align: center;
   padding-right: 15px;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   border-color: white;
   color: black;
+
 }
 
 .pro_pic {
@@ -22,6 +23,7 @@
   border-radius: 20px;
   width: 40px;
   border-color: white;
+  background-color: var(--violet);
 }
 
 .dropdown-menu {
