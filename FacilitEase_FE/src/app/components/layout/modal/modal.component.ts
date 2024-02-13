@@ -44,9 +44,11 @@ export class ModalComponent {
     if (this.ticketDetails) {
       const id = this.ticketDetails.id;
       const managerId = this.ticketDetails.managerId;
+      const employeeId = this.ticketDetails.employeeId
 
       console.log('Ticket ID:', id);
       console.log('Manager ID:', managerId);
+      console.log('Manager ID:', employeeId);
     }
 
     this.agentService.getDepartments().subscribe((data) => {
@@ -135,31 +137,46 @@ export class ModalComponent {
     }
   }
 
-  forwardToDept(id: number) {
+  forwardToDeptHead(id:number,employeeId:number){
     this.showDropdown = false;
-    console.log('Form Value:', this.deptForm.value);
 
     const isConfirmed = window.confirm(
-      'Are you sure you want to forward to the department?'
+      'Are you sure you want to forward to the department head?'
     );
 
-    if (isConfirmed && this.deptForm && this.deptForm.valid) {
-      this.CategoryId = this.deptForm.get('category')?.value;
-      this.agentService.forwardTicketDepartment(id, this.CategoryId).subscribe(
+    if (isConfirmed) {
+      this.agentService.forwardTicketDeptHead(id, employeeId).subscribe(
         (response) => {
           console.log('API call success:', response);
-          this.toastr.success('Forwarded to department!', 'Success');
-          this.modalService.closeModal();
-          this.router.navigate(['l3admin/view-ticket']);
+          this.toastr.success('Forwarded to department head!', 'Success');
+          // this.router.navigate(['/view-ticket']);
+          const currentRoute = this.router.url;
+          let targetRoute: string;
+
+          if (currentRoute.includes('l2/details-escalated')) {
+            targetRoute = 'l2/escalated-tickets';
+          } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
+            targetRoute = 'l3admin/view-ticket';
+          } else if (
+            currentRoute.includes('l2admin/details-tickets-to-resolve')
+          ) {
+            targetRoute = 'l2admin/tickets-to-resolve';
+          } else {
+            targetRoute = '**';
+          }
+
+          this.router.navigate([targetRoute]);
+          this.close();
         },
         (error) => {
           console.error('API call error:', error);
-          this.toastr.error('Failed to forward to department!', 'Error');
+          this.toastr.error('Failed to forward to department head!', 'Error');
+          this.close();
         }
       );
     } else {
       // User cancelled the action
-      console.log('Forward to department action cancelled.');
+      console.log('Forward to department head action cancelled.');
     }
   }
 }
