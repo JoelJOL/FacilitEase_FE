@@ -286,7 +286,10 @@ const isIE =
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     MatIconModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast_top_right',
+      onActivateTick: true,
+    }),
     MatCardModule,
 
     MsalModule.forRoot(
