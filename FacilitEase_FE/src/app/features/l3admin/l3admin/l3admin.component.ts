@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import { UserRoleService } from '@app/features/service/dataService/user-role.service';
+
+// Interface to define the structure of each field
 interface Field {
   logo: string;
   title: string;
@@ -13,8 +15,8 @@ interface Field {
   styleUrls: ['./l3admin.component.css'],
 })
 export class L3adminComponent {
-  userRole: string = 'L3 Admin';
-  yourFieldsArray: Field[] = [
+  userRole: string = 'L3 Admin'; // User role, defaulting to 'L3 Admin'
+  yourFieldsArray: Field[] = [ // Array containing fields for the sidebar
     {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
@@ -30,8 +32,8 @@ export class L3adminComponent {
       title: 'Reports',
     },
   ];
-  showL3AdminTickets: boolean = false;
-  isSidebarCollapsed: boolean = false;
+  showL3AdminTickets: boolean = false; // Flag to control whether to display L3 Admin tickets
+  isSidebarCollapsed: boolean = false; // Flag to track sidebar collapse state
 
   constructor(
     private router: Router,
@@ -39,14 +41,14 @@ export class L3adminComponent {
     private userRoleService: UserRoleService
   ) {}
   ngOnInit() {
+   // Set the user role and subscribe to sidebar collapse state changes
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
       this.isSidebarCollapsed = isCollapsed;
-      // Optionally, you can set showL2AdminTickets based on isCollapsed state
-      // this.showL2AdminTickets = !isCollapsed; // Example, adjust as needed
     });
   }
 
+   // Method to handle clicks on fields
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Tickets') {
@@ -59,8 +61,11 @@ export class L3adminComponent {
       this.showL3AdminTickets = false;
     }
   }
+
+  // Method to handle clicks on subfields
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
+       // Route to different ticket-related pages based on the clicked subfield
       if (event.subfield === 'Raised Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/view-ticket']);

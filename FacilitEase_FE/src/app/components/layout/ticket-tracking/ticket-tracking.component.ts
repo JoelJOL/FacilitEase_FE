@@ -8,12 +8,14 @@ import { AgentService } from '@app/features/service/httpService/agentSerivce/age
 })
 export class TicketTrackingComponent implements OnInit {
   events: any[] = [];
-  @Input() ticketDetails: any;
+  @Input() ticketId: number=0;
 
   constructor(private agentService: AgentService) {}
 
   ngOnInit() {
-    this.agentService.getTrackingDetails(this.ticketDetails.id).subscribe(
+    console.log("Tracking component");
+    console.log(this.ticketId)
+    this.agentService.getTrackingDetails(this.ticketId).subscribe(
       data => {
         console.log('Data received:', data);
         this.events = data.map(tracking => ({

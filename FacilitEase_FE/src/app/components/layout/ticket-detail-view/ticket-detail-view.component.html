@@ -2,10 +2,19 @@
 <app-ticket-description
   [ticketDetails]="ticketDetails"
 ></app-ticket-description>
-<app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId">
-</app-ticket-documents>
-<app-ticket-notes-attachments
+<app-ticket-documents
+  [headerText]="customHeaderText"
   [ticketId]="ticketId"
-  (editModeChanged)="onEditModeChange($event)"
-></app-ticket-notes-attachments>
-<app-title-sub [headings]="headings"></app-title-sub>
+></app-ticket-documents>
+<div class="container">
+  <div class="left-column">
+    <app-ticket-notes-attachments
+      [ticketId]="ticketId"
+      (editModeChanged)="onEditModeChange($event)"
+    ></app-ticket-notes-attachments>
+    <app-title-sub [headings]="headings"></app-title-sub>
+  </div>
+  <div class="right-column">
+    <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
+  </div>
+</div>
