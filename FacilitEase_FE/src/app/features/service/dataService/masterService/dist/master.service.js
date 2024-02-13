@@ -13,15 +13,15 @@ var MasterService = /** @class */ (function () {
         this.http = http;
         this.azureService = azureService;
         this.userId = this.azureService.userId;
-        this.userIdL2Admin = 2;
+        this.userIdL2Admin = this.azureService.userId;
         this.apiLink = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
         this.apiLinkEscalated = "https://localhost:7049/api/l2/escalated-tickets/" + this.userIdL2Admin;
         this.apiLinkAssigned = "https://localhost:7049/api/l2/assigned-tickets/" + this.userIdL2Admin;
         this.apiLinkUnassigned = "https://localhost:7049/api/l2/unassigned-tickets/" + this.userIdL2Admin;
         this.userIdProjectEmployeeDetails = 19;
         this.apiLinkProjectEmployeeDeatils = "https://localhost:7049/api/Employee/employeesByProject/" + this.userIdProjectEmployeeDetails;
-        this.userIdL2Subordinates = 2;
-        this.apiLinkL2Subordinates = "https://localhost:7049/api/l2/agentsByDepartmentId/" + this.userIdL2Subordinates;
+        this.apiLinkTicketsToResolve = "https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/" + this.userIdL2Admin;
+        this.apiLinkCancellationRequests = "https://localhost:7049/api/L3Admin/GetCancelRequestTicketsByAgent/" + this.userIdL2Admin;
     }
     MasterService.prototype.getApiLink = function () {
         var apiUrl = "https://localhost:7049/api/Manager/GetTicketByManager/" + this.userId;
@@ -69,11 +69,14 @@ var MasterService = /** @class */ (function () {
     MasterService.prototype.getApiLinkUnassigned = function () {
         return this.apiLinkUnassigned;
     };
-    MasterService.prototype.getApiLinkL2Subordinates = function () {
-        return this.apiLinkL2Subordinates;
-    };
     MasterService.prototype.getApiLinkProjectEmployeeDetails = function () {
         return this.apiLinkProjectEmployeeDeatils;
+    };
+    MasterService.prototype.getApiLinkTicketsToResolve = function () {
+        return this.apiLinkTicketsToResolve;
+    };
+    MasterService.prototype.getApiLinkCancellationRequests = function () {
+        return this.apiLinkCancellationRequests;
     };
     MasterService = __decorate([
         core_1.Injectable({
