@@ -53,10 +53,7 @@ export class L2AdminComponent {
   }
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
-    if (clickedField.title === 'My Team') {
-      this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin/l2admin-subordinates']);
-    } else if (clickedField.title === 'Tickets') {
+    if (clickedField.title === 'Tickets') {
       this.showL2AdminTickets = true;
       this.router.navigate(['l2admin/unassigned-tickets']);
     } else if (clickedField.title === 'Reports') {

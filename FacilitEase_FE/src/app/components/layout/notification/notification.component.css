@@ -1,10 +1,11 @@
 .notification-icon {
   position: relative;
   cursor: pointer;
+  margin-right: 20px;
 }
 .notification-icon img {
-  height: 30px;
-  width: 32px;
+  height: 40px;
+  width: 42px;
   padding-right: 6px;
 }
 
@@ -15,7 +16,8 @@
   background-color: red;
   color: white;
   border-radius: 50%;
-  padding: 0.5px 2px;
+  border: none 5px;
+  padding: 1px 4px;
   font-size: 12px;
 }
 
@@ -30,6 +32,7 @@
   max-height: 200px;
   overflow-y: auto;
   display: none; /* Initially hide the dropdown */
+  margin-right: 30px;
 }
 
 .notification-dropdown-item {

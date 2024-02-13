@@ -111,7 +111,7 @@ td {
 
 .open_status {
   background-color: var(--open_status_bg);
-  color: var(--low_priority);
+  color: var(--open_status);
   border-radius: 5px;
   font-weight: 550;
   width: 100px;
@@ -127,8 +127,6 @@ td {
   min-width: 80px;
   padding-right: 7px;
   padding-left: 5px;
-  background-color: #bf74df33;
-  color: rgb(171, 73, 213);
   border-radius: 5px;
   font-weight: 550;
   width: 100px;
@@ -148,13 +146,11 @@ td {
 
 .resolved_status {
   background-color: var(--resolved_status_bg);
-  color: var(--resolved);
+  color: var(--resolved_status);
   padding: 5px;
   min-width: 80px;
   padding-right: 10px;
   padding-left: 5px;
-  background-color: rgba(112, 110, 222, 0.4);
-  color: #4b49d5;
   border-radius: 5px;
   font-weight: 550;
   width: 100px;
@@ -169,8 +165,6 @@ td {
   min-width: 80px;
   padding-right: 10px;
   padding-left: 5px;
-  background-color: rgba(218, 222, 110, 0.4);
-  color: #fcca01c4;
   border-radius: 5px;
   font-weight: 550;
   width: 100px;
@@ -187,8 +181,6 @@ td {
   padding-left: 5px;
   padding-right: 10px;
   padding-left: 10px;
-  background-color: rgba(222, 117, 110, 0.4);
-  color: #d54949;
   border-radius: 5px;
   font-weight: 550;
   width: 100px;
