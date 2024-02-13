@@ -71,13 +71,6 @@ body {
 }
 
 .toast_top_right {
-  background-color: var(--light_blue);
-  color: #fff;
-  border-radius: 10px;
-  box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: justify; /* This will align the text properly */
   top: 0;
