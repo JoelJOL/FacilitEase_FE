@@ -56,8 +56,29 @@
   padding: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  margin-left: -6%;
+}
+.notification-popup::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
 }
 
+.notification-popup::-webkit-scrollbar-track {
+  background: transparent; /* Background color of the track */
+}
+
+.notification-popup::-webkit-scrollbar-thumb {
+  background: var(--violet); /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Radius of the scrollbar thumb */
+}
+
+.notification-popup::-webkit-scrollbar-thumb:hover {
+  background: var(--violet); /* Color of the scrollbar thumb on hover */
+}
+
+/* Hide scrollbar arrows */
+.notification-popup::-webkit-scrollbar-button {
+  display: none;
+}
 .notification-item {
   position: relative; /* Make the notification item the position reference for the footer */
   border-bottom: 1px solid #be8ee6;
