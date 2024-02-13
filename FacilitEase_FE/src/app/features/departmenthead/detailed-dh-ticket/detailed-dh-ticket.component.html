@@ -9,10 +9,10 @@
       [headerText]="customHeaderText"
       [ticketDetails]="ticketDetails"
     ></app-ticket-attachments>
-    <app-ticket-na-simple
-      [notes]="ticketDetails.notes"
-      [lastupdate]="ticketDetails.lastUpdate"
-    ></app-ticket-na-simple>
+    <app-ticket-notes-attachments
+    [ticketId]="ticketId"
+    (editModeChanged)="onEditModeChange($event)"
+  ></app-ticket-notes-attachments>
   </div>
   <div class="person_cards_row">
     <!-- Raised By -->

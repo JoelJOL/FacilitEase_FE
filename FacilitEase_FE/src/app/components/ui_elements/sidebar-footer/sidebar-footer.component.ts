@@ -23,7 +23,6 @@ export class SidebarFooterComponent {
   modal!: SupportComponent; // Assuming ModalComponent is correctly imported
 
   constructor(private router: Router, private modalService: ModalService) {}
-  myTeam: Field = { logo: 'assets/sidebar-myTeam.png', title: 'My Team' };
   support: Field = { logo: 'assets/sidebar-support.png', title: 'Support' };
   @Output() fieldClicked = new EventEmitter<any>();
 

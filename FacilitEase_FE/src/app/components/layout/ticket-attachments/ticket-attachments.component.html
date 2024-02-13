@@ -1,20 +1,6 @@
 <h4 id="attachment_heading">
   <h4>{{ headerText }}</h4>
 </h4>
-<div class="attachment_docs">
-  <img
-    src="../../../../assets/attachments.png"
-    alt="attachments"
-    id="attachment_img"
-  />
-  <img
-    src="../../../../assets/attachments.png"
-    alt="attachments"
-    id="attachment_img"
-  />
-  <img
-    src="../../../../assets/attachments.png"
-    alt="attachments"
-    id="attachment_img"
-  />
+<div class="form-group">
+  <input type="file" id="file" (change)="onFileChange($event)" required />
 </div>

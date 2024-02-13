@@ -39,11 +39,7 @@ var ManagerComponent = /** @class */ (function () {
     };
     ManagerComponent.prototype.onFieldClicked = function (clickedField) {
         console.log("Handling in App Component for " + clickedField.title);
-        if (clickedField.title === 'My Team') {
-            this.showManagerTickets = true;
-            this.router.navigate(['manager/manager-subordinates']);
-        }
-        else if (clickedField.title === 'Employee Tickets') {
+        if (clickedField.title === 'Employee Tickets') {
             this.showManagerTickets = true;
         }
         else if (clickedField.title === 'Waiting for Approval') {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
 
@@ -26,5 +26,17 @@ export class EmployeeMyTicketsComponent {
   ngOnInit(): void {
     const userId = 19;
     this.apiLink = this.masterService.getMyTickets(userId);
+  }
+  raiseTicket() {
+    this.router.navigate(['employee/form']);
+  }
+  isHidden = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    const threshold = 100;
+
+    this.isHidden = scrollPosition > threshold;
   }
 }

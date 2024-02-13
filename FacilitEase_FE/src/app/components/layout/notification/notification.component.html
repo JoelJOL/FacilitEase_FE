@@ -9,7 +9,9 @@
 </a>
 <div *ngIf="showNotifications" class="notification-popup">
   <div *ngFor="let notification of notifications" class="notification-item">
-    {{ notification.content }} -
-    {{ notification.notificationTimestamp | date : "short" }}
+    <div class="notification-content">{{ notification.content }}</div>
+    <div class="notification-footer">
+      {{ notification.notificationTimestamp | date : "short" }}
+    </div>
   </div>
 </div>

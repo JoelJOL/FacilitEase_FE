@@ -1,8 +1,10 @@
 <div class="d-flex col-12 main justify-content-center align-items-center">
+  
   <form class="form_main" action="">
+    <img src="../../../../assets/Facilit Ease.svg" id="facilitease_icon">
     <p *ngIf="!isUserLoggedIn" class="heading">Login</p>
     <p *ngIf="isUserLoggedIn" class="heading">Logout</p>
-    <button id="button" *ngIf="!isUserLoggedIn" (click)="Login()">Login</button>
+    <button id="button" *ngIf="!isUserLoggedIn" (click)="Login()">Login with Microsoft <img src="../../../../assets/microsoft.png" id="microsoft_img"></button>
     <button id="button" *ngIf="isUserLoggedIn" (click)="Logout()">
       Logout
     </button>
