@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ApproveDenyService } from '@app/features/service/httpService/DH-aproveDeny/approve-deny.service';
 import { DepartmentHeadService } from '@app/features/service/httpService/Department-head/department-head.service';
 import { TicketDetails } from '@app/ticket-details';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '@app/components/layout/modal/modal.component';
 
 @Component({
   selector: 'app-detailed-dh-ticket',
@@ -13,11 +15,14 @@ export class DetailedDhTicketComponent implements OnInit {
   ticketDetails!: TicketDetails;
   customHeaderText: string = '';
   ticketId: number = 0;
+  editMode: boolean = false;
+  modalRef: BsModalRef | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private departmentHeadService: DepartmentHeadService,
-    private approveDenyService: ApproveDenyService
+    private approveDenyService: ApproveDenyService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
@@ -60,5 +65,26 @@ export class DetailedDhTicketComponent implements OnInit {
 
   redirectToPreviousPage(): void {
     window.history.back();
+  }
+  onEditModeChange(editMode: boolean) {
+    // Update the editMode value
+    this.editMode = editMode;
+    console.log('Grand parent', this.editMode);
+  }
+  handleAction(ticketDetails: any): void {
+    if (this.editMode) {
+      console.log('Newww', this.editMode);
+      alert('Your changes have not been saved!');
+    } else {
+      this.openModal(ticketDetails);
+    }
+  }
+  // Open modal with ticket details
+  openModal(ticketDetails: any) {
+    this.modalRef = this.modalService.show(ModalComponent, {
+      initialState: {
+        ticketDetails: ticketDetails,
+      },
+    });
   }
 }
