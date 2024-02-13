@@ -14,3 +14,16 @@
 #accepted {
   margin-right: 2%;
 }
+.description_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0; 
+}
+
+.left-column {
+  flex: 1;
+}
+
+.right-column {
+  width:27%; 
+}

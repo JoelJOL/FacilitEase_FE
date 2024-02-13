@@ -4,27 +4,29 @@
     <app-ticket-description
       [ticketDetails]="ticketDetails"
     ></app-ticket-description>
-    <app-ticket-attachments
-      [headerText]="customHeaderText"
-      [ticketDetails]="ticketDetails"
-    ></app-ticket-attachments>
-    <app-ticket-notes-attachments
-    [ticketId]="ticketId"
-    (editModeChanged)="onEditModeChange($event)"
-  ></app-ticket-notes-attachments>
-
-    <div class="person-cards-row">
-      <!-- Raised By -->
-      <app-person-card
-        [personName]="ticketDetails.employeeName"
-        [role]="1"
-      ></app-person-card>
-
-      <!-- Assigned To -->
-      <app-person-card
-        [personName]="ticketDetails.assignedTo"
-        [role]="0"
-      ></app-person-card>
+    <div class="description_container">
+      <div class="left-column">
+        <app-ticket-notes-attachments
+          [ticketId]="ticketId"
+          (editModeChanged)="onEditModeChange($event)"
+        ></app-ticket-notes-attachments>
+        <div class="person-cards-row">
+          <!-- Raised By -->
+          <app-person-card
+            [personName]="ticketDetails.employeeName"
+            [role]="1"
+          ></app-person-card>
+    
+          <!-- Assigned To -->
+          <app-person-card
+            [personName]="ticketDetails.assignedTo"
+            [role]="0"
+          ></app-person-card>
+        </div>
+      </div>
+      <div class="right-column">
+        <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
+      </div>
     </div>
 
     <!-- Buttons in the Next Row -->
