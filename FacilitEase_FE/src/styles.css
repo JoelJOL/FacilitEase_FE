@@ -10,29 +10,32 @@ body {
   padding: 0%;
 }
 :root {
-  /* --violet: #6342a9; */
-  --violet: rgb(124, 0, 192);
+  --violet: #320242;
+  --hover_violet: #48035f;
+  /* --violet: rgb(124, 0, 192); */
   --grey: rgb(237, 237, 237);
   /* --grey: rgb(198, 198, 198); */
-  --light_violet: #dad7ff;
+  /* --light_violet: #dad7ff; */
+  --light_violet: #ede3f1;
   --light_grey: #ececec;
-  --blue_violet: #6f00ff;
-  --low_priority: rgb(78, 213, 73);
+  --blue_violet: #320242;
+  --low_priority: rgb(8, 134, 4);
   --medium_priority: rgb(202, 160, 9);
   --high_priority: #ff7f29;
   --critical_priority: #d54949;
   --open_status_bg: rgba(116, 223, 125, 0.4);
+  --open_status: rgb(6, 83, 4);
   --inprogress_status_bg: #bf74df33;
   --onhold_status_bg: rgba(223, 168, 116, 0.4);
   --onhold: rgb(202, 102, 9);
   --resolved_status_bg: rgba(112, 110, 222, 0.4);
   --resolved: #4b49d5;
   --cancelled_status_bg: rgba(218, 222, 110, 0.4);
-  --cancelled: #ccaa21c4;
+  --cancelled: #6f5b0ae7;
   --escalated_status_bg: rgba(222, 117, 110, 0.4);
   --cancelrequested_status_bg: rgba(218, 222, 110, 0.4);
   --cancelrequested: #cc6321c4;
-  --green: #2d7f30;
+  --green: #320242;
   --ticket_status: #ffe9c4;
   --ticket_status_color: #f59e0b;
   --yellow: #f5c412;

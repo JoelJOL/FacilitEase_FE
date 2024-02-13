@@ -19,38 +19,13 @@
       >
         Forward to Manager
       </button>
-      <button type="button" class="btn btn-primary" (click)="toggleDropdown()">
-        Forward to Department
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="forwardToDeptHead(ticketDetails.employeeId, ticketDetails.id)"
+      >
+        Forward to Department Head
       </button>
-      <div *ngIf="showDropdown" class="dropdown">
-        <h4>Choose Department:</h4>
-        <select
-          formControlName="department"
-          class="form-control"
-          (change)="onDepartmentChange()"
-        >
-          <option value="" disabled selected>Choose Department</option>
-          <option *ngFor="let dept of departments" [value]="dept.id">
-            {{ dept.deptName }}
-          </option>
-        </select>
-        <br />
-        <h4>Choose Category:</h4>
-        <select formControlName="category" class="form-control">
-          <option value="" disabled selected>Choose Category</option>
-          <option *ngFor="let category of categories" [value]="category.id">
-            {{ category.categoryName }}
-          </option>
-        </select>
-
-        <button
-          type="submit"
-          (click)="forwardToDept(ticketDetails.id)"
-          class="submit-btn"
-        >
-          Submit
-        </button>
-      </div>
     </div>
   </div>
 </form>

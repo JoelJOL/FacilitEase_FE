@@ -34,8 +34,7 @@ export class RequestToCancelComponent {
       this.ticketId = Number(params['id']);
       console.log('This is the id', this.ticketId);
     });
-
-    this.agentService
+    -this.agentService
       .getData(this.ticketId)
       .subscribe((ticketDetails: TicketDetails) => {
         console.log('API Response:', ticketDetails);

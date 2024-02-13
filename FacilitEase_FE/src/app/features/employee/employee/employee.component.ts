@@ -16,18 +16,13 @@ export class EmployeeComponent {
   userRole: string = 'Employee';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/house-solid.svg',
-      title: 'Home',
+      logo: 'assets/reports-icon.png',
+      title: 'My Tickets',
       subfields: [],
     },
     {
       logo: 'assets/tickets-icon.png',
       title: 'Raise A Ticket',
-      subfields: [],
-    },
-    {
-      logo: 'assets/reports-icon.png',
-      title: 'My Tickets',
       subfields: [],
     },
   ];
@@ -61,10 +56,6 @@ export class EmployeeComponent {
     } else if (clickedField.title === 'Raise A Ticket') {
       this.showEmployeeTickets = true;
       this.router.navigate(['employee/form']);
-      this.sidebarService.toggleCollapse();
-    } else if (clickedField.title === 'My Team') {
-      this.showEmployeeTickets = true;
-      this.router.navigate(['employee/employee-myteam']);
       this.sidebarService.toggleCollapse();
     } else {
       this.showEmployeeTickets = false;

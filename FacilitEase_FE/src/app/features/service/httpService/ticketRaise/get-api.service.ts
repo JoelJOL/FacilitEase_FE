@@ -30,6 +30,11 @@ export class GetAPIService {
     );
   }
 
+  getCategoriesForFacilitiease(): Observable<Category[]> {
+    const url = `${this.baseUrl}/facilitiease`;
+    return this.http.get<Category[]>(url);
+  }
+
   uploadDocument(formData: FormData): Observable<HttpEvent<TicketResponse>> {
     return this.http.post<TicketResponse>(
       `${this.baseUrl}/create-with-documents`,

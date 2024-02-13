@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+  
+  .left-column {
+    flex: 1;
+  }
+  
+  .right-column {
+    width:27%; /* Adjust the width as needed */
+  }
