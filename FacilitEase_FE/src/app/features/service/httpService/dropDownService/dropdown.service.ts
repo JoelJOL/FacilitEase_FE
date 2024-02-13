@@ -1,21 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DropDownService {
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private azureService: AzureService) {}
+  userId: number = this.azureService.userId;
   getAgents(): Observable<any> {
-    const userIdGetAgents = 2;
-    return this.http.get(
-      `https://localhost:7049/api/l2/agents/${userIdGetAgents}`
-    );
+    return this.http.get(`https://localhost:7049/api/l2/agents/${this.userId}`);
   }
 
-  getMyTickets(userId: number): string {
-    return `https://localhost:7049/api/Employee/tickets/${userId}`;
+  getMyTickets(): string {
+    return `https://localhost:7049/api/Employee/tickets/${this.userId}`;
   }
 }

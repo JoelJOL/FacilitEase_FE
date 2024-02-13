@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class MasterService {
   constructor(private http: HttpClient, private azureService: AzureService) {}
   userId: number = this.azureService.userId;
-  userIdL2Admin = 2;
+  userIdL2Admin: number = this.azureService.userId;
   private apiLink: string =
     'https://localhost:7049/api/Manager/GetTicketByManager/2';
   private apiLinkEscalated: string = `https://localhost:7049/api/l2/escalated-tickets/${this.userIdL2Admin}`;
@@ -65,11 +65,6 @@ export class MasterService {
   }
   getApiLinkUnassigned(): string {
     return this.apiLinkUnassigned;
-  }
-  userIdL2Subordinates = 2;
-  private apiLinkL2Subordinates: string = `https://localhost:7049/api/l2/agentsByDepartmentId/${this.userIdL2Subordinates}`;
-  getApiLinkL2Subordinates(): string {
-    return this.apiLinkL2Subordinates;
   }
   getApiLinkProjectEmployeeDetails(): string {
     return this.apiLinkProjectEmployeeDeatils;

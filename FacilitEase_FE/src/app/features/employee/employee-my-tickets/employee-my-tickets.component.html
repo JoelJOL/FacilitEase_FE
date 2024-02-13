@@ -1,8 +1,6 @@
 <div class="my_tickets">
   <h2 class="heading">My Tickets</h2>
-  <div [class.hidden]="isHidden" class="raise" (click)="raiseTicket()">
-    + Raise A Ticket
-  </div>
+  <div class="raise" (click)="raiseTicket()">+ Raise A Ticket</div>
 </div>
 <div class="display">
   <app-data-table-new

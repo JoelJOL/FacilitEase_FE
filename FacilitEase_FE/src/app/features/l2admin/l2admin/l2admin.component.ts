@@ -33,7 +33,7 @@ export class L2AdminComponent {
       logo: 'assets/reports-icon.png',
       title: 'Reports',
     },
-    { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
+    // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
   ];
   showL2AdminTickets: boolean = false;
   isSidebarCollapsed: boolean = false;

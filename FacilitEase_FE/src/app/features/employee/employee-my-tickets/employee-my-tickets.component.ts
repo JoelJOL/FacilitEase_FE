@@ -24,19 +24,9 @@ export class EmployeeMyTicketsComponent {
     this.router.navigate(['employee/request', rowId]);
   }
   ngOnInit(): void {
-    const userId = 19;
-    this.apiLink = this.masterService.getMyTickets(userId);
+    this.apiLink = this.masterService.getMyTickets();
   }
   raiseTicket() {
     this.router.navigate(['employee/form']);
-  }
-  isHidden = false;
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    const threshold = 100;
-
-    this.isHidden = scrollPosition > threshold;
   }
 }
