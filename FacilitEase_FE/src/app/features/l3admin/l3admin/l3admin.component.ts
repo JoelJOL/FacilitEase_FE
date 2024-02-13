@@ -49,13 +49,7 @@ export class L3adminComponent {
 
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
-    if (clickedField.title === 'My Team') {
-      this.showL3AdminTickets = true;
-      this.router.navigate(['manager-subordinates']);
-    } else if (clickedField.title === 'Waiting For Approval') {
-      this.showL3AdminTickets = true;
-      console.log('Waiting For Approval #100');
-    } else if (clickedField.title === 'Tickets') {
+    if (clickedField.title === 'Tickets') {
       this.showL3AdminTickets = true;
       this.router.navigate(['l3admin/view-ticket']);
     } else if (clickedField.title === 'Reports') {
