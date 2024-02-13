@@ -95,6 +95,7 @@ export class ModalComponent {
   }
 
   forwardToManager(id: number, managerId: number) {
+    
     this.showDropdown = false;
 
     const isConfirmed = window.confirm(

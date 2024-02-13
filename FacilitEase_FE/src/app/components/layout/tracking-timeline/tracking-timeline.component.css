@@ -13,9 +13,7 @@
 	overflow-y: scroll;
 }
 
-.track_header{
-	text-align: center;
-}
+
 
 .timeline_section::-webkit-scrollbar {
     width: 5px; /* Width of the scrollbar */

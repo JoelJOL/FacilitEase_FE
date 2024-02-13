@@ -3,7 +3,7 @@
     <div class="timeline_item" *ngFor="let item of value; let i = index">
       <div class="timeline_dot"></div>
       <div class="timeline_date">
-        {{ item.date | date : "dd MMM, yyyy 'at' HH:mm:ss" }}
+        {{ item.date | date : "dd MMM, yyyy 'at' HH:mm:ss a" }}
       </div>
       <div
         class="timeline_content"
@@ -19,7 +19,7 @@
               escalated_status: item.content === 'Escalated',
               resolved_status: item.content === 'Resolved',
               'on-hold_status': item.content === 'On Hold',
-              'cancel_request-status': item.content === 'Cancel Requested',
+              cancel_request_status: item.content === 'Cancel Requested',
               cancel_status: item.content === 'Cancelled'
             }"
           >
