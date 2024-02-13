@@ -36,12 +36,12 @@ export class AgentService {
     return this.http.get(apiUrl);
   }
 
-  forwardTicketDepartment(
-    ticketId: number,
-    managerId: number
+  forwardTicketDeptHead(
+    empId: number,
+    ticketId: number
   ): Observable<any> {
-    const apiUrl = `https://localhost:7049/api/L3Admin/forward-ticket-to-department/${ticketId}/${managerId}`;
-    return this.http.get(apiUrl);
+    const apiUrl = `https://localhost:7049/api/L3Admin/forward-ticket-deptHead/${ticketId}/${empId}`;
+    return this.http.patch(apiUrl,null);
   }
 
   resolveTicket(ticketId: number): Observable<any> {

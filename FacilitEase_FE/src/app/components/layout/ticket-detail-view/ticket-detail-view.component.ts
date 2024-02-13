@@ -20,11 +20,7 @@ export class TicketDetailViewComponent {
 
   constructor() {} 
 
-  ngOnInit(){
-
-    console.log("Initial editMode value:", this.editMode);
-  }
-
+  
 
   // Method to capture edit mode change
   onEditModeChange(editMode: boolean) {

@@ -2,4 +2,35 @@
   font-size: 1.75em;
   font-weight: bold;
   font-family: "Poppins", sans-serif !important;
+  margin-left: 1%;
+}
+.my_tickets {
+  display: flex;
+}
+.raise {
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-left: 64%;
+  position: absolute;
+  width: 160px;
+  /* position: sticky; */
+  margin-top: 4%;
+  cursor: pointer;
+  background-color: var(--violet);
+  color: white;
+  font-weight: bolder;
+  font-size: medium;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  z-index: -1;
+}
+.raise:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(188, 188, 188, 0.5);
+  background-color: var(--hover_violet);
+  color: white;
 }
