@@ -21,6 +21,6 @@ export class L2adminSubordinatesComponent {
   constructor(private masterService: MasterService, private router: Router) {}
 
   ngOnInit(): void {
-    this.apiLink = this.masterService.getApiLinkL2Subordinates();
+    // this.apiLink = this.masterService.getApiLinkL2Subordinates();
   }
 }
