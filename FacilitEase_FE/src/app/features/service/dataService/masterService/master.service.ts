@@ -77,4 +77,9 @@ export class MasterService {
   getApiLinkCancellationRequests(): string {
     return this.apiLinkCancellationRequests;
   }
+
+  private apiEscaltedTicketForL1Admin = `https://localhost:7049/api/L1Admin/assigned-tickets/${this.userIdL1Admin}`;
+  getEscalatedTicketForL1Admin(): string {
+    return this.apiEscaltedTicketForL1Admin;
+  }
 }

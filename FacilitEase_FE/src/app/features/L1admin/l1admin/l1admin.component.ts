@@ -29,7 +29,7 @@ export class L1adminComponent {
     {
       logo: 'assets/data-entry.png',
       title: 'Data Entry',
-      subfields: ['Form Entry', 'Assign Role'],
+      subfields: ['Assign Role'],
     },
   ];
   showL2AdminTickets: boolean = false;

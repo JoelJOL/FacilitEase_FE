@@ -150,6 +150,8 @@ import { DetailsTicketToResolveComponent } from './features/l2admin/details-tick
 import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component';
 import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-cancellation.component';
 import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
+import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ticket-escalated.component';
+import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -268,6 +270,8 @@ const isIE =
     EditSlaComponent,
     L2CancellationComponent,
     DetailsL2CancelComponent,
+    TicketEscalatedComponent,
+    TicketDetailsEscalatedComponent,
   ],
   imports: [
     HttpClientModule,
