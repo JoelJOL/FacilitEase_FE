@@ -8,7 +8,6 @@ import { DropDownService } from '@app/features/service/httpService/dropDownServi
 import { MatDialog } from '@angular/material/dialog';
 import { TicketResponse } from '@app/features/Interface/interface';
 import { TicketDetails } from '@app/ticket-details';
-
 @Component({
   selector: 'app-request-to-cancel',
   templateUrl: './request-to-cancel.component.html',
@@ -16,25 +15,29 @@ import { TicketDetails } from '@app/ticket-details';
 })
 export class RequestToCancelComponent {
   customHeaderText = 'Supported Attachments';
+
+  // Ticket ID and details initialization
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
-  isCancelRequested: boolean = false;
+
+  // Constructor with injected services
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private agentService: AgentService,
     private router: Router,
-    private dropDownService: DropDownService,
-    private http: HttpClient,
     private ticketCancelService: GetAPIService
   ) {}
 
   ngOnInit(): void {
+    // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
       this.ticketId = Number(params['id']);
       console.log('This is the id', this.ticketId);
     });
-    -this.agentService
+
+    // Fetch ticket details using agentService
+    this.agentService
       .getData(this.ticketId)
       .subscribe((ticketDetails: TicketDetails) => {
         console.log('API Response:', ticketDetails);
@@ -43,12 +46,15 @@ export class RequestToCancelComponent {
       });
   }
 
+  // Function to handle cancellation request
   onCancelRequest(): void {
+    // Extract ticket ID from ticketDetails
     const ticketId = this.ticketDetails.id;
+
+    // Send cancellation request using ticketCancelService
     this.ticketCancelService.cancelRequest(ticketId).subscribe(
       (response) => {
         console.log('Cancellation successful:', response);
-        this.isCancelRequested = true;
         this.router.navigate(['employee/my-tickets']);
       },
       (error) => {
@@ -57,17 +63,24 @@ export class RequestToCancelComponent {
     );
   }
 
+  // Function to open confirmation modal for cancellation
   openConfirmationModal() {
     let confirmationMessage =
-      'Are you sure you want to sent a cancellation request?';
+      'Are you sure you want to send a cancellation request?';
+
+    // Open MatDialog with confirmation message
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '400px',
       data: confirmationMessage,
     });
+
+    // Subscribe to the result after the modal is closed
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) this.onCancelRequest();
-      this.isCancelRequested = true;
-      this.router.navigate(['employee/my-tickets']);
+      // If confirmed, proceed with cancellation
+      if (result) {
+        this.onCancelRequest();
+        this.router.navigate(['employee/my-tickets']);
+      }
     });
   }
 }

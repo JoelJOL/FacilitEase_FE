@@ -1,16 +1,17 @@
+<!-- Display the attachments uploaded by an employee -->
 <ng-container *ngIf="fileUrl">
-  <!-- Your component's HTML content goes here -->
   <h4 id="attachment_heading">
-    <h4>{{ headerText }}</h4>
+    {{ headerText }}
   </h4>
   <div class="thumbnail-container" (click)="openFile()">
-    <ng-container *ngIf="isImage; else fileIcon">
-      <img [src]="fileUrl" alt="Image Thumbnail" class="thumbnail" />
-    </ng-container>
+    <img
+      *ngIf="isImage; else fileIcon"
+      [src]="fileUrl"
+      alt="Image Thumbnail"
+      class="thumbnail"
+    />
     <ng-template #fileIcon>
       <img class="thumbnail" src="./assets/file-solid.svg" alt="File Icon" />
     </ng-template>
   </div>
-
-  <iframe *ngIf="!isImage" [src]="fileUrl" width="100%" height="10px"></iframe>
 </ng-container>

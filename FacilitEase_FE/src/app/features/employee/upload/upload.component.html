@@ -1,123 +1,4 @@
-<!-- <div class="container">
-  <h1>Raise a Ticket</h1>
-  <div *ngIf="successMessage" class="success-message">
-    {{ successMessage }}
-  </div>
-  <form [formGroup]="uploadForm">
-    <div class="form-group">
-      <input
-        type="text"
-        id="ticketName"
-        formControlName="ticketName"
-        required
-      />
-      <label for="ticketName">Request</label><br />
-      <span
-        class="form-error"
-        *ngIf="
-          uploadForm.get('ticketName')?.invalid &&
-          uploadForm.get('ticketName')?.touched
-        "
-        ngClass="text-danger"
-        >This field is required*</span
-      >
-    </div>
-
-    <div class="form-group">
-      <textarea
-        id="ticketDescription"
-        formControlName="ticketDescription"
-        required
-      ></textarea>
-      <label for="ticketDescription">Description</label>
-    </div>
-    <span
-      class="form-error"
-      *ngIf="
-        uploadForm.get('ticketDescription')?.invalid &&
-        uploadForm.get('ticketDescription')?.touched
-      "
-      ngClass="text-danger"
-      >This field is required*</span
-    >
-
-    <div class="form-group">
-      <select id="priorityId" formControlName="priorityId" required>
-        <option *ngFor="let priority of priorities" [value]="priority.id">
-          {{ priority.priorityName }}
-        </option>
-      </select>
-      <label for="priorityId">Choose Priority</label>
-    </div>
-    <span
-      class="form-error"
-      *ngIf="
-        uploadForm.get('priorityId')?.invalid &&
-        uploadForm.get('priorityId')?.touched
-      "
-      ngClass="text-danger"
-      >This field is required*</span
-    >
-    <div class="form-group">
-      <select
-        id="departmentId"
-        formControlName="departmentId"
-        (change)="onDepartmentChange()"
-        required
-      >
-        <option *ngFor="let department of departments" [value]="department.id">
-          {{ department.deptName }}
-        </option>
-      </select>
-      <label for="departmentId">Choose Department</label>
-    </div>
-    <span
-      class="form-error"
-      *ngIf="
-        uploadForm.get('departmentId')?.invalid &&
-        uploadForm.get('departmentId')?.touched
-      "
-      ngClass="text-danger"
-      >This field is required*</span
-    >
-    <div class="form-group">
-      <select id="categoryId" formControlName="categoryId" required>
-        <option *ngFor="let category of categories" [value]="category.id">
-          {{ category.categoryName }}
-        </option>
-      </select>
-      <label for="categoryId">Choose Category</label>
-    </div>
-    <span
-      class="form-error"
-      *ngIf="
-        uploadForm.get('categoryId')?.invalid &&
-        uploadForm.get('categoryId')?.touched
-      "
-      ngClass="text-danger"
-      >This field is required*</span
-    >
-    <div class="form-group">
-      <input type="file" id="file" (change)="onFileChange($event)" required />
-    </div>
-
-    <div class="button-container">
-      <app-button
-        id="submit-btn"
-        type="submit"
-        (click)="onSubmit()"
-        class="pr-10"
-        color="accepted"
-        >Submit</app-button
-      >
-      <app-button type="Reset" color="rejected" (click)="onCancelRequest()"
-        >Reset</app-button
-      >
-    </div>
-  </form>
-</div>
-<br /><br /> -->
-
+<!-- Form to raise a ticket -->
 <div class="container">
   <h1>Raise a Ticket</h1>
   <div *ngIf="successMessage" class="success-message">
@@ -131,16 +12,16 @@
         </option>
       </select>
       <label for="categoryId">Request</label>
+      <span
+        class="form-error"
+        *ngIf="
+          uploadForm.get('categoryId')?.invalid &&
+          uploadForm.get('categoryId')?.touched
+        "
+        ngClass="text-danger"
+        >This field is required*</span
+      >
     </div>
-    <span
-      class="form-error"
-      *ngIf="
-        uploadForm.get('categoryId')?.invalid &&
-        uploadForm.get('categoryId')?.touched
-      "
-      ngClass="text-danger"
-      >This field is required*</span
-    >
 
     <div class="form-group">
       <textarea
@@ -149,16 +30,27 @@
         required
       ></textarea>
       <label for="ticketDescription">Description</label>
+      <span
+        class="form-error"
+        *ngIf="
+          (uploadForm.get('ticketDescription')?.hasError('required') ||
+            (uploadForm.get('ticketDescription')?.value &&
+              uploadForm.get('ticketDescription')?.value.trim() === '')) &&
+          uploadForm.get('ticketDescription')?.touched
+        "
+        ngClass="text-danger"
+        >This field is required*</span
+      >
+      <span
+        class="form-error"
+        *ngIf="
+          uploadForm.get('ticketDescription')?.hasError('maxWords') &&
+          uploadForm.get('ticketDescription')?.touched
+        "
+        ngClass="text-danger"
+        >Maximum 300 words allowed*</span
+      >
     </div>
-    <span
-      class="form-error"
-      *ngIf="
-        uploadForm.get('ticketDescription')?.invalid &&
-        uploadForm.get('ticketDescription')?.touched
-      "
-      ngClass="text-danger"
-      >This field is required*</span
-    >
 
     <div class="form-group">
       <select id="priorityId" formControlName="priorityId" required>
@@ -167,38 +59,43 @@
         </option>
       </select>
       <label for="priorityId">Choose Priority</label>
+      <span
+        class="form-error"
+        *ngIf="
+          uploadForm.get('priorityId')?.invalid &&
+          uploadForm.get('priorityId')?.touched
+        "
+        ngClass="text-danger"
+        >This field is required*</span
+      >
     </div>
-    <span
-      class="form-error"
-      *ngIf="
-        uploadForm.get('priorityId')?.invalid &&
-        uploadForm.get('priorityId')?.touched
-      "
-      ngClass="text-danger"
-      >This field is required*</span
-    >
 
-    <div class="form-group">
+    <div class="file-group">
       <input
         type="file"
         formControlName="file"
         (change)="onFileChange($event)"
-        required
       />
     </div>
 
     <div class="button-container">
-      <app-button
+      <button
         id="submit-btn"
-        type="submit"
+        type="button"
+        class="pr-10 btn-accepted"
+        [disabled]="uploadForm.invalid"
         (click)="onSubmit()"
-        class="pr-10"
-        color="accepted"
-        >Submit</app-button
       >
-      <app-button type="Reset" color="rejected" (click)="onCancelRequest()"
-        >Reset</app-button
+        Submit
+      </button>
+      <button
+        type="Reset"
+        class="btn-rejected"
+        (click)="onCancelRequest()"
+        [disabled]="uploadForm.pristine"
       >
+        Reset
+      </button>
     </div>
   </form>
 </div>
