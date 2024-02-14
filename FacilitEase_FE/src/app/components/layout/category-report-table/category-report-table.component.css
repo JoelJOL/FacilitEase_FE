@@ -1,0 +1,25 @@
+.styled_table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  .styled_table th,
+  .styled_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .styled_table th {
+    background-color: #f2f2f2;
+  }
+  
+  .styled_table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .styled_table tbody tr:hover {
+    background-color: #ddd;
+  }
+  

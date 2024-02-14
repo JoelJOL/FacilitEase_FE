@@ -15,3 +15,34 @@ export interface profileData {
   jobTitle: string;
   username: string;
 }
+export interface CategoryDataRecieve {
+  [key: string]: {
+    resolvedCount: number;
+    unresolvedCount: number;
+    escalatedCount: number;
+  };
+}
+export interface CategoryReportDataRecieve {
+  january: CategoryReportMonthData[];
+  february: CategoryReportMonthData[];
+  march: CategoryReportMonthData[];
+  april: CategoryReportMonthData[];
+  may: CategoryReportMonthData[];
+  june: CategoryReportMonthData[];
+  july: CategoryReportMonthData[];
+  august: CategoryReportMonthData[];
+  september: CategoryReportMonthData[];
+  october: CategoryReportMonthData[];
+  november: CategoryReportMonthData[];
+  december: CategoryReportMonthData[];
+}
+export interface CategoryReportData {
+  [key: string]: CategoryReportMonthData[];
+}
+
+export interface CategoryReportMonthData {
+  categoryName: string;
+  resolvedCount: number;
+  unresolvedCount: number;
+  escalatedCount: number;
+}
