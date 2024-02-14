@@ -20,13 +20,12 @@ export class ViewAllTicketsComponent {
     'Submitted Date',
     'Assigned To',
   ];
-
+  ngOnInit(): void {
+    this.apiLink = this.masterService.getAllTicketsForL1Admin();
+  }
   apiLink: string = '';
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    this.router.navigate(['l1admin/view-all-tickets', rowId]);
-  }
-  ngOnInit(): void {
-    this.apiLink = this.masterService.getAllTicketsForL1Admin();
+    this.router.navigate(['l1admin/ticket-detail-view-l1', rowId]);
   }
 }

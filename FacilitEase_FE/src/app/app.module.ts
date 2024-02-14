@@ -153,6 +153,7 @@ import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/d
 import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ticket-escalated.component';
 import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
+import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -274,6 +275,7 @@ const isIE =
     TicketEscalatedComponent,
     TicketDetailsEscalatedComponent,
     ViewAllTicketsComponent,
+    TicketViewL1Component,
   ],
   imports: [
     HttpClientModule,
