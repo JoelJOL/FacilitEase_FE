@@ -4,6 +4,6 @@
   display: block;
   cursor: pointer;
 }
-#attachment_heading {
+h4 {
   font-family: "Poppins", sans-serif !important;
 }

@@ -20,11 +20,6 @@ export class EmployeeComponent {
       title: 'My Tickets',
       subfields: [],
     },
-    {
-      logo: 'assets/tickets-icon.png',
-      title: 'Raise A Ticket',
-      subfields: [],
-    },
   ];
   showEmployeeTickets: boolean = false;
   isSidebarCollapsed: boolean = false;

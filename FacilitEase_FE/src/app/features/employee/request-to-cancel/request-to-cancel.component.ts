@@ -8,6 +8,7 @@ import { DropDownService } from '@app/features/service/httpService/dropDownServi
 import { MatDialog } from '@angular/material/dialog';
 import { TicketResponse } from '@app/features/l3admin/l2Models/model';
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-request-to-cancel',
@@ -28,7 +29,8 @@ export class RequestToCancelComponent {
     private router: Router,
     private dropDownService: DropDownService,
     private http: HttpClient,
-    private ticketCancelService: GetAPIService
+    private ticketCancelService: GetAPIService,
+    private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -56,6 +58,7 @@ export class RequestToCancelComponent {
     this.ticketCancelService.cancelRequest(ticketId).subscribe(
       (response) => {
         console.log('Cancellation successful:', response);
+        this.toastr.success('Cancellation Request Successful!', 'Success');
         this.isCancelRequested = true;
         this.router.navigate(['employee/my-tickets']);
       },
