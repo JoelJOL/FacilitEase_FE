@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
-import { TicketDetails } from '@app/ticket-details'; 
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 
 @Component({
   selector: 'app-ticket-attachments',
@@ -10,12 +10,11 @@ import { TicketDetails } from '@app/ticket-details';
 })
 export class TicketAttachmentsComponent {
   @Input() headerText = 'Attachments';
-  @Input() ticketDetails:any;
+  @Input() ticketDetails: any;
   uploadForm!: FormGroup;
 
   ticket: any = [];
   constructor(private agentService: AgentService) {
-
     this.uploadForm = new FormGroup({
       file: new FormControl(null),
     });
@@ -30,5 +29,4 @@ export class TicketAttachmentsComponent {
       });
     }
   }
-
 }

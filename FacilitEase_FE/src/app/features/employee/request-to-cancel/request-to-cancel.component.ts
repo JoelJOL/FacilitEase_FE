@@ -6,8 +6,8 @@ import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
 import { MatDialog } from '@angular/material/dialog';
-import { TicketResponse } from '@app/features/Interface/interface';
-import { TicketDetails } from '@app/ticket-details';
+import { TicketResponse } from '@app/features/l3admin/l2Models/model';
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 
 @Component({
   selector: 'app-request-to-cancel',

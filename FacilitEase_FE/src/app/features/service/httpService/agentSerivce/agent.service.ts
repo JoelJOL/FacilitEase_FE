@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { TicketDetails } from '@app/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Injectable({
@@ -11,9 +11,9 @@ export class AgentService {
   // Constructor to initialize HttpClient and AzureService dependencies
   constructor(private http: HttpClient, private azureService: AzureService) {}
 
-  userId: number = this.azureService.userId;  // Property to store the user's ID retrieved from the AzureService
+  userId: number = this.azureService.userId; // Property to store the user's ID retrieved from the AzureService
 
-   // Method to fetch ticket details for a given ticket ID
+  // Method to fetch ticket details for a given ticket ID
   getData(ticketId: number): Observable<TicketDetails> {
     console.log(`The ticket id : ${ticketId} is recieved in getData()`);
     const apiUrl = `https://localhost:7049/api/L3Admin/ticketdetail-by-agent/${ticketId}`;
@@ -47,12 +47,9 @@ export class AgentService {
   }
 
   // Method to forward a ticket to a department head
-  forwardTicketDeptHead(
-    empId: number,
-    ticketId: number
-  ): Observable<any> {
+  forwardTicketDeptHead(empId: number, ticketId: number): Observable<any> {
     const apiUrl = `https://localhost:7049/api/L3Admin/forward-ticket-deptHead/${ticketId}/${empId}`;
-    return this.http.patch(apiUrl,null);
+    return this.http.patch(apiUrl, null);
   }
 
   // Method to resolve a ticket
@@ -124,7 +121,7 @@ export class AgentService {
     return apiUrl;
   }
 
-    // Method to fetch all tickets resolved by the l3 admin
+  // Method to fetch all tickets resolved by the l3 admin
   getAllResolvedTickets(): string {
     const apiUrl = `https://localhost:7049/api/L3Admin/GetResolvedTicketsByAgent/${this.userId}`;
     return apiUrl;

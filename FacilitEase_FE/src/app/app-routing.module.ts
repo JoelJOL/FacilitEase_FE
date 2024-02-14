@@ -87,6 +87,7 @@ const routes: Routes = [
     path: 'employee',
     component: EmployeeComponent,
     canActivate: [MsalGuard],
+    canActivateChild: [MsalGuard],
     resolve: [LoginEnter],
     children: [
       {

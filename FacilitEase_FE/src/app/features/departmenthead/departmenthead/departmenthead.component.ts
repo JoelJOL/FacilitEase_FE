@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
-import { UserRoleService } from '@app/features/service/dataService/user-role.service';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 interface Field {

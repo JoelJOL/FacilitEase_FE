@@ -3,15 +3,15 @@ import { ConfirmationModalComponent } from '../components/confirmation-modal/con
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TicketDetails } from '@app/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 
 @Component({
   selector: 'app-manager-view-ticket-simple',
   templateUrl: './manager-view-ticket-simple.component.html',
-  styleUrls: ['./manager-view-ticket-simple.component.css']
+  styleUrls: ['./manager-view-ticket-simple.component.css'],
 })
 export class ManagerViewTicketSimpleComponent {
-  customHeaderText: string = "Support Attachments";
+  customHeaderText: string = 'Support Attachments';
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
   editMode: boolean = false;
@@ -24,7 +24,7 @@ export class ManagerViewTicketSimpleComponent {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       const idFromRoute = params.get('Id');
       if (idFromRoute) {
         this.ticketId = +idFromRoute;
@@ -47,7 +47,7 @@ export class ManagerViewTicketSimpleComponent {
 
   openConfirmationModal(action: string): void {
     let confirmationMessage = '';
-  
+
     switch (action) {
       case 'accept':
         confirmationMessage = 'Are you sure you want to accept this ticket?';
@@ -56,19 +56,20 @@ export class ManagerViewTicketSimpleComponent {
         confirmationMessage = 'Are you sure you want to reject this ticket?';
         break;
       case 'forward':
-        confirmationMessage = 'Are you sure you want to forward this ticket for approval?';
+        confirmationMessage =
+          'Are you sure you want to forward this ticket for approval?';
         break;
       default:
         // Handle other actions if needed
         break;
     }
-  
+
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '400px',
       data: confirmationMessage,
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (action === 'accept') {
           this.acceptTicket();
@@ -83,15 +84,14 @@ export class ManagerViewTicketSimpleComponent {
     });
   }
   forwardTicket() {
-        this.masterService.sendForApproval(this.ticketDetails.id, 2)
-          .subscribe(
-            () => {
-              console.log('Forwarded for approval successfully');
-            },
-            (error: any) => {
-              console.error('Error forwarding for approval:', error);
-            }
-          );
+    this.masterService.sendForApproval(this.ticketDetails.id, 2).subscribe(
+      () => {
+        console.log('Forwarded for approval successfully');
+      },
+      (error: any) => {
+        console.error('Error forwarding for approval:', error);
+      }
+    );
   }
 
   acceptTicket(): void {
@@ -103,7 +103,6 @@ export class ManagerViewTicketSimpleComponent {
         console.error('Error forwarding for approval:', error);
       }
     );
-
   }
 
   rejectTicket(): void {
