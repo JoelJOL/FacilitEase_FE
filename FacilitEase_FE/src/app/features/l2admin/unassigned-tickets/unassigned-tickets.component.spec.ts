@@ -1,21 +1,69 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { UnassignedTicketsComponent } from './unassigned-tickets.component';
+import { MasterService } from '@app/features/service/dataService/masterService/master.service';
+import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
+import { Router } from '@angular/router';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('UnassignedTicketsComponent', () => {
   let component: UnassignedTicketsComponent;
   let fixture: ComponentFixture<UnassignedTicketsComponent>;
+  let masterServiceSpy: jasmine.SpyObj<MasterService>;
+  let sidebarServiceSpy: jasmine.SpyObj<SidebarService>;
 
   beforeEach(() => {
+    masterServiceSpy = jasmine.createSpyObj('MasterService', [
+      'getApiLinkUnassigned',
+    ]);
+    sidebarServiceSpy = jasmine.createSpyObj('SidebarService', ['']);
+
     TestBed.configureTestingModule({
-      declarations: [UnassignedTicketsComponent]
+      declarations: [UnassignedTicketsComponent],
+      providers: [
+        { provide: MasterService, useValue: masterServiceSpy },
+        { provide: SidebarService, useValue: sidebarServiceSpy },
+      ],
+      imports: [RouterTestingModule], // Import RouterTestingModule for testing navigation
+      schemas: [NO_ERRORS_SCHEMA], // Add NO_ERRORS_SCHEMA
     });
+
     fixture = TestBed.createComponent(UnassignedTicketsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    // Arrange & Act
+    fixture.detectChanges();
+
+    // Assert
     expect(component).toBeTruthy();
+  });
+
+  it('should set apiLink from MasterService', () => {
+    // Arrange
+    const expectedApiLink = 'test-api-link';
+    masterServiceSpy.getApiLinkUnassigned.and.returnValue(expectedApiLink);
+
+    // Act
+    fixture.detectChanges();
+
+    // Assert
+    expect(component.apiLink).toEqual(expectedApiLink);
+  });
+
+  it('should navigate to ticket view when onRowClicked is called', () => {
+    // Arrange
+    const navigateSpy = spyOn(TestBed.inject(Router), 'navigate');
+    const testTicketId = 123;
+
+    // Act
+    component.onRowClicked(testTicketId);
+
+    // Assert
+    expect(navigateSpy).toHaveBeenCalledWith([
+      'l2admin/l2admin-ticket-view',
+      testTicketId,
+    ]);
   });
 });
