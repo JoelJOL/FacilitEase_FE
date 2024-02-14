@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
-import { UserRoleService } from '@app/features/service/dataService/user-role.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 import { ToastrService } from 'ngx-toastr';
@@ -85,7 +84,7 @@ export class L3adminComponent {
   // Method to handle clicks on subfields
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
-       // Route to different ticket-related pages based on the clicked subfield
+      // Route to different ticket-related pages based on the clicked subfield
       if (event.subfield === 'Assigned Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/view-ticket']);
