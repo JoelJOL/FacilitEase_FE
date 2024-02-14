@@ -3,7 +3,9 @@ import { AgentService } from '../../service/httpService/agentSerivce/agent.servi
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { TicketDetails } from '@app/ticket-details';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -23,7 +25,8 @@ export class AgentTicketViewComponent {
     private route: ActivatedRoute,
     private agentService: AgentService,
     private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private dialog: MatDialog
   ) {}
 
   // Method to handle edit mode change
@@ -64,7 +67,6 @@ export class AgentTicketViewComponent {
   // Method to handle action based on edit mode
   handleAction(ticketDetails: any): void {
     if (this.editMode) {
-      console.log('Newww', this.editMode);
       alert('Your changes have not been saved!');
     } else {
       this.openModal(ticketDetails);
@@ -80,30 +82,34 @@ export class AgentTicketViewComponent {
   }
 
   resolveTicket(): void {
+    let confirmationMessage = 'Are you sure you want to resolve this ticket?';
     if (this.editMode) {
-      console.log('Hi');
       alert('Your changes have not been saved!');
     } else {
       console.log(this.editMode);
-      const isConfirmed = window.confirm(
-        'Are you sure you want to resolve the ticket?'
-      );
-
-      if (isConfirmed) {
-        // Call service to resolve ticket
-        this.agentService.resolveTicket(this.ticketId).subscribe(
-          (response) => {
-            console.log('API call success:', response);
-            alert('Ticket resolved successfully!'); // Show success alert
-            this.router.navigate(['l3admin/view-ticket']); // Navigate to view-ticket page
-          },
-          (error) => {
-            console.error('API call error:', error);
-          }
-        );
-      } else {
-        console.log('Ticket resolution canceled.');
-      }
+      const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+        width: '400px',
+        data: confirmationMessage,
+      });
+    
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.agentService.resolveTicket(this.ticketId).subscribe(
+            (response) => {
+              console.log('API call success:', response);
+              alert('Ticket resolved successfully!'); // Show success alert
+              this.router.navigate(['l3admin/view-ticket']); // Navigate to view-ticket page
+            },
+            (error) => {
+              console.error('API call error:', error);
+            }
+          );
+        } else {
+          console.log('Ticket resolution canceled.');
+        }
+        });
     }
   }
+
+    
 }

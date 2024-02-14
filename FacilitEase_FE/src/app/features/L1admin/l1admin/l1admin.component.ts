@@ -29,7 +29,7 @@ export class L1adminComponent {
     {
       logo: 'assets/data-entry.png',
       title: 'Data Entry',
-      subfields: ['Form Entry', 'Assign Role'],
+      subfields: ['Assign Role'],
     },
   ];
   showL2AdminTickets: boolean = false;
@@ -71,7 +71,7 @@ export class L1adminComponent {
         this.router.navigate(['assigned-tickets']);
       } else if (event.subfield === 'Escalated Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['escalated-tickets']);
+        this.router.navigate(['l1admin/escalated-tickets']);
       }
     }
     if (event.field.title === 'Data Entry') {

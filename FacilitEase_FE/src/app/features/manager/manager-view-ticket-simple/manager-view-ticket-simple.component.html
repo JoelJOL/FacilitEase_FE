@@ -5,13 +5,9 @@
     <app-ticket-description
       [ticketDetails]="ticketDetails"
     ></app-ticket-description>
-    
     <div class="description_container">
       <div class="left-column">
-        <app-ticket-na-simple
-      [notes]="ticketDetails.notes"
-      [lastupdate]="ticketDetails.lastUpdate"
-    ></app-ticket-na-simple>
+       <app-ticket-na-simple></app-ticket-na-simple>
         <div class="person-cards-row">
           <!-- Raised By -->
           <app-person-card

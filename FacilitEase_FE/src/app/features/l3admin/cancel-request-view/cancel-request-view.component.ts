@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
+import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { TicketDetails } from '@app/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cancel-request-view',
@@ -22,7 +24,8 @@ export class CancelRequestViewComponent {
     private route: ActivatedRoute,
     private agentService: AgentService,
     private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -61,59 +64,65 @@ export class CancelRequestViewComponent {
   }
 
   acceptCancelRequest(): void {
+    let confirmationMessage = 'Are you sure you want to accept the cancellation request?';
     if (this.editMode) {
-      console.log("Hi"); 
       alert(
         'Your changes have not been saved!'
       );
     }else{
-      const isConfirmed = window.confirm(
-        'Are you sure you want to accept the cancellation request?'
-      );
-  
-      if (isConfirmed) {
-        this.agentService.AcceptCancelTicket(this.ticketId).subscribe(
-          (response) => {
-            console.log('API call success:', response);
-            alert('Ticket cancelled successfully!');
-            this.router.navigate(['l3admin/cancel-requests']);
-          },
-          (error) => {
-            console.error('API call error:', error);
-          }
-        );
-      } else {
-        console.log('Cancellation acceptation success.');
-      }
+      const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+        width: '400px',
+        data: confirmationMessage,
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.agentService.AcceptCancelTicket(this.ticketId).subscribe(
+            (response) => {
+              console.log('API call success:', response);
+              alert('Ticket cancelled successfully!');
+              this.router.navigate(['l3admin/cancel-requests']);
+            },
+            (error) => {
+              console.error('API call error:', error);
+            }
+          );
+        } else {
+          console.log('Ticket cancellation accepted.');
+        }
+        });
     }
     
   }
 
   denyCancelRequest(): void {
+    let confirmationMessage = 'Are you sure you want to deny the cancellation request?';
     if (this.editMode) {
-      console.log("Hi"); 
       alert(
         'Your changes have not been saved!'
       );
     }else{
-      const isConfirmed = window.confirm(
-        'Are you sure you want to deny the cancellation request?'
-      );
+      const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+        width: '400px',
+        data: confirmationMessage,
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.agentService.DenyCancelTicket(this.ticketId).subscribe(
+            (response) => {
+              console.log('API call success:', response);
+              alert('Cancellation denied successfully!');
+              this.router.navigate(['l3admin/cancel-requests']);
+            },
+            (error) => {
+              console.error('API call error:', error);
+            }
+          );
+        } else {
+          console.log('Ticket cancellation denied.');
+        }
+        });
   
-      if (isConfirmed) {
-        this.agentService.DenyCancelTicket(this.ticketId).subscribe(
-          (response) => {
-            console.log('API call success:', response);
-            alert('Cancellation denied successfully!');
-            this.router.navigate(['l3admin/cancel-requests']);
-          },
-          (error) => {
-            console.error('API call error:', error);
-          }
-        );
-      } else {
-        console.log('Ticket resolution canceled.');
-      }
+     
     }
     }
     
