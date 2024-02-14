@@ -69,8 +69,6 @@
 	padding-left: 47px;
 }
 
-
-
 .timeline_dot{
 	height: 12px;
 	width: 12px;
@@ -93,7 +91,7 @@
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 .timeline_content h3{
-    font-size: 12px;
+    font-size: 13px;
 	color: var(--black);
 	margin:0 0 6px;
 	text-transform: capitalize;
@@ -107,7 +105,7 @@
 
 
 .timeline_content p{
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: 450;   
 	line-height: 14px;
 }

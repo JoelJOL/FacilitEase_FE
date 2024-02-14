@@ -20,8 +20,6 @@ export class TicketDetailViewComponent {
 
   constructor() {} 
 
-  
-
   // Method to capture edit mode change
   onEditModeChange(editMode: boolean) {
     this.editMode = editMode; // Update the edit mode value

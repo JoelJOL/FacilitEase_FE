@@ -9,17 +9,19 @@ import { AgentService } from '@app/features/service/httpService/agentSerivce/age
   styleUrls: ['./ticket-na-simple.component.css'],
 })
 export class TicketNaSimpleComponent {
-  lastUpdate: string = '';
-  @Input() ticketId: number | undefined;
-  @Input() reload: boolean = false;
+  lastUpdate: string = ''; // Represents the last update time of the component
+  @Input() ticketId: number | undefined; // Unique identifier of the associated ticket
+  @Input() reload: boolean = false; // Flag indicating whether a reload action is requested
+  commentExists: boolean = false; // Flag indicating whether a comment exists for the ticket
   constructor(private agentService: AgentService) {}
-  commentExists: boolean = false;
+  
 
   ngOnInit(): void {
     this.getCommentText();
     this.fetchTimeSinceLastUpdate();
   }
 
+  //To fetch the time since last updated, seen along with the notes
   fetchTimeSinceLastUpdate(): void {
     // Subscribe to the getTimeSinceLastUpdate method
     this.agentService.getTimeSinceLastUpdate(this.ticketId).subscribe(
@@ -34,6 +36,7 @@ export class TicketNaSimpleComponent {
     );
   }
 
+  //To fetch the comments posted
   getCommentText() {
     this.agentService.getCommentText(this.ticketId).subscribe(
       (commentText: string) => {
