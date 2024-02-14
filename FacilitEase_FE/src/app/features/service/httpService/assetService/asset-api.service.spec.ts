@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { AssetAPIService } from './asset-api.service';
 
-import { AssetAPIService } from '../../../Assets/asset-api.service';
 
 describe('AssetAPIService', () => {
   let service: AssetAPIService;
