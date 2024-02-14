@@ -5,6 +5,7 @@ import { DepartmentHeadService } from '@app/features/service/httpService/Departm
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detailed-dh-ticket',
@@ -22,7 +23,8 @@ export class DetailedDhTicketComponent implements OnInit {
     private route: ActivatedRoute,
     private departmentHeadService: DepartmentHeadService,
     private approveDenyService: ApproveDenyService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -52,8 +54,7 @@ export class DetailedDhTicketComponent implements OnInit {
         this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
           () => {
             console.log('Ticket updated successfully');
-            alert('Ticket updated successfully');
-            this.redirectToPreviousPage();
+            this.toastr.success('Forwarded to department head!', 'Success');            this.redirectToPreviousPage();
           },
           (error) => {
             console.error('Error updating ticket', error);

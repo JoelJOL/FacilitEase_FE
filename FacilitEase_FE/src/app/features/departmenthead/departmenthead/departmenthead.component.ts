@@ -58,7 +58,7 @@ export class DepartmentheadComponent {
     if (clickedField.title === 'My Team') {
       this.showDepartmentHeadTickets = true;
       this.router.navigate(['l2admin-subordinates']);
-    } else if (clickedField.title === 'Waiting For Approval') {
+    } else if (clickedField.title === 'Tickets Waiting For Approval') {
       this.showDepartmentHeadTickets = true;
       this.router.navigate(['departmenthead/departmentHead-tickets']);
     } else {
