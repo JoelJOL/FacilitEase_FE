@@ -21,8 +21,8 @@ export class L3adminComponent {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
       subfields: [
-        'Raised Tickets',
-        'Tickets On Hold',
+        'Assigned Tickets',
+        'Forwarded for Approval',
         'Cancellation Requests',
         'Closed Tickets',
       ],
@@ -66,13 +66,13 @@ export class L3adminComponent {
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
        // Route to different ticket-related pages based on the clicked subfield
-      if (event.subfield === 'Raised Tickets') {
+      if (event.subfield === 'Assigned Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/view-ticket']);
       } else if (event.subfield === 'Closed Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/resolved-tickets']);
-      } else if (event.subfield === 'Tickets On Hold') {
+      } else if (event.subfield === 'Forwarded for Approval') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/on-hold-tickets']);
       } else if (event.subfield === 'Cancellation Requests') {
