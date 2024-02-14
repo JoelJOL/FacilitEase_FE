@@ -7,8 +7,6 @@ import {
 } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
-// import { SidebarService } from 'src/app/features/service/dataService/sidebar.service';
-// import { SidebarService } from './features/service/dataService/sidebar.service';
 
 interface Field {
   logo: string;
@@ -24,13 +22,13 @@ interface Field {
       state(
         'collapsed',
         style({
-          width: '60px', // Adjust the width as needed
+          width: '60px',
         })
       ),
       state(
         'expanded',
         style({
-          width: '250px', // Adjust the width as needed
+          width: '250px',
         })
       ),
       transition('collapsed <=> expanded', animate('0.4s ease-in-out')),
@@ -38,9 +36,11 @@ interface Field {
   ],
 })
 export class SidebarComponent {
+  //get the contents in field and subfield as input
   @Input() fields: Field[] = [];
   @Input() subfields: string[] = [];
   selectedField: Field | null = null;
+  //emit the field and subfield clicked
   @Output() clicked = new EventEmitter<any>();
   @Output() subfieldClicked = new EventEmitter<any>();
 

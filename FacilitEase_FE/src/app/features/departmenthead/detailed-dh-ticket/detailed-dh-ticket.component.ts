@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApproveDenyService } from '@app/features/service/httpService/DH-aproveDeny/approve-deny.service';
 import { DepartmentHeadService } from '@app/features/service/httpService/Department-head/department-head.service';
-import { TicketDetails } from '@app/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 
@@ -27,11 +27,11 @@ export class DetailedDhTicketComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const ticketId = Number(params['Id']);
-      console.log(ticketId);
+      this.ticketId = Number(params['Id']);
+      console.log(this.ticketId);
 
       this.departmentHeadService
-        .getdepartmentHeadTicketDetails(ticketId)
+        .getdepartmentHeadTicketDetails(this.ticketId)
         .subscribe((data) => {
           this.ticketDetails = data;
 

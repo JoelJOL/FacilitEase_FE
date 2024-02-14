@@ -6,6 +6,7 @@ import { UserRoleService } from '@app/features/service/dataService/user-role.ser
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 interface Field {
   logo: string;
@@ -68,9 +69,9 @@ export class L1adminComponent {
   }
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
-    if (clickedField.title === 'My Team') {
+    if (clickedField.title === 'Tickets') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin-subordinates']);
+      this.router.navigate(['l1admin/escalated-tickets-l1']);
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
       this.router.navigate(['l2report/:id']);
@@ -81,17 +82,15 @@ export class L1adminComponent {
 
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
-      if (event.subfield === 'Unassigned Tickets') {
+      if (event.subfield === 'All Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['unassigned-tickets']);
-      } else if (event.subfield === 'Assigned Tickets') {
-        this.showL2AdminTickets = true;
-        this.router.navigate(['assigned-tickets']);
+        this.router.navigate(['l1admin/view-all-tickets']);
       } else if (event.subfield === 'Escalated Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['l1admin/escalated-tickets']);
+        this.router.navigate(['l1admin/escalated-tickets-l1']);
       }
     }
+
     if (event.field.title === 'Data Entry') {
       if (event.subfield === 'Form Entry') {
         this.showL2AdminTickets = true;

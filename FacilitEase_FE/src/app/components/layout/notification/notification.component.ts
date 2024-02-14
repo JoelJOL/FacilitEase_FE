@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
-import { Notification } from '@app/notification.model';
+import { Notification } from '@app/features/service/notification/notification.model';
 
 @Component({
   selector: 'app-notification',

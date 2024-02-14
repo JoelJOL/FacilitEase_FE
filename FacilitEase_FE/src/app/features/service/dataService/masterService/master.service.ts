@@ -83,4 +83,9 @@ export class MasterService {
   getEscalatedTicketForL1Admin(): string {
     return this.apiEscaltedTicketForL1Admin;
   }
+
+  private apiViewAllTicketL1Admin = `https://localhost:7049/api/L1Admin/all-tickets`;
+  getAllTicketsForL1Admin(): string {
+    return this.apiViewAllTicketL1Admin;
+  }
 }

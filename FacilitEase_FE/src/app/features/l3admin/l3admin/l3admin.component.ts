@@ -6,6 +6,7 @@ import { UserRoleService } from '@app/features/service/dataService/user-role.ser
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 // Interface to define the structure of each field
 interface Field {
@@ -26,10 +27,10 @@ export class L3adminComponent {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
       subfields: [
-        'Raised Tickets',
-        'Tickets On Hold',
+        'Assigned Tickets',
+        'Forwarded for Approval',
         'Cancellation Requests',
-        'Resolved Tickets',
+        'Closed Tickets',
       ],
     },
     {
@@ -84,14 +85,14 @@ export class L3adminComponent {
   // Method to handle clicks on subfields
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
-      // Route to different ticket-related pages based on the clicked subfield
-      if (event.subfield === 'Raised Tickets') {
+       // Route to different ticket-related pages based on the clicked subfield
+      if (event.subfield === 'Assigned Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/view-ticket']);
-      } else if (event.subfield === 'Resolved Tickets') {
+      } else if (event.subfield === 'Closed Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/resolved-tickets']);
-      } else if (event.subfield === 'Tickets On Hold') {
+      } else if (event.subfield === 'Forwarded for Approval') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/on-hold-tickets']);
       } else if (event.subfield === 'Cancellation Requests') {

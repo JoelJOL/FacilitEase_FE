@@ -4,7 +4,7 @@ import * as signalR from '@aspnet/signalr';
 import { SharedService } from '../SharedService/shared.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Notification } from '@app/notification.model';
+import { Notification } from '@app/features/service/notification/notification.model';
 @Injectable({
   providedIn: 'root',
 })

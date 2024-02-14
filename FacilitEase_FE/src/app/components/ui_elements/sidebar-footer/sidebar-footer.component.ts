@@ -18,9 +18,9 @@ interface Field {
   styleUrls: ['./sidebar-footer.component.css'],
 })
 export class SidebarFooterComponent {
-  @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
+  @Input() collapsed: boolean = false;
   @ViewChild(SupportComponent)
-  modal!: SupportComponent; // Assuming ModalComponent is correctly imported
+  modal!: SupportComponent;
 
   constructor(private router: Router, private modalService: ModalService) {}
   support: Field = { logo: 'assets/sidebar-support.png', title: 'Support' };

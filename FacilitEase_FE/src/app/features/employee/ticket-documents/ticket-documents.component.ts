@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TicketAttachment } from '@app/features/Interface/interface';
+import { TicketAttachment } from '@app/features/l3admin/l2Models/model';
 
 @Component({
   selector: 'app-ticket-documents',
@@ -12,13 +12,12 @@ export class TicketDocumentsComponent implements OnInit {
   fileUrl!: string;
   isImage = false;
   @Input() headerText = '';
-  @Input() ticketId: number=0;
+  @Input() ticketId: number = 0;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    const firstApiEndpoint =
-      `https://localhost:7049/api/Employee/get-documents-by-ticket/${this.ticketId}`;
+    const firstApiEndpoint = `https://localhost:7049/api/Employee/get-documents-by-ticket/${this.ticketId}`;
 
     // Fetch the entire response from the first API endpoint
     this.getFileData(firstApiEndpoint).subscribe(

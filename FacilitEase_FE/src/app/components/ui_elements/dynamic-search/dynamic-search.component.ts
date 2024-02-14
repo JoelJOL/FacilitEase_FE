@@ -5,7 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { HighlightPipe } from '@app/features/service/highlightPipe/highlight.pipe';
+import { HighlightPipe } from '@app/features/service/pipes/highlightPipe/highlight.pipe';
 import { ReportService } from '@app/features/service/httpService/reportService/report.service';
 import { SearchService } from '@app/features/service/httpService/searchService/search.service';
 import { OutsideClickDirective } from '@app/features/service/directive/outside-click/outside-click.directive';

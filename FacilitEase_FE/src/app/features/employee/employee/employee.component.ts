@@ -6,6 +6,7 @@ import { UserRoleService } from '@app/features/service/dataService/user-role.ser
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 interface Field {
   logo: string;
   title: string;
@@ -22,11 +23,6 @@ export class EmployeeComponent {
     {
       logo: 'assets/reports-icon.png',
       title: 'My Tickets',
-      subfields: [],
-    },
-    {
-      logo: 'assets/tickets-icon.png',
-      title: 'Raise A Ticket',
       subfields: [],
     },
   ];

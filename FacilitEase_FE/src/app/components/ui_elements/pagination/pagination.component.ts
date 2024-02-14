@@ -50,7 +50,21 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   updateVisibleNumbers(): void {
     const totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    this.visibleNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+    const maxVisibleNumbers = 5;
+    const halfMaxVisibleNumbers = Math.floor(maxVisibleNumbers / 2);
+  
+    let startPage = Math.max(1, this.currentPage - halfMaxVisibleNumbers);
+    let endPage = Math.min(totalPages, startPage + maxVisibleNumbers - 1);
+  
+    if (totalPages >= maxVisibleNumbers) {
+      if (endPage === totalPages) {
+        startPage = Math.max(1, totalPages - maxVisibleNumbers + 1);
+      } else if (startPage === 1) {
+        endPage = Math.min(maxVisibleNumbers, totalPages);
+      }
+    }
+  
+    this.visibleNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
   }
   
 }

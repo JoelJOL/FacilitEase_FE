@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-l2admin-ticket-view',
@@ -26,7 +27,8 @@ export class L2adminTicketViewComponent {
     private router: Router,
     private dropDownService: DropDownService,
     private http: HttpClient,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
   titleSubHeadings: any = [];
   ngOnInit(): void {
@@ -73,7 +75,7 @@ export class L2adminTicketViewComponent {
     };
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '400px',
-      data: 'Are you sure you want to assign to the L3 Admin?',
+      data: 'Do you confirm the ticket assigning?',
     });
     console.log(selectedAgent);
     dialogRef.afterClosed().subscribe((result) => {
@@ -85,11 +87,14 @@ export class L2adminTicketViewComponent {
           .subscribe(
             (response) => {
               console.log('Ticket assigned successfully', response);
+              this.toastr.success('Ticket assigned successfully!', 'Success');
+              this.router.navigate(['l2admin/unassigned-tickets']);
             },
             (error) => {
               console.error('Error assigning ticket', error);
             }
           );
+      } else {
         this.router.navigate(['l2admin/unassigned-tickets']);
       }
     });
