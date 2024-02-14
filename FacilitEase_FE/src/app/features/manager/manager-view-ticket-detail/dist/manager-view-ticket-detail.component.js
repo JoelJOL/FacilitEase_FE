@@ -11,13 +11,15 @@ var core_1 = require("@angular/core");
 var modal_component_1 = require("@app/components/layout/modal/modal.component");
 var confirmation_modal_component_1 = require("../components/confirmation-modal/confirmation-modal.component");
 var ManagerViewTicketDetailComponent = /** @class */ (function () {
-    function ManagerViewTicketDetailComponent(masterService, dialog, route, router, modalService) {
+    function ManagerViewTicketDetailComponent(masterService, azureService, dialog, route, router, modalService, toastr) {
         this.masterService = masterService;
+        this.azureService = azureService;
         this.dialog = dialog;
         this.route = route;
         this.router = router;
         this.modalService = modalService;
-        this.customHeaderText = "Supported Attachments";
+        this.toastr = toastr;
+        this.customHeaderText = 'Supported Attachments';
         this.ticketId = 0;
         this.editMode = false;
     }
@@ -51,7 +53,8 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
                 confirmationMessage = 'Are you sure you want to reject this ticket?';
                 break;
             case 'forward':
-                confirmationMessage = 'Are you sure you want to forward this ticket for approval?';
+                confirmationMessage =
+                    'Are you sure you want to forward this ticket for approval?';
                 break;
             default:
                 // Handle other actions if needed
@@ -65,39 +68,35 @@ var ManagerViewTicketDetailComponent = /** @class */ (function () {
             if (result) {
                 if (action === 'accept') {
                     _this.acceptTicket();
-                    _this.router.navigate(['manager/manager-view-waiting-tickets']);
                 }
                 else if (action === 'reject') {
                     _this.rejectTicket();
-                    _this.router.navigate(['manager/manager-view-waiting-tickets']);
                 }
                 else if (action === 'forward') {
                     _this.forwardTicket();
-                    _this.router.navigate(['manager/manager-view-waiting-tickets']);
                 }
             }
         });
     };
     ManagerViewTicketDetailComponent.prototype.forwardTicket = function () {
-        this.masterService.sendForApproval(this.ticketDetails.id, 17)
-            .subscribe(function () {
-            console.log('Forwarded for approval successfully');
-        }, function (error) {
-            console.error('Error forwarding for approval:', error);
+        var _this = this;
+        this.masterService.sendForApproval(this.ticketDetails.id, this.azureService.userId).subscribe(function (response) {
+            _this.toastr.success('Forwarded to department head!', 'Success');
+            _this.router.navigate(['manager/manager-view-waiting-tickets']);
         });
     };
     ManagerViewTicketDetailComponent.prototype.acceptTicket = function () {
-        this.masterService.ticketDecision(this.ticketDetails.id, 2).subscribe(function () {
-            console.log('Forwarded for approval successfully');
-        }, function (error) {
-            console.error('Error forwarding for approval:', error);
+        var _this = this;
+        this.masterService.ticketDecision(this.ticketDetails.id, 2).subscribe(function (response) {
+            _this.toastr.success('Ticket Accepted!', 'Success');
+            _this.router.navigate(['manager/manager-view-waiting-tickets']);
         });
     };
     ManagerViewTicketDetailComponent.prototype.rejectTicket = function () {
-        this.masterService.ticketDecision(this.ticketDetails.id, 5).subscribe(function () {
-            console.log('Forwarded for approval successfully');
-        }, function (error) {
-            console.error('Error forwarding for approval:', error);
+        var _this = this;
+        this.masterService.ticketDecision(this.ticketDetails.id, 5).subscribe(function (response) {
+            _this.toastr.success('Ticket Rejected!', 'Success');
+            _this.router.navigate(['manager/manager-view-waiting-tickets']);
         });
     };
     ManagerViewTicketDetailComponent.prototype.onEditModeChange = function (editMode) {

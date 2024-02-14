@@ -6,6 +6,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { ToastrService } from 'ngx-toastr';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Component({
   selector: 'app-manager-view-ticket-detail',
@@ -21,10 +23,12 @@ export class ManagerViewTicketDetailComponent implements OnInit {
 
   constructor(
     private masterService: MasterService,
+    private azureService : AzureService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -77,48 +81,37 @@ export class ManagerViewTicketDetailComponent implements OnInit {
       if (result) {
         if (action === 'accept') {
           this.acceptTicket();
-          this.router.navigate(['manager/manager-view-waiting-tickets']);
         } else if (action === 'reject') {
           this.rejectTicket();
-          this.router.navigate(['manager/manager-view-waiting-tickets']);
         } else if (action === 'forward') {
           this.forwardTicket();
-          this.router.navigate(['manager/manager-view-waiting-tickets']);
         }
       }
     });
   }
   forwardTicket() {
-    this.masterService.sendForApproval(this.ticketDetails.id, 17).subscribe(
-      () => {
-        console.log('Forwarded for approval successfully');
-      },
-      (error: any) => {
-        console.error('Error forwarding for approval:', error);
+    this.masterService.sendForApproval(this.ticketDetails.id, this.azureService.userId).subscribe(
+      (response) => {
+        this.toastr.success('Forwarded to department head!', 'Success');
+        this.router.navigate(['manager/manager-view-waiting-tickets']);
       }
-    );
+  );
   }
 
   acceptTicket(): void {
     this.masterService.ticketDecision(this.ticketDetails.id, 2).subscribe(
-      () => {
-        console.log('Forwarded for approval successfully');
-      },
-      (error: any) => {
-        console.error('Error forwarding for approval:', error);
-      }
-    );
+      (response) => {
+          this.toastr.success('Ticket Accepted!', 'Success');
+          this.router.navigate(['manager/manager-view-waiting-tickets']);
+      });
   }
 
   rejectTicket(): void {
     this.masterService.ticketDecision(this.ticketDetails.id, 5).subscribe(
-      () => {
-        console.log('Forwarded for approval successfully');
-      },
-      (error: any) => {
-        console.error('Error forwarding for approval:', error);
-      }
-    );
+      (response) => {
+          this.toastr.success('Ticket Rejected!', 'Success');
+          this.router.navigate(['manager/manager-view-waiting-tickets']);
+      });
   }
   onEditModeChange(editMode: boolean) {
     // Update the editMode value
