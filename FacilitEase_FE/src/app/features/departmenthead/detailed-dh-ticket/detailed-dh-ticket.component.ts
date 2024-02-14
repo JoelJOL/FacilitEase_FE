@@ -27,11 +27,11 @@ export class DetailedDhTicketComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const ticketId = Number(params['Id']);
-      console.log(ticketId);
+      this.ticketId = Number(params['Id']);
+      console.log(this.ticketId);
 
       this.departmentHeadService
-        .getdepartmentHeadTicketDetails(ticketId)
+        .getdepartmentHeadTicketDetails(this.ticketId)
         .subscribe((data) => {
           this.ticketDetails = data;
 

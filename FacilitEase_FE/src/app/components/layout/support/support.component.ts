@@ -11,8 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SupportComponent {
   @ViewChild('modalBody') modalBody!: ElementRef;
-
-  supportForm: FormGroup;
+  supportForm: FormGroup;// Form group for support details
   submitClicked: boolean = false; // New variable to track button click
 
   constructor(
@@ -21,15 +20,18 @@ export class SupportComponent {
     private agentService: AgentService,
     private toastr: ToastrService
   ) {
+    // Initialize the support form with form controls and validators
     this.supportForm = this.formBuilder.group({
       supportDetails: ['', Validators.required],
-      // Add more form controls and validations as needed
     });
   }
 
+  // Method to close the modal
   close() {
     this.modalRef.hide();
   }
+
+  // Method to handle form submission
   onSubmit() {
     this.submitClicked = true;
 

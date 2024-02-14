@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { TicketDetails } from '@app/ticket-details';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -26,7 +27,8 @@ export class AgentTicketViewComponent {
     private agentService: AgentService,
     private router: Router,
     private modalService: BsModalService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService,
   ) {}
 
   // Method to handle edit mode change
@@ -82,7 +84,7 @@ export class AgentTicketViewComponent {
   }
 
   resolveTicket(): void {
-    let confirmationMessage = 'Are you sure you want to resolve this ticket?';
+    let confirmationMessage = 'Are you sure you want to close this ticket?';
     if (this.editMode) {
       alert('Your changes have not been saved!');
     } else {
@@ -97,7 +99,7 @@ export class AgentTicketViewComponent {
           this.agentService.resolveTicket(this.ticketId).subscribe(
             (response) => {
               console.log('API call success:', response);
-              alert('Ticket resolved successfully!'); // Show success alert
+              this.toastr.success('Ticket closed Successfully!', 'Success');
               this.router.navigate(['l3admin/view-ticket']); // Navigate to view-ticket page
             },
             (error) => {
@@ -105,7 +107,7 @@ export class AgentTicketViewComponent {
             }
           );
         } else {
-          console.log('Ticket resolution canceled.');
+          this.toastr.error('Failed to close the ticket!', 'Error');
         }
         });
     }

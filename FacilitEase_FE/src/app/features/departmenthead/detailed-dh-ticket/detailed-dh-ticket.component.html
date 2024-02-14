@@ -5,39 +5,42 @@
     <app-ticket-description
       [ticketDetails]="ticketDetails"
     ></app-ticket-description>
-    <app-ticket-attachments
-      [headerText]="customHeaderText"
-      [ticketDetails]="ticketDetails"
-    ></app-ticket-attachments>
-    <app-ticket-notes-attachments
-      [ticketId]="ticketId"
-      (editModeChanged)="onEditModeChange($event)"
-    ></app-ticket-notes-attachments>
-  </div>
-  <div class="person_cards_row">
-    <!-- Raised By -->
-    <app-person-card
-      [personName]="ticketDetails.employeeName"
-      [role]="1"
-    ></app-person-card>
+    <div class="description_container">
+      <div class="left-column">
+        <app-ticket-notes-attachments
+          [ticketId]="ticketId"
+          (editModeChanged)="onEditModeChange($event)"
+        ></app-ticket-notes-attachments>
+        <div class="person_cards_row">
+          <!-- Raised By -->
+          <app-person-card
+            [personName]="ticketDetails.employeeName"
+            [role]="1"
+          ></app-person-card>
 
-    <!-- Assigned To -->
-    <app-person-card
-      [personName]="ticketDetails.assignedTo"
-      [role]="0"
-    ></app-person-card>
+          <!-- Assigned To -->
+          <app-person-card
+            [personName]="ticketDetails.assignedTo"
+            [role]="0"
+          ></app-person-card>
 
-    <app-person-card
-      [personName]="ticketDetails.forwardedBy"
-      [role]="2"
-    ></app-person-card>
-  </div>
-  <div class="button-row">
-    <app-button color="accepted" (action)="updateTicket(true)" id="accepted"
-      >Approve</app-button
-    >
-    <app-button color="rejected" (action)="updateTicket(false)"
-      >Reject</app-button
-    >
+          <app-person-card
+            [personName]="ticketDetails.forwardedBy"
+            [role]="2"
+          ></app-person-card>
+        </div>
+      </div>
+      <div class="right-column">
+        <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
+      </div>
+    </div>
+    <div class="button-row">
+      <app-button color="accepted" (action)="updateTicket(true)" id="accepted"
+        >Approve</app-button
+      >
+      <app-button color="rejected" (action)="updateTicket(false)"
+        >Reject</app-button
+      >
+    </div>
   </div>
 </div>

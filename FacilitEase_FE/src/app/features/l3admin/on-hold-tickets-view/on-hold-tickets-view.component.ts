@@ -8,9 +8,9 @@ import { AgentService } from '@app/features/service/httpService/agentSerivce/age
   styleUrls: ['./on-hold-tickets-view.component.css'],
 })
 export class OnHoldTicketsViewComponent {
-  tickets: any = [];
-  @Output() rowClicked = new EventEmitter<number>();
-  headers: string[] = [
+  tickets: any = []; // Array to store on-hold tickets
+  @Output() rowClicked = new EventEmitter<number>();   // Event emitter for emitting row clicks
+  headers: string[] = [ // Headers for the table displaying on-hold tickets
     'ID',
     'Ticket Name',
     'Employee Name',
@@ -21,13 +21,15 @@ export class OnHoldTicketsViewComponent {
     'Department',
     'Location',
   ];
-  apiLink: string = '';
+  apiLink: string = ''; // API link for fetching all on-hold tickets
   constructor(private agentService: AgentService, private router: Router) {}
   ngOnInit() {
+    // Get the API link for fetching all on-hold tickets
     this.apiLink = this.agentService.getAllOnHoldTickets();
     console.log(this.apiLink);
   }
 
+  // Method called when a row is clicked
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
     this.router.navigate(['l3admin/view-ticket-detail-noedit', Id]);

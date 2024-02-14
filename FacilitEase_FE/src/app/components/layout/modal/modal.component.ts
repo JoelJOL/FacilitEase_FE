@@ -1,7 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -32,7 +31,6 @@ export class ModalComponent {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private router: Router,
-    private modalService: ModalService
   ) {
     this.deptForm = this.formBuilder.group({
       category: ['', Validators.required],
@@ -56,13 +54,6 @@ export class ModalComponent {
       console.log(data);
     });
 
-    this.modalBody.nativeElement.addEventListener('show.bs.modal', () => {
-      this.showDropdown = true;
-    });
-
-    this.modalBody.nativeElement.addEventListener('hide.bs.modal', () => {
-      this.showDropdown = false;
-    });
 
     const departmentControl = this.deptForm.get('department');
     console.log(departmentControl);
