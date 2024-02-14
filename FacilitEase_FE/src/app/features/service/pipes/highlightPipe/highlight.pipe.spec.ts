@@ -5,4 +5,8 @@ describe('HighlightPipe', () => {
     // const pipe = new HighlightPipe();
     // expect(pipe).toBeTruthy();
   });
+  // it('create an instance', () => {
+  //   const pipe = new HighlightPipe();
+  //   expect(pipe).toBeTruthy();
+  // });
 });

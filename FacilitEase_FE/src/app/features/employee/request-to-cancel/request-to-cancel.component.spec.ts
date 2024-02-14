@@ -8,7 +8,7 @@ describe('RequestToCancelComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RequestToCancelComponent]
+      declarations: [RequestToCancelComponent],
     });
     fixture = TestBed.createComponent(RequestToCancelComponent);
     component = fixture.componentInstance;
