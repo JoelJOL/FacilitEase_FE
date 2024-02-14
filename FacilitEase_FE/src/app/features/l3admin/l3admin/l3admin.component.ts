@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
+import { UserRoleService } from '@app/features/service/dataService/user-role.service';
+import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
+import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
+import { ToastrService } from 'ngx-toastr';
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 // Interface to define the structure of each field
@@ -39,13 +44,27 @@ export class L3adminComponent {
   constructor(
     private router: Router,
     private sidebarService: SidebarService,
-    private userRoleService: UserRoleService
+    private userRoleService: UserRoleService,
+    private sharedService: SharedService,
+    private notificationService: NotificationService,
+    private azureService: AzureService,
+    private toastr: ToastrService
   ) {}
   ngOnInit() {
     // Set the user role and subscribe to sidebar collapse state changes
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
       this.isSidebarCollapsed = isCollapsed;
+    });
+
+    //Notification
+    this.notificationService.startConnection();
+
+    this.sharedService.notification$.subscribe((data) => {
+      if (data.userId == this.azureService.userId) {
+        console.log('Notification received: ' + data.text);
+        this.toastr.info(data.text);
+      }
     });
   }
 
