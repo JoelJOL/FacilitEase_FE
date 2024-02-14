@@ -33,7 +33,7 @@ export class NotificationService {
     console.log('blabalassd');
     this.hubConnection.on('ReceiveNotification', (data) => {
       console.log('recifdfdfdf');
-      this.toastr.success(data);
+      // this.toastr.success(data.text);
       this.sharedService.sendNotification(data);
     });
   };

@@ -5,10 +5,10 @@ import { Subject } from 'rxjs';
 })
 export class SharedService {
   constructor() {}
-  private _notification = new Subject<string>();
+  private _notification = new Subject<{ userId: number; text: string }>();
   notification$ = this._notification.asObservable();
 
-  sendNotification(message: string) {
+  sendNotification(message: { userId: number; text: string }) {
     this._notification.next(message);
   }
 }
