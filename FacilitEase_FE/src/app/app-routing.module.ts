@@ -82,7 +82,11 @@ import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-detai
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
 
+//MsalGuard: Route can only be activated if the user has signed in using their microsoft account
+//Other Guards: Route that is protected and only the users with the specific roles can access the routes
+//Resolve functions used: in-build functions to check if the user has the permission to access the route based on the roles
 const routes: Routes = [
+  //Routes for the employee login
   {
     path: 'employee',
     component: EmployeeComponent,
@@ -92,22 +96,27 @@ const routes: Routes = [
     children: [
       {
         path: 'employeecard',
+        canActivate: [MsalGuard],
         component: EmplycarddisplayComponent,
       },
       {
         path: 'request/:id',
+        canActivate: [MsalGuard],
         component: RequestToCancelComponent,
       },
       {
         path: 'my-tickets',
+        canActivate: [MsalGuard],
         component: EmployeeMyTicketsComponent,
       },
       {
         path: 'form',
+        canActivate: [MsalGuard],
         component: UploadComponent,
       },
       {
         path: 'employee-myteam',
+        canActivate: [MsalGuard],
         component: MyteamEmployeeComponent,
       },
     ],
@@ -115,6 +124,7 @@ const routes: Routes = [
 
   { path: 'xxx', component: SidebarComponent },
   { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
+  //Routes for the l2 Admin
   {
     path: 'l2admin',
     canActivate: [MsalGuard, IsL2Admin],
@@ -122,30 +132,74 @@ const routes: Routes = [
     component: L2AdminComponent,
     children: [
       { path: '', redirectTo: 'unassigned-tickets', pathMatch: 'full' }, // Redirect to 'unassigned-tickets' when 'l2' is accessed directly
-      { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
-      { path: 'assigned-tickets', component: AssignedTicketsComponent },
-      { path: 'escalated-tickets', component: EscalatedticketsComponent },
-      { path: 'tickets-to-resolve', component: TicketsToResolveComponent },
-      { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
-      { path: 'l2report', component: L2ReportComponent },
+      {
+        path: 'unassigned-tickets',
+        canActivate: [MsalGuard],
+        component: UnassignedTicketsComponent,
+      },
+      {
+        path: 'assigned-tickets',
+        canActivate: [MsalGuard],
+        component: AssignedTicketsComponent,
+      },
+      {
+        path: 'escalated-tickets',
+        canActivate: [MsalGuard],
+        component: EscalatedticketsComponent,
+      },
+      {
+        path: 'tickets-to-resolve',
+        canActivate: [MsalGuard],
+        component: TicketsToResolveComponent,
+      },
+      {
+        path: 'l2admin-subordinates',
+        canActivate: [MsalGuard],
+        component: L2adminSubordinatesComponent,
+      },
+      {
+        path: 'l2report',
+        canActivate: [MsalGuard],
+        component: L2ReportComponent,
+      },
       {
         path: 'add-employee',
+        canActivate: [MsalGuard],
         component: EmployeeAddComponent,
       },
       {
         path: 'l2admin-ticket-view/:Id',
+        canActivate: [MsalGuard],
         component: L2adminTicketViewComponent,
       },
-      { path: 'details-assigned/:Id', component: DetailsAssignedComponent },
-      { path: 'details-escalated/:Id', component: DetailsEscalatedComponent },
+      {
+        path: 'details-assigned/:Id',
+        canActivate: [MsalGuard],
+        component: DetailsAssignedComponent,
+      },
+      {
+        path: 'details-escalated/:Id',
+        canActivate: [MsalGuard],
+        component: DetailsEscalatedComponent,
+      },
       {
         path: 'details-tickets-to-resolve/:Id',
+        canActivate: [MsalGuard],
         component: DetailsTicketToResolveComponent,
       },
-      { path: 'l2-cancellation', component: L2CancellationComponent },
-      { path: 'details-l2-cancel/:Id', component: DetailsL2CancelComponent },
+      {
+        path: 'l2-cancellation',
+        canActivate: [MsalGuard],
+        component: L2CancellationComponent,
+      },
+      {
+        path: 'details-l2-cancel/:Id',
+        canActivate: [MsalGuard],
+        component: DetailsL2CancelComponent,
+      },
     ],
   },
+  //Routes for the l3 Admin
   {
     path: 'l3admin',
     canActivate: [MsalGuard, IsL3Admin],
@@ -153,33 +207,61 @@ const routes: Routes = [
     component: L3adminComponent,
     children: [
       { path: '', redirectTo: 'view-ticket', pathMatch: 'full' },
-      { path: 'view-ticket', component: AgentTicketsViewComponent },
-      { path: 'resolved-tickets', component: ResolvedTicketsViewComponent },
-      { path: 'on-hold-tickets', component: OnHoldTicketsViewComponent },
-      { path: 'l3report', component: L2ReportComponent },
+      {
+        path: 'view-ticket',
+        canActivate: [MsalGuard],
+        component: AgentTicketsViewComponent,
+      },
+      {
+        path: 'resolved-tickets',
+        canActivate: [MsalGuard],
+        component: ResolvedTicketsViewComponent,
+      },
+      {
+        path: 'on-hold-tickets',
+        canActivate: [MsalGuard],
+        component: OnHoldTicketsViewComponent,
+      },
+      {
+        path: 'l3report',
+        canActivate: [MsalGuard],
+        component: L2ReportComponent,
+      },
       {
         path: 'view-ticket-in-detail/:Id',
+        canActivate: [MsalGuard],
         component: AgentTicketViewComponent,
       },
       {
         path: 'view-ticket-detail-noedit/:Id',
+        canActivate: [MsalGuard],
         component: ResolvedTicketViewComponent,
       },
-      { path: 'cancel-requests', component: CancelRequestViewAllComponent },
+      {
+        path: 'cancel-requests',
+        canActivate: [MsalGuard],
+        component: CancelRequestViewAllComponent,
+      },
       {
         path: 'request-to-cancel-detail/:Id',
+        canActivate: [MsalGuard],
         component: CancelRequestViewComponent,
       },
       {
         path: 'ticket-tracking',
+        canActivate: [MsalGuard],
         component: TicketTrackingComponent,
       },
       {
         path: 'request-to-cancel-detail/:Id',
+        canActivate: [MsalGuard],
         component: CancelRequestViewComponent,
       },
-      { path: 'l2admin-subordinates', component: L2adminSubordinatesComponent },
-      // { path: 'lreport/:id', component: L2ReportComponent },
+      {
+        path: 'l2admin-subordinates',
+        canActivate: [MsalGuard],
+        component: L2adminSubordinatesComponent,
+      },
     ],
   },
 
@@ -187,6 +269,7 @@ const routes: Routes = [
   { path: 'sidebar-field', component: SidebarFieldComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'sidebar-field', component: SidebarFieldComponent },
+  //Routes for the Manager
   {
     path: 'manager',
     component: ManagerComponent,
@@ -195,25 +278,34 @@ const routes: Routes = [
     children: [
       {
         path: 'manager-view-employee-tickets',
+        canActivate: [MsalGuard],
         component: ManagerViewEmployeeTicketsComponent,
       },
       {
         path: 'manager-view-waiting-tickets',
+        canActivate: [MsalGuard],
         component: ManagerViewWaitingTicketsComponent,
       },
       {
         path: 'manager-view-ticket-detail/:Id',
+        canActivate: [MsalGuard],
         component: ManagerViewTicketDetailComponent,
       },
       {
         path: 'manager-view-ticket-simple/:Id',
+        canActivate: [MsalGuard],
         component: ManagerViewTicketSimpleComponent,
       },
       {
         path: 'manager-view-live-employee-tickets',
+        canActivate: [MsalGuard],
         component: ManagerViewLiveEmployeeTicketsComponent,
       },
-      { path: 'manager-subordinates', component: ManagerSubordinatesComponent },
+      {
+        path: 'manager-subordinates',
+        canActivate: [MsalGuard],
+        component: ManagerSubordinatesComponent,
+      },
     ],
   },
   { path: 'unassigned-tickets', component: UnassignedTicketsComponent },
@@ -224,24 +316,36 @@ const routes: Routes = [
     path: 'ticketnotesattachments',
     component: TicketNotesAttachmentsComponent,
   },
+  //Routes for l1 Admin
   {
     path: 'l1admin',
     component: L1adminComponent,
     canActivate: [MsalGuard, IsL1Admin],
     resolve: [LoginEnter],
     children: [
-      { path: 'entries', component: AssignRoleComponent },
-      { path: 'escalated-tickets-l1', component: TicketEscalatedComponent },
+      {
+        path: 'entries',
+        canActivate: [MsalGuard],
+        component: AssignRoleComponent,
+      },
+      {
+        path: 'escalated-tickets-l1',
+        canActivate: [MsalGuard],
+        component: TicketEscalatedComponent,
+      },
       {
         path: 'details-escalated-l1/:Id',
+        canActivate: [MsalGuard],
         component: TicketDetailsEscalatedComponent,
       },
       {
         path: 'view-all-tickets',
+        canActivate: [MsalGuard],
         component: ViewAllTicketsComponent,
       },
       {
         path: 'ticket-detail-view-l1/:Id',
+        canActivate: [MsalGuard],
         component: TicketViewL1Component,
       },
     ],
@@ -255,6 +359,7 @@ const routes: Routes = [
   { path: 'trform', component: TrFormComponent },
   { path: 'employee-card', component: EmployeeCardsComponent },
   { path: 'l2admin-ticket-view/:Id', component: L2adminTicketViewComponent },
+  //Routes for departmenthead
   {
     path: 'departmenthead',
     component: DepartmentheadComponent,
@@ -263,18 +368,22 @@ const routes: Routes = [
     children: [
       {
         path: 'departmentHead-tickets',
+        canActivate: [MsalGuard],
         component: DepartmentHeadDataTableComponent,
       },
       {
         path: 'department-head-tc-detail/:Id',
+        canActivate: [MsalGuard],
         component: DetailedDhTicketComponent,
       },
       {
         path: 'reactive-form',
+        canActivate: [MsalGuard],
         component: ReactiveFormComponent,
       },
       {
         path: 'emplycarddisplay',
+        canActivate: [MsalGuard],
         component: EmplycarddisplayComponent,
       },
     ],

@@ -156,6 +156,7 @@ import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-detai
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
 
+//To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
   window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -301,7 +302,7 @@ const isIE =
       onActivateTick: true,
     }),
     MatCardModule,
-
+    //Initializing the client application using the Application ID and Tenanat ID
     MsalModule.forRoot(
       new PublicClientApplication({
         auth: {
@@ -338,6 +339,7 @@ const isIE =
     MasterService,
     NotificationService,
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
+    //Default intercepter provided my MSAL package
     SharedService,
     {
       provide: HTTP_INTERCEPTORS,
