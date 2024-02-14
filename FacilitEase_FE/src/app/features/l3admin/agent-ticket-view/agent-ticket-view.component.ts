@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
-import { TicketDetails } from '@app/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
@@ -28,7 +28,7 @@ export class AgentTicketViewComponent {
     private router: Router,
     private modalService: BsModalService,
     private dialog: MatDialog,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {}
 
   // Method to handle edit mode change
@@ -38,7 +38,7 @@ export class AgentTicketViewComponent {
     console.log('Grand parent', this.editMode);
   }
 
-   // Lifecycle hook - called after the component's view has been initialized
+  // Lifecycle hook - called after the component's view has been initialized
   ngOnInit(): void {
     // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
@@ -93,8 +93,8 @@ export class AgentTicketViewComponent {
         width: '400px',
         data: confirmationMessage,
       });
-    
-      dialogRef.afterClosed().subscribe(result => {
+
+      dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           this.agentService.resolveTicket(this.ticketId).subscribe(
             (response) => {
@@ -109,9 +109,7 @@ export class AgentTicketViewComponent {
         } else {
           this.toastr.error('Failed to close the ticket!', 'Error');
         }
-        });
+      });
     }
   }
-
-    
 }

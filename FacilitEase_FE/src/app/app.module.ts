@@ -83,7 +83,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { L1adminComponent } from './features/L1admin/l1admin/l1admin.component';
 import { L1DataEntryComponent } from './features/L1admin/l1-data-entry/l1-data-entry.component';
 import { DynamicSearchComponent } from './components/ui_elements/dynamic-search/dynamic-search.component';
-import { HighlightPipe } from './features/service/highlightPipe/highlight.pipe';
+import { HighlightPipe } from './features/service/pipes/highlightPipe/highlight.pipe';
 import { AssignRoleComponent } from './features/L1admin/assign-role/assign-role.component';
 import { DisplayEmployeeDetailsComponent } from './components/layout/display-employee-details/display-employee-details.component';
 import { EmployeeCardsComponent } from './components/layout/employee-cards/employee-cards.component';
@@ -95,7 +95,7 @@ import { DepartmentheadComponent } from './features/departmenthead/departmenthea
 import { DepartmentHeadDataTableComponent } from './features/departmenthead/department-head-data-table/department-head-data-table.component';
 import { DetailedDhTicketComponent } from './features/departmenthead/detailed-dh-ticket/detailed-dh-ticket.component';
 import { RoleDisplayDropdownComponent } from './components/ui_elements/role-display-dropdown/role-display-dropdown.component';
-import { TruncatePipe } from './features/service/truncatePipe/truncate.pipe';
+import { TruncatePipe } from './features/service/pipes/truncatePipe/truncate.pipe';
 import { ManagerTicketInfoComponent } from './features/manager/components/manager-ticket-info/manager-ticket-info.component';
 import { MasterService } from './features/service/dataService/masterService/master.service';
 import { ConfirmationModalComponent } from './features/manager/components/confirmation-modal/confirmation-modal.component';
@@ -117,7 +117,7 @@ import { UploadComponent } from './features/employee/upload/upload.component';
 import { LoginScreenComponent } from './features/Authentication/login-screen/login-screen.component';
 import { CancelRequestViewComponent } from './features/l3admin/cancel-request-view/cancel-request-view.component';
 import { CancelRequestViewAllComponent } from './features/l3admin/cancel-request-view-all/cancel-request-view-all.component';
-import { HeadersInterceptor } from './headers.interceptor';
+import { HeadersInterceptor } from './features/service/intercepter/headers.interceptor';
 import {
   MsalGuard,
   MsalInterceptor,

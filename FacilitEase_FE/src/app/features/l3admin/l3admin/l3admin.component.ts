@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
-import { UserRoleService } from '@app/features/service/dataService/user-role.service';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 // Interface to define the structure of each field
 interface Field {
@@ -16,7 +16,8 @@ interface Field {
 })
 export class L3adminComponent {
   userRole: string = 'L3 Admin'; // User role, defaulting to 'L3 Admin'
-  yourFieldsArray: Field[] = [ // Array containing fields for the sidebar
+  yourFieldsArray: Field[] = [
+    // Array containing fields for the sidebar
     {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
@@ -41,14 +42,14 @@ export class L3adminComponent {
     private userRoleService: UserRoleService
   ) {}
   ngOnInit() {
-   // Set the user role and subscribe to sidebar collapse state changes
+    // Set the user role and subscribe to sidebar collapse state changes
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
       this.isSidebarCollapsed = isCollapsed;
     });
   }
 
-   // Method to handle clicks on fields
+  // Method to handle clicks on fields
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Tickets') {
@@ -65,7 +66,7 @@ export class L3adminComponent {
   // Method to handle clicks on subfields
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
-       // Route to different ticket-related pages based on the clicked subfield
+      // Route to different ticket-related pages based on the clicked subfield
       if (event.subfield === 'Raised Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/view-ticket']);

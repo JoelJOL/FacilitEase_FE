@@ -159,7 +159,7 @@ import {
   Category,
   Priority,
   TicketResponse,
-} from '@app/features/Interface/interface';
+} from '@app/features/l3admin/l2Models/model';
 import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get-api.service';
 
 @Component({

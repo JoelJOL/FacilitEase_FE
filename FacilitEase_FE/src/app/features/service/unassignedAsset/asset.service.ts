@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AssetDetails, AssetHistory } from '@app/features/Interface/interface';
+import {
+  AssetDetails,
+  AssetHistory,
+} from '@app/features/l3admin/l2Models/model';
 import { HttpClient } from '@angular/common/http'; // Correct import statement
 import { Observable } from 'rxjs';
 

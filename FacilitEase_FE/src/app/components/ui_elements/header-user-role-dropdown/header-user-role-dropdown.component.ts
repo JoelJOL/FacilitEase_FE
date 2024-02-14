@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
-import { UserRoleService } from '@app/features/service/dataService/user-role.service';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 @Component({
   selector: 'app-header-user-role-dropdown',
