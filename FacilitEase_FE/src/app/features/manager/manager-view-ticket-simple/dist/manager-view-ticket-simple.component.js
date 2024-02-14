@@ -17,6 +17,7 @@ var ManagerViewTicketSimpleComponent = /** @class */ (function () {
         this.router = router;
         this.customHeaderText = "Support Attachments";
         this.ticketId = 0;
+        this.editMode = false;
     }
     ManagerViewTicketSimpleComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -95,6 +96,11 @@ var ManagerViewTicketSimpleComponent = /** @class */ (function () {
         }, function (error) {
             console.error('Error forwarding for approval:', error);
         });
+    };
+    ManagerViewTicketSimpleComponent.prototype.onEditModeChange = function (editMode) {
+        // Update the editMode value
+        this.editMode = editMode;
+        console.log('Grand parent', this.editMode);
     };
     ManagerViewTicketSimpleComponent = __decorate([
         core_1.Component({
