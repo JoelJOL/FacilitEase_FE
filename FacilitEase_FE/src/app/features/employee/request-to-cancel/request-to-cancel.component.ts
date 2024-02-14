@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get-api.service';
@@ -19,6 +19,8 @@ export class RequestToCancelComponent {
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
   isCancelRequested: boolean = false;
+  titleSubHeading: any = [];
+
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -28,17 +30,23 @@ export class RequestToCancelComponent {
     private http: HttpClient,
     private ticketCancelService: GetAPIService
   ) {}
-
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.ticketId = Number(params['id']);
       console.log('This is the id', this.ticketId);
     });
-    -this.agentService
+    this.agentService
       .getData(this.ticketId)
       .subscribe((ticketDetails: TicketDetails) => {
         console.log('API Response:', ticketDetails);
         this.ticketDetails = ticketDetails;
+        this.titleSubHeading = [
+          { heading: 'Raised By', text: this.ticketDetails.employeeName },
+          { heading: 'Assigned To', text: this.ticketDetails.assignedTo },
+          { heading: 'Department', text: this.ticketDetails.deptName },
+          { heading: 'Manager', text: this.ticketDetails.managerName },
+          { heading: 'Location', text: this.ticketDetails.locationName },
+        ];
         console.log('Ticket Details:', this.ticketDetails);
       });
   }

@@ -78,8 +78,8 @@ var DataTableNewComponent = /** @class */ (function () {
             return {
                 open_status: cellValue === 'Open',
                 inprogress_status: cellValue === 'In Progress',
-                onhold_status: cellValue === 'On Hold',
-                resolved_status: cellValue === 'Resolved',
+                onhold_status: cellValue === 'Pending Approval',
+                resolved_status: cellValue === 'Closed',
                 cancelled_status: cellValue === 'Cancelled',
                 escalated_status: cellValue === 'Escalated',
                 cancelrequested_status: cellValue === 'Cancel Requested'

@@ -20,7 +20,7 @@ export class DepartmentheadComponent {
   yourFieldsArray: Field[] = [
     {
       logo: 'assets/tickets-icon.png',
-      title: 'Waiting For Approval',
+      title: 'Tickets Waiting For Approval',
     },
   ];
   showDepartmentHeadTickets: boolean = false;

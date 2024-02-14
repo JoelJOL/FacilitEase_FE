@@ -14,6 +14,7 @@ export class ManagerViewTicketSimpleComponent {
   customHeaderText: string = 'Support Attachments';
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
+  editMode: boolean = false;
 
   constructor(
     private masterService: MasterService,
@@ -113,5 +114,10 @@ export class ManagerViewTicketSimpleComponent {
         console.error('Error forwarding for approval:', error);
       }
     );
+  }
+  onEditModeChange(editMode: boolean) {
+    // Update the editMode value
+    this.editMode = editMode;
+    console.log('Grand parent', this.editMode);
   }
 }
