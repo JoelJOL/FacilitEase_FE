@@ -26,8 +26,6 @@ export class RequestToCancelComponent {
     private route: ActivatedRoute,
     private agentService: AgentService,
     private router: Router,
-    private dropDownService: DropDownService,
-    private http: HttpClient,
     private ticketCancelService: GetAPIService
   ) {}
   ngOnInit(): void {
