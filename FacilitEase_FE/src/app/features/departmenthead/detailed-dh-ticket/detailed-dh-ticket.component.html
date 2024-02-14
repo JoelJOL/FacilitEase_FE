@@ -10,9 +10,9 @@
       [ticketDetails]="ticketDetails"
     ></app-ticket-attachments>
     <app-ticket-notes-attachments
-    [ticketId]="ticketId"
-    (editModeChanged)="onEditModeChange($event)"
-  ></app-ticket-notes-attachments>
+      [ticketId]="ticketId"
+      (editModeChanged)="onEditModeChange($event)"
+    ></app-ticket-notes-attachments>
   </div>
   <div class="person_cards_row">
     <!-- Raised By -->
@@ -34,10 +34,10 @@
   </div>
   <div class="button-row">
     <app-button color="accepted" (action)="updateTicket(true)" id="accepted"
-      >Accepted</app-button
+      >Approve</app-button
     >
     <app-button color="rejected" (action)="updateTicket(false)"
-      >Rejected</app-button
+      >Reject</app-button
     >
   </div>
 </div>
