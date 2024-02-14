@@ -43,7 +43,7 @@ export class L2AdminComponent {
   isSidebarCollapsed: boolean = false;
 
   constructor(
-    private router: Router,
+    public router: Router,
     private sidebarService: SidebarService,
     private userRoleService: UserRoleService,
     private sharedService: SharedService,
@@ -77,9 +77,6 @@ export class L2AdminComponent {
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
       this.router.navigate(['l2admin/l2report']);
-    } else if (clickedField.title === 'Data Entry') {
-      this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin/add-employee']);
     } else {
       this.showL2AdminTickets = false;
     }
