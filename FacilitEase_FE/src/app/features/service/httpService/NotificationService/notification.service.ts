@@ -5,12 +5,24 @@ import { SharedService } from '../SharedService/shared.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Notification } from '@app/features/service/notification/notification.model';
+
+/**
+ * Service for handling real-time notifications using SignalR.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
   private hubConnection!: signalR.HubConnection;
   private apiUrl = 'https://localhost:7049/api';
+
+  /**
+   * Initializes a new instance of the NotificationService class.
+   * @param toastr - The ToastrService for displaying toast notifications.
+   * @param sharedService - The SharedService for communication between components.
+   * @param http - The HttpClient for making HTTP requests.
+   */
+
   constructor(
     private toastr: ToastrService,
     private sharedService: SharedService,
