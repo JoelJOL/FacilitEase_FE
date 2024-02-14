@@ -1,0 +1,7 @@
+.common-btn {
+  padding: 10px;
+}
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+}
