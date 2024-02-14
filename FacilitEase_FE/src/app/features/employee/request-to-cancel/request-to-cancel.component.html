@@ -5,10 +5,11 @@
     <app-ticket-detail-view-noedit
       [ticketDetails]="ticketDetails"
       [ticketId]="ticketId"
+      [headings]="titleSubHeading"
     ></app-ticket-detail-view-noedit>
-    <app-title-sub [headings]="titleSubHeading"></app-title-sub>
   </div>
 
+  <!-- Condition to show the button -->
   <app-button
     color="submit"
     (click)="openConfirmationModal()"

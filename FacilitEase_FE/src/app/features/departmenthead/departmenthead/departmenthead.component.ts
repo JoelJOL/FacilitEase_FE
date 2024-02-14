@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
+import { ToastrService } from 'ngx-toastr';
 interface Field {
   logo: string;
   title: string;
@@ -31,7 +33,9 @@ export class DepartmentheadComponent {
     private sidebarService: SidebarService,
     private userRoleService: UserRoleService,
     private sharedService: SharedService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private azureService: AzureService,
+    private toastr: ToastrService
   ) {}
   ngOnInit() {
     this.userRoleService.setUserRole(this.userRole);
@@ -42,9 +46,11 @@ export class DepartmentheadComponent {
     });
     this.notificationService.startConnection();
 
-    this.sharedService.notification$.subscribe((message) => {
-      console.log('Notification received: ' + message);
-      // Handle the notification...
+    this.sharedService.notification$.subscribe((data) => {
+      if (data.userId == this.azureService.userId) {
+        console.log('Notification received: ' + data.text);
+        this.toastr.info(data.text);
+      }
     });
   }
   onFieldClicked(clickedField: any) {

@@ -49,6 +49,7 @@ export class SidebarFieldComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
+    // Subscribe to router events to check for initialization
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -58,16 +59,16 @@ export class SidebarFieldComponent {
         this.checkInitialization();
       });
   }
-
+  // OnDestroy lifecycle hook to clean up subscriptions
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
+  // OnInit lifecycle hook to check initialization on component creation
   ngOnInit(): void {
     this.checkInitialization();
   }
-
+  // Method to check if the field needs to be initialized
   private checkInitialization() {
     if (!this.active && this.field === this.selectedField && !this.subfield) {
       this.active = true;
@@ -76,6 +77,7 @@ export class SidebarFieldComponent {
       this.subfieldComponent.deactivateSubfield();
     }
   }
+  // Static property to keep track of the active field across all instances
   private static activeField: SidebarFieldComponent | null = null;
   active = false;
   isSidebarCollapsed = false;

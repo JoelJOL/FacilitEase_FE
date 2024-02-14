@@ -8,24 +8,35 @@ import { TicketAttachment } from '@app/features/l3admin/l2Models/model';
   styleUrls: ['./ticket-documents.component.css'],
 })
 export class TicketDocumentsComponent implements OnInit {
+  // API base URL
   private apiUrl = 'https://localhost:7049';
+
+  // File-related properties
   fileUrl!: string;
   isImage = false;
+
+  // Input properties from parent component
   @Input() headerText = '';
   @Input() ticketId: number = 0;
 
+  // Constructor with injected HttpClient
   constructor(private http: HttpClient) {}
 
+  // Lifecycle hook: Executes when the component is initialized
   ngOnInit(): void {
-    const firstApiEndpoint = `https://localhost:7049/api/Employee/get-documents-by-ticket/${this.ticketId}`;
+    // First API endpoint to fetch document information by ticket ID
+    const firstApiEndpoint = `${this.apiUrl}/api/Employee/get-documents-by-ticket/${this.ticketId}`;
 
-    // Fetch the entire response from the first API endpoint
+    // Fetch the document data from the first API endpoint
     this.getFileData(firstApiEndpoint).subscribe(
       (response: TicketAttachment[]) => {
         if (response && response.length > 0 && response[0].documentLink) {
           const documentLink = response[0].documentLink;
+
+          // Construct the full file URL
           this.fileUrl = `${this.apiUrl}/${documentLink}`;
           console.log(this.fileUrl);
+
           // Check if the file is an image based on the file extension
           this.isImage = this.isImageFile(documentLink);
         } else {
@@ -40,12 +51,14 @@ export class TicketDocumentsComponent implements OnInit {
     );
   }
 
+  // Function to fetch data from the specified API endpoint
   getFileData(apiEndpoint: string) {
     return this.http.get<TicketAttachment[]>(apiEndpoint);
   }
 
+  // Function to determine if the file is an image based on its extension
   isImageFile(filename: string): boolean {
-    // You can add more file extensions if needed
+    // Add more image file extensions if needed
     const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', 'svg'];
     const extension = filename.slice(
       ((filename.lastIndexOf('.') - 1) >>> 0) + 2
@@ -54,6 +67,7 @@ export class TicketDocumentsComponent implements OnInit {
     return imageExtensions.includes(extension.toLowerCase());
   }
 
+  // Function to open the file (image or non-image)
   openFile(): void {
     if (!this.isImage) {
       console.log('Opening non-image file...');
@@ -61,7 +75,7 @@ export class TicketDocumentsComponent implements OnInit {
       window.open(this.fileUrl, '_blank');
     } else {
       console.log('Opening image...');
-      // You can implement your logic for opening the image (e.g., display in a lightbox)
+      window.open(this.fileUrl, '_blank');
     }
   }
 }
