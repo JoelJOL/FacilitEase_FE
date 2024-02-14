@@ -4,6 +4,7 @@ import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details-l2-cancel',
@@ -21,7 +22,8 @@ export class DetailsL2CancelComponent {
     private route: ActivatedRoute,
     private agentService: AgentService,
     private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +65,7 @@ export class DetailsL2CancelComponent {
       this.agentService.AcceptCancelTicket(this.ticketId).subscribe(
         (response) => {
           console.log('API call success:', response);
-          alert('Ticket cancelled successfully!');
+          this.toastr.success('Ticket Cancelled Successfully!', 'Success');
           this.router.navigate(['l2admin/l2-cancellation']);
         },
         (error) => {
@@ -84,7 +86,7 @@ export class DetailsL2CancelComponent {
       this.agentService.DenyCancelTicket(this.ticketId).subscribe(
         (response) => {
           console.log('API call success:', response);
-          alert('Cancellation denied successfully!');
+          this.toastr.success('Ticket Cancellation Denied!', 'Success');
           this.router.navigate(['l2admin/l2-cancellation']);
         },
         (error) => {

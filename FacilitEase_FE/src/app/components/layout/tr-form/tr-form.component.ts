@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tr-form',
@@ -13,7 +14,11 @@ export class TrFormComponent implements OnInit {
   categories: any[] = [];
   priorities: any[] = [];
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -86,10 +91,14 @@ export class TrFormComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log('Ticket submitted successfully', response);
+            this.toastr.success('Ticket Submitted Successfully!', 'Success');
+
             // Handle success, e.g., display a success message to the user
           },
           (error) => {
             console.error('Error submitting ticket', error);
+            this.toastr.error('Error submitting ticket!', 'Error');
+
             // Handle error, e.g., display an error message to the user
           }
         );
