@@ -17,8 +17,8 @@
               open_status: item.content === 'Open',
               'in-progress_status': item.content === 'In Progress',
               escalated_status: item.content === 'Escalated',
-              resolved_status: item.content === 'Resolved',
-              'on-hold_status': item.content === 'On Hold',
+              resolved_status: item.content === 'Closed',
+              'on-hold_status': item.content === 'Pending Approval',
               cancel_request_status: item.content === 'Cancel Requested',
               cancel_status: item.content === 'Cancelled'
             }"
@@ -35,16 +35,15 @@
           Assigned To: {{ item.assigned }}
         </p>
         <p
-          *ngIf="
-            item.content === 'Resolved' && item.assigned !== 'Not Assigned'
-          "
+          *ngIf="item.content === 'Closed' && item.assigned !== 'Not Assigned'"
         >
           Resolved By : {{ item.assigned }}
         </p>
         <!-- Show Approver By section for On Hold status -->
         <p
           *ngIf="
-            item.content === 'On Hold' && item.controller !== 'Not Assigned'
+            item.content === 'Pending Approval' &&
+            item.controller !== 'Not Assigned'
           "
         >
           Forwarded To: {{ item.controller }}
