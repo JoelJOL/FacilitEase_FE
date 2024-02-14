@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EscalatedticketsComponent } from './escalated-tickets.component';
+
 import { Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -13,6 +14,7 @@ describe('EscalatedTicketsComponent', () => {
   let masterServiceSpy: jasmine.SpyObj<MasterService>;
   let sidebarServiceSpy: jasmine.SpyObj<SidebarService>;
 
+
   beforeEach(() => {
     masterServiceSpy = jasmine.createSpyObj('MasterService', [
       'getApiLinkEscalated',
@@ -20,6 +22,7 @@ describe('EscalatedTicketsComponent', () => {
     sidebarServiceSpy = jasmine.createSpyObj('SidebarService', ['']);
 
     TestBed.configureTestingModule({
+
       declarations: [EscalatedticketsComponent],
       providers: [
         { provide: MasterService, useValue: masterServiceSpy },
@@ -28,6 +31,7 @@ describe('EscalatedTicketsComponent', () => {
       imports: [RouterTestingModule], // Import RouterTestingModule for testing navigation
       schemas: [NO_ERRORS_SCHEMA], // Add NO_ERRORS_SCHEMA
     });
+
 
     fixture = TestBed.createComponent(EscalatedticketsComponent);
     component = fixture.componentInstance;
