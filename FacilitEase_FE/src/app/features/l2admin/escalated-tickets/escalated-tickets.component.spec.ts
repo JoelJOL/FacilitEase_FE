@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EscalatedTicketsComponent } from './escalated-tickets.component';
+import { EscalatedticketsComponent } from './escalated-tickets.component';
 
-describe('EscalatedTicketsComponent', () => {
-  let component: EscalatedTicketsComponent;
-  let fixture: ComponentFixture<EscalatedTicketsComponent>;
+describe('EscalatedticketsComponent', () => {
+  let component: EscalatedticketsComponent;
+  let fixture: ComponentFixture<EscalatedticketsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EscalatedTicketsComponent]
+      declarations: [EscalatedticketsComponent],
     });
-    fixture = TestBed.createComponent(EscalatedTicketsComponent);
+    fixture = TestBed.createComponent(EscalatedticketsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
