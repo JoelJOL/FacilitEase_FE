@@ -22,12 +22,14 @@ interface Field {
   styleUrls: ['./sidebar-field.component.css'],
 })
 export class SidebarFieldComponent {
+  //input the fields, subfields and the click handler and output the field and subfield clicked
   @Input() field!: Field;
   @Input() onClickHandler: (() => void | undefined) | undefined; // Dynamic onClick handler
   @Input() subfield!: string;
   @Input() collapsed: boolean = false; // Assuming 'collapsed' is an input property
   @Output() clicked = new EventEmitter<any>();
   @Output() subfieldClicked = new EventEmitter<any>();
+  //to automaticlly get the first field element in the array
   @Input() set initialField(field: Field | null) {
     if (field) {
       this.active = this.field === field;
