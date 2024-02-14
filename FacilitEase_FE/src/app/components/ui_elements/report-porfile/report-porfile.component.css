@@ -13,8 +13,4 @@
   font-size: 15px;
   font-weight: 600;
 }
-img {
-  background-color: var(--light_grey);
-  border-radius: 50%;
-  height: 5rem;
-}
+
