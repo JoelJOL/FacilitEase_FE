@@ -22,10 +22,10 @@ var DetailedDhTicketComponent = /** @class */ (function () {
     DetailedDhTicketComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            var ticketId = Number(params['Id']);
-            console.log(ticketId);
+            _this.ticketId = Number(params['Id']);
+            console.log(_this.ticketId);
             _this.departmentHeadService
-                .getdepartmentHeadTicketDetails(ticketId)
+                .getdepartmentHeadTicketDetails(_this.ticketId)
                 .subscribe(function (data) {
                 _this.ticketDetails = data;
                 console.log(_this.ticketDetails);

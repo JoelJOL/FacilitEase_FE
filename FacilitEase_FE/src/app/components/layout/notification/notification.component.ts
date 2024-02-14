@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
-import { Notification } from '@app/notification.model';
+import { Notification } from '@app/features/service/notification/notification.model';
 
 @Component({
   selector: 'app-notification',
@@ -12,6 +12,8 @@ export class NotificationComponent implements OnInit {
   notifications: Notification[] = [];
   showNotifications = false;
   selectedNotificationId: number | null | undefined;
+  unreadNotificationsCount = 0;
+  lastKnownCount = 0;
 
   constructor(
     private notificationService: NotificationService,
@@ -37,14 +39,21 @@ export class NotificationComponent implements OnInit {
             new Date(b.notificationTimestamp).getTime() -
             new Date(a.notificationTimestamp).getTime()
         );
+        if (this.notifications.length > this.lastKnownCount) {
+          this.unreadNotificationsCount =
+            this.notifications.length - this.lastKnownCount;
+        }
       });
   }
 
   toggleNotifications(): void {
     // Toggle the showNotifications property to display/hide notifications
     this.showNotifications = !this.showNotifications;
+    if (this.showNotifications) {
+      this.lastKnownCount = this.notifications.length; // Update the last known count when you open the notifications
+      this.unreadNotificationsCount = 0;
+    }
   }
-
   showTicketDetails(ticketId: number): void {
     // Toggle the selectedNotificationId to show/hide ticket details
     this.selectedNotificationId =

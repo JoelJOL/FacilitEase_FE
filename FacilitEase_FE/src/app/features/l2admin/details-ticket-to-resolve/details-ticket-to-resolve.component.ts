@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details-ticket-to-resolve',
@@ -20,7 +21,8 @@ export class DetailsTicketToResolveComponent {
     private route: ActivatedRoute,
     private agentService: AgentService,
     private modalService: BsModalService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +57,7 @@ export class DetailsTicketToResolveComponent {
     this.agentService.resolveTicket(this.ticketId).subscribe(
       (response) => {
         console.log('API call success:', response);
-        alert('Ticket resolved successfully!');
+        this.toastr.success('Ticket Resolved Successfully!', 'Success');
         this.router.navigate(['l2admin/tickets-to-resolve']);
       },
       (error) => {

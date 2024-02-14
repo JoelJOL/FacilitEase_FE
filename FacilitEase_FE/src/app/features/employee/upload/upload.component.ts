@@ -15,8 +15,9 @@ import {
   Category,
   Priority,
   TicketResponse,
-} from '@app/features/Interface/interface';
+} from '@app/features/l3admin/l2Models/model';
 import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get-api.service';
+import { ToastrService } from 'ngx-toastr';
 
 // Validator function to check maximum word limit in textarea
 function maxWordsValidator(maxWords: number): ValidatorFn {
@@ -52,7 +53,8 @@ export class UploadComponent implements OnInit {
     private fb: FormBuilder,
     private employeeUploadService: GetAPIService,
     private http: HttpClient,
-    private azureService: AzureService
+    private azureService: AzureService,
+    private toastr: ToastrService
   ) {
     // Form group initialization with validations
     this.uploadForm = new FormGroup({
@@ -163,12 +165,12 @@ export class UploadComponent implements OnInit {
             console.log(`Upload Progress: ${progress}%`);
           } else if (event.type === HttpEventType.Response) {
             console.log('Upload successful', event.body);
-            this.successMessage = 'Ticket created successfully';
-            // Clear form and success message after 3 seconds
+
+            this.toastr.success('Ticket created successfully!', 'Success');
             setTimeout(() => {
               this.uploadForm.reset();
-              this.successMessage = '';
-            }, 3000);
+            }, 2000);
+
           }
         },
         (error) => {

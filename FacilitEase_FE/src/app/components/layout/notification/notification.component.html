@@ -3,8 +3,8 @@
     src="./assets/notification-svgrepo-com (1).svg"
     alt="Notification Icon"
   />
-  <span *ngIf="notifications.length > 0" class="notification-count">{{
-    notifications.length
+  <span *ngIf="unreadNotificationsCount > 0" class="notification-count">{{
+    unreadNotificationsCount
   }}</span>
 </a>
 <div *ngIf="showNotifications" class="notification-popup">

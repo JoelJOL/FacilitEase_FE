@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get-api.service';
@@ -8,6 +8,10 @@ import { DropDownService } from '@app/features/service/httpService/dropDownServi
 import { MatDialog } from '@angular/material/dialog';
 import { TicketResponse } from '@app/features/Interface/interface';
 import { TicketDetails } from '@app/ticket-details';
+import { TicketResponse } from '@app/features/l3admin/l2Models/model';
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-request-to-cancel',
   templateUrl: './request-to-cancel.component.html',
@@ -21,14 +25,19 @@ export class RequestToCancelComponent {
   ticketDetails!: TicketDetails;
 
   // Constructor with injected services
+  isCancelRequested: boolean = false;
+  titleSubHeading: any = [];
+
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private agentService: AgentService,
     private router: Router,
-    private ticketCancelService: GetAPIService
+    private dropDownService: DropDownService,
+    private http: HttpClient,
+    private ticketCancelService: GetAPIService,
+    private toastr: ToastrService
   ) {}
-
   ngOnInit(): void {
     // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
@@ -37,11 +46,19 @@ export class RequestToCancelComponent {
     });
 
     // Fetch ticket details using agentService
+
     this.agentService
       .getData(this.ticketId)
       .subscribe((ticketDetails: TicketDetails) => {
         console.log('API Response:', ticketDetails);
         this.ticketDetails = ticketDetails;
+        this.titleSubHeading = [
+          { heading: 'Raised By', text: this.ticketDetails.employeeName },
+          { heading: 'Assigned To', text: this.ticketDetails.assignedTo },
+          { heading: 'Department', text: this.ticketDetails.deptName },
+          { heading: 'Manager', text: this.ticketDetails.managerName },
+          { heading: 'Location', text: this.ticketDetails.locationName },
+        ];
         console.log('Ticket Details:', this.ticketDetails);
       });
   }
@@ -55,6 +72,10 @@ export class RequestToCancelComponent {
     this.ticketCancelService.cancelRequest(ticketId).subscribe(
       (response) => {
         console.log('Cancellation successful:', response);
+
+        this.toastr.success('Cancellation Request Successful!', 'Success');
+        this.isCancelRequested = true;
+
         this.router.navigate(['employee/my-tickets']);
       },
       (error) => {

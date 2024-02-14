@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import { UserRoleService } from '@app/features/service/dataService/user-role.service';
+import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
+import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
+import { ToastrService } from 'ngx-toastr';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 // Interface to define the structure of each field
 interface Field {
@@ -16,15 +21,16 @@ interface Field {
 })
 export class L3adminComponent {
   userRole: string = 'L3 Admin'; // User role, defaulting to 'L3 Admin'
-  yourFieldsArray: Field[] = [ // Array containing fields for the sidebar
+  yourFieldsArray: Field[] = [
+    // Array containing fields for the sidebar
     {
       logo: 'assets/tickets-icon.png',
       title: 'Tickets',
       subfields: [
-        'Raised Tickets',
-        'Tickets On Hold',
+        'Assigned Tickets',
+        'Forwarded for Approval',
         'Cancellation Requests',
-        'Resolved Tickets',
+        'Closed Tickets',
       ],
     },
     {
@@ -38,17 +44,31 @@ export class L3adminComponent {
   constructor(
     private router: Router,
     private sidebarService: SidebarService,
-    private userRoleService: UserRoleService
+    private userRoleService: UserRoleService,
+    private sharedService: SharedService,
+    private notificationService: NotificationService,
+    private azureService: AzureService,
+    private toastr: ToastrService
   ) {}
   ngOnInit() {
-   // Set the user role and subscribe to sidebar collapse state changes
+    // Set the user role and subscribe to sidebar collapse state changes
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
       this.isSidebarCollapsed = isCollapsed;
     });
+
+    //Notification
+    this.notificationService.startConnection();
+
+    this.sharedService.notification$.subscribe((data) => {
+      if (data.userId == this.azureService.userId) {
+        console.log('Notification received: ' + data.text);
+        this.toastr.info(data.text);
+      }
+    });
   }
 
-   // Method to handle clicks on fields
+  // Method to handle clicks on fields
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Tickets') {
@@ -66,13 +86,13 @@ export class L3adminComponent {
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
        // Route to different ticket-related pages based on the clicked subfield
-      if (event.subfield === 'Raised Tickets') {
+      if (event.subfield === 'Assigned Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/view-ticket']);
-      } else if (event.subfield === 'Resolved Tickets') {
+      } else if (event.subfield === 'Closed Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/resolved-tickets']);
-      } else if (event.subfield === 'Tickets On Hold') {
+      } else if (event.subfield === 'Forwarded for Approval') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/on-hold-tickets']);
       } else if (event.subfield === 'Cancellation Requests') {

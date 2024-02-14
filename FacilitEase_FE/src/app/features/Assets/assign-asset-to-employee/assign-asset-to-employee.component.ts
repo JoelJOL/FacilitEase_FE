@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AssetService } from '@app/features/service/unassignedAsset/asset.service';
-import { AssetDetails, AssetHistory } from '@app/features/Interface/interface';
+import {
+  AssetDetails,
+  AssetHistory,
+} from '@app/features/l3admin/l2Models/model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

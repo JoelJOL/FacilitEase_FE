@@ -1,0 +1,23 @@
+<table class="styled_table m-3">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Resolved</th>
+      <th>Unresolved</th>
+      <th>Escalated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Iterate over each category -->
+    <ng-container *ngFor="let categoryDataArray of categoryDataArrays">
+      <!-- Assuming the first element of categoryDataArray is the category name -->
+      <tr>
+        <td>{{ categoryDataArray[0] }}</td>
+        <!-- Iterate over the rest of the elements in categoryDataArray (starting from index 1) -->
+        <ng-container *ngFor="let count of categoryDataArray.slice(1)">
+          <td>{{ count }}</td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

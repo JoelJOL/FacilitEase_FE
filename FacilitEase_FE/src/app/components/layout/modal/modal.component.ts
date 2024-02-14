@@ -1,10 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modalService/modal.service';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
@@ -31,8 +26,7 @@ export class ModalComponent {
     private agentService: AgentService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private router: Router,
-    private modalService: ModalService
+    private router: Router
   ) {
     this.deptForm = this.formBuilder.group({
       category: ['', Validators.required],
@@ -44,7 +38,7 @@ export class ModalComponent {
     if (this.ticketDetails) {
       const id = this.ticketDetails.id;
       const managerId = this.ticketDetails.managerId;
-      const employeeId = this.ticketDetails.employeeId
+      const employeeId = this.ticketDetails.employeeId;
 
       console.log('Ticket ID:', id);
       console.log('Manager ID:', managerId);
@@ -54,14 +48,6 @@ export class ModalComponent {
     this.agentService.getDepartments().subscribe((data) => {
       this.departments = data;
       console.log(data);
-    });
-
-    this.modalBody.nativeElement.addEventListener('show.bs.modal', () => {
-      this.showDropdown = true;
-    });
-
-    this.modalBody.nativeElement.addEventListener('hide.bs.modal', () => {
-      this.showDropdown = false;
     });
 
     const departmentControl = this.deptForm.get('department');
@@ -95,7 +81,6 @@ export class ModalComponent {
   }
 
   forwardToManager(id: number, managerId: number) {
-    
     this.showDropdown = false;
 
     const isConfirmed = window.confirm(
@@ -138,7 +123,7 @@ export class ModalComponent {
     }
   }
 
-  forwardToDeptHead(id:number,employeeId:number){
+  forwardToDeptHead(id: number, employeeId: number) {
     this.showDropdown = false;
 
     const isConfirmed = window.confirm(
@@ -155,7 +140,7 @@ export class ModalComponent {
           let targetRoute: string;
 
           if (currentRoute.includes('l2/details-escalated')) {
-            targetRoute = 'l2/escalated-tickets';
+            targetRoute = 'l2admin/escalated-tickets';
           } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
             targetRoute = 'l3admin/view-ticket';
           } else if (

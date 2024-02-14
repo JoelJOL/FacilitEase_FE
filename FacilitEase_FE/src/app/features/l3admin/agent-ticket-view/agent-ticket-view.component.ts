@@ -4,8 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
-import { TicketDetails } from '@app/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -26,7 +27,8 @@ export class AgentTicketViewComponent {
     private agentService: AgentService,
     private router: Router,
     private modalService: BsModalService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
 
   // Method to handle edit mode change
@@ -36,7 +38,7 @@ export class AgentTicketViewComponent {
     console.log('Grand parent', this.editMode);
   }
 
-   // Lifecycle hook - called after the component's view has been initialized
+  // Lifecycle hook - called after the component's view has been initialized
   ngOnInit(): void {
     // Extract ticket ID from route parameters
     this.route.params.subscribe((params) => {
@@ -82,7 +84,7 @@ export class AgentTicketViewComponent {
   }
 
   resolveTicket(): void {
-    let confirmationMessage = 'Are you sure you want to resolve this ticket?';
+    let confirmationMessage = 'Are you sure you want to close this ticket?';
     if (this.editMode) {
       alert('Your changes have not been saved!');
     } else {
@@ -91,13 +93,13 @@ export class AgentTicketViewComponent {
         width: '400px',
         data: confirmationMessage,
       });
-    
-      dialogRef.afterClosed().subscribe(result => {
+
+      dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           this.agentService.resolveTicket(this.ticketId).subscribe(
             (response) => {
               console.log('API call success:', response);
-              alert('Ticket resolved successfully!'); // Show success alert
+              this.toastr.success('Ticket closed Successfully!', 'Success');
               this.router.navigate(['l3admin/view-ticket']); // Navigate to view-ticket page
             },
             (error) => {
@@ -105,11 +107,9 @@ export class AgentTicketViewComponent {
             }
           );
         } else {
-          console.log('Ticket resolution canceled.');
+          this.toastr.error('Failed to close the ticket!', 'Error');
         }
-        });
+      });
     }
   }
-
-    
 }
