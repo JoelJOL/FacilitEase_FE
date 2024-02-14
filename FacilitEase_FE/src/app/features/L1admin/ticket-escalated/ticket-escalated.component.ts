@@ -28,6 +28,6 @@ export class TicketEscalatedComponent {
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    this.router.navigate(['l1admin/details-escalated', rowId]);
+    this.router.navigate(['l1admin/details-escalated-l1', rowId]);
   }
 }
