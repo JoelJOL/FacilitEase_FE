@@ -73,7 +73,7 @@ export class L2adminTicketViewComponent {
     };
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '400px',
-      data: 'Are you sure you want to assign to the L3 Admin?',
+      data: 'Do you confirm the L3 Admin Assignment?',
     });
     console.log(selectedAgent);
     dialogRef.afterClosed().subscribe((result) => {
@@ -90,6 +90,8 @@ export class L2adminTicketViewComponent {
               console.error('Error assigning ticket', error);
             }
           );
+        this.router.navigate(['l2admin/unassigned-tickets']);
+      } else {
         this.router.navigate(['l2admin/unassigned-tickets']);
       }
     });

@@ -4,5 +4,6 @@
   display: block;
   cursor: pointer;
 }
-
-
+#attachment_heading {
+  font-family: "Poppins", sans-serif !important;
+}
