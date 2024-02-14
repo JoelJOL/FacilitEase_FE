@@ -3,17 +3,18 @@
     <app-ticket-detail-view
       [ticketDetails]="ticketDetails"
       [ticketId]="ticketId"
-      [headings]="titleSubAgent"
-      (editModeChanged)="onEditModeChange($event)"
+      [headings]="titleSubHeading"
     ></app-ticket-detail-view>
     <div class="button-row">
       <div class="common-btn">
         <app-button color="submit" (click)="resolveTicket()"
-          >Close Ticket</app-button
+          >Resolve Ticket</app-button
         >
       </div>
       <div class="common-btn">
-        <app-button color="rejected" (action)="handleAction(this.ticketDetails)"
+        <app-button
+          color="rejected"
+          (action)="this.openModal(this.ticketDetails)"
           >Forward for Approval</app-button
         >
       </div>

@@ -151,6 +151,10 @@ import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component
 import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-cancellation.component';
 import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
 import { CategoryReportTableComponent } from './components/layout/category-report-table/category-report-table.component';
+import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ticket-escalated.component';
+import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
+import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
+import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -270,6 +274,10 @@ const isIE =
     L2CancellationComponent,
     DetailsL2CancelComponent,
     CategoryReportTableComponent,
+    TicketEscalatedComponent,
+    TicketDetailsEscalatedComponent,
+    ViewAllTicketsComponent,
+    TicketViewL1Component,
   ],
   imports: [
     HttpClientModule,
@@ -288,7 +296,10 @@ const isIE =
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     MatIconModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast_top_right',
+      onActivateTick: true,
+    }),
     MatCardModule,
 
     MsalModule.forRoot(

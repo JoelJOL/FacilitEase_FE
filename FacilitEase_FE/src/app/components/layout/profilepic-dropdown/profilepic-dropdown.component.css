@@ -8,7 +8,6 @@
   align-items: center;
   border-color: white;
   color: black;
-
 }
 
 .pro_pic {
@@ -26,7 +25,7 @@
 }
 
 .dropdown-menu {
-  margin-left: 65px;
+  margin-left: 40px;
   cursor: pointer;
 }
 ::after {
@@ -41,5 +40,11 @@
   height: 10px;
 }
 #dropdown-split {
-  height: 50px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-item {
+  font-size: 15px;
 }

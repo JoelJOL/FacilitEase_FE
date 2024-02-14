@@ -23,8 +23,8 @@ export class L3adminComponent {
       subfields: [
         'Raised Tickets',
         'Tickets On Hold',
-        'Cancel Requests',
-        'Resolved Tickets',
+        'Cancellation Requests',
+        'Closed Tickets',
       ],
     },
     {
@@ -69,13 +69,13 @@ export class L3adminComponent {
       if (event.subfield === 'Raised Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/view-ticket']);
-      } else if (event.subfield === 'Resolved Tickets') {
+      } else if (event.subfield === 'Closed Tickets') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/resolved-tickets']);
       } else if (event.subfield === 'Tickets On Hold') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/on-hold-tickets']);
-      } else if (event.subfield === 'Cancel Requests') {
+      } else if (event.subfield === 'Cancellation Requests') {
         this.showL3AdminTickets = true;
         this.router.navigate(['l3admin/cancel-requests']);
       }

@@ -1,18 +1,21 @@
 <div class="card na_box">
-  <div class="card_body">
-    <div class="notes">
-      <div class="notes_heading_lastupdate">
-        <h4 id="notes_heading">Notes</h4>
-        <p id="notes_lastupdate">{{ lastupdate }}</p>
-      </div>
-
-      <div class="notes_description">
-        {{ notes }}
-      </div>
+  <div class="notes">
+    <div class="notes_heading_lastupdate">
+      <h4 id="notes_heading">Notes</h4>
+      <p id="notes_lastupdate">{{ lastUpdate }}</p>
     </div>
 
-    <br />
-
-    <!-- <app-ticket-attachments></app-ticket-attachments> -->
+    <form [formGroup]="form">
+      <div class="notes_description">
+        <textarea
+          class="form-control"
+          formControlName="notes"
+          [style.color]="'#808080'"
+          [style.border-color]="'#80bdff'"
+          [readonly]="true"
+          [placeholder]="!form.get('notes')?.value ? 'Enter notes here' : ''"
+        ></textarea>
+      </div>
+    </form>
   </div>
 </div>

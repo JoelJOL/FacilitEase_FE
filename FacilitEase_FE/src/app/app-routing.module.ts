@@ -77,17 +77,12 @@ import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve
 import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
 import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-cancellation.component';
 import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
+import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ticket-escalated.component';
+import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
+import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
+import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
 
 const routes: Routes = [
-  {
-    path: 'un',
-    component: EmployeeAssetsComponent,
-  },
-
-  {
-    path: 'doc',
-    component: TicketDocumentsComponent,
-  },
   {
     path: 'employee',
     component: EmployeeComponent,
@@ -233,7 +228,22 @@ const routes: Routes = [
     component: L1adminComponent,
     canActivate: [MsalGuard, IsL1Admin],
     resolve: [LoginEnter],
-    children: [{ path: 'entries', component: AssignRoleComponent }],
+    children: [
+      { path: 'entries', component: AssignRoleComponent },
+      { path: 'escalated-tickets-l1', component: TicketEscalatedComponent },
+      {
+        path: 'details-escalated-l1/:Id',
+        component: TicketDetailsEscalatedComponent,
+      },
+      {
+        path: 'view-all-tickets',
+        component: ViewAllTicketsComponent,
+      },
+      {
+        path: 'ticket-detail-view-l1/:Id',
+        component: TicketViewL1Component,
+      },
+    ],
   },
   {
     path: 'search',

@@ -1,27 +1,31 @@
-<div class="container mt-1">
-  <div class="ticket-container">
-    <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
-    <app-ticket-description
-      [ticketDetails]="ticketDetails"
-    ></app-ticket-description>
-    <app-ticket-attachments
-      [headerText]="customHeaderText"
-      [ticketDetails]="ticketDetails"
-    ></app-ticket-attachments>
-    <app-assign-dropdown
-      class="assign_dropdown"
-      [label]="'Assign To'"
-      [options]="agents"
-      displayKey="agentName"
-      valueProperty="agentId"
-      (onItemSelected)="onAgentSelected($event, ticketId)"
-    ></app-assign-dropdown>
-    <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments> -->
-    <app-ticket-na-simple
-      [notes]="ticketDetails.notes"
-      [lastupdate]="ticketDetails.lastUpdate"
-    ></app-ticket-na-simple>
-    <app-title-sub [headings]="titleSubHeadings"></app-title-sub>
-    <div class="button-row"></div>
+<div class="details_container">
+  <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
+  <app-ticket-description
+    [ticketDetails]="ticketDetails"
+  ></app-ticket-description>
+  <app-ticket-documents
+    [headerText]="customHeaderText"
+    [ticketId]="ticketId"
+  ></app-ticket-documents>
+  <app-assign-dropdown
+    class="assign_dropdown"
+    [label]="'Assign To'"
+    [options]="agents"
+    displayKey="agentName"
+    valueProperty="agentId"
+    (onItemSelected)="onAgentSelected($event, ticketId)"
+  ></app-assign-dropdown>
+  <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments> -->
+  <div class="container">
+    <div class="left-column">
+      <app-ticket-notes-attachments
+        [ticketId]="ticketId"
+        (editModeChanged)="onEditModeChange($event)"
+      ></app-ticket-notes-attachments>
+      <app-title-sub [headings]="titleSubHeadings"></app-title-sub>
+    </div>
+    <div class="right-column">
+      <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
+    </div>
   </div>
 </div>

@@ -153,6 +153,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 import {
   Category,
@@ -175,7 +176,8 @@ export class UploadComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private employeeUploadService: GetAPIService,
-    private http: HttpClient
+    private http: HttpClient,
+    private azureService: AzureService
   ) {
     this.uploadForm = this.fb.group({
       //ticketName: new FormControl('', Validators.required),
@@ -189,14 +191,14 @@ export class UploadComponent implements OnInit {
       UpdatedBy: new FormControl(19),
     });
   }
-
+  userId: number = this.azureService.userId;
   ngOnInit(): void {
     this.loadPriorities();
     this.loadCategories();
     this.uploadForm.patchValue({
-      UserId: 19,
-      CreatedBy: 19,
-      UpdatedBy: 19,
+      UserId: this.userId,
+      CreatedBy: this.userId,
+      UpdatedBy: this.userId,
       departmentId: 1,
     });
   }
@@ -252,9 +254,9 @@ export class UploadComponent implements OnInit {
         formData.append('file', file, file.name);
       }
 
-      formData.append('UserId', '19');
-      formData.append('CreatedBy', '19');
-      formData.append('UpdatedBy', '19');
+      formData.append('UserId', `${this.userId}`);
+      formData.append('CreatedBy', `${this.userId}`);
+      formData.append('UpdatedBy', `${this.userId}`);
       formData.append('DepartmentId', '1');
 
       this.employeeUploadService.uploadDocument(formData).subscribe(
