@@ -34,10 +34,13 @@
       </div>
     </div>
     <div class="button-row">
-      <app-button color="accepted" (action)="updateTicket(true)" id="accepted"
+      <app-button
+        color="accepted"
+        id="accepted"
+        (click)="openConfirmationModal('accept')"
         >Approve</app-button
       >
-      <app-button color="rejected" (action)="updateTicket(false)"
+      <app-button color="rejected" (click)="openConfirmationModal('reject')"
         >Reject</app-button
       >
     </div>

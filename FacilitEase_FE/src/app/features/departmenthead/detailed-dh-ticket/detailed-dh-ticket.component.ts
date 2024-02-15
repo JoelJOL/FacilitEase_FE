@@ -6,6 +6,8 @@ import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-detailed-dh-ticket',
@@ -24,7 +26,8 @@ export class DetailedDhTicketComponent implements OnInit {
     private departmentHeadService: DepartmentHeadService,
     private approveDenyService: ApproveDenyService,
     private modalService: BsModalService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -46,21 +49,20 @@ export class DetailedDhTicketComponent implements OnInit {
   updateTicket(isApproved: boolean): void {
     const ticketId = this.ticketDetails.id.toString();
     if (ticketId) {
-      const confirmation = window.confirm(
-        'Are you sure you want to update the ticket?'
-      );
-
-      if (confirmation) {
-        this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
-          () => {
-            console.log('Ticket updated successfully');
-            this.toastr.success('Forwarded to department head!', 'Success');            this.redirectToPreviousPage();
-          },
-          (error) => {
-            console.error('Error updating ticket', error);
+      this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
+        () => {
+          console.log('Ticket updated successfully');
+          if (isApproved) {
+            this.toastr.success('Ticket Approved!', 'Success');
+          } else {
+            this.toastr.success('Ticket Rejected!', 'Success');
           }
-        );
-      }
+          this.redirectToPreviousPage();
+        },
+        (error) => {
+          console.error('Error updating ticket', error);
+        }
+      );
     }
   }
 
@@ -86,6 +88,35 @@ export class DetailedDhTicketComponent implements OnInit {
       initialState: {
         ticketDetails: ticketDetails,
       },
+    });
+  }
+  openConfirmationModal(action: string): void {
+    let confirmationMessage = '';
+
+    switch (action) {
+      case 'accept':
+        confirmationMessage = 'Are you sure you want to accept this ticket?';
+        break;
+      case 'reject':
+        confirmationMessage = 'Are you sure you want to reject this ticket?';
+        break;
+      default:
+        // Handle other actions if needed
+        break;
+    }
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '400px',
+      data: confirmationMessage,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        if (action === 'accept') {
+          this.updateTicket(true);
+        } else if (action === 'reject') {
+          this.updateTicket(false);
+        }
+      }
     });
   }
 }

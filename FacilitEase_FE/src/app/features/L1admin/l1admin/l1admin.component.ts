@@ -26,15 +26,6 @@ export class L1adminComponent {
       title: 'Tickets',
       subfields: ['Escalated Tickets', 'All Tickets'],
     },
-    {
-      logo: 'assets/reports-icon.png',
-      title: 'Reports',
-    },
-    {
-      logo: 'assets/data-entry.png',
-      title: 'Data Entry',
-      subfields: ['Assign Role'],
-    },
   ];
   showL2AdminTickets: boolean = false;
   isSidebarCollapsed: boolean = false;
@@ -52,8 +43,6 @@ export class L1adminComponent {
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
       this.isSidebarCollapsed = isCollapsed;
-      // Optionally, you can set showL2AdminTickets based on isCollapsed state
-      // this.showL2AdminTickets = !isCollapsed; // Example, adjust as needed
     });
 
     //Notification

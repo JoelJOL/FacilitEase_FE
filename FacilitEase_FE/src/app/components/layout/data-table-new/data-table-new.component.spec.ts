@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Mock component for app-search-bar
 @Component({
   selector: 'app-search-bar',
-  template: ''
+  template: '',
 })
 class MockSearchBarComponent {}
 
@@ -30,9 +30,9 @@ describe('DataTableNewComponent', () => {
         DataTableNewComponent,
         SortUpDownComponent,
         MockSearchBarComponent,
-        MockPaginationComponent // Include the mock pagination component here
+        MockPaginationComponent,
       ],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule],
     });
     fixture = TestBed.createComponent(DataTableNewComponent);
     component = fixture.componentInstance;
@@ -51,6 +51,4 @@ describe('DataTableNewComponent', () => {
     expect(headerElements[1].textContent).toContain('Name');
     expect(headerElements[2].textContent).toContain('Age');
   });
-
-  // Add more test cases for other functionalities as needed
 });
