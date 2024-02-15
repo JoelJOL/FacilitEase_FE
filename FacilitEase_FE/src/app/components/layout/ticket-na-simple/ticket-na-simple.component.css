@@ -21,6 +21,24 @@
   font-weight: 400;
 }
 .notes_description {
-  font-size: medium;
+  font-size: small;
   color: var(--dark_grey);
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--grey);
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.form-control[readonly] {
+  background-color: #fff;
+}
+
+.form-control:not([readonly]):focus {
+  border-color: var(--light_blue);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }

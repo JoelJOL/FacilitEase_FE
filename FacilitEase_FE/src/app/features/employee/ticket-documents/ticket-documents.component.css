@@ -7,3 +7,9 @@
 h4 {
   font-family: "Poppins", sans-serif !important;
 }
+.documents {
+  margin-bottom: 10px;
+}
+.thumbnail-container {
+  margin-top: -5px;
+}

@@ -43,7 +43,7 @@ export class AgentService {
   // Method to forward a ticket to a manager
   forwardTicketManager(ticketId: number, managerId: number): Observable<any> {
     const apiUrl = `https://localhost:7049/api/L3Admin/forward-ticket/${ticketId}/${managerId}`;
-    return this.http.get(apiUrl);
+    return this.http.patch(apiUrl, null);
   }
 
   // Method to forward a ticket to a department head

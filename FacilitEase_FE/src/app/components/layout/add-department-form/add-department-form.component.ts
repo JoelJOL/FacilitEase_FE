@@ -13,7 +13,7 @@ export class AddDepartmentFormComponent implements OnInit {
   constructor(private postAPIService: PostAPIService) {}
 
   department: any = {
-    DeptName: '', // Use correct field name based on the API
+    DeptName: '',
   };
 
   ngOnInit() {
