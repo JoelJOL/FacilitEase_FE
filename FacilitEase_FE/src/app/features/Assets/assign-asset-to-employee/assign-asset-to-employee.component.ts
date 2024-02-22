@@ -3,7 +3,7 @@ import { AssetService } from '@app/features/service/unassignedAsset/asset.servic
 import {
   AssetDetails,
   AssetHistory,
-} from '@app/features/l3admin/l2Models/model';
+} from '@app/features/l3admin/l3Models/model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

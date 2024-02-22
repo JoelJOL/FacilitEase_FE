@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
+import {
+  PendingAndResolvedTicketDetails,
+  l3Admin,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-on-hold-tickets-view',
@@ -9,8 +13,9 @@ import { AgentService } from '@app/features/service/httpService/agentSerivce/age
 })
 export class OnHoldTicketsViewComponent {
   tickets: any = []; // Array to store on-hold tickets
-  @Output() rowClicked = new EventEmitter<number>();   // Event emitter for emitting row clicks
-  headers: string[] = [ // Headers for the table displaying on-hold tickets
+  @Output() rowClicked = new EventEmitter<number>(); // Event emitter for emitting row clicks
+  headers: string[] = [
+    // Headers for the table displaying on-hold tickets
     'ID',
     'Ticket Name',
     'Employee Name',
@@ -32,6 +37,6 @@ export class OnHoldTicketsViewComponent {
   // Method called when a row is clicked
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l3admin/view-ticket-detail-noedit', Id]);
+    this.router.navigate([`${l3Admin}/${PendingAndResolvedTicketDetails}`, Id]);
   }
 }

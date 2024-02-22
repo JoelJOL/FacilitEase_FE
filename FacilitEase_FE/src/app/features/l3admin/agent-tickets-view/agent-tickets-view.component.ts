@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AgentService } from '../../service/httpService/agentSerivce/agent.service';
 import { Router } from '@angular/router';
+import { AssignedTicketDetails, l3Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-agent-tickets-view',
@@ -16,7 +17,7 @@ export class AgentTicketsViewComponent {
     'Priority',
     'Status',
     'Department',
-    'Location'
+    'Location',
   ];
   apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}
@@ -26,6 +27,6 @@ export class AgentTicketsViewComponent {
   }
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l3admin/view-ticket-in-detail', Id]);
+    this.router.navigate([`${l3Admin}/${AssignedTicketDetails}`, Id]);
   }
 }

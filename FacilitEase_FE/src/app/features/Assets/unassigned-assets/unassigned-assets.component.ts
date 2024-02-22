@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AssetAPIService } from '../../service/httpService/assetService/asset-api.service';
 import { Router } from '@angular/router';
-import { Asset } from '@app/features/l3admin/l2Models/model';
+import { Asset } from '@app/features/l3admin/l3Models/model';
 
 @Component({
   selector: 'app-unassigned-assets',
