@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   AssetDetails,
   AssetHistory,
-} from '@app/features/l3admin/l2Models/model';
+} from '@app/features/l3admin/l3Models/model';
 import { HttpClient } from '@angular/common/http'; // Correct import statement
 import { Observable } from 'rxjs';
 

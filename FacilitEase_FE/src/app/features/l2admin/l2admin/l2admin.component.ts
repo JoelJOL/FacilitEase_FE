@@ -6,6 +6,17 @@ import { SidebarService } from '@app/features/service/dataService/sidebarService
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
+import {
+  AssignedTickets,
+  CancellationRequest,
+  CancellationRequestTicketDetails,
+  EscalatedTickets,
+  Report,
+  Tickets,
+  TicketsToResolve,
+  UnassignedTickets,
+  l2Admin,
+} from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
 
 interface Field {
@@ -23,7 +34,7 @@ export class L2AdminComponent {
   userRole: string = 'L2 Admin';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'Tickets',
       subfields: [
         'Unassigned Tickets',
@@ -34,8 +45,12 @@ export class L2AdminComponent {
       ],
     },
     {
-      logo: 'assets/reports-icon.png',
+      logo: 'assets/study_reports.svg',
       title: 'Reports',
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
     },
     // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
   ];
@@ -73,10 +88,13 @@ export class L2AdminComponent {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Tickets') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin/unassigned-tickets']);
+      this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
-      this.router.navigate(['l2admin/l2report']);
+      this.router.navigate([`${l2Admin}/${Report}`]);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showL2AdminTickets = true;
+      this.router.navigate([`${l2Admin}/${Tickets}`]);
     } else {
       this.showL2AdminTickets = false;
     }
@@ -86,19 +104,19 @@ export class L2AdminComponent {
     if (event.field.title === 'Tickets') {
       if (event.subfield === 'Unassigned Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['l2admin/unassigned-tickets']);
+        this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
       } else if (event.subfield === 'Assigned Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['l2admin/assigned-tickets']);
+        this.router.navigate([`${l2Admin}/${AssignedTickets}`]);
       } else if (event.subfield === 'Escalated Tickets') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['l2admin/escalated-tickets']);
+        this.router.navigate([`${l2Admin}/${EscalatedTickets}`]);
       } else if (event.subfield === 'Tickets To Resolve') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['l2admin/tickets-to-resolve']);
+        this.router.navigate([`${l2Admin}/${TicketsToResolve}`]);
       } else if (event.subfield === 'Cancellation Requests') {
         this.showL2AdminTickets = true;
-        this.router.navigate(['l2admin/l2-cancellation']);
+        this.router.navigate([`${l2Admin}/${CancellationRequest}`]);
       }
     }
   }

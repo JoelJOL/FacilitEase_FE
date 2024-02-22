@@ -15,7 +15,7 @@ import {
   Category,
   Priority,
   TicketResponse,
-} from '@app/features/l3admin/l2Models/model';
+} from '@app/features/l3admin/l3Models/model';
 import { GetAPIService } from '@app/features/service/httpService/ticketRaise/get-api.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -170,7 +170,6 @@ export class UploadComponent implements OnInit {
             setTimeout(() => {
               this.uploadForm.reset();
             }, 2000);
-
           }
         },
         (error) => {

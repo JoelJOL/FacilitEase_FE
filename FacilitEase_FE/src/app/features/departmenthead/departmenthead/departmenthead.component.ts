@@ -5,6 +5,11 @@ import { SidebarService } from '@app/features/service/dataService/sidebarService
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
+import {
+  ApprovalPendingTickets,
+  DepartmentHead,
+  Tickets,
+} from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
 interface Field {
   logo: string;
@@ -21,8 +26,12 @@ export class DepartmentheadComponent {
 
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'Tickets Waiting For Approval',
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
     },
   ];
   showDepartmentHeadTickets: boolean = false;
@@ -60,7 +69,10 @@ export class DepartmentheadComponent {
       this.router.navigate(['l2admin-subordinates']);
     } else if (clickedField.title === 'Tickets Waiting For Approval') {
       this.showDepartmentHeadTickets = true;
-      this.router.navigate(['departmenthead/departmentHead-tickets']);
+      this.router.navigate([`${DepartmentHead}/${ApprovalPendingTickets}`]);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showDepartmentHeadTickets = true;
+      this.router.navigate([`${DepartmentHead}/${Tickets}`]);
     } else {
       this.showDepartmentHeadTickets = false;
     }

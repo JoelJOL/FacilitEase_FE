@@ -5,6 +5,7 @@ import { SidebarService } from '@app/features/service/dataService/sidebarService
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 import { NotificationService } from '@app/features/service/httpService/NotificationService/notification.service';
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
+import { Employee, Tickets, RaiseTicketForm } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
 // Define the structure for each field in the sidebar
 interface Field {
@@ -25,7 +26,7 @@ export class EmployeeComponent {
   // Sidebar fields with icons and titles
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/reports-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'My Tickets',
       subfields: [],
     },
@@ -69,11 +70,11 @@ export class EmployeeComponent {
     // Navigate to the corresponding route based on the clicked field
     if (clickedField.title === 'My Tickets') {
       this.showEmployeeTickets = true;
-      this.router.navigate(['employee/my-tickets']);
+      this.router.navigate([`${Employee}/${Tickets}`]);
       this.sidebarService.toggleCollapse();
     } else if (clickedField.title === 'Raise A Ticket') {
       this.showEmployeeTickets = true;
-      this.router.navigate(['employee/form']);
+      this.router.navigate([`${Employee}/${RaiseTicketForm}`]);
       this.sidebarService.toggleCollapse();
     } else {
       this.showEmployeeTickets = false;

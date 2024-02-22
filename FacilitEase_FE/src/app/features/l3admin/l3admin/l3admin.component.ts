@@ -6,6 +6,16 @@ import { NotificationService } from '@app/features/service/httpService/Notificat
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
+import {
+  ApprovalPendingTickets,
+  AssignedTickets,
+  CancellationRequest,
+  EscalatedTickets,
+  Report,
+  ResolvedTickets,
+  Tickets,
+  l3Admin,
+} from 'environments/environment';
 
 // Interface to define the structure of each field
 interface Field {
@@ -23,7 +33,7 @@ export class L3adminComponent {
   yourFieldsArray: Field[] = [
     // Array containing fields for the sidebar
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'Tickets',
       subfields: [
         'Assigned Tickets',
@@ -33,8 +43,12 @@ export class L3adminComponent {
       ],
     },
     {
-      logo: 'assets/data-entry.png',
+      logo: 'assets/study_reports.svg',
       title: 'Reports',
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
     },
   ];
   showL3AdminTickets: boolean = false; // Flag to control whether to display L3 Admin tickets
@@ -72,10 +86,13 @@ export class L3adminComponent {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Tickets') {
       this.showL3AdminTickets = true;
-      this.router.navigate(['l3admin/view-ticket']);
+      this.router.navigate([`${l3Admin}/${AssignedTickets}`]);
     } else if (clickedField.title === 'Reports') {
       this.showL3AdminTickets = true;
-      this.router.navigate(['l3admin/l3report']);
+      this.router.navigate([`${l3Admin}/${Report}`]);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showL3AdminTickets = true;
+      this.router.navigate([`${l3Admin}/${Tickets}`]);
     } else {
       this.showL3AdminTickets = false;
     }
@@ -87,20 +104,20 @@ export class L3adminComponent {
       // Route to different ticket-related pages based on the clicked subfield
       if (event.subfield === 'Assigned Tickets') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3admin/view-ticket']);
+        this.router.navigate([`${l3Admin}/${AssignedTickets}`]);
       } else if (event.subfield === 'Closed Tickets') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3admin/resolved-tickets']);
+        this.router.navigate([`${l3Admin}/${ResolvedTickets}`]);
       } else if (event.subfield === 'Forwarded for Approval') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3admin/on-hold-tickets']);
+        this.router.navigate([`${l3Admin}/${ApprovalPendingTickets}`]);
       } else if (event.subfield === 'Cancellation Requests') {
         this.showL3AdminTickets = true;
-        this.router.navigate(['l3admin/cancel-requests']);
+        this.router.navigate([`${l3Admin}/${CancellationRequest}`]);
       }
     } else if (event.subfield === 'Escalated Tickets') {
       this.showL3AdminTickets = true;
-      this.router.navigate(['l3admin/escalated-tickets']);
+      this.router.navigate([`${l3Admin}/${EscalatedTickets}`]);
     }
   }
 }

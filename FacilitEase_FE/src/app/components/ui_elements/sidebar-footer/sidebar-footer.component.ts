@@ -23,7 +23,7 @@ export class SidebarFooterComponent {
   modal!: SupportComponent;
 
   constructor(private router: Router, private modalService: ModalService) {}
-  support: Field = { logo: 'assets/sidebar-support.png', title: 'Support' };
+  support: Field = { logo: 'assets/support.svg', title: 'Support' };
   @Output() fieldClicked = new EventEmitter<any>();
 
   onFieldClicked() {

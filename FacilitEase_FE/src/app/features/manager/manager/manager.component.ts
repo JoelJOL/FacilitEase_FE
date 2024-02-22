@@ -6,6 +6,13 @@ import { NotificationService } from '@app/features/service/httpService/Notificat
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
+import {
+  ActiveTickets,
+  ApprovalPendingTickets,
+  EmployeeTickets,
+  Manager,
+  Tickets,
+} from 'environments/environment';
 interface Field {
   logo: string;
   title: string;
@@ -20,13 +27,17 @@ export class ManagerComponent {
   userRole: string = 'Manager';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/hourglass-start-solid.svg',
+      logo: 'assets/waiting.svg',
       title: 'Waiting for Approval',
     },
     {
-      logo: 'assets/ticket-solid.svg',
+      logo: 'assets/tickets.svg',
       title: 'Employee Tickets',
       subfields: ['Live Tickets', 'All Tickets'],
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
     },
   ];
   showManagerTickets: boolean = false;
@@ -65,7 +76,10 @@ export class ManagerComponent {
       this.showManagerTickets = true;
     } else if (clickedField.title === 'Waiting for Approval') {
       this.showManagerTickets = true;
-      this.router.navigate(['manager/manager-view-waiting-tickets']);
+      this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showManagerTickets = true;
+      this.router.navigate([`${Manager}/${Tickets}`]);
     } else {
       this.showManagerTickets = false;
     }
@@ -74,10 +88,10 @@ export class ManagerComponent {
     if (event.field.title === 'Employee Tickets') {
       if (event.subfield === 'Live Tickets') {
         this.showManagerTickets = true;
-        this.router.navigate(['manager/manager-view-live-employee-tickets']);
+        this.router.navigate([`${Manager}/${ActiveTickets}`]);
       } else if (event.subfield === 'All Tickets') {
         this.showManagerTickets = true;
-        this.router.navigate(['manager/manager-view-employee-tickets']);
+        this.router.navigate([`${Manager}/${EmployeeTickets}`]);
       }
     }
   }

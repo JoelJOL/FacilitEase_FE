@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TicketAttachment } from '@app/features/l3admin/l2Models/model';
+import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
 
 @Component({
   selector: 'app-ticket-documents',
