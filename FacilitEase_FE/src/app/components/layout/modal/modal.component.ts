@@ -31,7 +31,7 @@ export class ModalComponent {
     private agentService: AgentService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private router: Router,
+    private router: Router
   ) {
     this.deptForm = this.formBuilder.group({
       category: ['', Validators.required],
@@ -43,7 +43,7 @@ export class ModalComponent {
     if (this.ticketDetails) {
       const id = this.ticketDetails.id;
       const managerId = this.ticketDetails.managerId;
-      const employeeId = this.ticketDetails.employeeId
+      const employeeId = this.ticketDetails.employeeId;
 
       console.log('Ticket ID:', id);
       console.log('Manager ID:', managerId);
@@ -94,7 +94,6 @@ export class ModalComponent {
   }
 
   forwardToManager(id: number, managerId: number) {
-    
     this.showDropdown = false;
 
     const isConfirmed = window.confirm(
@@ -110,8 +109,8 @@ export class ModalComponent {
           const currentRoute = this.router.url;
           let targetRoute: string;
 
-          if (currentRoute.includes('l2/details-escalated')) {
-            targetRoute = 'l2/escalated-tickets';
+          if (currentRoute.includes('l2admin/details-escalated')) {
+            targetRoute = 'l2admin/escalated-tickets';
           } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
             targetRoute = 'l3admin/view-ticket';
           } else if (
@@ -137,7 +136,7 @@ export class ModalComponent {
     }
   }
 
-  forwardToDeptHead(id:number,employeeId:number){
+  forwardToDeptHead(id: number, employeeId: number) {
     this.showDropdown = false;
 
     const isConfirmed = window.confirm(

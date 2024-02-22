@@ -66,8 +66,8 @@ th:last-child {
 }
 
 td {
-  padding: 2%;
-  padding-right: 2%;
+  padding: 0.5%;
+  padding-right: 0.5%;
   overflow: hidden;
 }
 
@@ -82,12 +82,9 @@ td {
   font-weight: 550;
 }
 .id_column {
-  /* Add your styles for cells in the "Id" column here */
-  /* For example: */
-  padding: 15px; /* Add padding to cells in the "Id" column */
-  font-weight: bold; /* Make the text bold */
+  padding: 15px;
+  font-weight: bold;
 }
-
 /* Priority and Status Styles */
 .priority,
 .status {

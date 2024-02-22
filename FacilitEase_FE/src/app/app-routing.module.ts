@@ -163,6 +163,21 @@ const routes: Routes = [
         component: L2ReportComponent,
       },
       {
+        path: 'request/:id',
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
+      },
+      {
+        path: 'my-tickets',
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
         path: 'add-employee',
         canActivate: [MsalGuard],
         component: EmployeeAddComponent,
@@ -228,6 +243,21 @@ const routes: Routes = [
         component: L2ReportComponent,
       },
       {
+        path: 'request/:id',
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
+      },
+      {
+        path: 'my-tickets',
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
         path: 'view-ticket-in-detail/:Id',
         canActivate: [MsalGuard],
         component: AgentTicketViewComponent,
@@ -264,11 +294,6 @@ const routes: Routes = [
       },
     ],
   },
-
-  { path: 'sidebar', component: SidebarComponent },
-  { path: 'sidebar-field', component: SidebarFieldComponent },
-  { path: 'sidebar', component: SidebarComponent },
-  { path: 'sidebar-field', component: SidebarFieldComponent },
   //Routes for the Manager
   {
     path: 'manager',
@@ -302,6 +327,21 @@ const routes: Routes = [
         component: ManagerViewLiveEmployeeTicketsComponent,
       },
       {
+        path: 'request/:id',
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
+      },
+      {
+        path: 'my-tickets',
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
         path: 'manager-subordinates',
         canActivate: [MsalGuard],
         component: ManagerSubordinatesComponent,
@@ -332,6 +372,21 @@ const routes: Routes = [
         path: 'escalated-tickets-l1',
         canActivate: [MsalGuard],
         component: TicketEscalatedComponent,
+      },
+      {
+        path: 'request/:id',
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
+      },
+      {
+        path: 'my-tickets',
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        canActivate: [MsalGuard],
+        component: UploadComponent,
       },
       {
         path: 'details-escalated-l1/:Id',
@@ -375,6 +430,21 @@ const routes: Routes = [
         path: 'department-head-tc-detail/:Id',
         canActivate: [MsalGuard],
         component: DetailedDhTicketComponent,
+      },
+      {
+        path: 'request/:id',
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
+      },
+      {
+        path: 'my-tickets',
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: 'form',
+        canActivate: [MsalGuard],
+        component: UploadComponent,
       },
       {
         path: 'reactive-form',

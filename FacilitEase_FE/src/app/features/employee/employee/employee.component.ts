@@ -25,7 +25,7 @@ export class EmployeeComponent {
   // Sidebar fields with icons and titles
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/reports-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'My Tickets',
       subfields: [],
     },
