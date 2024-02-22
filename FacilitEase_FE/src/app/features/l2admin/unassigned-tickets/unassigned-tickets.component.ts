@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
+import { UnassignedTicketDetails, l2Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-unassigned-tickets',
@@ -95,6 +96,6 @@ export class UnassignedTicketsComponent {
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l2admin/l2admin-ticket-view', Id]);
+    this.router.navigate([`${l2Admin}/${UnassignedTicketDetails}`, Id]);
   }
 }

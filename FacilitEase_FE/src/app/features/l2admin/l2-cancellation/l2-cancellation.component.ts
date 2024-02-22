@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
+import {
+  CancellationRequestTicketDetails,
+  l2Admin,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-l2-cancellation',
@@ -28,6 +32,9 @@ export class L2CancellationComponent {
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    this.router.navigate(['l2admin/details-l2-cancel', rowId]);
+    this.router.navigate([
+      `${l2Admin}/${CancellationRequestTicketDetails}`,
+      rowId,
+    ]);
   }
 }

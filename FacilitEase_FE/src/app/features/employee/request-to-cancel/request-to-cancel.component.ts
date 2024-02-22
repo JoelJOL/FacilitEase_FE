@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TicketResponse } from '@app/features/l3admin/l2Models/model';
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { ToastrService } from 'ngx-toastr';
+import { Employee, Tickets } from 'environments/environment';
 
 @Component({
   selector: 'app-request-to-cancel',
@@ -74,7 +75,7 @@ export class RequestToCancelComponent {
         this.toastr.success('Cancellation Request Successful!', 'Success');
         this.isCancelRequested = true;
 
-        this.router.navigate(['employee/my-tickets']);
+        this.router.navigate([`${Employee}/${Tickets}`]);
       },
       (error) => {
         console.error('Cancellation error:', error);
@@ -98,7 +99,7 @@ export class RequestToCancelComponent {
       // If confirmed, proceed with cancellation
       if (result) {
         this.onCancelRequest();
-        this.router.navigate(['employee/my-tickets']);
+        this.router.navigate([`${Employee}/${Tickets}`]);
       }
     });
   }

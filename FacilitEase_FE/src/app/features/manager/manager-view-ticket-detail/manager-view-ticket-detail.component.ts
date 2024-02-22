@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { ToastrService } from 'ngx-toastr';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
+import { Manager, ApprovalPendingTickets } from 'environments/environment';
 
 @Component({
   selector: 'app-manager-view-ticket-detail',
@@ -23,7 +24,7 @@ export class ManagerViewTicketDetailComponent implements OnInit {
 
   constructor(
     private masterService: MasterService,
-    private azureService : AzureService,
+    private azureService: AzureService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
@@ -90,27 +91,29 @@ export class ManagerViewTicketDetailComponent implements OnInit {
     });
   }
   forwardTicket() {
-    this.masterService.sendForApproval(this.ticketDetails.id, this.azureService.userId).subscribe(
-      (response) => {
+    this.masterService
+      .sendForApproval(this.ticketDetails.id, this.azureService.userId)
+      .subscribe((response) => {
         this.toastr.success('Forwarded to department head!', 'Success');
-        this.router.navigate(['manager/manager-view-waiting-tickets']);
-      }
-  );
+        this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
+      });
   }
 
   acceptTicket(): void {
-    this.masterService.ticketDecision(this.ticketDetails.id, 2).subscribe(
-      (response) => {
-          this.toastr.success('Ticket Accepted!', 'Success');
-          this.router.navigate(['manager/manager-view-waiting-tickets']);
+    this.masterService
+      .ticketDecision(this.ticketDetails.id, 2)
+      .subscribe((response) => {
+        this.toastr.success('Ticket Accepted!', 'Success');
+        this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
       });
   }
 
   rejectTicket(): void {
-    this.masterService.ticketDecision(this.ticketDetails.id, 5).subscribe(
-      (response) => {
-          this.toastr.success('Ticket Rejected!', 'Success');
-          this.router.navigate(['manager/manager-view-waiting-tickets']);
+    this.masterService
+      .ticketDecision(this.ticketDetails.id, 5)
+      .subscribe((response) => {
+        this.toastr.success('Ticket Rejected!', 'Success');
+        this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
       });
   }
   onEditModeChange(editMode: boolean) {

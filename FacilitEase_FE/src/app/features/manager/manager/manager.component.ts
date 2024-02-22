@@ -6,6 +6,12 @@ import { NotificationService } from '@app/features/service/httpService/Notificat
 import { SharedService } from '@app/features/service/httpService/SharedService/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
+import {
+  ActiveTickets,
+  ApprovalPendingTickets,
+  EmployeeTickets,
+  Manager,
+} from 'environments/environment';
 interface Field {
   logo: string;
   title: string;
@@ -65,7 +71,7 @@ export class ManagerComponent {
       this.showManagerTickets = true;
     } else if (clickedField.title === 'Waiting for Approval') {
       this.showManagerTickets = true;
-      this.router.navigate(['manager/manager-view-waiting-tickets']);
+      this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
     } else {
       this.showManagerTickets = false;
     }
@@ -74,10 +80,10 @@ export class ManagerComponent {
     if (event.field.title === 'Employee Tickets') {
       if (event.subfield === 'Live Tickets') {
         this.showManagerTickets = true;
-        this.router.navigate(['manager/manager-view-live-employee-tickets']);
+        this.router.navigate([`${Manager}/${ActiveTickets}`]);
       } else if (event.subfield === 'All Tickets') {
         this.showManagerTickets = true;
-        this.router.navigate(['manager/manager-view-employee-tickets']);
+        this.router.navigate([`${Manager}/${EmployeeTickets}`]);
       }
     }
   }
