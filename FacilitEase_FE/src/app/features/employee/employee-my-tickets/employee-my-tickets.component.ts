@@ -1,6 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
+import {
+  Employee,
+  RaiseTicketForm,
+  TicketDetails,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-employee-my-tickets',
@@ -33,11 +38,11 @@ export class EmployeeMyTicketsComponent {
   onRowClicked(rowId: any) {
     // Log the clicked row ID and navigate to the detailed view
     console.log('Row clicked in parent component with ID:', rowId);
-    this.router.navigate(['employee/request', rowId]);
+    this.router.navigate([`${Employee}/${TicketDetails}`, rowId]);
   }
 
   // Function to navigate to the ticket raising form
   raiseTicket() {
-    this.router.navigate(['employee/form']);
+    this.router.navigate([`${Employee}/${RaiseTicketForm}`]);
   }
 }

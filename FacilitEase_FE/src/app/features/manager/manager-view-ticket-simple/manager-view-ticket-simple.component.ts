@@ -4,6 +4,7 @@ import { MasterService } from '@app/features/service/dataService/masterService/m
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { ApprovalPendingTickets } from 'environments/environment';
 
 @Component({
   selector: 'app-manager-view-ticket-simple',
@@ -73,10 +74,10 @@ export class ManagerViewTicketSimpleComponent {
       if (result) {
         if (action === 'accept') {
           this.acceptTicket();
-          this.router.navigate(['manager-view-waiting-tickets']);
+          this.router.navigate([`${ApprovalPendingTickets}`]);
         } else if (action === 'reject') {
           this.rejectTicket();
-          this.router.navigate(['manager-view-waiting-tickets']);
+          this.router.navigate([`${ApprovalPendingTickets}`]);
         } else if (action === 'forward') {
           this.forwardTicket();
         }

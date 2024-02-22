@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '../../service/dataService/masterService/master.service';
+import { AssignedTicketDetails, l2Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-assigned-tickets',
@@ -50,6 +51,6 @@ export class AssignedTicketsComponent {
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l2admin/details-assigned', Id]);
+    this.router.navigate([`${l2Admin}/${AssignedTicketDetails}`, Id]);
   }
 }

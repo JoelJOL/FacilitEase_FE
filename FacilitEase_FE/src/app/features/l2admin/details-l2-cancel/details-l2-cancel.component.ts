@@ -5,6 +5,7 @@ import { AgentService } from '@app/features/service/httpService/agentSerivce/age
 import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { CancellationRequest, l2Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-details-l2-cancel',
@@ -66,7 +67,7 @@ export class DetailsL2CancelComponent {
         (response) => {
           console.log('API call success:', response);
           this.toastr.success('Ticket Cancelled Successfully!', 'Success');
-          this.router.navigate(['l2admin/l2-cancellation']);
+          this.router.navigate([`${l2Admin}/${CancellationRequest}`]);
         },
         (error) => {
           console.error('API call error:', error);
@@ -87,7 +88,7 @@ export class DetailsL2CancelComponent {
         (response) => {
           console.log('API call success:', response);
           this.toastr.success('Ticket Cancellation Denied!', 'Success');
-          this.router.navigate(['l2admin/l2-cancellation']);
+          this.router.navigate([`${l2Admin}/${CancellationRequest}`]);
         },
         (error) => {
           console.error('API call error:', error);

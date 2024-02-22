@@ -9,6 +9,11 @@ import { AgentService } from '@app/features/service/httpService/agentSerivce/age
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import {
+  UnassignedTicketDetails,
+  UnassignedTickets,
+  l2Admin,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-l2admin-ticket-view',
@@ -88,14 +93,14 @@ export class L2adminTicketViewComponent {
             (response) => {
               console.log('Ticket assigned successfully', response);
               this.toastr.success('Ticket assigned successfully!', 'Success');
-              this.router.navigate(['l2admin/unassigned-tickets']);
+              this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
             },
             (error) => {
               console.error('Error assigning ticket', error);
             }
           );
       } else {
-        this.router.navigate(['l2admin/unassigned-tickets']);
+        this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
       }
     });
   }

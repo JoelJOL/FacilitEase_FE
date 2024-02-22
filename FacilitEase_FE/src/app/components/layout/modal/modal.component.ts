@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modalService/modal.service';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
+import { l3Admin, l2Admin } from 'environments/environment';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 
@@ -31,7 +32,7 @@ export class ModalComponent {
     private agentService: AgentService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private router: Router,
+    private router: Router
   ) {
     this.deptForm = this.formBuilder.group({
       category: ['', Validators.required],
@@ -43,7 +44,7 @@ export class ModalComponent {
     if (this.ticketDetails) {
       const id = this.ticketDetails.id;
       const managerId = this.ticketDetails.managerId;
-      const employeeId = this.ticketDetails.employeeId
+      const employeeId = this.ticketDetails.employeeId;
 
       console.log('Ticket ID:', id);
       console.log('Manager ID:', managerId);
@@ -94,7 +95,6 @@ export class ModalComponent {
   }
 
   forwardToManager(id: number, managerId: number) {
-    
     this.showDropdown = false;
 
     const isConfirmed = window.confirm(
@@ -112,12 +112,14 @@ export class ModalComponent {
 
           if (currentRoute.includes('l2/details-escalated')) {
             targetRoute = 'l2/escalated-tickets';
-          } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
-            targetRoute = 'l3admin/view-ticket';
           } else if (
-            currentRoute.includes('l2admin/details-tickets-to-resolve')
+            currentRoute.includes(`${l3Admin}/view-ticket-in-detail`)
           ) {
-            targetRoute = 'l2admin/tickets-to-resolve';
+            targetRoute = `${l3Admin}/view-ticket`;
+          } else if (
+            currentRoute.includes(`${l2Admin}/details-tickets-to-resolve`)
+          ) {
+            targetRoute = `${l2Admin}/tickets-to-resolve`;
           } else {
             targetRoute = '**';
           }
@@ -137,7 +139,7 @@ export class ModalComponent {
     }
   }
 
-  forwardToDeptHead(id:number,employeeId:number){
+  forwardToDeptHead(id: number, employeeId: number) {
     this.showDropdown = false;
 
     const isConfirmed = window.confirm(
@@ -156,11 +158,11 @@ export class ModalComponent {
           if (currentRoute.includes('l2/details-escalated')) {
             targetRoute = 'l2/escalated-tickets';
           } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
-            targetRoute = 'l3admin/view-ticket';
+            targetRoute = `${l3Admin}/view-ticket`;
           } else if (
-            currentRoute.includes('l2admin/details-tickets-to-resolve')
+            currentRoute.includes(`${l2Admin}/details-tickets-to-resolve`)
           ) {
-            targetRoute = 'l2admin/tickets-to-resolve';
+            targetRoute = `${l2Admin}/tickets-to-resolve`;
           } else {
             targetRoute = '**';
           }

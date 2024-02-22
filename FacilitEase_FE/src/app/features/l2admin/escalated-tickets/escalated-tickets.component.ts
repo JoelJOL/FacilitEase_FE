@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
+import { EscalatedTicketDetails, l2Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-escalated-tickets',
@@ -50,6 +51,6 @@ export class EscalatedticketsComponent {
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    this.router.navigate(['l2admin/details-escalated', rowId]);
+    this.router.navigate([`${l2Admin}/${EscalatedTicketDetails}`, rowId]);
   }
 }
