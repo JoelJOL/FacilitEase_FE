@@ -8,6 +8,7 @@ import { SharedService } from '@app/features/service/httpService/SharedService/s
 import {
   ApprovalPendingTickets,
   DepartmentHead,
+  Tickets,
 } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
 interface Field {
@@ -69,11 +70,10 @@ export class DepartmentheadComponent {
     } else if (clickedField.title === 'Tickets Waiting For Approval') {
       this.showDepartmentHeadTickets = true;
       this.router.navigate([`${DepartmentHead}/${ApprovalPendingTickets}`]);
-    } 
     } else if (clickedField.title === 'Raise A Ticket') {
       this.showDepartmentHeadTickets = true;
-      this.router.navigate([${DepartmentHead}/${Tickets}]);
-     } else {
+      this.router.navigate([`${DepartmentHead}/${Tickets}`]);
+    } else {
       this.showDepartmentHeadTickets = false;
     }
   }
