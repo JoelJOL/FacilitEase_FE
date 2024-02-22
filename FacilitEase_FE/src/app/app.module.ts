@@ -155,6 +155,9 @@ import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ti
 import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
+import { CommentsComponent } from './components/layout/comments/comments.component';
+import { CommentComponent } from './components/layout/comment/comment.component';
+import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -279,6 +282,9 @@ const isIE =
     TicketDetailsEscalatedComponent,
     ViewAllTicketsComponent,
     TicketViewL1Component,
+    CommentsComponent,
+    CommentComponent,
+    CommentFormComponent
   ],
   imports: [
     HttpClientModule,
