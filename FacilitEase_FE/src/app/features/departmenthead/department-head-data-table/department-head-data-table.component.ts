@@ -2,6 +2,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { DepartmentHeadService } from '@app/features/service/httpService/Department-head/department-head.service';
+import {
+  DepartmentHead,
+  PendingAndResolvedTicketDetails,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-department-head-data-table',
@@ -34,6 +38,9 @@ export class DepartmentHeadDataTableComponent implements OnInit {
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
 
-    this.router.navigate(['departmenthead/department-head-tc-detail', Id]);
+    this.router.navigate([
+      `${DepartmentHead}/${PendingAndResolvedTicketDetails}`,
+      Id,
+    ]);
   }
 }

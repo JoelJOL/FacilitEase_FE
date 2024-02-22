@@ -2,7 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MasterService } from '../../service/dataService/masterService/master.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ActiveTickets, Manager } from 'environments/environment';
+import {
+  ActiveTickets,
+  Manager,
+  PendingAndResolvedTicketDetails,
+} from 'environments/environment';
 @Component({
   selector: 'app-manager-view-waiting-tickets',
   templateUrl: './manager-view-waiting-tickets.component.html',
@@ -28,6 +32,6 @@ export class ManagerViewWaitingTicketsComponent implements OnInit {
   }
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate([`${Manager}/${ActiveTickets}`, Id]);
+    this.router.navigate([`${Manager}/${PendingAndResolvedTicketDetails}`, Id]);
   }
 }
