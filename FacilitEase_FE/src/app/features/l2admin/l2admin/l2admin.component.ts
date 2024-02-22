@@ -33,7 +33,7 @@ export class L2AdminComponent {
   userRole: string = 'L2 Admin';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'Tickets',
       subfields: [
         'Unassigned Tickets',
@@ -44,8 +44,12 @@ export class L2AdminComponent {
       ],
     },
     {
-      logo: 'assets/reports-icon.png',
+      logo: 'assets/study_reports.svg',
       title: 'Reports',
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
     },
     // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
   ];
@@ -87,6 +91,9 @@ export class L2AdminComponent {
     } else if (clickedField.title === 'Reports') {
       this.showL2AdminTickets = true;
       this.router.navigate([`${l2Admin}/${Report}`]);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showL2AdminTickets = true;
+      this.router.navigate([`${l2Admin}/${Tickets}`]);
     } else {
       this.showL2AdminTickets = false;
     }

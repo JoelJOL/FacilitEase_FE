@@ -178,7 +178,21 @@ const routes: Routes = [
         component: L2ReportComponent,
       },
       {
-        path: `${UnassignedTicketDetails}/:Id`, //Detailed view of the unassigned ticket
+        path: Tickets, //View all the tickets raised by an employee
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: RaiseTicketForm, //Form to raise a new ticket
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
+        path: `${TicketDetails}/:id`, //Detailed view of the raised ticket
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
+      },
+      { path: `${UnassignedTicketDetails}/:Id`, //Detailed view of the unassigned ticket
         canActivate: [MsalGuard],
         component: L2adminTicketViewComponent,
       },
@@ -231,6 +245,21 @@ const routes: Routes = [
         path: Report, //Report
         canActivate: [MsalGuard],
         component: L2ReportComponent,
+      },
+      {
+        path: Tickets, //View all the tickets raised by an employee
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: RaiseTicketForm, //Form to raise a new ticket
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
+        path: `${TicketDetails}/:id`, //Detailed view of the raised ticket
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
       },
       {
         path: `${AssignedTicketDetails}/:Id`, //detailed view assigned
@@ -286,6 +315,21 @@ const routes: Routes = [
         canActivate: [MsalGuard],
         component: ManagerViewLiveEmployeeTicketsComponent,
       },
+      {
+        path: Tickets, //View all the tickets raised by an employee
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: RaiseTicketForm, //Form to raise a new ticket
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
+        path: `${TicketDetails}/:id`, //Detailed view of the raised ticket
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
+      },
     ],
   },
   //Routes for l1 Admin
@@ -299,6 +343,21 @@ const routes: Routes = [
         path: EscalatedTickets, //View all the escalated tickets from the l2admin
         canActivate: [MsalGuard],
         component: TicketEscalatedComponent,
+      },
+      {
+        path: Tickets, //View all the tickets raised by an employee
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: RaiseTicketForm, //Form to raise a new ticket
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
+        path: `${TicketDetails}/:id`, //Detailed view of the raised ticket
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
       },
       {
         path: `${EscalatedTicketDetails}/:Id`, //Detailed view of the escalated ticket
@@ -333,6 +392,21 @@ const routes: Routes = [
         path: `${PendingAndResolvedTicketDetails}/:Id`, //Detailed view of ticket that require approval
         canActivate: [MsalGuard],
         component: DetailedDhTicketComponent,
+      },
+      {
+        path: Tickets, //View all the tickets raised by an employee
+        canActivate: [MsalGuard],
+        component: EmployeeMyTicketsComponent,
+      },
+      {
+        path: RaiseTicketForm, //Form to raise a new ticket
+        canActivate: [MsalGuard],
+        component: UploadComponent,
+      },
+      {
+        path: `${TicketDetails}/:id`, //Detailed view of the raised ticket
+        canActivate: [MsalGuard],
+        component: RequestToCancelComponent,
       },
     ],
   },

@@ -26,13 +26,17 @@ export class ManagerComponent {
   userRole: string = 'Manager';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/hourglass-start-solid.svg',
+      logo: 'assets/waiting.svg',
       title: 'Waiting for Approval',
     },
     {
-      logo: 'assets/ticket-solid.svg',
+      logo: 'assets/tickets.svg',
       title: 'Employee Tickets',
       subfields: ['Live Tickets', 'All Tickets'],
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
     },
   ];
   showManagerTickets: boolean = false;
@@ -72,6 +76,9 @@ export class ManagerComponent {
     } else if (clickedField.title === 'Waiting for Approval') {
       this.showManagerTickets = true;
       this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showManagerTickets = true;
+      this.router.navigate([`${Manager}/${Tickets}`]);
     } else {
       this.showManagerTickets = false;
     }

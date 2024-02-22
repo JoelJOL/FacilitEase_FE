@@ -22,12 +22,16 @@ export class L1adminComponent {
   userRole: string = 'L1 Admin';
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'Tickets',
       subfields: ['Escalated Tickets', 'All Tickets'],
     },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
+    },
   ];
-  showL2AdminTickets: boolean = false;
+  showL1AdminTickets: boolean = false;
   isSidebarCollapsed: boolean = false;
 
   constructor(
@@ -58,34 +62,37 @@ export class L1adminComponent {
   onFieldClicked(clickedField: any) {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Tickets') {
-      this.showL2AdminTickets = true;
+      this.showL1AdminTickets = true;
       this.router.navigate(['l1admin/escalated-tickets-l1']);
     } else if (clickedField.title === 'Reports') {
-      this.showL2AdminTickets = true;
-      this.router.navigate(['l2report/:id']);
+      this.showL1AdminTickets = true;
+      this.router.navigate(['l1admin/l2report/:id']);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showL1AdminTickets = true;
+      this.router.navigate(['l1admin/my-tickets']);
     } else {
-      this.showL2AdminTickets = false;
+      this.showL1AdminTickets = false;
     }
   }
 
   onSubfieldClicked(event: { field: Field; subfield: string }) {
     if (event.field.title === 'Tickets') {
       if (event.subfield === 'All Tickets') {
-        this.showL2AdminTickets = true;
+        this.showL1AdminTickets = true;
         this.router.navigate(['l1admin/view-all-tickets']);
       } else if (event.subfield === 'Escalated Tickets') {
-        this.showL2AdminTickets = true;
+        this.showL1AdminTickets = true;
         this.router.navigate(['l1admin/escalated-tickets-l1']);
       }
     }
 
     if (event.field.title === 'Data Entry') {
       if (event.subfield === 'Form Entry') {
-        this.showL2AdminTickets = true;
+        this.showL1AdminTickets = true;
         this.router.navigate(['search']);
       }
       if (event.subfield === 'Assign Role') {
-        this.showL2AdminTickets = true;
+        this.showL1AdminTickets = true;
         this.router.navigate(['l1admin/entries']);
       }
     }

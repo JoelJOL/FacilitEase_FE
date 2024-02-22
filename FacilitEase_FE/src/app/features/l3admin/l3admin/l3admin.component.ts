@@ -32,7 +32,7 @@ export class L3adminComponent {
   yourFieldsArray: Field[] = [
     // Array containing fields for the sidebar
     {
-      logo: 'assets/tickets-icon.png',
+      logo: 'assets/tickets.svg',
       title: 'Tickets',
       subfields: [
         'Assigned Tickets',
@@ -42,8 +42,12 @@ export class L3adminComponent {
       ],
     },
     {
-      logo: 'assets/data-entry.png',
+      logo: 'assets/study_reports.svg',
       title: 'Reports',
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Raise A Ticket',
     },
   ];
   showL3AdminTickets: boolean = false; // Flag to control whether to display L3 Admin tickets
@@ -85,6 +89,9 @@ export class L3adminComponent {
     } else if (clickedField.title === 'Reports') {
       this.showL3AdminTickets = true;
       this.router.navigate([`${l3Admin}/${Report}`]);
+    } else if (clickedField.title === 'Raise A Ticket') {
+      this.showL3AdminTickets = true;
+      this.router.navigate([`${l3Admin}/${Tickets}`]);
     } else {
       this.showL3AdminTickets = false;
     }
