@@ -6,7 +6,7 @@
       "username": "Julia",
       "userId": "1",
       "parentId": null,
-      "createdAt": "2021-08-16T23:00:33.010+02:00"
+      "createdAt": "2022-02-01T23:00:33.010+02:00"
     },
     {
       "id": "2",
@@ -18,22 +18,22 @@
     },
     {
       "id": "3",
-      "body": "First comment first child",
+      "body": "First comment nested reply",
       "username": "Johny",
       "userId": "2",
       "parentId": "1",
-      "createdAt": "2021-08-16T23:00:33.010+02:00"
+      "createdAt": "2022-03-16T23:00:33.010+02:00"
     },
     {
       "id": "4",
-      "body": "Second comment second child",
+      "body": "Second comment nested reply",
       "username": "Johny",
       "userId": "2",
       "parentId": "2",
-      "createdAt": "2021-08-16T23:00:33.010+02:00"
+      "createdAt": "2022-04-17T23:00:33.010+02:00"
     },
     {
-      "body": "gfggf",
+      "body": "hello",
       "parentId": null,
       "createdAt": "2022-02-10T09:15:57.873Z",
       "userId": "2",
@@ -47,6 +47,14 @@
       "createdAt": "2024-02-22T06:13:10.702Z",
       "userId": "1",
       "username": "Julia"
+    },
+    {
+      "id": "24d9",
+      "body": "this is nested of the nested",
+      "parentId": "4",
+      "createdAt": "2024-02-22T09:08:08.021Z",
+      "userId": "1",
+      "username": "John"
     }
   ]
 }
