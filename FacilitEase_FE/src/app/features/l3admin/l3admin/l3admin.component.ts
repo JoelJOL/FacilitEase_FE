@@ -13,6 +13,7 @@ import {
   EscalatedTickets,
   Report,
   ResolvedTickets,
+  Tickets,
   l3Admin,
 } from 'environments/environment';
 
