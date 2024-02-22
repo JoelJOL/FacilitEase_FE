@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
+import {
+  TicketsToResolveTicketDetails,
+  l2Admin,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-tickets-to-resolve',
@@ -33,6 +37,6 @@ export class TicketsToResolveComponent {
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l2admin/details-tickets-to-resolve', Id]);
+    this.router.navigate([`${l2Admin}/${TicketsToResolveTicketDetails}`, Id]);
   }
 }

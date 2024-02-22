@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
+import {
+  CancellationRequestTicketDetails,
+  l3Admin,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-cancel-request-view-all',
@@ -21,12 +25,12 @@ export class CancelRequestViewAllComponent {
     'Priority',
     'Status',
     'Department',
-    'Location'
+    'Location',
   ];
   apiLink: string = ''; // API link for fetching all cancel request tickets
   constructor(private agentService: AgentService, private router: Router) {}
 
-   // Lifecycle hook called after Angular initializes the component
+  // Lifecycle hook called after Angular initializes the component
   ngOnInit() {
     // Get the API link for fetching all cancel request tickets
     this.apiLink = this.agentService.getAllCancelRequestTickets();
@@ -36,6 +40,9 @@ export class CancelRequestViewAllComponent {
   // Method called when a row is clicked
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l3admin/request-to-cancel-detail', Id]);
+    this.router.navigate([
+      `${l3Admin}/${CancellationRequestTicketDetails}`,
+      Id,
+    ]);
   }
 }

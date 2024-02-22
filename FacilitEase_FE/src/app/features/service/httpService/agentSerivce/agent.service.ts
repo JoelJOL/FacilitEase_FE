@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l3Models/ticket-details';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Injectable({

@@ -5,7 +5,7 @@ import {
   Department,
   Priority,
   TicketResponse,
-} from '@app/features/l3admin/l2Models/model';
+} from '@app/features/l3admin/l3Models/model';
 import { Observable } from 'rxjs';
 
 @Injectable({

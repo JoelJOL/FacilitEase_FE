@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
+import { EscalatedTickets, l2Admin } from 'environments/environment';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 
@@ -58,7 +59,7 @@ export class DetailsEscalatedComponent {
       (response) => {
         console.log('API call success:', response);
         this.toastr.success('Ticket Resolved Successfully!', 'Success');
-        this.router.navigate(['l2admin/escalated-tickets']);
+        this.router.navigate([`${l2Admin}/${EscalatedTickets}`]);
       },
       (error) => {
         console.error('API call error:', error);

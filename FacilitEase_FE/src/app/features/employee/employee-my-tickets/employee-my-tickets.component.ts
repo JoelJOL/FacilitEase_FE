@@ -1,6 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
+import {
+  Employee,
+  RaiseTicketForm,
+  TicketDetails,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-employee-my-tickets',
@@ -35,18 +40,18 @@ export class EmployeeMyTicketsComponent {
     const currentRoute = this.router.url;
     let targetRoute: string;
     console.log('Row clicked in parent component with ID:', rowId);
-    if (currentRoute.includes('l2admin/my-tickets')) {
-      targetRoute = 'l2admin/request';
-    } else if (currentRoute.includes('employee/my-tickets')) {
-      targetRoute = 'l2admin/request';
-    } else if (currentRoute.includes('l3admin/my-tickets')) {
-      targetRoute = 'l3admin/request';
-    } else if (currentRoute.includes('l1admin/my-tickets')) {
-      targetRoute = 'l1admin/request';
-    } else if (currentRoute.includes('manager/my-tickets')) {
-      targetRoute = 'manager/request';
-    } else if (currentRoute.includes('departmenthead/my-tickets')) {
-      targetRoute = 'departmenthead/request';
+    if (currentRoute.includes(`${l2Admin}/${Tickets}`)) {
+      targetRoute = `${l2Admin}/${TicketDetails}`;
+    } else if (currentRoute.includes(`${Employee}/${Tickets}`)) {
+      targetRoute = `${Employee}/${TicketDetails}`;
+    } else if (currentRoute.includes(`${l3Admin}/${Tickets}`)) {
+      targetRoute = `${l3Admin}/${TicketDetails}`;
+    } else if (currentRoute.includes(`${l1Admin}/${Tickets}`)) {
+      targetRoute = `${l1Admin}/${TicketDetails}`;
+    } else if (currentRoute.includes(`${Manager}/${Tickets}`)) {
+      targetRoute = `${Manager}/${TicketDetails}`;
+    } else if (currentRoute.includes(`${DepartmentHead}/${Tickets}`)) {
+      targetRoute = `${DepartmentHead}/${TicketDetails}`;
     } else {
       targetRoute = '**';
     }
@@ -57,18 +62,18 @@ export class EmployeeMyTicketsComponent {
   raiseTicket() {
     const currentRoute = this.router.url;
     let targetRoute: string;
-    if (currentRoute.includes('l2admin/my-tickets')) {
-      targetRoute = 'l2admin/form';
-    } else if (currentRoute.includes('employee/my-tickets')) {
-      targetRoute = 'l2admin/form';
-    } else if (currentRoute.includes('l3admin/my-tickets')) {
-      targetRoute = 'l3admin/form';
-    } else if (currentRoute.includes('l1admin/my-tickets')) {
-      targetRoute = 'l1admin/form';
-    } else if (currentRoute.includes('manager/my-tickets')) {
-      targetRoute = 'manager/form';
-    } else if (currentRoute.includes('departmenthead/my-tickets')) {
-      targetRoute = 'departmenthead/form';
+    if (currentRoute.includes(`${l2Admin}/${Tickets}`)) {
+      targetRoute = `${l2Admin}/${RaiseTicketForm}`;
+    } else if (currentRoute.includes(`${Employee}/${Tickets}`)) {
+      targetRoute = `${Employee}/${RaiseTicketForm}`;
+    } else if (currentRoute.includes(`${l3Admin}/${Tickets}`)) {
+      targetRoute = `${l3Admin}/${RaiseTicketForm}`;
+    } else if (currentRoute.includes(`${l1Admin}/${Tickets}`)) {
+      targetRoute = `${l1Admin}/${RaiseTicketForm}`;
+    } else if (currentRoute.includes(`${Manager}/${Tickets}`)) {
+      targetRoute = `${Manager}/${RaiseTicketForm}`;
+    } else if (currentRoute.includes(`${DepartmentHead}/${Tickets}`)) {
+      targetRoute = `${DepartmentHead}/${RaiseTicketForm}`;
     } else {
       targetRoute = '**';
     }

@@ -4,9 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
-import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l3Models/ticket-details';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { AssignedTickets, l3Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-agent-ticket-view',
@@ -100,7 +101,7 @@ export class AgentTicketViewComponent {
             (response) => {
               console.log('API call success:', response);
               this.toastr.success('Ticket closed Successfully!', 'Success');
-              this.router.navigate(['l3admin/view-ticket']); // Navigate to view-ticket page
+              this.router.navigate([`${l3Admin}/${AssignedTickets}`]); // Navigate to view-ticket page
             },
             (error) => {
               console.error('API call error:', error);

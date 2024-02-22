@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
-import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l3Models/ticket-details';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { CancellationRequest, l3Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-cancel-request-view',
@@ -90,7 +91,7 @@ export class CancelRequestViewComponent {
                 'Cancellation Request accepted successfully!',
                 'Success'
               );
-              this.router.navigate(['l3admin/cancel-requests']);
+              this.router.navigate([`${l3Admin}/${CancellationRequest}`]);
             },
             (error) => {
               console.error('API call error:', error);
@@ -123,7 +124,7 @@ export class CancelRequestViewComponent {
                 'Cancellation Request denied successfully!',
                 'Success'
               );
-              this.router.navigate(['l3admin/cancel-requests']);
+              this.router.navigate([`${l3Admin}/${CancellationRequest}`]);
             },
             (error) => {
               console.error('API call error:', error);
