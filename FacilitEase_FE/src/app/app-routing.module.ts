@@ -330,7 +330,7 @@ const routes: Routes = [
         component: DepartmentHeadDataTableComponent,
       },
       {
-        path: `${ApprovalPendingTickets}/:Id`, //Detailed view of ticket that require approval
+        path: `${PendingAndResolvedTicketDetails}/:Id`, //Detailed view of ticket that require approval
         canActivate: [MsalGuard],
         component: DetailedDhTicketComponent,
       },

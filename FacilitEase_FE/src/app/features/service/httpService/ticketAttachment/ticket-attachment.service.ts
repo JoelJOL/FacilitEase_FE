@@ -3,7 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TicketAttachment } from '@app/features/l3admin/l2Models/model';
+import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
 
 @Injectable({
   providedIn: 'root',

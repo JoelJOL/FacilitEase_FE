@@ -5,7 +5,7 @@ import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationModalComponent } from '../components/confirmation-modal/confirmation-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l3Models/ticket-details';
 import { ToastrService } from 'ngx-toastr';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { Manager, ApprovalPendingTickets } from 'environments/environment';

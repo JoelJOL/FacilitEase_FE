@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
+import {
+  PendingAndResolvedTicketDetails,
+  l3Admin,
+} from 'environments/environment';
 
 @Component({
   selector: 'app-resolved-tickets-view',
@@ -19,7 +23,7 @@ export class ResolvedTicketsViewComponent {
     'Priority',
     'Status',
     'Department',
-    'Location'
+    'Location',
   ];
   apiLink: string = '';
   constructor(private agentService: AgentService, private router: Router) {}
@@ -27,12 +31,12 @@ export class ResolvedTicketsViewComponent {
     this.apiLink = this.agentService.getAllResolvedTickets();
     console.log(this.apiLink);
   }
-  viewTicket() {
-    this.router.navigate(['/agentticket']);
-  }
+  // viewTicket() {
+  //   this.router.navigate(['/agentticket']);
+  // }
 
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
-    this.router.navigate(['l3admin/view-ticket-detail-noedit', Id]);
+    this.router.navigate([`${l3Admin}/${PendingAndResolvedTicketDetails}`, Id]);
   }
 }

@@ -3,7 +3,7 @@ import { ConfirmationModalComponent } from '../components/confirmation-modal/con
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TicketDetails } from '@app/features/l3admin/l2Models/ticket-details';
+import { TicketDetails } from '@app/features/l3admin/l3Models/ticket-details';
 import { ApprovalPendingTickets } from 'environments/environment';
 
 @Component({

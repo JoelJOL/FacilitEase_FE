@@ -8,7 +8,16 @@ import {
 import { Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modalService/modal.service';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
-import { l3Admin, l2Admin } from 'environments/environment';
+import {
+  l3Admin,
+  l2Admin,
+  EscalatedTicketDetails,
+  EscalatedTickets,
+  AssignedTicketDetails,
+  AssignedTickets,
+  TicketsToResolveTicketDetails,
+  TicketsToResolve,
+} from 'environments/environment';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 
@@ -110,16 +119,16 @@ export class ModalComponent {
           const currentRoute = this.router.url;
           let targetRoute: string;
 
-          if (currentRoute.includes('l2/details-escalated')) {
-            targetRoute = 'l2/escalated-tickets';
+          if (currentRoute.includes(`${l2Admin}/${EscalatedTicketDetails}`)) {
+            targetRoute = `${l2Admin}/${EscalatedTickets}`;
           } else if (
-            currentRoute.includes(`${l3Admin}/view-ticket-in-detail`)
+            currentRoute.includes(`${l3Admin}/${AssignedTicketDetails}`)
           ) {
-            targetRoute = `${l3Admin}/view-ticket`;
+            targetRoute = `${l3Admin}/${AssignedTickets}`;
           } else if (
-            currentRoute.includes(`${l2Admin}/details-tickets-to-resolve`)
+            currentRoute.includes(`${l2Admin}/${TicketsToResolveTicketDetails}`)
           ) {
-            targetRoute = `${l2Admin}/tickets-to-resolve`;
+            targetRoute = `${l2Admin}/${TicketsToResolve}`;
           } else {
             targetRoute = '**';
           }
@@ -155,14 +164,16 @@ export class ModalComponent {
           const currentRoute = this.router.url;
           let targetRoute: string;
 
-          if (currentRoute.includes('l2/details-escalated')) {
-            targetRoute = 'l2/escalated-tickets';
-          } else if (currentRoute.includes('l3admin/view-ticket-in-detail')) {
-            targetRoute = `${l3Admin}/view-ticket`;
+          if (currentRoute.includes(`${l2Admin}/${EscalatedTicketDetails}`)) {
+            targetRoute = `${l2Admin}/${EscalatedTickets}`;
           } else if (
-            currentRoute.includes(`${l2Admin}/details-tickets-to-resolve`)
+            currentRoute.includes(`${l3Admin}/${AssignedTicketDetails}`)
           ) {
-            targetRoute = `${l2Admin}/tickets-to-resolve`;
+            targetRoute = `${l3Admin}/${AssignedTickets}`;
+          } else if (
+            currentRoute.includes(`${l2Admin}/${TicketsToResolveTicketDetails}`)
+          ) {
+            targetRoute = `${l2Admin}/${TicketsToResolve}`;
           } else {
             targetRoute = '**';
           }
