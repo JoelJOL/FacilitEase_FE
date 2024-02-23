@@ -61,17 +61,4 @@ export class AppComponent {
       }
     }
   }
-  updateTicket(isApproved: boolean): void {
-    const ticketId = prompt('Enter Ticket ID:');
-    if (ticketId) {
-      this.approveDenyService.updateTicket(ticketId, isApproved).subscribe(
-        () => {
-          console.log('Ticket updated successfully');
-        },
-        (error) => {
-          console.error('Error updating ticket', error);
-        }
-      );
-    }
-  }
 }

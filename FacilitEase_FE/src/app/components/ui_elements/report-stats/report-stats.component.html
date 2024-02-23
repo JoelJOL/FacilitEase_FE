@@ -5,13 +5,6 @@
     <p>Resolved: {{ dR }}</p>
     <p>Unresolved: {{ dU }}</p>
     <p>Escalated: {{ dE }}</p>
-    <!-- <p>{{ weekReport.dailyTickets }}</p>
-    <p>{{ weekReport.dailyResolved }}</p>
-    <p>{{ weekReport.dailyUnresolved }}</p>
-    <p>{{ weekReport.dailyEscalated }}</p> -->
-    <br />
-    <br />
-    <br />
     <br />
     <div>
       <p>View Details -></p>
@@ -24,6 +17,7 @@
     <div class="doughnut_box shadow m-3 p-3 justify-content-between d-flex">
       <div class="col-6">
         <canvas
+          *ngIf="showDoughnutChart"
           #doughchart
           baseChart
           class="chart"
@@ -32,6 +26,12 @@
           [legend]="false"
         >
         </canvas>
+        <div
+          *ngIf="!showDoughnutChart"
+          class="justify-content-center align-items-center"
+        >
+          <p>No Tickets this week</p>
+        </div>
       </div>
       <div class="ms-3 legendss">
         <div class="legend_div">

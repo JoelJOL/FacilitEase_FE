@@ -338,7 +338,6 @@ const isIE =
     ModalService,
     MasterService,
     NotificationService,
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     //Default intercepter provided my MSAL package
     SharedService,
     {
@@ -348,7 +347,8 @@ const isIE =
     },
     MsalGuard,
     AzureService,
-    // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })
