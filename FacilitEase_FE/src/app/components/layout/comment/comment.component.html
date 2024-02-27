@@ -1,18 +1,18 @@
 <div class="comment">
   <div class="comment-image-container">
-    <img src="/assets/user-icon-new.png" />
+    <img src="/assets/new.jpg" />
   </div>
   <div class="comment-right-part">
     <div class="comment-content">
-      <div class="comment-author">{{ comment.username }}</div>
+      <div class="comment-author">{{ comment.employeeName }}</div>
       <div>{{ createdAt }}</div>
     </div>
-    <div class="comment-text" *ngIf="!isEditing()">{{ comment.body }}</div>
+    <div class="comment-text" *ngIf="!isEditing()">{{ comment.text }}</div>
     <app-comment-form
       *ngIf="isEditing()"
       submitLabel="Update"
       [hasCancelButton]="true"
-      [initialText]="comment.body"
+      [initialText]="comment.text"
       (handleSubmit)="
         updateComment.emit({ text: $event, commentId: comment.id })
       "

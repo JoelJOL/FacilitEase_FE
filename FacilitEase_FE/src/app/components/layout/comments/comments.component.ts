@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActiveCommentInterface } from '@app/active-comment-interface';
 import { CommentInterface } from '@app/comment-interface';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { CommentService } from '@app/features/service/httpService/commentService/comment.service';
 
 @Component({
@@ -8,18 +9,22 @@ import { CommentService } from '@app/features/service/httpService/commentService
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnInit{
-  @Input() currentUserId:string| undefined;
-  comments:CommentInterface[]=[];
+export class CommentsComponent implements OnInit {
+
+  @Input() currentUserId!: number;
+  @Input() ticketId!: number;
+
+  comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
 
-  constructor(private commentService:CommentService){
+  constructor(private commentService: CommentService) {
   }
 
-  ngOnInit():void{
-    this.commentService.getComments().subscribe((comments)=>{
-      console.log('comments',comments)
-      this.comments=comments;
+  ngOnInit(): void {
+    this.commentService.getComments(this.ticketId).subscribe((comments) => {
+      console.log('comments', comments)
+      this.comments = comments;
+      console.log(this.currentUserId);
     })
   }
 
@@ -32,7 +37,7 @@ export class CommentsComponent implements OnInit{
     commentId,
   }: {
     text: string;
-    commentId: string;
+    commentId: number;
   }): void {
     this.commentService
       .updateComment(commentId, text)
@@ -48,7 +53,7 @@ export class CommentsComponent implements OnInit{
       });
   }
 
-  deleteComment(commentId: string): void {
+  deleteComment(commentId: number): void {
     this.commentService.deleteComment(commentId).subscribe(() => {
       this.comments = this.comments.filter(
         (comment) => comment.id !== commentId
@@ -60,22 +65,20 @@ export class CommentsComponent implements OnInit{
     this.activeComment = activeComment;
   }
 
-  addComment({
-    text,
-    parentId,
-  }: {
+  addComment({ text, parentId }: {
     text: string;
-    parentId: string | null;
+    parentId: number | null
   }): void {
     this.commentService
-      .createComment(text, parentId)
+      .addComment(text, parentId, this.ticketId, this.currentUserId)
       .subscribe((createdComment) => {
         this.comments = [...this.comments, createdComment];
+        console.log(this.comments)
         this.activeComment = null;
       });
   }
 
-  getReplies(commentId: string): CommentInterface[] {
+  getReplies(commentId: number): CommentInterface[] {
     return this.comments
       .filter((comment) => comment.parentId === commentId)
       .sort(

@@ -13,48 +13,34 @@ export class CommentService {
 
   userId: number = this.azureService.userId; 
 
-   getComments(): Observable<CommentInterface[]>{
-    return this.httpClient.get<CommentInterface[]>('http://localhost:3000/comments')
+   getComments(ticketId: number): Observable<CommentInterface[]>{
+    return this.httpClient.get<CommentInterface[]>(`https://localhost:7049/api/L3Admin/ticket-commenttext/${ticketId}`)
    }
 
-   createComment(text: string,parentId: string | null = null): Observable<CommentInterface> {
-    return this.httpClient.post<CommentInterface>(
-      'http://localhost:3000/comments',
-      {
-        body: text,
-        parentId,
-        // Should not be set here
-        createdAt: new Date().toISOString(),
-        userId: '1',
-        username: 'John',
-      }
-    );
-  }
 
-  addComment(text: string,parentId: number | null = null): Observable<CommentInterface>{
+  addComment(text: string,parentId: number | null,ticketId:number,userId:number): Observable<CommentInterface>{
     return this.httpClient.post<CommentInterface>(
       `https://localhost:7049/api/L3Admin`,
       {
-        body: text,
+        text,
         parentId,
-        // Should not be set here
-        createdAt: new Date().toISOString(),
-        userId: this.userId,
+        ticketId,
+        userId
       }
     );
   }
 
-  updateComment(id: string, text: string): Observable<CommentInterface> {
+  updateComment(commentId: number, text: string): Observable<CommentInterface> {
     return this.httpClient.patch<CommentInterface>(
-      `http://localhost:3000/comments/${id}`,
+      `https://localhost:7049/api/L3Admin/update-comment/${commentId}`,
       {
-        body: text,
+        text,
       }
     );
   }
 
-  deleteComment(id: string): Observable<{}> {
-    return this.httpClient.delete(`http://localhost:3000/comments/${id}`);
+  deleteComment(commentId: number): Observable<{}> {
+    return this.httpClient.delete(`https://localhost:7049/api/L3Admin/delete-comment/${commentId}`);
   }
   
 }

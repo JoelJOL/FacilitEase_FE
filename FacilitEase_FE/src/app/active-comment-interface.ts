@@ -1,6 +1,6 @@
 import { Activecommenttype } from "./activecommenttype";
 
 export interface ActiveCommentInterface {
-    id: string;
+    id: number;
   type: Activecommenttype;
 }

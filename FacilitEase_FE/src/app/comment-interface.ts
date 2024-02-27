@@ -1,8 +1,8 @@
 export interface CommentInterface {
-    id:string;
-    body:string;
-    username:string;
-    userId:string;
-    parentId:string|null;
+    id:number;
+    text:string;
+    employeeName:string;
+    userId:number;
+    parentId:number|null;
     createdAt:string;
 }
