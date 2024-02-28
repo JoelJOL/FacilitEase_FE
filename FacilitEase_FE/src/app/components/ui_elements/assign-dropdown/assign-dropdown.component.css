@@ -6,15 +6,14 @@ option {
   padding-right: 10px;
 }
 .custom_dropdown {
-  width: 100px;
+  width: 85px;
   border: 1px solid var(--light_grey);
   border-radius: 5px;
   background-color: var(--violet);
   color: #fff;
   appearance: none;
   cursor: pointer;
-  font-size: 16px;
-  height: 45px; /* Adjust the height as needed */
+  font-size: 12px;
+  height: 35px; /* Adjust the height as needed */
   align-items: center;
-  margin-bottom: 20px;
 }

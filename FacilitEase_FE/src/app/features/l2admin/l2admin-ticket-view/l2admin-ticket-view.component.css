@@ -14,3 +14,6 @@
 .details_container {
   padding: 10px;
 }
+.assign_dropdown {
+  margin-bottom: 10px !important;
+}

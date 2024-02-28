@@ -5,17 +5,17 @@
     [ngClass]="'img_user'"
     class="img-fluid rounded-circle user-image"
   />
-  <select
+  <!-- <select
     class="custom_select"
     [(ngModel)]="selectedValue"
     (ngModelChange)="onOptionSelected()"
   >
-    <!-- Default placeholder option with dynamic value -->
+    Default placeholder option with dynamic value
     <option role="menuitem" class="dropdown-item" [value]="''">
       {{ userRoleService.getUserRole() }}
     </option>
 
-    <!-- Actual options -->
+    Actual options
     <option
       *ngFor="let role of userRoles"
       role="menuitem"
@@ -24,5 +24,6 @@
     >
       {{ role }}
     </option>
-  </select>
+  </select> -->
+  <div class="custom_select">{{ userRoleService.getUserRole() }}</div>
 </div>
