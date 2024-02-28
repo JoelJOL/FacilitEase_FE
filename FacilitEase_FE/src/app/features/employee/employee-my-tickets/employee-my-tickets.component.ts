@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DropDownService } from '@app/features/service/httpService/dropDownService/dropdown.service';
 import {
@@ -12,6 +13,7 @@ import {
   l2Admin,
   l3Admin,
 } from 'environments/environment';
+import { UploadComponent } from '../upload/upload.component';
 
 @Component({
   selector: 'app-employee-my-tickets',
@@ -20,7 +22,11 @@ import {
 })
 export class EmployeeMyTicketsComponent {
   // Constructor with injected services
-  constructor(private masterService: DropDownService, private router: Router) {}
+  constructor(
+    private masterService: DropDownService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   // Table headers for ticket information
   headers: string[] = [
@@ -39,7 +45,15 @@ export class EmployeeMyTicketsComponent {
     // Fetch the API link for employee's tickets from masterService
     this.apiLink = this.masterService.getMyTickets();
   }
+  openTicketModal(): void {
+    const dialogRef = this.dialog.open(UploadComponent, {
+      width: '500px', // Adjust width as needed
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
   // Function triggered when a table row is clicked
   onRowClicked(rowId: any) {
     // Log the clicked row ID and navigate to the detailed view

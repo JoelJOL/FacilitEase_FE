@@ -6,7 +6,6 @@
 .ticket_desc p {
   font-size: medium;
   line-height: 1.2;
-  
 }
 
 .ticket_sub {
@@ -28,4 +27,3 @@
   flex: 0.6; /* Make created-date take up 1/3 of the available space */
   text-align: right; /* Align text to the right */
 }
-
