@@ -89,10 +89,9 @@ export class DataTableNewComponent implements OnInit {
         critical_priority: cellValue === 'Critical',
       };
     }
-    if  (columnKey === 'id')
-    {
+    if (columnKey === 'id') {
       return {
-        id_column: true // Add the class 'id_column' for cells in the "Id" column
+        id_column: true, // Add the class 'id_column' for cells in the "Id" column
       };
     }
     if (columnKey === 'status') {

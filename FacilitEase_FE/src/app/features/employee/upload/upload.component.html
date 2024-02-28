@@ -1,9 +1,13 @@
 <!-- Form to raise a ticket -->
-<div class="container">
+<br /><br />
+<div class="overlay"></div>
+<div class="heading">
+  <button mat-icon-button class="close-button" (click)="onCancel()">
+    <mat-icon class="close">close</mat-icon>
+  </button>
   <h1>Raise a Ticket</h1>
-  <div *ngIf="successMessage" class="success-message">
-    {{ successMessage }}
-  </div>
+</div>
+<div class="modal_ container">
   <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <select id="categoryId" formControlName="categoryId" required>
@@ -96,6 +100,14 @@
       >
         Reset
       </button>
+      <!-- <button
+        type="button"
+        class="btn-cancel"
+        color="primary"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button> -->
     </div>
   </form>
 </div>
