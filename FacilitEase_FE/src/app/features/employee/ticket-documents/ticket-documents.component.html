@@ -4,15 +4,21 @@
     <h4 id="attachment_heading">
       {{ headerText }}
     </h4>
-    <div class="thumbnail-container" (click)="openFile()">
+    <div class="thumbnail-container">
       <img
         *ngIf="isImage; else fileIcon"
         [src]="fileUrl"
         alt="Image Thumbnail"
         class="thumbnail"
+        (click)="openFile()"
       />
       <ng-template #fileIcon>
-        <img class="thumbnail" src="./assets/file-solid.svg" alt="File Icon" />
+        <img
+          (click)="openFile()"
+          class="thumbnail"
+          src="./assets/file-solid.svg"
+          alt="File Icon"
+        />
       </ng-template>
     </div>
   </div>
