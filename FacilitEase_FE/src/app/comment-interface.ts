@@ -3,7 +3,7 @@ export interface CommentInterface {
     text:string;
     employeeName:string;
     userId:number;
-    parentId:number|null;
+    parentId:number;
     createdAt:string;
     replies: CommentInterface[]; 
 }

@@ -42,16 +42,22 @@ export class CommentsComponent implements OnInit {
     this.commentService
       .updateComment(commentId, text)
       .subscribe((updatedComment) => {
-        this.comments = this.comments.map((comment) => {
-          if (comment.id === commentId) {
-            return updatedComment;
-          }
-          return comment;
-        });
-
+        // If the updated comment is a root comment, update it in the root comments list
+        const rootCommentIndex = this.comments.findIndex(comment => comment.id == commentId);
+        console.log(rootCommentIndex);
+        if (rootCommentIndex !== -1) {
+            this.comments[rootCommentIndex] = updatedComment;
+            console.log("This is needed",this.comments);
+        } else {
+            // If the updated comment is a reply, find its parent comment and update it in the replies
+            console.log("Hi");
+            this.modifyParentCommentReplies(this.comments, updatedComment.parentId, updatedComment);
+        }
+        
         this.activeComment = null;
       });
   }
+
 
   deleteComment(commentId: number): void {
     this.commentService.deleteComment(commentId).subscribe(() => {
@@ -94,6 +100,28 @@ export class CommentsComponent implements OnInit {
       }
     }
   }
+
+  modifyParentCommentReplies(comments: CommentInterface[], parentId: number, newComment: CommentInterface): void {
+    
+    for (const comment of comments) {
+      console.log(comment.id)
+      console.log(parentId)
+        if (comment.id == parentId) {
+
+            // Replace the parent comment's replies with the new reply
+            comment.replies = [newComment];
+            console.log("Hiii",comment.replies)
+            return;
+        }
+        if (comment.replies) {
+            // Recursively search for the parent comment in the replies
+            this.updateParentCommentReplies(comment.replies, parentId, newComment);
+        }
+    }
+}
+
+
+  
 
   
 
