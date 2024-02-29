@@ -65,18 +65,37 @@ export class CommentsComponent implements OnInit {
     this.activeComment = activeComment;
   }
 
-  addComment({ text, parentId }: {
-    text: string;
-    parentId: number | null
-  }): void {
+  addComment({ text, parentId }: { text: string; parentId: number | null }): void {
     this.commentService
       .addComment(text, parentId, this.ticketId, this.currentUserId)
       .subscribe((createdComment) => {
-        this.comments = [...this.comments, createdComment];
-        console.log(this.comments)
+        // If parentId is null, it means it's a root comment
+        if (parentId === null) {
+          // Add the new comment to the root comments list
+          this.comments = [...this.comments, createdComment];
+        } else {
+          // Find the parent comment in the comments list
+          this.updateParentCommentReplies(this.comments, parentId, createdComment);
+        }
         this.activeComment = null;
       });
   }
+
+  updateParentCommentReplies(comments: CommentInterface[], parentId: number, newComment: CommentInterface): void {
+    for (const comment of comments) {
+      if (comment.id === parentId) {
+        // Update the parent comment's replies with the new reply
+        comment.replies = [...(comment.replies || []), newComment];
+        return;
+      }
+      if (comment.replies) {
+        // Recursively search for the parent comment in the replies
+        this.updateParentCommentReplies(comment.replies, parentId, newComment);
+      }
+    }
+  }
+
+  
 
   getReplies(commentId: number): CommentInterface[] {
     return this.comments

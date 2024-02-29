@@ -5,4 +5,5 @@ export interface CommentInterface {
     userId:number;
     parentId:number|null;
     createdAt:string;
+    replies: CommentInterface[]; 
 }
