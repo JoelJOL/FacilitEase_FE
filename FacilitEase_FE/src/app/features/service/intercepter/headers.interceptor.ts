@@ -22,7 +22,6 @@ export class HeadersInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${idToken}`,
       },
     });
-    console.log('Modified Request:', modifiedRequest);
     // Pass the modified request to the next handler
     return next.handle(modifiedRequest);
   }

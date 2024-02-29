@@ -8,6 +8,7 @@ body {
   font-family: "Poppins", sans-serif !important;
   margin: 0%;
   padding: 0%;
+  font-size: 12px !important;
 }
 :root {
   --violet: #320242;
@@ -35,7 +36,7 @@ body {
   --escalated_status_bg: rgba(222, 117, 110, 0.4);
   --cancelrequested_status_bg: rgba(218, 222, 110, 0.4);
   --cancelrequested: #cc6321c4;
-  --cancel_request_status:#9a3b01c4;
+  --cancel_request_status: #9a3b01c4;
   --green: #320242;
   --ticket_status: #ffe9c4;
   --ticket_status_color: #f59e0b;

@@ -28,7 +28,7 @@ export class ManagerComponent {
   yourFieldsArray: Field[] = [
     {
       logo: 'assets/waiting.svg',
-      title: 'Waiting for Approval',
+      title: 'Tickets Waiting for Approval',
     },
     {
       logo: 'assets/tickets.svg',
@@ -74,7 +74,7 @@ export class ManagerComponent {
     console.log(`Handling in App Component for ${clickedField.title}`);
     if (clickedField.title === 'Employee Tickets') {
       this.showManagerTickets = true;
-    } else if (clickedField.title === 'Waiting for Approval') {
+    } else if (clickedField.title === 'Tickets Waiting for Approval') {
       this.showManagerTickets = true;
       this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
     } else if (clickedField.title === 'Raise A Ticket') {

@@ -155,6 +155,7 @@ import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ti
 import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
+import { InvoiceUploadComponent } from './components/layout/invoice-upload/invoice-upload.component';
 import { CommentsComponent } from './components/layout/comments/comments.component';
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
@@ -282,6 +283,7 @@ const isIE =
     TicketDetailsEscalatedComponent,
     ViewAllTicketsComponent,
     TicketViewL1Component,
+    InvoiceUploadComponent,
     CommentsComponent,
     CommentComponent,
     CommentFormComponent
@@ -344,7 +346,6 @@ const isIE =
     ModalService,
     MasterService,
     NotificationService,
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     //Default intercepter provided my MSAL package
     SharedService,
     {
@@ -354,7 +355,8 @@ const isIE =
     },
     MsalGuard,
     AzureService,
-    // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })

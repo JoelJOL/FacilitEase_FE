@@ -26,7 +26,7 @@ export class DepartmentheadComponent {
 
   yourFieldsArray: Field[] = [
     {
-      logo: 'assets/tickets.svg',
+      logo: 'assets/waiting.svg',
       title: 'Tickets Waiting For Approval',
     },
     {
