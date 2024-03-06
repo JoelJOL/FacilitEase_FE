@@ -25,7 +25,7 @@ export class InvoiceDisplayComponent implements OnInit {
   // Lifecycle hook: Executes when the component is initialized
   ngOnInit(): void {
     // First API endpoint to fetch document information by ticket ID
-    const firstApiEndpoint = `${this.apiUrl}/api/Invoice/getInvoices${this.ticketId}`;
+    const firstApiEndpoint = `${this.apiUrl}/api/Invoice/getInvoices/${this.ticketId}`;
 
     // Fetch the document data from the first API endpoint
     this.getFileData(firstApiEndpoint).subscribe(
