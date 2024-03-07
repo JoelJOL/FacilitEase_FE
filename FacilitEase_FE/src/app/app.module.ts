@@ -159,6 +159,7 @@ import { InvoiceUploadComponent } from './components/layout/invoice-upload/invoi
 import { CommentsComponent } from './components/layout/comments/comments.component';
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
+import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -286,7 +287,8 @@ const isIE =
     InvoiceUploadComponent,
     CommentsComponent,
     CommentComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    InvoiceDisplayComponent
   ],
   imports: [
     HttpClientModule,
