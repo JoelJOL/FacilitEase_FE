@@ -7,21 +7,26 @@
     [headerText]="customHeaderText"
     [ticketId]="ticketId"
   ></app-ticket-documents>
-  <app-assign-dropdown
-    class="assign_dropdown"
-    [label]="'Assign To'"
-    [options]="agents"
-    displayKey="agentName"
-    valueProperty="agentId"
-    (onItemSelected)="onAgentSelected($event, ticketId)"
-  ></app-assign-dropdown>
+  <div class="assign_dropdown">
+    <app-assign-dropdown
+      [label]="'Assign To'"
+      [options]="agents"
+      displayKey="agentName"
+      valueProperty="agentId"
+      (onItemSelected)="onAgentSelected($event, ticketId)"
+    ></app-assign-dropdown>
+  </div>
   <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments> -->
   <div class="container">
     <div class="left-column">
+      <app-invoice-upload></app-invoice-upload>
+      <br />
+      <app-invoice-display></app-invoice-display>
       <app-ticket-notes-attachments
         [ticketId]="ticketId"
         (editModeChanged)="onEditModeChange($event)"
       ></app-ticket-notes-attachments>
+      <br />
       <app-title-sub [headings]="titleSubHeadings"></app-title-sub>
     </div>
     <div class="right-column">

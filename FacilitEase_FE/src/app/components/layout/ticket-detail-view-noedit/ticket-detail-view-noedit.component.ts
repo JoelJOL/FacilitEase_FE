@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Component({
   selector: 'app-ticket-detail-view-noedit',
@@ -7,7 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class TicketDetailViewNoeditComponent {
   customHeaderText = 'Supported Attachments';
-  constructor() {}
+  currentUserId: number = this.azureService.userId; 
+  constructor( private azureService: AzureService) {
+    console.log("This is the ID",this.currentUserId);
+  }
   @Input() ticketId: number = 0;
   ngOnInit() {
     console.log(this.ticketId);

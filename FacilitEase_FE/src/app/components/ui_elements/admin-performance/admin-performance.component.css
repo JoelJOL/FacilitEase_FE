@@ -5,6 +5,7 @@
   border-radius: 10px;
   flex: 1;
   background-color: white;
+  cursor: pointer;
 }
 .show_performance_toggle {
   border: 2px solid var(--violet);
@@ -13,6 +14,17 @@
   text-align: center;
   border-radius: 10px;
   flex: 1;
+  cursor: pointer;
+}
+.show_performance_none {
+  border: 2px solid var(--light_grey);
+  background-color: var(--light_grey);
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  flex: 1;
+  cursor: auto;
+  pointer-events: none;
 }
 .show_performance_number {
   font-size: 30px;
@@ -24,7 +36,6 @@
   font-size: 20px;
 }
 .ticket_statuses {
-  cursor: pointer;
   border-radius: 10px;
   transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
