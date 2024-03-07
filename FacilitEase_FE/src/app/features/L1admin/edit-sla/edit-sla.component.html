@@ -1,20 +1,29 @@
 <div class="escalation-times">
-  <h2>Escalation Time Chart</h2>
-  <div class="escalation-time" *ngFor="let escalationTime of showTimes; let i = index">
-    <div class="escalation-time-info">
-      <p>Category Name: {{ escalationTime.categoryName }}</p>
-    </div>
-    <div class="escalation-time-edit">
-      <label for="timeInput{{i}}">Time (minutes):</label>
-      <!-- Toggle between span and input based on edit mode -->
-      <ng-container *ngIf="!escalationTime.editMode; else editMode">
-        <span (click)="toggleEditMode(escalationTime)">{{ escalationTime.time }}</span>
-      </ng-container>
-      <ng-template #editMode>
-        <input type="number" id="timeInput{{i}}" [(ngModel)]="escalationTime.time" (blur)="toggleEditMode(escalationTime)">
-      </ng-template>
-    </div>
-    <button *ngIf="!escalationTime.editMode" (click)="toggleEditMode(escalationTime)">Edit</button>
-    <button *ngIf="escalationTime.editMode" (click)="saveEscalationTime(escalationTime, i)">Save</button>
-  </div>
+  <h2 class="heading">Escalation Time Chart</h2>
+  <table class="escalation-table">
+    <thead>
+      <tr>
+        <th class="category-column">Category</th>
+        <th class="time-column">Time (minutes)</th>
+        <th class="edit-column">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let escalationTime of showTimes; let i = index">
+        <td>{{ escalationTime.categoryName }}</td>
+        <td>
+          <ng-container *ngIf="!escalationTime.editMode; else editMode">
+            <span (click)="toggleEditMode(escalationTime)">{{ escalationTime.time }}</span>
+          </ng-container>
+          <ng-template #editMode>
+            <input type="number" [(ngModel)]="escalationTime.time">
+          </ng-template>
+        </td>
+        <td>
+          <app-button color="submit" *ngIf="!escalationTime.editMode" (click)="toggleEditMode(escalationTime)">Edit</app-button>
+          <app-button color="submit" *ngIf="escalationTime.editMode" (click)="saveEscalationTime(escalationTime, i)">Save</app-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
