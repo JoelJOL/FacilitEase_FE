@@ -161,6 +161,7 @@ import { CommentComponent } from './components/layout/comment/comment.component'
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
 import { CommentsNoeditComponent } from './comments-noedit/comments-noedit.component';
+import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -291,6 +292,7 @@ const isIE =
     CommentFormComponent,
     CommentNoeditComponent,
     CommentsNoeditComponent
+    InvoiceDisplayComponent
   ],
   imports: [
     HttpClientModule,
