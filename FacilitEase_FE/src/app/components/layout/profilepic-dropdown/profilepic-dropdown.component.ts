@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
-import { MsalService } from '@azure/msal-angular';
-import { environment } from 'environments/environment';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 @Component({
   selector: 'app-profilepic-dropdown',
   templateUrl: './profilepic-dropdown.component.html',
   styleUrls: ['./profilepic-dropdown.component.css'],
 })
-export class ProfilepicDropdownComponent {
-  constructor(private azureService: AzureService) {}
+export class ProfilepicDropdownComponent implements OnInit {
+  userRole: string = '';
   userName: string = '';
+
+  constructor(
+    private azureService: AzureService,
+    private userRoleService: UserRoleService
+  ) {}
+
   ngOnInit() {
     this.userName = this.azureService.userName;
+    this.userRole = this.userRoleService.getUserRole();
   }
+
   Logout() {
     this.azureService.Logout();
   }

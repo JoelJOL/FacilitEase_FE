@@ -158,6 +158,7 @@ import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-
 import { CommentsComponent } from './components/layout/comments/comments.component';
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
+import { HeaderLayoutNewComponent } from './components/layout/header-layout-new/header-layout-new.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -284,7 +285,8 @@ const isIE =
     TicketViewL1Component,
     CommentsComponent,
     CommentComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    HeaderLayoutNewComponent
   ],
   imports: [
     HttpClientModule,
