@@ -8,8 +8,5 @@ import { Component, Input } from '@angular/core';
 export class TicketDescriptionComponent {
   ticket: any = [];
   @Input() ticketDetails: any;
-  ngOnChanges() {
-    console.log(this.ticketDetails);
-  }
   constructor() {}
 }
