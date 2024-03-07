@@ -1,13 +1,13 @@
 .notification-icon {
   position: relative;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .notification-icon img {
-  height: 40px;
-  width: 42px;
-  padding-right: 6px;
+  height: 30px;
+  width: 30px;
+  margin-top: 5px;
 }
 
 .notification-count {
