@@ -110,7 +110,7 @@ import {
   ActiveTickets,
   EditSLA,
 } from 'environments/environment';
-import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component';
+import { EditSlaComponent } from './features/l2admin/edit-sla/edit-sla.component';
 
 //MsalGuard: Route can only be activated if the user has signed in using their microsoft account
 //Other Guards: Route that is protected and only the users with the specific roles can access the routes
@@ -180,7 +180,7 @@ const routes: Routes = [
         component: L2ReportComponent,
       },
       {
-        path: EditSLA, 
+        path: EditSLA,
         canActivate: [MsalGuard],
         component: EditSlaComponent,
       },
@@ -424,4 +424,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

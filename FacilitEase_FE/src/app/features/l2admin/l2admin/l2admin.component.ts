@@ -54,7 +54,7 @@ export class L2AdminComponent {
       title: 'Raise A Ticket',
     },
     {
-      logo: 'assets/hourglass-start-solid.svg',
+      logo: 'assets/waiting.svg',
       title: 'Edit Escalation Time',
     },
     // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
@@ -70,7 +70,7 @@ export class L2AdminComponent {
     private notificationService: NotificationService,
     private azureService: AzureService,
     private toastr: ToastrService
-  ) {}
+  ) { }
   ngOnInit() {
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
@@ -103,7 +103,7 @@ export class L2AdminComponent {
     } else if (clickedField.title === 'Edit Escalation Time') {
       this.showL2AdminTickets = true;
       this.router.navigate([`${l2Admin}/${EditSLA}`]);
-    }else {
+    } else {
       this.showL2AdminTickets = false;
     }
   }
