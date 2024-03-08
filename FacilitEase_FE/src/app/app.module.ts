@@ -291,10 +291,10 @@ const isIE =
     CommentsComponent,
     CommentComponent,
     CommentFormComponent,
-    HeaderLayoutNewComponent
+    HeaderLayoutNewComponent,
     CommentNoeditComponent,
-    CommentsNoeditComponent
-    InvoiceDisplayComponent
+    CommentsNoeditComponent,
+    InvoiceDisplayComponent,
   ],
   imports: [
     HttpClientModule,
