@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InvoiceFileUploadService } from '@app/features/service/httpService/invoiceService/invoice-file-upload.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { InvoiceFileUploadService } from '@app/features/service/httpService/invo
 })
 export class InvoiceUploadComponent {
   selectedFile: File | null = null;
-  ticketId: number = 26;
+  @Input() ticketId: number = 0;
   @Output() fileUploaded = new EventEmitter<void>();
 
   constructor(private fileUploadService: InvoiceFileUploadService) {}

@@ -19,7 +19,7 @@
   <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments> -->
   <div class="container">
     <div class="left-column">
-      <app-invoice-upload></app-invoice-upload>
+      <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
       <br />
       <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
       <app-ticket-notes-attachments
