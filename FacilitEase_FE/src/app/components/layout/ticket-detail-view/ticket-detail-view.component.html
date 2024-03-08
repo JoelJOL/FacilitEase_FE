@@ -6,6 +6,10 @@
   [headerText]="customHeaderText"
   [ticketId]="ticketId"
 ></app-ticket-documents>
+<div>
+  <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
+  <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+</div>
 <div class="container">
   <div class="left-column">
     <!-- <app-ticket-notes-attachments
@@ -18,9 +22,7 @@
     ></app-comments>
     <app-title-sub [headings]="headings"></app-title-sub>
   </div>
-  <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
-  <br />
-  <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+
   <div class="right-column">
     <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
   </div>

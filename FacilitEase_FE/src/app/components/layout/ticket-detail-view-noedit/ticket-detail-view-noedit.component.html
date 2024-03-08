@@ -3,10 +3,13 @@
 <app-ticket-description
   [ticketDetails]="ticketDetails"
 ></app-ticket-description>
-<app-ticket-documents
-  [headerText]="customHeaderText"
-  [ticketId]="ticketId"
-></app-ticket-documents>
+<div class="d-flex">
+  <app-ticket-documents
+    [headerText]="customHeaderText"
+    [ticketId]="ticketId"
+  ></app-ticket-documents>
+  <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+</div>
 <div class="container">
   <div class="left-column">
     <!-- <app-ticket-na-simple [ticketId]="ticketId"></app-ticket-na-simple> -->
