@@ -294,7 +294,7 @@ const isIE =
     HeaderLayoutNewComponent,
     CommentNoeditComponent,
     CommentsNoeditComponent,
-    InvoiceDisplayComponent
+    InvoiceDisplayComponent,
   ],
   imports: [
     HttpClientModule,
