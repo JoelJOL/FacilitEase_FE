@@ -1,0 +1,12 @@
+<div class="comments">
+  <div class="comment-form-title">Comments</div>
+  <div class="comments-container">
+    <app-comment-noedit
+      *ngFor="let rootComment of getRootComments()"
+      [comment]="rootComment"
+      [replies]="getReplies(rootComment.id)"
+      [currentUserId]="currentUserId"
+    >
+    </app-comment-noedit>
+  </div>
+</div>

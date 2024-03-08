@@ -12,24 +12,24 @@ export class CommentComponent implements OnInit{
   @Input() comment!: CommentInterface;
   @Input() activeComment!: ActiveCommentInterface | null;
   @Input() replies!: CommentInterface[];
-  @Input() currentUserId: string|undefined;
-  @Input() parentId!: string | null;
+  @Input() currentUserId!: number;
+  @Input() parentId!: number | null;
 
   @Output()
   setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
   @Output()
-  deleteComment = new EventEmitter<string>();
+  deleteComment = new EventEmitter<number>();
   @Output()
-  addComment = new EventEmitter<{ text: string; parentId: string | null }>();
+  addComment = new EventEmitter<{ text: string; parentId: number | null }>();
   @Output()
-  updateComment = new EventEmitter<{ text: string; commentId: string }>();
+  updateComment = new EventEmitter<{ text: string; commentId: number }>();
 
   createdAt: string = '';
   canReply: boolean = false;
   canEdit: boolean = false;
   canDelete: boolean = false;
   activeCommentType = Activecommenttype;
-  replyId: string | null = null;
+  replyId: number | null = null;
 
   ngOnInit(): void {
     const fiveMinutes = 300000;
@@ -39,12 +39,13 @@ export class CommentComponent implements OnInit{
       fiveMinutes;
     this.createdAt = new Date(this.comment.createdAt).toLocaleDateString();
     this.canReply = Boolean(this.currentUserId);
-    this.canEdit = this.currentUserId === this.comment.userId && !timePassed;
+    this.canEdit = this.currentUserId == this.comment.userId && !timePassed;
     this.canDelete =
-      this.currentUserId === this.comment.userId &&
+      this.currentUserId == this.comment.userId &&
       this.replies.length === 0 &&
       !timePassed;
     this.replyId = this.parentId ? this.parentId : this.comment.id;
+
   }
 
   isReplying(): boolean {

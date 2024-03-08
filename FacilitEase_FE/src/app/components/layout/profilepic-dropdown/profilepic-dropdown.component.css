@@ -2,7 +2,6 @@
   background-color: white;
   width: 160px;
   text-align: center;
-  padding-right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,14 +13,12 @@
   height: 40px;
   width: 40px;
   margin-right: 10px;
+  border-radius: 20%; /* This will make the image a squircle */
 }
 
 .dropdown-toggle-split {
-  background-color: var(--blue_violet);
   border-radius: 50px;
-  width: 40px;
   border-color: white;
-  background-color: var(--violet);
 }
 
 .dropdown-menu {
@@ -34,10 +31,16 @@
 }
 #button-split {
   height: 40px;
+  left: -10px;
 }
 .down_arrow {
   width: 10px;
   height: 10px;
+}
+
+.dropdown-toggle-split::after {
+  position: relative;
+  top: -8px; /* Adjust the top position to move it a little above */
 }
 #dropdown-split {
   height: 40px;
@@ -47,4 +50,12 @@
 
 .dropdown-item {
   font-size: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.smaller-font {
+  font-size: 0.9em; /* Adjust the font size as needed */
 }

@@ -1,27 +1,17 @@
 <div class="btn-group" dropdown>
   <span pan type="" class="pro_div">
-    <img
-      class="pro_pic"
-      src="https://cdn4.iconfinder.com/data/icons/people-avatar-1-1/128/50-512.png"
-    /><img /> {{ userName }}
+    <img class="pro_pic" src="../../../../assets/user.jpg" /><img />
+    <div class="user-info">
+      <span class="bold single-line">{{ userName }}</span> <!-- Make username bold and display on a single line -->
+      <br>
+      <span class="smaller-font">{{ userRole }}</span> <!-- Display user role with smaller font size -->
+    </div>
   </span>
-  <button
-    id="button-split"
-    type="button"
-    dropdownToggle
-    class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-    aria-controls="dropdown-split"
-  >
+  <button id="button-split" type="button" dropdownToggle class="btn dropdown-toggle dropdown-toggle-split" aria-controls="dropdown-split">
     <span class="down_arrow caret"></span>
     <span class="sr-only visually-hidden">Split button!</span>
   </button>
-  <ul
-    id="dropdown-split"
-    *dropdownMenu
-    class="dropdown-menu"
-    role="menu"
-    aria-labelledby="button-split"
-  >
+  <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
     <li role="menuitem">
       <p class="dropdown-item" (click)="Logout()">Log Out</p>
     </li>

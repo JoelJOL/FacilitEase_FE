@@ -1,25 +1,69 @@
+.heading {
+  font-size: 1.75em;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif !important;
+  margin-left: 1%;
+}
+
 .escalation-times {
-    font-family: Arial, sans-serif;
-  }
-  
-  .escalation-time {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .escalation-time-info {
-    flex-grow: 1;
-  }
-  
-  .escalation-time-edit {
-    flex-grow: 1;
-  }
-  
-  input[type="number"] {
-    width: 100px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
+  margin: 20px;
+}
+
+.escalation-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px; /* Add rounded border */
+  overflow: hidden; /* Ensure rounded border is applied */
+}
+
+.escalation-table th,
+.escalation-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.escalation-table th {
+  background-color: var(--light_violet);
+  font-size: 15px;
+  font-weight: 1000;
+  padding: 2%;
+}
+
+.escalation-table td {
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Adjust width for category and edit columns */
+.escalation-table .category-column {
+  width: 50%; /* Adjust width for category column */
+}
+
+.escalation-table .edit-column {
+  width: 10%; /* Adjust width for edit column */
+}
+
+.escalation-time-edit input[type="number"] {
+  width: 70px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.escalation-time-edit span {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.escalation-time-edit input[type="number"]:focus {
+  outline: none;
+  border-color: var(--blue_violet);
+}
+
+.escalation-time-edit span:hover {
+  background-color: var(--blue_violet);
+  color: white;
+  border-radius: 5px;
+}

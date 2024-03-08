@@ -2,43 +2,45 @@ import { Injectable } from '@angular/core';
 import { CommentInterface } from '@app/comment-interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private azureService: AzureService) {}
 
-   getComments(): Observable<CommentInterface[]>{
-    return this.httpClient.get<CommentInterface[]>('http://localhost:3000/comments')
+  userId: number = this.azureService.userId; 
+
+   getComments(ticketId: number): Observable<CommentInterface[]>{
+    return this.httpClient.get<CommentInterface[]>(`https://localhost:7049/api/L3Admin/ticket-commenttext/${ticketId}`)
    }
 
-   createComment(text: string,parentId: string | null = null): Observable<CommentInterface> {
+
+  addComment(text: string,parentId: number | null,ticketId:number,userId:number): Observable<CommentInterface>{
     return this.httpClient.post<CommentInterface>(
-      'http://localhost:3000/comments',
+      `https://localhost:7049/api/L3Admin`,
       {
-        body: text,
+        text,
         parentId,
-        // Should not be set here
-        createdAt: new Date().toISOString(),
-        userId: '1',
-        username: 'John',
+        ticketId,
+        userId
       }
     );
   }
 
-  updateComment(id: string, text: string): Observable<CommentInterface> {
+  updateComment(commentId: number, text: string): Observable<CommentInterface> {
     return this.httpClient.patch<CommentInterface>(
-      `http://localhost:3000/comments/${id}`,
+      `https://localhost:7049/api/L3Admin/update-comment/${commentId}`,
       {
-        body: text,
+        text,
       }
     );
   }
 
-  deleteComment(id: string): Observable<{}> {
-    return this.httpClient.delete(`http://localhost:3000/comments/${id}`);
+  deleteComment(commentId: number): Observable<{}> {
+    return this.httpClient.delete(`https://localhost:7049/api/L3Admin/delete-comment/${commentId}`);
   }
   
 }
