@@ -21,7 +21,7 @@
     <div class="left-column">
       <app-invoice-upload></app-invoice-upload>
       <br />
-      <app-invoice-display></app-invoice-display>
+      <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
       <app-ticket-notes-attachments
         [ticketId]="ticketId"
         (editModeChanged)="onEditModeChange($event)"

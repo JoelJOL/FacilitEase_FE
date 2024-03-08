@@ -113,4 +113,10 @@ export class L2adminTicketViewComponent {
     console.log('Captured!');
     console.log(this.editMode);
   }
+
+  isFileUploaded = false;
+
+  onFileUploaded() {
+    this.isFileUploaded = true;
+  }
 }

@@ -8,7 +8,7 @@ import { InvoiceFileUploadService } from '@app/features/service/httpService/invo
 })
 export class InvoiceUploadComponent {
   selectedFile: File | null = null;
-  ticketId: number = 23;
+  ticketId: number = 26;
   @Output() fileUploaded = new EventEmitter<void>();
 
   constructor(private fileUploadService: InvoiceFileUploadService) {}
@@ -24,6 +24,8 @@ export class InvoiceUploadComponent {
         .subscribe(
           (response) => {
             console.log('File uploaded successfully', response);
+
+            this.fileUploaded.emit();
           },
           (error) => {
             console.error('Error uploading file', error);

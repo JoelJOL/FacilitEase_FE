@@ -1,0 +1,15 @@
+.thumbnail {
+  width: 40px; /* Ensure the image takes up the full width of the container */
+  height: 40px; /* Maintain the aspect ratio */
+  display: block;
+  cursor: pointer;
+}
+h4 {
+  font-family: "Poppins", sans-serif !important;
+}
+.documents {
+  margin-bottom: 10px;
+}
+.thumbnail-container {
+  margin-top: -5px;
+}
