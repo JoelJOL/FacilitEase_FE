@@ -54,7 +54,7 @@ export class L2AdminComponent {
       title: 'Raise A Ticket',
     },
     {
-      logo: 'assets/add_ticket.svg',
+      logo: 'assets/hourglass-start-solid.svg',
       title: 'Edit Escalation Time',
     },
     // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
