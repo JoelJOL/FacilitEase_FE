@@ -10,6 +10,7 @@ import {
   AssignedTickets,
   CancellationRequest,
   CancellationRequestTicketDetails,
+  EditSLA,
   EscalatedTickets,
   Report,
   Tickets,
@@ -51,6 +52,10 @@ export class L2AdminComponent {
     {
       logo: 'assets/add_ticket.svg',
       title: 'Raise A Ticket',
+    },
+    {
+      logo: 'assets/add_ticket.svg',
+      title: 'Edit Escalation Time',
     },
     // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
   ];
@@ -95,7 +100,10 @@ export class L2AdminComponent {
     } else if (clickedField.title === 'Raise A Ticket') {
       this.showL2AdminTickets = true;
       this.router.navigate([`${l2Admin}/${Tickets}`]);
-    } else {
+    } else if (clickedField.title === 'Edit Escalation Time') {
+      this.showL2AdminTickets = true;
+      this.router.navigate([`${l2Admin}/${EditSLA}`]);
+    }else {
       this.showL2AdminTickets = false;
     }
   }

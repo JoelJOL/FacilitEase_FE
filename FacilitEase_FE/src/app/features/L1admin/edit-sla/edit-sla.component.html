@@ -1,8 +1,9 @@
 <div class="escalation-times">
   <h2 class="heading">Escalation Time Chart</h2>
   <table class="escalation-table">
-    <thead>
+    <thead id="tablehead">
       <tr>
+        <th class="id-column">Id</th>
         <th class="category-column">Category</th>
         <th class="time-column">Time (minutes)</th>
         <th class="edit-column">Edit</th>
@@ -10,6 +11,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let escalationTime of showTimes; let i = index">
+        <td>{{ i + 1 }}</td> <!-- Print index + 1 to start from 1 instead of 0 -->
         <td>{{ escalationTime.categoryName }}</td>
         <td>
           <ng-container *ngIf="!escalationTime.editMode; else editMode">

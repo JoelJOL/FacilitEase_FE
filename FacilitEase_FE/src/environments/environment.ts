@@ -33,6 +33,7 @@ export const AssignedTicketDetails = 'details-assigned';
 export const EscalatedTicketDetails = 'details-escalated';
 export const TicketsToResolveTicketDetails = 'details-tickets-to-resolve';
 export const CancellationRequestTicketDetails = 'cancel-requests';
+export const EditSLA = 'edit-sla';
 
 //L3Admin
 export const ResolvedTickets = 'resolved-tickets';
