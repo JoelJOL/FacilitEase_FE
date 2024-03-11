@@ -78,4 +78,18 @@ export class InvoiceDisplayComponent implements OnInit {
       window.open(this.fileUrl, '_blank');
     }
   }
+
+  deleteInvoice(): void {
+    const apiUrl = `https://localhost:7049/api/Invoice/delete/${this.ticketId}`;
+
+    this.http.delete(apiUrl).subscribe(
+      () => {
+        console.log('Invoice deleted successfully.');
+      },
+      (error) => {
+        console.error('Error deleting invoice:', error);
+        // Handle error accordingly
+      }
+    );
+  }
 }

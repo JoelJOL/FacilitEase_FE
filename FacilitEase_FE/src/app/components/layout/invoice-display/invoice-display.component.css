@@ -13,3 +13,8 @@ h4 {
 .thumbnail-container {
   margin-top: -5px;
 }
+.delete-icon {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}

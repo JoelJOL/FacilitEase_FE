@@ -12,6 +12,12 @@
         class="thumbnail"
         (click)="openFile()"
       />
+      <img
+        src="./assets/delete.svg"
+        alt=""
+        class="delete-icon"
+        (click)="deleteInvoice()"
+      />
       <ng-template #fileIcon>
         <img
           (click)="openFile()"
