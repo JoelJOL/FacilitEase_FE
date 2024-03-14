@@ -8,7 +8,7 @@ describe('InvoiceUploadComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InvoiceUploadComponent]
+      declarations: [InvoiceUploadComponent],
     });
     fixture = TestBed.createComponent(InvoiceUploadComponent);
     component = fixture.componentInstance;
