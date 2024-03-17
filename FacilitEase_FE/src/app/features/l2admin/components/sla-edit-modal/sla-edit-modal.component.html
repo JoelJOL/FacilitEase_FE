@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Confirmation</h2>
+<mat-dialog-content>
+  <p>Expected to be resolved by the date: {{ data }}</p>
+  <button mat-button color="primary" (click)="onEditClick()">Edit</button>
+  <ng-container *ngIf="editingMode">
+    <mat-form-field>
+      <input matInput placeholder="Number of days to add" [(ngModel)]="daysToAdd">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Reason for change" [(ngModel)]="comment"></textarea>
+    </mat-form-field>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="editingMode; else readonlyActions">
+  <app-button color="submit" (click)="onSaveClick()">Save</app-button>
+  <app-button color="rejected" (click)="onCancelEditClick()">Cancel</app-button>
+</mat-dialog-actions>
+<ng-template #readonlyActions>
+  <mat-dialog-actions>
+    <app-button color="submit" (click)="onYesClick()" id="button2">Submit</app-button>
+    <app-button color="rejected" (click)="onNoClick()" id="button1">Cancel</app-button>
+  </mat-dialog-actions>
+</ng-template>

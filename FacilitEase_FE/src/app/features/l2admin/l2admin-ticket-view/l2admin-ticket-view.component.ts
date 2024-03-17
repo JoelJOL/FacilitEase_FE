@@ -14,6 +14,8 @@ import {
   UnassignedTickets,
   l2Admin,
 } from 'environments/environment';
+import { map } from 'rxjs/operators';
+import { SlaEditModalComponent } from '../components/sla-edit-modal/sla-edit-modal.component';
 
 @Component({
   selector: 'app-l2admin-ticket-view',
@@ -85,6 +87,21 @@ export class L2adminTicketViewComponent {
     console.log(selectedAgent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        this.http.get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`)
+        .pipe(
+          map((resolvingTime: any) => {
+            // Adjust this based on the actual response structure
+            // Assuming resolvingTime is a string representing datetime
+            return new Date(resolvingTime.toString());
+          })
+        )
+        .subscribe((resolvingTime:Date) => {
+            const dialogRef = this.dialog.open(SlaEditModalComponent, {
+              width: '400px',
+              data: resolvingTime,
+            });
+        }
+        );
         this.http
           .put('https://localhost:7049/api/l2/assign-ticket', data, {
             responseType: 'text',

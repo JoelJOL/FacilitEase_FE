@@ -159,7 +159,8 @@ import { CommentsComponent } from './components/layout/comments/comments.compone
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 import { HeaderLayoutNewComponent } from './components/layout/header-layout-new/header-layout-new.component';
-
+import { SlaEditModalComponent } from './features/l2admin/components/sla-edit-modal/sla-edit-modal.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -286,7 +287,8 @@ const isIE =
     CommentsComponent,
     CommentComponent,
     CommentFormComponent,
-    HeaderLayoutNewComponent
+    HeaderLayoutNewComponent,
+    SlaEditModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -300,6 +302,7 @@ const isIE =
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatFormFieldModule,
     CommonModule,
     FormsModule,
     ModalModule.forRoot(),
