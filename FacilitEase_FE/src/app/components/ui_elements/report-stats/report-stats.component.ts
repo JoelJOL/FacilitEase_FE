@@ -25,6 +25,7 @@ export class ReportStatsComponent {
   @ViewChild('escalatedLegend')
   escalatedLegend!: ElementRef;
 
+  showDoughnutChart: boolean = true;
   weekReport = {
     dailyTickets: 0,
     dailyResolved: 0,
@@ -60,6 +61,14 @@ export class ReportStatsComponent {
       this.dR = this.weekReport.dailyResolved;
       this.dU = this.weekReport.dailyUnresolved;
       this.dE = this.weekReport.dailyEscalated;
+
+      if (
+        data.weeklyResolved == 0 &&
+        data.weeklyUnresolved == 0 &&
+        data.weeklyEscalated == 0
+      ) {
+        this.showDoughnutChart = false;
+      }
 
       this.reportDataService.weekReport = this.weekReport;
       console.log(this.doughnutChartData.datasets[0].data);

@@ -1,0 +1,21 @@
+<!-- <input
+  type="file"
+  accept=".pdf, .jpg, .png, jpeg"
+  (change)="onFileSelected($event)"
+/>
+<app-button color="accepted" (click)="uploadFile()">Upload Invoice</app-button>
+
+<br /> -->
+<!-- invoice-upload.component.html -->
+<input
+  type="file"
+  accept=".pdf, .jpg, .png, jpeg"
+  (change)="onFileSelected($event)"
+/>
+<app-button color="accepted" (click)="uploadFile()">Upload Invoice</app-button>
+
+<div class="progress-container" *ngIf="selectedFile">
+  <div class="progress-bar" [style.width]="uploadProgress + '%'"></div>
+</div>
+
+<br />

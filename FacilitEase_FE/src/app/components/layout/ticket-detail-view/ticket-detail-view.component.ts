@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { TicketNotesAttachmentsComponent } from '../ticket-notes-attachments/ticket-notes-attachments.component';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Component({
   selector: 'app-ticket-detail-view',
@@ -10,7 +11,7 @@ export class TicketDetailViewComponent {
   customHeaderText = 'Supported Attachments'; // Custom header text for the component  
   editMode: boolean = false; // Property to hold edit mode value
   @Output() editModeChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-
+  currentUserId: number = this.azureService.userId; 
   // Input properties
   @Input() ticketDetails!: any; // Holds ticket details
   @Input() headings: any[] = []; // Array of headings
@@ -18,7 +19,9 @@ export class TicketDetailViewComponent {
 
   @ViewChild(TicketNotesAttachmentsComponent) ticketNotesAttachmentsComponent!: TicketNotesAttachmentsComponent;
 
-  constructor() {} 
+  constructor( private azureService: AzureService) {
+    console.log("This is the ID",this.currentUserId);
+  } 
 
   // Method to capture edit mode change
   onEditModeChange(editMode: boolean) {

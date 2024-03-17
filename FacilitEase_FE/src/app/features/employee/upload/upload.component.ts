@@ -1,5 +1,5 @@
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 import {
@@ -24,7 +25,7 @@ function maxWordsValidator(maxWords: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     // Check and validate word count in textarea
     if (!control.value) {
-      return null; // If the control is empty, consider it valid
+      return null;
     }
 
     const wordCount = control.value.trim().split(/\s+/).length;
@@ -54,7 +55,9 @@ export class UploadComponent implements OnInit {
     private employeeUploadService: GetAPIService,
     private http: HttpClient,
     private azureService: AzureService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialogRef: MatDialogRef<UploadComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     // Form group initialization with validations
     this.uploadForm = new FormGroup({
@@ -66,9 +69,8 @@ export class UploadComponent implements OnInit {
       departmentId: new FormControl(1),
       categoryId: new FormControl('', Validators.required),
       file: new FormControl(null),
-      UserId: new FormControl(19),
-      CreatedBy: new FormControl(19),
-      UpdatedBy: new FormControl(19),
+      CreatedBy: new FormControl(),
+      UpdatedBy: new FormControl(),
     });
   }
 
@@ -89,7 +91,9 @@ export class UploadComponent implements OnInit {
       departmentId: 1,
     });
   }
-
+  onCancel(): void {
+    this.dialogRef.close();
+  }
   // Function to load categories from the API
   loadCategories(): void {
     this.employeeUploadService.getCategoriesForFacilitiease().subscribe(
@@ -120,7 +124,7 @@ export class UploadComponent implements OnInit {
   // Function to handle form submission
   onSubmit() {
     console.log('Submit button clicked');
-
+    this.onCancel();
     // Check if categoryId has a value
     const isCategoryIdValid = this.uploadForm.get('categoryId')?.value !== null;
 

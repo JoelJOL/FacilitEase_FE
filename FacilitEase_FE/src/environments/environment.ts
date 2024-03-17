@@ -3,6 +3,15 @@ export const environment = {
   postLogoutUrl: 'http://localhost:4200',
 };
 //Roles
+export enum Roles {
+  L1ADMIN = 'l1admin',
+  L2ADMIN = 'l2admin',
+  L3ADMIN = 'l3admin',
+  EMPLOYEE = 'employee',
+  MANAGER = 'manager',
+  DEPARTMENTHEAD = 'departmenthead',
+}
+
 export const l1Admin = 'l1admin';
 export const l2Admin = 'l2admin';
 export const l3Admin = 'l3admin';

@@ -17,7 +17,7 @@ import { Employee, Tickets } from 'environments/environment';
   styleUrls: ['./request-to-cancel.component.css'],
 })
 export class RequestToCancelComponent {
-  customHeaderText = 'Supported Attachments';
+  //customHeaderText = 'Supported Attachments';
 
   // Ticket ID and details initialization
   ticketId: number = 0;

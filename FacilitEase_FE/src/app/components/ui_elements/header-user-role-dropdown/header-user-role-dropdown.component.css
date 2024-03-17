@@ -5,9 +5,9 @@
   border: 1px solid var(--dark_grey);
   border-radius: 20px;
   align-items: center;
-  z-index:-100;
+  z-index: -100;
 }
-.option{
+.option {
   width: 200px;
 }
 .img_user {
@@ -20,4 +20,5 @@
   border: none;
   font-weight: bold;
   align-items: center;
+  margin-right: 10px;
 }

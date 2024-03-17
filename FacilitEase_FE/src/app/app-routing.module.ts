@@ -116,6 +116,7 @@ import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component
 //Other Guards: Route that is protected and only the users with the specific roles can access the routes
 //Resolve functions used: in-build functions to check if the user has the permission to access the route based on the roles
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   //Routes for the employee login
   {
     path: Employee,
@@ -141,9 +142,8 @@ const routes: Routes = [
       },
     ],
   },
-  //Routes for the l2 Admin
   {
-    path: l2Admin,
+    path: l2Admin, //Routes for the l2 Admin
     canActivate: [MsalGuard, IsL2Admin],
     resolve: [LoginEnter],
     component: L2AdminComponent,
@@ -199,7 +199,8 @@ const routes: Routes = [
         canActivate: [MsalGuard],
         component: RequestToCancelComponent,
       },
-      { path: `${UnassignedTicketDetails}/:Id`, //Detailed view of the unassigned ticket
+      {
+        path: `${UnassignedTicketDetails}/:Id`, //Detailed view of the unassigned ticket
         canActivate: [MsalGuard],
         component: L2adminTicketViewComponent,
       },
@@ -226,9 +227,8 @@ const routes: Routes = [
       },
     ],
   },
-  //Routes for the l3 Admin
   {
-    path: l3Admin,
+    path: l3Admin, //Routes for the l3 Admin
     canActivate: [MsalGuard, IsL3Admin],
     resolve: [LoginEnter],
     component: L3adminComponent,
@@ -290,9 +290,8 @@ const routes: Routes = [
       },
     ],
   },
-  //Routes for the Manager
   {
-    path: Manager,
+    path: Manager, //Routes for the Manager
     component: ManagerComponent,
     canActivate: [MsalGuard, IsManager],
     canActivateChild: [IsManager],
@@ -339,9 +338,8 @@ const routes: Routes = [
       },
     ],
   },
-  //Routes for l1 Admin
   {
-    path: l1Admin,
+    path: l1Admin, //Routes for l1 Admin
     component: L1adminComponent,
     canActivate: [MsalGuard, IsL1Admin],
     resolve: [LoginEnter],
@@ -383,9 +381,8 @@ const routes: Routes = [
       },
     ],
   },
-  //Routes for departmenthead
   {
-    path: DepartmentHead,
+    path: DepartmentHead, //Routes for departmenthead
     component: DepartmentheadComponent,
     canActivate: [MsalGuard, IsDepartmentHead],
     resolve: [LoginEnter],

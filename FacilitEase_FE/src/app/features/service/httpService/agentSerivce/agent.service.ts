@@ -96,7 +96,7 @@ export class AgentService {
 
   // Method to add a new comment for a ticket
   addComment(text: string, ticketId: number): Observable<any> {
-    const commentData = { text, ticketId };
+    const commentData = { text, ticketId, userId: this.userId };
     const url = `https://localhost:7049/api/L3Admin`;
     return this.http.post(`${url}`, commentData);
   }

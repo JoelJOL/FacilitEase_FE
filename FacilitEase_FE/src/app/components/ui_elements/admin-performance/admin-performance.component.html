@@ -4,7 +4,8 @@
       class="ticket_statuses shadow"
       [ngClass]="{
         show_performance: selectedDivIndex !== indexOfDiv,
-        show_performance_toggle: selectedDivIndex === indexOfDiv
+        show_performance_toggle: selectedDivIndex === indexOfDiv,
+        show_performance_none: data[indexOfDiv] == 0
       }"
       (click)="ChangeClass(indexOfDiv)"
     >

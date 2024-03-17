@@ -155,12 +155,16 @@ import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ti
 import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
+import { InvoiceUploadComponent } from './components/layout/invoice-upload/invoice-upload.component';
 import { CommentsComponent } from './components/layout/comments/comments.component';
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 import { HeaderLayoutNewComponent } from './components/layout/header-layout-new/header-layout-new.component';
 import { SlaEditModalComponent } from './features/l2admin/components/sla-edit-modal/sla-edit-modal.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
+import { CommentsNoeditComponent } from './comments-noedit/comments-noedit.component';
+import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
+
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
   window.navigator.userAgent.indexOf('MSIE') > -1 ||
@@ -284,11 +288,15 @@ const isIE =
     TicketDetailsEscalatedComponent,
     ViewAllTicketsComponent,
     TicketViewL1Component,
+    InvoiceUploadComponent,
     CommentsComponent,
     CommentComponent,
     CommentFormComponent,
     HeaderLayoutNewComponent,
-    SlaEditModalComponent
+    SlaEditModalComponent,
+    CommentNoeditComponent,
+    CommentsNoeditComponent,
+    InvoiceDisplayComponent,
   ],
   imports: [
     HttpClientModule,
@@ -349,7 +357,6 @@ const isIE =
     ModalService,
     MasterService,
     NotificationService,
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     //Default intercepter provided my MSAL package
     SharedService,
     {
@@ -359,7 +366,8 @@ const isIE =
     },
     MsalGuard,
     AzureService,
-    // { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })
