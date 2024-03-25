@@ -35,12 +35,12 @@ export class L3adminComponent {
     {
       logo: 'assets/tickets.svg',
       title: 'Tickets',
-      subfields: [
-        'Assigned Tickets',
-        'Forwarded for Approval',
-        'Cancellation Requests',
-        'Closed Tickets',
-      ],
+      // subfields: [
+      //   'Assigned Tickets',
+      //   'Forwarded for Approval',
+      //   'Cancellation Requests',
+      //   'Closed Tickets',
+      // ],
     },
     {
       logo: 'assets/study_reports.svg',
@@ -62,7 +62,7 @@ export class L3adminComponent {
     private notificationService: NotificationService,
     private azureService: AzureService,
     private toastr: ToastrService
-  ) {}
+  ) { }
   ngOnInit() {
     // Set the user role and subscribe to sidebar collapse state changes
     this.userRoleService.setUserRole(this.userRole);

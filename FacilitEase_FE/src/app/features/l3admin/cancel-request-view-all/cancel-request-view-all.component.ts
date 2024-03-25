@@ -2,7 +2,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgentService } from '@app/features/service/httpService/agentSerivce/agent.service';
 import {
+  ApprovalPendingTickets,
+  AssignedTickets,
+  CancellationRequest,
   CancellationRequestTicketDetails,
+  ResolvedTickets,
   l3Admin,
 } from 'environments/environment';
 
@@ -12,6 +16,8 @@ import {
   styleUrls: ['./cancel-request-view-all.component.css'],
 })
 export class CancelRequestViewAllComponent {
+  activeBox: number = 3;
+
   tickets: any = []; // Array to store cancel request tickets
   @Output() rowClicked = new EventEmitter<number>(); // Event emitter for emitting row click
 
@@ -28,7 +34,7 @@ export class CancelRequestViewAllComponent {
     'Location',
   ];
   apiLink: string = ''; // API link for fetching all cancel request tickets
-  constructor(private agentService: AgentService, private router: Router) {}
+  constructor(private agentService: AgentService, private router: Router) { }
 
   // Lifecycle hook called after Angular initializes the component
   ngOnInit() {
@@ -44,5 +50,17 @@ export class CancelRequestViewAllComponent {
       `${l3Admin}/${CancellationRequestTicketDetails}`,
       Id,
     ]);
+  }
+  activateBox(boxNumber: number) {
+    this.activeBox = boxNumber;
+    if (this.activeBox === 1) {
+      this.router.navigate([`${l3Admin}/${AssignedTickets}`]);
+    } else if (this.activeBox === 4) {
+      this.router.navigate([`${l3Admin}/${ResolvedTickets}`]);
+    } else if (this.activeBox === 2) {
+      this.router.navigate([`${l3Admin}/${ApprovalPendingTickets}`]);
+    } else if (this.activeBox === 3) {
+      this.router.navigate([`${l3Admin}/${CancellationRequest}`]);
+    }
   }
 }

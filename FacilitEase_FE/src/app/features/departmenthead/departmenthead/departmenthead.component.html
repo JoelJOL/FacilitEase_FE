@@ -1,16 +1,12 @@
 <!-- unassigned-tickets.component.html -->
 <div class="side-container">
   <div class="app_sidebar">
-    <app-sidebar
-      [fields]="yourFieldsArray"
-      (clicked)="onFieldClicked($event)"
-      (subfieldClicked)="onSubfieldClicked($event)"
-    ></app-sidebar>
+    <app-sidebar [fields]="yourFieldsArray" (clicked)="onFieldClicked($event)"
+      (subfieldClicked)="onSubfieldClicked($event)"></app-sidebar>
   </div>
-
+  <app-header-layout-new class="header"></app-header-layout-new>
   <div class="col-md-12 side_display" [class.collapsed]="isSidebarCollapsed">
-    <app-header-layout-new></app-header-layout-new>
-    <div *ngIf="showDepartmentHeadTickets">
+    <div *ngIf="showDepartmentHeadTickets" class="side_component">
       <router-outlet></router-outlet>
     </div>
   </div>

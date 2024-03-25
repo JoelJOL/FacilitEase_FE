@@ -1,10 +1,11 @@
 <div class="display">
   <h2 class="heading">Assigned Tickets</h2>
-
-  <app-data-table-new
-    [headers]="headers"
-    [apiLink]="apiLink"
-    (rowClicked)="onRowClicked($event)"
-    id="datatable"
-  ></app-data-table-new>
+  <div class="button-container">
+    <div class="box" [ngClass]="{ 'active': activeBox === 1 }" (click)="activateBox(1)">Assigned Tickets</div>
+    <div class="box" [ngClass]="{ 'active': activeBox === 2 }" (click)="activateBox(2)">Forwarded For Approval</div>
+    <div class="box" [ngClass]="{ 'active': activeBox === 3 }" (click)="activateBox(3)">Cancellation Requests</div>
+    <div class="box" [ngClass]="{ 'active': activeBox === 4 }" (click)="activateBox(4)">Closed Tickets</div>
+  </div>
+  <app-data-table-new [headers]="headers" [apiLink]="apiLink" (rowClicked)="onRowClicked($event)"
+    id="datatable"></app-data-table-new>
 </div>

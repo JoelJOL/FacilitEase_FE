@@ -8,6 +8,7 @@ import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Component({
   selector: 'app-detailed-dh-ticket',
@@ -20,6 +21,7 @@ export class DetailedDhTicketComponent implements OnInit {
   ticketId: number = 0;
   editMode: boolean = false;
   modalRef: BsModalRef | undefined;
+  currentUserId: number = this.azureService.userId;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +29,9 @@ export class DetailedDhTicketComponent implements OnInit {
     private approveDenyService: ApproveDenyService,
     private modalService: BsModalService,
     private toastr: ToastrService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private azureService: AzureService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

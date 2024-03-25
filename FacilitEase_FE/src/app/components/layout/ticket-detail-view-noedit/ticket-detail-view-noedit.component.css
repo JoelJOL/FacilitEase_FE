@@ -11,3 +11,8 @@
   .right-column {
     width:27%; /* Adjust the width as needed */
   }
+  .invoice{
+    margin: 0;
+    padding: 0;
+    margin-top: -10px;
+  }

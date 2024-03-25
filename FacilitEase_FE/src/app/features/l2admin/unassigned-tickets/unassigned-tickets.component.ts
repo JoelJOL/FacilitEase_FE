@@ -12,6 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import {
+  AssignedTickets,
+  CancellationRequest,
+  EscalatedTickets,
+  TicketsToResolve,
   UnassignedTicketDetails,
   UnassignedTickets,
   l2Admin,
@@ -56,6 +60,7 @@ export class UnassignedTicketsComponent {
   //   console.log('Row clicked in parent component with ID:', Id);
   //   this.router.navigate([`${l2Admin}/${UnassignedTicketDetails}`, Id]);
   // }
+  activeBox: number = 1;
   @ViewChild(FilterComponent) filterModal!: FilterComponent;
   headers: string[] = [
     'ID',
@@ -93,7 +98,7 @@ export class UnassignedTicketsComponent {
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
   apiLink = this.masterService.getApiLinkUnassigned();
 
   ngOnInit(): void {
@@ -141,6 +146,7 @@ export class UnassignedTicketsComponent {
       this.router.navigate([currentUrl]);
     });
   }
+
   getCellClasses(columnKey: string, cellValue: any) {
     if (columnKey === 'priority') {
       return {
@@ -262,5 +268,20 @@ export class UnassignedTicketsComponent {
 
     // Load data
     this.loadData();
+  }
+
+  activateBox(boxNumber: number) {
+    this.activeBox = boxNumber;
+    if (this.activeBox === 1) {
+      this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
+    } else if (this.activeBox === 2) {
+      this.router.navigate([`${l2Admin}/${AssignedTickets}`]);
+    } else if (this.activeBox === 3) {
+      this.router.navigate([`${l2Admin}/${EscalatedTickets}`]);
+    } else if (this.activeBox === 4) {
+      this.router.navigate([`${l2Admin}/${TicketsToResolve}`]);
+    } else if (this.activeBox === 5) {
+      this.router.navigate([`${l2Admin}/${CancellationRequest}`]);
+    }
   }
 }

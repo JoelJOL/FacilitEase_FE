@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '../../service/dataService/masterService/master.service';
-import { AssignedTicketDetails, l2Admin } from 'environments/environment';
+import { AssignedTicketDetails, AssignedTickets, CancellationRequest, EscalatedTickets, TicketsToResolve, UnassignedTickets, l2Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-assigned-tickets',
@@ -30,6 +30,8 @@ export class AssignedTicketsComponent {
   //       }
   //     );
   // }
+  activeBox: number = 2;
+
   headers: string[] = [
     'ID',
     'Ticket Name',
@@ -43,7 +45,7 @@ export class AssignedTicketsComponent {
   ];
   apiLink: string = '';
 
-  constructor(private masterService: MasterService, private router: Router) {}
+  constructor(private masterService: MasterService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiLink = this.masterService.getApiLinkAssigned();
@@ -52,5 +54,19 @@ export class AssignedTicketsComponent {
   onRowClicked(Id: any) {
     console.log('Row clicked in parent component with ID:', Id);
     this.router.navigate([`${l2Admin}/${AssignedTicketDetails}`, Id]);
+  }
+  activateBox(boxNumber: number) {
+    this.activeBox = boxNumber;
+    if (this.activeBox === 1) {
+      this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
+    } else if (this.activeBox === 2) {
+      this.router.navigate([`${l2Admin}/${AssignedTickets}`]);
+    } else if (this.activeBox === 3) {
+      this.router.navigate([`${l2Admin}/${EscalatedTickets}`]);
+    } else if (this.activeBox === 4) {
+      this.router.navigate([`${l2Admin}/${TicketsToResolve}`]);
+    } else if (this.activeBox === 5) {
+      this.router.navigate([`${l2Admin}/${CancellationRequest}`]);
+    }
   }
 }

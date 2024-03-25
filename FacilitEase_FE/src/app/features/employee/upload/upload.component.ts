@@ -25,7 +25,7 @@ function maxWordsValidator(maxWords: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     // Check and validate word count in textarea
     if (!control.value) {
-      return null; // If the control is empty, consider it valid
+      return null;
     }
 
     const wordCount = control.value.trim().split(/\s+/).length;
@@ -69,9 +69,8 @@ export class UploadComponent implements OnInit {
       departmentId: new FormControl(1),
       categoryId: new FormControl('', Validators.required),
       file: new FormControl(null),
-      UserId: new FormControl(19),
-      CreatedBy: new FormControl(19),
-      UpdatedBy: new FormControl(19),
+      CreatedBy: new FormControl(),
+      UpdatedBy: new FormControl(),
     });
   }
 
