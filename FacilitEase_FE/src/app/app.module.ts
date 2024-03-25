@@ -291,9 +291,9 @@ const isIE =
     CommentsComponent,
     CommentComponent,
     CommentFormComponent,
-    HeaderLayoutNewComponent
+    HeaderLayoutNewComponent,
     CommentNoeditComponent,
-    CommentsNoeditComponent
+    CommentsNoeditComponent,
     InvoiceDisplayComponent
   ],
   imports: [
@@ -368,4 +368,4 @@ const isIE =
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })
-export class AppModule {}
+export class AppModule { }

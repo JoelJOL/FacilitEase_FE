@@ -14,7 +14,7 @@ export class L2ReportComponent {
     private router: Router,
     private masterService: MasterService,
     private azureService: AzureService
-  ) {}
+  ) { }
   ticketStatus: number = 10;
   headers: string[] = [
     'ID',
@@ -28,7 +28,7 @@ export class L2ReportComponent {
     'Location',
   ];
   ngOnInit(): void {
-    this.apiLink = `https://localhost:7049/api/L3AdminReport/tickets/admin/${this.azureService.userId}`;
+    this.apiLink = `https://localhost:7049/api/tickets/admin/${this.azureService.userId}`;
   }
   apiLink: string = '';
   onValueChange(ticketStatus: number) {
