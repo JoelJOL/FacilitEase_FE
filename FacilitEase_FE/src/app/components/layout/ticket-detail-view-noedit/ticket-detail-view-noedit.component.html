@@ -1,22 +1,14 @@
 <!-- <app-ticket-header></app-ticket-header> -->
 <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
-<app-ticket-description
-  [ticketDetails]="ticketDetails"
-></app-ticket-description>
+<app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
 <div class="d-flex">
-  <app-ticket-documents
-    [headerText]="customHeaderText"
-    [ticketId]="ticketId"
-  ></app-ticket-documents>
+  <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
   <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
 </div>
 <div class="container">
   <div class="left-column">
     <!-- <app-ticket-na-simple [ticketId]="ticketId"></app-ticket-na-simple> -->
-    <app-comments-noedit
-      [currentUserId]="currentUserId"
-      [ticketId]="ticketId"
-    ></app-comments-noedit>
+    <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
     <app-title-sub [headings]="headings"></app-title-sub>
   </div>
   <div class="right-column">

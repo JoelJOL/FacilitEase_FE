@@ -147,7 +147,7 @@ import { LoadingComponent } from './components/ui_elements/loading/loading.compo
 import { NotificationComponent } from './components/layout/notification/notification.component';
 import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve/tickets-to-resolve.component';
 import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
-import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component';
+import { EditSlaComponent } from './features/l2admin/edit-sla/edit-sla.component';
 import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-cancellation.component';
 import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
 import { CategoryReportTableComponent } from './components/layout/category-report-table/category-report-table.component';
@@ -371,4 +371,4 @@ const isIE =
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })
-export class AppModule {}
+export class AppModule { }

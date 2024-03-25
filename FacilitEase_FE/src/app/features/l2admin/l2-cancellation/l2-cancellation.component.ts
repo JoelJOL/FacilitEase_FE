@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import {
+  AssignedTickets,
+  CancellationRequest,
   CancellationRequestTicketDetails,
+  EscalatedTickets,
+  TicketsToResolve,
+  UnassignedTickets,
   l2Admin,
 } from 'environments/environment';
 
@@ -12,6 +17,8 @@ import {
   styleUrls: ['./l2-cancellation.component.css'],
 })
 export class L2CancellationComponent {
+  activeBox: number = 5;
+
   headers: string[] = [
     'ID',
     'Ticket Name',
@@ -25,7 +32,7 @@ export class L2CancellationComponent {
   ];
   apiLink: string = '';
 
-  constructor(private masterService: MasterService, private router: Router) {}
+  constructor(private masterService: MasterService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiLink = this.masterService.getApiLinkCancellationRequests();
@@ -36,5 +43,19 @@ export class L2CancellationComponent {
       `${l2Admin}/${CancellationRequestTicketDetails}`,
       rowId,
     ]);
+  }
+  activateBox(boxNumber: number) {
+    this.activeBox = boxNumber;
+    if (this.activeBox === 1) {
+      this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
+    } else if (this.activeBox === 2) {
+      this.router.navigate([`${l2Admin}/${AssignedTickets}`]);
+    } else if (this.activeBox === 3) {
+      this.router.navigate([`${l2Admin}/${EscalatedTickets}`]);
+    } else if (this.activeBox === 4) {
+      this.router.navigate([`${l2Admin}/${TicketsToResolve}`]);
+    } else if (this.activeBox === 5) {
+      this.router.navigate([`${l2Admin}/${CancellationRequest}`]);
+    }
   }
 }

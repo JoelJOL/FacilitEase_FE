@@ -16,6 +16,7 @@ import {
 } from 'environments/environment';
 import { map } from 'rxjs/operators';
 import { SlaEditModalComponent } from '../components/sla-edit-modal/sla-edit-modal.component';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Component({
   selector: 'app-l2admin-ticket-view',
@@ -27,7 +28,7 @@ export class L2adminTicketViewComponent {
   ticketDetails: any = [];
   modalRef: BsModalRef | undefined;
   ticketId: any;
-
+  currentUserId: number = this.azureService.userId;
   constructor(
     private route: ActivatedRoute,
     private agentService: AgentService,
@@ -35,8 +36,9 @@ export class L2adminTicketViewComponent {
     private dropDownService: DropDownService,
     private http: HttpClient,
     private dialog: MatDialog,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private azureService: AzureService
+  ) { }
   titleSubHeadings: any = [];
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -88,20 +90,20 @@ export class L2adminTicketViewComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.http.get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`)
-        .pipe(
-          map((resolvingTime: any) => {
-            // Adjust this based on the actual response structure
-            // Assuming resolvingTime is a string representing datetime
-            return new Date(resolvingTime.toString());
-          })
-        )
-        .subscribe((resolvingTime:Date) => {
+          .pipe(
+            map((resolvingTime: any) => {
+              // Adjust this based on the actual response structure
+              // Assuming resolvingTime is a string representing datetime
+              return new Date(resolvingTime.toString());
+            })
+          )
+          .subscribe((resolvingTime: Date) => {
             const dialogRef = this.dialog.open(SlaEditModalComponent, {
               width: '400px',
               data: { resolvingTime: resolvingTime, ticketId: ticketId }
             });
-        }
-        );
+          }
+          );
         this.http
           .put('https://localhost:7049/api/l2/assign-ticket', data, {
             responseType: 'text',

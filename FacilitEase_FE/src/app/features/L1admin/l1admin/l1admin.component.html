@@ -1,17 +1,13 @@
 <!-- unassigned-tickets.component.html -->
 <div class="side-container">
   <div class="app_sidebar">
-    <app-sidebar
-      [fields]="yourFieldsArray"
-      (clicked)="onFieldClicked($event)"
-      (subfieldClicked)="onSubfieldClicked($event)"
-    ></app-sidebar>
+    <app-sidebar [fields]="yourFieldsArray" (clicked)="onFieldClicked($event)"
+      (subfieldClicked)="onSubfieldClicked($event)"></app-sidebar>
   </div>
 
-  <!-- Routed content on the right -->
+  <app-header-layout-new class="header"></app-header-layout-new>
   <div class="col-md-12 side_display" [class.collapsed]="isSidebarCollapsed">
-    <app-header-layout-new></app-header-layout-new>
-    <div *ngIf="showL1AdminTickets">
+    <div *ngIf="showL1AdminTickets" class="side_component">
       <router-outlet></router-outlet>
     </div>
   </div>

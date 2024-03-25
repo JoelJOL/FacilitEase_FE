@@ -18,7 +18,8 @@
   position: relative;
   width: 160px;
   /* position: sticky; */
-  margin-top: 4%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   cursor: pointer;
   background-color: var(--violet);
   color: white;

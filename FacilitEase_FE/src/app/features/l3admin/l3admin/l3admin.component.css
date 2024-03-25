@@ -2,19 +2,33 @@
   display: flex;
   height: 100vh;
 }
-
+.header{
+  position: fixed;
+  width: 81%;
+  z-index: 100;
+  background-color: white;
+  width: 100%;
+}
+.side_component{
+  margin-top: 70px;
+  margin-left: 5px;
+}
 .app_sidebar {
   flex: 1;
   overflow-x: hidden;
   transition: flex 0.4s ease-in-out;
+  background-color: var(--grey);
+  z-index: 1000;
 }
 
 .side_display {
-  flex: 4;
+  flex: 4.1;
   overflow: auto;
   transition: flex 0.4s ease-in-out;
   padding-right: 0.5em;
+  margin: 0%;
+  padding: 0%;
 }
 .side_display.collapsed {
-  flex: 15;
+  flex: 20;
 }
