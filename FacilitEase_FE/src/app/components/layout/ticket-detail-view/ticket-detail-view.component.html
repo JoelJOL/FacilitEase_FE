@@ -1,12 +1,13 @@
 <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
 <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
-<app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
-<div>
+
+<!-- <div>
   <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
   <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
-</div>
+</div> -->
 <div class="container">
   <div class="left-column">
+    <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
     <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
     <br />
     <app-invoice-display [ticketId]="ticketId"></app-invoice-display>

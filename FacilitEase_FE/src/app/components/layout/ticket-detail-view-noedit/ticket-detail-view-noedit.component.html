@@ -1,15 +1,20 @@
-<!-- <app-ticket-header></app-ticket-header> -->
-<app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
-<app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
-<div class="d-flex">
-  <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
+<!-- <div>
+  <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
   <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+</div> -->
+<div class="_header">
+  <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
+  <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
 </div>
 <div class="container">
   <div class="left-column">
-    <!-- <app-ticket-na-simple [ticketId]="ticketId"></app-ticket-na-simple> -->
+    <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
+    <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+    <!-- <app-ticket-notes-attachments
+      [ticketId]="ticketId"
+      (editModeChanged)="onEditModeChange($event)"
+    ></app-ticket-notes-attachments> -->
     <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
-    <app-title-sub [headings]="headings"></app-title-sub>
   </div>
   <div class="right-column">
     <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
