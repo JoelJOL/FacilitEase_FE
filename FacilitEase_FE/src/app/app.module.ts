@@ -160,7 +160,8 @@ import { CommentsComponent } from './components/layout/comments/comments.compone
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 import { HeaderLayoutNewComponent } from './components/layout/header-layout-new/header-layout-new.component';
-import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
+import { SlaEditModalComponent } from './features/l2admin/components/sla-edit-modal/sla-edit-modal.component';
+import { MatFormFieldModule } from '@angular/material/form-field';import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
 import { CommentsNoeditComponent } from './comments-noedit/comments-noedit.component';
 import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
 
@@ -292,6 +293,7 @@ const isIE =
     CommentComponent,
     CommentFormComponent,
     HeaderLayoutNewComponent,
+    SlaEditModalComponent,
     CommentNoeditComponent,
     CommentsNoeditComponent,
     InvoiceDisplayComponent,
@@ -308,6 +310,7 @@ const isIE =
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatFormFieldModule,
     CommonModule,
     FormsModule,
     ModalModule.forRoot(),
