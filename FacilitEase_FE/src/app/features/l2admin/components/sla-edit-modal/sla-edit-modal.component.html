@@ -1,23 +1,23 @@
-<h2 mat-dialog-title>Confirmation</h2>
-<mat-dialog-content>
-  <p>Expected to be resolved by the date: {{ data }}</p>
-  <button mat-button color="primary" (click)="onEditClick()">Edit</button>
+<h2 mat-dialog-title id="heading">Confirmation</h2>
+<mat-dialog-content id="confirmation-dialog-content">
+  <p>Ticket is expected to be resolved by the date: {{ data.resolvingTime }}</p>
   <ng-container *ngIf="editingMode">
     <mat-form-field>
-      <input matInput placeholder="Number of days to add" [(ngModel)]="daysToAdd">
+      <input placeholder="Number of days to add" [(ngModel)]="daysToAdd" id="days_field">
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Reason for change" [(ngModel)]="comment"></textarea>
+      <textarea placeholder="Reason for change" [(ngModel)]="comment" id="reason_textarea"></textarea>
     </mat-form-field>
   </ng-container>
 </mat-dialog-content>
-<mat-dialog-actions *ngIf="editingMode; else readonlyActions">
+<mat-dialog-actions *ngIf="editingMode; else readonlyActions" id="button-container">
   <app-button color="submit" (click)="onSaveClick()">Save</app-button>
   <app-button color="rejected" (click)="onCancelEditClick()">Cancel</app-button>
 </mat-dialog-actions>
 <ng-template #readonlyActions>
-  <mat-dialog-actions>
-    <app-button color="submit" (click)="onYesClick()" id="button2">Submit</app-button>
-    <app-button color="rejected" (click)="onNoClick()" id="button1">Cancel</app-button>
+  <mat-dialog-actions id="readonly-actions">
+    <app-button color="submit" (click)="onYesClick()" id="button1">Accept</app-button>
+    <app-button color="rejected" (click)="onEditClick()" id="button2">Edit</app-button>
+    <!-- <app-button color="rejected" (click)="onNoClick()" id="button1">Cancel</app-button> -->
   </mat-dialog-actions>
 </ng-template>

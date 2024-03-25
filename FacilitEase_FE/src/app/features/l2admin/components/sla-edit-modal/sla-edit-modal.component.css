@@ -1,0 +1,47 @@
+#heading{
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.mat-form-field.mat-form-field-flex textarea.mat-input-element {
+    width: 100% !important;
+  } 
+  /* #confirmation-dialog-content {
+    padding: 16px;
+  } */
+  
+ #button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  
+  #readonly-actions {
+    justify-content: center; /* Center buttons in readonly mode */
+  }
+  
+#days_field{
+    width: 400px !important;
+  padding: 10px !important;
+  font-size: 16px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  z-index: 999;
+}
+#days_field::placeholder{
+    color: #999;
+}
+ #reason_textarea {
+    width: 400px !important;
+    z-index: 999;
+  }
+
+#button1{
+    margin-right: 5px;
+    margin-left:-22px;
+}
+
+  

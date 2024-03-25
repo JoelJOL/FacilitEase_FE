@@ -98,7 +98,7 @@ export class L2adminTicketViewComponent {
         .subscribe((resolvingTime:Date) => {
             const dialogRef = this.dialog.open(SlaEditModalComponent, {
               width: '400px',
-              data: resolvingTime,
+              data: { resolvingTime: resolvingTime, ticketId: ticketId }
             });
         }
         );
