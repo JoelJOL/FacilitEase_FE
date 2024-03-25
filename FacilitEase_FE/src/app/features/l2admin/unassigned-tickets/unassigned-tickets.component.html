@@ -7,26 +7,23 @@
     (rowClicked)="onRowClicked($event)"
     id="datatable"
   ></app-data-table-new> -->
-  <div class="filter_search">
-    <!-- <app-button color="filter" #filterButton></app-button> -->
-    <app-search-bar (searchQueryChange)="search($event)"></app-search-bar>
+  <div class="button-container">
+    <div class="box" [ngClass]="{ 'active': activeBox === 1 }" (click)="activateBox(1)">Unassigned Tickets</div>
+    <div class="box" [ngClass]="{ 'active': activeBox === 2 }" (click)="activateBox(2)">Assigned Tickets</div>
+    <div class="box" [ngClass]="{ 'active': activeBox === 3 }" (click)="activateBox(3)">Escalated Tickets</div>
+    <div class="box" [ngClass]="{ 'active': activeBox === 4 }" (click)="activateBox(4)">Tickets To Resolve</div>
+    <div class="box" [ngClass]="{ 'active': activeBox === 5 }" (click)="activateBox(5)">Cancellation Requests</div>
   </div>
-
   <div class="container mt-4">
     <table class="data_table">
       <!-- Table Header -->
       <thead class="table_head">
         <tr>
-          <th
-            *ngFor="let header of headers; let i = index"
-            class="text-center text-nowrap"
-          >
+          <th *ngFor="let header of headers; let i = index" class="text-center text-nowrap">
             <div class="header_container">
               <span>{{ header }}</span>
-              <app-sort-up-down
-                (sortAscending)="onSort(keys[i], 'asc')"
-                (sortDescending)="onSort(keys[i], 'desc')"
-              ></app-sort-up-down>
+              <app-sort-up-down (sortAscending)="onSort(keys[i], 'asc')"
+                (sortDescending)="onSort(keys[i], 'desc')"></app-sort-up-down>
             </div>
           </th>
         </tr>
@@ -35,10 +32,7 @@
         No records found.
       </div>
       <tbody *ngIf="loading">
-        <tr
-          *ngFor="let _ of [].constructor(10)"
-          class="skeleton_row clickable_row"
-        >
+        <tr *ngFor="let _ of [].constructor(10)" class="skeleton_row clickable_row">
           <td *ngFor="let header of headers">
             <div class="skeleton skeleton_data"></div>
           </td>
@@ -46,48 +40,28 @@
       </tbody>
       <tbody *ngIf="!noRecordsFound" class="table_body">
         <tr *ngFor="let row of rows" class="clickable_row">
-          <td
-            *ngFor="let key of keys"
-            (click)="onCellClicked(key, row.id, $event)"
-            class="text-center text-nowrap"
-          >
+          <td *ngFor="let key of keys" (click)="onCellClicked(key, row.id, $event)" class="text-center text-nowrap">
             <!-- <div [ngClass]="getCellClasses(key, row[key])">{{ row[key] }}</div> -->
             <!-- Update only the 'ticketName' column -->
-            <div
-              *ngIf="key !== 'ticketName'"
-              [ngClass]="getCellClasses(key, row[key])"
-            >
+            <div *ngIf="key !== 'ticketName'" [ngClass]="getCellClasses(key, row[key])">
               {{ row[key] }}
             </div>
-            <div
-              *ngIf="key === 'ticketName'"
-              class="ticket_name-cell"
-              [title]="row[key]"
-            >
+            <div *ngIf="key === 'ticketName'" class="ticket_name-cell" [title]="row[key]">
               {{ row[key] | truncate : 20 }}
             </div>
             <!-- Display the drop-down for 'Assign To' -->
             <div *ngIf="key === 'assignTo'">
               <div class="dropdown" (click)="$event.stopPropagation()">
-                <app-assign-dropdown
-                  class="assign_dropdown"
-                  [label]="'Assign To'"
-                  [options]="agents"
-                  displayKey="agentName"
-                  valueProperty="agentId"
-                  (click)="onDropDownClicked(row.id)"
-                  (onItemSelected)="onAgentSelected($event, ticketId)"
-                ></app-assign-dropdown>
+                <app-assign-dropdown class="assign_dropdown" [label]="'Assign To'" [options]="agents"
+                  displayKey="agentName" valueProperty="agentId" (click)="onDropDownClicked(row.id)"
+                  (onItemSelected)="onAgentSelected($event, ticketId)"></app-assign-dropdown>
               </div>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <app-pagination
-      *ngIf="!noRecordsFound"
-      [totalItems]="totalDataCount"
-      (pageChange)="changePage($event)"
-    ></app-pagination>
+    <app-pagination *ngIf="!noRecordsFound" [totalItems]="totalDataCount"
+      (pageChange)="changePage($event)"></app-pagination>
   </div>
 </div>

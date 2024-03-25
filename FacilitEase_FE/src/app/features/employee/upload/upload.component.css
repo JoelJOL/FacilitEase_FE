@@ -154,6 +154,7 @@ button:disabled {
   position: absolute;
   margin-right: 13px;
   margin-top: 7px;
+  border: none;
 }
 .close {
   font-weight: bolder;
@@ -161,7 +162,7 @@ button:disabled {
 }
 
 .close:hover {
-  transform: scale(1.2); /* Enlarge the icon on hover */
+  transform: scale(1.2); 
   transform: scale(1.2) rotate(360deg);
 }
 .heading {

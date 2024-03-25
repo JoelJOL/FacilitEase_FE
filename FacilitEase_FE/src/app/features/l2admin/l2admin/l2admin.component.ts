@@ -37,13 +37,13 @@ export class L2AdminComponent {
     {
       logo: 'assets/tickets.svg',
       title: 'Tickets',
-      subfields: [
-        'Unassigned Tickets',
-        'Assigned Tickets',
-        'Escalated Tickets',
-        'Tickets To Resolve',
-        'Cancellation Requests',
-      ],
+      // subfields: [
+      //   'Unassigned Tickets',
+      //   'Assigned Tickets',
+      //   'Escalated Tickets',
+      //   'Tickets To Resolve',
+      //   'Cancellation Requests',
+      // ],
     },
     {
       logo: 'assets/study_reports.svg',

@@ -14,6 +14,7 @@ import {
   UnassignedTickets,
   l2Admin,
 } from 'environments/environment';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Component({
   selector: 'app-l2admin-ticket-view',
@@ -25,7 +26,7 @@ export class L2adminTicketViewComponent {
   ticketDetails: any = [];
   modalRef: BsModalRef | undefined;
   ticketId: any;
-
+  currentUserId: number = this.azureService.userId;
   constructor(
     private route: ActivatedRoute,
     private agentService: AgentService,
@@ -33,8 +34,9 @@ export class L2adminTicketViewComponent {
     private dropDownService: DropDownService,
     private http: HttpClient,
     private dialog: MatDialog,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private azureService: AzureService
+  ) { }
   titleSubHeadings: any = [];
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

@@ -1,7 +1,7 @@
 .notification-icon {
   position: relative;
   cursor: pointer;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 .notification-icon img {
@@ -13,13 +13,13 @@
 .notification-count {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 15px;
   background-color: red;
   color: white;
   border-radius: 50%;
   border: none 5px;
   padding: 1px 4px;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .notification-dropdown {

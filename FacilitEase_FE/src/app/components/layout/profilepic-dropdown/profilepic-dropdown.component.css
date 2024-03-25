@@ -1,6 +1,6 @@
 .pro_div {
   background-color: white;
-  width: 160px;
+  width: auto;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -31,7 +31,7 @@
 }
 #button-split {
   height: 40px;
-  left: -10px;
+  left: 4px;
 }
 .down_arrow {
   width: 10px;
