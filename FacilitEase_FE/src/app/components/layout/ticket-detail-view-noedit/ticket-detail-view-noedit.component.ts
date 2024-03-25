@@ -7,10 +7,10 @@ import { AzureService } from '@app/features/Authentication/azureService/azure.se
   styleUrls: ['./ticket-detail-view-noedit.component.css'],
 })
 export class TicketDetailViewNoeditComponent {
-  customHeaderText = 'Supported Attachments';
-  currentUserId: number = this.azureService.userId; 
-  constructor( private azureService: AzureService) {
-    console.log("This is the ID",this.currentUserId);
+  customHeaderText = '';
+  currentUserId: number = this.azureService.userId;
+  constructor(private azureService: AzureService) {
+    console.log('This is the ID', this.currentUserId);
   }
   @Input() ticketId: number = 0;
   ngOnInit() {

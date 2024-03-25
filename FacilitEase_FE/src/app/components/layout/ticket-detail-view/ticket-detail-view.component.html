@@ -1,6 +1,10 @@
 <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
 <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
 <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
+<div>
+  <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
+  <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+</div>
 <div class="container">
   <div class="left-column">
     <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
