@@ -160,7 +160,7 @@ import { CommentsComponent } from './components/layout/comments/comments.compone
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
-import { CommentsNoeditComponent } from './comments-noedit/comments-noedit.component';
+import { CommentsNoeditComponent } from './components/layout/comments-noedit/comments-noedit.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -364,4 +364,4 @@ const isIE =
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })
-export class AppModule {}
+export class AppModule { }
