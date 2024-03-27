@@ -54,7 +54,7 @@ export class SlaEditModalComponent {
     console.log(this.newExpectedDate);
     this.comment = `The expected date to resolve this ticket has been changed to ${this.newExpectedDate.toString()}. Reason-: ${this.comment}`
     console.log(this.comment);
-    this.commentService.addComment(this.comment,null,this.ticketId,2)
+    this.commentService.addComment(this.comment,null,this.ticketId,this.data.userId)
     .subscribe((createdComment) => {
       this.comments = [...this.comments, createdComment];
       this.activeComment = null;
