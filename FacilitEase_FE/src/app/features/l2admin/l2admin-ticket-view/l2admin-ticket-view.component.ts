@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modalService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
@@ -17,6 +17,7 @@ import {
 import { map } from 'rxjs/operators';
 import { SlaEditModalComponent } from '../components/sla-edit-modal/sla-edit-modal.component';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
+import { CommentsComponent } from '@app/components/layout/comments/comments.component';
 
 @Component({
   selector: 'app-l2admin-ticket-view',
@@ -29,6 +30,7 @@ export class L2adminTicketViewComponent {
   modalRef: BsModalRef | undefined;
   ticketId: any;
   currentUserId: number = this.azureService.userId;
+  escalationComment : string = '';
   constructor(
     private route: ActivatedRoute,
     private agentService: AgentService,
@@ -40,6 +42,7 @@ export class L2adminTicketViewComponent {
     private azureService: AzureService
   ) { }
   titleSubHeadings: any = [];
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.ticketId = Number(params['Id']);
@@ -98,12 +101,17 @@ export class L2adminTicketViewComponent {
             })
           )
           .subscribe((resolvingTime: Date) => {
-            const dialogRef = this.dialog.open(SlaEditModalComponent, {
+            const slaDialogRef = this.dialog.open(SlaEditModalComponent, {
               width: '400px',
               data: { resolvingTime: resolvingTime, ticketId: ticketId }
-            });
-          }
+            })
+            slaDialogRef.afterClosed().subscribe((result:any) => {
+              if(result){
+                  this.escalationComment = result.comment;
+              }
+            }
           );
+          });
         this.http
           .put('https://localhost:7049/api/l2/assign-ticket', data, {
             responseType: 'text',
