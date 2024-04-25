@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './header-layout.component.html',
   styleUrls: ['./header-layout.component.css'],
 })
-export class HeaderLayoutComponent {}
+export class HeaderLayoutComponent {
+  
+}

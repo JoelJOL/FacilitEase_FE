@@ -1,9 +1,12 @@
 <h2 class="heading">Escalated Tickets</h2>
+<div class="button-container">
+  <div class="box" [ngClass]="{ 'active': activeBox === 1 }" (click)="activateBox(1)">Unassigned Tickets</div>
+  <div class="box" [ngClass]="{ 'active': activeBox === 2 }" (click)="activateBox(2)">Assigned Tickets</div>
+  <div class="box" [ngClass]="{ 'active': activeBox === 3 }" (click)="activateBox(3)">Escalated Tickets</div>
+  <div class="box" [ngClass]="{ 'active': activeBox === 4 }" (click)="activateBox(4)">Tickets To Resolve</div>
+  <div class="box" [ngClass]="{ 'active': activeBox === 5 }" (click)="activateBox(5)">Cancellation Requests</div>
+</div>
 <div class="display">
-  <app-data-table-new
-    [headers]="headers"
-    [apiLink]="apiLink"
-    (rowClicked)="onRowClicked($event)"
-    id="datatable"
-  ></app-data-table-new>
+  <app-data-table-new [headers]="headers" [apiLink]="apiLink" (rowClicked)="onRowClicked($event)"
+    id="datatable"></app-data-table-new>
 </div>

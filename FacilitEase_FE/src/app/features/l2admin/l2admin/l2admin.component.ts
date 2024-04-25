@@ -10,6 +10,7 @@ import {
   AssignedTickets,
   CancellationRequest,
   CancellationRequestTicketDetails,
+  EditSLA,
   EscalatedTickets,
   Report,
   Tickets,
@@ -36,13 +37,13 @@ export class L2AdminComponent {
     {
       logo: 'assets/tickets.svg',
       title: 'Tickets',
-      subfields: [
-        'Unassigned Tickets',
-        'Assigned Tickets',
-        'Escalated Tickets',
-        'Tickets To Resolve',
-        'Cancellation Requests',
-      ],
+      // subfields: [
+      //   'Unassigned Tickets',
+      //   'Assigned Tickets',
+      //   'Escalated Tickets',
+      //   'Tickets To Resolve',
+      //   'Cancellation Requests',
+      // ],
     },
     {
       logo: 'assets/study_reports.svg',
@@ -51,6 +52,10 @@ export class L2AdminComponent {
     {
       logo: 'assets/add_ticket.svg',
       title: 'Raise A Ticket',
+    },
+    {
+      logo: 'assets/waiting.svg',
+      title: 'Edit Escalation Time',
     },
     // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
   ];
@@ -65,7 +70,7 @@ export class L2AdminComponent {
     private notificationService: NotificationService,
     private azureService: AzureService,
     private toastr: ToastrService
-  ) {}
+  ) { }
   ngOnInit() {
     this.userRoleService.setUserRole(this.userRole);
     this.sidebarService.sidebarState$.subscribe((isCollapsed) => {
@@ -95,6 +100,9 @@ export class L2AdminComponent {
     } else if (clickedField.title === 'Raise A Ticket') {
       this.showL2AdminTickets = true;
       this.router.navigate([`${l2Admin}/${Tickets}`]);
+    } else if (clickedField.title === 'Edit Escalation Time') {
+      this.showL2AdminTickets = true;
+      this.router.navigate([`${l2Admin}/${EditSLA}`]);
     } else {
       this.showL2AdminTickets = false;
     }

@@ -21,6 +21,7 @@ export class ManagerViewTicketDetailComponent implements OnInit {
   ticketDetails!: TicketDetails;
   editMode: boolean = false;
   modalRef: BsModalRef | undefined;
+  currentUserId: number = this.azureService.userId;
 
   constructor(
     private masterService: MasterService,
@@ -30,7 +31,7 @@ export class ManagerViewTicketDetailComponent implements OnInit {
     private router: Router,
     private modalService: BsModalService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {

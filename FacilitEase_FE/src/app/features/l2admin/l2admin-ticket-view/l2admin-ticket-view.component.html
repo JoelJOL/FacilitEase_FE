@@ -9,11 +9,11 @@
   <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments> -->
   <div class="container">
     <div class="left-column">
-      <!-- <app-ticket-notes-attachments
-        [ticketId]="ticketId"
-        (editModeChanged)="onEditModeChange($event)"
-      ></app-ticket-notes-attachments> -->
+      <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
+      <br />
+      <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
       <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
+      <br />
       <app-title-sub [headings]="titleSubHeadings"></app-title-sub>
     </div>
     <div class="right-column">

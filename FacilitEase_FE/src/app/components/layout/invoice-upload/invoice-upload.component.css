@@ -1,0 +1,19 @@
+/* .btn {
+  background-color: var(--violet);
+  color: #fff;
+} */
+/* invoice-upload.component.css */
+.progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}

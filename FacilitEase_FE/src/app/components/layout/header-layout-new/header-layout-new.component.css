@@ -1,0 +1,11 @@
+.header_container {
+  justify-content: space-between;
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  box-shadow: rgba(0, 0, 0, 0.15) 2.5px 2.4px 3.2px;
+}
+.notification-icon {
+  display: flex; /* Use flexbox to vertically center the icon */
+  align-items: center; /* Vertically center the icon */
+  margin-right: 10px; /* Add some spacing between the notification icon and the profile picture */
+}

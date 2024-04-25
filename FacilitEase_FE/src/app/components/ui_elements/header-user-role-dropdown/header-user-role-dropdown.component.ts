@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
@@ -11,6 +11,8 @@ import { UserRoleService } from '@app/features/service/dataService/userRoleServi
 export class HeaderUserRoleDropdownComponent implements OnInit {
   userRoles: string[] = [];
   selectedValue: string = '';
+  userRole: string = '';
+  @Output() userRoleChange = new EventEmitter<string>();
 
   constructor(
     public userRoleService: UserRoleService,
@@ -20,6 +22,8 @@ export class HeaderUserRoleDropdownComponent implements OnInit {
 
   ngOnInit(): void {
     this.userRoles = this.azureService.azureRoles;
+    this.userRole = this.userRoleService.getUserRole();
+    this.emitUserRole();
   }
 
   sanitizeRoleValue(role: string): string {
@@ -34,5 +38,8 @@ export class HeaderUserRoleDropdownComponent implements OnInit {
       this.router.navigate([sanitizedValue]);
       this.userRoleService.getUserRole();
     }
+  }
+  private emitUserRole(): void {
+    this.userRoleChange.emit(this.userRole); // Emit user role
   }
 }
