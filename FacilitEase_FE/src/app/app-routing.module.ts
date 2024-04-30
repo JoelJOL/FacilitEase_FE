@@ -81,6 +81,7 @@ import { TicketEscalatedComponent } from './features/L1admin/ticket-escalated/ti
 import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-details-escalated/ticket-details-escalated.component';
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
+import { EditSlaComponent } from './features/l2admin/edit-sla/edit-sla.component';
 import {
   DepartmentHead,
   Employee,
@@ -110,7 +111,6 @@ import {
   ActiveTickets,
   EditSLA,
 } from 'environments/environment';
-import { EditSlaComponent } from './features/l2admin/edit-sla/edit-sla.component';
 
 //MsalGuard: Route can only be activated if the user has signed in using their microsoft account
 //Other Guards: Route that is protected and only the users with the specific roles can access the routes
