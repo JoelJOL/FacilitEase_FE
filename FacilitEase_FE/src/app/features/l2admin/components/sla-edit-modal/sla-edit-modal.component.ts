@@ -1,11 +1,12 @@
 // sla-edit-modal.component.ts
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SlaEditServiceService } from '@app/features/service/httpService/slaEditService/sla-edit-service.service';
 import { HttpResponse } from '@angular/common/http';
 import { CommentService } from '@app/features/service/httpService/commentService/comment.service';
 import { CommentInterface } from '@app/comment-interface';
 import { ActiveCommentInterface } from '@app/active-comment-interface';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sla-edit-modal',
@@ -62,11 +63,9 @@ export class SlaEditModalComponent {
     this.slaEditService.editTicketSLA(this.ticketId, this.daysToAdd).subscribe(
       (response : HttpResponse<any>) => {
         console.log('API response:', response);
-        // Handle the response as needed
       },
       (error: any) => {
         console.error('API error:', error);
-        // Handle errors
       }
     );
     // Save new expected date and comment

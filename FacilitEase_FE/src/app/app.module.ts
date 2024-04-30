@@ -164,6 +164,7 @@ import { SlaEditModalComponent } from './features/l2admin/components/sla-edit-mo
 import { MatFormFieldModule } from '@angular/material/form-field'; import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
 import { CommentsNoeditComponent } from './components/layout/comments-noedit/comments-noedit.component';
 import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
+import { TicketRejectCommentModalComponent } from './features/manager/components/ticket-reject-comment-modal/ticket-reject-comment-modal.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -298,6 +299,7 @@ const isIE =
     CommentsNoeditComponent,
     InvoiceDisplayComponent,
     ManagerComponent,
+    TicketRejectCommentModalComponent,
   ],
   imports: [
     HttpClientModule,
