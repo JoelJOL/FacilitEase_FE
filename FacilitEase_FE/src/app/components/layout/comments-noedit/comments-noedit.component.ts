@@ -15,10 +15,11 @@ export class CommentsNoeditComponent {
 
   comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
+  commentsVisible: boolean = false;
 
   constructor(private commentService: CommentService) {
   }
-  
+
   ngOnInit(): void {
     this.commentService.getComments(this.ticketId).subscribe((comments) => {
       console.log('comments', comments)
@@ -39,5 +40,8 @@ export class CommentsNoeditComponent {
         (a, b) =>
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
+  }
+  toggleCommentsVisibility(): void {
+    this.commentsVisible = !this.commentsVisible;
   }
 }

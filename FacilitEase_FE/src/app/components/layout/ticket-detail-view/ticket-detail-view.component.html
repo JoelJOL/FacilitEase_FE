@@ -15,8 +15,8 @@
       [ticketId]="ticketId"
       (editModeChanged)="onEditModeChange($event)"
     ></app-ticket-notes-attachments> -->
-    <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
     <app-title-sub [headings]="headings"></app-title-sub>
+    <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
   </div>
   <div class="right-column">
     <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>

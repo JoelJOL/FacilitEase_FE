@@ -10,11 +10,9 @@
   <div class="left-column">
     <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
     <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
-    <!-- <app-ticket-notes-attachments
-      [ticketId]="ticketId"
-      (editModeChanged)="onEditModeChange($event)"
-    ></app-ticket-notes-attachments> -->
-    <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
+    <!-- <app-ticket-na-simple [ticketId]="ticketId"></app-ticket-na-simple> -->
+    <app-comments-noedit [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments-noedit>
+    <app-title-sub [headings]="headings"></app-title-sub>
   </div>
   <div class="right-column">
     <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
