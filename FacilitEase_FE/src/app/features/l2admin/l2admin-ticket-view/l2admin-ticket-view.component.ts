@@ -103,7 +103,7 @@ export class L2adminTicketViewComponent {
           .subscribe((resolvingTime: Date) => {
             const slaDialogRef = this.dialog.open(SlaEditModalComponent, {
               width: '400px',
-              data: { resolvingTime: resolvingTime, ticketId: ticketId }
+              data: { resolvingTime: resolvingTime, ticketId: ticketId, userId:userId }
             })
             slaDialogRef.afterClosed().subscribe((result:any) => {
               if(result){
