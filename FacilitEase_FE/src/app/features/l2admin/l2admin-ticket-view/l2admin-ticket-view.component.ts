@@ -95,8 +95,6 @@ export class L2adminTicketViewComponent {
         this.http.get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`)
           .pipe(
             map((resolvingTime: any) => {
-              // Adjust this based on the actual response structure
-              // Assuming resolvingTime is a string representing datetime
               return new Date(resolvingTime.toString());
             })
           )
