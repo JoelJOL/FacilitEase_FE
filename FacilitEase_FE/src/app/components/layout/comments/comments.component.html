@@ -11,8 +11,7 @@
         <app-comment *ngFor="let rootComment of getRootComments()" [comment]="rootComment"
           [replies]="getReplies(rootComment.id)" [activeComment]="activeComment"
           (setActiveComment)="setActiveComment($event)" (addComment)="addComment($event)"
-          (deleteComment)="deleteComment($event)" (updateComment)="updateComment($event)"
-          [currentUserId]="currentUserId">
+          (updateComment)="updateComment($event)" [currentUserId]="currentUserId">
         </app-comment>
       </div>
     </ng-container>
