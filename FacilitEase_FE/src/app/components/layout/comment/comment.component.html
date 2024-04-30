@@ -73,14 +73,14 @@
   </div>
 </div> -->
 
-  <div class="comment">
+<div class="comment">
     <div class="comment-image-container">
       <img src="/assets/new.jpg" />
     </div>
     <div class="comment-right-part">
       <div class="comment-content">
         <div class="comment-author">{{ comment.employeeName }}</div>
-        <div>{{ comment.createdAt }}</div>
+        <div>{{ comment.createdAt |date: 'short' }}</div>
       </div>
       <div class="comment-text" *ngIf="!isEditing()">{{ comment.text }}</div>
       <app-comment-form
