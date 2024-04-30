@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from '@app/features/service/dataService/modalService/modal.service';
 import { ModalComponent } from '@app/components/layout/modal/modal.component';
@@ -30,7 +36,7 @@ export class L2adminTicketViewComponent {
   modalRef: BsModalRef | undefined;
   ticketId: any;
   currentUserId: number = this.azureService.userId;
-  escalationComment : string = '';
+  escalationComment: string = '';
   constructor(
     private route: ActivatedRoute,
     private agentService: AgentService,
@@ -40,7 +46,7 @@ export class L2adminTicketViewComponent {
     private dialog: MatDialog,
     private toastr: ToastrService,
     private azureService: AzureService
-  ) { }
+  ) {}
   titleSubHeadings: any = [];
 
   ngOnInit(): void {
@@ -79,7 +85,7 @@ export class L2adminTicketViewComponent {
     );
   }
   onAgentSelected(selectedAgent: number, ticketId: number) {
-    const userId = 2;
+    const userId = this.azureService.userId;
     const data = {
       ticketId: ticketId,
       agentId: selectedAgent,
@@ -92,7 +98,8 @@ export class L2adminTicketViewComponent {
     console.log(selectedAgent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.http.get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`)
+        this.http
+          .get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`)
           .pipe(
             map((resolvingTime: any) => {
               return new Date(resolvingTime.toString());
@@ -101,29 +108,37 @@ export class L2adminTicketViewComponent {
           .subscribe((resolvingTime: Date) => {
             const slaDialogRef = this.dialog.open(SlaEditModalComponent, {
               width: '400px',
-              data: { resolvingTime: resolvingTime, ticketId: ticketId, userId:userId }
-            })
-            slaDialogRef.afterClosed().subscribe((result:any) => {
-              if(result){
-                  this.escalationComment = result.comment;
+              data: {
+                resolvingTime: resolvingTime,
+                ticketId: ticketId,
+                userId: userId,
+              },
+            });
+            slaDialogRef.afterClosed().subscribe((result: any) => {
+              if (result) {
+                this.escalationComment = result.comment;
+                this.http
+                  .put('https://localhost:7049/api/l2/assign-ticket', data, {
+                    responseType: 'text',
+                  })
+                  .subscribe(
+                    (response) => {
+                      console.log('Ticket assigned successfully', response);
+                      this.toastr.success(
+                        'Ticket assigned successfully!',
+                        'Success'
+                      );
+                      this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
+                    },
+                    (error) => {
+                      console.error('Error assigning ticket', error);
+                    }
+                  );
+              } else {
+                this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
               }
-            }
-          );
+            });
           });
-        this.http
-          .put('https://localhost:7049/api/l2/assign-ticket', data, {
-            responseType: 'text',
-          })
-          .subscribe(
-            (response) => {
-              console.log('Ticket assigned successfully', response);
-              this.toastr.success('Ticket assigned successfully!', 'Success');
-              this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
-            },
-            (error) => {
-              console.error('Error assigning ticket', error);
-            }
-          );
       } else {
         this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
       }
