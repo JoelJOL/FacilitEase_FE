@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
+import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-invoice-display',
@@ -20,7 +23,11 @@ export class InvoiceDisplayComponent implements OnInit {
   @Input() ticketId: number = 0;
 
   // Constructor with injected HttpClient
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   // Lifecycle hook: Executes when the component is initialized
   ngOnInit(): void {
@@ -91,5 +98,22 @@ export class InvoiceDisplayComponent implements OnInit {
         // Handle error accordingly
       }
     );
+  }
+  openConfirmationModal() {
+    let confirmationMessage = 'Are you sure you want to delete this invoice?';
+
+    // Open MatDialog with confirmation message
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '400px',
+      data: confirmationMessage,
+    });
+
+    // Subscribe to the result after the modal is closed
+    dialogRef.afterClosed().subscribe((result) => {
+      // If confirmed, proceed with cancellation
+      if (result) {
+        this.deleteInvoice();
+      }
+    });
   }
 }

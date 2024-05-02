@@ -52,3 +52,30 @@ input[type="file"] {
   background-color: #bdc3c7;
   cursor: not-allowed;
 }
+/* Add styles for the file input container */
+.file-input-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Style the custom file input label */
+.custom-file-input-label {
+  background-color: var(--violet);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.selected-file-info {
+  margin-top: 10px;
+}
+
+/* Style the actual file input, make it transparent and positioned over the label */
+.custom-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}

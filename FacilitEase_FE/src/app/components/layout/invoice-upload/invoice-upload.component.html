@@ -1,31 +1,13 @@
-<input
+<!-- <input
   type="file"
   accept=".pdf, .jpg, .png, jpeg"
   (change)="onFileSelected($event)"
 />
-<app-button color="accepted" (click)="uploadFile()">Upload Invoice</app-button>
-<br />
-<!-- <div class="container">
-  <h2 class="title">Invoice Uploader</h2>
-  <form (ngSubmit)="uploadFile()" #invoiceForm="ngForm">
-    <div class="form-group">
-      <label for="invoiceFile">Select Invoice File:</label>
-      <input
-        type="file"
-        id="invoiceFile"
-        name="invoiceFile"
-        accept=".pdf, .doc, .docx"
-        ngModel
-        required
-      />
-    </div>
-
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="!invoiceForm.valid"
-    >
-      Upload Invoice
-    </button>
-  </form>
-</div> -->
+<app-button color="accepted" (click)="openConfirmationModal()"
+  >Upload Invoice</app-button
+>
+<br /> -->
+<app-button color="accepted" (click)="openFileUploadModal()"
+  >Upload Invoice</app-button
+>
+<!-- Angular Material Dialog for confirmation with file input -->
