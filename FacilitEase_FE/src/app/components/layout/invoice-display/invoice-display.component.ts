@@ -13,7 +13,7 @@ import { ConfirmationModalComponent } from '@app/features/manager/components/con
 export class InvoiceDisplayComponent implements OnInit {
   // API base URL
   private apiUrl = 'https://localhost:7049';
-
+  isHovered: boolean = false;
   // File-related properties
   fileUrl!: string;
   isImage = false;

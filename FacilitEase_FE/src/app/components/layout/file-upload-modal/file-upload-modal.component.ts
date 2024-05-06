@@ -44,10 +44,12 @@ export class FileUploadModalComponent {
             console.log('File uploaded successfully', response);
             this.fileUploaded.emit();
             this.uploading = false;
+            this.dialogRef.close();
           },
           (error) => {
             console.error('Error uploading file', error);
             this.uploading = false;
+            this.dialogRef.close();
           }
         );
     }
