@@ -11,3 +11,40 @@
 .right-column {
   width: 27%;
 }
+
+.ticket_detialing, .ticket_additional{
+  box-shadow: 0px 14px 29px -16px rgba(0, 0, 0, 0.34);
+}
+
+.ticket_details_tabs{
+  display: flex;
+  justify-items: start;
+}
+
+.ticket_details_tab{
+  padding: 10px 20px 10px 20px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.ticket_details_tab:hover{
+  background-color: var(--light_violet);
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+}
+
+.tab1{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-right: 2px var(--light_violet) solid;
+  border-top: 2px var(--light_violet) solid;
+  border-left: 2px var(--light_violet) solid;
+  box-shadow: 0px 14px 29px -16px rgba(0, 0, 0, 0.34);
+}
+
+.tab2{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom: 2px var(--light_violet) solid;
+  border-right: 2px var(--light_violet) solid;
+}

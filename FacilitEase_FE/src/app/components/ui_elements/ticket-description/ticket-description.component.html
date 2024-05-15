@@ -1,15 +1,15 @@
-<div *ngIf="ticketDetails">
-  <div class="ticket_sub">
+<div *ngIf="ticketDetails" class="mb-4">
+  <div class="ticket_sub px-3 mt-2">
     <p class="ticket_name">{{ ticketDetails.ticketName }}</p>
-    <p class="created_date">
+    <!-- <p class="created_date">
       Created On:
       {{ ticketDetails.submittedDate | date : "yyyy-MM-dd hh:mm:ss a" }}
       <br>
       Expected Completion Date On:
       {{ticketDetails.expectedDate | date : "yyyy-MM-dd hh:mm:ss a"}}
-    </p>
+    </p> -->
   </div>
-  <div class="ticket_desc">
-    <p>{{ ticketDetails.ticketDescription }}</p>
+  <div class="ticket_desc px-3 ">
+    <p><i>{{ ticketDetails.ticketDescription }}</i></p>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
+import { TicketDetails, l1Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-view-all-tickets',
@@ -26,6 +27,6 @@ export class ViewAllTicketsComponent {
   apiLink: string = '';
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    this.router.navigate(['l1admin/ticket-detail-view-l1', rowId]);
+    this.router.navigate([`${l1Admin}/${TicketDetails}`, rowId]);
   }
 }

@@ -12,7 +12,6 @@
 }
 
 .ticket_priority {
-  display: flex;
   align-items: center;
   color: black;
 }
@@ -25,6 +24,17 @@
   font-weight: bold;
   margin-bottom: 0;
   display: inline-block;
+  display: flex;
+  align-items: center;
+}
+
+.ticket_status_box_circle{
+  border-radius: 15px;
+  height: 10px;
+  width: 10px;
+  background-color: var(--ticket_status_color);
+  z-index: 10;
+  margin-right: 5px ;
 }
 
 .ticket_priority_box {
@@ -73,4 +83,3 @@ select {
 .button_with_image:hover{
   opacity: 1; /* Show on hover */
 }
-

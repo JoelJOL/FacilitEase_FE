@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { TicketNotesAttachmentsComponent } from '../ticket-notes-attachments/ticket-notes-attachments.component';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
+import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 @Component({
   selector: 'app-ticket-detail-view',
@@ -8,6 +9,7 @@ import { AzureService } from '@app/features/Authentication/azureService/azure.se
   styleUrls: ['./ticket-detail-view.component.css']
 })
 export class TicketDetailViewComponent {
+  userEmail: string ="hema.shaji@experionglobal.com"
   customHeaderText = 'Supported Attachments'; // Custom header text for the component  
   editMode: boolean = false; // Property to hold edit mode value
   @Output() editModeChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -30,6 +32,8 @@ export class TicketDetailViewComponent {
     console.log("Captured!");
     console.log(this.editMode);
   }
-  
-  
+  goToTeams(){
+    let n = "Hey " + "\nCongratulations on your work anniversary 🎉...";
+    location.href = "MSTeams:/l/chat/0/0?users=" + this.userEmail + "&message= "+n;
+  }
 }

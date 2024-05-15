@@ -53,6 +53,7 @@ export class AzureService {
   userRoles: string[] = [];
   azureRoles: string[] = [];
   navigateFirst: boolean = true;
+  azureToken: string = '';
   constructor(
     private http: HttpClient,
     private authService: MsalService,
@@ -127,7 +128,6 @@ export class AzureService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${azureObj.idToken}`,
     });
-    console.log('post');
     return this.http.post<AzureReturn>(
       'https://localhost:7049/api/User',
       {
@@ -141,10 +141,27 @@ export class AzureService {
       { headers }
     );
   }
+
+  getToken(){
+    let token = '';
+    const account = this.authService.instance.getAllAccounts()[0];
+    const accessTokenRequest = {
+      scopes: ["user.read"],
+      account: account,
+    };
+    this.authService.instance.acquireTokenSilent(accessTokenRequest)
+          .then( (accessTokenResponse) => {
+            // Acquire token silent success
+            this.azureToken = accessTokenResponse.idToken;
+          })
+          .catch(function (error) {
+            //Acquire token silent failure, and send an interactive request
+            console.log(error);
+          });
+  }
   //The logout action that redirects the user to the microsoft logout page
   //After laogging out the user is redirected to the url provided in the environment.postLogoutUrl
   Logout() {
-    console.log('logout');
     this.isLogged = false;
     this.authService.logoutRedirect({
       postLogoutRedirectUri: environment.postLogoutUrl,

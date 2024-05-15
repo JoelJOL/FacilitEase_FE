@@ -1,24 +1,53 @@
-<app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
-<app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
+<div class="d-flex">
+  <div class="col-8 ticket_detialing"> 
+    <div class="ticket_details_tabs">
+      <div class="ticket_details_tab tab1">
+        <span>Details</span>
+      </div>
+      <div class="ticket_details_tab tab2">
+        <span>Documents</span>
+      </div>
+    </div>
+    <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
+    <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
+    <app-title-sub [headings]="headings"></app-title-sub>
+    <button (click)="goToTeams()">Chat</button>
+  </div>
+  <div class="col-4 ticket_additional">
+    <div class="ticket_details_tabs">
+      <div class="ticket_details_tab tab1">
+        <span>Timeline</span>
+      </div>
+    </div>
+    <app-ticket-tracking class="mt-4" [ticketId]="ticketId"></app-ticket-tracking>
+  </div>
+</div>
 
 <!-- <div>
   <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
   <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
 </div> -->
+
+
+<!-- 
 <div class="container">
   <div class="left-column">
     <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
     <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
     <br />
-    <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+    <app-invoice-display [ticketId]="ticketId"></app-invoice-display> -->
+
+
     <!-- <app-ticket-notes-attachments
       [ticketId]="ticketId"
       (editModeChanged)="onEditModeChange($event)"
     ></app-ticket-notes-attachments> -->
-    <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
+
+
+    <!-- <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
     <app-title-sub [headings]="headings"></app-title-sub>
   </div>
   <div class="right-column">
     <app-ticket-tracking [ticketId]="ticketId"></app-ticket-tracking>
   </div>
-</div>
+</div> -->
