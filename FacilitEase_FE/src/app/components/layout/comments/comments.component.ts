@@ -166,8 +166,6 @@ export class CommentsComponent implements OnInit {
     }
   }
 
-
-
   getReplies(commentId: number): CommentInterface[] {
     return this.comments
       .filter((comment) => comment.parentId === commentId)
@@ -180,8 +178,5 @@ export class CommentsComponent implements OnInit {
 
   toggleCommentsVisibility(): void {
     this.commentsVisible = !this.commentsVisible;
-    this.toggleButtonText = this.commentsVisible ? 'Hide Comments' : 'View Comments';
   }
-
-
 }

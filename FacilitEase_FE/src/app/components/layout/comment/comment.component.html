@@ -5,13 +5,10 @@
   <div class="comment-right-part">
     <div class="comment-content">
       <div class="comment-author">{{ comment.employeeName }}</div>
-      <div>{{ comment.createdAt |date: 'short' }}</div>
+      <div>{{ comment.updatedAt |date: 'short' }}</div>
+      <span style="font-style: italic;" *ngIf="comment.createdAt!=comment.updatedAt">(Edited)</span>
     </div>
     <div class="comment-text" *ngIf="!isEditing()">{{ comment.text }}</div>
-    <app-comment-form *ngIf="isEditing()" submitLabel="Update" [hasCancelButton]="true" [initialText]="comment.text"
-      (handleSubmit)="
-          updateComment.emit({ text: $event, commentId: comment.id })
-        " (handleCancel)="setActiveComment.emit(null)"></app-comment-form>
     <div class="comment-actions">
       <div *ngIf="canReply" class="comment-action" (click)="
             setActiveComment.emit({
@@ -37,8 +34,13 @@
           Delete
         </div> -->
     </div>
+    <app-comment-form *ngIf="isEditing()" submitLabel="Update" [hasCancelButton]="true" [initialText]="comment.text"
+      (handleSubmit)="
+        updateComment.emit({ text: $event, commentId: comment.id })
+      " (handleCancel)="setActiveComment.emit(null)"></app-comment-form>
     <app-comment-form *ngIf="isReplying()" submitLabel="Reply"
-      (handleSubmit)="addComment.emit({ text: $event, parentId: comment.id })"></app-comment-form>
+      (handleSubmit)="addComment.emit({ text: $event, parentId: comment.id })" [hasCancelButton]="true"
+      (handleCancel)="setActiveComment.emit(null)"></app-comment-form>
     <div class="replies" *ngIf="comment.replies.length > 0">
       <!-- Recursive call to app-comment for each reply -->
       <app-comment *ngFor="let reply of comment.replies" [comment]="reply" [replies]="reply.replies"

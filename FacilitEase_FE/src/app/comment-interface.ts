@@ -5,6 +5,7 @@ export interface CommentInterface {
     userId: number;
     parentId: number;
     createdAt: string;
+    updatedAt: string;
     replies: CommentInterface[];
     showReplies?: boolean;
 }

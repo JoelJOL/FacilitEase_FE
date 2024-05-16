@@ -22,6 +22,7 @@ export class DetailedDhTicketComponent implements OnInit {
   editMode: boolean = false;
   modalRef: BsModalRef | undefined;
   currentUserId: number = this.azureService.userId;
+  projectCodes: number[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -42,11 +43,25 @@ export class DetailedDhTicketComponent implements OnInit {
         .getdepartmentHeadTicketDetails(this.ticketId)
         .subscribe((data) => {
           this.ticketDetails = data;
-
-          console.log(this.ticketDetails);
-          console.log(22);
         });
     });
+
+    if (this.ticketDetails.ticketName == 'Procurement') {
+      this.fetchProjectCodes();
+    }
+  }
+
+  fetchProjectCodes() {
+    this.departmentHeadService.getProjectCodes().subscribe(
+      (codes: number[]) => {
+        this.projectCodes = codes;
+        console.log(this.projectCodes);
+        // Open confirmation modal here or trigger it based on user action
+      },
+      (error) => {
+        console.error('Error fetching project codes:', error);
+      }
+    );
   }
 
   updateTicket(isApproved: boolean): void {
