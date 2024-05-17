@@ -1,4 +1,7 @@
-.title_sub_container{
+.title_sub_container {
     padding-top: 20px;
 }
 
+.custom-col-padding {
+    padding-left: 25px;
+}

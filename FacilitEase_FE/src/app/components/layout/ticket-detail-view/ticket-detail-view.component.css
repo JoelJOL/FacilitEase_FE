@@ -12,28 +12,40 @@
   width: 27%;
 }
 
-.ticket_detialing, .ticket_additional{
-  box-shadow: 0px 14px 29px -16px rgba(0, 0, 0, 0.34);
+
+.ticket_detailing,
+.ticket_additional {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
-.ticket_details_tabs{
+.ticket_detailing:hover,
+.ticket_additional:hover {
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ticket_details_tabs {
   display: flex;
   justify-items: start;
 }
 
-.ticket_details_tab{
+.ticket_details_tab {
   padding: 10px 20px 10px 20px;
   border-radius: 0px;
   cursor: pointer;
 }
 
-.ticket_details_tab:hover{
-  background-color: var(--light_violet);
+.ticket_details_tab:hover {
+  background-color: var(--violet);
   padding: 10px 20px 10px 20px;
   cursor: pointer;
+  color: #fff;
 }
 
-.tab1{
+.tab1 {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-right: 2px var(--light_violet) solid;
@@ -42,9 +54,25 @@
   box-shadow: 0px 14px 29px -16px rgba(0, 0, 0, 0.34);
 }
 
-.tab2{
+.tab2 {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom: 2px var(--light_violet) solid;
   border-right: 2px var(--light_violet) solid;
+}
+
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.chat_button {
+  padding-left: 15px;
+  padding-bottom: 10px;
 }
