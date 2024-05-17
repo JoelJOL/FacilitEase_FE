@@ -11,7 +11,7 @@
   <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <select id="categoryId" formControlName="categoryId" required>
-        <option *ngFor="let category of categories" [value]="category.id">
+        <option *ngFor="let category of categories" [value]="category.id" class="category_option">
           {{ category.categoryName }}
         </option>
       </select>
@@ -32,6 +32,7 @@
         id="ticketDescription"
         formControlName="ticketDescription"
         required
+        maxlength="300"
       ></textarea>
       <label for="ticketDescription">Description</label>
       <span
