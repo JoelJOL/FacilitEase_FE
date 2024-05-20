@@ -211,4 +211,11 @@ export class UploadComponent implements OnInit {
     textarea.style.height = 'auto';
     textarea.style.height = `${textarea.scrollHeight}px`;
   }
+
+  removeFile(){
+    this.uploadForm.patchValue({
+      file: null,
+    });
+    this.isFileUploaded = false;
+  }
 }
