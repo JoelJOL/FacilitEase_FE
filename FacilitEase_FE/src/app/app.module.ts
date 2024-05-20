@@ -52,10 +52,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/agent-ticket-view.component';
 import { TitleSubComponent } from './components/ui_elements/title-sub/title-sub.component';
 import { ModalComponent } from './components/layout/modal/modal.component';
-import {
-  MAT_DIALOG_DEFAULT_OPTIONS,
-  MatDialogModule,
-} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -147,7 +144,7 @@ import { LoadingComponent } from './components/ui_elements/loading/loading.compo
 import { NotificationComponent } from './components/layout/notification/notification.component';
 import { TicketsToResolveComponent } from './features/l2admin/tickets-to-resolve/tickets-to-resolve.component';
 import { DetailsTicketToResolveComponent } from './features/l2admin/details-ticket-to-resolve/details-ticket-to-resolve.component';
-import { EditSlaComponent } from './features/L1admin/edit-sla/edit-sla.component';
+import { EditSlaComponent } from './features/l2admin/edit-sla/edit-sla.component';
 import { L2CancellationComponent } from './features/l2admin/l2-cancellation/l2-cancellation.component';
 import { DetailsL2CancelComponent } from './features/l2admin/details-l2-cancel/details-l2-cancel.component';
 import { CategoryReportTableComponent } from './components/layout/category-report-table/category-report-table.component';
@@ -160,9 +157,12 @@ import { CommentsComponent } from './components/layout/comments/comments.compone
 import { CommentComponent } from './components/layout/comment/comment.component';
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 import { HeaderLayoutNewComponent } from './components/layout/header-layout-new/header-layout-new.component';
+import { SlaEditModalComponent } from './features/l2admin/components/sla-edit-modal/sla-edit-modal.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
-import { CommentsNoeditComponent } from './comments-noedit/comments-noedit.component';
+import { CommentsNoeditComponent } from './components/layout/comments-noedit/comments-noedit.component';
 import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
+import { TicketRejectCommentModalComponent } from './features/manager/components/ticket-reject-comment-modal/ticket-reject-comment-modal.component';
 import { FileUploadModalComponent } from './components/layout/file-upload-modal/file-upload-modal.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
@@ -181,7 +181,6 @@ const isIE =
     SidebarComponent,
     SidebarLogoComponent,
     SidebarFooterComponent,
-    ButtonComponent,
     ProfilepicDropdownComponent,
     TicketNotesComponent,
     TicketAttachmentsComponent,
@@ -293,9 +292,13 @@ const isIE =
     CommentComponent,
     CommentFormComponent,
     HeaderLayoutNewComponent,
+    SlaEditModalComponent,
     CommentNoeditComponent,
     CommentsNoeditComponent,
     InvoiceDisplayComponent,
+    TicketRejectCommentModalComponent,
+    FileUploadComponent,
+    ButtonComponent,
     FileUploadModalComponent,
   ],
   imports: [
@@ -310,6 +313,7 @@ const isIE =
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatFormFieldModule,
     CommonModule,
     FormsModule,
     ModalModule.forRoot(),

@@ -1,0 +1,6 @@
+.view-comments-text {
+    cursor: pointer;
+    color: var(--blue_violet);
+    text-decoration: underline;
+    font-size: 14px;
+}

@@ -12,6 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
 import { SidebarService } from '@app/features/service/dataService/sidebarService/sidebar.service';
 import {
+  AssignedTickets,
+  CancellationRequest,
+  EscalatedTickets,
+  TicketsToResolve,
   UnassignedTicketDetails,
   UnassignedTickets,
   l2Admin,
@@ -23,6 +27,7 @@ import { ConfirmationModalComponent } from '@app/features/manager/components/con
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { SlaEditModalComponent } from '../components/sla-edit-modal/sla-edit-modal.component';
 
 @Component({
   selector: 'app-unassigned-tickets',
@@ -56,6 +61,7 @@ export class UnassignedTicketsComponent {
   //   console.log('Row clicked in parent component with ID:', Id);
   //   this.router.navigate([`${l2Admin}/${UnassignedTicketDetails}`, Id]);
   // }
+  activeBox: number = 1;
   @ViewChild(FilterComponent) filterModal!: FilterComponent;
   headers: string[] = [
     'ID',
@@ -82,6 +88,7 @@ export class UnassignedTicketsComponent {
   @Output() totalDataCountChange = new EventEmitter<number>();
   @Output() rowClicked: EventEmitter<any> = new EventEmitter<any>();
   ticketId!: number;
+  escalationComment : string = '';
 
   constructor(
     private http: HttpClient,
@@ -93,7 +100,7 @@ export class UnassignedTicketsComponent {
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
   apiLink = this.masterService.getApiLinkUnassigned();
 
   ngOnInit(): void {
@@ -141,6 +148,7 @@ export class UnassignedTicketsComponent {
       this.router.navigate([currentUrl]);
     });
   }
+
   getCellClasses(columnKey: string, cellValue: any) {
     if (columnKey === 'priority') {
       return {
@@ -204,44 +212,70 @@ export class UnassignedTicketsComponent {
     this.ticketId = Id;
     console.log(`ticket id is ${this.ticketId}`);
   }
+  
   onAgentSelected(selectedAgent: number, ticketId: number) {
-    if (this.ticketId) {
-      const userId = this.azureService.userId;
-      const data = {
-        ticketId: ticketId,
-        agentId: selectedAgent,
-        userId: userId,
-      };
-      const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-        width: '400px',
-        data: 'Do you confirm the ticket assigning?',
-      });
-      console.log(selectedAgent);
-      dialogRef.afterClosed().subscribe((result: any) => {
-        if (result) {
-          // this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
-          this.http
-            .put('https://localhost:7049/api/l2/assign-ticket', data, {
-              responseType: 'text',
-            })
-            .subscribe(
-              (response: any) => {
-                this.reloadComponent();
-                console.log('Ticket assigned successfully', response);
-                this.toastr.success('Ticket assigned successfully!', 'Success');
-                // this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
-              },
-              (error: any) => {
-                console.error('Error assigning ticket', error);
-              }
-            );
-        } else {
-          // this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
-          this.reloadComponent();
-        }
-      });
+    if (!this.ticketId) {
+      console.error('Ticket ID not provided');
+      return;
     }
+  
+    const userId = this.azureService.userId;
+    const data = {
+      ticketId: ticketId,
+      agentId: selectedAgent,
+      userId: userId,
+    };
+  
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '400px',
+      data: 'Do you confirm the ticket assigning?',
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.http.get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`).subscribe(
+          (resolvingTimeResponse: any) => {
+            const resolvingTime: Date = new Date(resolvingTimeResponse.toString());
+  
+            const slaDialogRef = this.dialog.open(SlaEditModalComponent, {
+              width: '400px',
+              data: { resolvingTime: resolvingTime, ticketId: ticketId, userId: userId }
+            });
+  
+            slaDialogRef.afterClosed().subscribe((result: any) => {
+              if (result) {
+                this.escalationComment = result.comment;
+  
+                // Assign the ticket
+                this.http.put('https://localhost:7049/api/l2/assign-ticket', data, { responseType: 'text' })
+                  .subscribe(
+                    (response: any) => {
+                      this.reloadComponent();
+                      console.log('Ticket assigned successfully', response);
+                      this.toastr.success('Ticket assigned successfully!', 'Success');
+                    },
+                    (error: any) => {
+                      console.error('Error assigning ticket', error);
+                    }
+                  );
+              } else {
+                // Handle cancellation of assignment
+                this.reloadComponent();
+              }
+            });
+          },
+          (error: any) => {
+            console.error('Error fetching resolving time:', error);
+          }
+        );
+      } else {
+        // Handle cancellation of confirmation modal
+        this.reloadComponent();
+      }
+    });
   }
+  
+  
   changePage(page: number) {
     this.currentPage = page;
     this.loadData();
@@ -262,5 +296,20 @@ export class UnassignedTicketsComponent {
 
     // Load data
     this.loadData();
+  }
+
+  activateBox(boxNumber: number) {
+    this.activeBox = boxNumber;
+    if (this.activeBox === 1) {
+      this.router.navigate([`${l2Admin}/${UnassignedTickets}`]);
+    } else if (this.activeBox === 2) {
+      this.router.navigate([`${l2Admin}/${AssignedTickets}`]);
+    } else if (this.activeBox === 3) {
+      this.router.navigate([`${l2Admin}/${EscalatedTickets}`]);
+    } else if (this.activeBox === 4) {
+      this.router.navigate([`${l2Admin}/${TicketsToResolve}`]);
+    } else if (this.activeBox === 5) {
+      this.router.navigate([`${l2Admin}/${CancellationRequest}`]);
+    }
   }
 }

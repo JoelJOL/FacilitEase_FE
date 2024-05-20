@@ -8,6 +8,9 @@ import { ModalComponent } from '@app/components/layout/modal/modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
+import { TicketRejectCommentModalComponent } from '@app/features/manager/components/ticket-reject-comment-modal/ticket-reject-comment-modal.component';
+import { ApprovalPendingTickets } from 'environments/environment';
 
 @Component({
   selector: 'app-detailed-dh-ticket',
@@ -20,6 +23,8 @@ export class DetailedDhTicketComponent implements OnInit {
   ticketId: number = 0;
   editMode: boolean = false;
   modalRef: BsModalRef | undefined;
+  currentUserId: number = this.azureService.userId;
+  rejectComment: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +32,9 @@ export class DetailedDhTicketComponent implements OnInit {
     private approveDenyService: ApproveDenyService,
     private modalService: BsModalService,
     private toastr: ToastrService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private azureService: AzureService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -54,10 +60,10 @@ export class DetailedDhTicketComponent implements OnInit {
           console.log('Ticket updated successfully');
           if (isApproved) {
             this.toastr.success('Ticket Approved!', 'Success');
+            this.redirectToPreviousPage();
           } else {
             this.toastr.success('Ticket Rejected!', 'Success');
           }
-          this.redirectToPreviousPage();
         },
         (error) => {
           console.error('Error updating ticket', error);
@@ -114,8 +120,22 @@ export class DetailedDhTicketComponent implements OnInit {
         if (action === 'accept') {
           this.updateTicket(true);
         } else if (action === 'reject') {
-          this.updateTicket(false);
+          this.openRejectModal();
         }
+      }
+    });
+  }
+
+  openRejectModal(){
+    const rejectdialogRef = this.dialog.open(TicketRejectCommentModalComponent,{
+      width:'400px',
+      data:{ticketId:this.ticketId,userId:this.currentUserId}
+    });
+    rejectdialogRef.afterClosed().subscribe((result:any)=>{
+      if(result){
+        this.updateTicket(false);
+        this.rejectComment = result.comment;
+        this.redirectToPreviousPage();
       }
     });
   }

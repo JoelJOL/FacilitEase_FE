@@ -1,27 +1,17 @@
 <div class="container mt-1">
   <div class="ticket-container">
     <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
-    <app-ticket-description
-      [ticketDetails]="ticketDetails"
-    ></app-ticket-description>
+    <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
     <div class="description_container">
       <div class="left-column">
-        <app-ticket-notes-attachments
-          [ticketId]="ticketId"
-          (editModeChanged)="onEditModeChange($event)"
-        ></app-ticket-notes-attachments>
+        <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
+
         <div class="person-cards-row">
           <!-- Raised By -->
-          <app-person-card
-            [personName]="ticketDetails.employeeName"
-            [role]="1"
-          ></app-person-card>
-    
+          <app-person-card [personName]="ticketDetails.employeeName" [role]="1"></app-person-card>
+
           <!-- Assigned To -->
-          <app-person-card
-            [personName]="ticketDetails.assignedTo"
-            [role]="0"
-          ></app-person-card>
+          <app-person-card [personName]="ticketDetails.assignedTo" [role]="0"></app-person-card>
         </div>
       </div>
       <div class="right-column">
@@ -31,25 +21,13 @@
 
     <!-- Buttons in the Next Row -->
     <div class="button-row">
-      <div
-        class="common-btn"
-        id="button"
-        (click)="openConfirmationModal('accept')"
-      >
+      <div class="common-btn" id="button" (click)="openConfirmationModal('accept')">
         <app-button color="submit">Approve</app-button>
       </div>
-      <div
-        class="common-btn"
-        id="button"
-        (click)="openConfirmationModal('reject')"
-      >
+      <div class="common-btn" id="button" (click)="openConfirmationModal('reject')">
         <app-button color="rejected">Reject</app-button>
       </div>
-      <div
-        class="common-btn"
-        id="button"
-        (click)="openConfirmationModal('forward')"
-      >
+      <div class="common-btn" id="button" (click)="openConfirmationModal('forward')">
         <app-button color="forward">Forward to Department Head</app-button>
       </div>
     </div>

@@ -1,20 +1,10 @@
 <div class="details_container">
   <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
-  <app-ticket-description
-    [ticketDetails]="ticketDetails"
-  ></app-ticket-description>
-  <app-ticket-documents
-    [headerText]="customHeaderText"
-    [ticketId]="ticketId"
-  ></app-ticket-documents>
+  <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
+  <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
   <div class="assign_dropdown">
-    <app-assign-dropdown
-      [label]="'Assign To'"
-      [options]="agents"
-      displayKey="agentName"
-      valueProperty="agentId"
-      (onItemSelected)="onAgentSelected($event, ticketId)"
-    ></app-assign-dropdown>
+    <app-assign-dropdown [label]="'Assign To'" [options]="agents" displayKey="agentName" valueProperty="agentId"
+      (onItemSelected)="onAgentSelected($event, ticketId)"></app-assign-dropdown>
   </div>
   <!-- <app-ticket-notes-attachments></app-ticket-notes-attachments> -->
   <div class="container">
@@ -22,10 +12,7 @@
       <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
       <br />
       <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
-      <app-ticket-notes-attachments
-        [ticketId]="ticketId"
-        (editModeChanged)="onEditModeChange($event)"
-      ></app-ticket-notes-attachments>
+      <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
       <br />
       <app-title-sub [headings]="titleSubHeadings"></app-title-sub>
     </div>

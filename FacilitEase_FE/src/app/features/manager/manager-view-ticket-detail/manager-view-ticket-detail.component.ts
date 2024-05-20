@@ -9,6 +9,8 @@ import { TicketDetails } from '@app/features/l3admin/l3Models/ticket-details';
 import { ToastrService } from 'ngx-toastr';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { Manager, ApprovalPendingTickets } from 'environments/environment';
+import { TicketRejectCommentModalComponent } from '../components/ticket-reject-comment-modal/ticket-reject-comment-modal.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manager-view-ticket-detail',
@@ -21,6 +23,8 @@ export class ManagerViewTicketDetailComponent implements OnInit {
   ticketDetails!: TicketDetails;
   editMode: boolean = false;
   modalRef: BsModalRef | undefined;
+  currentUserId: number = this.azureService.userId;
+  rejectComment: any;
 
   constructor(
     private masterService: MasterService,
@@ -30,7 +34,7 @@ export class ManagerViewTicketDetailComponent implements OnInit {
     private router: Router,
     private modalService: BsModalService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -112,9 +116,21 @@ export class ManagerViewTicketDetailComponent implements OnInit {
     this.masterService
       .ticketDecision(this.ticketDetails.id, 5)
       .subscribe((response) => {
-        this.toastr.success('Ticket Rejected!', 'Success');
-        this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
+        this.openRejectModal();
       });
+  }
+  openRejectModal(){
+    const rejectdialogRef = this.dialog.open(TicketRejectCommentModalComponent,{
+      width:'400px',
+      data:{ticketId:this.ticketId,userId:this.currentUserId}
+    });
+    rejectdialogRef.afterClosed().subscribe((result:any)=>{
+      if(result){
+        this.rejectComment = result.comment;
+        this.toastr.success('Ticket Rejected!', 'Success');
+      this.router.navigate([`${Manager}/${ApprovalPendingTickets}`]);
+      }
+    });
   }
   onEditModeChange(editMode: boolean) {
     // Update the editMode value
@@ -137,4 +153,6 @@ export class ManagerViewTicketDetailComponent implements OnInit {
       },
     });
   }
+
+  
 }

@@ -1,4 +1,4 @@
-<mat-dialog-content>
+<!-- <mat-dialog-content>
   <div class="file-input-container">
     <label for="fileInput" class="custom-file-input-label"> Choose File </label>
     <input
@@ -14,10 +14,43 @@
     <br />
     <div class="btn-container">
       <app-button color="submit" (click)="uploadFile()" class="btn"
-        >Upload</app-button
+        >Ok</app-button
       >
       <app-button color="rejected" class="btn" (click)="onCancelClick()"
-        >Cancel</app-button
+        >No</app-button
+      >
+    </div>
+  </div>
+</mat-dialog-content> -->
+<mat-dialog-content>
+  <div class="file-input-container">
+    <label for="fileInput" class="custom-file-input-label"> Choose File </label>
+    <input
+      id="fileInput"
+      type="file"
+      #fileInput
+      (change)="onFileSelected($event)"
+      class="custom-file-input"
+    />
+  </div>
+  <div *ngIf="selectedFile" class="selected-file-info">
+    Selected File: {{ selectedFile.name }}
+    <br />
+    <!-- Display preview for image files -->
+    <div *ngIf="isImage(selectedFile)" class="preview-container">
+      <img
+        [src]="getFileUrl(selectedFile)"
+        alt="File Preview"
+        class="file-preview"
+      />
+    </div>
+    <!-- Add other preview types (e.g., PDF, video) here -->
+    <div class="btn-container">
+      <app-button color="submit" (click)="uploadFile()" class="btn"
+        >Ok</app-button
+      >
+      <app-button color="rejected" class="btn" (click)="onCancelClick()"
+        >No</app-button
       >
     </div>
   </div>

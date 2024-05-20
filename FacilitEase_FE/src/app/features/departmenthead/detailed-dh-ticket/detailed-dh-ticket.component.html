@@ -2,31 +2,17 @@
   <div class="ticket-container">
     <app-ticket-header></app-ticket-header>
     <app-ticket-info [ticketDetails]="ticketDetails"></app-ticket-info>
-    <app-ticket-description
-      [ticketDetails]="ticketDetails"
-    ></app-ticket-description>
+    <app-ticket-description [ticketDetails]="ticketDetails"></app-ticket-description>
     <div class="description_container">
       <div class="left-column">
-        <app-ticket-notes-attachments
-          [ticketId]="ticketId"
-          (editModeChanged)="onEditModeChange($event)"
-        ></app-ticket-notes-attachments>
+        <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
         <div class="person_cards_row">
           <!-- Raised By -->
-          <app-person-card
-            [personName]="ticketDetails.employeeName"
-            [role]="1"
-          ></app-person-card>
+          <app-person-card [personName]="ticketDetails.employeeName" [role]="1"></app-person-card>
 
           <!-- Assigned To -->
-          <app-person-card
-            [personName]="ticketDetails.assignedTo"
-            [role]="0"
-          ></app-person-card>
-          <app-person-card
-            [personName]="ticketDetails.forwardedBy"
-            [role]="2"
-          ></app-person-card>
+          <app-person-card [personName]="ticketDetails.assignedTo" [role]="0"></app-person-card>
+          <app-person-card [personName]="ticketDetails.forwardedBy" [role]="2"></app-person-card>
         </div>
       </div>
       <div class="right-column">
@@ -34,15 +20,8 @@
       </div>
     </div>
     <div class="button-row">
-      <app-button
-        color="accepted"
-        id="accepted"
-        (click)="openConfirmationModal('accept')"
-        >Approve</app-button
-      >
-      <app-button color="rejected" (click)="openConfirmationModal('reject')"
-        >Reject</app-button
-      >
+      <app-button color="accepted" id="accepted" (click)="openConfirmationModal('accept')">Approve</app-button>
+      <app-button color="rejected" (click)="openConfirmationModal('reject')">Reject</app-button>
     </div>
   </div>
 </div>

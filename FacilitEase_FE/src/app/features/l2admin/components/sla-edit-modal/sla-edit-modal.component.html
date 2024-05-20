@@ -1,0 +1,29 @@
+<div class="modal-container" (click)="$event.stopPropagation()">
+  <div class="modal-content">
+    <div class="title-container">
+      <h2 mat-dialog-title id="title">Confirmation</h2>
+  </div>
+  <mat-dialog-content
+      >Ticket is expected to be resolved by the date: {{ data.resolvingTime }}</mat-dialog-content>
+      <ng-container *ngIf="editingMode">
+        <mat-form-field >
+          <input placeholder="Number of days to add" [(ngModel)]="daysToAdd" id="days_field">
+        </mat-form-field>
+        <mat-form-field>
+          <input placeholder="Reason for change" [(ngModel)]="comment" id="reason_field">
+        </mat-form-field>
+      </ng-container>
+      <mat-dialog-actions *ngIf="editingMode; else readonlyActions" id="button-container">
+        <button color="submit" (click)="onSaveClick()" id="btn-save">Save</button>
+        <button color="rejected" (click)="onCancelEditClick()" id="btn-cancel">Cancel</button>
+      </mat-dialog-actions>
+      <ng-template #readonlyActions>
+        <mat-dialog-actions id="button-container">
+          <app-button color="submit" (click)="onYesClick()" id="button1">Accept</app-button>
+          <app-button color="rejected" (click)="onEditClick()" id="button2">Edit</app-button>
+        </mat-dialog-actions>
+      </ng-template>
+  </div>
+</div>
+
+

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketDetails } from '@app/features/l3admin/l3Models/ticket-details';
 import { ApprovalPendingTickets } from 'environments/environment';
+import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 
 @Component({
   selector: 'app-manager-view-ticket-simple',
@@ -16,13 +17,15 @@ export class ManagerViewTicketSimpleComponent {
   ticketId: number = 0;
   ticketDetails!: TicketDetails;
   editMode: boolean = false;
+  currentUserId: number = this.azureService.userId;
 
   constructor(
     private masterService: MasterService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private azureService: AzureService
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
