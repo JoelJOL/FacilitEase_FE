@@ -12,6 +12,10 @@
   width: 27%;
 }
 
+.ticket_timeline_heading {
+  padding: 10px;
+}
+
 .ticket_detailing,
 .ticket_additional {
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -47,15 +51,17 @@
 }
 
 .ticket_details_tab:hover {
-  background-color: var(--violet);
   padding: 10px 20px 10px 20px;
   cursor: pointer;
-  color: #fff;
+  color: var(--violet);
+  background-color: var(--hover_grey);
+  font-weight: bold;
 }
 
 .ticket_details_tab.active {
-  background-color: var(--violet);
-  color: #fff;
+  color: var(--violet);
+  background-color: var(--hover_grey);
+  font-weight: bold;
 }
 
 .tab1 {
@@ -72,6 +78,7 @@
   border-bottom-right-radius: 5px;
   border-bottom: 2px var(--light_violet) solid;
   border-right: 2px var(--light_violet) solid;
+  border-top: none;
 }
 
 button {
@@ -89,6 +96,7 @@ button {
   padding-bottom: 10px;
 }
 
-.ticket_comments_view {
+.ticket_comments_view,
+.ticket_document_view {
   padding: 10px;
 }

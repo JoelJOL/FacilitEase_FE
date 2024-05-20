@@ -46,14 +46,12 @@ export class CommentsComponent implements OnInit {
         const rootCommentIndex = this.comments.findIndex(comment => comment.id == commentId);
         console.log(rootCommentIndex);
         if (rootCommentIndex !== -1) {
-            this.comments[rootCommentIndex] = updatedComment;
-            console.log("This is needed",this.comments);
+          this.comments[rootCommentIndex] = updatedComment;
         } else {
-            // If the updated comment is a reply, find its parent comment and update it in the replies
-            console.log("Hi");
-            this.modifyParentCommentReplies(this.comments, updatedComment.parentId, updatedComment);
+          // If the updated comment is a reply, find its parent comment and update it in the replies
+          this.modifyParentCommentReplies(this.comments, updatedComment.parentId, updatedComment);
         }
-        
+
         this.activeComment = null;
       });
   }
@@ -102,28 +100,28 @@ export class CommentsComponent implements OnInit {
   }
 
   modifyParentCommentReplies(comments: CommentInterface[], parentId: number, newComment: CommentInterface): void {
-    
+
     for (const comment of comments) {
       console.log(comment.id)
       console.log(parentId)
-        if (comment.id == parentId) {
+      if (comment.id == parentId) {
 
-            // Replace the parent comment's replies with the new reply
-            comment.replies = [newComment];
-            console.log("Hiii",comment.replies)
-            return;
-        }
-        if (comment.replies) {
-            // Recursively search for the parent comment in the replies
-            this.updateParentCommentReplies(comment.replies, parentId, newComment);
-        }
+        // Replace the parent comment's replies with the new reply
+        comment.replies = [newComment];
+        console.log("Hiii", comment.replies)
+        return;
+      }
+      if (comment.replies) {
+        // Recursively search for the parent comment in the replies
+        this.updateParentCommentReplies(comment.replies, parentId, newComment);
+      }
     }
-}
+  }
 
 
-  
 
-  
+
+
 
   getReplies(commentId: number): CommentInterface[] {
     return this.comments

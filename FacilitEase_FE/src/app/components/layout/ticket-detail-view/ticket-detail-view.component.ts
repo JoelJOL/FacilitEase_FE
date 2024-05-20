@@ -29,7 +29,6 @@ export class TicketDetailViewComponent {
   onEditModeChange(editMode: boolean) {
     this.editMode = editMode; // Update the edit mode value
     this.editModeChanged.emit(this.editMode);
-    console.log(this.editMode);
   }
 
   // Method to open the teams chat when button is clicked

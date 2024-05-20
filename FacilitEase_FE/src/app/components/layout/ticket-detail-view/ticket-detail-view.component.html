@@ -1,15 +1,16 @@
 <div class="d-flex">
   <div class="col-8 ticket_detailing">
     <div class="ticket_details_tabs">
-      <div class="ticket_details_tab tab1" (click)="selectedTab = 'Details'" [class.active]="selectedTab === 'Details'">
+      <div class="ticket_details_tab tab1" (click)="selectedTab = 'Details'" [class.active]="selectedTab === 'Details'"
+        [class.tab2]="selectedTab === 'Details'">
         <span>Details</span>
       </div>
-      <div class="ticket_details_tab tab2" (click)="selectedTab = 'Documents'"
-        [class.active]="selectedTab === 'Documents'">
+      <div class="ticket_details_tab tab1" (click)="selectedTab = 'Documents'"
+        [class.active]="selectedTab === 'Documents'" [class.tab2]="selectedTab === 'Documents'">
         <span>Documents</span>
       </div>
       <div class="ticket_details_tab tab1" (click)="selectedTab = 'Comments'"
-        [class.active]="selectedTab === 'Comments'">
+        [class.active]="selectedTab === 'Comments'" [class.tab2]="selectedTab === 'Comments'">
         <span>Comments</span>
       </div>
     </div>
@@ -21,15 +22,19 @@
         <button (click)="goToTeams()">Chat</button>
       </div>
     </div>
+    <div class="ticket_document_view" *ngIf="selectedTab === 'Documents'">
+      <app-ticket-documents [headerText]="customHeaderText" [ticketId]="ticketId"></app-ticket-documents>
+      <app-invoice-upload [ticketId]="ticketId"></app-invoice-upload>
+      <br />
+      <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
+    </div>
     <div class="ticket_comments_view" *ngIf="selectedTab === 'Comments'">
       <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
     </div>
   </div>
   <div class="col-4 ticket_additional">
-    <div class="ticket_details_tabs">
-      <div class="ticket_details_tab tab1">
-        <span>Timeline</span>
-      </div>
+    <div class="ticket_timeline_heading">
+      <h4>Timeline</h4>
     </div>
     <app-ticket-tracking class="mt-4" [ticketId]="ticketId"></app-ticket-tracking>
   </div>
