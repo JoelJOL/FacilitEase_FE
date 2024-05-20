@@ -13,10 +13,8 @@ body {
 :root {
   --violet: #320242;
   --hover_violet: #48035f;
-  /* --violet: rgb(124, 0, 192); */
   --grey: rgb(237, 237, 237);
-  /* --grey: rgb(198, 198, 198); */
-  /* --light_violet: #dad7ff; */
+  --submit_violet: #8e00bd;
   --light_violet: #ede3f1;
   --light_grey: #ececec;
   --blue_violet: #320242;

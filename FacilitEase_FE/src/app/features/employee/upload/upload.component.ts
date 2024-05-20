@@ -48,6 +48,7 @@ export class UploadComponent implements OnInit {
 
   // Success message to display on successful ticket submission
   successMessage: string = '';
+  isFileUploaded = false;
 
   // Constructor initializes form controls and sets up validations
   constructor(
@@ -109,16 +110,23 @@ export class UploadComponent implements OnInit {
   // Event handler for file input change
   onFileChange(event: any) {
     const file = event.target.files[0];
+    this.isFileUploaded = true;
+    console.log(this.isFileUploaded)
     if (file) {
       this.uploadForm.patchValue({
         file: file,
       });
+    }
+    if(file == null)
+    {
+      this.isFileUploaded = false;
     }
   }
 
   // Function to reset the form on cancel
   onCancelRequest(): void {
     this.uploadForm.reset();
+    this.isFileUploaded = false;
   }
 
   // Function to handle form submission
@@ -196,5 +204,11 @@ export class UploadComponent implements OnInit {
         console.error('Error fetching priorities:', error);
       }
     );
+  }
+
+  adjustTextareaHeight(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
   }
 }
