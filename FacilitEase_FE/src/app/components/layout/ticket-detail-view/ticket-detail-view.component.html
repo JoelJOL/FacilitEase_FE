@@ -5,11 +5,11 @@
         <span>Details</span>
       </div>
       <div class="ticket_details_tab tab2" (click)="selectedTab = 'Documents'"
-        [class.active]="selectedTab === 'Details'">
+        [class.active]="selectedTab === 'Documents'">
         <span>Documents</span>
       </div>
       <div class="ticket_details_tab tab1" (click)="selectedTab = 'Comments'"
-        [class.active]="selectedTab === 'Details'">
+        [class.active]="selectedTab === 'Comments'">
         <span>Comments</span>
       </div>
     </div>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="ticket_comments_view" *ngIf="selectedTab === 'Comments'">
-
+      <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
     </div>
   </div>
   <div class="col-4 ticket_additional">

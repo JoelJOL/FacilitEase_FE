@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { TicketNotesAttachmentsComponent } from '../ticket-notes-attachments/ticket-notes-attachments.component';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
-import { UserRoleService } from '@app/features/service/dataService/userRoleService/user-role.service';
 
 @Component({
   selector: 'app-ticket-detail-view',
@@ -30,7 +29,6 @@ export class TicketDetailViewComponent {
   onEditModeChange(editMode: boolean) {
     this.editMode = editMode; // Update the edit mode value
     this.editModeChanged.emit(this.editMode);
-    console.log("Captured!");
     console.log(this.editMode);
   }
 
@@ -39,4 +37,5 @@ export class TicketDetailViewComponent {
     let n = "Hey " + "\nCongratulations on being a fool 🎉...";
     location.href = "MSTeams:/l/chat/0/0?users=" + this.userEmail + "&message= " + n;
   }
+
 }
