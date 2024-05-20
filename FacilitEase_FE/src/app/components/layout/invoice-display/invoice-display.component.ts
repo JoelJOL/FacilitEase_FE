@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
+import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-invoice-display',
@@ -10,7 +13,7 @@ import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
 export class InvoiceDisplayComponent implements OnInit {
   // API base URL
   private apiUrl = 'https://localhost:7049';
-
+  isHovered: boolean = false;
   // File-related properties
   fileUrl!: string;
   isImage = false;
@@ -20,7 +23,11 @@ export class InvoiceDisplayComponent implements OnInit {
   @Input() ticketId: number = 0;
 
   // Constructor with injected HttpClient
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   // Lifecycle hook: Executes when the component is initialized
   ngOnInit(): void {
@@ -77,5 +84,36 @@ export class InvoiceDisplayComponent implements OnInit {
       console.log('Opening image...');
       window.open(this.fileUrl, '_blank');
     }
+  }
+
+  deleteInvoice(): void {
+    const apiUrl = `https://localhost:7049/api/Invoice/delete/${this.ticketId}`;
+
+    this.http.delete(apiUrl).subscribe(
+      () => {
+        console.log('Invoice deleted successfully.');
+      },
+      (error) => {
+        console.error('Error deleting invoice:', error);
+        // Handle error accordingly
+      }
+    );
+  }
+  openConfirmationModal() {
+    let confirmationMessage = 'Are you sure you want to delete this invoice?';
+
+    // Open MatDialog with confirmation message
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '400px',
+      data: confirmationMessage,
+    });
+
+    // Subscribe to the result after the modal is closed
+    dialogRef.afterClosed().subscribe((result) => {
+      // If confirmed, proceed with cancellation
+      if (result) {
+        this.deleteInvoice();
+      }
+    });
   }
 }
