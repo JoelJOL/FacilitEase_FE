@@ -11,7 +11,7 @@
   <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <select id="categoryId" formControlName="categoryId" required>
-        <option *ngFor="let category of categories" [value]="category.id">
+        <option *ngFor="let category of categories" [value]="category.id" class="category_option">
           {{ category.categoryName }}
         </option>
       </select>
@@ -32,6 +32,9 @@
         id="ticketDescription"
         formControlName="ticketDescription"
         required
+        maxlength="300"
+        (input)="adjustTextareaHeight($event)"
+        rows="1"
       ></textarea>
       <label for="ticketDescription">Description</label>
       <span
@@ -74,7 +77,7 @@
       >
     </div>
 
-    <div class="file-group">
+    <div [ngClass]="isFileUploaded ? 'file_group_uploaded' : 'file-group'">
       <input
         type="file"
         formControlName="file"
@@ -84,30 +87,22 @@
 
     <div class="button-container">
       <button
-        id="submit-btn"
-        type="button"
-        class="pr-10 btn-accepted"
-        [disabled]="uploadForm.invalid"
-        (click)="onSubmit()"
-      >
-        Submit
-      </button>
-      <button
         type="Reset"
-        class="btn-rejected"
+        class="user_button reset_button "
         (click)="onCancelRequest()"
         [disabled]="uploadForm.pristine"
       >
         Reset
       </button>
-      <!-- <button
+      <button
+        id="submit-btn"
         type="button"
-        class="btn-cancel"
-        color="primary"
-        (click)="onCancel()"
+        class="pr-10 user_button submit_button"
+        [disabled]="uploadForm.invalid"
+        (click)="onSubmit()"
       >
-        Cancel
-      </button> -->
+        Submit
+      </button>
     </div>
   </form>
 </div>

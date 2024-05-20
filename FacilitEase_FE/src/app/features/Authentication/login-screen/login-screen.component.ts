@@ -85,9 +85,7 @@ export class LoginScreenComponent {
             //Acquire token silent failure, and send an interactive request
             console.log(error);
           });
-
-
-
+          
         //Adding the data to an object that will be send to the server for login
         this.azureObj.localAccountId = account.localAccountId ?? '';
         this.azureObj.expiration = account.idTokenClaims?.exp ?? 0;
