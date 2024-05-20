@@ -83,6 +83,7 @@
         formControlName="file"
         (change)="onFileChange($event)"
       />
+      <p class="file_remove" *ngIf="isFileUploaded" (click)="removeFile()">×</p>
     </div>
 
     <div class="button-container">
