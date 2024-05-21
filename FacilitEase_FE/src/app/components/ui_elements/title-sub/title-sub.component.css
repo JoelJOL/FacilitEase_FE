@@ -1,7 +1,14 @@
 .title_sub_container {
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .custom-col-padding {
-    padding-left: 25px;
+    padding-left: 30px;
+}
+
+@media (min-width: 768px) {
+    .custom-col-padding {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 }

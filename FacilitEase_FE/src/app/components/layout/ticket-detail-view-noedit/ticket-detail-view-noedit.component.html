@@ -29,7 +29,7 @@
       <app-invoice-display [ticketId]="ticketId"></app-invoice-display>
     </div>
     <div class="ticket_comments_view" *ngIf="selectedTab === 'Comments'">
-      <app-comments [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments>
+      <app-comments-noedit [currentUserId]="currentUserId" [ticketId]="ticketId"></app-comments-noedit>
     </div>
   </div>
   <div class="col-4 ticket_additional">
