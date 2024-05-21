@@ -1,0 +1,51 @@
+.comment {
+    display: flex;
+    margin-bottom: 3px;
+}
+
+.comment-image-container {
+    margin-right: 12px;
+}
+
+.comment-image-container img {
+    border-radius: 50px;
+}
+
+.comment-right-part {
+    width: 100%;
+}
+
+.comment-content {
+    display: flex;
+}
+
+.comment-author {
+    margin-right: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.comment-text {
+    font-size: 14px;
+}
+
+.comment-actions {
+    display: flex;
+    font-size: 13px;
+    color: var(--light_blue);
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.comment-action {
+    margin-right: 8px;
+}
+
+.comment-action:hover {
+    text-decoration: underline;
+}
+
+.replies {
+    margin-top: 20px;
+}

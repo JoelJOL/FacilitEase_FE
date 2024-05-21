@@ -8,7 +8,7 @@ import { CommentInterface } from '@app/comment-interface';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css']
 })
-export class CommentComponent implements OnInit{
+export class CommentComponent implements OnInit {
   @Input() comment!: CommentInterface;
   @Input() activeComment!: ActiveCommentInterface | null;
   @Input() replies!: CommentInterface[];
@@ -35,7 +35,7 @@ export class CommentComponent implements OnInit{
     const fiveMinutes = 300000;
     const timePassed =
       new Date().getMilliseconds() -
-        new Date(this.comment.createdAt).getMilliseconds() >
+      new Date(this.comment.createdAt).getMilliseconds() >
       fiveMinutes;
     this.createdAt = new Date(this.comment.createdAt).toLocaleDateString();
     this.canReply = Boolean(this.currentUserId);
@@ -45,7 +45,7 @@ export class CommentComponent implements OnInit{
       this.replies.length === 0 &&
       !timePassed;
     this.replyId = this.parentId ? this.parentId : this.comment.id;
-
+    console.log("These are the comments", this.comment);
   }
 
   isReplying(): boolean {

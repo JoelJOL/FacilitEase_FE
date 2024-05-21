@@ -1,10 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
 import {
-  CategoryReportData,
-  CategoryReportDataRecieve,
   WeekReport,
   profileData,
 } from '@app/features/l2admin/L2AdminModel/model';
