@@ -25,7 +25,7 @@ export class TicketDocumentsComponent implements OnInit {
   // Lifecycle hook: Executes when the component is initialized
   ngOnInit(): void {
     // First API endpoint to fetch document information by ticket ID
-    const firstApiEndpoint = `${this.apiUrl}/api/Employee/get-documents-by-ticket/${this.ticketId}`;
+    const firstApiEndpoint = `${this.apiUrl}/api/documents/${this.ticketId}`;
 
     // Fetch the document data from the first API endpoint
     this.getFileData(firstApiEndpoint).subscribe(

@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GetAPIService {
-  private baseUrl = 'https://localhost:7049/api/Employee';
+  private baseUrl = 'https://localhost:7049/api';
 
   constructor(private http: HttpClient) {}
 
@@ -31,13 +31,13 @@ export class GetAPIService {
   }
 
   getCategoriesForFacilitiease(): Observable<Category[]> {
-    const url = `${this.baseUrl}/facilitiease`;
+    const url = `${this.baseUrl}/categories`;
     return this.http.get<Category[]>(url);
   }
 
   uploadDocument(formData: FormData): Observable<HttpEvent<TicketResponse>> {
     return this.http.post<TicketResponse>(
-      `${this.baseUrl}/create-with-documents`,
+      `${this.baseUrl}/raise-ticket`,
       formData,
       {
         reportProgress: true,
@@ -47,12 +47,12 @@ export class GetAPIService {
   }
 
   cancelRequest(ticketId: number): Observable<TicketResponse> {
-    const url = `${this.baseUrl}/cancel-request/${ticketId}`;
+    const url = `${this.baseUrl}/cancellation-request/${ticketId}`;
     return this.http.patch<TicketResponse>(url, null);
   }
 
   getDocumentPath(ticketId: number): Observable<any[]> {
-    const url = `${this.baseUrl}/get-documents-by-ticket/${ticketId}`;
+    const url = `${this.baseUrl}/documents/${ticketId}`;
     return this.http.get<any[]>(url);
   }
 }

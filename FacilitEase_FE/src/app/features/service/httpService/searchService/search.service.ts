@@ -14,7 +14,7 @@ export class SearchService {
     );
   }
   GetEmployeeDetails(empId: number): Observable<any> {
-    return this.http.get<any>(`https://localhost:7049/api/Employee/${empId}`);
+    return this.http.get<any>(`https://localhost:7049/api/employee/${empId}`);
   }
   GetOptions(apiLink: string, id: number): Observable<string[]> {
     return this.http.get<string[]>(`${apiLink}/${id}`);

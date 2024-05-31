@@ -14,7 +14,7 @@ export class TicketAttachmentService {
   constructor(private http: HttpClient) {}
 
   getTicketAttachments(ticketId: number): Observable<TicketAttachment[]> {
-    const apiEndpoint = `${this.apiUrl}/api/Employee/get-attachments-by-ticket/${ticketId}`;
+    const apiEndpoint = `${this.apiUrl}/api/get-attachments-by-ticket/${ticketId}`;
     return this.http.get<TicketAttachment[]>(apiEndpoint);
   }
 

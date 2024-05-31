@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PostAPIService {
   ticketApiUrl: string = 'https://localhost:7049/api/Employee/raiseticket';
-  departmentApiUrl: string = 'https://localhost:7049/api/L1Admin/departments';
+  departmentApiUrl: string = 'https://localhost:7049/api/departments';
 
   constructor(private http: HttpClient) {}
 

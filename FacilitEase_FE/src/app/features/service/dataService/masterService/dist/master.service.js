@@ -19,7 +19,7 @@ var MasterService = /** @class */ (function () {
         this.apiLinkAssigned = "https://localhost:7049/api/l2/assigned-tickets/" + this.userIdL2Admin;
         this.apiLinkUnassigned = "https://localhost:7049/api/l2/unassigned-tickets/" + this.userIdL2Admin;
         this.userIdProjectEmployeeDetails = 19;
-        this.apiLinkProjectEmployeeDeatils = "https://localhost:7049/api/Employee/employeesByProject/" + this.userIdProjectEmployeeDetails;
+        this.apiLinkProjectEmployeeDeatils = "https://localhost:7049/api/" + this.userIdProjectEmployeeDetails + "/project/employees";
         this.apiLinkTicketsToResolve = "https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/" + this.userIdL2Admin;
         this.apiLinkCancellationRequests = "https://localhost:7049/api/L3Admin/GetCancelRequestTicketsByAgent/" + this.userIdL2Admin;
     }

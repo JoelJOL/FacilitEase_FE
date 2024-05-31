@@ -131,7 +131,6 @@ export class UploadComponent implements OnInit {
 
   // Function to handle form submission
   onSubmit() {
-    console.log('Submit button clicked');
     this.onCancel();
     // Check if categoryId has a value
     const isCategoryIdValid = this.uploadForm.get('categoryId')?.value !== null;
