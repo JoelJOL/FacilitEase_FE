@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class InvoiceFileUploadService {
-  private apiUrl = 'https://localhost:7049/api/Invoice/uploadInvoice';
+  private apiUrl = 'https://localhost:7049/api/upload-invoice';
 
   constructor(private http: HttpClient) {}
 

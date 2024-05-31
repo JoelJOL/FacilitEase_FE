@@ -23,8 +23,8 @@ export interface EditEscalationTime {
 })
 export class EditSlaComponent implements OnInit {
   showTimes: EscalationTime[] = [];
-  apiUrlFetch = 'https://localhost:7049/api/SLAInfo/1';
-  apiUrlEdit = 'https://localhost:7049/api/edit-sla';
+  apiUrlFetch = 'https://localhost:7049/api/l1/sla-info/1';
+  apiUrlEdit = 'https://localhost:7049/api/l1/edit-sla';
 
   constructor(private http: HttpClient) { }
 

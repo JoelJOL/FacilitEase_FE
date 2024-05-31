@@ -15,7 +15,7 @@ var MasterService = /** @class */ (function () {
         this.apiLinkEscalated = 'https://localhost:7049/api/l2/escalated-tickets';
         this.apiLinkAssigned = 'https://localhost:7049/api/l2/assigned-tickets';
         this.apiLinkUnassigned = 'https://localhost:7049/api/l2/unassigned-tickets';
-        this.apiLinkL2Subordinates = 'https://localhost:7049/api/l2/agentsByDepartmentId?DepartmentId=11';
+        this.apiLinkL2Subordinates = 'https://localhost:7049/api/l2/agents-details?DepartmentId=11';
     }
     MasterService.prototype.getApiLink = function () {
         var apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/2';

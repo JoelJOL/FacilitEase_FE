@@ -79,12 +79,12 @@ export class MasterService {
     return this.apiLinkCancellationRequests;
   }
 
-  private apiEscaltedTicketForL1Admin = `https://localhost:7049/api/L1Admin/escalated-tickets/${this.userIdL1Admin}`;
+  private apiEscaltedTicketForL1Admin = `https://localhost:7049/api/l1/escalated-tickets/${this.userIdL1Admin}`;
   getEscalatedTicketForL1Admin(): string {
     return this.apiEscaltedTicketForL1Admin;
   }
 
-  private apiViewAllTicketL1Admin = `https://localhost:7049/api/L1Admin/all-tickets`;
+  private apiViewAllTicketL1Admin = `https://localhost:7049/api/l1/all-tickets`;
   getAllTicketsForL1Admin(): string {
     return this.apiViewAllTicketL1Admin;
   }

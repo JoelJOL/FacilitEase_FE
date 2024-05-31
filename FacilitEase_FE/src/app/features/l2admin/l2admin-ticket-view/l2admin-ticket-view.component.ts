@@ -89,7 +89,7 @@ export class L2adminTicketViewComponent {
     console.log(selectedAgent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.http.get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`)
+        this.http.get(`https://localhost:7049/api/l2/sla-info/${ticketId}`)
           .pipe(
             map((resolvingTime: any) => {
               // Adjust this based on the actual response structure
