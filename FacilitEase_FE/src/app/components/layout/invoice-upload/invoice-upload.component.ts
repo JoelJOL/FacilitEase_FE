@@ -36,7 +36,11 @@
 // }
 // invoice-upload.component.ts
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { InvoiceFileUploadService } from '@app/features/service/httpService/invoiceService/invoice-file-upload.service';
+import { FileUploadModalComponent } from '../file-upload-modal/file-upload-modal.component';
 
 @Component({
   selector: 'app-invoice-upload',
@@ -44,49 +48,24 @@ import { InvoiceFileUploadService } from '@app/features/service/httpService/invo
   styleUrls: ['./invoice-upload.component.css'],
 })
 export class InvoiceUploadComponent {
-  selectedFile: File | null = null;
-  uploading: boolean = false;
-  uploadProgress: number = 0;
+  @Input() ticketId!: number;
 
-  @Input() ticketId: number = 0;
-  @Output() fileUploaded = new EventEmitter<void>();
+  constructor(private dialog: MatDialog) {}
 
-  constructor(private fileUploadService: InvoiceFileUploadService) {}
+  openFileUploadModal(): void {
+    const dialogConfig: MatDialogConfig = {
+      width: '400px',
+      disableClose: true,
+      data: { ticketId: this.ticketId },
+    };
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
+    const dialogRef = this.dialog.open(FileUploadModalComponent, dialogConfig);
 
-  uploadFile() {
-    if (this.selectedFile) {
-      this.uploading = true;
-
-      this.fileUploadService
-        .uploadFile(this.selectedFile, this.ticketId)
-        .subscribe(
-          (event: any) => {
-            if (event.type === 'uploadProgress') {
-              this.uploadProgress = Math.round(
-                (100 * event.loaded) / (event.total || 1)
-              );
-            } else if (event.type === 'response') {
-              console.log('File uploaded successfully', event.body);
-
-              this.fileUploaded.emit();
-              this.uploading = false;
-              this.uploadProgress = 0;
-            }
-          },
-          (error) => {
-            console.error('Error uploading file', error);
-            this.uploading = false;
-            this.uploadProgress = 0;
-          },
-          () => {
-            console.log('Upload completed');
-            // This block will be executed when the upload is complete
-          }
-        );
-    }
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle the result after the file input modal is closed
+      if (result && result.success) {
+        // Perform any additional actions if needed
+      }
+    });
   }
 }

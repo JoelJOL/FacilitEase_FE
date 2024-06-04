@@ -1,9 +1,14 @@
 <ng-container *ngIf="fileUrl">
-  <div class="documents">
+  <div
+    class="documents"
+    (mouseenter)="isHovered = true"
+    (mouseleave)="isHovered = false"
+  >
     <h4 id="attachment_heading">
       {{ headerText }}
     </h4>
     <div class="thumbnail-container">
+      <!-- Display file icon always -->
       <img
         *ngIf="isImage; else fileIcon"
         [src]="fileUrl"
@@ -13,12 +18,20 @@
       />
       <ng-template #fileIcon>
         <img
-          (click)="openFile()"
-          class="thumbnail"
           src="./assets/invoice.svg"
-          alt="File Icon"
+          alt="File Thumbnail"
+          class="thumbnail"
+          (click)="openFile()"
         />
       </ng-template>
+      <!-- Display delete icon when hovered -->
+      <img
+        *ngIf="isHovered"
+        src="./assets/delete.svg"
+        alt="Delete Icon"
+        class="delete-icon"
+        (click)="openConfirmationModal()"
+      />
     </div>
   </div>
 </ng-container>
