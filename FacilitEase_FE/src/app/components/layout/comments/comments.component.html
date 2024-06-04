@@ -1,5 +1,4 @@
 <div class="comments">
-  <app-comment-form submitLabel="Add" (handleSubmit)="addComment({ text: $event, parentId: null })"></app-comment-form>
   <div class="comments-container">
     <!-- Check if there are comments -->
     <ng-container *ngIf="comments.length > 0; else noComments">
@@ -20,4 +19,5 @@
       <p>No comments available.</p>
     </ng-template>
   </div>
+  <app-comment-form submitLabel="Add" (handleSubmit)="addComment({ text: $event, parentId: null })"></app-comment-form>
 </div>

@@ -10,7 +10,7 @@
     </div>
     <div class="comment-text" *ngIf="!isEditing()">{{ comment.text }}</div>
     <div class="comment-actions">
-      <div *ngIf="canReply" class="comment-action" (click)="
+      <div *ngIf="canReply && !isEditing() && !isReplying()" class="comment-action" (click)="
             setActiveComment.emit({
               id: comment.id,
               type: activeCommentType.replying
@@ -18,7 +18,7 @@
           ">
         Reply
       </div>
-      <div *ngIf="canEdit" class="comment-action" (click)="
+      <div *ngIf="canEdit && !isEditing() && !isReplying()" class="comment-action" (click)="
             setActiveComment.emit({
               id: comment.id,
               type: activeCommentType.editing
