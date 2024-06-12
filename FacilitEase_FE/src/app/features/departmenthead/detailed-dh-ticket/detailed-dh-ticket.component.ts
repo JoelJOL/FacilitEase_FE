@@ -9,6 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
+import { TicketRejectCommentModalComponent } from '@app/features/manager/components/ticket-reject-comment-modal/ticket-reject-comment-modal.component';
+import { ApprovalPendingTickets } from 'environments/environment';
 
 @Component({
   selector: 'app-detailed-dh-ticket',
@@ -22,6 +24,8 @@ export class DetailedDhTicketComponent implements OnInit {
   editMode: boolean = false;
   modalRef: BsModalRef | undefined;
   currentUserId: number = this.azureService.userId;
+  rejectComment: any;
+  projectCodes: number[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -42,11 +46,25 @@ export class DetailedDhTicketComponent implements OnInit {
         .getdepartmentHeadTicketDetails(this.ticketId)
         .subscribe((data) => {
           this.ticketDetails = data;
-
-          console.log(this.ticketDetails);
-          console.log(22);
         });
     });
+
+    if (this.ticketDetails.ticketName == 'Procurement') {
+      this.fetchProjectCodes();
+    }
+  }
+
+  fetchProjectCodes() {
+    this.departmentHeadService.getProjectCodes().subscribe(
+      (codes: number[]) => {
+        this.projectCodes = codes;
+        console.log(this.projectCodes);
+        // Open confirmation modal here or trigger it based on user action
+      },
+      (error) => {
+        console.error('Error fetching project codes:', error);
+      }
+    );
   }
 
   updateTicket(isApproved: boolean): void {
@@ -57,10 +75,10 @@ export class DetailedDhTicketComponent implements OnInit {
           console.log('Ticket updated successfully');
           if (isApproved) {
             this.toastr.success('Ticket Approved!', 'Success');
+            this.redirectToPreviousPage();
           } else {
             this.toastr.success('Ticket Rejected!', 'Success');
           }
-          this.redirectToPreviousPage();
         },
         (error) => {
           console.error('Error updating ticket', error);
@@ -117,8 +135,22 @@ export class DetailedDhTicketComponent implements OnInit {
         if (action === 'accept') {
           this.updateTicket(true);
         } else if (action === 'reject') {
-          this.updateTicket(false);
+          this.openRejectModal();
         }
+      }
+    });
+  }
+
+  openRejectModal() {
+    const rejectdialogRef = this.dialog.open(TicketRejectCommentModalComponent, {
+      width: '400px',
+      data: { ticketId: this.ticketId, userId: this.currentUserId }
+    });
+    rejectdialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.updateTicket(false);
+        this.rejectComment = result.comment;
+        this.redirectToPreviousPage();
       }
     });
   }

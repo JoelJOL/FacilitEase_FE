@@ -1,10 +1,9 @@
+.common-btn {
+  padding: 10px;
+  padding-top: 20px;
+}
 
-  .common-btn{
-    padding: 10px;
-  }
-  .button-row {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+}

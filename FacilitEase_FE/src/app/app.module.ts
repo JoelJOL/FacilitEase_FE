@@ -52,10 +52,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { AgentTicketViewComponent } from './features/l3admin/agent-ticket-view/agent-ticket-view.component';
 import { TitleSubComponent } from './components/ui_elements/title-sub/title-sub.component';
 import { ModalComponent } from './components/layout/modal/modal.component';
-import {
-  MAT_DIALOG_DEFAULT_OPTIONS,
-  MatDialogModule,
-} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AgentTicketsViewComponent } from './features/l3admin/agent-tickets-view/agent-tickets-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -161,9 +158,12 @@ import { CommentComponent } from './components/layout/comment/comment.component'
 import { CommentFormComponent } from './components/layout/comment-form/comment-form.component';
 import { HeaderLayoutNewComponent } from './components/layout/header-layout-new/header-layout-new.component';
 import { SlaEditModalComponent } from './features/l2admin/components/sla-edit-modal/sla-edit-modal.component';
-import { MatFormFieldModule } from '@angular/material/form-field'; import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
-import { CommentsNoeditComponent } from './comments-noedit/comments-noedit.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommentNoeditComponent } from './components/layout/comment-noedit/comment-noedit.component';
+import { CommentsNoeditComponent } from './components/layout/comments-noedit/comments-noedit.component';
 import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
+import { TicketRejectCommentModalComponent } from './features/manager/components/ticket-reject-comment-modal/ticket-reject-comment-modal.component';
+import { FileUploadModalComponent } from './components/layout/file-upload-modal/file-upload-modal.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -181,7 +181,6 @@ const isIE =
     SidebarComponent,
     SidebarLogoComponent,
     SidebarFooterComponent,
-    ButtonComponent,
     ProfilepicDropdownComponent,
     TicketNotesComponent,
     TicketAttachmentsComponent,
@@ -298,7 +297,10 @@ const isIE =
     CommentNoeditComponent,
     CommentsNoeditComponent,
     InvoiceDisplayComponent,
-    ManagerComponent,
+    TicketRejectCommentModalComponent,
+    FileUploadComponent,
+    ButtonComponent,
+    FileUploadModalComponent,
   ],
   imports: [
     HttpClientModule,
@@ -373,4 +375,4 @@ const isIE =
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })
-export class AppModule { }
+export class AppModule {}

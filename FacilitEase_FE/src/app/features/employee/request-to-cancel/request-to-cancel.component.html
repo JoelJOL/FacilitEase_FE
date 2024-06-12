@@ -2,19 +2,23 @@
 
 <div class="container mt-1">
   <div class="ticket-container">
-    <app-ticket-detail-view-noedit [ticketDetails]="ticketDetails" [ticketId]="ticketId"
-      [headings]="titleSubHeading"></app-ticket-detail-view-noedit>
+    <app-ticket-detail-view [ticketDetails]="ticketDetails" [ticketId]="ticketId"
+      [headings]="titleSubHeading"></app-ticket-detail-view>
+  </div>
+  <div class="button-row">
+    <div class="common-btn">
+      <!-- Condition to show the button -->
+      <app-button color="submit" (click)="openConfirmationModal()" *ngIf="
+        ticketDetails?.statusName === 'Open' ||
+        ticketDetails?.statusName === 'In Progress' ||
+        ticketDetails?.statusName === 'Pending Approval' ||
+        ticketDetails?.statusName === 'Escalated'
+      ">
+        Request to Cancel
+      </app-button>
+    </div>
   </div>
 
-  <!-- Condition to show the button -->
-  <app-button color="submit" (click)="openConfirmationModal()" *ngIf="
-      ticketDetails?.statusName === 'Open' ||
-      ticketDetails?.statusName === 'In Progress' ||
-      ticketDetails?.statusName === 'Pending Approval' ||
-      ticketDetails?.statusName === 'Escalated'
-    ">
-    Request to Cancel
-  </app-button>
 
   <br /><br />
 </div>

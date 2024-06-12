@@ -1,20 +1,16 @@
-<div class="comment">
+<div class="comment-noedit">
   <div class="comment-image-container">
     <img src="/assets/new.jpg" />
   </div>
   <div class="comment-right-part">
     <div class="comment-content">
       <div class="comment-author">{{ comment.employeeName }}</div>
-      <div>{{ createdAt }}</div>
+      <div>{{ comment.createdAt |date: 'short' }}</div>
     </div>
     <div class="comment-text">{{ comment.text }}</div>
-    <div class="replies" *ngIf="replies.length > 0">
-      <app-comment-noedit
-        *ngFor="let reply of replies"
-        [comment]="reply"
-        [replies]="[]"
-        [currentUserId]="currentUserId"
-      ></app-comment-noedit>
+    <div class="replies" *ngIf="comment.replies.length>0">
+      <app-comment-noedit *ngFor="let reply of comment.replies" [comment]="reply" [replies]="reply.replies"
+        [parentId]="comment.id" [currentUserId]="currentUserId"></app-comment-noedit>
     </div>
   </div>
 </div>

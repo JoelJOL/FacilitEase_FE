@@ -1,17 +1,15 @@
-<div class="comments">
+<div class="comments" *ngIf="comments.length > 0">
+  <div class="comment-form-title">Comments</div>
   <div class="comments-container">
-    <!-- Check if there are comments -->
     <ng-container *ngIf="comments.length > 0; else noComments">
       <span (click)="toggleCommentsVisibility()" class="view-comments-text">
         {{ commentsVisible ? 'Hide Comments' : 'View Comments' }}
       </span>
       <!-- Display comments only if they are visible -->
       <div class="comments-list" *ngIf="commentsVisible">
-        <app-comment *ngFor="let rootComment of getRootComments()" [comment]="rootComment"
-          [replies]="getReplies(rootComment.id)" [activeComment]="activeComment"
-          (setActiveComment)="setActiveComment($event)" (addComment)="addComment($event)"
-          (updateComment)="updateComment($event)" [currentUserId]="currentUserId">
-        </app-comment>
+        <app-comment-noedit *ngFor="let rootComment of getRootComments()" [comment]="rootComment"
+          [replies]="getReplies(rootComment.id)" [currentUserId]="currentUserId">
+        </app-comment-noedit>
       </div>
     </ng-container>
     <!-- If there are no comments, display a message -->
@@ -19,5 +17,4 @@
       <p>No comments available.</p>
     </ng-template>
   </div>
-  <app-comment-form submitLabel="Add" (handleSubmit)="addComment({ text: $event, parentId: null })"></app-comment-form>
 </div>
