@@ -14,6 +14,6 @@ export class DropDownService {
   }
 
   getMyTickets(): string {
-    return `https://localhost:7049/api/Employee/tickets/${this.userId}`;
+    return `https://localhost:7049/api/tickets/${this.userId}`;
   }
 }

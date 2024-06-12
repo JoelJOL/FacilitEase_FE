@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AssetService {
-  private apiUrl = 'https://localhost:7049/assets/unassigned-asset-details';
+  private apiUrl = 'https://localhost:7049/assets/unassigned-asset';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class AssetService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<AssetDetails>(url);
   }
-  private assetHistoryUrl = 'https://localhost:7049/assets/asset-history';
+  private assetHistoryUrl = 'https://localhost:7049/asset-history';
   getAssetHistory(assetId: number): Observable<AssetHistory[]> {
     const url = `${this.assetHistoryUrl}/${assetId}`;
     return this.http.get<AssetHistory[]>(url);

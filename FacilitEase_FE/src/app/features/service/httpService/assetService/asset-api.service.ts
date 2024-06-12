@@ -8,7 +8,7 @@ export class AssetAPIService {
   constructor(private http: HttpClient) {}
 
   getUnassignedAssets(): string {
-    const apiUrl = 'https://localhost:7049/assets/unassigned-assets';
+    const apiUrl = 'https://localhost:7049/unassigned-assets';
     return apiUrl;
   }
 

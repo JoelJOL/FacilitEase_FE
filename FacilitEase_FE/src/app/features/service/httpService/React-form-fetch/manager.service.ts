@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class ManagerService {
   private apiUrl = 'https://localhost:7049/api/Manager'; //
-  private apiUrl1 = 'https://localhost:7049/api/Employee/locations';
-  private apiUrl2 = 'https://localhost:7049/api/Employee/departments';
-  private apiUrl3 = 'https://localhost:7049/api/Employee/positions';
+  private apiUrl1 = 'https://localhost:7049/api/locations';
+  private apiUrl2 = 'https://localhost:7049/api/departments';
+  private apiUrl3 = 'https://localhost:7049/api/positions';
   private submitUrl = 'https://localhost:7049/api/Employee/AddEmployees'; //
 
   constructor(private http: HttpClient) {}

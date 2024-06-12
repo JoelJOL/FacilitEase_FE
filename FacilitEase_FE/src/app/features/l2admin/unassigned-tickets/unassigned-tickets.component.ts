@@ -233,7 +233,7 @@ export class UnassignedTicketsComponent {
   
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.http.get(`https://localhost:7049/api/l2/SLATicketInfo/${ticketId}`).subscribe(
+        this.http.get(`https://localhost:7049/api/l2/sla-info/${ticketId}`).subscribe(
           (resolvingTimeResponse: any) => {
             const resolvingTime: Date = new Date(resolvingTimeResponse.toString());
   

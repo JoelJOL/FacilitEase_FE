@@ -23,20 +23,20 @@ export class AgentService {
   // Method to fetch general ticket data for a given ticket ID
   getTicketData(ticketId: number): Observable<any> {
     console.log(`The ticket id : ${ticketId} is recieved in getData()`);
-    const apiUrl = `https://localhost:7049/api/l2/ticketById?desiredTicketId=${ticketId}`;
+    const apiUrl = `https://localhost:7049/api/l2/ticket-details/${ticketId}`;
     return this.http.get(apiUrl);
   }
 
   getDepartments(): Observable<any> {
     return this.http.get(
-      `https://localhost:7049/api/Department/getAllExceptUserDepartment/${this.userId}`
+      `https://localhost:7049/api/departments/${this.userId}/exclude`
     );
   }
 
   // Method to fetch departments
   getCategorybyDept(deptId: number): Observable<any> {
     return this.http.get(
-      `https://localhost:7049/api/Department/categories-by-department/${deptId}`
+      `https://localhost:7049/api/categories/${deptId}`
     );
   }
 

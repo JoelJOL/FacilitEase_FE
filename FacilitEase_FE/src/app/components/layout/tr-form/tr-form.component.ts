@@ -39,31 +39,15 @@ export class TrFormComponent implements OnInit {
 
   loadDepartments() {
     this.http
-      .get('https://localhost:7049/api/Employee/departments')
+      .get('https://localhost:7049/api/departments')
       .subscribe((data: any) => {
         this.departments = data;
       });
   }
 
-  onDepartmentChange() {
-    const departmentId = this.ticketForm.get('department')?.value;
-
-    if (departmentId) {
-      this.http
-        .get(
-          `https://localhost:7049/api/Employee/GetCategoryByDepartmentId/${departmentId}`
-        )
-        .subscribe((data: any) => {
-          this.categories = data;
-        });
-    } else {
-      this.categories = [];
-    }
-  }
-
   loadPriorities() {
     this.http
-      .get('https://localhost:7049/api/Employee/priorities')
+      .get('https://localhost:7049/api/priorities')
       .subscribe((data: any) => {
         this.priorities = data;
       });

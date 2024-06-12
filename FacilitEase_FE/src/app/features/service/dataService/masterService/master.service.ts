@@ -17,7 +17,7 @@ export class MasterService {
   private apiLinkAssigned: string = `https://localhost:7049/api/l2/assigned-tickets/${this.userIdL2Admin}`;
   private apiLinkUnassigned: string = `https://localhost:7049/api/l2/unassigned-tickets/${this.userIdL2Admin}`;
   userIdProjectEmployeeDetails = 19;
-  private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/Employee/employeesByProject/${this.userIdProjectEmployeeDetails}`;
+  private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/${this.userIdProjectEmployeeDetails}/project/employees`;
   getApiLink(): string {
     const apiUrl = `https://localhost:7049/api/Manager/GetTicketByManager/${this.userId}`;
     return apiUrl;
@@ -79,12 +79,12 @@ export class MasterService {
     return this.apiLinkCancellationRequests;
   }
 
-  private apiEscaltedTicketForL1Admin = `https://localhost:7049/api/L1Admin/escalated-tickets/${this.userIdL1Admin}`;
+  private apiEscaltedTicketForL1Admin = `https://localhost:7049/api/l1/escalated-tickets/${this.userIdL1Admin}`;
   getEscalatedTicketForL1Admin(): string {
     return this.apiEscaltedTicketForL1Admin;
   }
 
-  private apiViewAllTicketL1Admin = `https://localhost:7049/api/L1Admin/all-tickets`;
+  private apiViewAllTicketL1Admin = `https://localhost:7049/api/l1/all-tickets`;
   getAllTicketsForL1Admin(): string {
     return this.apiViewAllTicketL1Admin;
   }

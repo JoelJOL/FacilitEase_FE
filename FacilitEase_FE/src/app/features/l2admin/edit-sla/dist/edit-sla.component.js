@@ -12,8 +12,8 @@ var EditSlaComponent = /** @class */ (function () {
     function EditSlaComponent(http) {
         this.http = http;
         this.showTimes = [];
-        this.apiUrl = 'https://localhost:7049/api/L1Admin/SLAInfo/1';
-        this.apiUrl2 = 'https://localhost:7049/api/L1Admin/EditSLA';
+        this.apiUrl = 'https://localhost:7049/api/l1/sla-info/1';
+        this.apiUrl2 = 'https://localhost:7049/api/l1/edit-sla';
     }
     EditSlaComponent.prototype.ngOnInit = function () {
         this.fetchEscalationTimes();
