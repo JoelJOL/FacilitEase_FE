@@ -41,13 +41,16 @@ button {
 .btn-submit:hover {
   background-color: var(--violet);
 }
+
 .btn-paginate {
   background-color: var(--blue_violet);
   color: #fff;
 }
+
 .btn-paginate:hover {
   background-color: var(--violet);
 }
+
 .btn-forward {
   background-color: var(--blue_violet);
   color: #fff;
@@ -55,4 +58,14 @@ button {
 
 .btn-forward:hover {
   background-color: var(--violet);
+}
+
+.common-btn {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
 }

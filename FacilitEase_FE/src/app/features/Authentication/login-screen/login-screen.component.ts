@@ -36,7 +36,7 @@ export class LoginScreenComponent {
     private authService: MsalService,
     private azureService: AzureService,
     private router: Router
-  ) {}
+  ) { }
 
   //An object to store details of user from the microsoft return after login
   azureObj: azureObj = {
@@ -67,13 +67,30 @@ export class LoginScreenComponent {
         this.isUserLoggedIn =
           this.authService.instance.getAllAccounts().length > 0;
 
-        const account = this.authService.instance.getAllAccounts();
+        const account = this.authService.instance.getAllAccounts()[0];
         console.log(account);
+
+        const accessTokenRequest = {
+          scopes: ["user.read"],
+          account: account,
+        };
+        this.authService.instance.acquireTokenSilent(accessTokenRequest)
+          .then(function (accessTokenResponse) {
+            // Acquire token silent success
+            let accessToken = accessTokenResponse.idToken;
+            console.log("idtoken from local storage", accessToken);
+            // Call your API with token
+          })
+          .catch(function (error) {
+            //Acquire token silent failure, and send an interactive request
+            console.log(error);
+          });
+          
         //Adding the data to an object that will be send to the server for login
-        this.azureObj.localAccountId = account[0].localAccountId ?? '';
-        this.azureObj.expiration = account[0].idTokenClaims?.exp ?? 0;
-        this.azureObj.name = account[0].name ?? '';
-        this.azureObj.username = account[0].username;
+        this.azureObj.localAccountId = account.localAccountId ?? '';
+        this.azureObj.expiration = account.idTokenClaims?.exp ?? 0;
+        this.azureObj.name = account.name ?? '';
+        this.azureObj.username = account.username;
 
         this.azureService.azureObj = this.azureObj;
 

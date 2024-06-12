@@ -1,18 +1,19 @@
-<div class="ticket_info" *ngIf="ticketDetails">
+<div class="ticket_info ticket_details_header p-3 mt-3" *ngIf="ticketDetails">
   <div class="ticket_details">
     <p>
-      <span class="ticket_status_box">{{ ticketDetails.statusName }}</span>
+      <span class="ticket_status_box mb-2"><span class="ticket_status_box_circle"></span>{{ ticketDetails.statusName }}</span>
       <span class="ticket_id"> Ticket ID: #{{ ticketDetails.id }}</span>
     </p>
   </div>
-  <div class="ticket_priority">
+  <div class="ticket_priority align-items-end mt-2">
     <p>
       <span
         [ngClass]="{ ticket_priority_box: true }"
         [style.background-color]="getPriorityColor()"
       >
-        {{ ticketDetails.priorityName }}
+        {{ ticketDetails.priorityName }}  
       </span>
     </p>
+    <p><span>{{ ticketDetails.submittedDate | date : "dd-MMM-yyyy hh:mm a" }}</span></p>
   </div>
 </div>

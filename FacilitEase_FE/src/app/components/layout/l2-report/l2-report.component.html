@@ -5,9 +5,14 @@
       class="m-3 col-2 shadow generate_report"
     ></app-generate-report>
   </div>
-
   <app-report-stats></app-report-stats>
   <app-category-report-table class="m-3 col-5"></app-category-report-table>
+  <app-data-table-new
+    [headers]="headers"
+    [apiLink]="apiLink"
+    (rowClicked)="onRowClicked($event)"
+    id="datatable"
+  ></app-data-table-new>
   <div class="d-flex flex-column flex-lg-row col-12 justify-content-around">
     <app-bar-chart
       class="col-lg-9 col-12 chart shadow"

@@ -1,13 +1,103 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-  }
-  
-  .left-column {
-    flex: 1;
-  }
-  
-  .right-column {
-    width:27%; /* Adjust the width as needed */
-  }
+  justify-content: space-between;
+  padding: 0;
+  display: flex;
+}
+
+.left-column {
+  flex: 1;
+}
+
+.right-column {
+  width: 27%;
+}
+
+.ticket_timeline_heading {
+  padding: 10px;
+}
+
+.ticket_detailing,
+.ticket_additional {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  margin-right: 10px;
+  height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+.ticket_detailing:hover,
+.ticket_additional:hover {
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ticket_details_tabs {
+  display: flex;
+  justify-items: start;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: var(--white);
+  border-bottom: 1px var(--light_grey) solid;
+}
+
+.ticket_details_tab {
+  padding: 10px 20px 10px 20px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.ticket_details_tab:hover {
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+  color: var(--violet);
+  background-color: var(--hover_grey);
+  font-weight: bold;
+}
+
+.ticket_details_tab.active {
+  color: var(--violet);
+  background-color: var(--hover_grey);
+  font-weight: bold;
+}
+
+.tab1 {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-right: 2px var(--light_violet) solid;
+  border-top: 2px var(--light_violet) solid;
+  border-left: 2px var(--light_violet) solid;
+  /* box-shadow: 0px 14px 29px -16px rgba(0, 0, 0, 0.34); */
+}
+
+.tab2 {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom: 2px var(--light_violet) solid;
+  border-right: 2px var(--light_violet) solid;
+  border-top: none;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.chat_button {
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+
+.ticket_comments_view,
+.ticket_document_view {
+  padding: 10px;
+}

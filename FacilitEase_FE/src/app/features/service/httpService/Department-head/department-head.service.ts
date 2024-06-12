@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DepartmentHeadService {
-  constructor(private http: HttpClient, private azureService: AzureService) {}
+  constructor(private http: HttpClient, private azureService: AzureService) { }
   userId: number = this.azureService.userId;
   getApiLink(): string {
     const apiUrl = `https://localhost:7049/api/tickets/GetApprovalTicket/${this.userId}`;
@@ -16,6 +16,11 @@ export class DepartmentHeadService {
 
   getdepartmentHeadTicketDetails(ticketId: number): Observable<any> {
     const url = `https://localhost:7049/api/tickets/ViewTicketDetails/${ticketId}`;
+    return this.http.get<any>(url);
+  }
+
+  getProjectCodes(): Observable<any> {
+    const url = `https://localhost:7049/api/Department/getProjectCodes`;
     return this.http.get<any>(url);
   }
 }

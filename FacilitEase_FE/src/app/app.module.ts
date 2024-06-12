@@ -293,6 +293,7 @@ const isIE =
     CommentFormComponent,
     HeaderLayoutNewComponent,
     SlaEditModalComponent,
+    HeaderLayoutNewComponent,
     CommentNoeditComponent,
     CommentsNoeditComponent,
     InvoiceDisplayComponent,

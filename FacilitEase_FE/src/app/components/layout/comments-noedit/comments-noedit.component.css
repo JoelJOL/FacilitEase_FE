@@ -1,7 +1,23 @@
+.comments {
+    margin-top: 20px;
+}
+
+.comments-list {
+    margin-top: 20px;
+}
+
+.comment-form-title {
+    font-size: 18px;
+}
+
+.comments-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .view-comments-text {
     cursor: pointer;
     color: var(--blue_violet);
     text-decoration: underline;
-    margin-bottom: 10px;
     font-size: 14px;
 }

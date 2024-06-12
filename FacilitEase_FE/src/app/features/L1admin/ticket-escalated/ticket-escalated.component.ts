@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
+import { EscalatedTicketDetails, TicketDetails, l1Admin } from 'environments/environment';
 
 @Component({
   selector: 'app-ticket-escalated',
@@ -28,6 +29,6 @@ export class TicketEscalatedComponent {
   }
   onRowClicked(rowId: any) {
     console.log('Row clicked in parent component with ID:', rowId);
-    this.router.navigate(['l1admin/details-escalated-l1', rowId]);
+    this.router.navigate([`${l1Admin}/${EscalatedTicketDetails}`, rowId]);
   }
 }

@@ -6,6 +6,7 @@ import { Card } from './components/layout/employee-cards/card.model';
 import { AzureService } from './features/Authentication/azureService/azure.service';
 import { Subject } from 'rxjs';
 import { AzureReturn } from './features/Authentication/authModels/model';
+import { MsalService } from '@azure/msal-angular';
 interface Field {
   logo: string;
   title: string;
@@ -39,10 +40,10 @@ export class AppComponent {
   ];
 
   constructor(
-    private approveDenyService: ApproveDenyService,
     private azureService: AzureService,
-    private router: Router
+    private authService: MsalService,
   ) {}
+  token: string = '';
   azureReturn: AzureReturn = {
     token: '',
   };
@@ -51,6 +52,22 @@ export class AppComponent {
     this.azureService.isUserLoggedIn.subscribe((data) => {
       this.isLogged = data;
     });
+
+    const account = this.authService.instance.getAllAccounts()[0];
+    const accessTokenRequest = {
+      scopes: ["user.read"],
+      account: account,
+    };
+    this.authService.instance.acquireTokenSilent(accessTokenRequest)
+          .then( (accessTokenResponse) => {
+            // Acquire token silent success
+            this.token = accessTokenResponse.idToken;
+          })
+          .catch(function (error) {
+            //Acquire token silent failure, and send an interactive request
+            console.log(error);
+          });
+
     const token = sessionStorage.getItem('FacilitEaseJwt');
     if (token != null) {
       this.azureReturn.token = token;
