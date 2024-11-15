@@ -49,6 +49,7 @@ import { TicketDetailsEscalatedComponent } from './features/L1admin/ticket-detai
 import { ViewAllTicketsComponent } from './features/L1admin/view-all-tickets/view-all-tickets.component';
 import { TicketViewL1Component } from './features/L1admin/ticket-view-l1/ticket-view-l1.component';
 import { EditSlaComponent } from './features/l2admin/edit-sla/edit-sla.component';
+import { UserPermissionsComponent } from './features/l2admin/user-permissions/user-permissions.component';
 import {
   DepartmentHead,
   Employee,
@@ -77,6 +78,7 @@ import {
   EmployeeTicketDetails,
   ActiveTickets,
   EditSLA,
+  UserPermission,
 } from 'environments/environment';
 
 //MsalGuard: Route can only be activated if the user has signed in using their microsoft account
@@ -150,6 +152,11 @@ const routes: Routes = [
         path: EditSLA,
         canActivate: [MsalGuard],
         component: EditSlaComponent,
+      },
+      {
+        path: UserPermission,
+        canActivate: [MsalGuard],
+        component: UserPermissionsComponent,
       },
       {
         path: Tickets, //View all the tickets raised by an employee

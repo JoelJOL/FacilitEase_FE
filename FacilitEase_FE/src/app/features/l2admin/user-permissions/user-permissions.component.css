@@ -1,0 +1,115 @@
+.heading {
+    font-size: 1.75em;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif !important;
+    margin-left: 1%;
+  }
+  
+  .permissions {
+    margin: 20px;
+  }
+  
+  .permissions-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px; /* Add rounded border */
+    overflow: hidden; /* Ensure rounded border is applied */
+  }
+  
+  .permissions-table th,
+  .permissions-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .permissions-table th {
+    background-color: var(--light_violet);
+    font-size: 15px;
+    font-weight: 1000;
+    padding: 2%;
+  }
+  
+  .permissions-table td {
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  /* Adjust width for category and edit columns */
+  .permissions-table .category-column {
+    width: 50%; /* Adjust width for category column */
+  }
+  
+  .permissions-table .edit-column {
+    width: 10%; /* Adjust width for edit column */
+  }
+  
+  .permissions-edit input[type="text"] {
+    width: 70px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .permissions-edit span {
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .permissions-edit input[type="text"]:focus {
+    outline: none;
+    border-color: var(--blue_violet);
+  }
+  
+  .permissions-edit span:hover {
+    background-color: var(--blue_violet);
+    color: white;
+    border-radius: 5px;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light_violet);
+    transition: .4s;
+    border-radius: 17px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--hover_violet);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(13px);
+  }
+  

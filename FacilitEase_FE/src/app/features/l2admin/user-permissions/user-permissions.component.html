@@ -1,0 +1,25 @@
+<div class="permissions">
+    <h2 class="heading">User Permissions</h2>
+    <table class="permissions-table">
+      <thead id="tablehead">
+        <tr>
+          <th class="id-column">Id</th>
+          <th class="permission-name">Permissions</th>
+          <th class="status-column">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let permission of permissions; let i = index">
+          <td>{{ permission.employeeId }}</td> <!-- Print index + 1 to start from 1 instead of 0 -->
+          <td>{{ permission.permissionName }}</td>
+          <td>
+            <label class="switch" (click)="toggleActive(permission.permissionId, permission.isActive)">
+                <input type="checkbox" [(ngModel)]="permission.isActive"/>
+                <span class="slider"></span>
+              </label>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

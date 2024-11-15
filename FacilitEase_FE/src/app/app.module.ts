@@ -164,6 +164,7 @@ import { CommentsNoeditComponent } from './components/layout/comments-noedit/com
 import { InvoiceDisplayComponent } from './components/layout/invoice-display/invoice-display.component';
 import { TicketRejectCommentModalComponent } from './features/manager/components/ticket-reject-comment-modal/ticket-reject-comment-modal.component';
 import { FileUploadModalComponent } from './components/layout/file-upload-modal/file-upload-modal.component';
+import { UserPermissionsComponent } from './features/l2admin/user-permissions/user-permissions.component';
 
 //To check whether the browser is internet explorer and deal with a case like tokens must be stored in cookies for security
 const isIE =
@@ -301,6 +302,7 @@ const isIE =
     FileUploadComponent,
     ButtonComponent,
     FileUploadModalComponent,
+    UserPermissionsComponent,
   ],
   imports: [
     HttpClientModule,

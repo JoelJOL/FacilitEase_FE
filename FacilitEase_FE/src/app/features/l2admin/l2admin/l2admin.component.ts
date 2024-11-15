@@ -17,6 +17,7 @@ import {
   TicketsToResolve,
   UnassignedTickets,
   l2Admin,
+  UserPermission
 } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
 
@@ -56,6 +57,10 @@ export class L2AdminComponent {
     {
       logo: 'assets/waiting.svg',
       title: 'Edit Escalation Time',
+    },
+    {
+      logo: 'assets/waiting.svg',
+      title: 'User Permissions',
     },
     // { logo: 'assets/data-entry.png', title: 'Data Entry', subfields: [] },
   ];
@@ -103,6 +108,9 @@ export class L2AdminComponent {
     } else if (clickedField.title === 'Edit Escalation Time') {
       this.showL2AdminTickets = true;
       this.router.navigate([`${l2Admin}/${EditSLA}`]);
+    } else if (clickedField.title === 'User Permissions') {
+      this.showL2AdminTickets = true;
+      this.router.navigate([`${l2Admin}/${UserPermission}`]);
     } else {
       this.showL2AdminTickets = false;
     }
