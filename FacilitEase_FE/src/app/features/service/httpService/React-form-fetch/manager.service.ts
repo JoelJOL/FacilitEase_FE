@@ -2,16 +2,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ManagerService {
-  private apiUrl = 'https://localhost:7049/api/Manager'; //
-  private apiUrl1 = 'https://localhost:7049/api/locations';
-  private apiUrl2 = 'https://localhost:7049/api/departments';
-  private apiUrl3 = 'https://localhost:7049/api/positions';
-  private submitUrl = 'https://localhost:7049/api/Employee/AddEmployees'; //
+  private apiUrl = environment.baseUrl+'/api/Manager'; //
+  private apiUrl1 = environment.baseUrl+'/api/locations';
+  private apiUrl2 = environment.baseUrl+'/api/departments';
+  private apiUrl3 = environment.baseUrl+'/api/positions';
+  private submitUrl = environment.baseUrl+'/api/Employee/AddEmployees'; //
 
   constructor(private http: HttpClient) {}
 

@@ -18,6 +18,7 @@ import {
   TicketsToResolve,
   UnassignedTicketDetails,
   UnassignedTickets,
+  environment,
   l2Admin,
 } from 'environments/environment';
 import { ApiResponse } from '@app/components/layout/data-table-new/data-table-new.component';
@@ -233,7 +234,7 @@ export class UnassignedTicketsComponent {
   
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.http.get(`https://localhost:7049/api/l2/sla-info/${ticketId}`).subscribe(
+        this.http.get(environment.baseUrl+`/api/l2/sla-info/${ticketId}`).subscribe(
           (resolvingTimeResponse: any) => {
             const resolvingTime: Date = new Date(resolvingTimeResponse.toString());
   
@@ -247,7 +248,7 @@ export class UnassignedTicketsComponent {
                 this.escalationComment = result.comment;
   
                 // Assign the ticket
-                this.http.put('https://localhost:7049/api/l2/assign-ticket', data, { responseType: 'text' })
+                this.http.put(environment.baseUrl+'/api/l2/assign-ticket', data, { responseType: 'text' })
                   .subscribe(
                     (response: any) => {
                       this.reloadComponent();

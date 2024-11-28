@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { MasterService } from '@app/features/service/dataService/masterService/master.service';
-import { l2Admin, AssignedTicketDetails } from 'environments/environment';
+import { l2Admin, AssignedTicketDetails, environment } from 'environments/environment';
 
 @Component({
   selector: 'app-l2-report',
@@ -28,7 +28,7 @@ export class L2ReportComponent {
     'Location',
   ];
   ngOnInit(): void {
-    this.apiLink = `https://localhost:7049/api/tickets/admin/${this.azureService.userId}`;
+    this.apiLink = environment.baseUrl+`/api/tickets/admin/${this.azureService.userId}`;
   }
   apiLink: string = '';
   onValueChange(ticketStatus: number) {

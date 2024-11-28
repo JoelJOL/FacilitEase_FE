@@ -11,34 +11,34 @@ var core_1 = require("@angular/core");
 var MasterService = /** @class */ (function () {
     function MasterService(http) {
         this.http = http;
-        this.apiLink = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
-        this.apiLinkEscalated = 'https://localhost:7049/api/l2/escalated-tickets';
-        this.apiLinkAssigned = 'https://localhost:7049/api/l2/assigned-tickets';
-        this.apiLinkUnassigned = 'https://localhost:7049/api/l2/unassigned-tickets';
-        this.apiLinkL2Subordinates = 'https://localhost:7049/api/l2/agents-details?DepartmentId=11';
+        this.apiLink = environment.baseUrl+'/api/Manager/GetTicketByManager/2';
+        this.apiLinkEscalated = environment.baseUrl+'/api/l2/escalated-tickets';
+        this.apiLinkAssigned = environment.baseUrl+'/api/l2/assigned-tickets';
+        this.apiLinkUnassigned = environment.baseUrl+'/api/l2/unassigned-tickets';
+        this.apiLinkL2Subordinates = environment.baseUrl+'/api/l2/agents-details?DepartmentId=11';
     }
     MasterService.prototype.getApiLink = function () {
-        var apiUrl = 'https://localhost:7049/api/Manager/GetTicketByManager/2';
+        var apiUrl = environment.baseUrl+'/api/Manager/GetTicketByManager/2';
         return apiUrl;
     };
     MasterService.prototype.getApiLink2 = function () {
-        var apiUrl = 'https://localhost:7049/api/Manager/GetApprovalTicket/2';
+        var apiUrl = environment.baseUrl+'/api/Manager/GetApprovalTicket/2';
         return apiUrl;
     };
     MasterService.prototype.getManagerTicketDetails = function (ticketId) {
-        var url = "https://localhost:7049/api/Manager/ViewTicketDetails/" + ticketId;
+        var url = environment.baseUrl+"/api/Manager/ViewTicketDetails/" + ticketId;
         return this.http.get(url);
     };
     MasterService.prototype.changePriority = function (ticketId, newPriorityId) {
-        var apiUrl = 'https://localhost:7049/api/Manager';
+        var apiUrl = environment.baseUrl+'/api/Manager';
         return this.http.post(apiUrl + "/ChangePriority", { ticketId: ticketId, newPriorityId: newPriorityId });
     };
     MasterService.prototype.ticketDecision = function (ticketId, newStatusId) {
-        var apiUrl = 'https://localhost:7049/api/Manager';
+        var apiUrl = environment.baseUrl+'/api/Manager';
         return this.http.post(apiUrl + "/TicketDecision", { ticketId: ticketId, newStatusId: newStatusId });
     };
     MasterService.prototype.sendForApproval = function (ticketId, currentControllerId) {
-        var apiUrl = 'https://localhost:7049/api/Manager';
+        var apiUrl = environment.baseUrl+'/api/Manager';
         return this.http.post(apiUrl + "/SendForApproval", { ticketId: ticketId, currentControllerId: currentControllerId });
     };
     MasterService.prototype.getApiLinkEscalated = function () {

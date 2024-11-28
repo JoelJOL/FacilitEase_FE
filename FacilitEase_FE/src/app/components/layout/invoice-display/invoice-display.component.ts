@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
 import { ConfirmationModalComponent } from '@app/features/manager/components/confirmation-modal/confirmation-modal.component';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-invoice-display',
@@ -12,7 +13,7 @@ import { ConfirmationModalComponent } from '@app/features/manager/components/con
 })
 export class InvoiceDisplayComponent implements OnInit {
   // API base URL
-  private apiUrl = 'https://localhost:7049';
+  private apiUrl = environment.baseUrl;
   isHovered: boolean = false;
   // File-related properties
   fileUrl!: string;
@@ -87,7 +88,7 @@ export class InvoiceDisplayComponent implements OnInit {
   }
 
   deleteInvoice(): void {
-    const apiUrl = `https://localhost:7049/api/Invoice/delete/${this.ticketId}`;
+    const apiUrl = environment.baseUrl+`/api/Invoice/delete/${this.ticketId}`;
 
     this.http.delete(apiUrl).subscribe(
       () => {

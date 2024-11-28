@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'environments/environment';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -39,7 +40,7 @@ export class TrFormComponent implements OnInit {
 
   loadDepartments() {
     this.http
-      .get('https://localhost:7049/api/departments')
+      .get(environment.baseUrl+'/api/departments')
       .subscribe((data: any) => {
         this.departments = data;
       });
@@ -47,7 +48,7 @@ export class TrFormComponent implements OnInit {
 
   loadPriorities() {
     this.http
-      .get('https://localhost:7049/api/priorities')
+      .get(environment.baseUrl+'/api/priorities')
       .subscribe((data: any) => {
         this.priorities = data;
       });
@@ -71,7 +72,7 @@ export class TrFormComponent implements OnInit {
       };
 
       this.http
-        .post('https://localhost:7049/api/Employee/raiseticket', payload)
+        .post(environment.baseUrl+'/api/Employee/raiseticket', payload)
         .subscribe(
           (response) => {
             console.log('Ticket submitted successfully', response);

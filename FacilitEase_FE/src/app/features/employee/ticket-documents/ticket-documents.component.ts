@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-ticket-documents',
@@ -9,7 +10,7 @@ import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
 })
 export class TicketDocumentsComponent implements OnInit {
   // API base URL
-  private apiUrl = 'https://localhost:7049';
+  private apiUrl = environment.baseUrl;
 
   // File-related properties
   fileUrl!: string;
