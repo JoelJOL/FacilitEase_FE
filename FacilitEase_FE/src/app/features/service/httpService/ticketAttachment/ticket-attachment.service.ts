@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TicketAttachment } from '@app/features/l3admin/l3Models/model';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TicketAttachmentService {
-  private apiUrl = 'https://localhost:7049';
+  private apiUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 

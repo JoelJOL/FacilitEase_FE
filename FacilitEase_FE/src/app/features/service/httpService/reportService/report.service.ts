@@ -7,6 +7,7 @@ import {
 } from '@app/features/l2admin/L2AdminModel/model';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
 import { RESPONSE_TYPE } from '@azure/msal-common/dist/constants/AADServerParamKeys';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,32 +20,32 @@ export class ReportService {
 
   GetReportData(id: number): Observable<any> {
     return this.http.get<any>(
-      `https://localhost:7049/api/${this.userId}`
+      environment.baseUrl+`/api/${this.userId}`
     );
   }
   GetChartData(id: number): Observable<any> {
     return this.http.get<any>(
-      `https://localhost:7049/api/chartdata/${this.userId}`
+      environment.baseUrl+`/api/chartdata/${this.userId}`
     );
   }
   GetProfileData(id: number): Observable<profileData> {
     return this.http.get<any>(
-      `https://localhost:7049/api/profiledata/${this.userId}`
+      environment.baseUrl+`/api/profiledata/${this.userId}`
     );
   }
   GetWeekData(): Observable<WeekReport> {
     return this.http.get<any>(
-      `https://localhost:7049/api/reportdata/${this.userId}`
+      environment.baseUrl+ `/api/reportdata/${this.userId}`
     );
   }
   GetCategoryReportData(): Observable<any> {
     return this.http.get<any>(
-      `https://localhost:7049/api/categoryReport/${this.userId}`
+      environment.baseUrl+ `/api/categoryReport/${this.userId}`
     );
   }
   downloadExcel(): Observable<any> {
     return this.http.get(
-      'https://localhost:7049/api/exportdata',
+      environment.baseUrl+'/api/exportdata',
       { responseType: 'blob' as 'json' }
     );
   }

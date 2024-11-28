@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 export interface EscalationTime {
   departmentId: number;
@@ -23,8 +24,8 @@ export interface EditEscalationTime {
 })
 export class EditSlaComponent implements OnInit {
   showTimes: EscalationTime[] = [];
-  apiUrlFetch = 'https://localhost:7049/api/l1/sla-info/1';
-  apiUrlEdit = 'https://localhost:7049/api/l1/edit-sla';
+  apiUrlFetch = environment.baseUrl+'/api/l1/sla-info/1';
+  apiUrlEdit = environment.baseUrl+'/api/l1/edit-sla';
 
   constructor(private http: HttpClient) { }
 

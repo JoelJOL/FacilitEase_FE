@@ -5,6 +5,7 @@ import { SharedService } from '../SharedService/shared.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Notification } from '../../notification/notification.model';
+import { environment } from 'environments/environment';
 
 /**
  * Service for handling real-time notifications using SignalR.
@@ -14,7 +15,7 @@ import { Notification } from '../../notification/notification.model';
 })
 export class NotificationService {
   private hubConnection!: signalR.HubConnection;
-  private apiUrl = 'https://localhost:7049/api';
+  private apiUrl = environment.baseUrl+'/api';
 
   /**
    * Initializes a new instance of the NotificationService class.
@@ -31,7 +32,7 @@ export class NotificationService {
 
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:7049/notificationHub')
+      .withUrl(environment.baseUrl+'/api/notificationHub')
       .build();
 
     this.hubConnection

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AzureService } from '@app/features/Authentication/azureService/azure.service';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,37 +13,37 @@ export class MasterService {
   userIdL2Admin: number = this.azureService.userId;
   userIdL1Admin: number = this.azureService.userId;
   private apiLink: string =
-    'https://localhost:7049/api/Manager/GetTicketByManager/2';
-  private apiLinkEscalated: string = `https://localhost:7049/api/l2/escalated-tickets/${this.userIdL2Admin}`;
-  private apiLinkAssigned: string = `https://localhost:7049/api/l2/assigned-tickets/${this.userIdL2Admin}`;
-  private apiLinkUnassigned: string = `https://localhost:7049/api/l2/unassigned-tickets/${this.userIdL2Admin}`;
+    environment.baseUrl+'/api/Manager/GetTicketByManager/2';
+  private apiLinkEscalated: string = environment.baseUrl+`/api/l2/escalated-tickets/${this.userIdL2Admin}`;
+  private apiLinkAssigned: string = environment.baseUrl+`/api/l2/assigned-tickets/${this.userIdL2Admin}`;
+  private apiLinkUnassigned: string = environment.baseUrl+`/api/l2/unassigned-tickets/${this.userIdL2Admin}`;
   userIdProjectEmployeeDetails = 19;
-  private apiLinkProjectEmployeeDeatils: string = `https://localhost:7049/api/${this.userIdProjectEmployeeDetails}/project/employees`;
+  private apiLinkProjectEmployeeDeatils: string = environment.baseUrl+`/api/${this.userIdProjectEmployeeDetails}/project/employees`;
   getApiLink(): string {
-    const apiUrl = `https://localhost:7049/api/Manager/GetTicketByManager/${this.userId}`;
+    const apiUrl = environment.baseUrl+`/api/Manager/GetTicketByManager/${this.userId}`;
     return apiUrl;
   }
   getApiLink2(): string {
-    const apiUrl = `https://localhost:7049/api/Manager/GetApprovalTicket/${this.userId}`;
+    const apiUrl = environment.baseUrl+`/api/Manager/GetApprovalTicket/${this.userId}`;
     return apiUrl;
   }
   getApiLink3(): string {
-    const apiUrl = `https://localhost:7049/api/Manager/GetLiveTicketByManager/${this.userId}`;
+    const apiUrl = environment.baseUrl+`/api/Manager/GetLiveTicketByManager/${this.userId}`;
     return apiUrl;
   }
   getManagerTicketDetails(ticketId: number): Observable<any> {
-    const url = `https://localhost:7049/api/Manager/ViewTicketDetails/${ticketId}`;
+    const url = environment.baseUrl+`/api/Manager/ViewTicketDetails/${ticketId}`;
     return this.http.get<any>(url);
   }
   changePriority(ticketId: number, newPriorityId: number): Observable<any> {
-    const apiUrl = 'https://localhost:7049/api/Manager';
+    const apiUrl = environment.baseUrl+'/api/Manager';
     return this.http.post(`${apiUrl}/ChangePriority`, {
       ticketId,
       newPriorityId,
     });
   }
   ticketDecision(ticketId: number, newStatusId: number): Observable<any> {
-    const apiUrl = 'https://localhost:7049/api/Manager';
+    const apiUrl = environment.baseUrl+'/api/Manager';
     return this.http.post(`${apiUrl}/TicketDecision`, {
       ticketId,
       newStatusId,
@@ -52,7 +53,7 @@ export class MasterService {
     ticketId: number,
     currentControllerId: number
   ): Observable<any> {
-    const apiUrl = 'https://localhost:7049/api/Manager';
+    const apiUrl = environment.baseUrl+'/api/Manager';
     return this.http.post(`${apiUrl}/SendForApproval`, {
       ticketId,
       currentControllerId,
@@ -70,21 +71,21 @@ export class MasterService {
   getApiLinkProjectEmployeeDetails(): string {
     return this.apiLinkProjectEmployeeDeatils;
   }
-  private apiLinkTicketsToResolve: string = `https://localhost:7049/api/L3Admin/GetRaisedTicketsByAgent/${this.userIdL2Admin}`;
+  private apiLinkTicketsToResolve: string = environment.baseUrl+`/api/L3Admin/GetRaisedTicketsByAgent/${this.userIdL2Admin}`;
   getApiLinkTicketsToResolve(): string {
     return this.apiLinkTicketsToResolve;
   }
-  private apiLinkCancellationRequests: string = `https://localhost:7049/api/L3Admin/GetCancelRequestTicketsByAgent/${this.userIdL2Admin}`;
+  private apiLinkCancellationRequests: string = environment.baseUrl+`/api/L3Admin/GetCancelRequestTicketsByAgent/${this.userIdL2Admin}`;
   getApiLinkCancellationRequests(): string {
     return this.apiLinkCancellationRequests;
   }
 
-  private apiEscaltedTicketForL1Admin = `https://localhost:7049/api/l1/escalated-tickets/${this.userIdL1Admin}`;
+  private apiEscaltedTicketForL1Admin = environment.baseUrl+`/api/l1/escalated-tickets/${this.userIdL1Admin}`;
   getEscalatedTicketForL1Admin(): string {
     return this.apiEscaltedTicketForL1Admin;
   }
 
-  private apiViewAllTicketL1Admin = `https://localhost:7049/api/l1/all-tickets`;
+  private apiViewAllTicketL1Admin = environment.baseUrl+`/api/l1/all-tickets`;
   getAllTicketsForL1Admin(): string {
     return this.apiViewAllTicketL1Admin;
   }

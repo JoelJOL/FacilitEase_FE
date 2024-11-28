@@ -129,7 +129,7 @@ export class AzureService {
       Authorization: `Bearer ${azureObj.idToken}`,
     });
     return this.http.post<AzureReturn>(
-      'https://localhost:7049/api/User',
+      environment.baseUrl+'/api/User',
       {
         idToken: azureObj.idToken,
         AccessToken: azureObj.accessToken,

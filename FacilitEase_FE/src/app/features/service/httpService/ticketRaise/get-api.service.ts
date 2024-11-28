@@ -6,13 +6,14 @@ import {
   Priority,
   TicketResponse,
 } from '@app/features/l3admin/l3Models/model';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GetAPIService {
-  private baseUrl = 'https://localhost:7049/api';
+  private baseUrl = environment.baseUrl+'/api';
 
   constructor(private http: HttpClient) {}
 

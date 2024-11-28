@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostAPIService {
-  ticketApiUrl: string = 'https://localhost:7049/api/Employee/raiseticket';
-  departmentApiUrl: string = 'https://localhost:7049/api/departments';
+  ticketApiUrl: string = environment.baseUrl+'/api/Employee/raiseticket';
+  departmentApiUrl: string = environment.baseUrl+'/api/departments';
 
   constructor(private http: HttpClient) {}
 

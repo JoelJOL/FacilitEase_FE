@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 import {
   UnassignedTicketDetails,
   UnassignedTickets,
+  environment,
   l2Admin,
 } from 'environments/environment';
 import { map } from 'rxjs/operators';
@@ -98,7 +99,7 @@ export class L2adminTicketViewComponent {
     console.log(selectedAgent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.http.get(`https://localhost:7049/api/l2/sla-info/${ticketId}`)
+        this.http.get(environment.baseUrl+`/api/l2/sla-info/${ticketId}`)
           .pipe(
             map((resolvingTime: any) => {
               return new Date(resolvingTime.toString());
@@ -117,7 +118,7 @@ export class L2adminTicketViewComponent {
               if (result) {
                 this.escalationComment = result.comment;
                 this.http
-                  .put('https://localhost:7049/api/l2/assign-ticket', data, {
+                  .put(environment.baseUrl+'/api/l2/assign-ticket', data, {
                     responseType: 'text',
                   })
                   .subscribe(

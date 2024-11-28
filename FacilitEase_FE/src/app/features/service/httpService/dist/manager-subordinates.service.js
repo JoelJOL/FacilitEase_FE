@@ -11,7 +11,7 @@ var core_1 = require("@angular/core");
 var ManagerSubordinatesService = /** @class */ (function () {
     function ManagerSubordinatesService(http) {
         this.http = http;
-        this.apiUrl = 'https://localhost:7049/api/managers/2/subordinates'; // Replace with your actual API URL
+        this.apiUrl = environment.baseUrl+'/api/managers/2/subordinates'; // Replace with your actual API URL
     }
     ManagerSubordinatesService.prototype.getEmployeeDetails = function () {
         var url = "" + this.apiUrl; // Adjust the URL based on your API endpoint
